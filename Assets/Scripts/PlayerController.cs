@@ -18,16 +18,16 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, movementSpeed * Time.deltaTime);
 
-        if(Vector3.Distance(transform.position, movePoint.position) <= .05f)
+        if(Vector3.Distance(transform.position, movePoint.position) <= .05f) 
         {
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
+            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f) //if left or right arrow is pressed
             {
-                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f); //move which ever direction is pressed
             }
 
-            if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) ;
+            if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)  //If up or down arrow is pressed
             {
-                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f); //move which ever direction is pressed
             }
         }
     }
