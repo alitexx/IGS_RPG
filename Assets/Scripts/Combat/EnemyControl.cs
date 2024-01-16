@@ -8,7 +8,7 @@ public class EnemyControl : MonoBehaviour
     static public int[] valueList = {
         /*Strength*/ 2,
         /*Magic Attack*/ 1,
-        /*Defense*/ 2, 
+        /*Defense*/ 4, 
         /*Speed*/ 3, 
         /*Health*/ 4, 
         /*MaxHealth*/ 5,
@@ -28,7 +28,14 @@ public class EnemyControl : MonoBehaviour
     public void PhysicalHurt(int strength)
     {
         //subtract health and update display
-        enemyData.stats["Health"] = enemyData.stats["Health"] - (1 + strength); //= charData.stats["Health"] - 1;
+        if (strength < enemyData.stats["Defense"] - 1)
+        {
+
+        }
+        else
+        {
+            enemyData.stats["Health"] = enemyData.stats["Health"] - ((1 + strength) - enemyData.stats["Defense"]);
+        }
         text.text = "Health: " + enemyData.stats["Health"];
     }
 
