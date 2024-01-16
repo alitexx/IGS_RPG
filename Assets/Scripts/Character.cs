@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
+//using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 [System.Serializable]
@@ -20,7 +19,7 @@ public class Character
         {"Mana", 0},
         {"MaxMana", 0},
         {"EXP", 0},
-        {"LvlUpThreshold", 0}
+        {"LvlUpThreshold", 10}
 
     }; //dictionary containing every character's stats
     public string magicType; // PLACEHOLDER
@@ -41,8 +40,8 @@ public class Character
         this.stats["MaxHealth"] = valuesToUse[5];
         this.stats["Mana"] = valuesToUse[6];
         this.stats["MaxMana"] = valuesToUse[7];
-        this.stats["EXP"] = valuesToUse[8];
-        this.stats["LvlUpThreshold"] = valuesToUse[9];
+        //this.stats["EXP"] = valuesToUse[8];
+        //this.stats["LvlUpThreshold"] = valuesToUse[9];
         this.magicType = magicType;
         this.description = description;
     }

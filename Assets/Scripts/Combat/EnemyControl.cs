@@ -5,14 +5,46 @@ using UnityEngine;
 
 public class EnemyControl : MonoBehaviour
 {
-    static public int[] valueList = { 69, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    static public int[] valueList = {
+        /*Strength*/ 2,
+        /*Magic Attack*/ 1,
+        /*Defense*/ 2, 
+        /*Speed*/ 3, 
+        /*Health*/ 4, 
+        /*MaxHealth*/ 5,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7};
     static public string Name;
-    public Character charData = new Character(Name, valueList, "Cube", "Is a cube");
+    public Character enemyData = new Character(Name, valueList, "Cube", "Is a cube");
     //public TextMeshPro text;
     public TMP_Text text;
 
     private void Start()
     {
-        text.text = "Health: " + charData.stats["Health"];
+        text.text = "Health: " + enemyData.stats["Health"];
+    }
+
+    //Gets hit by a physical attack
+    public void PhysicalHurt(int strength)
+    {
+        //subtract health and update display
+        enemyData.stats["Health"] = enemyData.stats["Health"] - (1 + strength); //= charData.stats["Health"] - 1;
+        text.text = "Health: " + enemyData.stats["Health"];
+    }
+
+    //Gets hit by a magical attack
+    public void MagicHurt(int magicAttack, string magicType)
+    {
+        //Vunerability to Fire
+        if (magicType == "Fire")
+        {
+            enemyData.stats["Health"] = enemyData.stats["Health"] - ((1 + magicAttack) * 2);
+        }
+        else
+        {
+            enemyData.stats["Health"] = enemyData.stats["Health"] - (1 + magicAttack);
+        }
+
+        text.text = "Health: " + enemyData.stats["Health"];
     }
 }
