@@ -1,34 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = 5f;
-    public Transform movePoint;
+    private bool isMoving;
 
-    // Start is called before the first frame update
-    void Start()
+    private Vector2 input;
+
+    private Animator animator;
+
+    private void Awake()
     {
-        movePoint.parent = null;
+        animator = GetComponent<Animator>();
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, movementSpeed * Time.deltaTime);
-
-        if(Vector3.Distance(transform.position, movePoint.position) <= .05f) 
+        if (!isMoving)
         {
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f) //if left or right arrow is pressed
-            {
-                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f); //move which ever direction is pressed
-            }
+            input.x = Input.GetAxisRaw("Horizontal");
+            input.y = Input.GetAxisRaw("Vertical");
 
-            if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)  //If up or down arrow is pressed
+            if (input.x != 0) input.y = 0;
+
+            if (input != Vector2.zero)
             {
-                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f); //move which ever direction is pressed
+                animator.SetFloat("moveX", input.x);
+                animator.SetFloat("moveY", input.y);
+
+                var targetPos = transform.position;
+                targetPos.x += input.x;
+                targetPos.y += input.y;
+
+                StartCoroutine(Move(targetPos));
             }
         }
+
+        animator.SetBool("isMoving", isMoving);
+        
+
+    }
+
+    IEnumerator Move(Vector3 targetPos)
+    {
+        isMoving = true;
+
+        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, movementSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        transform.position = targetPos;
+
+        isMoving = false;
     }
 }
