@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
-public class Character
+public class CharacterData
 {
     public int level;
     public string name; // the character's name
@@ -29,7 +29,7 @@ public class Character
 
     public CharState charState; //public variable that stores the current state of the character
 
-    public Character(string name, int[] valuesToUse, string magicType, string description)
+    public CharacterData(string name, int[] valuesToUse, string magicType, string description)
     {
         this.name = name;
         this.stats["Strength"] = valuesToUse[0];
@@ -40,11 +40,13 @@ public class Character
         this.stats["MaxHealth"] = valuesToUse[5];
         this.stats["Mana"] = valuesToUse[6];
         this.stats["MaxMana"] = valuesToUse[7];
-        //this.stats["EXP"] = valuesToUse[8];
-        //this.stats["LvlUpThreshold"] = valuesToUse[9];
+        this.stats["EXP"] = valuesToUse[8];
+        this.stats["LvlUpThreshold"] = valuesToUse[9];
         this.magicType = magicType;
         this.description = description;
     }
+
+    public EnemyData targetEnemy;
 
     
     public void IncreaseStats(bool isLevelUp)
@@ -52,11 +54,16 @@ public class Character
         // check if this is because of a level up or not. If it is not because of a level up, 
     }
 
+    public bool CanAttackEnemy()
+    {
+        return targetEnemy.enemyState == EnemyState.Idle || targetEnemy.enemyState == EnemyState.Ready;
+    }
 }
 
 public enum CharState //current state of the character
 {
     Idle,
+    Ready,
     Casting,
     Attacking,
     Hurt,
