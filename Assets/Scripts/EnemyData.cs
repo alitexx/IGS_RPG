@@ -4,8 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
-public class Enemy
+public class EnemyData
 {
+    //currently not using this class
+
     public int level;
     public string name; // the character's name
     public Dictionary<string, int> stats = new Dictionary<string, int>() {
@@ -21,7 +23,7 @@ public class Enemy
 
     public string MagicType;
 
-    public Enemy(string name, int[] valuesToUse, string magicType)
+    public EnemyData(string name, int[] valuesToUse, string magicType)
     {
         this.name = name;
         this.stats["Strength"] = valuesToUse[0];
@@ -32,8 +34,6 @@ public class Enemy
         this.stats["MaxHealth"] = valuesToUse[5];
         this.stats["Mana"] = valuesToUse[6];
         this.stats["MaxMana"] = valuesToUse[7];
-        this.stats["EXP"] = valuesToUse[8];
-        this.stats["LvlUpThreshold"] = valuesToUse[9];
         this.MagicType = magicType;
     }
 
@@ -42,6 +42,7 @@ public class Enemy
 
 public enum EnemyState
 {
+    Ready,
     Idle,
     Casting,
     Attacking,
