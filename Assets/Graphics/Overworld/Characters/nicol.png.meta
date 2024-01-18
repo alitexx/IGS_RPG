@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: af4531a5d14e84b41958f8e1c10e8675
+guid: ac2b0930cc05e654d879c32c5933d14c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,169 +104,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: slime_0
+      name: nicol_0
       rect:
         serializedVersion: 2
         x: 0
         y: 96
         width: 16
-        height: 17
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f15cf0367db62540b5606af0a5a3130
-      internalID: -1338640045
+      spriteID: c34bdb22d418cdc45979885d164d83c7
+      internalID: -43676903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_1
+      name: nicol_1
       rect:
         serializedVersion: 2
         x: 16
         y: 96
         width: 16
-        height: 17
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c60592b5bcaf4a54c9ffef0c91fa15ac
-      internalID: -1216615694
+      spriteID: f9affc80c91fa7547bf1d0dfd238ce94
+      internalID: 116433481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_2
+      name: nicol_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7e6747d4b4acf9488ad8ec71abed632
+      internalID: 2066253615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nicol_3
       rect:
         serializedVersion: 2
         x: 0
         y: 64
         width: 16
-        height: 17
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79bf3c6fe6855274994a658c6553809f
-      internalID: -1591168274
+      spriteID: cfc26112faebaaf4b8ef36d303df7ff6
+      internalID: -1934619476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_3
+      name: nicol_4
       rect:
         serializedVersion: 2
         x: 16
         y: 64
         width: 16
-        height: 17
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee70e85054375a04690b1d384c5f373b
-      internalID: -774590487
+      spriteID: 39f944c5ef10b2045a38584979492c4d
+      internalID: 1203883911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_4
+      name: nicol_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ae65a1c74efb94db12572e1f6443f0
+      internalID: 178029367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nicol_6
       rect:
         serializedVersion: 2
         x: 0
         y: 32
         width: 16
-        height: 17
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 194389fe7877e164b908d7cbfdf65ffc
-      internalID: 1989601322
+      spriteID: 1fc87fae4c165734fb42e8cc19e07fc5
+      internalID: -1896602173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_5
+      name: nicol_7
       rect:
         serializedVersion: 2
         x: 16
         y: 32
         width: 16
-        height: 17
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cb771fd91fc7f544ae3f49e4981003c
-      internalID: 921774481
+      spriteID: d9dd1165c9cf663479d41179fcab7cbf
+      internalID: 1289288433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_6
+      name: nicol_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6750c4a27af27f7439e01e83b1c7a4b0
+      internalID: -263522171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nicol_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 17
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a754109ba8823d440b5b2c61c8fc5ee7
-      internalID: 72143428
+      spriteID: 98a37888dd9402546af1f70f2b1c9875
+      internalID: -1877541148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime_7
+      name: nicol_10
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 17
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9398cc460d87f2e41adf018627a860aa
-      internalID: 861550242
+      spriteID: 4978344bc036c234087c1f8b62fa79d2
+      internalID: 1739212910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nicol_11
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 463f20c828409894fa5c616882282445
+      internalID: 470487253
       vertices: []
       indices: 
       edges: []
@@ -282,14 +366,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      slime_2: -1591168274
-      slime_5: 921774481
-      slime_7: 861550242
-      slime_1: -1216615694
-      slime_0: -1338640045
-      slime_6: 72143428
-      slime_3: -774590487
-      slime_4: 1989601322
+      nicol_2: 2066253615
+      nicol_4: 1203883911
+      nicol_5: 178029367
+      nicol_0: -43676903
+      nicol_1: 116433481
+      nicol_7: 1289288433
+      nicol_11: 470487253
+      nicol_6: -1896602173
+      nicol_10: 1739212910
+      nicol_3: -1934619476
+      nicol_9: -1877541148
+      nicol_8: -263522171
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
