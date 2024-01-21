@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 64d03efae53f5d444bcc4b229660af36
+guid: ac2b0930cc05e654d879c32c5933d14c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,253 +104,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: alan_0
+      name: nicol_0
       rect:
         serializedVersion: 2
         x: 0
         y: 96
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5746f7365905742469b6e20226cb37c7
-      internalID: 764760184
+      spriteID: c34bdb22d418cdc45979885d164d83c7
+      internalID: -43676903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_1
+      name: nicol_1
       rect:
         serializedVersion: 2
         x: 16
         y: 96
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6dd0bea2c9d6984691ffb9b1bb14bb1
-      internalID: -1380345842
+      spriteID: f9affc80c91fa7547bf1d0dfd238ce94
+      internalID: 116433481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_2
+      name: nicol_2
       rect:
         serializedVersion: 2
         x: 32
         y: 96
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20fe1698ad96a9e498f22faeb4020028
-      internalID: -863881090
+      spriteID: a7e6747d4b4acf9488ad8ec71abed632
+      internalID: 2066253615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_3
+      name: nicol_3
       rect:
         serializedVersion: 2
         x: 0
         y: 64
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3421961e2102b734b995d107a1c809b6
-      internalID: 22027640
+      spriteID: cfc26112faebaaf4b8ef36d303df7ff6
+      internalID: -1934619476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_4
+      name: nicol_4
       rect:
         serializedVersion: 2
         x: 16
         y: 64
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4f41a0d89062e2438cca313f68da990
-      internalID: 2126958692
+      spriteID: 39f944c5ef10b2045a38584979492c4d
+      internalID: 1203883911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_5
+      name: nicol_5
       rect:
         serializedVersion: 2
         x: 32
         y: 64
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d648f1358ff49341bd44199f151aa08
-      internalID: -580442134
+      spriteID: f5ae65a1c74efb94db12572e1f6443f0
+      internalID: 178029367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_6
+      name: nicol_6
       rect:
         serializedVersion: 2
         x: 0
         y: 32
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bba5fcc7ec5f47b47b43ade507804b36
-      internalID: -99028046
+      spriteID: 1fc87fae4c165734fb42e8cc19e07fc5
+      internalID: -1896602173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_7
+      name: nicol_7
       rect:
         serializedVersion: 2
         x: 16
         y: 32
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15ebc577950d6044c886ffdd4028f1ef
-      internalID: 1397805596
+      spriteID: d9dd1165c9cf663479d41179fcab7cbf
+      internalID: 1289288433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_8
+      name: nicol_8
       rect:
         serializedVersion: 2
         x: 32
         y: 32
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fd8658ca6ca7c349bff494449418541
-      internalID: -1795129459
+      spriteID: 6750c4a27af27f7439e01e83b1c7a4b0
+      internalID: -263522171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_9
+      name: nicol_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2b96f2c9919cec4196a5827c4d2e59b
-      internalID: 1662556299
+      spriteID: 98a37888dd9402546af1f70f2b1c9875
+      internalID: -1877541148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_10
+      name: nicol_10
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e28113d025fc0354cb0b8d66ff3add84
-      internalID: 1610269463
+      spriteID: 4978344bc036c234087c1f8b62fa79d2
+      internalID: 1739212910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_11
+      name: nicol_11
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bf452b5c5320764a978d2ac9669e694
-      internalID: 1858353599
+      spriteID: 463f20c828409894fa5c616882282445
+      internalID: 470487253
       vertices: []
       indices: 
       edges: []
@@ -366,18 +366,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      alan_9: 1662556299
-      alan_11: 1858353599
-      alan_0: 764760184
-      alan_3: 22027640
-      alan_7: 1397805596
-      alan_6: -99028046
-      alan_1: -1380345842
-      alan_10: 1610269463
-      alan_5: -580442134
-      alan_4: 2126958692
-      alan_8: -1795129459
-      alan_2: -863881090
+      nicol_2: 2066253615
+      nicol_4: 1203883911
+      nicol_5: 178029367
+      nicol_0: -43676903
+      nicol_1: 116433481
+      nicol_7: 1289288433
+      nicol_11: 470487253
+      nicol_6: -1896602173
+      nicol_10: 1739212910
+      nicol_3: -1934619476
+      nicol_9: -1877541148
+      nicol_8: -263522171
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

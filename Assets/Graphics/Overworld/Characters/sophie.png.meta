@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 64d03efae53f5d444bcc4b229660af36
+guid: d4a7849e5f3b11f4a884ed9a4c19a6e7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,253 +104,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: alan_0
+      name: sophie_0
       rect:
         serializedVersion: 2
         x: 0
         y: 96
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5746f7365905742469b6e20226cb37c7
-      internalID: 764760184
+      spriteID: 44e564d248736484b9bb217d3a211e72
+      internalID: -2074892660
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_1
+      name: sophie_1
       rect:
         serializedVersion: 2
         x: 16
         y: 96
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6dd0bea2c9d6984691ffb9b1bb14bb1
-      internalID: -1380345842
+      spriteID: d10dccaa929d5574b982c2ee7106e5de
+      internalID: -1339785192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_2
+      name: sophie_2
       rect:
         serializedVersion: 2
         x: 32
         y: 96
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20fe1698ad96a9e498f22faeb4020028
-      internalID: -863881090
+      spriteID: bc93a07383ed97d4f9a89a9883bb0d93
+      internalID: -872920900
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_3
+      name: sophie_3
       rect:
         serializedVersion: 2
         x: 0
         y: 64
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3421961e2102b734b995d107a1c809b6
-      internalID: 22027640
+      spriteID: b496046b2ed39ce44bfa7b972c75be2f
+      internalID: -487945061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_4
+      name: sophie_4
       rect:
         serializedVersion: 2
         x: 16
         y: 64
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4f41a0d89062e2438cca313f68da990
-      internalID: 2126958692
+      spriteID: a080d352ce1cfbc4096bbbe3297c7977
+      internalID: 74123484
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_5
+      name: sophie_5
       rect:
         serializedVersion: 2
         x: 32
         y: 64
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d648f1358ff49341bd44199f151aa08
-      internalID: -580442134
+      spriteID: a499eec28e31e84489bf02b8785d7db4
+      internalID: -607034379
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_6
+      name: sophie_6
       rect:
         serializedVersion: 2
         x: 0
         y: 32
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bba5fcc7ec5f47b47b43ade507804b36
-      internalID: -99028046
+      spriteID: 37ba70fc37a1bae44ba479f47a9b89f5
+      internalID: -1838671545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_7
+      name: sophie_7
       rect:
         serializedVersion: 2
         x: 16
         y: 32
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15ebc577950d6044c886ffdd4028f1ef
-      internalID: 1397805596
+      spriteID: 0b3ed6d1a21ccc44fae3e7da5512a4f3
+      internalID: -1092748724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_8
+      name: sophie_8
       rect:
         serializedVersion: 2
         x: 32
         y: 32
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fd8658ca6ca7c349bff494449418541
-      internalID: -1795129459
+      spriteID: 2f75f4587c661a440bbb2abdae1f3d7b
+      internalID: 838084143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_9
+      name: sophie_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2b96f2c9919cec4196a5827c4d2e59b
-      internalID: 1662556299
+      spriteID: 05701476647f3e744b7c82d0bac4c24a
+      internalID: -1128257463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_10
+      name: sophie_10
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e28113d025fc0354cb0b8d66ff3add84
-      internalID: 1610269463
+      spriteID: a74dbd9385b46cc44a21c07bed1f908d
+      internalID: -626301232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_11
+      name: sophie_11
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bf452b5c5320764a978d2ac9669e694
-      internalID: 1858353599
+      spriteID: 9595e473aa0688347bb5626d4f418217
+      internalID: 1592494384
       vertices: []
       indices: 
       edges: []
@@ -366,18 +366,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      alan_9: 1662556299
-      alan_11: 1858353599
-      alan_0: 764760184
-      alan_3: 22027640
-      alan_7: 1397805596
-      alan_6: -99028046
-      alan_1: -1380345842
-      alan_10: 1610269463
-      alan_5: -580442134
-      alan_4: 2126958692
-      alan_8: -1795129459
-      alan_2: -863881090
+      sophie_7: -1092748724
+      sophie_10: -626301232
+      sophie_4: 74123484
+      sophie_6: -1838671545
+      sophie_8: 838084143
+      sophie_1: -1339785192
+      sophie_3: -487945061
+      sophie_9: -1128257463
+      sophie_11: 1592494384
+      sophie_5: -607034379
+      sophie_0: -2074892660
+      sophie_2: -872920900
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

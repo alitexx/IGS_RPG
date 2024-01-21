@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 64d03efae53f5d444bcc4b229660af36
+guid: c8666356e945ffa4b9ed7cd01cd68048
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,253 +104,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: alan_0
+      name: kisaedit_0
       rect:
         serializedVersion: 2
         x: 0
         y: 96
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5746f7365905742469b6e20226cb37c7
-      internalID: 764760184
+      spriteID: d261c948c88764a4fa4c7b19286f6772
+      internalID: 1745401172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_1
+      name: kisaedit_1
       rect:
         serializedVersion: 2
         x: 16
         y: 96
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6dd0bea2c9d6984691ffb9b1bb14bb1
-      internalID: -1380345842
+      spriteID: 89e65e76599047341af6455639a1b346
+      internalID: 727900635
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_2
+      name: kisaedit_2
       rect:
         serializedVersion: 2
         x: 32
         y: 96
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20fe1698ad96a9e498f22faeb4020028
-      internalID: -863881090
+      spriteID: 1f2c90ae5bbe921498118770b45ea144
+      internalID: 408059046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_3
+      name: kisaedit_3
       rect:
         serializedVersion: 2
         x: 0
         y: 64
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3421961e2102b734b995d107a1c809b6
-      internalID: 22027640
+      spriteID: be13079729b95174baa4c19f869d27f4
+      internalID: 2045507106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_4
+      name: kisaedit_4
       rect:
         serializedVersion: 2
         x: 16
         y: 64
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4f41a0d89062e2438cca313f68da990
-      internalID: 2126958692
+      spriteID: a1b5c286a01a10c46a53accb2b5b21f0
+      internalID: -1305326860
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_5
+      name: kisaedit_5
       rect:
         serializedVersion: 2
         x: 32
         y: 64
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d648f1358ff49341bd44199f151aa08
-      internalID: -580442134
+      spriteID: c9c333b893c436a468c3abc66b6ab397
+      internalID: -2105464099
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_6
+      name: kisaedit_6
       rect:
         serializedVersion: 2
         x: 0
         y: 32
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bba5fcc7ec5f47b47b43ade507804b36
-      internalID: -99028046
+      spriteID: 924496a14ae74af43aa2182671d9fb60
+      internalID: -407663919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_7
+      name: kisaedit_7
       rect:
         serializedVersion: 2
         x: 16
         y: 32
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15ebc577950d6044c886ffdd4028f1ef
-      internalID: 1397805596
+      spriteID: 8b3905f73b400964fba922ffbf639155
+      internalID: 828278379
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_8
+      name: kisaedit_8
       rect:
         serializedVersion: 2
         x: 32
         y: 32
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fd8658ca6ca7c349bff494449418541
-      internalID: -1795129459
+      spriteID: 1241cd11811bf224b88ec001bf538ae2
+      internalID: 693599625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_9
+      name: kisaedit_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2b96f2c9919cec4196a5827c4d2e59b
-      internalID: 1662556299
+      spriteID: 828875de3e17348449399f72ad654e7e
+      internalID: 1183657957
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_10
+      name: kisaedit_10
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e28113d025fc0354cb0b8d66ff3add84
-      internalID: 1610269463
+      spriteID: 2e831bb9fa0b853409d79436c23ccac9
+      internalID: 18354017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alan_11
+      name: kisaedit_11
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bf452b5c5320764a978d2ac9669e694
-      internalID: 1858353599
+      spriteID: fff7397f0ca44164bb90cc52debb57b5
+      internalID: 1975947217
       vertices: []
       indices: 
       edges: []
@@ -366,18 +366,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      alan_9: 1662556299
-      alan_11: 1858353599
-      alan_0: 764760184
-      alan_3: 22027640
-      alan_7: 1397805596
-      alan_6: -99028046
-      alan_1: -1380345842
-      alan_10: 1610269463
-      alan_5: -580442134
-      alan_4: 2126958692
-      alan_8: -1795129459
-      alan_2: -863881090
+      kisaedit_6: -407663919
+      kisaedit_3: 2045507106
+      kisaedit_8: 693599625
+      kisaedit_4: -1305326860
+      kisaedit_0: 1745401172
+      kisaedit_7: 828278379
+      kisaedit_10: 18354017
+      kisaedit_11: 1975947217
+      kisaedit_9: 1183657957
+      kisaedit_5: -2105464099
+      kisaedit_2: 408059046
+      kisaedit_1: 727900635
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

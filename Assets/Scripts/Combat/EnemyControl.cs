@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyControl : MonoBehaviour
 {
+    //current not using this script
+
+
     static public int[] valueList = {
         /*Strength*/ 2,
         /*Magic Attack*/ 1,
@@ -15,13 +19,17 @@ public class EnemyControl : MonoBehaviour
         /*Mana*/ 6,
         /*MaxMana*/ 7};
     static public string Name;
-    public Character enemyData = new Character(Name, valueList, "Cube", "Is a cube");
+    public EnemyData enemyData = new EnemyData(Name, valueList, "Cube");
     //public TextMeshPro text;
+    /*
     public TMP_Text text;
+
+    public Character targetCharacter;
 
     private void Start()
     {
         text.text = "Health: " + enemyData.stats["Health"];
+        
     }
 
     //Gets hit by a physical attack
@@ -54,4 +62,7 @@ public class EnemyControl : MonoBehaviour
 
         text.text = "Health: " + enemyData.stats["Health"];
     }
+    */
+
+
 }
