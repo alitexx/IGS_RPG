@@ -10,7 +10,7 @@ public class CharacterData
     public int level;
     public string name; // the character's name
     public Dictionary<string, int> stats = new Dictionary<string, int>() {
-        {"Strength", 0},
+        {"Strength", 5},
         {"Magic Attack", 0},
         {"Defense", 0},
         {"Speed", 0},
@@ -27,9 +27,9 @@ public class CharacterData
 
     public int[] valuesForStats;
 
-    public CharState charState; //public variable that stores the current state of the character
+    public bool isPlayerTeam;
 
-    public CharacterData(string name, int[] valuesToUse, string magicType, string description)
+    public CharacterData(string name, int[] valuesToUse, string magicType, string description, bool playerTeam)
     {
         this.name = name;
         this.stats["Strength"] = valuesToUse[0];
@@ -44,28 +44,14 @@ public class CharacterData
         this.stats["LvlUpThreshold"] = valuesToUse[9];
         this.magicType = magicType;
         this.description = description;
+        this.isPlayerTeam = playerTeam;
     }
 
-    public EnemyData targetEnemy;
+
 
     
     public void IncreaseStats(bool isLevelUp)
     {
         // check if this is because of a level up or not. If it is not because of a level up, 
     }
-
-    public bool CanAttackEnemy()
-    {
-        return targetEnemy.enemyState == EnemyState.Idle || targetEnemy.enemyState == EnemyState.Ready;
-    }
-}
-
-public enum CharState //current state of the character
-{
-    Idle,
-    Ready,
-    Casting,
-    Attacking,
-    Hurt,
-    Dead
 }
