@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PossibleBattleScreen.unity
     guid: 800673129087e1f41a400984631db914
+  - enabled: 1
+    path: Assets/Scenes/BattleCoding.unity
+    guid: 40a863d7407f5574ea36fb7498dbfc0b
   m_configObjects: {}

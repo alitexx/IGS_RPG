@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            SceneManager.LoadScene("PossibleBattleScreen");
+            SceneManager.LoadScene("BattleCoding");
         }
     }
 }
