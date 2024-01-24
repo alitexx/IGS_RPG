@@ -63,13 +63,14 @@ public class BattleCharacter : MonoBehaviour
     }
 
     //Sprite 
-    public void Setup(bool LIsPlayerTeam)
+    public void Setup(bool LIsPlayerTeam, Texture2D playerSprite, Texture2D enemySprite)
     {
         this.GIsPlayerTeam = LIsPlayerTeam;
         if (LIsPlayerTeam)
         {
             //Ally
             //textures and animations
+
         }
         else
         {
@@ -150,12 +151,14 @@ public class BattleCharacter : MonoBehaviour
         
     }
 
+    //Code for taking damage
     public void Damage(int damageAmount)
     {
         healthSystem.Damage(damageAmount);
-        Debug.Log(healthSystem.GetHealth());
+        Debug.Log("Health: " + healthSystem.GetHealth());
     }
 
+    //Code for checking if an enemy is dead
     public bool IsDead()
     {
         return healthSystem.IsDead();

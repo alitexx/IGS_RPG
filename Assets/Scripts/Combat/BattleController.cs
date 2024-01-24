@@ -40,6 +40,7 @@ public class BattleController : MonoBehaviour
 
     private void Start()
     {
+        //True for an ally, false for an enemy
         playerChar = SpawnCharacter(true);
         enemyChar = SpawnCharacter(false);
 
@@ -76,7 +77,7 @@ public class BattleController : MonoBehaviour
         }
         Transform characterTransform =  Instantiate(playerCharacterTransform, position, Quaternion.identity);
         BattleCharacter battleCharacter = characterTransform.GetComponent<BattleCharacter>();
-        battleCharacter.Setup(isPlayerTeam);
+        battleCharacter.Setup(isPlayerTeam, playerSpriteSheet, enemySpriteSheet);
 
         return battleCharacter;
     }
