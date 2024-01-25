@@ -3,36 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
+using JetBrains.Annotations;
+using Unity.VisualScripting;
 
 public class BattleCharacter : MonoBehaviour
 {
     //not using the stats for now
-    static public int[] playerStats = {
-        /*Strength*/ 2,
-        /*Magic Attack*/ 1,
-        /*Defense*/ 2, 
-        /*Speed*/ 4, 
-        /*Health*/ 4, 
-        /*MaxHealth*/ 5,
-        /*Mana*/ 6,
-        /*MaxMana*/ 7,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
-    private CharacterData characterData = new CharacterData("Bob", playerStats, "Fire", "Is a cube", true);
+    //stats used on BattleController
+    //private CharacterData characterData = new CharacterData("Bob", playerStats, "Fire", "Is a cube", true);
+    //private CharacterData enemyData = new CharacterData("Bob", enemyStats, "Fire", "Is a cube", false);
 
-    static public int[] enemyStats = {
-        /*Strength*/ 2,
-        /*Magic Attack*/ 1,
-        /*Defense*/ 2, 
-        /*Speed*/ 4, 
-        /*Health*/ 4, 
-        /*MaxHealth*/ 5,
-        /*Mana*/ 6,
-        /*MaxMana*/ 7,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
-    private CharacterData enemyData = new CharacterData("Bob", enemyStats, "Fire", "Is a cube", false);
-
+    public CharacterData statSheet;
+    public bool isBlocking;
 
     private State state;
     private Vector3 slideTargetPosition;
@@ -64,7 +46,7 @@ public class BattleCharacter : MonoBehaviour
 
     private void Start()
     {
-        
+        //Debug.Log(GIsPlayerTeam + ": Strength:" + statSheet.stats["Strength"]);
     }
 
     //Sprite 
@@ -81,7 +63,8 @@ public class BattleCharacter : MonoBehaviour
             //enemy
         }
 
-        healthSystem = new HealthSystem(4);
+        healthSystem = new HealthSystem(statSheet.stats["MaxHealth"]);
+
         //temporary health bar
         healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         healthSystem.OnHealthChanged += HealthSystem_OnHealthChanged;
@@ -130,14 +113,14 @@ public class BattleCharacter : MonoBehaviour
                 break;
         }
     }
-
+    
 
     //Code for face the target and attacking
     public Vector3 GetPosition()
     {
         return transform.position;
     }
-    public void Attack(BattleCharacter targetCharacter, Action onAttackComplete)
+    public void Attack(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
     {
         Vector3 slideCloseToTargetPosition = targetCharacter.GetPosition() + (GetPosition() - targetCharacter.GetPosition()).normalized * 2f;
         Vector3 startingPosition = GetPosition();
@@ -149,7 +132,8 @@ public class BattleCharacter : MonoBehaviour
             state = State.Busy;
             Vector3 attackDir = (targetCharacter.GetPosition() - GetPosition()).normalized;
 
-            targetCharacter.Damage(2);
+            Debug.Log(attacker.statSheet.stats["Strength"]);
+            targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"]);
 
             //Animation would go here, and then the attack would be marked as complete once the animation ends with onAttackComplete
             //For now, there is no delay between attacking and the attack ending
@@ -168,10 +152,18 @@ public class BattleCharacter : MonoBehaviour
     }
 
     //Code for taking damage
-    public void Damage(int strength)
+    public void GotDamaged(int strength)
     {
-        healthSystem.Damage(strength);
-        Debug.Log("Health: " + healthSystem.GetHealth());
+        if (isBlocking)
+        {
+            healthSystem.Damage(strength / 2);
+            Debug.Log("Health: " + healthSystem.GetHealth());
+        }
+        else
+        {
+            healthSystem.Damage(strength);
+            Debug.Log("Health: " + healthSystem.GetHealth());
+        }
     }
 
     //Code for checking if an enemy is dead
