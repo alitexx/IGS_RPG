@@ -147,10 +147,21 @@ public class BattleCharacter : MonoBehaviour
                 onAttackComplete();
             });
         });
-
-        
     }
 
+    public void magAttack(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
+    {
+        if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)
+        {
+            targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"] * 2);
+        }
+        else
+        {
+            targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"]);
+        }
+
+        onAttackComplete();
+    }
     //Code for taking damage
     public void GotDamaged(int strength)
     {

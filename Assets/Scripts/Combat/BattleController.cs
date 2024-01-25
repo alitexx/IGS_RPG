@@ -30,6 +30,12 @@ public class BattleController : MonoBehaviour
     private BattleCharacter enemyChar;
     private BattleCharacter activeChar;
 
+    //Testing turn order
+    private Queue<BattleCharacter> characterQueue = new Queue<BattleCharacter>();
+    private Queue<BattleCharacter> alreadyWent = new Queue<BattleCharacter>();
+
+    
+
     //Stats
     static public int[] playerStats = {
         /*Strength*/ 2,
@@ -46,13 +52,22 @@ public class BattleController : MonoBehaviour
         /*Strength*/ 2,
         /*Magic Attack*/ 1,
         /*Defense*/ 2, 
-        /*Speed*/ 4, 
+        /*Speed*/ 5, 
         /*Health*/ 3, 
         /*MaxHealth*/ 3,
         /*Mana*/ 6,
         /*MaxMana*/ 7,
         /*EXP*/ 0,
         /*LvlUpThreshold*/ 10 };
+    
+    //Magic Types
+    public Dictionary<int ,string> magicTypes = new Dictionary<int, string>()
+    {
+        {0, "Fire"},
+        {1 , "Ice"},
+        {2 , "Electric"},
+        {3 , "Wind"}
+    };
 
     private State state;
 
@@ -70,8 +85,18 @@ public class BattleController : MonoBehaviour
         playerChar = SpawnCharacter(true);
         enemyChar = SpawnCharacter(false);
 
+        if (playerChar.statSheet.stats["Speed"] < enemyChar.statSheet.stats["Speed"])
+        {
+            characterQueue.Enqueue(enemyChar);
+            characterQueue.Enqueue(playerChar);
+        }
+        else
+        {
+            characterQueue.Enqueue(playerChar);
+            characterQueue.Enqueue(enemyChar);
+        }
 
-        state = State.WaitingForPlayer;
+        //state = State.WaitingForPlayer;
 
         SetActiveCharBattle(playerChar);
 
@@ -123,6 +148,15 @@ public class BattleController : MonoBehaviour
         ChooseNextActiveChar();
     }
 
+    public void magicButton()
+    {
+        state = State.Busy;
+        playerChar.magAttack(enemyChar, playerChar, () =>
+        {
+            ChooseNextActiveChar();
+        });
+    }
+
     #endregion
 
     private BattleCharacter SpawnCharacter(bool isPlayerTeam)
@@ -143,11 +177,11 @@ public class BattleController : MonoBehaviour
         //Setting stats
         if (isPlayerTeam)
         {
-            battleCharacter.statSheet = new CharacterData("Bob", playerStats, "Fire", "Is a cube", true);
+            battleCharacter.statSheet = new CharacterData("Bob", playerStats, magicTypes[0], "Is a cube", true, magicTypes[1]);
         }
         else
         {
-            battleCharacter.statSheet = new CharacterData("Evil Bob", enemyStats, "Ice", "Isn't a cube", false);
+            battleCharacter.statSheet = new CharacterData("Evil Bob", enemyStats, magicTypes[1], "Isn't a cube", false, magicTypes[1]);
         }
 
 
@@ -176,8 +210,32 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        if (activeChar == playerChar)
+        /*if (activeChar == playerChar)
         {
+            SetActiveCharBattle(enemyChar);
+            state = State.Busy;
+
+            enemyChar.Attack(playerChar, enemyChar, () =>
+            {
+                ChooseNextActiveChar();
+            });
+
+        }*/
+
+
+        //Testing Queues
+        if (characterQueue.Count == 0)
+        {
+            while (alreadyWent.Count != 0)
+            {
+                characterQueue.Enqueue(alreadyWent.Dequeue());
+            };
+        }
+
+        if (characterQueue.Peek() == enemyChar)
+        {
+            alreadyWent.Enqueue(characterQueue.Dequeue());
+
             SetActiveCharBattle(enemyChar);
             state = State.Busy;
 
@@ -190,6 +248,7 @@ public class BattleController : MonoBehaviour
         else
         {
             SetActiveCharBattle(playerChar);
+            alreadyWent.Enqueue(characterQueue.Dequeue());
             playerChar.isBlocking = false;
             state = State.WaitingForPlayer;
         }
@@ -204,7 +263,7 @@ public class BattleController : MonoBehaviour
         if (playerChar.IsDead())
         {
             enemyWinText.SetActive(true);
-            //SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("GameOver");
             return true;
         }
         else if (enemyChar.IsDead())

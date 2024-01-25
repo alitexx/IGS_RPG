@@ -22,14 +22,16 @@ public class CharacterData
         {"LvlUpThreshold", 10}
 
     }; //dictionary containing every character's stats
-    public string magicType; // PLACEHOLDER
+    public string magicElement; // PLACEHOLDER
     public string description; // a description of the character to be shown on the pause menu
 
     public int[] valuesForStats;
 
     public bool isPlayerTeam;
 
-    public CharacterData(string name, int[] valuesToUse, string magicType, string description, bool playerTeam)
+    public string weakness;
+
+    public CharacterData(string name, int[] valuesToUse, string magicType, string description, bool playerTeam, string lWeakness)
     {
         this.name = name;
         this.stats["Strength"] = valuesToUse[0];
@@ -42,9 +44,10 @@ public class CharacterData
         this.stats["MaxMana"] = valuesToUse[7];
         this.stats["EXP"] = valuesToUse[8];
         this.stats["LvlUpThreshold"] = valuesToUse[9];
-        this.magicType = magicType;
+        this.magicElement = magicType;
         this.description = description;
         this.isPlayerTeam = playerTeam;
+        this.weakness = lWeakness;
     }
 
 
