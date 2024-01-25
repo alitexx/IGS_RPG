@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            Destroy(collision.gameObject);
             SceneManager.LoadScene("BattleCoding");
         }
     }
