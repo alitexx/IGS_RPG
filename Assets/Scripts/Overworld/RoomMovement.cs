@@ -1,4 +1,4 @@
-using Cinemachine.Utility;
+/*using Cinemachine.Utility;
 using Cinemachine;
 using System;
 using System.Collections.Generic;
@@ -29,7 +29,7 @@ public class RoomMovement : MonoBehaviour
 
 //Code that didnt work, trying something else but wanna keep this just in case.
 
-/*public GameObject virtualCam;
+public GameObject virtualCam;
 
 
 private void OnTriggerEnter2D(Collider2D other)
