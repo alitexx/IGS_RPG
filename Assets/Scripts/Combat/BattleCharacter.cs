@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CodeMonkey.Utils;
 
 public class BattleCharacter : MonoBehaviour
 {
@@ -37,11 +38,15 @@ public class BattleCharacter : MonoBehaviour
     private Vector3 slideTargetPosition;
     private Action onSlideComplete;
 
+    //Global "which team" bool
     private bool GIsPlayerTeam;
 
+    //highlighted circle on whose turn it is
     private GameObject selectionCircleObject;
 
     private HealthSystem healthSystem;
+    //temporary health bar
+    private World_Bar healthBar;
 
     private enum State
     {
@@ -70,14 +75,23 @@ public class BattleCharacter : MonoBehaviour
         {
             //Ally
             //textures and animations
-
         }
         else
         {
             //enemy
         }
 
-        healthSystem = new HealthSystem(100);
+        healthSystem = new HealthSystem(4);
+        //temporary health bar
+        healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
+        healthSystem.OnHealthChanged += HealthSystem_OnHealthChanged;
+
+        PlayAnimIdle();
+    }
+
+    private void HealthSystem_OnHealthChanged(object sender, EventArgs e)
+    {
+        healthBar.SetSize(healthSystem.GetHealthPercent());
     }
 
     private void PlayAnimIdle()
@@ -92,8 +106,10 @@ public class BattleCharacter : MonoBehaviour
         }
     }
 
+    
     private void Update()
     {
+        //checking states and preventing spam
         switch (state)
         {
             case State.Idle:
@@ -133,7 +149,7 @@ public class BattleCharacter : MonoBehaviour
             state = State.Busy;
             Vector3 attackDir = (targetCharacter.GetPosition() - GetPosition()).normalized;
 
-            targetCharacter.Damage(10);
+            targetCharacter.Damage(2);
 
             //Animation would go here, and then the attack would be marked as complete once the animation ends with onAttackComplete
             //For now, there is no delay between attacking and the attack ending
@@ -152,9 +168,9 @@ public class BattleCharacter : MonoBehaviour
     }
 
     //Code for taking damage
-    public void Damage(int damageAmount)
+    public void Damage(int strength)
     {
-        healthSystem.Damage(damageAmount);
+        healthSystem.Damage(strength);
         Debug.Log("Health: " + healthSystem.GetHealth());
     }
 

@@ -47,6 +47,9 @@ public class BattleController : MonoBehaviour
         state = State.WaitingForPlayer;
 
         SetActiveCharBattle(playerChar);
+
+        playerWinText.SetActive(false);
+        enemyWinText.SetActive(false);
     }
 
     private void Update()
@@ -119,14 +122,20 @@ public class BattleController : MonoBehaviour
         }
     }
 
+
+    //Who died
+    public GameObject playerWinText;
+    public GameObject enemyWinText;
     private bool TestBattleOver()
     {
         if (playerChar.IsDead())
         {
+            enemyWinText.SetActive(true);
             return true;
         }
         else if (enemyChar.IsDead())
         {
+            playerWinText.SetActive(true);
             return true;
         }
         else
