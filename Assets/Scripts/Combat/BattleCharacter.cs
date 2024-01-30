@@ -21,7 +21,7 @@ public class BattleCharacter : MonoBehaviour
     private Action onSlideComplete;
 
     //Global "which team" bool
-    private bool GIsPlayerTeam;
+    public bool GIsPlayerTeam;
 
     //highlighted circle on whose turn it is
     private GameObject selectionCircleObject;

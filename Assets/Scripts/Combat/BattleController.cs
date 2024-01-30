@@ -27,6 +27,7 @@ public class BattleController : MonoBehaviour
 
 
     private BattleCharacter playerChar;
+    private BattleCharacter secondPlayerChar;
     private BattleCharacter enemyChar;
     private BattleCharacter activeChar;
 
@@ -48,11 +49,12 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7,
         /*EXP*/ 0,
         /*LvlUpThreshold*/ 10 };
+
     static public int[] enemyStats = {
         /*Strength*/ 2,
         /*Magic Attack*/ 1,
         /*Defense*/ 2, 
-        /*Speed*/ 3, 
+        /*Speed*/ 5, 
         /*Health*/ 3, 
         /*MaxHealth*/ 3,
         /*Mana*/ 6,
@@ -71,6 +73,8 @@ public class BattleController : MonoBehaviour
 
     private State state;
 
+    private int playerCount;
+
     public GameObject fightingButtons;
 
    private enum State
@@ -83,18 +87,21 @@ public class BattleController : MonoBehaviour
     {
         //True for an ally, false for an enemy
         playerChar = SpawnCharacter(true);
+        secondPlayerChar = SpawnCharacter(true);
         enemyChar = SpawnCharacter(false);
 
         if (playerChar.statSheet.stats["Speed"] < enemyChar.statSheet.stats["Speed"])
         {
             state = State.Busy;
             characterQueue.Enqueue(enemyChar);
+            characterQueue.Enqueue(secondPlayerChar);
             characterQueue.Enqueue(playerChar);
         }
         else
         {
             state = State.WaitingForPlayer;
             characterQueue.Enqueue(playerChar);
+            characterQueue.Enqueue(secondPlayerChar);
             characterQueue.Enqueue(enemyChar);
         }
 
@@ -139,7 +146,7 @@ public class BattleController : MonoBehaviour
     public void attackButton()
     {
         state = State.Busy;
-        playerChar.Attack(enemyChar, playerChar, () =>
+        activeChar.Attack(enemyChar, activeChar, () =>
         {
             ChooseNextActiveChar();
         });
@@ -147,14 +154,14 @@ public class BattleController : MonoBehaviour
 
     public void defendButton()
     {
-        playerChar.isBlocking = true;
+        activeChar.isBlocking = true;
         ChooseNextActiveChar();
     }
 
     public void magicButton()
     {
         state = State.Busy;
-        playerChar.magAttack(enemyChar, playerChar, () =>
+        activeChar.magAttack(enemyChar, activeChar, () =>
         {
             ChooseNextActiveChar();
         });
@@ -167,8 +174,20 @@ public class BattleController : MonoBehaviour
         Vector3 position;
         if (isPlayerTeam)
         {
-            position = new Vector3(-5, 0);
-            
+            if (playerCount == 0)
+            {
+                position = new Vector3(-5, 0);
+            }
+            else if (playerCount == 1)
+            {
+                position = new Vector3(-5, 3);
+            }
+            else
+            {
+                position = new Vector3(-5, 0);
+            }
+
+            playerCount++;
         }
         else
         {
@@ -180,6 +199,7 @@ public class BattleController : MonoBehaviour
         //Setting stats
         if (isPlayerTeam)
         {
+                                                         //Name    Stats     Magic Type    Description  player Team   Magic Weakness
             battleCharacter.statSheet = new CharacterData("Bob", playerStats, magicTypes[0], "Is a cube", true, magicTypes[1]);
         }
         else
@@ -235,24 +255,26 @@ public class BattleController : MonoBehaviour
             };
         }
 
-        if (characterQueue.Peek() == enemyChar)
+        //If the next character in the queue is on the enemy team
+        if (characterQueue.Peek().GIsPlayerTeam == false)
         {
+            SetActiveCharBattle(characterQueue.Peek());
             alreadyWent.Enqueue(characterQueue.Dequeue());
 
-            SetActiveCharBattle(enemyChar);
             state = State.Busy;
 
-            enemyChar.Attack(playerChar, enemyChar, () =>
+            activeChar.Attack(playerChar, activeChar, () =>
             {
                 ChooseNextActiveChar();
             });
 
         }
+        //If the next character in the queue is on the player team
         else
         {
-            SetActiveCharBattle(playerChar);
+            SetActiveCharBattle(characterQueue.Peek());
             alreadyWent.Enqueue(characterQueue.Dequeue());
-            playerChar.isBlocking = false;
+            activeChar.isBlocking = false;
             state = State.WaitingForPlayer;
         }
     }
