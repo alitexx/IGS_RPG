@@ -52,7 +52,7 @@ public class BattleController : MonoBehaviour
         /*Strength*/ 2,
         /*Magic Attack*/ 1,
         /*Defense*/ 2, 
-        /*Speed*/ 5, 
+        /*Speed*/ 3, 
         /*Health*/ 3, 
         /*MaxHealth*/ 3,
         /*Mana*/ 6,
@@ -87,18 +87,21 @@ public class BattleController : MonoBehaviour
 
         if (playerChar.statSheet.stats["Speed"] < enemyChar.statSheet.stats["Speed"])
         {
+            state = State.Busy;
             characterQueue.Enqueue(enemyChar);
             characterQueue.Enqueue(playerChar);
         }
         else
         {
+            state = State.WaitingForPlayer;
             characterQueue.Enqueue(playerChar);
             characterQueue.Enqueue(enemyChar);
         }
 
         //state = State.WaitingForPlayer;
 
-        SetActiveCharBattle(playerChar);
+        SetActiveCharBattle(characterQueue.Peek());
+        ChooseNextActiveChar();
 
         playerWinText.SetActive(false);
         enemyWinText.SetActive(false);
