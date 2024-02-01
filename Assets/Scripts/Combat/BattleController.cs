@@ -319,6 +319,7 @@ public class BattleController : MonoBehaviour
 
         int enemyNum = 0;
 
+        //USE COROUTINE NEXT TIME TO GET THE CODE TO WAIT FOR ENTER KEY
         //DO NOT UNCOMMENT
         /*while (!Input.GetKeyDown(KeyCode.KeypadEnter))
         {
