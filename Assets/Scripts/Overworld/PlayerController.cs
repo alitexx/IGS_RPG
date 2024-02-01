@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
         //move player_sprite to next room. Maybe move them in the direction they were moving?
 
         isMoving = false;
+        UnFreezePlayer();
 
         yield return null;
     }
