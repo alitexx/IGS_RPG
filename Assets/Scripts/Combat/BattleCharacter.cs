@@ -132,8 +132,8 @@ public class BattleCharacter : MonoBehaviour
             state = State.Busy;
             Vector3 attackDir = (targetCharacter.GetPosition() - GetPosition()).normalized;
 
-            Debug.Log(attacker.statSheet.stats["Strength"]);
-            targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"]);
+            //Debug.Log(attacker.statSheet.stats["Strength"]);
+            targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
 
             //Animation would go here, and then the attack would be marked as complete once the animation ends with onAttackComplete
             //For now, there is no delay between attacking and the attack ending
@@ -153,27 +153,39 @@ public class BattleCharacter : MonoBehaviour
     {
         if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)
         {
-            targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"] * 2);
+            targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"] * 2, 0 /*Placeholder because magic ignores defense*/);
         }
         else
         {
-            targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"]);
+            targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"], 0 /*Placeholder because magic ignores defense*/ );
         }
 
         onAttackComplete();
     }
     //Code for taking damage
-    public void GotDamaged(int strength)
+    public void GotDamaged(int damageSource, int defenseStat)
     {
+        int damageMinusDefense = damageSource - defenseStat;
+
+        Debug.Log("Attacker Strength: " + damageSource);
+        Debug.Log("Defender Defense: " + defenseStat);
+
+        if (damageMinusDefense <= 0)
+        {
+            damageMinusDefense = 0;
+        }
+
+        Debug.Log("Final Damage: " + damageMinusDefense);
+
         if (isBlocking)
         {
-            healthSystem.Damage(strength / 2);
-            Debug.Log("Health: " + healthSystem.GetHealth());
+            healthSystem.Damage(damageMinusDefense / 2);
+            Debug.Log("Defender Health: " + healthSystem.GetHealth());
         }
         else
         {
-            healthSystem.Damage(strength);
-            Debug.Log("Health: " + healthSystem.GetHealth());
+            healthSystem.Damage(damageMinusDefense);
+            Debug.Log("Defender Health: " + healthSystem.GetHealth());
         }
     }
 
