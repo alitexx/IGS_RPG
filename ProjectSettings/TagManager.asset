@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Transfer
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - SolidObject
   - Player
   - Foreground
-  - 
+  - trim
   - 
   - 
   - 
@@ -53,4 +54,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 4105498073
+    locked: 0
+  - name: Trim
+    uniqueID: 2618217253
     locked: 0

@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
+
         
         return true;
     }
@@ -81,7 +82,39 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(collision.gameObject);
-            SceneManager.LoadScene("BattleCoding");
+            SceneManager.LoadScene("BattleCoding"); 
+        }
+
+        if (collision.gameObject.tag == "Transfer")
+        {
+            var targetPos = transform.position;
+            targetPos.x += input.x;
+            targetPos.y += input.y;
+
+            StartCoroutine(MoveRooms(targetPos));
         }
     }
+
+    IEnumerator MoveRooms(Vector3 targetPos)
+    {
+        isMoving = true;
+        FreezePlayer();
+       
+        //move player_sprite to next room. Maybe move them in the direction they were moving?
+
+        isMoving = false;
+
+        yield return null;
+    }
+
+    private void FreezePlayer()
+    {
+        Time.timeScale = 0f;
+    }
+
+    private void UnFreezePlayer()
+    {
+        Time.timeScale = 1.0f;
+    }
+
 }
