@@ -25,6 +25,7 @@ public class BattleCharacter : MonoBehaviour
 
     //highlighted circle on whose turn it is
     private GameObject selectionCircleObject;
+    private GameObject targetingCircleObject;
 
     private HealthSystem healthSystem;
     //temporary health bar
@@ -41,7 +42,9 @@ public class BattleCharacter : MonoBehaviour
     {
         state = State.Idle;
         selectionCircleObject = transform.Find("Outline").gameObject;
+        targetingCircleObject = transform.Find("TargetCircle").gameObject;
         HideSelectionCircle();
+        HideTargetCircle();
     }
 
     private void Start()
@@ -162,6 +165,42 @@ public class BattleCharacter : MonoBehaviour
 
         onAttackComplete();
     }
+
+    public void specialMove(BattleCharacter targetCharcter, BattleCharacter attacker, Action onAttackComplete)
+    {
+        //Debug.Log("Special Move");
+
+        //Tank Move
+        if (attacker.statSheet.specialMove == 1)
+        {
+            Debug.Log("Tank Special");
+            attacker.healthSystem.Heal(attacker.statSheet.stats["MaxHealth"] / 2);
+        }
+        //Mage Move
+        else if (attacker.statSheet.specialMove == 2)
+        {
+            Debug.Log("Mage Special");
+
+        }
+        //Bard
+        else if (attacker.statSheet.specialMove == 3)
+        {
+            Debug.Log("Bard Special");
+        }
+        //Monk
+        else if (attacker.statSheet.specialMove == 4)
+        {
+            Debug.Log("Monk Special");
+        }
+        //Not assigned
+        else
+        {
+            Debug.Log("Character does not have an assigned special");
+        }
+
+        onAttackComplete();
+    }
+
     //Code for taking damage
     public void GotDamaged(int damageSource, int defenseStat)
     {
@@ -220,5 +259,15 @@ public class BattleCharacter : MonoBehaviour
     public void ShowSelectionCircle()
     {
         selectionCircleObject.SetActive(true);
+    }
+
+    public void HideTargetCircle()
+    {
+        targetingCircleObject.SetActive(false);
+    }
+
+    public void ShowTargetCircle()
+    {
+        targetingCircleObject.SetActive(true);
     }
 }

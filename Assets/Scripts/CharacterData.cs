@@ -31,7 +31,9 @@ public class CharacterData
 
     public string weakness;
 
-    public CharacterData(string name, int[] valuesToUse, string magicType, string description, bool playerTeam, string lWeakness)
+    public int specialMove;
+
+    public CharacterData(string name, int[] valuesToUse, string magicType, string description, bool playerTeam, string lWeakness, int lSpecial)
     {
         this.name = name;
         this.stats["Strength"] = valuesToUse[0];
@@ -48,6 +50,7 @@ public class CharacterData
         this.description = description;
         this.isPlayerTeam = playerTeam;
         this.weakness = lWeakness;
+        this.specialMove = lSpecial;
     }
 
 

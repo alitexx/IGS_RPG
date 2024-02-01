@@ -17,9 +17,11 @@ public class BattleController : MonoBehaviour
         instance = this;
 
         //True for an ally, false for an enemy
-        playerChar = SpawnCharacter(true, playerStats, "Magic Guy");
-        secondPlayerChar = SpawnCharacter(true, secondPlayerStats, "Tank Guy");
-        enemyChar = SpawnCharacter(false, enemyStats, "Slime Guy");
+        playerChar = SpawnCharacter(true, playerStats, "Magic Guy", 2);
+        secPlayerChar = SpawnCharacter(true, secPlayerStats, "Tank Guy", 1);
+        enemyChar = SpawnCharacter(false, enemyStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/);
+        secEnemyChar = SpawnCharacter(false, secEnemyStats, "Skeleton Guy", 0);
+        
 
         /*
         if (playerChar.statSheet.stats["Speed"] < enemyChar.statSheet.stats["Speed"])
@@ -71,8 +73,9 @@ public class BattleController : MonoBehaviour
 
 
     private BattleCharacter playerChar;
-    private BattleCharacter secondPlayerChar;
+    private BattleCharacter secPlayerChar;
     private BattleCharacter enemyChar;
+    private BattleCharacter secEnemyChar;
     private BattleCharacter activeChar;
 
     //Testing turn order
@@ -80,6 +83,7 @@ public class BattleController : MonoBehaviour
     private Queue<BattleCharacter> alreadyWent = new Queue<BattleCharacter>();
 
     //Stats
+    //Mage Stats
     static public int[] playerStats = {
         /*Strength*/ 5,
         /*Magic Attack*/ 6,
@@ -92,7 +96,8 @@ public class BattleController : MonoBehaviour
         /*EXP*/ 0,
         /*LvlUpThreshold*/ 10 };
 
-    static public int[] secondPlayerStats = {
+    //Tank Stats
+    static public int[] secPlayerStats = {
         /*Strength*/ 8,
         /*Magic Attack*/ 2,
         /*Defense*/ 5, 
@@ -104,6 +109,7 @@ public class BattleController : MonoBehaviour
         /*EXP*/ 0,
         /*LvlUpThreshold*/ 10 };
 
+    //Slime Stats
     static public int[] enemyStats = {
         /*Strength*/ 7,
         /*Magic Attack*/ 1,
@@ -115,7 +121,20 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7,
         /*EXP*/ 0,
         /*LvlUpThreshold*/ 10 };
-    
+
+    //Skeleton Stats
+    static public int[] secEnemyStats = {
+        /*Strength*/ 9,
+        /*Magic Attack*/ 1,
+        /*Defense*/ 1, 
+        /*Speed*/ 1, 
+        /*Health*/ 10, 
+        /*MaxHealth*/ 10,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7,
+        /*EXP*/ 0,
+        /*LvlUpThreshold*/ 10 };
+
     //Magic Types
     public Dictionary<int ,string> magicTypes = new Dictionary<int, string>()
     {
@@ -127,9 +146,12 @@ public class BattleController : MonoBehaviour
 
     private List<BattleCharacter> playerList = new List<BattleCharacter>();
 
+    private List<BattleCharacter> enemyList = new List<BattleCharacter>();
+
     private State state;
 
     private int playerCount;
+    private int enemyCount;
 
     public GameObject fightingButtons;
 
@@ -240,6 +262,12 @@ public class BattleController : MonoBehaviour
     public void attackButton()
     {
         state = State.Busy;
+        /*
+        activeChar.Attack(EnemyTargetSelection(), activeChar, () =>
+        {
+            ChooseNextActiveChar();
+        });*/
+
         activeChar.Attack(enemyChar, activeChar, () =>
         {
             ChooseNextActiveChar();
@@ -255,7 +283,29 @@ public class BattleController : MonoBehaviour
     public void magicButton()
     {
         state = State.Busy;
+        /*
+        activeChar.magAttack(EnemyTargetSelection(), activeChar, () =>
+        {
+            ChooseNextActiveChar();
+        });*/
+
         activeChar.magAttack(enemyChar, activeChar, () =>
+        {
+            ChooseNextActiveChar();
+        });
+    }
+
+    public void specialButton()
+    {
+        state = State.Busy;
+
+        /*
+        activeChar.specialMove(EnemyTargetSelection(), activeChar, () =>
+        {
+            ChooseNextActiveChar();
+        });*/
+
+        activeChar.specialMove(enemyChar, activeChar, () =>
         {
             ChooseNextActiveChar();
         });
@@ -263,7 +313,49 @@ public class BattleController : MonoBehaviour
 
     #endregion
 
-    private BattleCharacter SpawnCharacter(bool isPlayerTeam, int[] statsToUse, string LName)
+    private BattleCharacter EnemyTargetSelection()
+    {
+        BattleCharacter targetEnemy = enemyChar;
+
+        int enemyNum = 0;
+
+        //DO NOT UNCOMMENT
+        /*while (!Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                enemyList[enemyNum].HideTargetCircle();
+                if (enemyNum == enemyList.Count - 1)
+                {
+                    enemyNum = 0;
+                }
+                else
+                {
+                    enemyNum++;
+                }
+                enemyList[enemyNum].ShowTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                enemyList[enemyNum].HideTargetCircle();
+                if (enemyNum == 0)
+                {
+                    enemyNum = (enemyList.Count - 1);
+                }
+                else
+                {
+                enemyNum--;
+                }
+                enemyList[enemyNum].ShowTargetCircle();
+            }
+        };*/
+
+        targetEnemy = enemyList[enemyNum];
+
+        return targetEnemy;
+    }
+
+    private BattleCharacter SpawnCharacter(bool isPlayerTeam, int[] statsToUse, string LName, int lSpecial)
     {
         Vector3 position;
         if (isPlayerTeam)
@@ -285,7 +377,20 @@ public class BattleController : MonoBehaviour
         }
         else
         {
-            position = new Vector3(5, 0);
+            if (enemyCount == 0)
+            {
+                position = new Vector3(5, 0);
+            }
+            else if (enemyCount == 1)
+            {
+                position = new Vector3(5, 3);
+            }
+            else
+            {
+                position = new Vector3(5, 0);
+            }
+
+            enemyCount++;
         }
         Transform characterTransform =  Instantiate(playerCharacterTransform, position, Quaternion.identity);
         BattleCharacter battleCharacter = characterTransform.GetComponent<BattleCharacter>();
@@ -294,12 +399,13 @@ public class BattleController : MonoBehaviour
         if (isPlayerTeam)
         {
                                                          //Name    Stats     Magic Type    Description  player Team   Magic Weakness
-            battleCharacter.statSheet = new CharacterData(LName, statsToUse, magicTypes[0], "Is a cube", true, magicTypes[1]);
+            battleCharacter.statSheet = new CharacterData(LName, statsToUse, magicTypes[0], "Is a cube", true, magicTypes[1], lSpecial);
             playerList.Add(battleCharacter);
         }
         else
         {
-            battleCharacter.statSheet = new CharacterData(LName, statsToUse, magicTypes[1], "Isn't a cube", false, magicTypes[1]);
+            battleCharacter.statSheet = new CharacterData(LName, statsToUse, magicTypes[1], "Isn't a cube", false, magicTypes[1], lSpecial);
+            enemyList.Add(battleCharacter);
         }
 
 
@@ -342,7 +448,7 @@ public class BattleController : MonoBehaviour
         }*/
 
 
-        //Testing Queues
+        //Restarting the queue
         if (characterQueue.Count == 0)
         {
             while (alreadyWent.Count != 0)
@@ -368,6 +474,9 @@ public class BattleController : MonoBehaviour
 
             //Debug.Log("Target: " +  enemyTarget);
 
+            //Make enemy focus one target
+            //enemyTarget = 1;
+
             activeChar.Attack(playerList[enemyTarget], activeChar, () =>
             {
                 ChooseNextActiveChar();
@@ -390,13 +499,13 @@ public class BattleController : MonoBehaviour
     public GameObject enemyWinText;
     private bool TestBattleOver()
     {
-        if (playerChar.IsDead())
+        if (playerChar.IsDead() && secPlayerChar.IsDead())
         {
             enemyWinText.SetActive(true);
             SceneManager.LoadScene("GameOver");
             return true;
         }
-        else if (enemyChar.IsDead())
+        else if (enemyChar.IsDead() && secEnemyChar.IsDead())
         {
             playerWinText.SetActive(true);
             return true;
