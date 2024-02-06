@@ -13,15 +13,24 @@ MonoBehaviour:
   m_Name: Character Configuration Asset
   m_EditorClassIdentifier: 
   characters:
-  - name: Adora
-    alias: zombie
+  - name: Alan
+    alias: alan
     characterType: 1
-  - name: yo mama
-    alias: mom
-    characterType: 0
-  - name: Doll
-    alias: doll
+  - name: Kisa
+    alias: kisa
     characterType: 1
-  - name: Beast
-    alias: beast
+  - name: Nicol
+    alias: nicol
+    characterType: 1
+  - name: Sophie
+    alias: sophie
+    characterType: 1
+  - name: Lich
+    alias: lich
+    characterType: 1
+  - name: Leora
+    alias: leora
+    characterType: 1
+  - name: Miguel
+    alias: miguel
     characterType: 1

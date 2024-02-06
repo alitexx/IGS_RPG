@@ -15,22 +15,22 @@ namespace TESTING
 
         IEnumerator Test()
         {
-            //Character beast = CharacterManager.instance.CreateCharacter("beast");
-            Character_Sprite beast = CreateCharacter("beast") as Character_Sprite;
+            //Character alan = CharacterManager.instance.CreateCharacter("alan");
+            Character_Sprite alan = CreateCharacter("alan") as Character_Sprite;
             yield return new WaitForSeconds(2f);
-            yield return beast.Hide();
+            yield return alan.Hide();
             yield return new WaitForSeconds(2f);
-            yield return beast.Show();
+            yield return alan.Show();
             yield return new WaitForSeconds(2f);
-            //beast.SetPosition(Vector2.zero);
-            yield return beast.MoveToPosition(Vector2.one, smooth:true);
-            beast.Say("hello i am bowser from the hit series Super Mario.");
+            //alan.SetPosition(Vector2.zero);
+            yield return alan.MoveToPosition(Vector2.one, smooth:true);
+            alan.Say("hello i am bowser from the hit series Super Mario.");
             yield return new WaitForSeconds(2f);
-            Sprite beastSprite = beast.GetSprite("pedro");
-            beast.SetSprite(beastSprite, 0); // since theres no layering, the 0 isnt really necessary. just doing this so future katie doesnt forget
+            Sprite alanSprite = alan.GetSprite("pedro");
+            alan.SetSprite(alanSprite, 0); // since theres no layering, the 0 isnt really necessary. just doing this so future katie doesnt forget
             yield return new WaitForSeconds(1f);
-            beast.Say("AAAUUUUUGGGGGHHHHHHHHHH");
-            yield return beast.TransitionColor(Color.red, speed: 0.3f);
+            alan.Say("AAAUUUUUGGGGGHHHHHHHHHH");
+            yield return alan.TransitionColor(Color.red, speed: 0.3f);
             //look at video for transitioning sprites
         }
 
