@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+
+using Random = UnityEngine.Random;
 
 public class BattleController : MonoBehaviour
 {
@@ -38,7 +41,6 @@ public class BattleController : MonoBehaviour
             characterQueue.Enqueue(secondPlayerChar);
             characterQueue.Enqueue(enemyChar);
         }*/
-        //state = State.WaitingForPlayer;
 
         SortTurnOrder();
 
@@ -259,11 +261,16 @@ public class BattleController : MonoBehaviour
 
     #region Buttons
 
+    public void BeanButton()
+    {
+        Debug.Log("beans");
+    }
+
     public void attackButton()
     {
         state = State.Busy;
 
-        /*activeChar.Attack(enemyChar, activeChar, () =>
+        /*activeChar.Attack(secEnemyChar, activeChar, () =>
         {
             ChooseNextActiveChar();
         });*/
@@ -556,6 +563,7 @@ public class BattleController : MonoBehaviour
         //Restarting the queue
         if (characterQueue.Count == 0)
         {
+            //Debug.Log("beans");
             while (alreadyWent.Count != 0)
             {
                 characterQueue.Enqueue(alreadyWent.Dequeue());
@@ -563,15 +571,36 @@ public class BattleController : MonoBehaviour
         }
 
         //An attempt at removing dead characters from the queue. Did not work
-        /*if (characterQueue.Peek().healthSystem.GetHealth() == 0)
+        if (characterQueue.Peek().healthSystem.GetHealth() == 0)
         {
+            //if the dead character is an enemy
+            if (characterQueue.Peek().GIsPlayerTeam == false)
+            {
+                enemyList.Remove(characterQueue.Peek());
+            }
+            //if the dead character is a player
+            else
+            {
+                playerList.Remove(characterQueue.Peek());
+            }
+
             characterQueue.Dequeue();
-            ChooseNextActiveChar();
-        }*/
+
+            while (characterQueue.Count != 0)
+            {
+                alreadyWent.Enqueue(characterQueue.Dequeue());
+            };
+
+            while (alreadyWent.Count != 0)
+            {
+                characterQueue.Enqueue(alreadyWent.Dequeue());
+            };
+        }
 
         //If the next character in the queue is on the enemy team
         if (characterQueue.Peek().GIsPlayerTeam == false)
         {
+            Debug.Log("enemy " + characterQueue.Peek().statSheet.name);
             SetActiveCharBattle(characterQueue.Peek());
             alreadyWent.Enqueue(characterQueue.Dequeue());
 
@@ -582,7 +611,7 @@ public class BattleController : MonoBehaviour
             {
                 ChooseNextActiveChar();
             });*/
-            int enemyTarget = Random.Range(0, 2);
+            int enemyTarget = Random.Range(0, playerList.Count);
 
             //Debug.Log("Target: " +  enemyTarget);
 
@@ -598,13 +627,14 @@ public class BattleController : MonoBehaviour
         //If the next character in the queue is on the player team
         else
         {
+            Debug.Log("ally " + characterQueue.Peek().statSheet.name);
             SetActiveCharBattle(characterQueue.Peek());
+            Debug.Log("active: " + activeChar.statSheet.name);
             alreadyWent.Enqueue(characterQueue.Dequeue());
             activeChar.isBlocking = false;
             state = State.WaitingForPlayer;
         }
     }
-
 
     //Who died
     public GameObject playerWinText;

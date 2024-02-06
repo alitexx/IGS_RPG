@@ -154,6 +154,8 @@ public class BattleCharacter : MonoBehaviour
 
     public void magAttack(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
     {
+        state = State.Busy;
+
         if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)
         {
             targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"] * 2, 0 /*Placeholder because magic ignores defense*/);
@@ -162,6 +164,8 @@ public class BattleCharacter : MonoBehaviour
         {
             targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"], 0 /*Placeholder because magic ignores defense*/ );
         }
+
+        state = State.Idle;
 
         onAttackComplete();
     }
@@ -206,26 +210,28 @@ public class BattleCharacter : MonoBehaviour
     {
         int damageMinusDefense = damageSource - defenseStat;
 
-        Debug.Log("Attacker Strength: " + damageSource);
-        Debug.Log("Defender Defense: " + defenseStat);
+        //Debug.Log("Attacker Strength: " + damageSource);
+        //Debug.Log("Defender Defense: " + defenseStat);
 
         if (damageMinusDefense <= 0)
         {
             damageMinusDefense = 0;
         }
 
-        Debug.Log("Final Damage: " + damageMinusDefense);
+        //Debug.Log("Final Damage: " + damageMinusDefense);
 
         if (isBlocking)
         {
             healthSystem.Damage(damageMinusDefense / 2);
-            Debug.Log("Defender Health: " + healthSystem.GetHealth());
+            //Debug.Log("Defender Health: " + healthSystem.GetHealth());
         }
         else
         {
             healthSystem.Damage(damageMinusDefense);
-            Debug.Log("Defender Health: " + healthSystem.GetHealth());
+            //Debug.Log("Defender Health: " + healthSystem.GetHealth());
         }
+
+        statSheet.stats["Health"] = healthSystem.GetHealth();
     }
 
     //Code for checking if an enemy is dead
