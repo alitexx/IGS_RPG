@@ -20,8 +20,11 @@ public class BattleController : MonoBehaviour
         instance = this;
 
         //True for an ally, false for an enemy
-        playerChar = SpawnCharacter(true, playerStats, "Magic Guy", 2);
-        secPlayerChar = SpawnCharacter(true, secPlayerStats, "Tank Guy", 1);
+        tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1);
+        mageChar = SpawnCharacter(true, mageStats, "Mage Guy", 2);
+        bardChar = SpawnCharacter(true, bardStats, "Bard Guy", 3);
+        monkChar = SpawnCharacter(true, monkStats, "Monk Guy", 4);
+
         enemyChar = SpawnCharacter(false, enemyStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/);
         secEnemyChar = SpawnCharacter(false, secEnemyStats, "Skeleton Guy", 0);
         
@@ -73,40 +76,74 @@ public class BattleController : MonoBehaviour
 
     private static BattleController instance;
 
+    //Players
+    private BattleCharacter tankChar;
+    private BattleCharacter mageChar;
+    private BattleCharacter monkChar;
+    private BattleCharacter bardChar;
 
-    private BattleCharacter playerChar;
-    private BattleCharacter secPlayerChar;
+    //Enemies
     private BattleCharacter enemyChar;
     private BattleCharacter secEnemyChar;
+    private BattleCharacter thirdEnemyChar;
+    private BattleCharacter frthEnemyChar;
+
     private BattleCharacter activeChar;
 
     //Testing turn order
     private Queue<BattleCharacter> characterQueue = new Queue<BattleCharacter>();
     private Queue<BattleCharacter> alreadyWent = new Queue<BattleCharacter>();
 
-    //Stats
-    //Mage Stats
-    static public int[] playerStats = {
-        /*Strength*/ 5,
-        /*Magic Attack*/ 6,
-        /*Defense*/ 3, 
+    #region Stats
+
+    //Tank Stats
+    static public int[] tankStats = {
+        /*Strength*/ 13,
+        /*Magic Attack*/ 4,
+        /*Defense*/ 8, 
         /*Speed*/ 4, 
-        /*Health*/ 10, 
-        /*MaxHealth*/ 10,
-        /*Mana*/ 6,
-        /*MaxMana*/ 7,
+        /*Health*/ 13, 
+        /*MaxHealth*/ 13,
+        /*Mana*/ 4,
+        /*MaxMana*/ 4,
         /*EXP*/ 0,
         /*LvlUpThreshold*/ 10 };
 
-    //Tank Stats
-    static public int[] secPlayerStats = {
-        /*Strength*/ 8,
-        /*Magic Attack*/ 2,
+    //Mage Stats
+    static public int[] mageStats = {
+        /*Strength*/ 7,
+        /*Magic Attack*/ 13,
         /*Defense*/ 5, 
+        /*Speed*/ 13, 
+        /*Health*/ 6, 
+        /*MaxHealth*/ 6,
+        /*Mana*/ 9,
+        /*MaxMana*/ 9,
+        /*EXP*/ 0,
+        /*LvlUpThreshold*/ 10 };
+
+    //Monk Stats
+    static public int[] monkStats = {
+        /*Strength*/ 16,
+        /*Magic Attack*/ 7,
+        /*Defense*/ 4, 
+        /*Speed*/ 6, 
+        /*Health*/ 8, 
+        /*MaxHealth*/ 8,
+        /*Mana*/ 5,
+        /*MaxMana*/ 5,
+        /*EXP*/ 0,
+        /*LvlUpThreshold*/ 10 };
+
+    //Bard Stats
+    static public int[] bardStats = {
+        /*Strength*/ 5,
+        /*Magic Attack*/ 5,
+        /*Defense*/ 4, 
         /*Speed*/ 2, 
         /*Health*/ 15, 
         /*MaxHealth*/ 15,
-        /*Mana*/ 6,
+        /*Mana*/ 7,
         /*MaxMana*/ 7,
         /*EXP*/ 0,
         /*LvlUpThreshold*/ 10 };
@@ -136,6 +173,8 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7,
         /*EXP*/ 0,
         /*LvlUpThreshold*/ 10 };
+
+    #endregion
 
     //Magic Types
     public Dictionary<int ,string> magicTypes = new Dictionary<int, string>()
@@ -478,7 +517,15 @@ public class BattleController : MonoBehaviour
             }
             else if (playerCount == 1)
             {
-                position = new Vector3(-5, 3);
+                position = new Vector3(-5, 2);
+            }
+            else if (playerCount == 2)
+            {
+                position = new Vector3(-5, 4);
+            }
+            else if (playerCount == 3)
+            {
+                position = new Vector3(-5, -2);
             }
             else
             {
@@ -600,7 +647,7 @@ public class BattleController : MonoBehaviour
         //If the next character in the queue is on the enemy team
         if (characterQueue.Peek().GIsPlayerTeam == false)
         {
-            Debug.Log("enemy " + characterQueue.Peek().statSheet.name);
+            //Debug.Log("enemy " + characterQueue.Peek().statSheet.name);
             SetActiveCharBattle(characterQueue.Peek());
             alreadyWent.Enqueue(characterQueue.Dequeue());
 
@@ -627,9 +674,8 @@ public class BattleController : MonoBehaviour
         //If the next character in the queue is on the player team
         else
         {
-            Debug.Log("ally " + characterQueue.Peek().statSheet.name);
+            //Debug.Log("ally " + characterQueue.Peek().statSheet.name);
             SetActiveCharBattle(characterQueue.Peek());
-            Debug.Log("active: " + activeChar.statSheet.name);
             alreadyWent.Enqueue(characterQueue.Dequeue());
             activeChar.isBlocking = false;
             state = State.WaitingForPlayer;
@@ -641,7 +687,7 @@ public class BattleController : MonoBehaviour
     public GameObject enemyWinText;
     private bool TestBattleOver()
     {
-        if (playerChar.IsDead() && secPlayerChar.IsDead())
+        if (tankChar.IsDead() && mageChar.IsDead())
         {
             enemyWinText.SetActive(true);
             SceneManager.LoadScene("GameOver");
