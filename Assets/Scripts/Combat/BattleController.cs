@@ -254,7 +254,7 @@ public class BattleController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene("RPG_World");
-        }
+        }       
     }
 
     #region Buttons
@@ -262,16 +262,13 @@ public class BattleController : MonoBehaviour
     public void attackButton()
     {
         state = State.Busy;
-        /*
-        activeChar.Attack(EnemyTargetSelection(), activeChar, () =>
+
+        /*activeChar.Attack(enemyChar, activeChar, () =>
         {
             ChooseNextActiveChar();
         });*/
 
-        activeChar.Attack(enemyChar, activeChar, () =>
-        {
-            ChooseNextActiveChar();
-        });
+        StartCoroutine(AttackTargeting()); 
     }
 
     public void defendButton()
@@ -283,45 +280,43 @@ public class BattleController : MonoBehaviour
     public void magicButton()
     {
         state = State.Busy;
-        /*
-        activeChar.magAttack(EnemyTargetSelection(), activeChar, () =>
+
+        /*activeChar.magAttack(enemyChar, activeChar, () =>
         {
             ChooseNextActiveChar();
         });*/
 
-        activeChar.magAttack(enemyChar, activeChar, () =>
-        {
-            ChooseNextActiveChar();
-        });
+        StartCoroutine(MagicTargeting());
     }
 
     public void specialButton()
     {
         state = State.Busy;
 
-        /*
-        activeChar.specialMove(EnemyTargetSelection(), activeChar, () =>
+        /*activeChar.specialMove(enemyChar, activeChar, () =>
         {
             ChooseNextActiveChar();
         });*/
 
-        activeChar.specialMove(enemyChar, activeChar, () =>
-        {
-            ChooseNextActiveChar();
-        });
+        StartCoroutine(SpecialTargeting());
     }
 
     #endregion
 
-    private BattleCharacter EnemyTargetSelection()
-    {
-        BattleCharacter targetEnemy = enemyChar;
+    public GameObject targetText;
 
+    #region Targeting Coroutines
+
+    //When these coroutines are called, the while loop while loop indefinitely until the enter or "return" key is pressed
+    private IEnumerator AttackTargeting()
+    {
         int enemyNum = 0;
 
-        //USE COROUTINE NEXT TIME TO GET THE CODE TO WAIT FOR ENTER KEY
-        //DO NOT UNCOMMENT
-        /*while (!Input.GetKeyDown(KeyCode.KeypadEnter))
+        targetText.SetActive(true);
+
+        enemyList[enemyNum].ShowTargetCircle();
+
+        while (!Input.GetKeyDown(KeyCode.Return))
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
@@ -345,16 +340,125 @@ public class BattleController : MonoBehaviour
                 }
                 else
                 {
-                enemyNum--;
+                    enemyNum--;
                 }
                 enemyList[enemyNum].ShowTargetCircle();
             }
-        };*/
 
-        targetEnemy = enemyList[enemyNum];
+            yield return null;
+        }
 
-        return targetEnemy;
+        activeChar.Attack(enemyList[enemyNum], activeChar, () =>
+        {
+            ChooseNextActiveChar();
+        });
+
+        enemyList[enemyNum].HideTargetCircle();
+
+        targetText.SetActive(false);
     }
+
+    private IEnumerator MagicTargeting()
+    {
+        int enemyNum = 0;
+
+        targetText.SetActive(true);
+
+        enemyList[enemyNum].ShowTargetCircle();
+
+        while (!Input.GetKeyDown(KeyCode.Return))
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                enemyList[enemyNum].HideTargetCircle();
+                if (enemyNum == enemyList.Count - 1)
+                {
+                    enemyNum = 0;
+                }
+                else
+                {
+                    enemyNum++;
+                }
+                enemyList[enemyNum].ShowTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                enemyList[enemyNum].HideTargetCircle();
+                if (enemyNum == 0)
+                {
+                    enemyNum = (enemyList.Count - 1);
+                }
+                else
+                {
+                    enemyNum--;
+                }
+                enemyList[enemyNum].ShowTargetCircle();
+            }
+
+            yield return null;
+        }
+
+        activeChar.magAttack(enemyList[enemyNum], activeChar, () =>
+        {
+            ChooseNextActiveChar();
+        });
+
+        enemyList[enemyNum].HideTargetCircle();
+
+        targetText.SetActive(false);
+    }
+
+    private IEnumerator SpecialTargeting()
+    {
+        int enemyNum = 0;
+
+        targetText.SetActive(true);
+
+        enemyList[enemyNum].ShowTargetCircle();
+
+        while (!Input.GetKeyDown(KeyCode.Return))
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                enemyList[enemyNum].HideTargetCircle();
+                if (enemyNum == enemyList.Count - 1)
+                {
+                    enemyNum = 0;
+                }
+                else
+                {
+                    enemyNum++;
+                }
+                enemyList[enemyNum].ShowTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                enemyList[enemyNum].HideTargetCircle();
+                if (enemyNum == 0)
+                {
+                    enemyNum = (enemyList.Count - 1);
+                }
+                else
+                {
+                    enemyNum--;
+                }
+                enemyList[enemyNum].ShowTargetCircle();
+            }
+
+            yield return null;
+        }
+
+        activeChar.specialMove(enemyList[enemyNum], activeChar, () =>
+        {
+            ChooseNextActiveChar();
+        });
+
+        enemyList[enemyNum].HideTargetCircle();
+
+        targetText.SetActive(false);
+    }
+
+    #endregion
 
     private BattleCharacter SpawnCharacter(bool isPlayerTeam, int[] statsToUse, string LName, int lSpecial)
     {
@@ -457,6 +561,13 @@ public class BattleController : MonoBehaviour
                 characterQueue.Enqueue(alreadyWent.Dequeue());
             };
         }
+
+        //An attempt at removing dead characters from the queue. Did not work
+        /*if (characterQueue.Peek().healthSystem.GetHealth() == 0)
+        {
+            characterQueue.Dequeue();
+            ChooseNextActiveChar();
+        }*/
 
         //If the next character in the queue is on the enemy team
         if (characterQueue.Peek().GIsPlayerTeam == false)

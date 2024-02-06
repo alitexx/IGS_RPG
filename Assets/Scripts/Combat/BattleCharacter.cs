@@ -27,7 +27,7 @@ public class BattleCharacter : MonoBehaviour
     private GameObject selectionCircleObject;
     private GameObject targetingCircleObject;
 
-    private HealthSystem healthSystem;
+    public HealthSystem healthSystem;
     //temporary health bar
     private World_Bar healthBar;
 
