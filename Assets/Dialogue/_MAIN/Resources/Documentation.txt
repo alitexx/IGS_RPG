@@ -1,0 +1,116 @@
+-- dont use this exact text file as dialogue!! this is only for documentation!!!
+
+put ',' between commands to separate them so they all run at the same time!
+
+-- basic structure:
+name "dialogue" command
+
+-- NAME -- 
+	for a character to enter the scene:
+		enter character_name "i am in the scene!"
+			notes:
+				this always defaults to revealing the character
+				must be done for the character to spawn in
+				needs text in order to work atm
+
+	for temporarily renaming a character under a different name:
+		character_name as ??? "this is MYSTERIOUS!!!"
+			notes:
+				MUST INCLUDE " as " TO COUNT!! exactly as it's positioned there
+				character must be introduced into the scene first (via enter character_name)
+
+	for moving characters:
+		character_name as yoMama at 1 "WHEE!!!!"
+			notes:
+				you don't need to have the " as ", but the " at " must come after the " as " if it is present
+				still being tested on values that work bc honestly i forget
+
+	for different expressions:
+		character_name [sprite_name] "yippee!!"
+			notes:
+				must include the [sprite_name] immediately after the characters name with the sprites name
+				sprite must be in the designated character's image folder (assets/_main/resources/characters/character_name/images)
+				image does not need extensions (.png) but it must be the EXACT name. keep names clear and concise
+
+-- DIALOGUE --
+	
+-- COMMANDS --
+	for showing/hiding characters:
+		Show(char1 char2 char3 -immediate true)
+		Hide(char1 char2 -i false)
+			notes:
+				-i and -immediate are to determine if the characters should instantly appear or fade in
+				i can put in something for speed but i have yet to do that yet, nor do i think we need it
+				-i and -immediate default to false, and DO NOT WORK AS OF NOW!! i'll get it working later
+
+	for character creation:
+		CreateCharacter(Yo Mama -enabled false)
+			notes:
+				-enabled is for if the character should be shown on screen right now
+				do this before doing ANYTHING with these characters!!!
+
+	for moving a character:
+		MoveCharacter(character_name 0 0.2 -spd 0.1)
+			notes:
+			-spd is how fast they should be moving (can also be -speed)
+			second param (the 0 in this case) is how far in the X direction the character goes (side to side)
+			third param (the 0.2 in this case) is how far in the Y direction the character goes (up and down)
+			both of these can take negative values
+
+	for highlighting/unhighlighting all characters:
+		Unhighlight(char1 char2 -only false)
+		Highlight(char1 -o true)
+			notes:
+				-o and -only are to determine if these should be the only character shown. so for the second command,
+				char1 will be the only one highlighted and all other characters will be unhighlighted.
+
+--CHARACTER SPECIFIC COMMANDS --
+	for moving a character:
+		character_name.Move(0 1 -spd 0.5)
+			notes:
+				-spd is how fast they should be moving (can also be -speed)
+				second param (the 0 in this case) is how far in the X direction the character goes (side to side)
+				third param (the 1 in this case) is how far in the Y direction the character goes (up and down)
+				both of these can take negative values
+
+	for showing/hiding characters:
+		character_name.Hide()
+		character_name.Show(-i true)
+			notes:
+				-i and -immediate are to determine if the characters should instantly appear or fade in
+				i can put in something for speed but i have yet to do that yet, nor do i think we need it
+				-i and -immediate default to false, and DO NOT WORK AS OF NOW!! i'll get it working later
+
+	for setting priority:
+		character_name.SetPriority(5)
+			notes:
+				value in the function (5, in this case) is the priority of the character
+				higher priority means in front of other chars (the Z value)
+
+	for setting position:
+		character_name.SetPosition(0)
+			notes:
+				teleports character to that position exactly
+
+	for changing color:
+		character_name.SetColor(red)
+			notes:
+				red is just an example, you can do red, orange, yellow, green, blue, purple, black, white, gray, cyan and magenta
+				making them white means that the character is the normal color
+
+	for highlighting/unhighlighting a single character:
+		character_name.Highlight()
+		character_name.Unhighlight(-i true)
+			notes:
+				-i or -immediate is for if the character should immediately be highlighted or if there should be some delay
+				only affects one character
+
+	for setting a specific sprite:
+		character_name.SetSprite(sprite_name)
+			notes:
+				sprite name must be a PERFECT match!!! PERFECT!!!!
+
+	for changing background:
+		SetLayerImage(background yomama)
+			notes:
+				background must be in the name for it to work

@@ -1,0 +1,5 @@
+enter beast as ??? at 1 [pedro]"YO MAMAAAAAAAA"
+yo mama "YEAH THATS RIGHT"
+yo mama "YGIEWNGIUWNBOBADENHNBS"
+yo mama "ANJRFAERFSNAEDTMNJZAG" [wait]playSong("Yo mama's theme" -v 1), moveChar()
+yo mama "YARNJERNJAEFREAJHREHUBERSADZRHABZERTJAHBTJAERBHN REHG ARHAE" playSong("Yo mama's theme" -v 1)
