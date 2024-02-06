@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Transfer
+  - Switch
+  - Statue
   layers:
   - Default
   - TransparentFX
@@ -13,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
   - SolidObject
+  - Decoration
   - Player
   - Foreground
   - trim
@@ -48,6 +50,9 @@ TagManager:
     locked: 0
   - name: SolidObjects
     uniqueID: 3755494773
+    locked: 0
+  - name: Decoration
+    uniqueID: 1414062311
     locked: 0
   - name: Player
     uniqueID: 13726339
