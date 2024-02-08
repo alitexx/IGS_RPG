@@ -25,8 +25,8 @@ public class BattleController : MonoBehaviour
         bardChar = SpawnCharacter(true, bardStats, "Bard Guy", 3);
         monkChar = SpawnCharacter(true, monkStats, "Monk Guy", 4);
 
-        enemyChar = SpawnCharacter(false, enemyStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/);
-        secEnemyChar = SpawnCharacter(false, secEnemyStats, "Skeleton Guy", 0);
+        enemyChar = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/);
+        secEnemyChar = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0);
         
 
         /*
@@ -101,7 +101,7 @@ public class BattleController : MonoBehaviour
         /*Strength*/ 13,
         /*Magic Attack*/ 4,
         /*Defense*/ 8, 
-        /*Speed*/ 4, 
+        /*Speed*/ 3, 
         /*Health*/ 13, 
         /*MaxHealth*/ 13,
         /*Mana*/ 4,
@@ -114,7 +114,7 @@ public class BattleController : MonoBehaviour
         /*Strength*/ 7,
         /*Magic Attack*/ 13,
         /*Defense*/ 5, 
-        /*Speed*/ 13, 
+        /*Speed*/ 5, 
         /*Health*/ 6, 
         /*MaxHealth*/ 6,
         /*Mana*/ 9,
@@ -149,26 +149,26 @@ public class BattleController : MonoBehaviour
         /*LvlUpThreshold*/ 10 };
 
     //Slime Stats
-    static public int[] enemyStats = {
-        /*Strength*/ 7,
+    static public int[] slimeStats = {
+        /*Strength*/ 10,
         /*Magic Attack*/ 1,
-        /*Defense*/ 2, 
-        /*Speed*/ 3, 
-        /*Health*/ 20, 
-        /*MaxHealth*/ 20,
+        /*Defense*/ 9, 
+        /*Speed*/ 4, 
+        /*Health*/ 15, 
+        /*MaxHealth*/ 15,
         /*Mana*/ 6,
         /*MaxMana*/ 7,
         /*EXP*/ 0,
         /*LvlUpThreshold*/ 10 };
 
     //Skeleton Stats
-    static public int[] secEnemyStats = {
-        /*Strength*/ 9,
+    static public int[] skeletonStats = {
+        /*Strength*/ 8,
         /*Magic Attack*/ 1,
-        /*Defense*/ 1, 
-        /*Speed*/ 1, 
-        /*Health*/ 10, 
-        /*MaxHealth*/ 10,
+        /*Defense*/ 15, 
+        /*Speed*/ 3, 
+        /*Health*/ 8, 
+        /*MaxHealth*/ 8,
         /*Mana*/ 6,
         /*MaxMana*/ 7,
         /*EXP*/ 0,
