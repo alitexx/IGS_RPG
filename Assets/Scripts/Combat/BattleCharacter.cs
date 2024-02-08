@@ -6,7 +6,6 @@ using CodeMonkey.Utils;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine.U2D;
-using UnityEditor.ShaderGraph;
 
 public class BattleCharacter : MonoBehaviour
 {
