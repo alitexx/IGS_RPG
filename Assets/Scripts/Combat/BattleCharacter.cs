@@ -80,6 +80,8 @@ public class BattleCharacter : MonoBehaviour
             {
                 colorCircle.color = Color.green;
             }
+
+            healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.green, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         }
         else
         {
@@ -92,12 +94,12 @@ public class BattleCharacter : MonoBehaviour
             {
                 colorCircle.color = Color.white;
             }
+
+            healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         }
 
         healthSystem = new HealthSystem(statSheet.stats["MaxHealth"]);
 
-        //temporary health bar
-        healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         healthSystem.OnHealthChanged += HealthSystem_OnHealthChanged;
 
         PlayAnimIdle();

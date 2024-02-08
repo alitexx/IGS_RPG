@@ -499,50 +499,129 @@ public class BattleController : MonoBehaviour
     {
         int enemyNum = 0;
 
-        targetText.SetActive(true);
-
-        enemyList[enemyNum].ShowTargetCircle();
-
-        while (!Input.GetKeyDown(KeyCode.Return))
+        //Tank
+        if (activeChar.statSheet.specialMove == 1)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            targetText.SetActive(true);
+
+            while (!Input.GetKeyDown(KeyCode.Return))
             {
-                enemyList[enemyNum].HideTargetCircle();
-                if (enemyNum == enemyList.Count - 1)
-                {
-                    enemyNum = 0;
-                }
-                else
-                {
-                    enemyNum++;
-                }
-                enemyList[enemyNum].ShowTargetCircle();
-            }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                enemyList[enemyNum].HideTargetCircle();
-                if (enemyNum == 0)
-                {
-                    enemyNum = (enemyList.Count - 1);
-                }
-                else
-                {
-                    enemyNum--;
-                }
-                enemyList[enemyNum].ShowTargetCircle();
+                yield return null;
             }
 
-            yield return null;
+            activeChar.specialMove(enemyList[enemyNum], activeChar, () =>
+            {
+                ChooseNextActiveChar();
+            });
+
+            targetText.SetActive(false);
         }
-
-        activeChar.specialMove(enemyList[enemyNum], activeChar, () =>
+        //Mage
+        else if (activeChar.statSheet.specialMove == 2)
         {
-            ChooseNextActiveChar();
-        });
+            targetText.SetActive(true);
 
-        enemyList[enemyNum].HideTargetCircle();
+            enemyList[enemyNum].ShowTargetCircle();
 
-        targetText.SetActive(false);
+            while (!Input.GetKeyDown(KeyCode.Return))
+            {
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    enemyList[enemyNum].HideTargetCircle();
+                    if (enemyNum == enemyList.Count - 1)
+                    {
+                        enemyNum = 0;
+                    }
+                    else
+                    {
+                        enemyNum++;
+                    }
+                    enemyList[enemyNum].ShowTargetCircle();
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    enemyList[enemyNum].HideTargetCircle();
+                    if (enemyNum == 0)
+                    {
+                        enemyNum = (enemyList.Count - 1);
+                    }
+                    else
+                    {
+                        enemyNum--;
+                    }
+                    enemyList[enemyNum].ShowTargetCircle();
+                }
+
+                yield return null;
+            }
+
+            activeChar.specialMove(enemyList[enemyNum], activeChar, () =>
+            {
+                ChooseNextActiveChar();
+            });
+
+            enemyList[enemyNum].HideTargetCircle();
+
+            targetText.SetActive(false);
+        }
+        //Bard
+        else if (activeChar.statSheet.specialMove == 3)
+        {
+
+        }
+        //Monk
+        else if (activeChar.statSheet.specialMove == 4)
+        {
+
+        }
+        else
+        {
+            //If the special move is targeting a specific character, use this entire "else" code
+            targetText.SetActive(true);
+
+            enemyList[enemyNum].ShowTargetCircle();
+
+            while (!Input.GetKeyDown(KeyCode.Return))
+            {
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    enemyList[enemyNum].HideTargetCircle();
+                    if (enemyNum == enemyList.Count - 1)
+                    {
+                        enemyNum = 0;
+                    }
+                    else
+                    {
+                        enemyNum++;
+                    }
+                    enemyList[enemyNum].ShowTargetCircle();
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    enemyList[enemyNum].HideTargetCircle();
+                    if (enemyNum == 0)
+                    {
+                        enemyNum = (enemyList.Count - 1);
+                    }
+                    else
+                    {
+                        enemyNum--;
+                    }
+                    enemyList[enemyNum].ShowTargetCircle();
+                }
+
+                yield return null;
+            }
+
+            activeChar.specialMove(enemyList[enemyNum], activeChar, () =>
+            {
+                ChooseNextActiveChar();
+            });
+
+            enemyList[enemyNum].HideTargetCircle();
+
+            targetText.SetActive(false);
+        }
     }
 
     #endregion
