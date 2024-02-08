@@ -33,6 +33,8 @@ public class CharacterData
 
     public int specialMove;
 
+    //1 = Tank, 2 = Mage, 3 = Bard, 4 = Monk
+
     public CharacterData(string name, int[] valuesToUse, string magicType, string description, bool playerTeam, string lWeakness, int lSpecial)
     {
         this.name = name;

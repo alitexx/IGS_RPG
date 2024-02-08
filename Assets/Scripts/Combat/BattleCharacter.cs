@@ -5,6 +5,7 @@ using UnityEngine;
 using CodeMonkey.Utils;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
+using UnityEngine.U2D;
 
 public class BattleCharacter : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class BattleCharacter : MonoBehaviour
     //highlighted circle on whose turn it is
     private GameObject selectionCircleObject;
     private GameObject targetingCircleObject;
+
+    //temporarily telling who it is
+    public SpriteRenderer colorCircle;
 
     public HealthSystem healthSystem;
     //temporary health bar
@@ -60,16 +64,42 @@ public class BattleCharacter : MonoBehaviour
         {
             //Ally
             //textures and animations
+            if (statSheet.name == "Tank Guy")
+            {
+                colorCircle.color = Color.magenta;
+            }
+            else if (statSheet.name == "Mage Guy")
+            {
+                colorCircle.color = Color.red;
+            }
+            else if (statSheet.name == "Monk Guy")
+            {
+                colorCircle.color = Color.yellow;
+            }
+            else if (statSheet.name == "Bard Guy")
+            {
+                colorCircle.color = Color.green;
+            }
+
+            healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.green, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         }
         else
         {
             //enemy
+            if (statSheet.name == "Slime Guy")
+            {
+                colorCircle.color = Color.cyan;
+            }
+            else if (statSheet.name == "Skeleton Guy")
+            {
+                colorCircle.color = Color.white;
+            }
+
+            healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         }
 
         healthSystem = new HealthSystem(statSheet.stats["MaxHealth"]);
 
-        //temporary health bar
-        healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         healthSystem.OnHealthChanged += HealthSystem_OnHealthChanged;
 
         PlayAnimIdle();

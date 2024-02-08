@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c8666356e945ffa4b9ed7cd01cd68048
+guid: b92d42c3f4f164f489f3e13b65aa7de0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,253 +104,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kisaedit_0
+      name: nicol_dead_0
       rect:
         serializedVersion: 2
         x: 0
         y: 96
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d261c948c88764a4fa4c7b19286f6772
-      internalID: 1745401172
+      spriteID: 5f52c6175db9fe84e9be6369f71969d0
+      internalID: -239679811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kisaedit_1
+      name: nicol_dead_1
       rect:
         serializedVersion: 2
         x: 16
         y: 96
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89e65e76599047341af6455639a1b346
-      internalID: 727900635
+      spriteID: 2ace6c17b7473514c89f5e07b06cb74b
+      internalID: -1636046650
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kisaedit_2
+      name: nicol_dead_2
       rect:
         serializedVersion: 2
         x: 32
         y: 96
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f2c90ae5bbe921498118770b45ea144
-      internalID: 408059046
+      spriteID: 5120bcaa21733ad4d9feba6b71e50c93
+      internalID: 1276944741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kisaedit_3
+      name: nicol_dead_3
       rect:
         serializedVersion: 2
         x: 0
         y: 64
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be13079729b95174baa4c19f869d27f4
-      internalID: 2045507106
+      spriteID: cc8a3d1a3773ea94da29f2346afce6ec
+      internalID: -1218843056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kisaedit_4
+      name: nicol_dead_4
       rect:
         serializedVersion: 2
         x: 16
         y: 64
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1b5c286a01a10c46a53accb2b5b21f0
-      internalID: -1305326860
+      spriteID: cf3c13bed57ed1d43842c4b6369264b7
+      internalID: 612120229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kisaedit_5
+      name: nicol_dead_5
       rect:
         serializedVersion: 2
         x: 32
         y: 64
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9c333b893c436a468c3abc66b6ab397
-      internalID: -2105464099
+      spriteID: 0e9bf4e5b8c37834b8c1c1ec1ecedf42
+      internalID: -443983499
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kisaedit_6
+      name: nicol_dead_6
       rect:
         serializedVersion: 2
         x: 0
         y: 32
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 924496a14ae74af43aa2182671d9fb60
-      internalID: -407663919
+      spriteID: 4ab7e7b7354d0904e9a20152e518e6b3
+      internalID: 1896734047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kisaedit_7
+      name: nicol_dead_7
       rect:
         serializedVersion: 2
         x: 16
         y: 32
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b3905f73b400964fba922ffbf639155
-      internalID: 828278379
+      spriteID: d9058ed7a8ef263449d4008a45f46d1f
+      internalID: -957342541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kisaedit_8
+      name: nicol_dead_8
       rect:
         serializedVersion: 2
         x: 32
         y: 32
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1241cd11811bf224b88ec001bf538ae2
-      internalID: 693599625
+      spriteID: ef8c8bc0f97481646bfd7534a961adaf
+      internalID: 361815533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kisaedit_9
+      name: nicol_dead_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 828875de3e17348449399f72ad654e7e
-      internalID: 1183657957
+      spriteID: daf97bb623da3a64a9399c9b497fe013
+      internalID: 1897082869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kisaedit_10
+      name: nicol_dead_10
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e831bb9fa0b853409d79436c23ccac9
-      internalID: 18354017
+      spriteID: 3358cf3316e511d4093508dca6f347bc
+      internalID: -1640193284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kisaedit_11
+      name: nicol_dead_11
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 16
-        height: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fff7397f0ca44164bb90cc52debb57b5
-      internalID: 1975947217
+      spriteID: df7e92881a923ff469681dd0b1048923
+      internalID: 945809837
       vertices: []
       indices: 
       edges: []
@@ -366,18 +366,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      kisaedit_6: -407663919
-      kisaedit_3: 2045507106
-      kisaedit_8: 693599625
-      kisaedit_4: -1305326860
-      kisaedit_0: 1745401172
-      kisaedit_7: 828278379
-      kisaedit_10: 18354017
-      kisaedit_11: 1975947217
-      kisaedit_9: 1183657957
-      kisaedit_5: -2105464099
-      kisaedit_2: 408059046
-      kisaedit_1: 727900635
+      nicol_dead_3: -1218843056
+      nicol_dead_6: 1896734047
+      nicol_dead_10: -1640193284
+      nicol_dead_0: -239679811
+      nicol_dead_8: 361815533
+      nicol_dead_4: 612120229
+      nicol_dead_11: 945809837
+      nicol_dead_7: -957342541
+      nicol_dead_1: -1636046650
+      nicol_dead_9: 1897082869
+      nicol_dead_5: -443983499
+      nicol_dead_2: 1276944741
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
