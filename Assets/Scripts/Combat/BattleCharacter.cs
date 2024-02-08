@@ -5,6 +5,8 @@ using UnityEngine;
 using CodeMonkey.Utils;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
+using UnityEngine.U2D;
+using UnityEditor.ShaderGraph;
 
 public class BattleCharacter : MonoBehaviour
 {
@@ -26,6 +28,9 @@ public class BattleCharacter : MonoBehaviour
     //highlighted circle on whose turn it is
     private GameObject selectionCircleObject;
     private GameObject targetingCircleObject;
+
+    //temporarily telling who it is
+    public SpriteRenderer colorCircle;
 
     public HealthSystem healthSystem;
     //temporary health bar
@@ -60,10 +65,34 @@ public class BattleCharacter : MonoBehaviour
         {
             //Ally
             //textures and animations
+            if (statSheet.name == "Tank Guy")
+            {
+                colorCircle.color = Color.magenta;
+            }
+            else if (statSheet.name == "Mage Guy")
+            {
+                colorCircle.color = Color.red;
+            }
+            else if (statSheet.name == "Monk Guy")
+            {
+                colorCircle.color = Color.yellow;
+            }
+            else if (statSheet.name == "Bard Guy")
+            {
+                colorCircle.color = Color.green;
+            }
         }
         else
         {
             //enemy
+            if (statSheet.name == "Slime Guy")
+            {
+                colorCircle.color = Color.cyan;
+            }
+            else if (statSheet.name == "Skeleton Guy")
+            {
+                colorCircle.color = Color.white;
+            }
         }
 
         healthSystem = new HealthSystem(statSheet.stats["MaxHealth"]);

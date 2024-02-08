@@ -62,6 +62,7 @@ public class BattleController : MonoBehaviour
         SetActiveCharBattle(characterQueue.Peek());
         ChooseNextActiveChar();
 
+        targetText.SetActive(false);
         playerWinText.SetActive(false);
         enemyWinText.SetActive(false);
     }
@@ -165,7 +166,7 @@ public class BattleController : MonoBehaviour
     static public int[] skeletonStats = {
         /*Strength*/ 8,
         /*Magic Attack*/ 1,
-        /*Defense*/ 15, 
+        /*Defense*/ 11, 
         /*Speed*/ 3, 
         /*Health*/ 8, 
         /*MaxHealth*/ 8,
@@ -212,7 +213,7 @@ public class BattleController : MonoBehaviour
         
         for (int i = 0; i < tempArray.Length - 1; i++)
         {
-            if (tempArray[i].statSheet.stats["Speed"] < tempArray[i + 1].statSheet.stats["Speed"])
+            if (tempArray[i].statSheet.stats["Speed"] /*+ Random.Range(-2, 2)*/ < tempArray[i + 1].statSheet.stats["Speed"] /*+ Random.Range(-2, 2)*/)
             {
                 BattleCharacter tempChar = tempArray[i];
                 tempArray[i] = tempArray[i + 1];
@@ -305,6 +306,25 @@ public class BattleController : MonoBehaviour
         Debug.Log("beans");
     }
 
+    public void BackButton()
+    {
+        StopAllCoroutines();
+
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            enemyList[i].HideTargetCircle();
+        }
+
+        for (int i = 0; i < playerList.Count; i++)
+        {
+            playerList[i].HideTargetCircle();
+        }
+
+        state = State.WaitingForPlayer;
+        fightingButtons.SetActive(true);
+        targetText.SetActive(false);
+    }
+
     public void attackButton()
     {
         state = State.Busy;
@@ -319,8 +339,9 @@ public class BattleController : MonoBehaviour
 
     public void defendButton()
     {
-        activeChar.isBlocking = true;
-        ChooseNextActiveChar();
+        state = State.Busy;
+
+        StartCoroutine(BlockConfirm());
     }
 
     public void magicButton()
@@ -347,6 +368,11 @@ public class BattleController : MonoBehaviour
         StartCoroutine(SpecialTargeting());
     }
 
+    public void Die()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+
     #endregion
 
     public GameObject targetText;
@@ -364,7 +390,7 @@ public class BattleController : MonoBehaviour
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
@@ -377,7 +403,7 @@ public class BattleController : MonoBehaviour
                 }
                 enemyList[enemyNum].ShowTargetCircle();
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
@@ -404,6 +430,21 @@ public class BattleController : MonoBehaviour
         targetText.SetActive(false);
     }
 
+    private IEnumerator BlockConfirm()
+    {
+        targetText.SetActive(true);
+
+        while (!Input.GetKeyDown(KeyCode.Return))
+        {
+            yield return null;
+        }
+
+        activeChar.isBlocking = true;
+        ChooseNextActiveChar();
+
+        targetText.SetActive(false);
+    }
+
     private IEnumerator MagicTargeting()
     {
         int enemyNum = 0;
@@ -414,7 +455,7 @@ public class BattleController : MonoBehaviour
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
@@ -427,7 +468,7 @@ public class BattleController : MonoBehaviour
                 }
                 enemyList[enemyNum].ShowTargetCircle();
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
@@ -444,14 +485,14 @@ public class BattleController : MonoBehaviour
             yield return null;
         }
 
+        enemyList[enemyNum].HideTargetCircle();
+
+        targetText.SetActive(false);
+
         activeChar.magAttack(enemyList[enemyNum], activeChar, () =>
         {
             ChooseNextActiveChar();
         });
-
-        enemyList[enemyNum].HideTargetCircle();
-
-        targetText.SetActive(false);
     }
 
     private IEnumerator SpecialTargeting()
@@ -464,7 +505,7 @@ public class BattleController : MonoBehaviour
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
@@ -477,7 +518,7 @@ public class BattleController : MonoBehaviour
                 }
                 enemyList[enemyNum].ShowTargetCircle();
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
@@ -513,7 +554,7 @@ public class BattleController : MonoBehaviour
         {
             if (playerCount == 0)
             {
-                position = new Vector3(-5, 0);
+                position = new Vector3(-5, 4);
             }
             else if (playerCount == 1)
             {
@@ -521,7 +562,7 @@ public class BattleController : MonoBehaviour
             }
             else if (playerCount == 2)
             {
-                position = new Vector3(-5, 4);
+                position = new Vector3(-5, 0);
             }
             else if (playerCount == 3)
             {
@@ -538,11 +579,19 @@ public class BattleController : MonoBehaviour
         {
             if (enemyCount == 0)
             {
-                position = new Vector3(5, 0);
+                position = new Vector3(5, 4);
             }
             else if (enemyCount == 1)
             {
-                position = new Vector3(5, 3);
+                position = new Vector3(5, 2);
+            }
+            else if (enemyCount == 2)
+            {
+                position = new Vector3(5, 0);
+            }
+            else if (enemyCount == 3)
+            {
+                position = new Vector3(5, 0);
             }
             else
             {
@@ -621,7 +670,7 @@ public class BattleController : MonoBehaviour
         if (characterQueue.Peek().healthSystem.GetHealth() == 0)
         {
             //if the dead character is an enemy
-            if (characterQueue.Peek().GIsPlayerTeam == false)
+            /*if (characterQueue.Peek().GIsPlayerTeam == false)
             {
                 enemyList.Remove(characterQueue.Peek());
             }
@@ -629,9 +678,14 @@ public class BattleController : MonoBehaviour
             else
             {
                 playerList.Remove(characterQueue.Peek());
-            }
+            }*/
 
             characterQueue.Dequeue();
+
+            while (alreadyWent.Count != 0)
+            {
+                characterQueue.Enqueue(alreadyWent.Dequeue());
+            };
 
             while (characterQueue.Count != 0)
             {
@@ -679,6 +733,22 @@ public class BattleController : MonoBehaviour
             alreadyWent.Enqueue(characterQueue.Dequeue());
             activeChar.isBlocking = false;
             state = State.WaitingForPlayer;
+        }
+
+        for (int i = 0; i < playerList.Count; i++)
+        {
+            if (playerList[i].statSheet.stats["Health"] <= 0)
+            {
+                playerList.RemoveAt(i);
+            }
+        }
+
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            if (enemyList[i].statSheet.stats["Health"] <= 0)
+            {
+                enemyList.RemoveAt(i);
+            }
         }
     }
 
