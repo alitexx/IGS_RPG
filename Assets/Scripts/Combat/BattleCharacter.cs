@@ -6,6 +6,7 @@ using CodeMonkey.Utils;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine.U2D;
+using CodeMonkey;
 
 public class BattleCharacter : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class BattleCharacter : MonoBehaviour
 
     public CharacterData statSheet;
     public bool isBlocking;
+
+    public GameObject weaknessObject;
+    public SpriteRenderer weaknessImage;
 
     private State state;
     private Vector3 slideTargetPosition;
@@ -47,6 +51,10 @@ public class BattleCharacter : MonoBehaviour
         state = State.Idle;
         selectionCircleObject = transform.Find("Outline").gameObject;
         targetingCircleObject = transform.Find("TargetCircle").gameObject;
+        weaknessObject = transform.Find("Weakness").gameObject;
+        
+        HideWeaknessObject();
+
         HideSelectionCircle();
         HideTargetCircle();
     }
@@ -93,6 +101,14 @@ public class BattleCharacter : MonoBehaviour
             else if (statSheet.name == "Skeleton Guy")
             {
                 colorCircle.color = Color.white;
+            }
+            else if (statSheet.name == "Wraith Guy")
+            {
+                colorCircle.color = Color.black;
+            }
+            else if (statSheet.name == "Ghost Guy")
+            {
+                colorCircle.color = Color.grey;
             }
 
             healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
@@ -200,7 +216,7 @@ public class BattleCharacter : MonoBehaviour
         onAttackComplete();
     }
 
-    public void specialMove(BattleCharacter targetCharcter, BattleCharacter attacker, Action onAttackComplete)
+    /*public void specialMove(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
     {
         //Debug.Log("Special Move");
 
@@ -215,6 +231,28 @@ public class BattleCharacter : MonoBehaviour
         {
             Debug.Log("Mage Special");
 
+            targetCharacter.weaknessObject.SetActive(true);
+
+            if (targetCharacter.statSheet.weakness == "Fire")
+            {
+                targetCharacter.weaknessImage.sprite = fire;
+            }
+            else if (targetCharacter.statSheet.weakness == "Ice")
+            {
+                targetCharacter.weaknessImage.sprite = ice;
+            }
+            else if (targetCharacter.statSheet.weakness == "Electric")
+            {
+                targetCharacter.weaknessImage.sprite = electric;
+            }
+            else if (targetCharacter.statSheet.weakness == "Wind")
+            {
+                targetCharacter.weaknessImage.sprite = wind;
+            }
+            else
+            {
+                Debug.Log("No weakness");
+            }
         }
         //Bard
         else if (attacker.statSheet.specialMove == 3)
@@ -233,7 +271,7 @@ public class BattleCharacter : MonoBehaviour
         }
 
         onAttackComplete();
-    }
+    }*/
 
     //Code for taking damage
     public void GotDamaged(int damageSource, int defenseStat)
@@ -295,6 +333,16 @@ public class BattleCharacter : MonoBehaviour
     public void ShowSelectionCircle()
     {
         selectionCircleObject.SetActive(true);
+    }
+
+    public void HideWeaknessObject()
+    {
+        weaknessObject.SetActive(false);
+    }
+
+    public void ShowWeaknessObject()
+    {
+        weaknessObject.SetActive(true);
     }
 
     public void HideTargetCircle()
