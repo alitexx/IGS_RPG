@@ -308,8 +308,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCharacterTransform: {fileID: 2255272713044617730, guid: 7622d5b7fb536254c926d8035bd54989, type: 3}
-  playerSpriteSheet: {fileID: 2800000, guid: 64d03efae53f5d444bcc4b229660af36, type: 3}
-  enemySpriteSheet: {fileID: 2800000, guid: af4531a5d14e84b41958f8e1c10e8675, type: 3}
   fire: {fileID: 21300000, guid: 87e6a8311b2598140a539d2f487d367d, type: 3}
   ice: {fileID: 21300000, guid: 1a5b42b11b03f594abfb4df7aff7bf5e, type: 3}
   wind: {fileID: 21300000, guid: 510fded98bf85b845ade50986a821657, type: 3}
@@ -2002,7 +2000,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
