@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = 5f;
     private bool isMoving;
+    private bool isfrozen;
 
     private Vector2 input;
 
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
                 targetPos.x += input.x;
                 targetPos.y += input.y;
 
-                if (isWalkable(targetPos))
+                if (isWalkable(targetPos) && isfrozen == false)
 
                 StartCoroutine(Move(targetPos));
             }
@@ -84,38 +85,58 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             SceneManager.LoadScene("BattleCoding"); 
         }
-
-        if (collision.gameObject.tag == "Transfer")
+        /*
+        if (collision.gameObject.tag == "Transfer") // moves the player 3 times in the direction they were walking 
         {
-            var targetPos = transform.position;
-            targetPos.x += input.x;
-            targetPos.y += input.y;
+            for (int i = 0; i < 3; i++)
+            {
+                if (input != Vector2.zero)
+                {
+                    animator.SetFloat("moveX", input.x);
+                    animator.SetFloat("moveY", input.y);
 
-            StartCoroutine(MoveRooms(targetPos));
-        }
+                    var targetPos = transform.position;
+                    targetPos.x += input.x;
+                    targetPos.y += input.y;
+
+                    if (isWalkable(targetPos) && isfrozen == false)
+
+                        StartCoroutine(Move(targetPos));
+                }
+            }
+            
+        }*/
+
+        /*if (collision.gameObject.tag == "Boss Transfer") //moves the player 10 times when they enter the boss exit door (hopefully)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (input != Vector2.zero)
+                {
+                    animator.SetFloat("moveY", input.y);
+
+                    var targetPos = transform.position;
+
+                    targetPos.y += input.y;
+
+                    StartCoroutine(Move(targetPos));
+                }
+            }
+        }*/
     }
 
     IEnumerator MoveRooms(Vector3 targetPos)
     {
         isMoving = true;
-        FreezePlayer();
-       
+        isfrozen = true;
+
         //move player_sprite to next room. Maybe move them in the direction they were moving?
+        
 
         isMoving = false;
-        UnFreezePlayer();
+        isfrozen = false;
 
         yield return null;
-    }
-
-    private void FreezePlayer()
-    {
-        Time.timeScale = 0f;
-    }
-
-    private void UnFreezePlayer()
-    {
-        Time.timeScale = 1.0f;
     }
 
 }

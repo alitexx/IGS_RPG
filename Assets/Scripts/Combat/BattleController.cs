@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-
 using Random = UnityEngine.Random;
 
 public class BattleController : MonoBehaviour
@@ -20,13 +20,15 @@ public class BattleController : MonoBehaviour
         instance = this;
 
         //True for an ally, false for an enemy
-        tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1);
-        mageChar = SpawnCharacter(true, mageStats, "Mage Guy", 2);
-        bardChar = SpawnCharacter(true, bardStats, "Bard Guy", 3);
-        monkChar = SpawnCharacter(true, monkStats, "Monk Guy", 4);
+        tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1, 0, 1);
+        mageChar = SpawnCharacter(true, mageStats, "Mage Guy", 2, 1, 2);
+        bardChar = SpawnCharacter(true, bardStats, "Bard Guy", 3, 3, 0);
+        monkChar = SpawnCharacter(true, monkStats, "Monk Guy", 4, 2, 3);
 
-        enemyChar = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/);
-        secEnemyChar = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0);
+        slimeChar = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/, 4, 0);
+        skeletonChar = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0, 4, 1);
+        WraithChar = SpawnCharacter(false, wraithStats, "Wraith Guy", 0, 4, 2);
+        GhostChar = SpawnCharacter(false, wraithStats, "Ghost Guy", 0, 4, 3);
         
 
         /*
@@ -84,10 +86,10 @@ public class BattleController : MonoBehaviour
     private BattleCharacter bardChar;
 
     //Enemies
-    private BattleCharacter enemyChar;
-    private BattleCharacter secEnemyChar;
-    private BattleCharacter thirdEnemyChar;
-    private BattleCharacter frthEnemyChar;
+    private BattleCharacter slimeChar;
+    private BattleCharacter skeletonChar;
+    private BattleCharacter WraithChar;
+    private BattleCharacter GhostChar;
 
     private BattleCharacter activeChar;
 
@@ -175,6 +177,30 @@ public class BattleController : MonoBehaviour
         /*EXP*/ 0,
         /*LvlUpThreshold*/ 10 };
 
+    static public int[] wraithStats = {
+        /*Strength*/ 14,
+        /*Magic Attack*/ 1,
+        /*Defense*/ 6, 
+        /*Speed*/ 5, 
+        /*Health*/ 17, 
+        /*MaxHealth*/ 17,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7,
+        /*EXP*/ 0,
+        /*LvlUpThreshold*/ 10 };
+
+    static public int[] ghostStats = {
+        /*Strength*/ 12,
+        /*Magic Attack*/ 1,
+        /*Defense*/ 8, 
+        /*Speed*/ 4, 
+        /*Health*/ 13, 
+        /*MaxHealth*/ 13,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7,
+        /*EXP*/ 0,
+        /*LvlUpThreshold*/ 10 };
+
     #endregion
 
     //Magic Types
@@ -183,17 +209,20 @@ public class BattleController : MonoBehaviour
         {0, "Fire"},
         {1 , "Ice"},
         {2 , "Electric"},
-        {3 , "Wind"}
+        {3 , "Wind"},
+        {4 , "No Magic"}
     };
+
+    public Sprite fire;
+    public Sprite ice;
+    public Sprite wind;
+    public Sprite electric;
 
     private List<BattleCharacter> playerList = new List<BattleCharacter>();
 
     private List<BattleCharacter> enemyList = new List<BattleCharacter>();
 
     private State state;
-
-    private int playerCount;
-    private int enemyCount;
 
     public GameObject fightingButtons;
 
@@ -390,7 +419,7 @@ public class BattleController : MonoBehaviour
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
@@ -403,7 +432,7 @@ public class BattleController : MonoBehaviour
                 }
                 enemyList[enemyNum].ShowTargetCircle();
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
@@ -455,7 +484,7 @@ public class BattleController : MonoBehaviour
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
@@ -468,7 +497,7 @@ public class BattleController : MonoBehaviour
                 }
                 enemyList[enemyNum].ShowTargetCircle();
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
@@ -495,6 +524,8 @@ public class BattleController : MonoBehaviour
         });
     }
 
+    private bool isTaunting = false;
+
     private IEnumerator SpecialTargeting()
     {
         int enemyNum = 0;
@@ -509,23 +540,25 @@ public class BattleController : MonoBehaviour
                 yield return null;
             }
 
-            activeChar.specialMove(enemyList[enemyNum], activeChar, () =>
-            {
-                ChooseNextActiveChar();
-            });
+            isTaunting = true;
+
+            activeChar.healthSystem.Heal(activeChar.statSheet.stats["MaxHealth"] / 2);
+
+            ChooseNextActiveChar();
 
             targetText.SetActive(false);
         }
         //Mage
         else if (activeChar.statSheet.specialMove == 2)
         {
+            //Showing weakness
             targetText.SetActive(true);
 
             enemyList[enemyNum].ShowTargetCircle();
 
             while (!Input.GetKeyDown(KeyCode.Return))
             {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
+                if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == enemyList.Count - 1)
@@ -538,7 +571,7 @@ public class BattleController : MonoBehaviour
                     }
                     enemyList[enemyNum].ShowTargetCircle();
                 }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                else if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == 0)
@@ -555,24 +588,73 @@ public class BattleController : MonoBehaviour
                 yield return null;
             }
 
-            activeChar.specialMove(enemyList[enemyNum], activeChar, () =>
+            enemyList[enemyNum].weaknessObject.SetActive(true);
+
+            if (enemyList[enemyNum].statSheet.weakness == "Fire")
             {
-                ChooseNextActiveChar();
-            });
+                enemyList[enemyNum].weaknessImage.sprite = fire;
+            }
+            else if (enemyList[enemyNum].statSheet.weakness == "Ice")
+            {
+                enemyList[enemyNum].weaknessImage.sprite = ice;
+            }
+            else if (enemyList[enemyNum].statSheet.weakness == "Electric")
+            {
+                enemyList[enemyNum].weaknessImage.sprite = electric;
+            }
+            else if (enemyList[enemyNum].statSheet.weakness == "Wind")
+            {
+                enemyList[enemyNum].weaknessImage.sprite = wind;
+            }
+            else
+            {
+                Debug.Log("No weakness");
+            }
 
             enemyList[enemyNum].HideTargetCircle();
 
             targetText.SetActive(false);
+
+            ChooseNextActiveChar();
         }
         //Bard
         else if (activeChar.statSheet.specialMove == 3)
         {
+            targetText.SetActive(true);
 
+            while (!Input.GetKeyDown(KeyCode.Return))
+            {
+                yield return null;
+            }
+
+            targetText.SetActive(false);
+
+            for (int i = 0; i < playerList.Count; i++)
+            {
+                playerList[i].healthSystem.Heal(playerList[i].statSheet.stats["MaxHealth"] / 2);
+            }
+
+            ChooseNextActiveChar();
         }
         //Monk
         else if (activeChar.statSheet.specialMove == 4)
         {
+            targetText.SetActive(true);
 
+            while (!Input.GetKeyDown(KeyCode.Return))
+            {
+                yield return null;
+            }
+
+            targetText.SetActive(false);
+
+
+            for (int i = 0; i < enemyList.Count; i++)
+            {
+                enemyList[i].GotDamaged(activeChar.statSheet.stats["Strength"], enemyList[i].statSheet.stats["Defense"]);
+            }
+
+            ChooseNextActiveChar();
         }
         else
         {
@@ -613,10 +695,7 @@ public class BattleController : MonoBehaviour
                 yield return null;
             }
 
-            activeChar.specialMove(enemyList[enemyNum], activeChar, () =>
-            {
-                ChooseNextActiveChar();
-            });
+            //Put code you want to execute here
 
             enemyList[enemyNum].HideTargetCircle();
 
@@ -626,24 +705,24 @@ public class BattleController : MonoBehaviour
 
     #endregion
 
-    private BattleCharacter SpawnCharacter(bool isPlayerTeam, int[] statsToUse, string LName, int lSpecial)
+    private BattleCharacter SpawnCharacter(bool isPlayerTeam, int[] statsToUse, string LName, int lSpecial, int lMagicType, int lMagicWeakness)
     {
         Vector3 position;
         if (isPlayerTeam)
         {
-            if (playerCount == 0)
+            if (playerList.Count == 0)
             {
                 position = new Vector3(-5, 4);
             }
-            else if (playerCount == 1)
+            else if (playerList.Count == 1)
             {
                 position = new Vector3(-5, 2);
             }
-            else if (playerCount == 2)
+            else if (playerList.Count == 2)
             {
                 position = new Vector3(-5, 0);
             }
-            else if (playerCount == 3)
+            else if (playerList.Count == 3)
             {
                 position = new Vector3(-5, -2);
             }
@@ -651,33 +730,29 @@ public class BattleController : MonoBehaviour
             {
                 position = new Vector3(-5, 0);
             }
-
-            playerCount++;
         }
         else
         {
-            if (enemyCount == 0)
+            if (enemyList.Count == 0)
             {
                 position = new Vector3(5, 4);
             }
-            else if (enemyCount == 1)
+            else if (enemyList.Count == 1)
             {
                 position = new Vector3(5, 2);
             }
-            else if (enemyCount == 2)
+            else if (enemyList.Count == 2)
             {
                 position = new Vector3(5, 0);
             }
-            else if (enemyCount == 3)
+            else if (enemyList.Count == 3)
             {
-                position = new Vector3(5, 0);
+                position = new Vector3(5, -2);
             }
             else
             {
                 position = new Vector3(5, 0);
             }
-
-            enemyCount++;
         }
         Transform characterTransform =  Instantiate(playerCharacterTransform, position, Quaternion.identity);
         BattleCharacter battleCharacter = characterTransform.GetComponent<BattleCharacter>();
@@ -686,12 +761,12 @@ public class BattleController : MonoBehaviour
         if (isPlayerTeam)
         {
                                                          //Name    Stats     Magic Type    Description  player Team   Magic Weakness
-            battleCharacter.statSheet = new CharacterData(LName, statsToUse, magicTypes[0], "Is a cube", true, magicTypes[1], lSpecial);
+            battleCharacter.statSheet = new CharacterData(LName, statsToUse, magicTypes[lMagicType], "Is a cube", true, magicTypes[lMagicWeakness], lSpecial);
             playerList.Add(battleCharacter);
         }
         else
         {
-            battleCharacter.statSheet = new CharacterData(LName, statsToUse, magicTypes[1], "Isn't a cube", false, magicTypes[1], lSpecial);
+            battleCharacter.statSheet = new CharacterData(LName, statsToUse, magicTypes[lMagicType], "Isn't a cube", false, magicTypes[lMagicWeakness], lSpecial);
             enemyList.Add(battleCharacter);
         }
 
@@ -745,7 +820,7 @@ public class BattleController : MonoBehaviour
             };
         }
 
-        //An attempt at removing dead characters from the queue. Did not work
+        //Removing dead characters from the queue
         if (characterQueue.Peek().healthSystem.GetHealth() == 0)
         {
             //if the dead character is an enemy
@@ -791,23 +866,45 @@ public class BattleController : MonoBehaviour
             {
                 ChooseNextActiveChar();
             });*/
-            int enemyTarget = Random.Range(0, playerList.Count);
+
+            int enemyTarget;
+
+            if (isTaunting == false)
+            {
+                //Debug.Log("Not taunted");
+                enemyTarget = Random.Range(0, playerList.Count);
+
+                activeChar.Attack(playerList[enemyTarget], activeChar, () =>
+                {
+                    ChooseNextActiveChar();
+                });
+            }
+            else
+            {
+                //Debug.Log("Taunted");
+                activeChar.Attack(tankChar, activeChar, () =>
+                {
+                    ChooseNextActiveChar();
+                });
+            }
 
             //Debug.Log("Target: " +  enemyTarget);
 
             //Make enemy focus one target
             //enemyTarget = 1;
 
-            activeChar.Attack(playerList[enemyTarget], activeChar, () =>
-            {
-                ChooseNextActiveChar();
-            });
+
 
         }
         //If the next character in the queue is on the player team
         else
         {
             //Debug.Log("ally " + characterQueue.Peek().statSheet.name);
+            if (characterQueue.Peek().statSheet.specialMove == 1)
+            {
+                isTaunting = false;
+            }
+
             SetActiveCharBattle(characterQueue.Peek());
             alreadyWent.Enqueue(characterQueue.Dequeue());
             activeChar.isBlocking = false;
@@ -842,7 +939,7 @@ public class BattleController : MonoBehaviour
             SceneManager.LoadScene("GameOver");
             return true;
         }
-        else if (enemyChar.IsDead() && secEnemyChar.IsDead())
+        else if (slimeChar.IsDead() && skeletonChar.IsDead())
         {
             playerWinText.SetActive(true);
             return true;
