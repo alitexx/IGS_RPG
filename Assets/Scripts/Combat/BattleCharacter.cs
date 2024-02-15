@@ -41,19 +41,15 @@ public class BattleCharacter : MonoBehaviour
 
     #region SpriteSheet
 
-    public Texture2D tankSprite;
-    public Texture2D mageSprite;
-    public Texture2D monkSprite;
-    public Texture2D bardSprite;
+    [Header("Sprites")]
 
-    public Texture2D slimeSprite;
+    
     public Sprite slimeStart;
-    public Texture2D ghostSprite;
     public Sprite ghostStart;
-    public Texture2D wraithSprite;
     public Sprite wraithStart;
-    public Texture2D skeletonSprite;
     public Sprite skeletonStart;
+
+    public Animator animator;
 
     #endregion
 
@@ -116,21 +112,26 @@ public class BattleCharacter : MonoBehaviour
             {
                 //charSprite.color = Color.cyan;
                 charSprite.sprite = slimeStart;
+                animator.SetBool("isSlime", true);
+                
             }
             else if (statSheet.name == "Skeleton Guy")
             {
                 //charSprite.color = Color.white;
                 charSprite.sprite = skeletonStart;
+                animator.SetBool("isSkeleton", true);
             }
             else if (statSheet.name == "Wraith Guy")
             {
                 //charSprite.color = Color.black;
                 charSprite.sprite = wraithStart;
+                animator.SetBool("isWraith", true);
             }
             else if (statSheet.name == "Ghost Guy")
             {
                 //charSprite.color = Color.grey;
                 charSprite.sprite = ghostStart;
+                animator.SetBool("isGhost", true);
             }
 
             healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
