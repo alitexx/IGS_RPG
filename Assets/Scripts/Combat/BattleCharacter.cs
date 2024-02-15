@@ -33,11 +33,29 @@ public class BattleCharacter : MonoBehaviour
     private GameObject targetingCircleObject;
 
     //temporarily telling who it is
-    public SpriteRenderer colorCircle;
+    public SpriteRenderer charSprite;
 
     public HealthSystem healthSystem;
     //temporary health bar
     private World_Bar healthBar;
+
+    #region SpriteSheet
+
+    public Texture2D tankSprite;
+    public Texture2D mageSprite;
+    public Texture2D monkSprite;
+    public Texture2D bardSprite;
+
+    public Texture2D slimeSprite;
+    public Sprite slimeStart;
+    public Texture2D ghostSprite;
+    public Sprite ghostStart;
+    public Texture2D wraithSprite;
+    public Sprite wraithStart;
+    public Texture2D skeletonSprite;
+    public Sprite skeletonStart;
+
+    #endregion
 
     private enum State
     {
@@ -65,7 +83,7 @@ public class BattleCharacter : MonoBehaviour
     }
 
     //Sprite 
-    public void Setup(bool LIsPlayerTeam, Texture2D playerSprite, Texture2D enemySprite)
+    public void Setup(bool LIsPlayerTeam)
     {
         this.GIsPlayerTeam = LIsPlayerTeam;
         if (LIsPlayerTeam)
@@ -74,19 +92,19 @@ public class BattleCharacter : MonoBehaviour
             //textures and animations
             if (statSheet.name == "Tank Guy")
             {
-                colorCircle.color = Color.magenta;
+                charSprite.color = Color.magenta;
             }
             else if (statSheet.name == "Mage Guy")
             {
-                colorCircle.color = Color.red;
+                charSprite.color = Color.red;
             }
             else if (statSheet.name == "Monk Guy")
             {
-                colorCircle.color = Color.yellow;
+                charSprite.color = Color.yellow;
             }
             else if (statSheet.name == "Bard Guy")
             {
-                colorCircle.color = Color.green;
+                charSprite.color = Color.green;
             }
 
             healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.green, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
@@ -96,19 +114,23 @@ public class BattleCharacter : MonoBehaviour
             //enemy
             if (statSheet.name == "Slime Guy")
             {
-                colorCircle.color = Color.cyan;
+                //charSprite.color = Color.cyan;
+                charSprite.sprite = slimeStart;
             }
             else if (statSheet.name == "Skeleton Guy")
             {
-                colorCircle.color = Color.white;
+                //charSprite.color = Color.white;
+                charSprite.sprite = skeletonStart;
             }
             else if (statSheet.name == "Wraith Guy")
             {
-                colorCircle.color = Color.black;
+                //charSprite.color = Color.black;
+                charSprite.sprite = wraithStart;
             }
             else if (statSheet.name == "Ghost Guy")
             {
-                colorCircle.color = Color.grey;
+                //charSprite.color = Color.grey;
+                charSprite.sprite = ghostStart;
             }
 
             healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });

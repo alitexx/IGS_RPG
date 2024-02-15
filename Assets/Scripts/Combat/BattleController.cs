@@ -73,10 +73,6 @@ public class BattleController : MonoBehaviour
 
     [SerializeField] private Transform playerCharacterTransform;
 
-    //For use with sprites later
-    public Texture2D playerSpriteSheet;
-    public Texture2D enemySpriteSheet;
-
     private static BattleController instance;
 
     //Players
@@ -771,7 +767,7 @@ public class BattleController : MonoBehaviour
         }
 
 
-        battleCharacter.Setup(isPlayerTeam, playerSpriteSheet, enemySpriteSheet);
+        battleCharacter.Setup(isPlayerTeam);
         
         characterQueue.Enqueue(battleCharacter);
 
@@ -792,23 +788,26 @@ public class BattleController : MonoBehaviour
     //changes turns
     private void ChooseNextActiveChar()
     {
+        for (int i = 0; i < playerList.Count; i++)
+        {
+            if (playerList[i].statSheet.stats["Health"] <= 0)
+            {
+                playerList.RemoveAt(i);
+            }
+        }
+
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            if (enemyList[i].statSheet.stats["Health"] <= 0)
+            {
+                enemyList.RemoveAt(i);
+            }
+        }
+
         if (TestBattleOver())
         {
             return;
         }
-
-        /*if (activeChar == playerChar)
-        {
-            SetActiveCharBattle(enemyChar);
-            state = State.Busy;
-
-            enemyChar.Attack(playerChar, enemyChar, () =>
-            {
-                ChooseNextActiveChar();
-            });
-
-        }*/
-
 
         //Restarting the queue
         if (characterQueue.Count == 0)
@@ -836,10 +835,10 @@ public class BattleController : MonoBehaviour
 
             characterQueue.Dequeue();
 
-            while (alreadyWent.Count != 0)
+            /*while (alreadyWent.Count != 0)
             {
                 characterQueue.Enqueue(alreadyWent.Dequeue());
-            };
+            };*/
 
             while (characterQueue.Count != 0)
             {
@@ -848,7 +847,14 @@ public class BattleController : MonoBehaviour
 
             while (alreadyWent.Count != 0)
             {
-                characterQueue.Enqueue(alreadyWent.Dequeue());
+                if (alreadyWent.Peek().IsDead() == true)
+                {
+                    alreadyWent.Dequeue();
+                }
+                else
+                {
+                    characterQueue.Enqueue(alreadyWent.Dequeue());
+                }
             };
         }
 
@@ -926,6 +932,8 @@ public class BattleController : MonoBehaviour
                 enemyList.RemoveAt(i);
             }
         }
+
+        //Debug.Log("Enemycount: " + enemyList.Count);
     }
 
     //Who died
@@ -933,13 +941,14 @@ public class BattleController : MonoBehaviour
     public GameObject enemyWinText;
     private bool TestBattleOver()
     {
-        if (tankChar.IsDead() && mageChar.IsDead())
+        //if main character dies
+        if (tankChar.IsDead()) //&& mageChar.IsDead())
         {
             enemyWinText.SetActive(true);
             SceneManager.LoadScene("GameOver");
             return true;
         }
-        else if (slimeChar.IsDead() && skeletonChar.IsDead())
+        else if (enemyList.Count == 0)
         {
             playerWinText.SetActive(true);
             return true;

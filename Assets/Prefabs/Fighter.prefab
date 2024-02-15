@@ -242,7 +242,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -394,10 +394,19 @@ MonoBehaviour:
     weakness: 
     specialMove: 0
   isBlocking: 0
+  weaknessObject: {fileID: 0}
   weaknessImage: {fileID: 3714340667494519407}
-  fire: {fileID: 21300000, guid: 87e6a8311b2598140a539d2f487d367d, type: 3}
-  ice: {fileID: 21300000, guid: 1a5b42b11b03f594abfb4df7aff7bf5e, type: 3}
-  wind: {fileID: 21300000, guid: 510fded98bf85b845ade50986a821657, type: 3}
-  electric: {fileID: 21300000, guid: 37a21b9d45273714da61c77bc5e329ff, type: 3}
   GIsPlayerTeam: 0
-  colorCircle: {fileID: 7771544044199383721}
+  charSprite: {fileID: 7771544044199383721}
+  tankSprite: {fileID: 0}
+  mageSprite: {fileID: 0}
+  monkSprite: {fileID: 0}
+  bardSprite: {fileID: 0}
+  slimeSprite: {fileID: 2800000, guid: 39aedb25ee2606645b430f3bd68a2ab2, type: 3}
+  slimeStart: {fileID: -715754980, guid: 39aedb25ee2606645b430f3bd68a2ab2, type: 3}
+  ghostSprite: {fileID: 2800000, guid: f768aadc2def9084dbce86df50b2af39, type: 3}
+  ghostStart: {fileID: -2098788187, guid: f768aadc2def9084dbce86df50b2af39, type: 3}
+  wraithSprite: {fileID: 2800000, guid: bff4a53c3d63ea545961fa33e07260bb, type: 3}
+  wraithStart: {fileID: -2029613557, guid: bff4a53c3d63ea545961fa33e07260bb, type: 3}
+  skeletonSprite: {fileID: 2800000, guid: 2aedb029c10d0ec4a9053b3ac073aea4, type: 3}
+  skeletonStart: {fileID: -1692464419, guid: 2aedb029c10d0ec4a9053b3ac073aea4, type: 3}
