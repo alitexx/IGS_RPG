@@ -57,7 +57,8 @@ public class BattleCharacter : MonoBehaviour
     {
         Idle, 
         Sliding, 
-        Busy
+        Busy,
+        Attacking
     }
 
     private void Awake()
@@ -204,21 +205,63 @@ public class BattleCharacter : MonoBehaviour
             state = State.Busy;
             Vector3 attackDir = (targetCharacter.GetPosition() - GetPosition()).normalized;
 
+            attacker.animator.SetBool("Attacking", true);
+            state = State.Attacking;
+
             //Debug.Log(attacker.statSheet.stats["Strength"]);
-            targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
+            //targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
 
             //Animation would go here, and then the attack would be marked as complete once the animation ends with onAttackComplete
-            //For now, there is no delay between attacking and the attack ending
+            //For now, there is no delay between attacking and the attack endin
+            /*animAttack(() =>
+            {
+                SlideToPosition(startingPosition, () =>
+                {
+                    //slide back complete, back to idle
+                    state = State.Idle;
+                    animator.SetBool("Attacking", false);
+                    //idle animation trigger would go here
+                    onAttackComplete();
+                });
+            });*/
+
+            StartCoroutine(WaitUntilAttackOver(targetCharacter, attacker, startingPosition, onAttackComplete));
 
             //Attack Complete, slide back
-            SlideToPosition(startingPosition, () =>
+            /*SlideToPosition(startingPosition, () =>
             {
                 //slide back complete, back to idle
                 state = State.Idle;
+                animator.SetBool("Attacking", false);
                 //idle animation trigger would go here
                 onAttackComplete();
-            });
+            });*/
         });
+    }
+
+    private IEnumerator WaitUntilAttackOver(BattleCharacter targetCharacter, BattleCharacter attacker, Vector3 startingPosition, Action onAttackComplete)
+    {
+        while (attacker.state == State.Attacking)
+        {
+            yield return null;
+        }
+
+        targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
+
+        attacker.animator.SetBool("Attacking", false);
+
+        SlideToPosition(startingPosition, () =>
+        {
+            //slide back complete, back to idle
+            state = State.Idle;
+            //idle animation trigger would go here
+            onAttackComplete();
+        });
+    }
+
+    public void AttackOver()
+    {
+        state = State.Busy;
     }
 
     public void magAttack(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
@@ -309,7 +352,7 @@ public class BattleCharacter : MonoBehaviour
             damageMinusDefense = 0;
         }
 
-        //Debug.Log("Final Damage: " + damageMinusDefense);
+        animator.SetBool("Hurt", true);
 
         if (isBlocking)
         {
@@ -323,6 +366,36 @@ public class BattleCharacter : MonoBehaviour
         }
 
         statSheet.stats["Health"] = healthSystem.GetHealth();
+
+        StartCoroutine(WaitUntilHurtOver(damageMinusDefense));
+
+        //Debug.Log("Final Damage: " + damageMinusDefense);
+    }
+
+    private IEnumerator WaitUntilHurtOver(int damageMinusDefense)
+    {
+        while (animator.GetBool("Hurt") == true)
+        {
+            yield return null;
+        }
+
+        /*if (isBlocking)
+        {
+            healthSystem.Damage(damageMinusDefense / 2);
+            //Debug.Log("Defender Health: " + healthSystem.GetHealth());
+        }
+        else
+        {
+            healthSystem.Damage(damageMinusDefense);
+            //Debug.Log("Defender Health: " + healthSystem.GetHealth());
+        }
+
+        statSheet.stats["Health"] = healthSystem.GetHealth();*/
+    }
+
+    public void HurtOver()
+    {
+        animator.SetBool("Hurt", false);
     }
 
     //Code for checking if an enemy is dead
