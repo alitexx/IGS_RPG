@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 1473065057041270022}
   - component: {fileID: 7771544044199383721}
   m_Layer: 0
-  m_Name: InLine
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -241,7 +241,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a0e35f6b808bb7447826cc6c69ffe448, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -346,6 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2255272713044617730}
   - component: {fileID: 8234647763497736773}
+  - component: {fileID: 7197455562530669128}
   m_Layer: 0
   m_Name: Fighter
   m_TagString: Untagged
@@ -398,15 +399,28 @@ MonoBehaviour:
   weaknessImage: {fileID: 3714340667494519407}
   GIsPlayerTeam: 0
   charSprite: {fileID: 7771544044199383721}
-  tankSprite: {fileID: 0}
-  mageSprite: {fileID: 0}
-  monkSprite: {fileID: 0}
-  bardSprite: {fileID: 0}
-  slimeSprite: {fileID: 2800000, guid: 39aedb25ee2606645b430f3bd68a2ab2, type: 3}
   slimeStart: {fileID: -715754980, guid: 39aedb25ee2606645b430f3bd68a2ab2, type: 3}
-  ghostSprite: {fileID: 2800000, guid: f768aadc2def9084dbce86df50b2af39, type: 3}
   ghostStart: {fileID: -2098788187, guid: f768aadc2def9084dbce86df50b2af39, type: 3}
-  wraithSprite: {fileID: 2800000, guid: bff4a53c3d63ea545961fa33e07260bb, type: 3}
   wraithStart: {fileID: -2029613557, guid: bff4a53c3d63ea545961fa33e07260bb, type: 3}
-  skeletonSprite: {fileID: 2800000, guid: 2aedb029c10d0ec4a9053b3ac073aea4, type: 3}
   skeletonStart: {fileID: -1692464419, guid: 2aedb029c10d0ec4a9053b3ac073aea4, type: 3}
+  animator: {fileID: 7197455562530669128}
+--- !u!95 &7197455562530669128
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174328412771305065}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a80078bac22b8444b2f3ca9c8abb4c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
