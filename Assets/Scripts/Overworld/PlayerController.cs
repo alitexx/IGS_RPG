@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = 5f;
+    public Rigidbody2D rb;
     private bool isMoving;
     private bool isfrozen;
 
@@ -25,31 +26,26 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isMoving)
+        
+        input.x = Input.GetAxisRaw("Horizontal");
+        input.y = Input.GetAxisRaw("Vertical");
+        if (input.x != 0) input.y = 0;
+
+        if (input != Vector2.zero)
         {
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
-
-            if (input.x != 0) input.y = 0;
-
-            if (input != Vector2.zero)
-            {
-                animator.SetFloat("moveX", input.x);
-                animator.SetFloat("moveY", input.y);
-
-                var targetPos = transform.position;
-                targetPos.x += input.x;
-                targetPos.y += input.y;
-
-                if (isWalkable(targetPos) && isfrozen == false)
-
-                StartCoroutine(Move(targetPos));
-            }
+            animator.SetFloat("moveX", input.x);
+            animator.SetFloat("moveY", input.y);
         }
 
-        animator.SetBool("isMoving", isMoving);
-        
+        animator.SetFloat("moveX", input.x);
+        animator.SetFloat("moveY", input.y);
+        animator.SetFloat("speed", input.sqrMagnitude);
 
+    }
+
+    void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + input * movementSpeed * Time.fixedDeltaTime);
     }
 
     IEnumerator Move(Vector3 targetPos)
@@ -85,58 +81,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             SceneManager.LoadScene("BattleCoding"); 
         }
-        /*
-        if (collision.gameObject.tag == "Transfer") // moves the player 3 times in the direction they were walking 
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                if (input != Vector2.zero)
-                {
-                    animator.SetFloat("moveX", input.x);
-                    animator.SetFloat("moveY", input.y);
-
-                    var targetPos = transform.position;
-                    targetPos.x += input.x;
-                    targetPos.y += input.y;
-
-                    if (isWalkable(targetPos) && isfrozen == false)
-
-                        StartCoroutine(Move(targetPos));
-                }
-            }
-            
-        }*/
-
-        /*if (collision.gameObject.tag == "Boss Transfer") //moves the player 10 times when they enter the boss exit door (hopefully)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                if (input != Vector2.zero)
-                {
-                    animator.SetFloat("moveY", input.y);
-
-                    var targetPos = transform.position;
-
-                    targetPos.y += input.y;
-
-                    StartCoroutine(Move(targetPos));
-                }
-            }
-        }*/
-    }
-
-    IEnumerator MoveRooms(Vector3 targetPos)
-    {
-        isMoving = true;
-        isfrozen = true;
-
-        //move player_sprite to next room. Maybe move them in the direction they were moving?
-        
-
-        isMoving = false;
-        isfrozen = false;
-
-        yield return null;
+    
     }
 
 }
