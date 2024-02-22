@@ -25,21 +25,23 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        input.x = Input.GetAxisRaw("Horizontal");
-        input.y = Input.GetAxisRaw("Vertical");
-        if (input.x != 0) input.y = 0;
-
-        if (input != Vector2.zero)
+        if(isfrozen != true)
         {
+            input.x = Input.GetAxisRaw("Horizontal");
+            input.y = Input.GetAxisRaw("Vertical");
+            if (input.x != 0) input.y = 0;
+
+            if (input != Vector2.zero)
+            {
+                animator.SetFloat("moveX", input.x);
+                animator.SetFloat("moveY", input.y);
+            }
+
             animator.SetFloat("moveX", input.x);
             animator.SetFloat("moveY", input.y);
+            animator.SetFloat("speed", input.sqrMagnitude);
         }
-
-        animator.SetFloat("moveX", input.x);
-        animator.SetFloat("moveY", input.y);
-        animator.SetFloat("speed", input.sqrMagnitude);
-
+        
     }
 
     void FixedUpdate()
