@@ -6,16 +6,45 @@ public class SwitchScript : MonoBehaviour
 {
 
     public GameObject Door;
-    //public RigidbodyConstraints2D pos;
+    public Rigidbody2D RB;
+    private bool isOnSwitch;
     
+
+    private void Start()
+    {
+        RB = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && isOnSwitch == false)
+        {
+            RB.isKinematic = false;
+            RB.velocity = Vector3.zero;
+        }
+        
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && isOnSwitch == false)
+        {
+            RB.isKinematic = true;
+            RB.velocity = Vector3.zero;
+        }
+    }
+
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.tag == "Switch")
         {
             Debug.Log("Collided");
-            //pos = RigidbodyConstraints2D.FreezePosition;
+            RB.velocity = Vector3.zero;
+            RB.isKinematic = true;
+            isOnSwitch = true;
             Destroy(Door);
         }
     }
