@@ -76,6 +76,8 @@ public class BattleController : MonoBehaviour
 
     private static BattleController instance;
 
+    public LevelManager LevelManager;
+
     //Players
     private BattleCharacter tankChar;
     private BattleCharacter mageChar;
@@ -98,105 +100,89 @@ public class BattleController : MonoBehaviour
 
     //Tank Stats
     static public int[] tankStats = {
-        /*Strength*/ 13,
+        /*Strength*/ 10,
         /*Magic Attack*/ 4,
-        /*Defense*/ 8, 
+        /*Defense*/ 5, 
         /*Speed*/ 3, 
-        /*Health*/ 13, 
-        /*MaxHealth*/ 13,
+        /*Health*/ 18, 
+        /*MaxHealth*/ 18,
         /*Mana*/ 4,
-        /*MaxMana*/ 4,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 4};
 
     //Mage Stats
     static public int[] mageStats = {
         /*Strength*/ 7,
         /*Magic Attack*/ 13,
-        /*Defense*/ 5, 
+        /*Defense*/ 4, 
         /*Speed*/ 5, 
-        /*Health*/ 6, 
-        /*MaxHealth*/ 6,
+        /*Health*/ 8, 
+        /*MaxHealth*/ 8,
         /*Mana*/ 9,
-        /*MaxMana*/ 9,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 9};
 
     //Monk Stats
     static public int[] monkStats = {
-        /*Strength*/ 16,
+        /*Strength*/ 13,
         /*Magic Attack*/ 7,
         /*Defense*/ 4, 
         /*Speed*/ 6, 
-        /*Health*/ 8, 
-        /*MaxHealth*/ 8,
+        /*Health*/ 10, 
+        /*MaxHealth*/ 10,
         /*Mana*/ 5,
-        /*MaxMana*/ 5,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 5};
 
     //Bard Stats
     static public int[] bardStats = {
-        /*Strength*/ 5,
+        /*Strength*/ 6,
         /*Magic Attack*/ 5,
         /*Defense*/ 4, 
         /*Speed*/ 2, 
         /*Health*/ 15, 
         /*MaxHealth*/ 15,
         /*Mana*/ 7,
-        /*MaxMana*/ 7,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 7};
 
     //Slime Stats
     static public int[] slimeStats = {
-        /*Strength*/ 10,
+        /*Strength*/ 7,
         /*Magic Attack*/ 1,
-        /*Defense*/ 9, 
+        /*Defense*/ 3, 
         /*Speed*/ 4, 
-        /*Health*/ 15, 
-        /*MaxHealth*/ 15,
+        /*Health*/ 20, 
+        /*MaxHealth*/ 20,
         /*Mana*/ 6,
-        /*MaxMana*/ 7,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 7};
 
     //Skeleton Stats
     static public int[] skeletonStats = {
-        /*Strength*/ 8,
+        /*Strength*/ 7,
         /*Magic Attack*/ 1,
-        /*Defense*/ 11, 
+        /*Defense*/ 7, 
         /*Speed*/ 3, 
-        /*Health*/ 8, 
-        /*MaxHealth*/ 8,
+        /*Health*/ 10, 
+        /*MaxHealth*/ 10,
         /*Mana*/ 6,
-        /*MaxMana*/ 7,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 7};
 
     static public int[] wraithStats = {
-        /*Strength*/ 14,
+        /*Strength*/ 11,
         /*Magic Attack*/ 1,
-        /*Defense*/ 6, 
+        /*Defense*/ 5, 
         /*Speed*/ 5, 
         /*Health*/ 17, 
         /*MaxHealth*/ 17,
         /*Mana*/ 6,
-        /*MaxMana*/ 7,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 7};
 
     static public int[] ghostStats = {
-        /*Strength*/ 12,
+        /*Strength*/ 9,
         /*Magic Attack*/ 1,
-        /*Defense*/ 8, 
+        /*Defense*/ 11, 
         /*Speed*/ 4, 
-        /*Health*/ 13, 
-        /*MaxHealth*/ 13,
+        /*Health*/ 7, 
+        /*MaxHealth*/ 7,
         /*Mana*/ 6,
-        /*MaxMana*/ 7,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 7};
 
     #endregion
 
@@ -216,6 +202,8 @@ public class BattleController : MonoBehaviour
     public Sprite electric;
 
     private List<BattleCharacter> playerList = new List<BattleCharacter>();
+
+    public List<BattleCharacter> partyMembers = new List<BattleCharacter>();
 
     private List<BattleCharacter> enemyList = new List<BattleCharacter>();
 
@@ -769,6 +757,7 @@ public class BattleController : MonoBehaviour
                                                          //Name    Stats     Magic Type    Description  player Team   Magic Weakness
             battleCharacter.statSheet = new CharacterData(LName, statsToUse, magicTypes[lMagicType], "Is a cube", true, magicTypes[lMagicWeakness], lSpecial);
             playerList.Add(battleCharacter);
+            partyMembers.Add(battleCharacter);
         }
         else
         {
@@ -812,7 +801,7 @@ public class BattleController : MonoBehaviour
             {
                 enemyList.RemoveAt(i);
 
-                tankChar.statSheet.stats["EXP"] += 10;
+                LevelManager.currentEXP += 10;
             }
         }
 
@@ -958,6 +947,16 @@ public class BattleController : MonoBehaviour
     public GameObject enemyWinText;
     private bool TestBattleOver()
     {
+        bool AllEnemyDead = true;
+
+        for (int i = 0; i < enemyList.Count; i ++)
+        {
+            if (enemyList[i].IsDead() == false)
+            {
+                AllEnemyDead = false;
+            }
+        }
+
         //if main character dies
         if (tankChar.IsDead()) //&& mageChar.IsDead())
         {
@@ -965,13 +964,13 @@ public class BattleController : MonoBehaviour
             SceneManager.LoadScene("GameOver");
             return true;
         }
-        else if (enemyList.Count == 0)
+        else if (enemyList.Count == 0 || AllEnemyDead == true)
         {
             playerWinText.SetActive(true);
-            if (tankChar.statSheet.stats["EXP"] >= tankChar.statSheet.stats["LvlUpThreshold"])
+
+            while (LevelManager.currentEXP >= LevelManager.lvlUpThreshold)
             {
-                tankChar.statSheet.level++;
-                tankChar.statSheet.stats["EXP"] -= tankChar.statSheet.stats["LvlUpThreshold"];
+                LevelManager.LevelUp();
             }
             return true;
         }

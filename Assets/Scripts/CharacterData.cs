@@ -7,7 +7,6 @@ using UnityEngine;
 [System.Serializable]
 public class CharacterData
 {
-    public int level;
     public string name; // the character's name
     public Dictionary<string, int> stats = new Dictionary<string, int>() {
         {"Strength", 5},
@@ -18,8 +17,8 @@ public class CharacterData
         {"MaxHealth", 0},
         {"Mana", 0},
         {"MaxMana", 0},
-        {"EXP", 0},
-        {"LvlUpThreshold", 10}
+        //{"EXP", 0},
+        //{"LvlUpThreshold", 10}
 
     }; //dictionary containing every character's stats
     public string magicElement; // PLACEHOLDER
@@ -46,14 +45,13 @@ public class CharacterData
         this.stats["MaxHealth"] = valuesToUse[5];
         this.stats["Mana"] = valuesToUse[6];
         this.stats["MaxMana"] = valuesToUse[7];
-        this.stats["EXP"] = valuesToUse[8];
-        this.stats["LvlUpThreshold"] = valuesToUse[9];
+        //this.stats["EXP"] = valuesToUse[8];
+        //this.stats["LvlUpThreshold"] = valuesToUse[9];
         this.magicElement = magicType;
         this.description = description;
         this.isPlayerTeam = playerTeam;
         this.weakness = lWeakness;
         this.specialMove = lSpecial;
-        this.level = 1;
     }
 
 
