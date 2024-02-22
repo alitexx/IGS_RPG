@@ -53,6 +53,7 @@ public class CharacterData
         this.isPlayerTeam = playerTeam;
         this.weakness = lWeakness;
         this.specialMove = lSpecial;
+        this.level = 1;
     }
 
 

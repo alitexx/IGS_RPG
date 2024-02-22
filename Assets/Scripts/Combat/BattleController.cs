@@ -801,6 +801,8 @@ public class BattleController : MonoBehaviour
             if (enemyList[i].statSheet.stats["Health"] <= 0)
             {
                 enemyList.RemoveAt(i);
+
+                tankChar.statSheet.stats["EXP"] += 10;
             }
         }
 
@@ -839,6 +841,11 @@ public class BattleController : MonoBehaviour
             {
                 characterQueue.Enqueue(alreadyWent.Dequeue());
             };*/
+            
+            while (alreadyWent.Count != 0)
+            {
+                characterQueue.Enqueue(alreadyWent.Dequeue());
+            }
 
             while (characterQueue.Count != 0)
             {
@@ -951,6 +958,11 @@ public class BattleController : MonoBehaviour
         else if (enemyList.Count == 0)
         {
             playerWinText.SetActive(true);
+            if (tankChar.statSheet.stats["EXP"] >= tankChar.statSheet.stats["LvlUpThreshold"])
+            {
+                tankChar.statSheet.level++;
+                tankChar.statSheet.stats["EXP"] -= tankChar.statSheet.stats["LvlUpThreshold"];
+            }
             return true;
         }
         else
