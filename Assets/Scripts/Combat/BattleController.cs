@@ -65,6 +65,7 @@ public class BattleController : MonoBehaviour
         ChooseNextActiveChar();
 
         targetText.SetActive(false);
+        confirmText.SetActive(false);
         playerWinText.SetActive(false);
         enemyWinText.SetActive(false);
     }
@@ -348,6 +349,7 @@ public class BattleController : MonoBehaviour
         state = State.WaitingForPlayer;
         fightingButtons.SetActive(true);
         targetText.SetActive(false);
+        confirmText.SetActive(false);
     }
 
     public void attackButton()
@@ -402,6 +404,8 @@ public class BattleController : MonoBehaviour
 
     public GameObject targetText;
 
+    public GameObject confirmText;
+
     #region Targeting Coroutines
 
     //When these coroutines are called, the while loop while loop indefinitely until the enter or "return" key is pressed
@@ -410,6 +414,7 @@ public class BattleController : MonoBehaviour
         int enemyNum = 0;
 
         targetText.SetActive(true);
+        confirmText.SetActive(true);
 
         enemyList[enemyNum].ShowTargetCircle();
 
@@ -453,11 +458,12 @@ public class BattleController : MonoBehaviour
         enemyList[enemyNum].HideTargetCircle();
 
         targetText.SetActive(false);
+        confirmText.SetActive(false);
     }
 
     private IEnumerator BlockConfirm()
     {
-        targetText.SetActive(true);
+        confirmText.SetActive(true);
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {
@@ -467,7 +473,7 @@ public class BattleController : MonoBehaviour
         activeChar.isBlocking = true;
         ChooseNextActiveChar();
 
-        targetText.SetActive(false);
+        confirmText.SetActive(false);
     }
 
     private IEnumerator MagicTargeting()
@@ -475,6 +481,7 @@ public class BattleController : MonoBehaviour
         int enemyNum = 0;
 
         targetText.SetActive(true);
+        confirmText.SetActive(true);
 
         enemyList[enemyNum].ShowTargetCircle();
 
@@ -513,6 +520,7 @@ public class BattleController : MonoBehaviour
         enemyList[enemyNum].HideTargetCircle();
 
         targetText.SetActive(false);
+        confirmText.SetActive(false);
 
         activeChar.magAttack(enemyList[enemyNum], activeChar, () =>
         {
@@ -529,7 +537,7 @@ public class BattleController : MonoBehaviour
         //Tank
         if (activeChar.statSheet.specialMove == 1)
         {
-            targetText.SetActive(true);
+            confirmText.SetActive(true);
 
             while (!Input.GetKeyDown(KeyCode.Return))
             {
@@ -542,13 +550,14 @@ public class BattleController : MonoBehaviour
 
             ChooseNextActiveChar();
 
-            targetText.SetActive(false);
+            confirmText.SetActive(false);
         }
         //Mage
         else if (activeChar.statSheet.specialMove == 2)
         {
             //Showing weakness
             targetText.SetActive(true);
+            confirmText.SetActive(true);
 
             enemyList[enemyNum].ShowTargetCircle();
 
@@ -610,20 +619,21 @@ public class BattleController : MonoBehaviour
             enemyList[enemyNum].HideTargetCircle();
 
             targetText.SetActive(false);
+            confirmText.SetActive(false);
 
             ChooseNextActiveChar();
         }
         //Bard
         else if (activeChar.statSheet.specialMove == 3)
         {
-            targetText.SetActive(true);
+            confirmText.SetActive(true);
 
             while (!Input.GetKeyDown(KeyCode.Return))
             {
                 yield return null;
             }
 
-            targetText.SetActive(false);
+            confirmText.SetActive(false);
 
             for (int i = 0; i < playerList.Count; i++)
             {
@@ -635,14 +645,14 @@ public class BattleController : MonoBehaviour
         //Monk
         else if (activeChar.statSheet.specialMove == 4)
         {
-            targetText.SetActive(true);
+            confirmText.SetActive(true);
 
             while (!Input.GetKeyDown(KeyCode.Return))
             {
                 yield return null;
             }
 
-            targetText.SetActive(false);
+            confirmText.SetActive(false);
 
 
             for (int i = 0; i < enemyList.Count; i++)
