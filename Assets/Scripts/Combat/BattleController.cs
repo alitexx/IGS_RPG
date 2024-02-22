@@ -65,6 +65,7 @@ public class BattleController : MonoBehaviour
         ChooseNextActiveChar();
 
         targetText.SetActive(false);
+        confirmText.SetActive(false);
         playerWinText.SetActive(false);
         enemyWinText.SetActive(false);
     }
@@ -74,6 +75,8 @@ public class BattleController : MonoBehaviour
     [SerializeField] private Transform playerCharacterTransform;
 
     private static BattleController instance;
+
+    public LevelManager LevelManager;
 
     //Players
     private BattleCharacter tankChar;
@@ -97,105 +100,89 @@ public class BattleController : MonoBehaviour
 
     //Tank Stats
     static public int[] tankStats = {
-        /*Strength*/ 13,
+        /*Strength*/ 10,
         /*Magic Attack*/ 4,
-        /*Defense*/ 8, 
+        /*Defense*/ 5, 
         /*Speed*/ 3, 
-        /*Health*/ 13, 
-        /*MaxHealth*/ 13,
+        /*Health*/ 18, 
+        /*MaxHealth*/ 18,
         /*Mana*/ 4,
-        /*MaxMana*/ 4,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 4};
 
     //Mage Stats
     static public int[] mageStats = {
         /*Strength*/ 7,
         /*Magic Attack*/ 13,
-        /*Defense*/ 5, 
+        /*Defense*/ 4, 
         /*Speed*/ 5, 
-        /*Health*/ 6, 
-        /*MaxHealth*/ 6,
+        /*Health*/ 8, 
+        /*MaxHealth*/ 8,
         /*Mana*/ 9,
-        /*MaxMana*/ 9,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 9};
 
     //Monk Stats
     static public int[] monkStats = {
-        /*Strength*/ 16,
+        /*Strength*/ 13,
         /*Magic Attack*/ 7,
         /*Defense*/ 4, 
         /*Speed*/ 6, 
-        /*Health*/ 8, 
-        /*MaxHealth*/ 8,
+        /*Health*/ 10, 
+        /*MaxHealth*/ 10,
         /*Mana*/ 5,
-        /*MaxMana*/ 5,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 5};
 
     //Bard Stats
     static public int[] bardStats = {
-        /*Strength*/ 5,
+        /*Strength*/ 6,
         /*Magic Attack*/ 5,
         /*Defense*/ 4, 
         /*Speed*/ 2, 
         /*Health*/ 15, 
         /*MaxHealth*/ 15,
         /*Mana*/ 7,
-        /*MaxMana*/ 7,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 7};
 
     //Slime Stats
     static public int[] slimeStats = {
-        /*Strength*/ 10,
+        /*Strength*/ 7,
         /*Magic Attack*/ 1,
-        /*Defense*/ 9, 
+        /*Defense*/ 3, 
         /*Speed*/ 4, 
-        /*Health*/ 15, 
-        /*MaxHealth*/ 15,
+        /*Health*/ 20, 
+        /*MaxHealth*/ 20,
         /*Mana*/ 6,
-        /*MaxMana*/ 7,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 7};
 
     //Skeleton Stats
     static public int[] skeletonStats = {
-        /*Strength*/ 8,
+        /*Strength*/ 7,
         /*Magic Attack*/ 1,
-        /*Defense*/ 11, 
+        /*Defense*/ 7, 
         /*Speed*/ 3, 
-        /*Health*/ 8, 
-        /*MaxHealth*/ 8,
+        /*Health*/ 10, 
+        /*MaxHealth*/ 10,
         /*Mana*/ 6,
-        /*MaxMana*/ 7,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 7};
 
     static public int[] wraithStats = {
-        /*Strength*/ 14,
+        /*Strength*/ 11,
         /*Magic Attack*/ 1,
-        /*Defense*/ 6, 
+        /*Defense*/ 5, 
         /*Speed*/ 5, 
         /*Health*/ 17, 
         /*MaxHealth*/ 17,
         /*Mana*/ 6,
-        /*MaxMana*/ 7,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 7};
 
     static public int[] ghostStats = {
-        /*Strength*/ 12,
+        /*Strength*/ 9,
         /*Magic Attack*/ 1,
-        /*Defense*/ 8, 
+        /*Defense*/ 11, 
         /*Speed*/ 4, 
-        /*Health*/ 13, 
-        /*MaxHealth*/ 13,
+        /*Health*/ 7, 
+        /*MaxHealth*/ 7,
         /*Mana*/ 6,
-        /*MaxMana*/ 7,
-        /*EXP*/ 0,
-        /*LvlUpThreshold*/ 10 };
+        /*MaxMana*/ 7};
 
     #endregion
 
@@ -215,6 +202,8 @@ public class BattleController : MonoBehaviour
     public Sprite electric;
 
     private List<BattleCharacter> playerList = new List<BattleCharacter>();
+
+    public List<BattleCharacter> partyMembers = new List<BattleCharacter>();
 
     private List<BattleCharacter> enemyList = new List<BattleCharacter>();
 
@@ -348,6 +337,7 @@ public class BattleController : MonoBehaviour
         state = State.WaitingForPlayer;
         fightingButtons.SetActive(true);
         targetText.SetActive(false);
+        confirmText.SetActive(false);
     }
 
     public void attackButton()
@@ -402,6 +392,8 @@ public class BattleController : MonoBehaviour
 
     public GameObject targetText;
 
+    public GameObject confirmText;
+
     #region Targeting Coroutines
 
     //When these coroutines are called, the while loop while loop indefinitely until the enter or "return" key is pressed
@@ -410,6 +402,7 @@ public class BattleController : MonoBehaviour
         int enemyNum = 0;
 
         targetText.SetActive(true);
+        confirmText.SetActive(true);
 
         enemyList[enemyNum].ShowTargetCircle();
 
@@ -453,11 +446,12 @@ public class BattleController : MonoBehaviour
         enemyList[enemyNum].HideTargetCircle();
 
         targetText.SetActive(false);
+        confirmText.SetActive(false);
     }
 
     private IEnumerator BlockConfirm()
     {
-        targetText.SetActive(true);
+        confirmText.SetActive(true);
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {
@@ -467,7 +461,7 @@ public class BattleController : MonoBehaviour
         activeChar.isBlocking = true;
         ChooseNextActiveChar();
 
-        targetText.SetActive(false);
+        confirmText.SetActive(false);
     }
 
     private IEnumerator MagicTargeting()
@@ -475,6 +469,7 @@ public class BattleController : MonoBehaviour
         int enemyNum = 0;
 
         targetText.SetActive(true);
+        confirmText.SetActive(true);
 
         enemyList[enemyNum].ShowTargetCircle();
 
@@ -513,6 +508,7 @@ public class BattleController : MonoBehaviour
         enemyList[enemyNum].HideTargetCircle();
 
         targetText.SetActive(false);
+        confirmText.SetActive(false);
 
         activeChar.magAttack(enemyList[enemyNum], activeChar, () =>
         {
@@ -529,7 +525,7 @@ public class BattleController : MonoBehaviour
         //Tank
         if (activeChar.statSheet.specialMove == 1)
         {
-            targetText.SetActive(true);
+            confirmText.SetActive(true);
 
             while (!Input.GetKeyDown(KeyCode.Return))
             {
@@ -542,13 +538,14 @@ public class BattleController : MonoBehaviour
 
             ChooseNextActiveChar();
 
-            targetText.SetActive(false);
+            confirmText.SetActive(false);
         }
         //Mage
         else if (activeChar.statSheet.specialMove == 2)
         {
             //Showing weakness
             targetText.SetActive(true);
+            confirmText.SetActive(true);
 
             enemyList[enemyNum].ShowTargetCircle();
 
@@ -610,20 +607,21 @@ public class BattleController : MonoBehaviour
             enemyList[enemyNum].HideTargetCircle();
 
             targetText.SetActive(false);
+            confirmText.SetActive(false);
 
             ChooseNextActiveChar();
         }
         //Bard
         else if (activeChar.statSheet.specialMove == 3)
         {
-            targetText.SetActive(true);
+            confirmText.SetActive(true);
 
             while (!Input.GetKeyDown(KeyCode.Return))
             {
                 yield return null;
             }
 
-            targetText.SetActive(false);
+            confirmText.SetActive(false);
 
             for (int i = 0; i < playerList.Count; i++)
             {
@@ -635,14 +633,14 @@ public class BattleController : MonoBehaviour
         //Monk
         else if (activeChar.statSheet.specialMove == 4)
         {
-            targetText.SetActive(true);
+            confirmText.SetActive(true);
 
             while (!Input.GetKeyDown(KeyCode.Return))
             {
                 yield return null;
             }
 
-            targetText.SetActive(false);
+            confirmText.SetActive(false);
 
 
             for (int i = 0; i < enemyList.Count; i++)
@@ -759,6 +757,7 @@ public class BattleController : MonoBehaviour
                                                          //Name    Stats     Magic Type    Description  player Team   Magic Weakness
             battleCharacter.statSheet = new CharacterData(LName, statsToUse, magicTypes[lMagicType], "Is a cube", true, magicTypes[lMagicWeakness], lSpecial);
             playerList.Add(battleCharacter);
+            partyMembers.Add(battleCharacter);
         }
         else
         {
@@ -801,6 +800,8 @@ public class BattleController : MonoBehaviour
             if (enemyList[i].statSheet.stats["Health"] <= 0)
             {
                 enemyList.RemoveAt(i);
+
+                LevelManager.currentEXP += 10;
             }
         }
 
@@ -839,6 +840,11 @@ public class BattleController : MonoBehaviour
             {
                 characterQueue.Enqueue(alreadyWent.Dequeue());
             };*/
+            
+            while (alreadyWent.Count != 0)
+            {
+                characterQueue.Enqueue(alreadyWent.Dequeue());
+            }
 
             while (characterQueue.Count != 0)
             {
@@ -941,6 +947,16 @@ public class BattleController : MonoBehaviour
     public GameObject enemyWinText;
     private bool TestBattleOver()
     {
+        bool AllEnemyDead = true;
+
+        for (int i = 0; i < enemyList.Count; i ++)
+        {
+            if (enemyList[i].IsDead() == false)
+            {
+                AllEnemyDead = false;
+            }
+        }
+
         //if main character dies
         if (tankChar.IsDead()) //&& mageChar.IsDead())
         {
@@ -948,9 +964,14 @@ public class BattleController : MonoBehaviour
             SceneManager.LoadScene("GameOver");
             return true;
         }
-        else if (enemyList.Count == 0)
+        else if (enemyList.Count == 0 || AllEnemyDead == true)
         {
             playerWinText.SetActive(true);
+
+            while (LevelManager.currentEXP >= LevelManager.lvlUpThreshold)
+            {
+                LevelManager.LevelUp();
+            }
             return true;
         }
         else
