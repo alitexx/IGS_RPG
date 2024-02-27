@@ -21,7 +21,7 @@ public class CharacterData
         //{"LvlUpThreshold", 10}
 
     }; //dictionary containing every character's stats
-    public string magicElement; // PLACEHOLDER
+    public string magicElement;
     public string description; // a description of the character to be shown on the pause menu
 
     public int[] valuesForStats;

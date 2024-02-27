@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.LowLevel;
@@ -15,20 +16,102 @@ public class BattleController : MonoBehaviour
         return instance;
     }
 
+    public LevelManager levelManager;
+
+    BattleCharacter SpawningEnemy(BattleCharacter enemySpawning)
+    {
+        int randomiser = Random.Range(1, 5);
+
+        if (randomiser == 1)
+        {
+            enemySpawning = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/, 4, 0);
+
+            return enemySpawning;
+        }
+        else if(randomiser == 2)
+        {
+            enemySpawning = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0, 4, 1);
+
+            return enemySpawning;
+        }
+        else if (randomiser == 3)
+        {
+            enemySpawning = SpawnCharacter(false, wraithStats, "Wraith Guy", 0, 4, 2);
+
+            return enemySpawning;
+        }
+        else
+        {
+            enemySpawning = SpawnCharacter(false, wraithStats, "Ghost Guy", 0, 4, 3);
+
+            return enemySpawning;
+        }
+    }
+
+    void SetStats()
+    {
+        //Make it so the stats are changed with the level
+    }
+
     private void Awake()
     {
+        SetStats();
+
         instance = this;
 
-        //True for an ally, false for an enemy
-        tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1, 0, 1);
-        mageChar = SpawnCharacter(true, mageStats, "Mage Guy", 2, 1, 2);
-        bardChar = SpawnCharacter(true, bardStats, "Bard Guy", 3, 3, 0);
-        monkChar = SpawnCharacter(true, monkStats, "Monk Guy", 4, 2, 3);
+        int howManyToSpawn = Random.Range(1, 5);
 
-        slimeChar = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/, 4, 0);
-        skeletonChar = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0, 4, 1);
-        WraithChar = SpawnCharacter(false, wraithStats, "Wraith Guy", 0, 4, 2);
-        GhostChar = SpawnCharacter(false, wraithStats, "Ghost Guy", 0, 4, 3);
+        //True for an ally, false for an enemy
+        if (fightingMage == false)
+        {
+            /*if (tankChar != null)
+            {
+                Debug.Log("Beans");
+
+                tankChar.statSheet.stats["Strength"] = tankStats[0];
+                tankChar.statSheet.stats["Magic Attack"] = tankStats[1];
+                tankChar.statSheet.stats["Defense"] = tankStats[2];
+                tankChar.statSheet.stats["Speed"] = tankStats[3];
+                tankChar.statSheet.stats["MaxHealth"] = tankStats[5];
+                tankChar.statSheet.stats["Mana"] = tankStats[6];
+                tankChar.statSheet.stats["MaxMana"] = tankStats[7];
+            }
+            else 
+            {*/
+
+            tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1, 0, 1);
+            mageChar = SpawnCharacter(true, mageStats, "Mage Guy", 2, 1, 2);
+            bardChar = SpawnCharacter(true, bardStats, "Bard Guy", 3, 3, 0);
+            monkChar = SpawnCharacter(true, monkStats, "Monk Guy", 4, 2, 3);
+
+            //firstEnemy = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/, 4, 0);
+            /*secondEnemy = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0, 4, 1);
+            thirdEnemy = SpawnCharacter(false, wraithStats, "Wraith Guy", 0, 4, 2);
+            FourthEnemy = SpawnCharacter(false, wraithStats, "Ghost Guy", 0, 4, 3);*/
+
+
+            SpawningEnemy(firstEnemy);
+
+            if (howManyToSpawn >= 2)
+            {
+                SpawningEnemy(secondEnemy);
+            }
+
+            if (howManyToSpawn >= 3)
+            {
+                SpawningEnemy(thirdEnemy);
+            }
+
+            if (howManyToSpawn >= 4)
+            {
+                SpawningEnemy(FourthEnemy);
+            }
+        }
+        else
+        {
+            tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1, 0, 1);
+            mageChar = SpawnCharacter(false, mageStats, "Mage Guy", 2, 1, 2);
+        }
         
 
         /*
@@ -76,7 +159,7 @@ public class BattleController : MonoBehaviour
 
     private static BattleController instance;
 
-    public LevelManager LevelManager;
+    public bool fightingMage;
 
     //Players
     private BattleCharacter tankChar;
@@ -85,10 +168,10 @@ public class BattleController : MonoBehaviour
     private BattleCharacter bardChar;
 
     //Enemies
-    private BattleCharacter slimeChar;
-    private BattleCharacter skeletonChar;
-    private BattleCharacter WraithChar;
-    private BattleCharacter GhostChar;
+    private BattleCharacter firstEnemy;
+    private BattleCharacter secondEnemy;
+    private BattleCharacter thirdEnemy;
+    private BattleCharacter FourthEnemy;
 
     private BattleCharacter activeChar;
 
@@ -211,6 +294,7 @@ public class BattleController : MonoBehaviour
 
     public GameObject fightingButtons;
 
+    public HealthManaTracker healthManaTracker;
     #endregion
 
     private enum State
@@ -361,14 +445,22 @@ public class BattleController : MonoBehaviour
 
     public void magicButton()
     {
-        state = State.Busy;
-
         /*activeChar.magAttack(enemyChar, activeChar, () =>
         {
             ChooseNextActiveChar();
         });*/
 
-        StartCoroutine(MagicTargeting());
+
+        if (activeChar.statSheet.stats["Mana"] > 0)
+        {
+            state = State.Busy;
+
+            StartCoroutine(MagicTargeting());
+        }
+        else
+        {
+            Debug.Log("Out of mana idiot");
+        }
     }
 
     public void specialButton()
@@ -801,7 +893,7 @@ public class BattleController : MonoBehaviour
             {
                 enemyList.RemoveAt(i);
 
-                LevelManager.currentEXP += 10;
+                levelManager.currentEXP += 10;
             }
         }
 
@@ -886,18 +978,63 @@ public class BattleController : MonoBehaviour
                 //Debug.Log("Not taunted");
                 enemyTarget = Random.Range(0, playerList.Count);
 
-                activeChar.Attack(playerList[enemyTarget], activeChar, () =>
+                if (activeChar.statSheet.magicElement == "No Magic")
                 {
-                    ChooseNextActiveChar();
-                });
+                    activeChar.Attack(playerList[enemyTarget], activeChar, () =>
+                    {
+                        ChooseNextActiveChar();
+                    });
+                }
+                else
+                {
+                    int whichAttack = Random.Range(1, 3);
+
+                    if (whichAttack == 1)
+                    {
+                        activeChar.Attack(playerList[enemyTarget], activeChar, () =>
+                        {
+                            ChooseNextActiveChar();
+                        });
+                    }
+                    else if (whichAttack == 2)
+                    {
+                        activeChar.magAttack(playerList[enemyTarget], activeChar, () =>
+                        {
+                            ChooseNextActiveChar();
+                        });
+                    }
+                }
             }
             else
             {
                 //Debug.Log("Taunted");
-                activeChar.Attack(tankChar, activeChar, () =>
+
+                if (activeChar.statSheet.magicElement == "No Magic")
                 {
-                    ChooseNextActiveChar();
-                });
+                    activeChar.Attack(tankChar, activeChar, () =>
+                    {
+                        ChooseNextActiveChar();
+                    });
+                }
+                else
+                {
+                    int whichAttack = Random.Range(1, 3);
+
+                    if (whichAttack == 1)
+                    {
+                        activeChar.Attack(tankChar, activeChar, () =>
+                        {
+                            ChooseNextActiveChar();
+                        });
+                    }
+                    else if (whichAttack == 2)
+                    {
+                        activeChar.magAttack(tankChar, activeChar, () =>
+                        {
+                            ChooseNextActiveChar();
+                        });
+                    }
+                }
             }
 
             //Debug.Log("Target: " +  enemyTarget);
@@ -968,9 +1105,19 @@ public class BattleController : MonoBehaviour
         {
             playerWinText.SetActive(true);
 
-            while (LevelManager.currentEXP >= LevelManager.lvlUpThreshold)
+            healthManaTracker.StoreStats(
+                tankChar.statSheet.stats["Health"],
+                tankChar.statSheet.stats["Mana"],
+                mageChar.statSheet.stats["Health"],
+                tankChar.statSheet.stats["Mana"],
+                monkChar.statSheet.stats["Health"],
+                monkChar.statSheet.stats["Mana"],
+                bardChar.statSheet.stats["Health"],
+                bardChar.statSheet.stats["Mana"]);
+
+            while (levelManager.currentEXP >= levelManager.lvlUpThreshold)
             {
-                LevelManager.LevelUp();
+                levelManager.LevelUp();
             }
             return true;
         }

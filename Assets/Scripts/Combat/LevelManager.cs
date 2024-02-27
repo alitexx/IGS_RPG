@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public int currentEXP;
-    public int level;
-    public int lvlUpThreshold;
+    public int currentEXP = 0;
+    public int level = 1;
+    public int lvlUpThreshold = 10;
+
+    static LevelManager Instance;
 
     public BattleController battleController;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (Instance != null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+        DontDestroyOnLoad(gameObject);
+
         level = 1;
         lvlUpThreshold = 10;
         currentEXP = 0;

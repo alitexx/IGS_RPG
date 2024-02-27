@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 0}
+  m_AnchoredPosition: {x: -1, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5804121
@@ -293,8 +293,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030518, y: 441}
-  m_SizeDelta: {x: 629.4595, y: 80.0032}
+  m_AnchoredPosition: {x: 13.1805, y: 337.75317}
+  m_SizeDelta: {x: 655.8203, y: 286.4969}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6008983
 MonoBehaviour:
@@ -316,7 +316,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: THE PLAYER WON
+  m_text: 'THE PLAYER WON
+
+    Press escape to go back to map'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -343,7 +345,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.85
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -955,6 +957,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647561922}
   m_CullTransparentMesh: 1
+--- !u!1 &685437477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685437479}
+  - component: {fileID: 685437478}
+  m_Layer: 0
+  m_Name: HealthManaTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &685437478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685437477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d08993c83dbeb64ca05564722ac4127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tankHealth: 0
+  tankMana: 0
+  mageHealth: 0
+  mageMana: 0
+  monkHealth: 0
+  monkMana: 0
+  bardHealth: 0
+  bardMana: 0
+--- !u!4 &685437479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685437477}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 965, y: 751.87366, z: -7.66}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &698616809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,14 +1058,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e3d0b892c203a45ae4356015c50c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 1623627605}
   playerCharacterTransform: {fileID: 2255272713044617730, guid: 7622d5b7fb536254c926d8035bd54989, type: 3}
-  LevelManager: {fileID: 1623627605}
+  fightingMage: 0
   fire: {fileID: 21300000, guid: 87e6a8311b2598140a539d2f487d367d, type: 3}
   ice: {fileID: 21300000, guid: 1a5b42b11b03f594abfb4df7aff7bf5e, type: 3}
   wind: {fileID: 21300000, guid: 510fded98bf85b845ade50986a821657, type: 3}
   electric: {fileID: 21300000, guid: 37a21b9d45273714da61c77bc5e329ff, type: 3}
   partyMembers: []
   fightingButtons: {fileID: 1238096860}
+  healthManaTracker: {fileID: 685437478}
   targetText: {fileID: 1458925680}
   confirmText: {fileID: 1065558444}
   playerWinText: {fileID: 6008981}
@@ -2831,7 +2887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEXP: 0
-  level: 0
+  level: 1
   lvlUpThreshold: 0
   battleController: {fileID: 698616811}
 --- !u!4 &1623627606

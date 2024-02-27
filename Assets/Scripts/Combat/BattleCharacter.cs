@@ -7,6 +7,7 @@ using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine.U2D;
 using CodeMonkey;
+using UnityEngine.UIElements;
 
 public class BattleCharacter : MonoBehaviour
 {
@@ -267,6 +268,8 @@ public class BattleCharacter : MonoBehaviour
     public void magAttack(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
     {
         state = State.Busy;
+
+        attacker.statSheet.stats["Mana"]--;
 
         if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)
         {
