@@ -20,9 +20,7 @@ public class EnemyMovement : MonoBehaviour
 
         if(DistanceBetweenObjects <= maxDistance)
         {
-            Vector2 distance = new Vector2(TargetRB.position.x - EnemyRB.position.x, TargetRB.position.y - EnemyRB.position.y);
-            distance = distance.normalized;
-            EnemyRB.AddForce(distance * Speed);
+            EnemyRB.transform.position = Vector2.MoveTowards(EnemyRB.transform.position, TargetRB.transform.position, Speed * Time.deltaTime);
         }
     }
 }
