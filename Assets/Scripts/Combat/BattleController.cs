@@ -175,7 +175,6 @@ public class BattleController : MonoBehaviour
 
     private BattleCharacter activeChar;
 
-    //Testing turn order
     private Queue<BattleCharacter> characterQueue = new Queue<BattleCharacter>();
     private Queue<BattleCharacter> alreadyWent = new Queue<BattleCharacter>();
 
@@ -272,7 +271,7 @@ public class BattleController : MonoBehaviour
     //Magic Types
     public Dictionary<int ,string> magicTypes = new Dictionary<int, string>()
     {
-        {0, "Fire"},
+        {0 , "Fire"},
         {1 , "Ice"},
         {2 , "Electric"},
         {3 , "Wind"},
@@ -500,7 +499,7 @@ public class BattleController : MonoBehaviour
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
@@ -513,7 +512,7 @@ public class BattleController : MonoBehaviour
                 }
                 enemyList[enemyNum].ShowTargetCircle();
             }
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
@@ -798,46 +797,46 @@ public class BattleController : MonoBehaviour
         {
             if (playerList.Count == 0)
             {
-                position = new Vector3(-5, 4);
+                position = new Vector3(-3, -3);
             }
             else if (playerList.Count == 1)
             {
-                position = new Vector3(-5, 2);
+                position = new Vector3(-6, -3);
             }
             else if (playerList.Count == 2)
             {
-                position = new Vector3(-5, 0);
+                position = new Vector3(-0, -3);
             }
             else if (playerList.Count == 3)
             {
-                position = new Vector3(-5, -2);
+                position = new Vector3(-9, -3);
             }
             else
             {
-                position = new Vector3(-5, 0);
+                position = new Vector3(-5, -3);
             }
         }
         else
         {
             if (enemyList.Count == 0)
             {
-                position = new Vector3(5, 4);
+                position = new Vector3(0, 3);
             }
             else if (enemyList.Count == 1)
             {
-                position = new Vector3(5, 2);
+                position = new Vector3(3, 3);
             }
             else if (enemyList.Count == 2)
             {
-                position = new Vector3(5, 0);
+                position = new Vector3(6, 3);
             }
             else if (enemyList.Count == 3)
             {
-                position = new Vector3(5, -2);
+                position = new Vector3(9, 3);
             }
             else
             {
-                position = new Vector3(5, 0);
+                position = new Vector3(0, 3);
             }
         }
         Transform characterTransform =  Instantiate(playerCharacterTransform, position, Quaternion.identity);
