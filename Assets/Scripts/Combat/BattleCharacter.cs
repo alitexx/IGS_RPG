@@ -291,6 +291,8 @@ public class BattleCharacter : MonoBehaviour
             targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"], 0 /*Placeholder because magic ignores defense*/ );
         }
 
+        animator.SetBool("MagAttacking", false);
+
         state = State.Idle;
 
         onAttackComplete();
@@ -298,7 +300,7 @@ public class BattleCharacter : MonoBehaviour
 
     public void magAttackOver()
     {
-        animator.SetBool("MagAttacking", false);
+        state = State.Busy;
     }
 
     /*public void specialMove(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
