@@ -63,16 +63,19 @@ namespace DIALOGUE
 
 
         public void ShowSpeakerName(string speakerName = "")
-        {   
-            if (speakerName.ToLower() != "narrator")
-            {
-                dialogueContainer.nameText.Show(speakerName);
-            } else
-            {
-                HideSpeakerName();
-            }
+        {
+            dialogueContainer.nameText.Show(speakerName);
+            //if (speakerName.ToLower() != "narrator")
+            //{
+            //    dialogueContainer.nameText.Show(speakerName);
+            //} else
+            //{
+            //    HideSpeakerName();
+            //}
         }
-        public void HideSpeakerName() => dialogueContainer.nameText.Hide();
+
+        //come here if you want to change name color
+        //public void HideSpeakerName() => dialogueContainer.nameText.Hide();
 
         public Coroutine Say(string speaker, string dialogue)
         {

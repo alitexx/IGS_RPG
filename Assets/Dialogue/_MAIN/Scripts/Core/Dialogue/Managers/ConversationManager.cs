@@ -82,10 +82,6 @@ namespace DIALOGUE
             {
                 HandleSpeakerLogic(line.speakerData);
             }
-            else
-            {
-                dialogueSystem.HideSpeakerName();
-            }
             // build dialogue
             //more specifically, take line segments and check for waiting, appending, etc.
             yield return BuildLineSegments(line.dialogueData);
