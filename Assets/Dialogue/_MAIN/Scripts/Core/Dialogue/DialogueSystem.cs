@@ -68,7 +68,8 @@ namespace DIALOGUE
             //if (speakerName.ToLower() != "narrator")
             //{
             //    dialogueContainer.nameText.Show(speakerName);
-            //} else
+            //}
+            //else
             //{
             //    HideSpeakerName();
             //}
