@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public Transform[] waypointTrail = new Transform[4];
     public int followGap;
 
+    public GameObject BattleUI;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -84,7 +86,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(collision.gameObject);
-            SceneManager.LoadScene("BattleCoding"); 
+            isfrozen = true;
+            BattleUI.SetActive(true);
         }
     
     }
