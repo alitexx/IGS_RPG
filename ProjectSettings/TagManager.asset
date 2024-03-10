@@ -9,6 +9,7 @@ TagManager:
   - Switch
   - Statue
   - Lever
+  - Boss
   layers:
   - Default
   - TransparentFX

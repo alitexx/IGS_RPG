@@ -20,7 +20,14 @@ public class PlayerController : MonoBehaviour
     public Transform[] waypointTrail = new Transform[4];
     public int followGap;
 
+    //Battle stuff
     public GameObject BattleUI;
+
+    bool hasKisa = false;
+    bool hasNicol = false;
+    bool hasShopie = false;
+
+    //public Battlescript battle; (Not sure what the class of the battlescript is called)
 
     private void Start()
     {
@@ -89,7 +96,20 @@ public class PlayerController : MonoBehaviour
             isfrozen = true;
             BattleUI.SetActive(true);
         }
-    
+
+        /*if (collision.gameObject.tag == "Boss")
+        {
+            isfrozen = true;
+            
+            bool isBoss = True
+            tell which boss it is to the script
+            do anything else (like party members)
+            
+            BattleUI.SetActive(true);
+        }
+        */
+
+
     }
 
 }
