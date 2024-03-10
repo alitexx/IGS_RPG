@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = 5f;
     public Rigidbody2D rb;
-    private bool isfrozen;
+    public bool isfrozen;
 
     private Vector2 input;
 
@@ -23,9 +23,9 @@ public class PlayerController : MonoBehaviour
     //Battle stuff
     public GameObject BattleUI;
 
-    bool hasKisa = false;
-    bool hasNicol = false;
-    bool hasShopie = false;
+    public bool hasKisa = false;
+    public bool hasNicol = false;
+    public bool hasShopie = false;
 
     //public Battlescript battle; (Not sure what the class of the battlescript is called)
 
