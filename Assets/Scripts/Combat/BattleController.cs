@@ -294,6 +294,10 @@ public class BattleController : MonoBehaviour
     public GameObject fightingButtons;
 
     public HealthManaTracker healthManaTracker;
+
+    public Camera mainCamera;
+
+    public GameObject battleObject;
     #endregion
 
     private enum State
@@ -566,7 +570,7 @@ public class BattleController : MonoBehaviour
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
@@ -579,7 +583,7 @@ public class BattleController : MonoBehaviour
                 }
                 enemyList[enemyNum].ShowTargetCircle();
             }
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
@@ -642,7 +646,7 @@ public class BattleController : MonoBehaviour
 
             while (!Input.GetKeyDown(KeyCode.Return))
             {
-                if (Input.GetKeyDown(KeyCode.DownArrow))
+                if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == enemyList.Count - 1)
@@ -655,7 +659,7 @@ public class BattleController : MonoBehaviour
                     }
                     enemyList[enemyNum].ShowTargetCircle();
                 }
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == 0)
@@ -750,7 +754,7 @@ public class BattleController : MonoBehaviour
 
             while (!Input.GetKeyDown(KeyCode.Return))
             {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
+                if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == enemyList.Count - 1)
@@ -763,7 +767,7 @@ public class BattleController : MonoBehaviour
                     }
                     enemyList[enemyNum].ShowTargetCircle();
                 }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == 0)
@@ -797,49 +801,49 @@ public class BattleController : MonoBehaviour
         {
             if (playerList.Count == 0)
             {
-                position = new Vector3(-3, -3);
+                position = new Vector3(mainCamera.transform.position.x - 3, mainCamera.transform.position.y - 3);
             }
             else if (playerList.Count == 1)
             {
-                position = new Vector3(-6, -3);
+                position = new Vector3(mainCamera.transform.position.x - 6, mainCamera.transform.position.y - 3);
             }
             else if (playerList.Count == 2)
             {
-                position = new Vector3(-0, -3);
+                position = new Vector3(mainCamera.transform.position.x - 0, mainCamera.transform.position.y - 3);
             }
             else if (playerList.Count == 3)
             {
-                position = new Vector3(-9, -3);
+                position = new Vector3(mainCamera.transform.position.x - 9, mainCamera.transform.position.y - 3);
             }
             else
             {
-                position = new Vector3(-5, -3);
+                position = new Vector3(mainCamera.transform.position.x - 5, mainCamera.transform.position.y - 3);
             }
         }
         else
         {
             if (enemyList.Count == 0)
             {
-                position = new Vector3(0, 3);
+                position = new Vector3(mainCamera.transform.position.x - 0, mainCamera.transform.position.y + 3);
             }
             else if (enemyList.Count == 1)
             {
-                position = new Vector3(3, 3);
+                position = new Vector3(mainCamera.transform.position.x + 3, mainCamera.transform.position.y + 3);
             }
             else if (enemyList.Count == 2)
             {
-                position = new Vector3(6, 3);
+                position = new Vector3(mainCamera.transform.position.x + 6, mainCamera.transform.position.y + 3);
             }
             else if (enemyList.Count == 3)
             {
-                position = new Vector3(9, 3);
+                position = new Vector3(mainCamera.transform.position.x + 9, mainCamera.transform.position.y + 3);
             }
             else
             {
-                position = new Vector3(0, 3);
+                position = new Vector3(mainCamera.transform.position.x + 0, mainCamera.transform.position.y + 3);
             }
         }
-        Transform characterTransform =  Instantiate(playerCharacterTransform, position, Quaternion.identity);
+        Transform characterTransform =  Instantiate(playerCharacterTransform, position, Quaternion.identity, battleObject.transform);
         BattleCharacter battleCharacter = characterTransform.GetComponent<BattleCharacter>();
 
         //Setting stats
