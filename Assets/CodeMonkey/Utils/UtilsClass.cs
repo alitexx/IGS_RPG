@@ -69,6 +69,7 @@ namespace CodeMonkey.Utils {
             spriteRenderer.sprite = sprite;
             spriteRenderer.sortingOrder = sortingOrder;
             spriteRenderer.color = color;
+            spriteRenderer.sortingLayerName = "Trim";
             return gameObject;
         }
 

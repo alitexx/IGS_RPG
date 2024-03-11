@@ -18,9 +18,11 @@ public class BattleController : MonoBehaviour
 
     public LevelManager levelManager;
 
-    BattleCharacter SpawningEnemy(BattleCharacter enemySpawning)
+    BattleCharacter SpawningEnemy(/*BattleCharacter enemySpawning*/)
     {
         int randomiser = Random.Range(1, 5);
+
+        BattleCharacter enemySpawning;
 
         if (randomiser == 1)
         {
@@ -53,7 +55,7 @@ public class BattleController : MonoBehaviour
         //Make it so the stats are changed with the level
     }
 
-    private void Awake()
+    private void OnEnable()
     {
         SetStats();
 
@@ -80,9 +82,20 @@ public class BattleController : MonoBehaviour
             {*/
 
             tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1, 0, 1);
-            mageChar = SpawnCharacter(true, mageStats, "Mage Guy", 2, 1, 2);
-            bardChar = SpawnCharacter(true, bardStats, "Bard Guy", 3, 3, 0);
-            monkChar = SpawnCharacter(true, monkStats, "Monk Guy", 4, 2, 3);
+            if (playerController.hasNicol)
+            {
+                mageChar = SpawnCharacter(true, mageStats, "Mage Guy", 2, 1, 2);
+            }
+
+            if (playerController.hasKisa)
+            {
+                bardChar = SpawnCharacter(true, bardStats, "Bard Guy", 3, 3, 0);
+            }
+
+            if (playerController.hasShopie)
+            {
+                monkChar = SpawnCharacter(true, monkStats, "Monk Guy", 4, 2, 3);
+            }
 
             //firstEnemy = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/, 4, 0);
             /*secondEnemy = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0, 4, 1);
@@ -90,21 +103,23 @@ public class BattleController : MonoBehaviour
             FourthEnemy = SpawnCharacter(false, wraithStats, "Ghost Guy", 0, 4, 3);*/
 
 
-            SpawningEnemy(firstEnemy);
+            firstEnemy = SpawningEnemy();
+
+            //firstEnemy = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/, 4, 0);
 
             if (howManyToSpawn >= 2)
             {
-                SpawningEnemy(secondEnemy);
+                secondEnemy = SpawningEnemy();
             }
 
             if (howManyToSpawn >= 3)
             {
-                SpawningEnemy(thirdEnemy);
+                thirdEnemy = SpawningEnemy();
             }
 
             if (howManyToSpawn >= 4)
             {
-                SpawningEnemy(FourthEnemy);
+                FourthEnemy = SpawningEnemy();
             }
         }
         else
@@ -175,7 +190,6 @@ public class BattleController : MonoBehaviour
 
     private BattleCharacter activeChar;
 
-    //Testing turn order
     private Queue<BattleCharacter> characterQueue = new Queue<BattleCharacter>();
     private Queue<BattleCharacter> alreadyWent = new Queue<BattleCharacter>();
 
@@ -272,7 +286,7 @@ public class BattleController : MonoBehaviour
     //Magic Types
     public Dictionary<int ,string> magicTypes = new Dictionary<int, string>()
     {
-        {0, "Fire"},
+        {0 , "Fire"},
         {1 , "Ice"},
         {2 , "Electric"},
         {3 , "Wind"},
@@ -295,6 +309,14 @@ public class BattleController : MonoBehaviour
     public GameObject fightingButtons;
 
     public HealthManaTracker healthManaTracker;
+
+    public Camera mainCamera;
+
+    public GameObject fighterObject;
+
+    public GameObject battleObject;
+
+    public PlayerController playerController;
     #endregion
 
     private enum State
@@ -500,7 +522,7 @@ public class BattleController : MonoBehaviour
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
@@ -513,7 +535,7 @@ public class BattleController : MonoBehaviour
                 }
                 enemyList[enemyNum].ShowTargetCircle();
             }
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
@@ -567,7 +589,7 @@ public class BattleController : MonoBehaviour
 
         while (!Input.GetKeyDown(KeyCode.Return))
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
@@ -580,7 +602,7 @@ public class BattleController : MonoBehaviour
                 }
                 enemyList[enemyNum].ShowTargetCircle();
             }
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
@@ -643,7 +665,7 @@ public class BattleController : MonoBehaviour
 
             while (!Input.GetKeyDown(KeyCode.Return))
             {
-                if (Input.GetKeyDown(KeyCode.DownArrow))
+                if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == enemyList.Count - 1)
@@ -656,7 +678,7 @@ public class BattleController : MonoBehaviour
                     }
                     enemyList[enemyNum].ShowTargetCircle();
                 }
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == 0)
@@ -751,7 +773,7 @@ public class BattleController : MonoBehaviour
 
             while (!Input.GetKeyDown(KeyCode.Return))
             {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
+                if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == enemyList.Count - 1)
@@ -764,7 +786,7 @@ public class BattleController : MonoBehaviour
                     }
                     enemyList[enemyNum].ShowTargetCircle();
                 }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == 0)
@@ -798,49 +820,49 @@ public class BattleController : MonoBehaviour
         {
             if (playerList.Count == 0)
             {
-                position = new Vector3(-5, 4);
+                position = new Vector3(mainCamera.transform.position.x - 3, mainCamera.transform.position.y - 3);
             }
             else if (playerList.Count == 1)
             {
-                position = new Vector3(-5, 2);
+                position = new Vector3(mainCamera.transform.position.x - 6, mainCamera.transform.position.y - 3);
             }
             else if (playerList.Count == 2)
             {
-                position = new Vector3(-5, 0);
+                position = new Vector3(mainCamera.transform.position.x - 0, mainCamera.transform.position.y - 3);
             }
             else if (playerList.Count == 3)
             {
-                position = new Vector3(-5, -2);
+                position = new Vector3(mainCamera.transform.position.x - 9, mainCamera.transform.position.y - 3);
             }
             else
             {
-                position = new Vector3(-5, 0);
+                position = new Vector3(mainCamera.transform.position.x - 5, mainCamera.transform.position.y - 3);
             }
         }
         else
         {
             if (enemyList.Count == 0)
             {
-                position = new Vector3(5, 4);
+                position = new Vector3(mainCamera.transform.position.x - 0, mainCamera.transform.position.y + 3);
             }
             else if (enemyList.Count == 1)
             {
-                position = new Vector3(5, 2);
+                position = new Vector3(mainCamera.transform.position.x + 3, mainCamera.transform.position.y + 3);
             }
             else if (enemyList.Count == 2)
             {
-                position = new Vector3(5, 0);
+                position = new Vector3(mainCamera.transform.position.x + 6, mainCamera.transform.position.y + 3);
             }
             else if (enemyList.Count == 3)
             {
-                position = new Vector3(5, -2);
+                position = new Vector3(mainCamera.transform.position.x + 9, mainCamera.transform.position.y + 3);
             }
             else
             {
-                position = new Vector3(5, 0);
+                position = new Vector3(mainCamera.transform.position.x + 0, mainCamera.transform.position.y + 3);
             }
         }
-        Transform characterTransform =  Instantiate(playerCharacterTransform, position, Quaternion.identity);
+        Transform characterTransform =  Instantiate(playerCharacterTransform, position, Quaternion.identity, fighterObject.transform);
         BattleCharacter battleCharacter = characterTransform.GetComponent<BattleCharacter>();
 
         //Setting stats
@@ -1119,6 +1141,53 @@ public class BattleController : MonoBehaviour
             {
                 levelManager.LevelUp();
             }
+            playerController.isfrozen = false;
+
+            #region Destroy Existing Char
+
+            if (tankChar != null)
+            {
+                Destroy(tankChar.gameObject);
+            }
+            
+            if (monkChar != null)
+            {
+                Destroy(monkChar.gameObject);
+            }
+
+            if (bardChar != null)
+            {
+                Destroy(bardChar.gameObject);
+            }
+
+            if (mageChar != null)
+            {
+                Destroy(mageChar.gameObject);
+            }
+
+            if (firstEnemy != null)
+            {
+                Destroy(firstEnemy.gameObject);
+            }
+
+            if (secondEnemy != null)
+            {
+                Destroy(secondEnemy.gameObject);
+            }
+
+            if (thirdEnemy != null)
+            {
+                Destroy(thirdEnemy.gameObject);
+            }
+
+            if (FourthEnemy != null)
+            {
+                Destroy(FourthEnemy.gameObject);
+            }
+            #endregion
+
+            battleObject.SetActive(false);
+
             return true;
         }
         else

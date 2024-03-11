@@ -40,19 +40,7 @@ public class BattleCharacter : MonoBehaviour
     //temporary health bar
     private World_Bar healthBar;
 
-    #region SpriteSheet
-
-    [Header("Sprites")]
-
-    
-    public Sprite slimeStart;
-    public Sprite ghostStart;
-    public Sprite wraithStart;
-    public Sprite skeletonStart;
-
     public Animator animator;
-
-    #endregion
 
     private enum State
     {
@@ -91,21 +79,25 @@ public class BattleCharacter : MonoBehaviour
             if (statSheet.name == "Tank Guy")
             {
                 charSprite.color = Color.magenta;
+                animator.SetBool("isTank", true);
             }
             else if (statSheet.name == "Mage Guy")
             {
-                charSprite.color = Color.red;
+                //charSprite.color = Color.red;
+                animator.SetBool("isMage", true);
             }
             else if (statSheet.name == "Monk Guy")
             {
                 charSprite.color = Color.yellow;
+                animator.SetBool("isMonk", true);
             }
             else if (statSheet.name == "Bard Guy")
             {
                 charSprite.color = Color.green;
+                animator.SetBool("isBard", true);
             }
 
-            healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.green, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
+            healthBar = new World_Bar(transform, new Vector3(0, 0.8f), new Vector3(1, 0.2f), Color.grey, Color.green, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         }
         else
         {
@@ -113,30 +105,25 @@ public class BattleCharacter : MonoBehaviour
             if (statSheet.name == "Slime Guy")
             {
                 //charSprite.color = Color.cyan;
-                charSprite.sprite = slimeStart;
                 animator.SetBool("isSlime", true);
-                
             }
             else if (statSheet.name == "Skeleton Guy")
             {
                 //charSprite.color = Color.white;
-                charSprite.sprite = skeletonStart;
                 animator.SetBool("isSkeleton", true);
             }
             else if (statSheet.name == "Wraith Guy")
             {
                 //charSprite.color = Color.black;
-                charSprite.sprite = wraithStart;
                 animator.SetBool("isWraith", true);
             }
             else if (statSheet.name == "Ghost Guy")
             {
                 //charSprite.color = Color.grey;
-                charSprite.sprite = ghostStart;
                 animator.SetBool("isGhost", true);
             }
 
-            healthBar = new World_Bar(transform, new Vector3(0, 1), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
+            healthBar = new World_Bar(transform, new Vector3(0, 0.8f), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         }
 
         healthSystem = new HealthSystem(statSheet.stats["MaxHealth"]);
@@ -267,9 +254,33 @@ public class BattleCharacter : MonoBehaviour
 
     public void magAttack(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
     {
-        state = State.Busy;
+        state = State.Attacking;
+        attacker.animator.SetBool("MagAttacking", true);
 
         attacker.statSheet.stats["Mana"]--;
+
+        /*if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)
+        {
+            targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"] * 2, 0);//0 is a placeholder because magic ignores defense
+        }
+        else
+        {
+            targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"], 0);
+        }
+
+        state = State.Idle;
+
+        onAttackComplete();*/
+
+        StartCoroutine(WaitUntilMagAttackOver(targetCharacter, attacker, onAttackComplete));
+    }
+
+    private IEnumerator WaitUntilMagAttackOver(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
+    {
+        while (attacker.state == State.Attacking)
+        {
+            yield return null;
+        }
 
         if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)
         {
@@ -280,9 +291,16 @@ public class BattleCharacter : MonoBehaviour
             targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"], 0 /*Placeholder because magic ignores defense*/ );
         }
 
+        animator.SetBool("MagAttacking", false);
+
         state = State.Idle;
 
         onAttackComplete();
+    }
+
+    public void magAttackOver()
+    {
+        state = State.Busy;
     }
 
     /*public void specialMove(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
