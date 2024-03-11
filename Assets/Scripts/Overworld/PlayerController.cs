@@ -27,6 +27,12 @@ public class PlayerController : MonoBehaviour
     public bool hasNicol = false;
     public bool hasShopie = false;
 
+    public bool isSlime = false;
+    public bool isWraith = false;
+    public bool isInvisGuy = false;
+    public bool isSkeleton = false;
+    public bool isBoss = false;
+
     //public Battlescript battle; (Not sure what the class of the battlescript is called)
 
     private void Start()
@@ -90,24 +96,54 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        isSlime = false;
+        isWraith = false;
+        isInvisGuy = false;
+        isSkeleton = false;
+
+        if (collision.gameObject.tag == "Slime")
         {
             Destroy(collision.gameObject);
             isfrozen = true;
+            isSlime = true;
+            BattleUI.SetActive(true);
+        }
+        
+        if (collision.gameObject.tag == "Wraith")
+        {
+            Destroy(collision.gameObject);
+            isfrozen = true;
+            isWraith = true;
+            BattleUI.SetActive(true);
+        }
+       
+        if (collision.gameObject.tag == "InvisGuy")
+        {
+            Destroy(collision.gameObject);
+            isfrozen = true;
+            isInvisGuy = true;
+            BattleUI.SetActive(true);
+        }
+        
+        if (collision.gameObject.tag == "Skeleton")
+        {
+            Destroy(collision.gameObject);
+            isfrozen = true;
+            isSkeleton = true;
             BattleUI.SetActive(true);
         }
 
-        /*if (collision.gameObject.tag == "Boss")
+        if (collision.gameObject.tag == "Boss")
         {
             isfrozen = true;
-            
-            bool isBoss = True
-            tell which boss it is to the script
-            do anything else (like party members)
+
+            isBoss = true;
+            //tell which boss it is to the script
+            //do anything else (like party members)
             
             BattleUI.SetActive(true);
         }
-        */
+        
 
 
     }
