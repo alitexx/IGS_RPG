@@ -10,6 +10,9 @@ namespace CHARACTERS
         public string name;
         public string alias;
         public Character.CharacterType characterType;
+        public Sprite charNameHolder;
+        //may not be an audio clip, double check when implementing
+        public AudioClip charVoice;
 
         //go to episode 5 part 1 for name color, dilogue color, fonts, etc.
 
@@ -20,6 +23,8 @@ namespace CHARACTERS
             result.name = name;
             result.alias = alias;
             result.characterType = characterType;
+            result.charNameHolder = charNameHolder;
+            result.charVoice = charVoice;
 
             return result;
         }

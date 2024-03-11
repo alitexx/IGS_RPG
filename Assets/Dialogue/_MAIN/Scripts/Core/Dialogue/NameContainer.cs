@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 namespace DIALOGUE
 {
@@ -10,6 +11,9 @@ namespace DIALOGUE
         [SerializeField] private GameObject root;
         [SerializeField] private TextMeshProUGUI nameText;
 
+
+        [SerializeField] private SpriteRenderer dialogueNameSprite;
+
         public void Show(string nameToShow)
         {
             root.SetActive(true);
@@ -18,6 +22,11 @@ namespace DIALOGUE
             {
                 nameText.text = nameToShow;
             }
+        }
+
+        public void ChangeNameSprite(Sprite sprite)
+        {
+            dialogueNameSprite.sprite = sprite;
         }
 
         public void Hide()

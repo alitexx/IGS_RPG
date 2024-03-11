@@ -16,21 +16,35 @@ MonoBehaviour:
   - name: Alan
     alias: alan
     characterType: 1
+    charNameHolder: {fileID: 21300000, guid: f84f55160075e494ca69617e344dc4e5, type: 3}
+    charVoice: {fileID: 0}
   - name: Kisa
     alias: kisa
     characterType: 1
+    charNameHolder: {fileID: 21300000, guid: 303651d4a47c0be429dc9bce8d0dbf31, type: 3}
+    charVoice: {fileID: 0}
   - name: Nicol
     alias: nicol
     characterType: 1
+    charNameHolder: {fileID: 21300000, guid: 7dd614557d703cb499078d0ab4a72b38, type: 3}
+    charVoice: {fileID: 0}
   - name: Sophie
     alias: sophie
     characterType: 1
+    charNameHolder: {fileID: 21300000, guid: 6840b7a0b62cc96409ec187a8fd7cc26, type: 3}
+    charVoice: {fileID: 0}
   - name: Lich
     alias: lich
     characterType: 1
+    charNameHolder: {fileID: 21300000, guid: 83ec3482aed89e043a6b19d635582830, type: 3}
+    charVoice: {fileID: 0}
   - name: Leora
     alias: leora
     characterType: 1
+    charNameHolder: {fileID: 21300000, guid: 83ec3482aed89e043a6b19d635582830, type: 3}
+    charVoice: {fileID: 0}
   - name: Miguel
     alias: miguel
     characterType: 1
+    charNameHolder: {fileID: 21300000, guid: 83ec3482aed89e043a6b19d635582830, type: 3}
+    charVoice: {fileID: 0}
