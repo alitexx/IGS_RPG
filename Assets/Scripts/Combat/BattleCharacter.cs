@@ -39,6 +39,7 @@ public class BattleCharacter : MonoBehaviour
     public HealthSystem healthSystem;
     //temporary health bar
     private World_Bar healthBar;
+    private World_Bar manaBar;
 
     public Animator animator;
 
@@ -98,6 +99,7 @@ public class BattleCharacter : MonoBehaviour
             }
 
             healthBar = new World_Bar(transform, new Vector3(0, 0.8f), new Vector3(1, 0.2f), Color.grey, Color.green, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
+            manaBar = new World_Bar(transform, new Vector3(0, 1f), new Vector3(1, 0.2f), Color.grey, Color.blue, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         }
         else
         {
@@ -258,6 +260,8 @@ public class BattleCharacter : MonoBehaviour
         attacker.animator.SetBool("MagAttacking", true);
 
         attacker.statSheet.stats["Mana"]--;
+
+        manaBar.SetSize((float)attacker.statSheet.stats["Mana"] / attacker.statSheet.stats["MaxMana"]);
 
         /*if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)
         {
