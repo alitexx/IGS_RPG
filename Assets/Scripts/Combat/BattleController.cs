@@ -1125,7 +1125,12 @@ public class BattleController : MonoBehaviour
         {
             playerWinText.SetActive(true);
 
-            healthManaTracker.StoreStats(
+            while (levelManager.currentEXP >= levelManager.lvlUpThreshold)
+            {
+                levelManager.LevelUp();
+            }
+
+            healthManaTracker.StoreHealthAndMana(
                 tankChar.statSheet.stats["Health"],
                 tankChar.statSheet.stats["Mana"],
                 mageChar.statSheet.stats["Health"],
@@ -1135,10 +1140,6 @@ public class BattleController : MonoBehaviour
                 bardChar.statSheet.stats["Health"],
                 bardChar.statSheet.stats["Mana"]);
 
-            while (levelManager.currentEXP >= levelManager.lvlUpThreshold)
-            {
-                levelManager.LevelUp();
-            }
             playerController.isfrozen = false;
 
             #region Destroy Existing Char

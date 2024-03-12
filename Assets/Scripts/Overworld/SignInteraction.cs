@@ -5,13 +5,16 @@ using UnityEngine;
 public class SignInteraction : MonoBehaviour
 {
     public GameObject SignUI;
+    public GameObject Target;
+    float maxDistance = 5f;
+    float DistanceBetweenObjects;
 
-    
-    private void OnCollisionStay2D(Collision2D collision)
+    void Update()
     {
-        if (collision.gameObject.tag == "Player" && Input.GetKeyDown("space"))
+        DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
+
+        if (DistanceBetweenObjects <= maxDistance)
         {
-            Debug.Log("Sign signed correctly");
             StartCoroutine(SignMessage());
         }
     }

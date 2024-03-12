@@ -17,6 +17,8 @@ public class HealthManaTracker : MonoBehaviour
         {
             instance = this;
         }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public int tankHealth;
@@ -28,7 +30,7 @@ public class HealthManaTracker : MonoBehaviour
     public int bardHealth;
     public int bardMana;
 
-    public void StoreStats(int tankH, int tankM, int mageH, int mageM, int monkH, int monkM, int bardH, int bardM)
+    public void StoreHealthAndMana(int tankH, int tankM, int mageH, int mageM, int monkH, int monkM, int bardH, int bardM)
     {
         tankHealth = tankH;
         tankMana = tankM;
@@ -38,5 +40,25 @@ public class HealthManaTracker : MonoBehaviour
         monkMana = monkH;
         bardHealth = bardH;
         bardMana = bardM;
+    }
+
+    public int GetTankHealth()
+    {
+        return tankHealth;
+    }
+
+    public int GetTankMana()
+    {
+        return tankMana;
+    }
+
+    public int GetMageHealth()
+    {
+        return mageHealth;
+    }
+
+    public int GetMageMana()
+    {
+        return mageMana;
     }
 }
