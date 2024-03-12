@@ -1,0 +1,4 @@
+enter alan "hello i am alan from the hit game lone labyrinth"
+alan.Move(0 1 -spd 0.5)
+enter nicol "hello i am nicol from the hit game lone labyrinth"
+alan.Hide()
