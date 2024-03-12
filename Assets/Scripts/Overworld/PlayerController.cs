@@ -139,8 +139,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Boss")
         {
+            Destroy(collision.gameObject);
             isfrozen = true;
-
             isBoss = true;
             //tell which boss it is to the script
             //do anything else (like party members)
