@@ -12,6 +12,18 @@ public class LevelManager : MonoBehaviour
 
     public BattleController battleController;
 
+    #region Stats to Store
+
+    public int[] tankStoredStats;
+
+    public int[] monkStoredStats;
+
+    public int[] mageStoredStats;
+
+    public int[] bardStoredStats;
+
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,5 +71,10 @@ public class LevelManager : MonoBehaviour
                 Debug.Log("Monk has leveled up.");
             }
         }
+    }
+
+    public void StoreTankStats()
+    {
+        
     }
 }
