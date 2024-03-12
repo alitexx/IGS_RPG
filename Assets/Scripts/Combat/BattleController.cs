@@ -44,7 +44,7 @@ public class BattleController : MonoBehaviour
         }
         else
         {
-            enemySpawning = SpawnCharacter(false, wraithStats, "Ghost Guy", 0, 4, 3);
+            enemySpawning = SpawnCharacter(false, ghostStats, "Ghost Guy", 0, 4, 3);
 
             return enemySpawning;
         }
@@ -103,7 +103,27 @@ public class BattleController : MonoBehaviour
             FourthEnemy = SpawnCharacter(false, wraithStats, "Ghost Guy", 0, 4, 3);*/
 
 
-            firstEnemy = SpawningEnemy();
+            if (playerController.isSlime)
+            {
+                firstEnemy = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/, 4, 0);
+            }
+            else if (playerController.isSkeleton) 
+            { 
+                firstEnemy = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0, 4, 1);
+            }
+            else if (playerController.isWraith)
+            {
+                firstEnemy = SpawnCharacter(false, wraithStats, "Wraith Guy", 0, 4, 2);
+            }
+            else if (playerController.isInvisGuy)
+            {
+                firstEnemy = SpawnCharacter(false, ghostStats, "Ghost Guy", 0, 4, 3);
+            }
+
+            playerController.isSlime = false;
+            playerController.isSkeleton =false;
+            playerController.isWraith = false;
+            playerController.isInvisGuy = false;
 
             //firstEnemy = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/, 4, 0);
 
@@ -1144,6 +1164,14 @@ public class BattleController : MonoBehaviour
             playerController.isfrozen = false;
 
             #region Destroy Existing Char
+
+            playerList.Clear();
+
+            characterQueue.Clear();
+            
+            alreadyWent.Clear();
+
+            enemyList.Clear();
 
             if (tankChar != null)
             {
