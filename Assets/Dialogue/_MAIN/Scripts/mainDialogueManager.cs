@@ -23,7 +23,7 @@ public class mainDialogueManager : MonoBehaviour
     [SerializeField] private Transform dialogueBox;
     // when loading something from resources, you dont specify the file extension
     //[SerializeField] private TextAsset fileName;
-    private string fileName = "textFile";
+    private string fileName = "TextFiles/openingScene";
 
     private void Start()
     {
