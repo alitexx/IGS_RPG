@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = 5f;
     public Rigidbody2D rb;
-    public bool isfrozen;
+    public bool isfrozen = false;
 
     private Vector2 input;
 
@@ -91,7 +91,11 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + input * movementSpeed * Time.fixedDeltaTime);
+        if(isfrozen == false)
+        {
+            rb.MovePosition(rb.position + input * movementSpeed * Time.fixedDeltaTime);
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -143,8 +147,8 @@ public class PlayerController : MonoBehaviour
             
             BattleUI.SetActive(true);
         }
-        
 
+        
 
     }
 
