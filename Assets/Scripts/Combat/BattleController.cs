@@ -328,8 +328,6 @@ public class BattleController : MonoBehaviour
 
     public GameObject fightingButtons;
 
-    public HealthManaTracker healthManaTracker;
-
     public Camera mainCamera;
 
     public GameObject fighterObject;
@@ -1129,16 +1127,6 @@ public class BattleController : MonoBehaviour
             {
                 levelManager.LevelUp();
             }
-
-            healthManaTracker.StoreHealthAndMana(
-                tankChar.statSheet.stats["Health"],
-                tankChar.statSheet.stats["Mana"],
-                mageChar.statSheet.stats["Health"],
-                tankChar.statSheet.stats["Mana"],
-                monkChar.statSheet.stats["Health"],
-                monkChar.statSheet.stats["Mana"],
-                bardChar.statSheet.stats["Health"],
-                bardChar.statSheet.stats["Mana"]);
 
             playerController.isfrozen = false;
 
