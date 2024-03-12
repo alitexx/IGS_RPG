@@ -409,34 +409,12 @@ public class BattleController : MonoBehaviour
     {
         if (state == State.WaitingForPlayer)
         {
-            //Testing if fighting even works
-            /*
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                state = State.Busy;
-                playerChar.Attack(enemyChar, () =>
-                {
-                    ChooseNextActiveChar();
-                });
-            }*/
-
-            //Testing if the player list works
-            /*if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log(playerList[1].statSheet.stats["Strength"]);
-            }*/
-
             fightingButtons.SetActive(true);
         }
         else
         {
             fightingButtons.SetActive(false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("RPG_World");
-        }       
+        }   
     }
 
     #region Buttons
