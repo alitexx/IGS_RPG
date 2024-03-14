@@ -22,18 +22,21 @@ public class PlayerController : MonoBehaviour
 
     //Battle stuff
     public GameObject BattleUI;
-
+    //who in party
     public bool hasKisa = false;
     public bool hasNicol = false;
     public bool hasShopie = false;
-
+    //enemies
     public bool isSlime = false;
     public bool isWraith = false;
     public bool isInvisGuy = false;
     public bool isSkeleton = false;
-    public bool isBoss = false;
+    //bosses
+    public bool KisaBoss = false;
+    public bool NicolBoss = false;
+    public bool ShopieBoss = false;
+    public bool LichBoss = false;
 
-    //public Battlescript battle; (Not sure what the class of the battlescript is called)
 
     private void Start()
     {
@@ -98,6 +101,45 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        KisaBoss = false;
+        NicolBoss = false;
+        ShopieBoss = false;
+        LichBoss = false;
+
+        if (collision.tag == "BossFreeze")
+        {
+            isfrozen = true;
+
+            if (collision.gameObject.name == "1")
+            {
+                KisaBoss = true;
+            }
+            else if (collision.gameObject.name == "2")
+            {
+                NicolBoss = true;
+            }
+            else if (collision.gameObject.name == "3")
+            {
+                ShopieBoss = true;
+            }
+            else
+            {
+                LichBoss = true;
+            }
+
+            //do anything else (like party members)
+
+            BattleUI.SetActive(true);
+        }
+
+        if (collision.tag == "DialogueFreeze")
+        {
+            //do something with dialogue idk lmao
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isSlime = false;
@@ -136,19 +178,7 @@ public class PlayerController : MonoBehaviour
             isSkeleton = true;
             BattleUI.SetActive(true);
         }
-
-        if (collision.gameObject.tag == "Boss")
-        {
-            Destroy(collision.gameObject);
-            isfrozen = true;
-            isBoss = true;
-            //tell which boss it is to the script
-            //do anything else (like party members)
-            
-            BattleUI.SetActive(true);
-        }
-
-        
+      
 
     }
 
