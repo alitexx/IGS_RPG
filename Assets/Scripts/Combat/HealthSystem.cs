@@ -12,10 +12,10 @@ public class HealthSystem
     private int maxHealth;
     private int health;
 
-    public HealthSystem(int maxHealth)
+    public HealthSystem(int lMaxHealth, int currHealth)
     {
-        this.maxHealth = maxHealth;
-        health = maxHealth;
+        this.maxHealth = lMaxHealth;
+        health = currHealth;
     }
 
     public int GetHealth()
