@@ -52,7 +52,11 @@ public class BattleController : MonoBehaviour
 
     void SetStats()
     {
-        //Make it so the stats are changed with the level
+        tankStats = levelManager.SetTankStats();
+
+        monkStats = levelManager.SetMonkStats();
+        bardStats = levelManager.SetBardStats();
+        mageStats = levelManager.SetMageStats();
     }
 
     private void OnEnable()
@@ -96,12 +100,6 @@ public class BattleController : MonoBehaviour
             {
                 monkChar = SpawnCharacter(true, monkStats, "Monk Guy", 4, 2, 3);
             }
-
-            //firstEnemy = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/, 4, 0);
-            /*secondEnemy = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0, 4, 1);
-            thirdEnemy = SpawnCharacter(false, wraithStats, "Wraith Guy", 0, 4, 2);
-            FourthEnemy = SpawnCharacter(false, wraithStats, "Ghost Guy", 0, 4, 3);*/
-
 
             if (playerController.isSlime)
             {
@@ -164,6 +162,7 @@ public class BattleController : MonoBehaviour
             characterQueue.Enqueue(secondPlayerChar);
             characterQueue.Enqueue(enemyChar);
         }*/
+
 
         SortTurnOrder();
 
@@ -1127,6 +1126,8 @@ public class BattleController : MonoBehaviour
             {
                 levelManager.LevelUp();
             }
+
+            levelManager.StoreStats();
 
             playerController.isfrozen = false;
 

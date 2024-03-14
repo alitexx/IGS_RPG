@@ -73,6 +73,11 @@ public class BattleCharacter : MonoBehaviour
     public void Setup(bool LIsPlayerTeam)
     {
         this.GIsPlayerTeam = LIsPlayerTeam;
+
+        healthSystem = new HealthSystem(statSheet.stats["MaxHealth"], statSheet.stats["Health"]);
+
+        healthSystem.OnHealthChanged += HealthSystem_OnHealthChanged;
+
         if (LIsPlayerTeam)
         {
             //Ally
@@ -98,8 +103,8 @@ public class BattleCharacter : MonoBehaviour
                 animator.SetBool("isBard", true);
             }
 
-            healthBar = new World_Bar(transform, new Vector3(0, 0.8f), new Vector3(1, 0.2f), Color.grey, Color.green, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
-            manaBar = new World_Bar(transform, new Vector3(0, 1f), new Vector3(1, 0.2f), Color.grey, Color.blue, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
+            healthBar = new World_Bar(transform, new Vector3(0, 0.8f), new Vector3(1, 0.2f), Color.grey, Color.green, healthSystem.GetHealthPercent(), 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
+            manaBar = new World_Bar(transform, new Vector3(0, 1f), new Vector3(1, 0.2f), Color.grey, Color.blue, (float)statSheet.stats["Mana"] / statSheet.stats["MaxMana"], 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         }
         else
         {
@@ -128,9 +133,6 @@ public class BattleCharacter : MonoBehaviour
             healthBar = new World_Bar(transform, new Vector3(0, 0.8f), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         }
 
-        healthSystem = new HealthSystem(statSheet.stats["MaxHealth"]);
-
-        healthSystem.OnHealthChanged += HealthSystem_OnHealthChanged;
 
         PlayAnimIdle();
     }
@@ -198,34 +200,7 @@ public class BattleCharacter : MonoBehaviour
             attacker.animator.SetBool("Attacking", true);
             state = State.Attacking;
 
-            //Debug.Log(attacker.statSheet.stats["Strength"]);
-            //targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
-
-            //Animation would go here, and then the attack would be marked as complete once the animation ends with onAttackComplete
-            //For now, there is no delay between attacking and the attack endin
-            /*animAttack(() =>
-            {
-                SlideToPosition(startingPosition, () =>
-                {
-                    //slide back complete, back to idle
-                    state = State.Idle;
-                    animator.SetBool("Attacking", false);
-                    //idle animation trigger would go here
-                    onAttackComplete();
-                });
-            });*/
-
             StartCoroutine(WaitUntilAttackOver(targetCharacter, attacker, startingPosition, onAttackComplete));
-
-            //Attack Complete, slide back
-            /*SlideToPosition(startingPosition, () =>
-            {
-                //slide back complete, back to idle
-                state = State.Idle;
-                animator.SetBool("Attacking", false);
-                //idle animation trigger would go here
-                onAttackComplete();
-            });*/
         });
     }
 
