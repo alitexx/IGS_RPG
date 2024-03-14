@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     //who in party
     public bool hasKisa = false;
     public bool hasNicol = false;
-    public bool hasShopie = false;
+    public bool hasSophie = false;
     //enemies
     public bool isSlime = false;
     public bool isWraith = false;
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     //bosses
     public bool KisaBoss = false;
     public bool NicolBoss = false;
-    public bool ShopieBoss = false;
+    public bool SophieBoss = false;
     public bool LichBoss = false;
 
 
@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
     {
         KisaBoss = false;
         NicolBoss = false;
-        ShopieBoss = false;
+        SophieBoss = false;
         LichBoss = false;
 
         if (collision.tag == "BossFreeze")
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (collision.gameObject.name == "3")
             {
-                ShopieBoss = true;
+                SophieBoss = true;
             }
             else
             {

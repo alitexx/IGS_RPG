@@ -68,83 +68,84 @@ public class BattleController : MonoBehaviour
         int howManyToSpawn = Random.Range(1, 5);
 
         //True for an ally, false for an enemy
-        if (fightingMage == false)
+
+        tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1, 0, 1);
+        if (playerController.hasNicol)
         {
-            /*if (tankChar != null)
-            {
-                Debug.Log("Beans");
-
-                tankChar.statSheet.stats["Strength"] = tankStats[0];
-                tankChar.statSheet.stats["Magic Attack"] = tankStats[1];
-                tankChar.statSheet.stats["Defense"] = tankStats[2];
-                tankChar.statSheet.stats["Speed"] = tankStats[3];
-                tankChar.statSheet.stats["MaxHealth"] = tankStats[5];
-                tankChar.statSheet.stats["Mana"] = tankStats[6];
-                tankChar.statSheet.stats["MaxMana"] = tankStats[7];
-            }
-            else 
-            {*/
-
-            tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1, 0, 1);
-            if (playerController.hasNicol)
-            {
-                mageChar = SpawnCharacter(true, mageStats, "Mage Guy", 2, 1, 2);
-            }
-
-            if (playerController.hasKisa)
-            {
-                bardChar = SpawnCharacter(true, bardStats, "Bard Guy", 3, 3, 0);
-            }
-
-            if (playerController.hasShopie)
-            {
-                monkChar = SpawnCharacter(true, monkStats, "Monk Guy", 4, 2, 3);
-            }
-
-            if (playerController.isSlime)
-            {
-                firstEnemy = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/, 4, 0);
-            }
-            else if (playerController.isSkeleton) 
-            { 
-                firstEnemy = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0, 4, 1);
-            }
-            else if (playerController.isWraith)
-            {
-                firstEnemy = SpawnCharacter(false, wraithStats, "Wraith Guy", 0, 4, 2);
-            }
-            else if (playerController.isInvisGuy)
-            {
-                firstEnemy = SpawnCharacter(false, ghostStats, "Ghost Guy", 0, 4, 3);
-            }
-
-            playerController.isSlime = false;
-            playerController.isSkeleton =false;
-            playerController.isWraith = false;
-            playerController.isInvisGuy = false;
-
-            //firstEnemy = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/, 4, 0);
-
-            if (howManyToSpawn >= 2)
-            {
-                secondEnemy = SpawningEnemy();
-            }
-
-            if (howManyToSpawn >= 3)
-            {
-                thirdEnemy = SpawningEnemy();
-            }
-
-            if (howManyToSpawn >= 4)
-            {
-                FourthEnemy = SpawningEnemy();
-            }
+            mageChar = SpawnCharacter(true, mageStats, "Mage Guy", 2, 1, 2);
         }
-        else
+
+        if (playerController.hasKisa)
         {
-            tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1, 0, 1);
-            mageChar = SpawnCharacter(false, mageStats, "Mage Guy", 2, 1, 2);
+            bardChar = SpawnCharacter(true, bardStats, "Bard Guy", 3, 3, 0);
         }
+
+        if (playerController.hasSophie)
+        {
+            monkChar = SpawnCharacter(true, monkStats, "Monk Guy", 4, 2, 3);
+        }
+
+        //First Enemy Spawn
+        if (playerController.isSlime)
+        {
+            firstEnemy = SpawnCharacter(false, slimeStats, "Slime Guy", 0 /*0 Because enemies don't have specials*/, 4, 0);
+        }
+        else if (playerController.isSkeleton) 
+        { 
+            firstEnemy = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0, 4, 1);
+        }
+        else if (playerController.isWraith)
+        {
+            firstEnemy = SpawnCharacter(false, wraithStats, "Wraith Guy", 0, 4, 2);
+        }
+        else if (playerController.isInvisGuy)
+        {
+            firstEnemy = SpawnCharacter(false, ghostStats, "Ghost Guy", 0, 4, 3);
+        }
+        else if (playerController.KisaBoss)
+        {
+            firstEnemy = SpawnCharacter(false, bardStats, "Bard Guy", 3, 3, 0);
+            howManyToSpawn = 0;
+        }
+        else if (playerController.NicolBoss)
+        {
+            firstEnemy = SpawnCharacter(false, mageStats, "Mage Guy", 2, 1, 2);
+            howManyToSpawn = 0;
+        }
+        else if (playerController.SophieBoss)
+        {
+            firstEnemy = SpawnCharacter(false, monkStats, "Monk Guy", 4, 2, 3);
+            howManyToSpawn = 0;
+        }
+        else if (playerController.LichBoss)
+        {
+            
+        }
+
+        playerController.isSlime = false;
+        playerController.isSkeleton =false;
+        playerController.isWraith = false;
+        playerController.isInvisGuy = false;
+        playerController.KisaBoss = false;
+        playerController.NicolBoss = false;
+        playerController.SophieBoss = false;
+        playerController.LichBoss = false;
+
+        if (howManyToSpawn >= 2)
+        {
+            secondEnemy = SpawningEnemy();
+        }
+
+        if (howManyToSpawn >= 3)
+        {
+            thirdEnemy = SpawningEnemy();
+        }
+
+        if (howManyToSpawn >= 4)
+        {
+            FourthEnemy = SpawningEnemy();
+        }
+
         
 
         /*

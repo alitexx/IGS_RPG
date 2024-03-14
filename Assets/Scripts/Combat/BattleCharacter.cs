@@ -236,20 +236,10 @@ public class BattleCharacter : MonoBehaviour
 
         attacker.statSheet.stats["Mana"]--;
 
-        manaBar.SetSize((float)attacker.statSheet.stats["Mana"] / attacker.statSheet.stats["MaxMana"]);
-
-        /*if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)
+        if (attacker.GIsPlayerTeam)
         {
-            targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"] * 2, 0);//0 is a placeholder because magic ignores defense
+            manaBar.SetSize((float)attacker.statSheet.stats["Mana"] / attacker.statSheet.stats["MaxMana"]);
         }
-        else
-        {
-            targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"], 0);
-        }
-
-        state = State.Idle;
-
-        onAttackComplete();*/
 
         StartCoroutine(WaitUntilMagAttackOver(targetCharacter, attacker, onAttackComplete));
     }
@@ -272,7 +262,7 @@ public class BattleCharacter : MonoBehaviour
 
         animator.SetBool("MagAttacking", false);
 
-        state = State.Idle;
+        state = State.Busy;
 
         onAttackComplete();
     }
