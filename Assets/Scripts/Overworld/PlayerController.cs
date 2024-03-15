@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     public bool NicolBoss = false;
     public bool SophieBoss = false;
     public bool LichBoss = false;
+    //Level Number
+    public int Level = 1;
 
 
     private void Start()
@@ -138,6 +140,24 @@ public class PlayerController : MonoBehaviour
         {
             //do something with dialogue idk lmao
         }
+
+        
+         if (collision.gameObject.name == "level2")
+        {
+            Level = 2;
+        }
+
+        if (collision.gameObject.name == "level3")
+        {
+            Level = 3;
+        }
+
+        if (collision.gameObject.name == "level4")
+        {
+            Level = 4;
+        }
+         
+         
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
