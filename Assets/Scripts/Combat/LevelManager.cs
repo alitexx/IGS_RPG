@@ -16,47 +16,47 @@ public class LevelManager : MonoBehaviour
     #region Stats to Store
 
     static private int[] tankStoredStats = new int[8] {
-        /*Strength*/ 10,
-        /*Magic Attack*/ 4,
-        /*Defense*/ 5, 
-        /*Speed*/ 3, 
-        /*Health*/ 18, 
-        /*MaxHealth*/ 18,
-        /*Mana*/ 4,
-        /*MaxMana*/ 4
+        /*0 Strength*/ 10,
+        /*1 Magic Attack*/ 4,
+        /*2 Defense*/ 5, 
+        /*3 Speed*/ 3, 
+        /*4 Health*/ 18, 
+        /*5 MaxHealth*/ 18,
+        /*6 Mana*/ 4,
+        /*7 MaxMana*/ 4
 };
 
     static private int[] mageStoredStats = new int[8] {
-        /*Strength*/ 7,
-        /*Magic Attack*/ 13,
-        /*Defense*/ 4, 
-        /*Speed*/ 5, 
-        /*Health*/ 8, 
-        /*MaxHealth*/ 8,
-        /*Mana*/ 9,
-        /*MaxMana*/ 9
+        /*0 Strength*/ 7,
+        /*1 Magic Attack*/ 13,
+        /*2 Defense*/ 4, 
+        /*3 Speed*/ 5, 
+        /*4 Health*/ 8, 
+        /*5 MaxHealth*/ 8,
+        /*6 Mana*/ 9,
+        /*7 MaxMana*/ 9
     };
 
     static private int[] monkStoredStats = new int[8] {
-        /*Strength*/ 13,
-        /*Magic Attack*/ 7,
-        /*Defense*/ 4, 
-        /*Speed*/ 6, 
-        /*Health*/ 10, 
-        /*MaxHealth*/ 10,
-        /*Mana*/ 5,
-        /*MaxMana*/ 5
+        /*0 Strength*/ 13,
+        /*1 Magic Attack*/ 7,
+        /*2 Defense*/ 4, 
+        /*3 Speed*/ 6, 
+        /*4 Health*/ 10, 
+        /*5 MaxHealth*/ 10,
+        /*6 Mana*/ 5,
+        /*7 MaxMana*/ 5
     };
 
     static private int[] bardStoredStats = new int[8] {
-         /*Strength*/ 6,
-        /*Magic Attack*/ 5,
-        /*Defense*/ 4, 
-        /*Speed*/ 2, 
-        /*Health*/ 15, 
-        /*MaxHealth*/ 15,
-        /*Mana*/ 7,
-        /*MaxMana*/ 7
+        /*0 Strength*/ 6,
+        /*1 Magic Attack*/ 5,
+        /*2 Defense*/ 4, 
+        /*3 Speed*/ 2, 
+        /*4 Health*/ 15, 
+        /*5 MaxHealth*/ 15,
+        /*6 Mana*/ 7,
+        /*7 MaxMana*/ 7
     };
 
     #endregion
@@ -84,6 +84,7 @@ public class LevelManager : MonoBehaviour
     {
         level++;
         currentEXP -= lvlUpThreshold;
+        
         for (int i = 0; i < battleController.partyMembers.Count; i++)
         {
             if (battleController.partyMembers[i].statSheet.name == "Tank Guy")
@@ -154,6 +155,23 @@ public class LevelManager : MonoBehaviour
                 monkStoredStats[6] = battleController.partyMembers[i].statSheet.stats["Mana"];
                 monkStoredStats[7] = battleController.partyMembers[i].statSheet.stats["MaxMana"];
             }
+        }
+    }
+
+    public void NewPartyMember(string memberName)
+    {
+        if (memberName == "Kisa")
+        {
+            bardStoredStats[4] += (2 * (level - 1));
+            bardStoredStats[5] += (2 * (level - 1));
+        }
+        else if (memberName == "Nicol")
+        {
+            mageStoredStats[1] += (2 * (level - 1));
+        }
+        else if (memberName == "Sophie")
+        {
+            monkStoredStats[0] += (2 * (level - 1));
         }
     }
 

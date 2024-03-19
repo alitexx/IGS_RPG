@@ -122,14 +122,6 @@ public class BattleController : MonoBehaviour
             
         }
 
-        playerController.isSlime = false;
-        playerController.isSkeleton =false;
-        playerController.isWraith = false;
-        playerController.isInvisGuy = false;
-        playerController.KisaBoss = false;
-        playerController.NicolBoss = false;
-        playerController.SophieBoss = false;
-        playerController.LichBoss = false;
 
         if (howManyToSpawn >= 2)
         {
@@ -1116,12 +1108,47 @@ public class BattleController : MonoBehaviour
         if (tankChar.IsDead()) //&& mageChar.IsDead())
         {
             enemyWinText.SetActive(true);
+
+            playerController.isSlime = false;
+            playerController.isSkeleton = false;
+            playerController.isWraith = false;
+            playerController.isInvisGuy = false;
+            playerController.KisaBoss = false;
+            playerController.NicolBoss = false;
+            playerController.SophieBoss = false;
+            playerController.LichBoss = false;
+
             SceneManager.LoadScene("GameOver");
             return true;
         }
         else if (enemyList.Count == 0 || AllEnemyDead == true)
         {
             playerWinText.SetActive(true);
+
+            playerController.isSlime = false;
+            playerController.isSkeleton = false;
+            playerController.isWraith = false;
+            playerController.isInvisGuy = false;
+            playerController.LichBoss = false;
+
+            if (playerController.KisaBoss == true)
+            {
+                //Bard
+                levelManager.NewPartyMember("Kisa");
+                playerController.hasKisa = true;
+            }
+            else if (playerController.NicolBoss == true)
+            {
+                //Mage
+                levelManager.NewPartyMember("Nicol");
+                playerController.hasNicol = true;
+            }
+            else if (playerController.SophieBoss == true)
+            {
+                //Monk
+                levelManager.NewPartyMember("Sophie");
+                playerController.hasSophie = true;
+            }
 
             while (levelManager.currentEXP >= levelManager.lvlUpThreshold)
             {
