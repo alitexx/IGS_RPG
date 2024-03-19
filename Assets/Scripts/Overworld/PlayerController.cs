@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
             rb.transform.Find("FollowTrail2"),
             rb.transform.Find("FollowTrail3")
         };
+
+        BattleUI.SetActive(false);
     }
 
     private void Awake()

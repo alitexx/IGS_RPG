@@ -94,7 +94,7 @@ public class BattleCharacter : MonoBehaviour
             }
             else if (statSheet.name == "Monk Guy")
             {
-                charSprite.color = Color.yellow;
+                //charSprite.color = Color.yellow;
                 animator.SetBool("isMonk", true);
             }
             else if (statSheet.name == "Bard Guy")
@@ -187,7 +187,7 @@ public class BattleCharacter : MonoBehaviour
     }
     public void Attack(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
     {
-        Vector3 slideCloseToTargetPosition = targetCharacter.GetPosition() + (GetPosition() - targetCharacter.GetPosition()).normalized * 2f;
+        Vector3 slideCloseToTargetPosition = targetCharacter.GetPosition() + (GetPosition() - targetCharacter.GetPosition()).normalized * 3f;
         Vector3 startingPosition = GetPosition();
 
         //Slide to target

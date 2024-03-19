@@ -9,6 +9,10 @@ public class LevelManager : MonoBehaviour
     public int level = 1;
     public int lvlUpThreshold = 10;
 
+    public bool kisaAbsorb;
+    public bool nicolAbsorb;
+    public bool sophieAbsorb;
+
     static LevelManager Instance;
 
     public BattleController battleController;
@@ -75,6 +79,9 @@ public class LevelManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        kisaAbsorb = false;
+        nicolAbsorb = false;
+        sophieAbsorb = false;
         level = 1;
         lvlUpThreshold = 10;
         currentEXP = 0;
@@ -90,6 +97,22 @@ public class LevelManager : MonoBehaviour
             if (battleController.partyMembers[i].statSheet.name == "Tank Guy")
             {
                 battleController.partyMembers[i].statSheet.stats["Defense"] += 2;
+
+                if (kisaAbsorb)
+                {
+                    battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 2;
+                    battleController.partyMembers[i].statSheet.stats["Health"] += 2;
+                }
+
+                if (nicolAbsorb)
+                {
+                    battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 2;
+                }
+
+                if (sophieAbsorb)
+                {
+                    battleController.partyMembers[i].statSheet.stats["Strength"] += 2;
+                }
             }
             else if (battleController.partyMembers[i].statSheet.name == "Mage Guy")
             {
@@ -98,7 +121,11 @@ public class LevelManager : MonoBehaviour
             else if (battleController.partyMembers[i].statSheet.name == "Bard Guy")
             {
                 battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 2;
-                battleController.partyMembers[i].statSheet.stats["Health"] += 2;
+
+                if (battleController.partyMembers[i].IsDead() == false)
+                {
+                    battleController.partyMembers[i].statSheet.stats["Health"] += 2;
+                }
             }
             else if (battleController.partyMembers[i].statSheet.name == "Monk Guy")
             {
@@ -172,6 +199,30 @@ public class LevelManager : MonoBehaviour
         else if (memberName == "Sophie")
         {
             monkStoredStats[0] += (2 * (level - 1));
+        }
+    }
+
+    public void AbsorbPartyMember(string memberName)
+    {
+        if (memberName == "Kisa")
+        {
+            kisaAbsorb = true;
+
+            battleController.partyMembers[0].statSheet.stats["Health"] += (2 * (level - 1));
+            battleController.partyMembers[0].statSheet.stats["MaxHealth"] += (2 * (level - 1));
+        }
+        else if (memberName == "Nicol")
+        {
+            nicolAbsorb = true;
+
+            battleController.partyMembers[0].statSheet.stats["Magic Attack"] += (2 * (level - 1));
+
+        }
+        else if (memberName == "Sophie")
+        {
+            sophieAbsorb = true;
+
+            battleController.partyMembers[0].statSheet.stats["Strength"] += (2 * (level - 1));
         }
     }
 

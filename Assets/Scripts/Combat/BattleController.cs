@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -63,6 +64,8 @@ public class BattleController : MonoBehaviour
     {
         SetStats();
 
+        befriendOrAbsorbButton.SetActive(false);
+
         instance = this;
 
         int howManyToSpawn = Random.Range(1, 5);
@@ -70,6 +73,7 @@ public class BattleController : MonoBehaviour
         //True for an ally, false for an enemy
 
         tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1, 0, 1);
+
         if (playerController.hasNicol)
         {
             mageChar = SpawnCharacter(true, mageStats, "Mage Guy", 2, 1, 2);
@@ -84,6 +88,7 @@ public class BattleController : MonoBehaviour
         {
             monkChar = SpawnCharacter(true, monkStats, "Monk Guy", 4, 2, 3);
         }
+
 
         //First Enemy Spawn
         if (playerController.isSlime)
@@ -327,6 +332,8 @@ public class BattleController : MonoBehaviour
     public GameObject battleObject;
 
     public PlayerController playerController;
+
+    public GameObject befriendOrAbsorbButton;
     #endregion
 
     private enum State
@@ -875,6 +882,27 @@ public class BattleController : MonoBehaviour
         return battleCharacter;
     }
 
+
+
+    IEnumerator FadeOut(BattleCharacter deadGuy)
+    {
+        for (float f = 1; f >= 0; f -= 0.05f)
+        {
+            Color c = deadGuy.charSprite.material.color;
+            c.a = f;
+            c.r = Random.Range(0, 1f);
+            c.g = Random.Range(0, 1f);
+            c.b = Random.Range(0, 1f);
+
+
+            deadGuy.charSprite.color = c;
+
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        Destroy(deadGuy.gameObject);
+    }
+
     private void SetActiveCharBattle(BattleCharacter battleCharacter)
     {
         if (activeChar != null)
@@ -901,7 +929,12 @@ public class BattleController : MonoBehaviour
         {
             if (enemyList[i].statSheet.stats["Health"] <= 0)
             {
-                enemyList.RemoveAt(i);
+                //Can put death animation here
+
+                Destroy(enemyList[i].gameObject);
+
+                //Works, but game doesn't give time for enemy to fade out, and that can cause issues
+                //StartCoroutine(FadeOut(enemyList[i]));
 
                 levelManager.currentEXP += 10;
             }
@@ -974,12 +1007,6 @@ public class BattleController : MonoBehaviour
             alreadyWent.Enqueue(characterQueue.Dequeue());
 
             state = State.Busy;
-
-            /*
-            activeChar.Attack(playerChar, activeChar, () =>
-            {
-                ChooseNextActiveChar();
-            });*/
 
             int enemyTarget;
 
@@ -1131,23 +1158,14 @@ public class BattleController : MonoBehaviour
             playerController.isInvisGuy = false;
             playerController.LichBoss = false;
 
-            if (playerController.KisaBoss == true)
+            if (playerController.KisaBoss || playerController.NicolBoss || playerController.SophieBoss)
             {
-                //Bard
-                levelManager.NewPartyMember("Kisa");
-                playerController.hasKisa = true;
+                befriendOrAbsorbButton.SetActive(true);
             }
-            else if (playerController.NicolBoss == true)
+            else
             {
-                //Mage
-                levelManager.NewPartyMember("Nicol");
-                playerController.hasNicol = true;
-            }
-            else if (playerController.SophieBoss == true)
-            {
-                //Monk
-                levelManager.NewPartyMember("Sophie");
-                playerController.hasSophie = true;
+                playerController.isfrozen = false;
+                battleObject.SetActive(false);
             }
 
             while (levelManager.currentEXP >= levelManager.lvlUpThreshold)
@@ -1156,8 +1174,6 @@ public class BattleController : MonoBehaviour
             }
 
             levelManager.StoreStats();
-
-            playerController.isfrozen = false;
 
             #region Destroy Existing Char
 
@@ -1210,13 +1226,79 @@ public class BattleController : MonoBehaviour
             }
             #endregion
 
-            battleObject.SetActive(false);
-
             return true;
         }
         else
         {
             return false;
         }
+    }
+
+    public void BefriendButton()
+    {
+        if (playerController.KisaBoss == true)
+        {
+            //Bard
+            playerController.KisaBoss = false;
+
+            levelManager.NewPartyMember("Kisa");
+            playerController.hasKisa = true;
+            befriendOrAbsorbButton.SetActive(false);
+        }
+        else if (playerController.NicolBoss == true)
+        {
+            //Mage
+            playerController.NicolBoss = false;
+
+            levelManager.NewPartyMember("Nicol");
+            playerController.hasNicol = true;
+            befriendOrAbsorbButton.SetActive(false);
+        }
+        else if (playerController.SophieBoss == true)
+        {
+            //Monk
+            playerController.SophieBoss = false;
+
+            levelManager.NewPartyMember("Sophie");
+            playerController.hasSophie = true;
+            befriendOrAbsorbButton.SetActive(false);
+        }
+
+        playerController.isfrozen = false;
+        battleObject.SetActive(false);
+    }
+
+    public void AbsorbButton()
+    {
+        if (playerController.KisaBoss == true)
+        {
+            //Bard
+            playerController.KisaBoss = false;
+
+            levelManager.AbsorbPartyMember("Kisa");
+
+            befriendOrAbsorbButton.SetActive(false);
+        }
+        else if (playerController.NicolBoss == true)
+        {
+            //Mage
+            playerController.NicolBoss = false;
+
+            levelManager.AbsorbPartyMember("Nicol");
+
+            befriendOrAbsorbButton.SetActive(false);
+        }
+        else if (playerController.SophieBoss == true)
+        {
+            //Monk
+            playerController.SophieBoss = false;
+
+            levelManager.AbsorbPartyMember("Sophie");
+
+            befriendOrAbsorbButton.SetActive(false);
+        }
+
+        playerController.isfrozen = false;
+        battleObject.SetActive(false);
     }
 }
