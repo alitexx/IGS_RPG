@@ -8,6 +8,8 @@ public class LeverScript : MonoBehaviour
     public GameObject Target;
     float maxDistance = 1.5f;
     float DistanceBetweenObjects;
+    public SpriteRenderer spriteRenderer;
+    public Sprite newSprite;
 
     private void Update()
     {
@@ -18,6 +20,7 @@ public class LeverScript : MonoBehaviour
         {
             Debug.Log(":D");
             Destroy(Door);
+            spriteRenderer.sprite = newSprite;
         }
     
     }
@@ -28,6 +31,7 @@ public class LeverScript : MonoBehaviour
         {
             Debug.Log(":D");
             Destroy(Door);
+            spriteRenderer.sprite = newSprite;
         }
     }
 }
