@@ -266,4 +266,12 @@ public class LevelManager : MonoBehaviour
             return 0;
         }
     }
+
+    public void FullHeal()
+    {
+        bardStoredStats[4] = bardStoredStats[5];
+        monkStoredStats[4] = monkStoredStats[5];
+        tankStoredStats[4] = tankStoredStats[5];
+        mageStoredStats[4] = mageStoredStats[5];
+    }
 }
