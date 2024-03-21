@@ -245,4 +245,25 @@ public class LevelManager : MonoBehaviour
     {
         return bardStoredStats;
     }
+
+    public int GetCharHealth(string charName)
+    {
+        if (charName == "Mage Guy")
+        {
+            return mageStoredStats[4];
+        }
+        else if (charName == "Bard Guy")
+        {
+            return bardStoredStats[4];
+        }
+        else if (charName == "Monk Guy")
+        {
+            return monkStoredStats[4];
+        }
+        else
+        {
+            Debug.Log("No character found");
+            return 0;
+        }
+    }
 }
