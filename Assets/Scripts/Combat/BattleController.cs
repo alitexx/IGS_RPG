@@ -74,17 +74,17 @@ public class BattleController : MonoBehaviour
 
         tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1, 0, 1);
 
-        if (playerController.hasNicol)
+        if (playerController.hasNicol && levelManager.GetCharHealth("Mage Guy") != 0)
         {
             mageChar = SpawnCharacter(true, mageStats, "Mage Guy", 2, 1, 2);
         }
 
-        if (playerController.hasKisa)
+        if (playerController.hasKisa && levelManager.GetCharHealth("Bard Guy") != 0)
         {
             bardChar = SpawnCharacter(true, bardStats, "Bard Guy", 3, 3, 0);
         }
 
-        if (playerController.hasSophie)
+        if (playerController.hasSophie && levelManager.GetCharHealth("Monk Guy") != 0)
         {
             monkChar = SpawnCharacter(true, monkStats, "Monk Guy", 4, 2, 3);
         }
@@ -183,6 +183,11 @@ public class BattleController : MonoBehaviour
         confirmText.SetActive(false);
         playerWinText.SetActive(false);
         enemyWinText.SetActive(false);
+
+        nicolIceMagicButton.SetActive(false);
+        sophieElectricMagicButton.SetActive(false);
+        kisaWindMagicButton.SetActive(false);
+        alanFireMagicButton.SetActive(false);
     }
 
     #region Variables
@@ -334,6 +339,11 @@ public class BattleController : MonoBehaviour
     public PlayerController playerController;
 
     public GameObject befriendOrAbsorbButton;
+
+    public GameObject nicolIceMagicButton;
+    public GameObject sophieElectricMagicButton;
+    public GameObject kisaWindMagicButton;
+    public GameObject alanFireMagicButton;
     #endregion
 
     private enum State
@@ -439,6 +449,11 @@ public class BattleController : MonoBehaviour
         fightingButtons.SetActive(true);
         targetText.SetActive(false);
         confirmText.SetActive(false);
+
+        nicolIceMagicButton.SetActive(false);
+        sophieElectricMagicButton.SetActive(false);
+        kisaWindMagicButton.SetActive(false);
+        alanFireMagicButton.SetActive(false);
     }
 
     public void attackButton()
@@ -470,15 +485,96 @@ public class BattleController : MonoBehaviour
 
         if (activeChar.statSheet.stats["Mana"] > 0)
         {
-            state = State.Busy;
+            if (activeChar.statSheet.name == "Tank Guy")
+            {
+                state = State.Busy;
 
-            StartCoroutine(MagicTargeting());
+                alanFireMagicButton.SetActive(true);
+
+                if (levelManager.nicolAbsorb == true)
+                {
+                    nicolIceMagicButton.SetActive(true);
+                }
+
+                if (levelManager.sophieAbsorb == true)
+                {
+                    sophieElectricMagicButton.SetActive(true);
+                }
+
+                if (levelManager.kisaAbsorb == true)
+                {
+                    kisaWindMagicButton.SetActive(true);
+                }
+            }
+            else
+            {
+                state = State.Busy;
+
+                StartCoroutine(MagicTargeting());
+            }
         }
         else
         {
             Debug.Log("Out of mana idiot");
         }
     }
+
+    #region Magic Buttons
+
+    //0 fire
+    //1 ice
+    //2 elec
+    //3 wind
+
+    public void alanMagic()
+    {
+        activeChar.statSheet.magicElement = magicTypes[0];
+
+        alanFireMagicButton.SetActive(false);
+        nicolIceMagicButton.SetActive(false);
+        kisaWindMagicButton.SetActive(false);
+        sophieElectricMagicButton.SetActive(false);
+        
+        StartCoroutine(MagicTargeting());
+    }
+
+    public void nicolMagic()
+    {
+        activeChar.statSheet.magicElement = magicTypes[1];
+
+        alanFireMagicButton.SetActive(false);
+        nicolIceMagicButton.SetActive(false);
+        kisaWindMagicButton.SetActive(false);
+        sophieElectricMagicButton.SetActive(false);
+
+        StartCoroutine(MagicTargeting());
+    }
+
+    public void sophieMagic()
+    {
+        activeChar.statSheet.magicElement = magicTypes[2];
+
+        alanFireMagicButton.SetActive(false);
+        nicolIceMagicButton.SetActive(false);
+        kisaWindMagicButton.SetActive(false);
+        sophieElectricMagicButton.SetActive(false);
+
+        StartCoroutine(MagicTargeting());
+    }
+
+    public void kisaMagic()
+    {
+        activeChar.statSheet.magicElement = magicTypes[3];
+
+        alanFireMagicButton.SetActive(false);
+        nicolIceMagicButton.SetActive(false);
+        kisaWindMagicButton.SetActive(false);
+        sophieElectricMagicButton.SetActive(false);
+
+        StartCoroutine(MagicTargeting());
+    }
+
+    #endregion
 
     public void specialButton()
     {
@@ -568,6 +664,7 @@ public class BattleController : MonoBehaviour
         }
 
         activeChar.isBlocking = true;
+        activeChar.animator.SetBool("Blocking", true);
         ChooseNextActiveChar();
 
         confirmText.SetActive(false);
@@ -1094,6 +1191,7 @@ public class BattleController : MonoBehaviour
             SetActiveCharBattle(characterQueue.Peek());
             alreadyWent.Enqueue(characterQueue.Dequeue());
             activeChar.isBlocking = false;
+            activeChar.animator.SetBool("Blocking", false);
             state = State.WaitingForPlayer;
         }
 
