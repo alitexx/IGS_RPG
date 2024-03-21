@@ -11,19 +11,18 @@ public class SignInteraction : MonoBehaviour
 
     void Update()
     {
+        SignUI.SetActive(false);
+
         DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
 
         if (DistanceBetweenObjects <= maxDistance)
         {
-            StartCoroutine(SignMessage());
+            SignUI.SetActive(true);
+        }
+           
+        if(DistanceBetweenObjects > maxDistance)
+        {
+            SignUI.SetActive(false);
         }
     }
-
-    private IEnumerator SignMessage()
-    {
-        SignUI.SetActive(true);
-        yield return new WaitForSeconds(5);
-        SignUI.SetActive(false);
-    }
-
 }
