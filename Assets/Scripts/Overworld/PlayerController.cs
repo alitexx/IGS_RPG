@@ -81,6 +81,13 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("speed", input.sqrMagnitude);
         }
 
+        if (isfrozen == true) 
+        {
+            animator.SetFloat("moveX", 0);
+            animator.SetFloat("moveY", 0);
+            animator.SetFloat("speed", 0);
+        }
+
         if (Vector3.Distance(rb.transform.position, waypointTrail[0].position) >= followGap)
         {
             waypointTrail[1].position = waypointTrail[0].position;
@@ -136,6 +143,7 @@ public class PlayerController : MonoBehaviour
             //do anything else (like party members)
 
             BattleUI.SetActive(true);
+            Destroy(collision.gameObject);
         }
 
         if (collision.tag == "DialogueFreeze")
