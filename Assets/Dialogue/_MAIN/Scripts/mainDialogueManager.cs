@@ -20,6 +20,8 @@ public class mainDialogueManager : MonoBehaviour
 
     [SerializeField] private Transform bottom;
     [SerializeField] private Transform top;
+    [SerializeField] private GameObject[] tweenInPositions;
+    [SerializeField] private GameObject[] tweenOutPositions;
     [SerializeField] private Transform dialogueBox;
     // when loading something from resources, you dont specify the file extension
     //[SerializeField] private TextAsset fileName;
@@ -34,17 +36,18 @@ public class mainDialogueManager : MonoBehaviour
     public void dialogueSTART(string dialogueFile)
     {
         //validate input before continuing
-        //StartCoroutine(completeDialogue(dialogueFile));
+        StartCoroutine(completeDialogue(dialogueFile));
 
         //COME BACK HERE POOKIE!!! FIGURE OUT WHAT IS WRONG!!! PLEASE!!! please.
 
-
+        top.DOMove(tweenInPositions[0].transform.position, 1.5f);
+        bottom.DOMove(tweenInPositions[1].transform.position, 1.5f);
+        dialogueBox.DOMove(tweenInPositions[2].transform.position, 1.5f);
         //top.DOMoveY(80, 2);
         //bottom.DOMoveY(40, 2);
 
         //dialogueBox.DOMoveY(100, 2);
         //StartCoroutine(Run(dialogueFile));
-        //bottom.DOMove(new Vector2(2, 2), 1);
     }
 
 
@@ -66,10 +69,15 @@ public class mainDialogueManager : MonoBehaviour
     public void dialogueEND()
     {
         Debug.Log("DIALOGUE HAS ENDED!! MOVIN THINGS TO WHERE THEY NEED TO BE");
-        top.DOMoveY(4, 2);
-        bottom.DOMoveY(-4, 2);
+        //top.DOMoveY(4, 2);
+        //bottom.DOMoveY(-4, 2);
 
-        dialogueBox.DOMoveY(0, 2);
+        //dialogueBox.DOMoveY(0, 2);
+
+        top.DOMove(tweenOutPositions[0].transform.position, 2);
+        bottom.DOMove(tweenOutPositions[1].transform.position, 2);
+        dialogueBox.DOMove(tweenOutPositions[2].transform.position, 2);
+
         //StartCoroutine(Run(dialogueFile));
         //bottom.DOMove(new Vector2(2, 2), 1);
     }
