@@ -15,6 +15,7 @@ TagManager:
   - InvisGuy
   - Wraith
   - BossFreeze
+  - MainDialogueManager
   layers:
   - Default
   - TransparentFX
