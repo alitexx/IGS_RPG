@@ -16,7 +16,7 @@ namespace DIALOGUE
 
         public DialogueContainer dialogueContainer = new DialogueContainer();
         private ConversationManager conversationManager;
-        private TextArchitect architect;
+        public TextArchitect architect;
 
         public static DialogueSystem instance { get; private set; }
 

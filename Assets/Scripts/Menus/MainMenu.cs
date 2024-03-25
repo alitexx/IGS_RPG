@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 
     public void Startgame()
     {
-        SceneManager.LoadScene("RPG_World"); //loads main level
+        SceneManager.LoadScene("OpeningCutscene"); //loads main level
     }
 
     public void QuitGame()
