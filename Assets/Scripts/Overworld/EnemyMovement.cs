@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     float DistanceBetweenObjects;
     private Animator animator;
     private Vector2 input;
+    public PlayerController PlayerController;
 
     private void Start()
     {
@@ -34,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
         //Movement
         DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
 
-        if (DistanceBetweenObjects <= maxDistance)
+        if (DistanceBetweenObjects <= maxDistance && PlayerController.isfrozen != true)
         {
             EnemyRB.transform.position = Vector2.MoveTowards(EnemyRB.transform.position, TargetRB.transform.position, Speed * Time.deltaTime);
 
