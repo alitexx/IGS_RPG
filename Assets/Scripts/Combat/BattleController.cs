@@ -346,6 +346,8 @@ public class BattleController : MonoBehaviour
     public GameObject alanFireMagicButton;
     #endregion
 
+    public GameObject particleManager;
+
     private enum State
     {
         WaitingForPlayer,
@@ -421,7 +423,15 @@ public class BattleController : MonoBehaviour
         else
         {
             fightingButtons.SetActive(false);
-        }   
+        }  
+
+        /* Testing how to instantiate the particle effects
+         * if (Input.GetKeyDown(KeyCode.G))
+        {
+            Vector3 transform = activeChar.GetPosition();
+
+            GameObject particle = Instantiate(particleManager, transform, Quaternion.identity, activeChar.transform);
+        }*/
     }
 
     #region Buttons
@@ -912,23 +922,23 @@ public class BattleController : MonoBehaviour
         {
             if (playerList.Count == 0)
             {
-                position = new Vector3(mainCamera.transform.position.x - 3, mainCamera.transform.position.y - 3);
+                position = new Vector3(mainCamera.transform.position.x - 3, mainCamera.transform.position.y - 5.5f);
             }
             else if (playerList.Count == 1)
             {
-                position = new Vector3(mainCamera.transform.position.x - 6, mainCamera.transform.position.y - 3);
+                position = new Vector3(mainCamera.transform.position.x - 6, mainCamera.transform.position.y - 5.5f);
             }
             else if (playerList.Count == 2)
             {
-                position = new Vector3(mainCamera.transform.position.x - 0, mainCamera.transform.position.y - 3);
+                position = new Vector3(mainCamera.transform.position.x - 0, mainCamera.transform.position.y - 5.5f);
             }
             else if (playerList.Count == 3)
             {
-                position = new Vector3(mainCamera.transform.position.x - 9, mainCamera.transform.position.y - 3);
+                position = new Vector3(mainCamera.transform.position.x - 9, mainCamera.transform.position.y - 5.5f);
             }
             else
             {
-                position = new Vector3(mainCamera.transform.position.x - 5, mainCamera.transform.position.y - 3);
+                position = new Vector3(mainCamera.transform.position.x - 5, mainCamera.transform.position.y - 5.5f);
             }
         }
         else
