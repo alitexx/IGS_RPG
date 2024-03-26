@@ -270,8 +270,16 @@ public class LevelManager : MonoBehaviour
     public void FullHeal()
     {
         bardStoredStats[4] = bardStoredStats[5];
+        bardStoredStats[6] = bardStoredStats[7];
+
         monkStoredStats[4] = monkStoredStats[5];
+        monkStoredStats[6] = monkStoredStats[7];
+
         tankStoredStats[4] = tankStoredStats[5];
+        tankStoredStats[6] = tankStoredStats[7];
+
         mageStoredStats[4] = mageStoredStats[5];
+        mageStoredStats[6] = mageStoredStats[7];
+
     }
 }

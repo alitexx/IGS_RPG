@@ -27,7 +27,7 @@ public class CamMovementDetect : MonoBehaviour
         TrackCameraValues();
     }
 
-    private bool IsIdle()
+    public bool IsIdle()
     {
         return Vector3.Equals(m_Camera.transform.position, m_LastPosition) && Quaternion.Equals(m_Camera.transform.rotation, m_LastRotation);
     }

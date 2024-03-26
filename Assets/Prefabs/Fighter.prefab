@@ -485,6 +485,8 @@ MonoBehaviour:
   GIsPlayerTeam: 0
   charSprite: {fileID: 7771544044199383721}
   animator: {fileID: 7197455562530669128}
+  particleManager: {fileID: 4836191928861364526, guid: 90e2bdc31e6857a43bb8c4f9b4a25c3e, type: 3}
+  particleObject: {fileID: 8045053415094432997, guid: 90e2bdc31e6857a43bb8c4f9b4a25c3e, type: 3}
 --- !u!95 &7197455562530669128
 Animator:
   serializedVersion: 4

@@ -43,6 +43,7 @@ public class BattleCharacter : MonoBehaviour
 
     public Animator animator;
 
+    public ParticleManager particleManager;
     private enum State
     {
         Idle, 
@@ -210,6 +211,12 @@ public class BattleCharacter : MonoBehaviour
         {
             yield return null;
         }
+
+        //This clump of code is how to get the particle manager to do stuff
+        Vector3 position = targetCharacter.GetPosition();
+        ParticleManager particle = Instantiate(particleManager, position, Quaternion.identity, targetCharacter.transform);
+        particle.animator.SetBool("PunchFX", true);
+
 
         targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
 

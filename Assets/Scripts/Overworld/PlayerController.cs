@@ -175,9 +175,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (cameraMovementDetecter.isIdle)
-        {
             isSlime = false;
             isWraith = false;
             isInvisGuy = false;
@@ -215,9 +212,6 @@ public class PlayerController : MonoBehaviour
                 isSkeleton = true;
                 BattleUI.SetActive(true);
             }
-        }
-      
-
     }
 
 }
