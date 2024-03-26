@@ -68,7 +68,7 @@ public class BattleController : MonoBehaviour
 
         instance = this;
 
-        int howManyToSpawn = Random.Range(1, 5);
+        //int howManyToSpawn = Random.Range(1, 5);
 
         //True for an ally, false for an enemy
 
@@ -110,17 +110,17 @@ public class BattleController : MonoBehaviour
         else if (playerController.KisaBoss)
         {
             firstEnemy = SpawnCharacter(false, bardStats, "Bard Guy", 3, 3, 0);
-            howManyToSpawn = 0;
+            //howManyToSpawn = 0;
         }
         else if (playerController.NicolBoss)
         {
             firstEnemy = SpawnCharacter(false, mageStats, "Mage Guy", 2, 1, 2);
-            howManyToSpawn = 0;
+            //howManyToSpawn = 0;
         }
         else if (playerController.SophieBoss)
         {
             firstEnemy = SpawnCharacter(false, monkStats, "Monk Guy", 4, 2, 3);
-            howManyToSpawn = 0;
+            //howManyToSpawn = 0;
         }
         else if (playerController.LichBoss)
         {
@@ -128,17 +128,17 @@ public class BattleController : MonoBehaviour
         }
 
 
-        if (howManyToSpawn >= 2)
+        if (playerController.Level >= 2)
         {
             secondEnemy = SpawningEnemy();
         }
 
-        if (howManyToSpawn >= 3)
+        if (playerController.Level >= 3)
         {
             thirdEnemy = SpawningEnemy();
         }
 
-        if (howManyToSpawn >= 4)
+        if (playerController.Level >= 4)
         {
             FourthEnemy = SpawningEnemy();
         }
@@ -346,6 +346,8 @@ public class BattleController : MonoBehaviour
     public GameObject alanFireMagicButton;
     #endregion
 
+    public GameObject particleManager;
+
     private enum State
     {
         WaitingForPlayer,
@@ -421,7 +423,15 @@ public class BattleController : MonoBehaviour
         else
         {
             fightingButtons.SetActive(false);
-        }   
+        }  
+
+        /* Testing how to instantiate the particle effects
+         * if (Input.GetKeyDown(KeyCode.G))
+        {
+            Vector3 transform = activeChar.GetPosition();
+
+            GameObject particle = Instantiate(particleManager, transform, Quaternion.identity, activeChar.transform);
+        }*/
     }
 
     #region Buttons
@@ -912,23 +922,23 @@ public class BattleController : MonoBehaviour
         {
             if (playerList.Count == 0)
             {
-                position = new Vector3(mainCamera.transform.position.x - 3, mainCamera.transform.position.y - 3);
+                position = new Vector3(mainCamera.transform.position.x - 3, mainCamera.transform.position.y - 5.5f);
             }
             else if (playerList.Count == 1)
             {
-                position = new Vector3(mainCamera.transform.position.x - 6, mainCamera.transform.position.y - 3);
+                position = new Vector3(mainCamera.transform.position.x - 6, mainCamera.transform.position.y - 5.5f);
             }
             else if (playerList.Count == 2)
             {
-                position = new Vector3(mainCamera.transform.position.x - 0, mainCamera.transform.position.y - 3);
+                position = new Vector3(mainCamera.transform.position.x - 0, mainCamera.transform.position.y - 5.5f);
             }
             else if (playerList.Count == 3)
             {
-                position = new Vector3(mainCamera.transform.position.x - 9, mainCamera.transform.position.y - 3);
+                position = new Vector3(mainCamera.transform.position.x - 9, mainCamera.transform.position.y - 5.5f);
             }
             else
             {
-                position = new Vector3(mainCamera.transform.position.x - 5, mainCamera.transform.position.y - 3);
+                position = new Vector3(mainCamera.transform.position.x - 5, mainCamera.transform.position.y - 5.5f);
             }
         }
         else

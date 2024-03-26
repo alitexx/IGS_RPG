@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     float DistanceBetweenObjects;
     private Animator animator;
     private Vector2 input;
+    public PlayerController PlayerController;
 
     private void Start()
     {
@@ -26,14 +27,20 @@ public class EnemyMovement : MonoBehaviour
         // Update is called once per frame
     void Update()
     {
+        if (DistanceBetweenObjects > maxDistance)
+        {
+            animator.SetBool("isMoving", false);
+        }
+
         //Movement
         DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
 
-        if (DistanceBetweenObjects <= maxDistance)
+        if ((DistanceBetweenObjects <= maxDistance) /*&& (PlayerController.isfrozen == false)*/)
         {
             EnemyRB.transform.position = Vector2.MoveTowards(EnemyRB.transform.position, TargetRB.transform.position, Speed * Time.deltaTime);
 
             //Animations
+            animator.SetBool("isMoving", true);
 
             if (Target.transform.position.x > transform.position.x)
             {
@@ -53,7 +60,8 @@ public class EnemyMovement : MonoBehaviour
                 input.y = -1;
             }
             
-            //if (input.x != 0) input.y = 0;
+            if (input.x > .5) input.y = 0;
+            if (input.y > .5) input.x = 0;
 
             if (input != Vector2.zero)
             {

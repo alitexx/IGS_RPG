@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GamePaused = false;
 
     public GameObject PauseMenuUI;
+    public GameObject SettingsUI;
 
     // Update is called once per frame
     void Update()
@@ -40,6 +41,11 @@ public class PauseMenu : MonoBehaviour
         GamePaused = true; // change bool
     }
 
+    public void Settings()
+    {
+        SettingsUI.SetActive(true);
+    }
+
     public void LoadMenu()
     {
         Time.timeScale = 1f;
@@ -49,5 +55,10 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit(); //quits
+    }
+
+    public void Back()
+    {
+        SettingsUI.SetActive(false);
     }
 }

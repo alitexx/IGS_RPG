@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
     //Level Number
     public int Level = 1;
 
+    //Camera Movement Detecter
+    public CamMovementDetect cameraMovementDetecter;
+
 
     private void Start()
     {
@@ -172,41 +175,46 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        isSlime = false;
-        isWraith = false;
-        isInvisGuy = false;
-        isSkeleton = false;
 
-        if (collision.gameObject.tag == "Slime")
+        if (cameraMovementDetecter.isIdle)
         {
-            Destroy(collision.gameObject);
-            isfrozen = true;
-            isSlime = true;
-            BattleUI.SetActive(true);
-        }
-        
-        if (collision.gameObject.tag == "Wraith")
-        {
-            Destroy(collision.gameObject);
-            isfrozen = true;
-            isWraith = true;
-            BattleUI.SetActive(true);
-        }
-       
-        if (collision.gameObject.tag == "InvisGuy")
-        {
-            Destroy(collision.gameObject);
-            isfrozen = true;
-            isInvisGuy = true;
-            BattleUI.SetActive(true);
-        }
-        
-        if (collision.gameObject.tag == "Skeleton")
-        {
-            Destroy(collision.gameObject);
-            isfrozen = true;
-            isSkeleton = true;
-            BattleUI.SetActive(true);
+            isSlime = false;
+            isWraith = false;
+            isInvisGuy = false;
+            isSkeleton = false;
+
+            if (collision.gameObject.tag == "Slime")
+            {
+
+                Destroy(collision.gameObject);
+                isfrozen = true;
+                isSlime = true;
+                BattleUI.SetActive(true);
+            }
+
+            if (collision.gameObject.tag == "Wraith")
+            {
+                Destroy(collision.gameObject);
+                isfrozen = true;
+                isWraith = true;
+                BattleUI.SetActive(true);
+            }
+
+            if (collision.gameObject.tag == "InvisGuy")
+            {
+                Destroy(collision.gameObject);
+                isfrozen = true;
+                isInvisGuy = true;
+                BattleUI.SetActive(true);
+            }
+
+            if (collision.gameObject.tag == "Skeleton")
+            {
+                Destroy(collision.gameObject);
+                isfrozen = true;
+                isSkeleton = true;
+                BattleUI.SetActive(true);
+            }
         }
       
 
