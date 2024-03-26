@@ -25,6 +25,11 @@ public class OpeningCutscene : MonoBehaviour
         StartCoroutine(completeDialogue());
     }
 
+    public void skipDialogue()
+    {
+        SceneManager.LoadScene("RPG_World");
+    }
+
 
     //next thing to do: figure out how to make speech progress on click. its done somewhere in this code, but idk where honestly
     IEnumerator completeDialogue()
