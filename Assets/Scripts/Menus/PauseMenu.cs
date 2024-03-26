@@ -44,6 +44,7 @@ public class PauseMenu : MonoBehaviour
     public void Settings()
     {
         SettingsUI.SetActive(true);
+        PauseMenuUI.SetActive(false);
     }
 
     public void LoadMenu()
@@ -60,5 +61,6 @@ public class PauseMenu : MonoBehaviour
     public void Back()
     {
         SettingsUI.SetActive(false);
+        PauseMenuUI.SetActive(true);
     }
 }

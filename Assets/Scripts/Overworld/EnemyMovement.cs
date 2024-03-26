@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     public Rigidbody2D TargetRB;
     public Rigidbody2D EnemyRB;
     public GameObject Target;
-    float maxDistance = 5f;
+    public float maxDistance = 5f;
     float DistanceBetweenObjects;
     private Animator animator;
     private Vector2 input;
