@@ -14,24 +14,28 @@ public class pauseMenuManager : MonoBehaviour
         switch (whoWasIt.ToUpper())
         {
             case "ALAN":
+                partyMemberIcons[0].DOMove(locations[3].transform.position, 0.75f);
                 partyMemberIcons[1].DOMove(locations[2].transform.position, 1);
                 partyMemberIcons[2].DOMove(locations[2].transform.position, 1);
                 partyMemberIcons[3].DOMove(locations[2].transform.position, 1);
                 break;
             case "KISA":
                 partyMemberIcons[0].DOMove(locations[1].transform.position, 1);
+                partyMemberIcons[1].DOMove(locations[4].transform.position, 0.75f);
                 partyMemberIcons[2].DOMove(locations[2].transform.position, 1);
                 partyMemberIcons[3].DOMove(locations[2].transform.position, 1);
                 break;
             case "NICOL":
                 partyMemberIcons[0].DOMove(locations[1].transform.position, 1);
                 partyMemberIcons[1].DOMove(locations[1].transform.position, 1);
+                partyMemberIcons[2].DOMove(locations[5].transform.position, 0.75f);
                 partyMemberIcons[3].DOMove(locations[2].transform.position, 1);
                 break;
             case "SOPHIE":
                 partyMemberIcons[0].DOMove(locations[1].transform.position, 1);
                 partyMemberIcons[1].DOMove(locations[1].transform.position, 1);
                 partyMemberIcons[2].DOMove(locations[1].transform.position, 1);
+                partyMemberIcons[3].DOMove(locations[6].transform.position, 0.75f);
                 break;
         }
     }

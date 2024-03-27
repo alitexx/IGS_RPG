@@ -465,6 +465,10 @@ MonoBehaviour:
   - {fileID: 322459530}
   - {fileID: 386146140}
   - {fileID: 861592846}
+  - {fileID: 699722907}
+  - {fileID: 1139675175}
+  - {fileID: 498757088}
+  - {fileID: 372685602}
 --- !u!1 &286567978
 GameObject:
   m_ObjectHideFlags: 0
