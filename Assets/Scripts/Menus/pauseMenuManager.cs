@@ -10,6 +10,11 @@ public class pauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject[] locations;
     [SerializeField] private GameObject[] buttonOn;
     [SerializeField] private GameObject[] buttonOff;
+    [SerializeField] private pause_characterInspection p_ci;
+    [SerializeField] private GameObject characterinspector;
+
+    // when menu is opened, check the state of the party. party members you dont own are grayed out,
+    // party members that are dead have a red X over them
 
     public void PartyMemberClicked(string whoWasIt)
     {
@@ -22,6 +27,7 @@ public class pauseMenuManager : MonoBehaviour
                 partyMemberIcons[3].DOMove(locations[2].transform.position, 1);
                 buttonOn[0].SetActive(false);
                 buttonOff[0].SetActive(true);
+                p_ci.characterInspection(0);
                 break;
             case "KISA":
                 partyMemberIcons[0].DOMove(locations[1].transform.position, 1);
@@ -30,6 +36,7 @@ public class pauseMenuManager : MonoBehaviour
                 partyMemberIcons[3].DOMove(locations[2].transform.position, 1);
                 buttonOn[1].SetActive(false);
                 buttonOff[1].SetActive(true);
+                p_ci.characterInspection(1);
                 break;
             case "NICOL":
                 partyMemberIcons[0].DOMove(locations[1].transform.position, 1);
@@ -38,6 +45,7 @@ public class pauseMenuManager : MonoBehaviour
                 partyMemberIcons[3].DOMove(locations[2].transform.position, 1);
                 buttonOn[2].SetActive(false);
                 buttonOff[2].SetActive(true);
+                p_ci.characterInspection(2);
                 break;
             case "SOPHIE":
                 partyMemberIcons[0].DOMove(locations[1].transform.position, 1);
@@ -46,8 +54,10 @@ public class pauseMenuManager : MonoBehaviour
                 partyMemberIcons[3].DOMove(locations[6].transform.position, 0.75f);
                 buttonOn[3].SetActive(false);
                 buttonOff[3].SetActive(true);
+                p_ci.characterInspection(3);
                 break;
         }
+        characterinspector.SetActive(true);
     }
 
     public void closePartyMemberMenu(string whoWasIt)
@@ -56,6 +66,7 @@ public class pauseMenuManager : MonoBehaviour
         partyMemberIcons[1].DOMove(locations[0].transform.position, 1);
         partyMemberIcons[2].DOMove(locations[0].transform.position, 1);
         partyMemberIcons[3].DOMove(locations[0].transform.position, 1);
+        characterinspector.SetActive(false);
         //leaving just in case i need to return to this
         switch (whoWasIt.ToUpper())
         {
@@ -76,5 +87,6 @@ public class pauseMenuManager : MonoBehaviour
                 buttonOff[3].SetActive(false);
                 break;
         }
+
     }
 }
