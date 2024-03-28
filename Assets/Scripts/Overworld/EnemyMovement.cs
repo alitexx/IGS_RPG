@@ -29,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (DistanceBetweenObjects > maxDistance)
         {
-            //animator.SetBool("isMoving", false);
+            animator.SetBool("isMoving", false);
         }
 
         //Movement
