@@ -20,6 +20,7 @@ public class SavepointScript : MonoBehaviour
         {
             //call function to heal, and eventually save.
             levelManager.FullHeal();
+            //confirm save/heal as a menu or something (name.setactive(true)
             Debug.Log("YIPEEEE");
         }
 
