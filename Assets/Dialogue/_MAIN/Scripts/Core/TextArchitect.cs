@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class TextArchitect
 {
@@ -100,10 +101,11 @@ public class TextArchitect
                 tmpro.maxVisibleCharacters = tmpro.textInfo.characterCount;
                 break;
         }
-
-        Stop();
+        tmpro.StopCoroutine(buildProcess);
+        buildProcess = null;
         OnComplete();
     }
+
     private void Prepare() // prepare text based on the build method (for no glitches)
     {
         switch (buildMethod)
@@ -146,5 +148,8 @@ public class TextArchitect
 
             yield return new WaitForSeconds(0.015f / speed);
         }
+        tmpro.StopCoroutine(buildProcess);
+        buildProcess = null;
+        OnComplete();
     }
 }

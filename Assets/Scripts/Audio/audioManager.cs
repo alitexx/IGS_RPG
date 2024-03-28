@@ -8,8 +8,8 @@ public class audioManager : MonoBehaviour
     protected float MasterVolume = audioStatics.MasterVolume;
     protected float BGMVolume = audioStatics.BGMVolume;
     protected float SFXVolume = audioStatics.SFXVolume;
-    protected float VoiceVolume = audioStatics.VoiceVolume;
-    [SerializeField] private AudioSource[] songsAvailable;
+    [SerializeField] private AudioSource[] BGMAvailable;
+    [SerializeField] private AudioSource[] SFXAvailable;
 
     private static AudioSource currentlyPlaying;
 
@@ -85,9 +85,9 @@ public class audioManager : MonoBehaviour
 
     private void playSongUsingID(int ID, float speed)
     {
-        songsAvailable[ID].DOFade(BGMVolume * MasterVolume, speed).OnComplete(() => {
+        BGMAvailable[ID].DOFade(BGMVolume * MasterVolume, speed).OnComplete(() => {
             currentlyPlaying.Stop();
-            currentlyPlaying = songsAvailable[ID];
+            currentlyPlaying = BGMAvailable[ID];
         });
     }
 }

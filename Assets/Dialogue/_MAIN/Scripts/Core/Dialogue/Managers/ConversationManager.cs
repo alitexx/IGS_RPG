@@ -192,12 +192,13 @@ namespace DIALOGUE
                     if (!architect.hurryUp)
                     {
                         architect.hurryUp = true;
+                        userPrompt = false;
                     }
                     else
                     {
                         architect.ForceComplete();
                     }
-                    userPrompt = false;
+                    //userPrompt = true;
                 }
                 yield return null;
             }

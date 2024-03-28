@@ -23,9 +23,13 @@ public class mainDialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] tweenInPositions;
     [SerializeField] private GameObject[] tweenOutPositions;
     [SerializeField] private Transform dialogueBox;
+
     // when loading something from resources, you dont specify the file extension
     //[SerializeField] private TextAsset fileName;
+    private bool dialogueRunning = false; // Track if dialogue coroutine is running
     private string fileName = "TextFiles/openingScene";
+
+    private string currentlyRunningText = "";
 
     private void Start()
     {
@@ -36,18 +40,19 @@ public class mainDialogueManager : MonoBehaviour
     public void dialogueSTART(string dialogueFile)
     {
         //validate input before continuing
-        StartCoroutine(completeDialogue(dialogueFile));
 
-        //COME BACK HERE POOKIE!!! FIGURE OUT WHAT IS WRONG!!! PLEASE!!! please.
+        // Only start the coroutine if it's not already running
+        if (!dialogueRunning)
+        {
+            StartCoroutine(completeDialogue(dialogueFile));
+            dialogueRunning = true; // Set the flag to true when starting the coroutine
 
-        top.DOMove(tweenInPositions[0].transform.position, 1.5f);
-        bottom.DOMove(tweenInPositions[1].transform.position, 1.5f);
-        dialogueBox.DOMove(tweenInPositions[2].transform.position, 1.5f);
-        //top.DOMoveY(80, 2);
-        //bottom.DOMoveY(40, 2);
+            currentlyRunningText = dialogueFile;
 
-        //dialogueBox.DOMoveY(100, 2);
-        //StartCoroutine(Run(dialogueFile));
+            top.DOMove(tweenInPositions[0].transform.position, 1.5f);
+            bottom.DOMove(tweenInPositions[1].transform.position, 1.5f);
+            dialogueBox.DOMove(tweenInPositions[2].transform.position, 1.5f);
+        }
     }
 
 
@@ -58,9 +63,6 @@ public class mainDialogueManager : MonoBehaviour
         DialogueSystem.instance.Say(lines);
         yield return null;
     }
-
-
-    //next thing to do: figure out how to make speech progress on click. its done somewhere in this code, but idk where honestly
     IEnumerator completeDialogue(string dialogueFile)
     {
         yield return StartCoroutine(Run(dialogueFile));
@@ -68,17 +70,15 @@ public class mainDialogueManager : MonoBehaviour
 
     public void dialogueEND()
     {
-        Debug.Log("DIALOGUE HAS ENDED!! MOVIN THINGS TO WHERE THEY NEED TO BE");
-        //top.DOMoveY(4, 2);
-        //bottom.DOMoveY(-4, 2);
-
-        //dialogueBox.DOMoveY(0, 2);
-
-        top.DOMove(tweenOutPositions[0].transform.position, 2);
-        bottom.DOMove(tweenOutPositions[1].transform.position, 2);
-        dialogueBox.DOMove(tweenOutPositions[2].transform.position, 2);
-
-        //StartCoroutine(Run(dialogueFile));
-        //bottom.DOMove(new Vector2(2, 2), 1);
+        // Stop the dialogue coroutine if it's running
+        if (dialogueRunning)
+        {
+            StopCoroutine(completeDialogue(currentlyRunningText));
+            dialogueRunning = false; // Set the flag to false when stopping the coroutine
+            currentlyRunningText = "";
+            top.DOMove(tweenOutPositions[0].transform.position, 2);
+            bottom.DOMove(tweenOutPositions[1].transform.position, 2);
+            dialogueBox.DOMove(tweenOutPositions[2].transform.position, 2);
+        }
     }
 }
