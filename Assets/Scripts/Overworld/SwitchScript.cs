@@ -7,7 +7,7 @@ public class SwitchScript : MonoBehaviour
 
     public GameObject Door;
     public Rigidbody2D RB;
-    private bool isOnSwitch;
+    public bool isOnSwitch;
     
 
     private void Start()
