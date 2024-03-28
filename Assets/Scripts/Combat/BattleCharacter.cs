@@ -100,7 +100,7 @@ public class BattleCharacter : MonoBehaviour
             }
             else if (statSheet.name == "Bard Guy")
             {
-                charSprite.color = Color.green;
+                //charSprite.color = Color.green;
                 animator.SetBool("isBard", true);
             }
 

@@ -486,7 +486,6 @@ MonoBehaviour:
   charSprite: {fileID: 7771544044199383721}
   animator: {fileID: 7197455562530669128}
   particleManager: {fileID: 4836191928861364526, guid: 90e2bdc31e6857a43bb8c4f9b4a25c3e, type: 3}
-  particleObject: {fileID: 8045053415094432997, guid: 90e2bdc31e6857a43bb8c4f9b4a25c3e, type: 3}
 --- !u!95 &7197455562530669128
 Animator:
   serializedVersion: 4
@@ -553,7 +552,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.1875, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

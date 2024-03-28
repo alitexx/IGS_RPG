@@ -8,6 +8,7 @@ public class SavepointScript : MonoBehaviour
     public GameObject Target;
     float maxDistance = 1.5f;
     float DistanceBetweenObjects;
+    public LevelManager levelManager;
 
     // Start is called before the first frame update
     private void Update()
@@ -18,6 +19,7 @@ public class SavepointScript : MonoBehaviour
         if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown("space"))
         {
             //call function to heal, and eventually save.
+            levelManager.FullHeal();
             Debug.Log("YIPEEEE");
         }
 
