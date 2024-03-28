@@ -4,8 +4,8 @@ using UnityEngine;
 
 public static class audioStatics
 {
-    public static float MasterVolume;
-    public static float BGMVolume;
-    public static float SFXVolume;
-    public static float VoiceVolume;
+    public static float MasterVolume = 1;
+    public static float BGMVolume = 1;
+    public static float SFXVolume = 1;
+    public static float VoiceVolume = 1;
 }

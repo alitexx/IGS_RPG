@@ -12,10 +12,10 @@ public class OpeningCutscene : MonoBehaviour
     private Character CreateCharacter(string name) => CharacterManager.instance.CreateCharacter(name);
     [SerializeField] private GameObject[] cutsceneassets;
     [SerializeField] private DialogueSystem ds;
-    private void Start()
-    {
-        dialogueSTART(); // only here for testing
-    }
+    //private void Start()
+    //{
+    //    dialogueSTART(); // only here for testing
+    //}
 
     //MUST PASS IN THE 
     public void dialogueSTART()

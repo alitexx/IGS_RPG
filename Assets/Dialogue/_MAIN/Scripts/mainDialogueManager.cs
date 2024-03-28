@@ -23,6 +23,9 @@ public class mainDialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] tweenInPositions;
     [SerializeField] private GameObject[] tweenOutPositions;
     [SerializeField] private Transform dialogueBox;
+    [SerializeField] private audioManager am;
+
+    [SerializeField] private PlayerController playerController;
 
     // when loading something from resources, you dont specify the file extension
     //[SerializeField] private TextAsset fileName;
@@ -33,6 +36,7 @@ public class mainDialogueManager : MonoBehaviour
 
     private void Start()
     {
+        am.playBGM("T4"); // temporary
         dialogueSTART(fileName); // only here for testing
     }
 
@@ -48,6 +52,7 @@ public class mainDialogueManager : MonoBehaviour
             dialogueRunning = true; // Set the flag to true when starting the coroutine
 
             currentlyRunningText = dialogueFile;
+            playerController.isfrozen = true;
 
             top.DOMove(tweenInPositions[0].transform.position, 1.5f);
             bottom.DOMove(tweenInPositions[1].transform.position, 1.5f);
@@ -73,9 +78,12 @@ public class mainDialogueManager : MonoBehaviour
         // Stop the dialogue coroutine if it's running
         if (dialogueRunning)
         {
+            am.playBGM("T2");
             StopCoroutine(completeDialogue(currentlyRunningText));
             dialogueRunning = false; // Set the flag to false when stopping the coroutine
             currentlyRunningText = "";
+            playerController.isfrozen = false;
+
             top.DOMove(tweenOutPositions[0].transform.position, 2);
             bottom.DOMove(tweenOutPositions[1].transform.position, 2);
             dialogueBox.DOMove(tweenOutPositions[2].transform.position, 2);

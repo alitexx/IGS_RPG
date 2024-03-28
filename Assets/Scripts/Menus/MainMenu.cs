@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject MainMenuUI;
+    public OpeningCutscene openingCutscene;
 
     public void Startgame()
     {
-        SceneManager.LoadScene("OpeningCutscene"); //loads main level
+        MainMenuUI.SetActive(false);
+        openingCutscene.dialogueSTART();
+        //SceneManager.LoadScene("OpeningCutscene"); //loads main level
     }
 
     public void QuitGame()
