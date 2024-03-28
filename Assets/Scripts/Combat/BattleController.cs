@@ -1,4 +1,5 @@
 using DG.Tweening;
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -62,6 +63,8 @@ public class BattleController : MonoBehaviour
 
     private void OnEnable()
     {
+        partyBoss = false;
+
         SetStats();
 
         befriendOrAbsorbButton.SetActive(false);
@@ -110,16 +113,19 @@ public class BattleController : MonoBehaviour
         else if (playerController.KisaBoss)
         {
             firstEnemy = SpawnCharacter(false, bardStats, "Bard Guy", 3, 3, 0);
+            partyBoss = true;
             //howManyToSpawn = 0;
         }
         else if (playerController.NicolBoss)
         {
             firstEnemy = SpawnCharacter(false, mageStats, "Mage Guy", 2, 1, 2);
+            partyBoss = true;
             //howManyToSpawn = 0;
         }
         else if (playerController.SophieBoss)
         {
             firstEnemy = SpawnCharacter(false, monkStats, "Monk Guy", 4, 2, 3);
+            partyBoss = true;
             //howManyToSpawn = 0;
         }
         else if (playerController.LichBoss)
@@ -128,17 +134,17 @@ public class BattleController : MonoBehaviour
         }
 
 
-        if (playerController.Level >= 2)
+        if (playerController.Level >= 2 && partyBoss == false)
         {
             secondEnemy = SpawningEnemy();
         }
 
-        if (playerController.Level >= 3)
+        if (playerController.Level >= 3 && partyBoss == false)
         {
             thirdEnemy = SpawningEnemy();
         }
 
-        if (playerController.Level >= 4)
+        if (playerController.Level >= 4 && partyBoss == false)
         {
             FourthEnemy = SpawningEnemy();
         }
@@ -344,6 +350,14 @@ public class BattleController : MonoBehaviour
     public GameObject sophieElectricMagicButton;
     public GameObject kisaWindMagicButton;
     public GameObject alanFireMagicButton;
+
+    private bool partyBoss;
+
+    public KeyCode attackKey = KeyCode.W;
+    public KeyCode blockKey = KeyCode.S; 
+    public KeyCode specialKey = KeyCode.A;
+    public KeyCode magicKey = KeyCode.D;
+    public KeyCode backKey = KeyCode.Backspace;
     #endregion
 
     public GameObject particleManager;
@@ -432,6 +446,39 @@ public class BattleController : MonoBehaviour
 
             GameObject particle = Instantiate(particleManager, transform, Quaternion.identity, activeChar.transform);
         }*/
+
+        
+
+        if (fightingButtons.activeInHierarchy == true)
+        {
+            if (Input.GetKeyDown(attackKey))
+            {
+                attackButton();
+            }
+
+            if (Input.GetKeyDown(blockKey))
+            {
+                defendButton();
+            }
+
+            if (Input.GetKeyDown(specialKey))
+            {
+                specialButton();
+            }
+
+            if (Input.GetKeyDown(magicKey))
+            {
+                magicButton();
+            }
+        }
+
+        if (confirmText.activeInHierarchy == true)
+        {
+            if (Input.GetKeyDown(backKey))
+            {
+                BackButton();
+            }
+        }
     }
 
     #region Buttons
@@ -611,6 +658,8 @@ public class BattleController : MonoBehaviour
 
     #region Targeting Coroutines
 
+    private KeyCode confirmKey = KeyCode.Space;
+
     //When these coroutines are called, the while loop while loop indefinitely until the enter or "return" key is pressed
     private IEnumerator AttackTargeting()
     {
@@ -621,7 +670,7 @@ public class BattleController : MonoBehaviour
 
         enemyList[enemyNum].ShowTargetCircle();
 
-        while (!Input.GetKeyDown(KeyCode.Return))
+        while (!Input.GetKeyDown(confirmKey))
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
@@ -668,7 +717,7 @@ public class BattleController : MonoBehaviour
     {
         confirmText.SetActive(true);
 
-        while (!Input.GetKeyDown(KeyCode.Return))
+        while (!Input.GetKeyDown(confirmKey))
         {
             yield return null;
         }
@@ -689,7 +738,7 @@ public class BattleController : MonoBehaviour
 
         enemyList[enemyNum].ShowTargetCircle();
 
-        while (!Input.GetKeyDown(KeyCode.Return))
+        while (!Input.GetKeyDown(confirmKey))
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
@@ -743,7 +792,7 @@ public class BattleController : MonoBehaviour
         {
             confirmText.SetActive(true);
 
-            while (!Input.GetKeyDown(KeyCode.Return))
+            while (!Input.GetKeyDown(confirmKey))
             {
                 yield return null;
             }
@@ -765,7 +814,7 @@ public class BattleController : MonoBehaviour
 
             enemyList[enemyNum].ShowTargetCircle();
 
-            while (!Input.GetKeyDown(KeyCode.Return))
+            while (!Input.GetKeyDown(confirmKey))
             {
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
@@ -832,7 +881,7 @@ public class BattleController : MonoBehaviour
         {
             confirmText.SetActive(true);
 
-            while (!Input.GetKeyDown(KeyCode.Return))
+            while (!Input.GetKeyDown(confirmKey))
             {
                 yield return null;
             }
@@ -851,7 +900,7 @@ public class BattleController : MonoBehaviour
         {
             confirmText.SetActive(true);
 
-            while (!Input.GetKeyDown(KeyCode.Return))
+            while (!Input.GetKeyDown(confirmKey))
             {
                 yield return null;
             }
@@ -873,7 +922,7 @@ public class BattleController : MonoBehaviour
 
             enemyList[enemyNum].ShowTargetCircle();
 
-            while (!Input.GetKeyDown(KeyCode.Return))
+            while (!Input.GetKeyDown(confirmKey))
             {
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
@@ -1043,7 +1092,7 @@ public class BattleController : MonoBehaviour
                 //Works, but game doesn't give time for enemy to fade out, and that can cause issues
                 //StartCoroutine(FadeOut(enemyList[i]));
 
-                levelManager.currentEXP += 10;
+                levelManager.currentEXP += 2;
             }
         }
 
