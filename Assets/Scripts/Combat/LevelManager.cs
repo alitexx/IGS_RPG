@@ -68,7 +68,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Instance != null)
+        /*if (Instance != null)
         {
             Destroy(this.gameObject);
         }
@@ -77,7 +77,7 @@ public class LevelManager : MonoBehaviour
             Instance = this;
         }
 
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);*/
 
         kisaAbsorb = false;
         nicolAbsorb = false;
@@ -96,40 +96,50 @@ public class LevelManager : MonoBehaviour
         {
             if (battleController.partyMembers[i].statSheet.name == "Tank Guy")
             {
-                battleController.partyMembers[i].statSheet.stats["Defense"] += 2;
+                battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
+                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Health"] += 1;
 
                 if (kisaAbsorb)
                 {
-                    battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 2;
-                    battleController.partyMembers[i].statSheet.stats["Health"] += 2;
+                    battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 1;
+                    battleController.partyMembers[i].statSheet.stats["Health"] += 1;
+                    battleController.partyMembers[i].statSheet.stats["MagicAttack"] += 1;
                 }
 
                 if (nicolAbsorb)
                 {
-                    battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 2;
+                    battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
+                    battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
+                    battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
                 }
 
                 if (sophieAbsorb)
                 {
-                    battleController.partyMembers[i].statSheet.stats["Strength"] += 2;
+                    battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
+                    battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
                 }
             }
             else if (battleController.partyMembers[i].statSheet.name == "Mage Guy")
             {
-                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 2;
+                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
+                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
             }
             else if (battleController.partyMembers[i].statSheet.name == "Bard Guy")
             {
-                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 2;
+                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 1;
+                battleController.partyMembers[i].statSheet.stats["MagicAttack"] += 1;
 
                 if (battleController.partyMembers[i].IsDead() == false)
                 {
-                    battleController.partyMembers[i].statSheet.stats["Health"] += 2;
+                    battleController.partyMembers[i].statSheet.stats["Health"] += 1;
                 }
             }
             else if (battleController.partyMembers[i].statSheet.name == "Monk Guy")
             {
-                battleController.partyMembers[i].statSheet.stats["Strength"] += 2;
+                battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
             }
         }
     }
@@ -280,6 +290,5 @@ public class LevelManager : MonoBehaviour
 
         mageStoredStats[4] = mageStoredStats[5];
         mageStoredStats[6] = mageStoredStats[7];
-
     }
 }
