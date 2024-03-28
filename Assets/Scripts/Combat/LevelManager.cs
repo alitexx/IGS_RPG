@@ -65,6 +65,50 @@ public class LevelManager : MonoBehaviour
 
     #endregion
 
+    #region EnemyStats 
+    static public int[] slimeStats = {
+        /*0 Strength*/ 7,
+        /*1 Magic Attack*/ 1,
+        /*2 Defense*/ 3, 
+        /*3 Speed*/ 2, 
+        /*4 Health*/ 20, 
+        /*5 MaxHealth*/ 20,
+        /*6 Mana*/ 6,
+        /*7 MaxMana*/ 7};
+
+    //Skeleton Stats
+    static public int[] skeletonStats = {
+        /*0 Strength*/ 7,
+        /*1 Magic Attack*/ 1,
+        /*2 Defense*/ 7, 
+        /*3 Speed*/ 3, 
+        /*4 Health*/ 10, 
+        /*5 MaxHealth*/ 10,
+        /*6 Mana*/ 6,
+        /*7 MaxMana*/ 7};
+
+    static public int[] wraithStats = {
+        /*0 Strength*/ 11,
+        /*1 Magic Attack*/ 1,
+        /*2 Defense*/ 5, 
+        /*3 Speed*/ 5, 
+        /*4 Health*/ 17, 
+        /*5 MaxHealth*/ 17,
+        /*6 Mana*/ 6,
+        /*7 MaxMana*/ 7};
+
+    static public int[] ghostStats = {
+        /*0 Strength*/ 9,
+        /*1 Magic Attack*/ 1,
+        /*2 Defense*/ 11, 
+        /*3 Speed*/ 4, 
+        /*4 Health*/ 7, 
+        /*5 MaxHealth*/ 7,
+        /*6 Mana*/ 6,
+        /*7 MaxMana*/ 7};
+
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -254,6 +298,11 @@ public class LevelManager : MonoBehaviour
     public int[] SetBardStats()
     {
         return bardStoredStats;
+    }
+
+    public void SetEnemyStats(int[] lSlimeStats, int[] lGhostStats, int[] lSkeletonStats, int[] lWraithStats)
+    {
+
     }
 
     public int GetCharHealth(string charName)

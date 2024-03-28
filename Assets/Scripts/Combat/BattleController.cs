@@ -59,6 +59,8 @@ public class BattleController : MonoBehaviour
         monkStats = levelManager.SetMonkStats();
         bardStats = levelManager.SetBardStats();
         mageStats = levelManager.SetMageStats();
+
+        levelManager.SetEnemyStats(slimeStats, ghostStats, skeletonStats, wraithStats);
     }
 
     private void OnEnable()
