@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GamePaused = false;
-
+    [SerializeField] public PlayerController playerController;
     public GameObject PauseMenuUI;
     public GameObject SettingsUI;
 
@@ -30,14 +30,14 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         PauseMenuUI.SetActive(false); // deactivate the pause menu
-        Time.timeScale = 1f;
+        playerController.isfrozen = false;
         GamePaused = false; // change bool
     }
     
     void Pause()
     {
         PauseMenuUI.SetActive(true); // activate the pause menu
-        Time.timeScale = 0f;
+        playerController.isfrozen = true;
         GamePaused = true; // change bool
     }
 
