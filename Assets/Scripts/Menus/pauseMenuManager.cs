@@ -12,6 +12,14 @@ public class pauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject[] buttonOff;
     [SerializeField] private pause_characterInspection p_ci;
     [SerializeField] private GameObject characterinspector;
+    //main menu confirmation
+    [SerializeField] private GameObject darkenBG;
+    [SerializeField] private GameObject ConfirmMainMenu;
+    //options
+    [SerializeField] private GameObject OptionsTXT;
+    [SerializeField] private GameObject PartyLevelTXT;
+    [SerializeField] private GameObject OptionsMenu;
+    [SerializeField] private GameObject Buttons;
 
     // when menu is opened, check the state of the party. party members you dont own are grayed out,
     // party members that are dead have a red X over them
@@ -88,5 +96,41 @@ public class pauseMenuManager : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void openPauseMenu()
+    {
+        partyMemberIcons[0].DOMove(locations[1].transform.position, 1);
+        partyMemberIcons[1].DOMove(locations[1].transform.position, 1);
+        partyMemberIcons[2].DOMove(locations[2].transform.position, 1);
+        partyMemberIcons[3].DOMove(locations[2].transform.position, 1);
+        //make locations for each of these
+        OptionsTXT.transform.DOMove(locations[7].transform.position, 1);
+        PartyLevelTXT.transform.DOMove(locations[8].transform.position, 1);
+        OptionsMenu.SetActive(true);
+        OptionsMenu.transform.DOMove(locations[0].transform.position, 1);
+        //move buttons
+        //move back button up
+    }
+
+    public void closePauseMenu()
+    {
+        partyMemberIcons[0].DOMove(locations[0].transform.position, 1);
+        partyMemberIcons[1].DOMove(locations[0].transform.position, 1);
+        partyMemberIcons[2].DOMove(locations[0].transform.position, 1);
+        partyMemberIcons[3].DOMove(locations[0].transform.position, 1);
+    }
+
+    public void confirmMainMenu()
+    {
+        //DOFade for the bg
+        darkenBG.SetActive(true);
+        ConfirmMainMenu.SetActive(true);
+    }
+    public void exitConfirmMenu()
+    {
+        //DOFade for the bg
+        darkenBG.SetActive(false);
+        ConfirmMainMenu.SetActive(false);
     }
 }
