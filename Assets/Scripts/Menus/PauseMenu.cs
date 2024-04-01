@@ -9,23 +9,53 @@ public class PauseMenu : MonoBehaviour
     public static bool GamePaused = false;
     [SerializeField] public PlayerController playerController;
     public GameObject PauseMenuUI;
+    public GameObject quickPauseUI;
     public GameObject SettingsUI;
+    [SerializeField] private mainDialogueManager mainDialogueManager;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) //on escape press
         {
-            if (GamePaused)
+            if (mainDialogueManager.dialogueRunning)//OR we are in battle
             {
-                Resume(); //if its paused, resume
-            }
-            else
+                if (GamePaused)
+                {
+                    resume_quickpause();
+                }
+                else
+                {
+                    pause_quickpause();
+                }
+            } else
             {
-                Pause(); //if game is going, pause
+                if (GamePaused)
+                {
+                    Resume(); //if its paused, resume
+                }
+                else
+                {
+                    Pause(); //if game is going, pause
+                }
             }
         }
     }
+
+    private void resume_quickpause()
+    {
+        quickPauseUI.SetActive(false);
+        Time.timeScale = 1.0f;
+        GamePaused = false; // change bool
+    }
+
+    private void pause_quickpause()
+    {
+        quickPauseUI.SetActive(true);
+        Time.timeScale = 0f;
+        GamePaused = true; // change bool
+    }
+
 
     public void Resume()
     {

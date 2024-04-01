@@ -29,7 +29,7 @@ public class mainDialogueManager : MonoBehaviour
 
     // when loading something from resources, you dont specify the file extension
     //[SerializeField] private TextAsset fileName;
-    private bool dialogueRunning = false; // Track if dialogue coroutine is running
+    public bool dialogueRunning = false; // Track if dialogue coroutine is running
     private string fileName = "TextFiles/openingScene";
 
     private string currentlyRunningText = "";

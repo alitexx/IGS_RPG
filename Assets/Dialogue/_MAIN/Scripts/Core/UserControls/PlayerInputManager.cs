@@ -7,7 +7,7 @@ public class PlayerInputManager : MonoBehaviour
 {
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && PauseMenu.GamePaused == false)
         {
              PromptAdvance();
         }

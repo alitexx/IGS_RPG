@@ -98,27 +98,34 @@ public class pauseMenuManager : MonoBehaviour
 
     }
 
-    public void openPauseMenu()
+    public void openOptionsMenu()
     {
         partyMemberIcons[0].DOMove(locations[1].transform.position, 1);
         partyMemberIcons[1].DOMove(locations[1].transform.position, 1);
         partyMemberIcons[2].DOMove(locations[2].transform.position, 1);
         partyMemberIcons[3].DOMove(locations[2].transform.position, 1);
         //make locations for each of these
-        OptionsTXT.transform.DOMove(locations[7].transform.position, 1);
-        PartyLevelTXT.transform.DOMove(locations[8].transform.position, 1);
+        OptionsTXT.transform.DOMove(locations[8].transform.position, 1);
+        PartyLevelTXT.transform.DOMove(locations[7].transform.position, 1);
         OptionsMenu.SetActive(true);
         OptionsMenu.transform.DOMove(locations[0].transform.position, 1);
+        Buttons.transform.DOMove(locations[9].transform.position, 1);
         //move buttons
-        //move back button up
     }
 
-    public void closePauseMenu()
+    public void closeOptionsMenu()
     {
         partyMemberIcons[0].DOMove(locations[0].transform.position, 1);
         partyMemberIcons[1].DOMove(locations[0].transform.position, 1);
         partyMemberIcons[2].DOMove(locations[0].transform.position, 1);
         partyMemberIcons[3].DOMove(locations[0].transform.position, 1);
+        Buttons.transform.DOMove(locations[0].transform.position, 1);
+
+        OptionsTXT.transform.DOMove(locations[7].transform.position, 1);
+        PartyLevelTXT.transform.DOMove(locations[8].transform.position, 1);
+
+        OptionsMenu.transform.DOMove(locations[10].transform.position, 1);
+        OptionsMenu.SetActive(false);
     }
 
     public void confirmMainMenu()
