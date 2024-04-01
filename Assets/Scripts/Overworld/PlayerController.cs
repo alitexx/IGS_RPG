@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
         }
 
         
-         if (collision.gameObject.name == "level2")
+        if (collision.gameObject.name == "level2")
         {
             Level = 2;
         }
