@@ -85,21 +85,22 @@ public class audioManager : MonoBehaviour
 
     private void playSongUsingID(int ID, float speed)
     {
-        BGMAvailable[ID].Play();
-        BGMAvailable[ID].DOFade(0.5f, speed).OnComplete(() => {
-            if (currentlyPlaying)
-            {
-                currentlyPlaying.Stop();
-            }
-            currentlyPlaying = BGMAvailable[ID];
-        });
-        // TURN BACK ON ONCE BGM/MASTER VOLUME WORK!!
-        //BGMAvailable[ID].DOFade(BGMVolume * MasterVolume, speed).OnComplete(() => {
+        //BGMAvailable[ID].Play();
+        //BGMAvailable[ID].DOFade(0.5f, speed).OnComplete(() => {
         //    if (currentlyPlaying)
         //    {
         //        currentlyPlaying.Stop();
         //    }
         //    currentlyPlaying = BGMAvailable[ID];
         //});
+        // TURN BACK ON ONCE BGM/MASTER VOLUME WORK!!
+        BGMAvailable[ID].DOFade(BGMVolume * MasterVolume, speed).OnComplete(() =>
+        {
+            if (currentlyPlaying)
+            {
+                currentlyPlaying.Stop();
+            }
+            currentlyPlaying = BGMAvailable[ID];
+        });
     }
 }
