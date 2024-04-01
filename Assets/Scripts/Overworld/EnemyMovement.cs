@@ -34,44 +34,47 @@ public class EnemyMovement : MonoBehaviour
 
         //Movement
         DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
-
-        if ((DistanceBetweenObjects <= maxDistance) /*&& (PlayerController.isfrozen == false)*/)
+        if(PlayerController.isfrozen == false)
         {
-            EnemyRB.transform.position = Vector2.MoveTowards(EnemyRB.transform.position, TargetRB.transform.position, Speed * Time.deltaTime);
+            if ((DistanceBetweenObjects <= maxDistance) /*&& (PlayerController.isfrozen == false)*/)
+            {
+                EnemyRB.transform.position = Vector2.MoveTowards(EnemyRB.transform.position, TargetRB.transform.position, Speed * Time.deltaTime);
 
-            //Animations
-            animator.SetBool("isMoving", true);
+                //Animations
+                animator.SetBool("isMoving", true);
 
-            if (Target.transform.position.x > transform.position.x)
-            {
-                input.x = 1;
-            }
-            else
-            {
-                input.x = -1;
-            }
+                if (Target.transform.position.x > transform.position.x)
+                {
+                    input.x = 1;
+                }
+                else
+                {
+                    input.x = -1;
+                }
 
-            if (Target.transform.position.y > transform.position.y)
-            {
-                input.y = 1;
-            }
-            else
-            {
-                input.y = -1;
-            }
-            
-            if (input.x > .5) input.y = 0;
-            if (input.y > .5) input.x = 0;
+                if (Target.transform.position.y > transform.position.y)
+                {
+                    input.y = 1;
+                }
+                else
+                {
+                    input.y = -1;
+                }
 
-            if (input != Vector2.zero)
-            {
+                if (input.x > .5) input.y = 0;
+                if (input.y > .5) input.x = 0;
+
+                if (input != Vector2.zero)
+                {
+                    animator.SetFloat("moveX", input.x);
+                    animator.SetFloat("moveY", input.y);
+                }
+
                 animator.SetFloat("moveX", input.x);
                 animator.SetFloat("moveY", input.y);
+                animator.SetFloat("speed", input.sqrMagnitude);
             }
-
-            animator.SetFloat("moveX", input.x);
-            animator.SetFloat("moveY", input.y);
-            animator.SetFloat("speed", input.sqrMagnitude);
         }
+        
     }
 }
