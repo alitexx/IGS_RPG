@@ -50,13 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        waypointTrail = new Transform[4] {
-            rb.transform,
-            //This works, they just need to have their transform relative to parent adjusted to not overlap
-            rb.transform.Find("FollowTrail1"),
-            rb.transform.Find("FollowTrail2"),
-            rb.transform.Find("FollowTrail3")
-        };
+        
 
         battleUI.SetActive(false);
     }
