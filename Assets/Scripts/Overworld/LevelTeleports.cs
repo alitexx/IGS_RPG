@@ -6,29 +6,25 @@ using UnityEngine.Apple;
 public class LevelTeleports : MonoBehaviour
 {
 
-    public Transform Teleport1;
-    public Transform Teleport2;
-    public GameObject portalParent;
+    //public Transform Teleport1;
+    //public Transform Teleport2;
+    public GameObject portalParent1;
+    public GameObject portalParent2;
+    public GameObject portalParent3;
     public Collider2D Player;
-    private Transform destination;
+    public Transform destination1;
+    public Transform destination2;
+    public Transform destination3;
 
     public GameObject ContinueUI;
     public PlayerController PlayerController;
 
-    public bool is2;
     public float distance = 0.2f;
+    public int Level = 1;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Update()
     {
-        if (is2 == false)
-        {
-            destination = Teleport2;
-        }
-        else
-        {
-            destination = Teleport1;
-        }
+        Level = PlayerController.Level;
     }
 
     public void OnTriggerEnter2D(Collider2D col)
@@ -44,10 +40,27 @@ public class LevelTeleports : MonoBehaviour
 
     public void Next()
     {
-        PlayerController.isfrozen = false;
-        ContinueUI.SetActive(false);
-        Player.transform.position = new Vector3(destination.position.x, destination.position.y);
-        Destroy(portalParent);
+        if (Level == 1)
+        {
+            PlayerController.isfrozen = false;
+            ContinueUI.SetActive(false);
+            Player.transform.position = new Vector3(destination1.position.x, destination1.position.y);
+            Destroy(portalParent1);
+        }
+        else if (Level == 2)
+        {
+            PlayerController.isfrozen = false;
+            ContinueUI.SetActive(false);
+            Player.transform.position = new Vector3(destination2.position.x, destination2.position.y);
+            Destroy(portalParent2);
+        }
+        else
+        {
+            PlayerController.isfrozen = false;
+            ContinueUI.SetActive(false);
+            Player.transform.position = new Vector3(destination3.position.x, destination3.position.y);
+            Destroy(portalParent3);
+        }
 
     }
 
