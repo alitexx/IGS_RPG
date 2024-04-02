@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using CHARACTERS;
+using UnityEngine.UI;
 
 namespace DIALOGUE
 {
@@ -22,6 +23,9 @@ namespace DIALOGUE
 
         public delegate void DialogueSystemEvent();
         public event DialogueSystemEvent onUserPrompt_Next;
+
+        public AudioSource charVoice;
+        public Image textbox;
 
         public bool isRunningConversation => conversationManager.isRunning;
 
@@ -58,6 +62,10 @@ namespace DIALOGUE
             CharacterConfigData config = character != null ? character.config : CharacterManager.instance.GetCharacterConfig(speakerName);
 
             //////////////////////////////////////CHANGE GUI STUFF HERE!!!!!!!!!!!! USE CONFIG!!!!!!!!!!!!!!!!!!
+
+            textbox.sprite = config.charNameHolder;
+            charVoice.clip = config.charVoice;
+
 
         }
 
