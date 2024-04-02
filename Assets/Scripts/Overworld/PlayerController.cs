@@ -48,7 +48,16 @@ public class PlayerController : MonoBehaviour
     //gameObjects and Sprites
     public GameObject Kisa;
     public GameObject Nicol;
-    public GameObject Sophine;
+    public GameObject Sophie;
+
+    public SpriteRenderer KisaRenderer;
+    public Sprite absorbKisa;
+
+    public SpriteRenderer NicolRenderer;
+    public Sprite absorbNicol;
+
+    public SpriteRenderer SophieRenderer;
+    public Sprite absorbSophie;
 
 
     private void Start()
@@ -235,11 +244,33 @@ public class PlayerController : MonoBehaviour
 
     public void Absorb()
     {
-
+        if (KisaBoss == true)
+        {
+            KisaRenderer.sprite = absorbKisa;
+        }
+        else if (NicolBoss == true)
+        {
+            NicolRenderer.sprite = absorbNicol;
+        }
+        else if (SophieBoss == true)
+        {
+            SophieRenderer.sprite = absorbSophie;
+        }
     }
 
     public void joinParty()
     {
-
+        if (KisaBoss == true)
+        {
+            //delete or do whatever we want 
+        }
+        else if (NicolBoss == true)
+        {
+            //delete or do whatever we want
+        }
+        else if (SophieBoss == true)
+        {
+            //delete or do whatever we want
+        }
     }
 }
