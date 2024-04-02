@@ -366,6 +366,8 @@ public class BattleController : MonoBehaviour
     public GameObject tutorialObjects;
 
     private bool partyBoss;
+
+    public Animator battleFadeAnim;
     
     //Keys
 
@@ -695,7 +697,7 @@ public class BattleController : MonoBehaviour
 
         while (!Input.GetKeyDown(confirmKey))
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
@@ -708,7 +710,7 @@ public class BattleController : MonoBehaviour
                 }
                 enemyList[enemyNum].ShowTargetCircle();
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
@@ -760,7 +762,7 @@ public class BattleController : MonoBehaviour
 
         while (!Input.GetKeyDown(confirmKey))
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
@@ -773,7 +775,7 @@ public class BattleController : MonoBehaviour
                 }
                 enemyList[enemyNum].ShowTargetCircle();
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
@@ -836,7 +838,7 @@ public class BattleController : MonoBehaviour
 
             while (!Input.GetKeyDown(confirmKey))
             {
-                if (Input.GetKeyDown(KeyCode.RightArrow))
+                if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == enemyList.Count - 1)
@@ -849,7 +851,7 @@ public class BattleController : MonoBehaviour
                     }
                     enemyList[enemyNum].ShowTargetCircle();
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == 0)
@@ -944,7 +946,7 @@ public class BattleController : MonoBehaviour
 
             while (!Input.GetKeyDown(confirmKey))
             {
-                if (Input.GetKeyDown(KeyCode.RightArrow))
+                if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == enemyList.Count - 1)
@@ -957,7 +959,7 @@ public class BattleController : MonoBehaviour
                     }
                     enemyList[enemyNum].ShowTargetCircle();
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == 0)
@@ -1322,6 +1324,7 @@ public class BattleController : MonoBehaviour
         }
         else if (enemyList.Count == 0 || AllEnemyDead == true)
         {
+            battleFadeAnim.SetBool("BattleOver", true);
 
             playerController.isSlime = false;
             playerController.isSkeleton = false;

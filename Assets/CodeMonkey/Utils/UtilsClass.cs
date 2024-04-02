@@ -69,7 +69,7 @@ namespace CodeMonkey.Utils {
             spriteRenderer.sprite = sprite;
             spriteRenderer.sortingOrder = sortingOrder;
             spriteRenderer.color = color;
-            spriteRenderer.sortingLayerName = "Trim";
+            spriteRenderer.sortingLayerName = "BattleUI";
             return gameObject;
         }
 

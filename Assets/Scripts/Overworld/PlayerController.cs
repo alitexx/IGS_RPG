@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
     public int followGap;
 
     //Battle stuff
-    public GameObject BattleUI;
+    public GameObject battleUI;
+    public Animator battleFade;
     //who in party
     public bool hasKisa = false;
     public bool hasNicol = false;
@@ -44,12 +45,34 @@ public class PlayerController : MonoBehaviour
     //Camera Movement Detecter
     public CamMovementDetect cameraMovementDetecter;
 
+    //gameObjects and Sprites
+    public GameObject Kisa;
+    public GameObject Nicol;
+    public GameObject Sophie;
+
+    public SpriteRenderer KisaRenderer;
+    public Sprite absorbKisa;
+
+    public SpriteRenderer NicolRenderer;
+    public Sprite absorbNicol;
+
+    public SpriteRenderer SophieRenderer;
+    public Sprite absorbSophie;
+
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        BattleUI.SetActive(false);
+        waypointTrail = new Transform[4] {
+            rb.transform,
+            //This works, they just need to have their transform relative to parent adjusted to not overlap
+            rb.transform.Find("FollowTrail1"),
+            rb.transform.Find("FollowTrail2"),
+            rb.transform.Find("FollowTrail3")
+        };
+
+        battleUI.SetActive(false);
     }
 
     private void Awake()
@@ -85,7 +108,7 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("speed", 0);
         }
 
-        if (Vector3.Distance(rb.transform.position, waypointTrail[0].position) >= followGap)
+        /*if (Vector3.Distance(rb.transform.position, waypointTrail[0].position) >= followGap)
         {
             waypointTrail[1].position = waypointTrail[0].position;
         }
@@ -97,7 +120,7 @@ public class PlayerController : MonoBehaviour
         {
             waypointTrail[3].position = waypointTrail[2].position;
         }
-
+        */
     }
 
     void FixedUpdate()
@@ -139,7 +162,7 @@ public class PlayerController : MonoBehaviour
 
             //do anything else (like party members)
 
-            BattleUI.SetActive(true);
+            battleFade.SetBool("BattleStarting", true);
             Destroy(collision.gameObject);
         }
 
@@ -181,7 +204,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
                 isfrozen = true;
                 isSlime = true;
-                BattleUI.SetActive(true);
+                battleFade.SetBool("BattleStarting", true);
             }
 
             if (collision.gameObject.tag == "TutorialSlime")
@@ -190,7 +213,7 @@ public class PlayerController : MonoBehaviour
                 isfrozen = true;
                 isSlime = true;
                 tutorialFight = true;
-                BattleUI.SetActive(true);
+                battleFade.SetBool("BattleStarting", true);
             }
 
             if (collision.gameObject.tag == "Wraith")
@@ -198,7 +221,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
                 isfrozen = true;
                 isWraith = true;
-                BattleUI.SetActive(true);
+                battleFade.SetBool("BattleStarting", true);
             }
 
             if (collision.gameObject.tag == "InvisGuy")
@@ -206,7 +229,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
                 isfrozen = true;
                 isInvisGuy = true;
-                BattleUI.SetActive(true);
+                battleFade.SetBool("BattleStarting", true);
             }
 
             if (collision.gameObject.tag == "Skeleton")
@@ -214,8 +237,40 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
                 isfrozen = true;
                 isSkeleton = true;
-                BattleUI.SetActive(true);
+                battleFade.SetBool("BattleStarting", true);
             }
     }
 
+
+    public void Absorb()
+    {
+        if (KisaBoss == true)
+        {
+            KisaRenderer.sprite = absorbKisa;
+        }
+        else if (NicolBoss == true)
+        {
+            NicolRenderer.sprite = absorbNicol;
+        }
+        else if (SophieBoss == true)
+        {
+            SophieRenderer.sprite = absorbSophie;
+        }
+    }
+
+    public void joinParty()
+    {
+        if (KisaBoss == true)
+        {
+            //delete or do whatever we want 
+        }
+        else if (NicolBoss == true)
+        {
+            //delete or do whatever we want
+        }
+        else if (SophieBoss == true)
+        {
+            //delete or do whatever we want
+        }
+    }
 }
