@@ -173,7 +173,7 @@ public class LevelManager : MonoBehaviour
             else if (battleController.partyMembers[i].statSheet.name == "Bard Guy")
             {
                 battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 1;
-                battleController.partyMembers[i].statSheet.stats["MagicAttack"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
 
                 if (battleController.partyMembers[i].IsDead() == false)
                 {
