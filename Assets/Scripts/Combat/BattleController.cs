@@ -151,18 +151,6 @@ public class BattleController : MonoBehaviour
             FourthEnemy = SpawningEnemy();
         }
 
-
-
-        if (playerController.tutorialFight)
-        {
-            tutorialObjects.SetActive(true);
-        }
-        else
-        {
-            tutorialObjects.SetActive(false);
-        }
-        
-
         /*
         if (playerChar.statSheet.stats["Speed"] < enemyChar.statSheet.stats["Speed"])
         {
@@ -342,7 +330,7 @@ public class BattleController : MonoBehaviour
 
     private List<BattleCharacter> enemyList = new List<BattleCharacter>();
 
-    private State state;
+    public State state;
     
     //UI
 
@@ -363,7 +351,8 @@ public class BattleController : MonoBehaviour
     public GameObject sophieElectricMagicButton;
     public GameObject kisaWindMagicButton;
     public GameObject alanFireMagicButton;
-    public GameObject tutorialObjects;
+
+    public GameObject tutorialHandler;
 
     private bool partyBoss;
 
@@ -380,7 +369,7 @@ public class BattleController : MonoBehaviour
 
     public GameObject particleManager;
 
-    private enum State
+    public enum State
     {
         WaitingForPlayer,
         Busy,
@@ -451,20 +440,10 @@ public class BattleController : MonoBehaviour
         if (state == State.WaitingForPlayer)
         {
             fightingButtons.SetActive(true);
-
-            if (playerController.tutorialFight) 
-            {
-                tutorialObjects.SetActive(true);
-            }
         }
         else
         {
             fightingButtons.SetActive(false);
-
-            if (playerController.tutorialFight)
-            {
-                tutorialObjects.SetActive(false);
-            }
         }  
 
         /* Testing how to instantiate the particle effects
@@ -683,7 +662,7 @@ public class BattleController : MonoBehaviour
 
     #region Targeting Coroutines
 
-    private KeyCode confirmKey = KeyCode.Space;
+    public KeyCode confirmKey = KeyCode.Space;
 
     //When these coroutines are called, the while loop while loop indefinitely until the enter or "return" key is pressed
     private IEnumerator AttackTargeting()
@@ -1325,6 +1304,11 @@ public class BattleController : MonoBehaviour
         else if (enemyList.Count == 0 || AllEnemyDead == true)
         {
             battleFadeAnim.SetBool("BattleOver", true);
+            
+            if (tutorialHandler.activeInHierarchy)
+            {
+                tutorialHandler.SetActive(false);
+            }
 
             playerController.isSlime = false;
             playerController.isSkeleton = false;

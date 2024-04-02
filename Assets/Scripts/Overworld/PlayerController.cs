@@ -32,7 +32,9 @@ public class PlayerController : MonoBehaviour
     public bool isWraith = false;
     public bool isInvisGuy = false;
     public bool isSkeleton = false;
+    //Tutorial
     public bool tutorialFight = false;
+    public GameObject tutorialHandler;
     //bosses
     public bool KisaBoss = false;
     public bool NicolBoss = false;
@@ -71,6 +73,8 @@ public class PlayerController : MonoBehaviour
             rb.transform.Find("FollowTrail2"),
             rb.transform.Find("FollowTrail3")
         };
+
+        tutorialHandler.SetActive(false);
 
         battleUI.SetActive(false);
     }
@@ -213,6 +217,7 @@ public class PlayerController : MonoBehaviour
                 isfrozen = true;
                 isSlime = true;
                 tutorialFight = true;
+                tutorialHandler.SetActive(true);
                 battleFade.SetBool("BattleStarting", true);
             }
 
