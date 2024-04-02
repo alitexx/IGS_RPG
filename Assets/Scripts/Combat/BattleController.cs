@@ -151,6 +151,16 @@ public class BattleController : MonoBehaviour
             FourthEnemy = SpawningEnemy();
         }
 
+
+
+        if (playerController.tutorialFight)
+        {
+            tutorialObjects.SetActive(true);
+        }
+        else
+        {
+            tutorialObjects.SetActive(false);
+        }
         
 
         /*
@@ -187,10 +197,8 @@ public class BattleController : MonoBehaviour
         SetActiveCharBattle(characterQueue.Peek());
         ChooseNextActiveChar();
 
-        targetText.SetActive(false);
-        confirmText.SetActive(false);
-        playerWinText.SetActive(false);
-        enemyWinText.SetActive(false);
+
+        backButton.SetActive(false);
 
         nicolIceMagicButton.SetActive(false);
         sophieElectricMagicButton.SetActive(false);
@@ -335,8 +343,11 @@ public class BattleController : MonoBehaviour
     private List<BattleCharacter> enemyList = new List<BattleCharacter>();
 
     private State state;
+    
+    //UI
 
     public GameObject fightingButtons;
+    public GameObject backButton;
 
     public Camera mainCamera;
 
@@ -352,8 +363,11 @@ public class BattleController : MonoBehaviour
     public GameObject sophieElectricMagicButton;
     public GameObject kisaWindMagicButton;
     public GameObject alanFireMagicButton;
+    public GameObject tutorialObjects;
 
     private bool partyBoss;
+    
+    //Keys
 
     public KeyCode attackKey = KeyCode.W;
     public KeyCode blockKey = KeyCode.S; 
@@ -435,10 +449,20 @@ public class BattleController : MonoBehaviour
         if (state == State.WaitingForPlayer)
         {
             fightingButtons.SetActive(true);
+
+            if (playerController.tutorialFight) 
+            {
+                tutorialObjects.SetActive(true);
+            }
         }
         else
         {
             fightingButtons.SetActive(false);
+
+            if (playerController.tutorialFight)
+            {
+                tutorialObjects.SetActive(false);
+            }
         }  
 
         /* Testing how to instantiate the particle effects
@@ -474,7 +498,7 @@ public class BattleController : MonoBehaviour
             }
         }
 
-        if (confirmText.activeInHierarchy == true)
+        if (backButton.activeInHierarchy == true)
         {
             if (Input.GetKeyDown(backKey))
             {
@@ -506,8 +530,7 @@ public class BattleController : MonoBehaviour
 
         state = State.WaitingForPlayer;
         fightingButtons.SetActive(true);
-        targetText.SetActive(false);
-        confirmText.SetActive(false);
+        backButton.SetActive(false);
 
         nicolIceMagicButton.SetActive(false);
         sophieElectricMagicButton.SetActive(false);
@@ -547,6 +570,8 @@ public class BattleController : MonoBehaviour
             if (activeChar.statSheet.name == "Tank Guy")
             {
                 state = State.Busy;
+
+                backButton.SetActive(true);
 
                 alanFireMagicButton.SetActive(true);
 
@@ -654,10 +679,6 @@ public class BattleController : MonoBehaviour
 
     #endregion
 
-    public GameObject targetText;
-
-    public GameObject confirmText;
-
     #region Targeting Coroutines
 
     private KeyCode confirmKey = KeyCode.Space;
@@ -667,8 +688,8 @@ public class BattleController : MonoBehaviour
     {
         int enemyNum = 0;
 
-        targetText.SetActive(true);
-        confirmText.SetActive(true);
+
+        backButton.SetActive(true);
 
         enemyList[enemyNum].ShowTargetCircle();
 
@@ -711,13 +732,13 @@ public class BattleController : MonoBehaviour
 
         enemyList[enemyNum].HideTargetCircle();
 
-        targetText.SetActive(false);
-        confirmText.SetActive(false);
+
+        backButton.SetActive(false);
     }
 
     private IEnumerator BlockConfirm()
     {
-        confirmText.SetActive(true);
+        backButton.SetActive(true);
 
         while (!Input.GetKeyDown(confirmKey))
         {
@@ -728,15 +749,12 @@ public class BattleController : MonoBehaviour
         activeChar.animator.SetBool("Blocking", true);
         ChooseNextActiveChar();
 
-        confirmText.SetActive(false);
+        backButton.SetActive(false);
     }
 
     private IEnumerator MagicTargeting()
     {
         int enemyNum = 0;
-
-        targetText.SetActive(true);
-        confirmText.SetActive(true);
 
         enemyList[enemyNum].ShowTargetCircle();
 
@@ -774,8 +792,8 @@ public class BattleController : MonoBehaviour
 
         enemyList[enemyNum].HideTargetCircle();
 
-        targetText.SetActive(false);
-        confirmText.SetActive(false);
+
+        backButton.SetActive(false);
 
         activeChar.magAttack(enemyList[enemyNum], activeChar, () =>
         {
@@ -792,7 +810,7 @@ public class BattleController : MonoBehaviour
         //Tank
         if (activeChar.statSheet.specialMove == 1)
         {
-            confirmText.SetActive(true);
+            backButton.SetActive(true);
 
             while (!Input.GetKeyDown(confirmKey))
             {
@@ -805,14 +823,14 @@ public class BattleController : MonoBehaviour
 
             ChooseNextActiveChar();
 
-            confirmText.SetActive(false);
+            backButton.SetActive(false);
         }
         //Mage
         else if (activeChar.statSheet.specialMove == 2)
         {
             //Showing weakness
-            targetText.SetActive(true);
-            confirmText.SetActive(true);
+
+            backButton.SetActive(true);
 
             enemyList[enemyNum].ShowTargetCircle();
 
@@ -873,22 +891,22 @@ public class BattleController : MonoBehaviour
 
             enemyList[enemyNum].HideTargetCircle();
 
-            targetText.SetActive(false);
-            confirmText.SetActive(false);
+
+            backButton.SetActive(false);
 
             ChooseNextActiveChar();
         }
         //Bard
         else if (activeChar.statSheet.specialMove == 3)
         {
-            confirmText.SetActive(true);
+            backButton.SetActive(true);
 
             while (!Input.GetKeyDown(confirmKey))
             {
                 yield return null;
             }
 
-            confirmText.SetActive(false);
+            backButton.SetActive(false);
 
             for (int i = 0; i < playerList.Count; i++)
             {
@@ -900,14 +918,14 @@ public class BattleController : MonoBehaviour
         //Monk
         else if (activeChar.statSheet.specialMove == 4)
         {
-            confirmText.SetActive(true);
+            backButton.SetActive(true);
 
             while (!Input.GetKeyDown(confirmKey))
             {
                 yield return null;
             }
 
-            confirmText.SetActive(false);
+            backButton.SetActive(false);
 
 
             for (int i = 0; i < enemyList.Count; i++)
@@ -920,7 +938,7 @@ public class BattleController : MonoBehaviour
         else
         {
             //If the special move is targeting a specific character, use this entire "else" code
-            targetText.SetActive(true);
+
 
             enemyList[enemyNum].ShowTargetCircle();
 
@@ -959,8 +977,6 @@ public class BattleController : MonoBehaviour
             //Put code you want to execute here
 
             enemyList[enemyNum].HideTargetCircle();
-
-            targetText.SetActive(false);
         }
     }
 
@@ -1276,8 +1292,6 @@ public class BattleController : MonoBehaviour
     }
 
     //Who died
-    public GameObject playerWinText;
-    public GameObject enemyWinText;
     private bool TestBattleOver()
     {
         bool AllEnemyDead = true;
@@ -1293,7 +1307,6 @@ public class BattleController : MonoBehaviour
         //if main character dies
         if (tankChar.IsDead()) //&& mageChar.IsDead())
         {
-            enemyWinText.SetActive(true);
 
             playerController.isSlime = false;
             playerController.isSkeleton = false;
@@ -1309,7 +1322,6 @@ public class BattleController : MonoBehaviour
         }
         else if (enemyList.Count == 0 || AllEnemyDead == true)
         {
-            playerWinText.SetActive(true);
 
             playerController.isSlime = false;
             playerController.isSkeleton = false;

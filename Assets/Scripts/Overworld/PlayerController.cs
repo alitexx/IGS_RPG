@@ -31,11 +31,13 @@ public class PlayerController : MonoBehaviour
     public bool isWraith = false;
     public bool isInvisGuy = false;
     public bool isSkeleton = false;
+    public bool tutorialFight = false;
     //bosses
     public bool KisaBoss = false;
     public bool NicolBoss = false;
     public bool SophieBoss = false;
     public bool LichBoss = false;
+
     //Level Number
     public int Level = 1;
 
@@ -179,6 +181,7 @@ public class PlayerController : MonoBehaviour
             isWraith = false;
             isInvisGuy = false;
             isSkeleton = false;
+            tutorialFight = false;
 
             if (collision.gameObject.tag == "Slime")
             {
@@ -186,6 +189,15 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
                 isfrozen = true;
                 isSlime = true;
+                BattleUI.SetActive(true);
+            }
+
+            if (collision.gameObject.tag == "TutorialSlime")
+            {
+                Destroy(collision.gameObject);
+                isfrozen = true;
+                isSlime = true;
+                tutorialFight = true;
                 BattleUI.SetActive(true);
             }
 

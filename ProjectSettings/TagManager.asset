@@ -16,6 +16,7 @@ TagManager:
   - Wraith
   - BossFreeze
   - MainDialogueManager
+  - TutorialSlime
   layers:
   - Default
   - TransparentFX
