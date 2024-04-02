@@ -47,7 +47,7 @@ Unhighlight(sophie kisa nicol alan -o fals4)
 sophie.Hide()
 wait(1)
 Highlight(kisa -o true)
-kisa "Good luck without me? As if! I will show her who is a waste!"
+kisa "\"Good luck without me\"? As if! I will show her who is a waste!"
 kisa.Move(0.4 0 -spd 1)
 kisa "This is fine! I can do this... I have never done it before, but it cannot be that dreadful...can it?"
 nicol.Move(0.2 0 -spd 1)
