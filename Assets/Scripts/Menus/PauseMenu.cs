@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GamePaused = false;
     [SerializeField] public PlayerController playerController;
     public GameObject PauseMenuUI;
+    public GameObject battleUI;
     public GameObject quickPauseUI;
     public GameObject SettingsUI;
     [SerializeField] private mainDialogueManager mainDialogueManager;
@@ -18,7 +19,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) //on escape press
         {
-            if (mainDialogueManager.dialogueRunning)//OR we are in battle
+            if (mainDialogueManager.dialogueRunning || battleUI.activeInHierarchy == true)//OR we are in battle
             {
                 if (GamePaused)
                 {
