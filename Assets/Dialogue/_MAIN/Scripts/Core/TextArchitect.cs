@@ -29,6 +29,7 @@ public class TextArchitect
 
     public bool hurryUp = false; // when true, text moves at double speed
 
+    public AudioSource audioPlayer;
     public TextArchitect(TextMeshProUGUI tmpro_ui) // if we give it a tmproUGUI
     {
         this.tmpro_ui = tmpro_ui;
@@ -42,7 +43,7 @@ public class TextArchitect
     {
         preText = "";
         targetText = text;
-
+        
         Stop();
 
         buildProcess = tmpro.StartCoroutine(Building());
@@ -59,7 +60,7 @@ public class TextArchitect
         buildProcess = tmpro.StartCoroutine(Building());
         return buildProcess;
     }
-
+    private Coroutine playAudio = null;
     private Coroutine buildProcess = null; //handles text generation
     public bool isBuilding => buildProcess != null;
 
@@ -73,7 +74,6 @@ public class TextArchitect
     IEnumerator Building()
     {
         Prepare();
-
         switch (buildMethod)
         {
             case BuildMethod.typewriter:
@@ -142,14 +142,24 @@ public class TextArchitect
 
     private IEnumerator Build_Typewriter()
     {
+        playAudio = tmpro.StartCoroutine(playTalking());
         while (tmpro.maxVisibleCharacters < tmpro.textInfo.characterCount) // while we still have text to display
         {
             tmpro.maxVisibleCharacters += hurryUp ? charactersPerCycle * 5 : charactersPerCycle;
-
             yield return new WaitForSeconds(0.015f / speed);
         }
-        tmpro.StopCoroutine(buildProcess);
+        tmpro.StopCoroutine(buildProcess);   
         buildProcess = null;
         OnComplete();
+    }
+
+    private IEnumerator playTalking()
+    {
+        while (tmpro.maxVisibleCharacters < tmpro.textInfo.characterCount) // while we still have text to display
+        {
+            audioPlayer.Play();
+            yield return new WaitForSeconds(0.05f / speed);
+        }
+        tmpro.StopCoroutine(playAudio);
     }
 }

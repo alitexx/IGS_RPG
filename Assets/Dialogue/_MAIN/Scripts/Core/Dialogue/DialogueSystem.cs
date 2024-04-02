@@ -48,7 +48,7 @@ namespace DIALOGUE
             if (_initialized) { return; }
             architect = new TextArchitect(dialogueContainer.dialogueText);
             // to share architects
-            conversationManager = new ConversationManager(architect);
+            conversationManager = new ConversationManager(architect, charVoice);
         }
 
         public void OnUserPrompt_Next()

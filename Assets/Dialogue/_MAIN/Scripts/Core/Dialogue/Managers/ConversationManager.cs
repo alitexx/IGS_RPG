@@ -16,9 +16,10 @@ namespace DIALOGUE
         private bool userPrompt = false;
 
         private TextArchitect architect = null;
-        public ConversationManager(TextArchitect architect)
+        public ConversationManager(TextArchitect architect, AudioSource audioPlayer)
         {
             this.architect = architect;
+            architect.audioPlayer = audioPlayer;
             dialogueSystem.onUserPrompt_Next += OnUserPrompt_Next;
         }
 
@@ -148,6 +149,8 @@ namespace DIALOGUE
             for (int i = 0; i < line.segments.Count; i++)
             {
                 DL_DIALOGUE_DATA.DIALOGUE_SEGMENT segment = line.segments[i];
+
+
 
                 yield return WaitForDialogueSegmentTrigger(segment);
 
