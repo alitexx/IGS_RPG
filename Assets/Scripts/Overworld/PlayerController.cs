@@ -45,6 +45,11 @@ public class PlayerController : MonoBehaviour
     //Camera Movement Detecter
     public CamMovementDetect cameraMovementDetecter;
 
+    //gameObjects and Sprites
+    public GameObject Kisa;
+    public GameObject Nicol;
+    public GameObject Sophine;
+
 
     private void Start()
     {
@@ -94,7 +99,7 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("speed", 0);
         }
 
-        if (Vector3.Distance(rb.transform.position, waypointTrail[0].position) >= followGap)
+        /*if (Vector3.Distance(rb.transform.position, waypointTrail[0].position) >= followGap)
         {
             waypointTrail[1].position = waypointTrail[0].position;
         }
@@ -106,7 +111,7 @@ public class PlayerController : MonoBehaviour
         {
             waypointTrail[3].position = waypointTrail[2].position;
         }
-
+        */
     }
 
     void FixedUpdate()
@@ -227,4 +232,14 @@ public class PlayerController : MonoBehaviour
             }
     }
 
+
+    public void Absorb()
+    {
+
+    }
+
+    public void joinParty()
+    {
+
+    }
 }
