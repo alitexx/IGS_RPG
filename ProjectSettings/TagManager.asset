@@ -72,6 +72,9 @@ TagManager:
   - name: Trim
     uniqueID: 2618217253
     locked: 0
+  - name: BattleBackground
+    uniqueID: 378357621
+    locked: 0
   - name: BattleUI
     uniqueID: 2618943339
     locked: 0

@@ -366,6 +366,8 @@ public class BattleController : MonoBehaviour
     public GameObject tutorialObjects;
 
     private bool partyBoss;
+
+    public Animator battleFadeAnim;
     
     //Keys
 
@@ -1322,6 +1324,7 @@ public class BattleController : MonoBehaviour
         }
         else if (enemyList.Count == 0 || AllEnemyDead == true)
         {
+            battleFadeAnim.SetBool("BattleOver", true);
 
             playerController.isSlime = false;
             playerController.isSkeleton = false;

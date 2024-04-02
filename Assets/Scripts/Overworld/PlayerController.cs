@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
     public int followGap;
 
     //Battle stuff
-    public GameObject BattleUI;
+    public GameObject battleUI;
+    public Animator battleFade;
     //who in party
     public bool hasKisa = false;
     public bool hasNicol = false;
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour
             rb.transform.Find("FollowTrail3")
         };
 
-        BattleUI.SetActive(false);
+        battleUI.SetActive(false);
     }
 
     private void Awake()
@@ -147,7 +148,7 @@ public class PlayerController : MonoBehaviour
 
             //do anything else (like party members)
 
-            BattleUI.SetActive(true);
+            battleFade.SetBool("BattleStarting", true);
             Destroy(collision.gameObject);
         }
 
@@ -189,7 +190,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
                 isfrozen = true;
                 isSlime = true;
-                BattleUI.SetActive(true);
+                battleFade.SetBool("BattleStarting", true);
             }
 
             if (collision.gameObject.tag == "TutorialSlime")
@@ -198,7 +199,7 @@ public class PlayerController : MonoBehaviour
                 isfrozen = true;
                 isSlime = true;
                 tutorialFight = true;
-                BattleUI.SetActive(true);
+                battleFade.SetBool("BattleStarting", true);
             }
 
             if (collision.gameObject.tag == "Wraith")
@@ -206,7 +207,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
                 isfrozen = true;
                 isWraith = true;
-                BattleUI.SetActive(true);
+                battleFade.SetBool("BattleStarting", true);
             }
 
             if (collision.gameObject.tag == "InvisGuy")
@@ -214,7 +215,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
                 isfrozen = true;
                 isInvisGuy = true;
-                BattleUI.SetActive(true);
+                battleFade.SetBool("BattleStarting", true);
             }
 
             if (collision.gameObject.tag == "Skeleton")
@@ -222,7 +223,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
                 isfrozen = true;
                 isSkeleton = true;
-                BattleUI.SetActive(true);
+                battleFade.SetBool("BattleStarting", true);
             }
     }
 
