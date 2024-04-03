@@ -26,7 +26,7 @@ public class pause_characterInspection : MonoBehaviour
             case 0: // alan
                 selectedCharacterStats = levelManager.SetTankStats();
                 characterName.text = "Alan";
-                characterInfo.text = "";
+                characterInfo.text = "A knight sworn to protect Isen. He is searching for a way to bring back his fallen mentor.";
                 stats_1.text = $"Strength: {selectedCharacterStats[0]}\r\nMagic Attack: {selectedCharacterStats[1]}\r\nDefense: {selectedCharacterStats[2]}\r\nSpeed: {selectedCharacterStats[3]}";
                 stats_2.text = $"Health: {selectedCharacterStats[4]}/{selectedCharacterStats[5]}\r\nMana: {selectedCharacterStats[6]}/{selectedCharacterStats[7]}\r\nSpecial Uses: x/y";
                 specialInfo.text = "Special\r\nTaunt\r\n\r\n\r\n\r\nHeal yourself by 50%. Attract attacks from enemies.";
@@ -36,7 +36,7 @@ public class pause_characterInspection : MonoBehaviour
             case 1: // kisa
                 selectedCharacterStats = levelManager.SetBardStats();
                 characterName.text = "Kisa";
-                characterInfo.text = "";
+                characterInfo.text = "An elven bard. Her family doubts her adventuring capabilities due to her pampered upbringing and pompous demeanor, but she wishes to prove them wrong.";
                 stats_1.text = $"Strength: {selectedCharacterStats[0]}\r\nMagic Attack: {selectedCharacterStats[1]}\r\nDefense: {selectedCharacterStats[2]}\r\nSpeed: {selectedCharacterStats[3]}";
                 stats_2.text = $"Health: {selectedCharacterStats[4]}/{selectedCharacterStats[5]}\r\nMana: {selectedCharacterStats[6]}/{selectedCharacterStats[7]}\r\nSpecial Uses: x/y";
                 specialInfo.text = "Special\r\nHealing\r\n\r\n\r\n\r\nHeal the party by 50%.";
@@ -46,7 +46,7 @@ public class pause_characterInspection : MonoBehaviour
             case 2: // nicol
                 selectedCharacterStats = levelManager.SetMageStats();
                 characterName.text = "Nicol";
-                characterInfo.text = "";
+                characterInfo.text = "A cat-like red magician. Raised by magicians, he now wanders the globe for the sake of exploration, frequently calling himself an \"aristocat\".";
                 stats_1.text = $"Strength: {selectedCharacterStats[0]}\r\nMagic Attack: {selectedCharacterStats[1]}\r\nDefense: {selectedCharacterStats[2]}\r\nSpeed: {selectedCharacterStats[3]}";
                 stats_2.text = $"Health: {selectedCharacterStats[4]}/{selectedCharacterStats[5]}\r\nMana: {selectedCharacterStats[6]}/{selectedCharacterStats[7]}\r\nSpecial Uses: x/y";
                 specialInfo.text = "Special\r\nExamine\r\n\r\n\r\n\r\nView an enemy's weakness.";
@@ -56,7 +56,7 @@ public class pause_characterInspection : MonoBehaviour
             case 3: // sophie
                 selectedCharacterStats = levelManager.SetMonkStats();
                 characterName.text = "Sophie";
-                characterInfo.text = "";
+                characterInfo.text = "A monk from a far-off land. She abandoned her royal title to live a simpler life in Isen. She owns a renowned dojo in the heart of Isen and set out on this journey to find her missing students.";
                 stats_1.text = $"Strength: {selectedCharacterStats[0]}\r\nMagic Attack: {selectedCharacterStats[1]}\r\nDefense: {selectedCharacterStats[2]}\r\nSpeed: {selectedCharacterStats[3]}";
                 stats_2.text = $"Health: {selectedCharacterStats[4]}/{selectedCharacterStats[5]}\r\nMana: {selectedCharacterStats[6]}/{selectedCharacterStats[7]}\r\nSpecial Uses: x/y";
                 specialInfo.text = "Special\r\nThunderstorm\r\n\r\n\r\n\r\nAttack all enemies with an electric attack.";

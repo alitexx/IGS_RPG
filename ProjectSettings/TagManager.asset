@@ -17,6 +17,7 @@ TagManager:
   - BossFreeze
   - MainDialogueManager
   - TutorialSlime
+  - CharVoice
   layers:
   - Default
   - TransparentFX

@@ -83,6 +83,116 @@ public class audioManager : MonoBehaviour
         
     }
 
+    public void playSFX(string sfx)
+    {
+        switch (sfx.ToUpper())
+        {
+            case "START":
+                playSFXUsingID(0);
+                break;
+            case "SLICE":
+                playSFXUsingID(1);
+                break;
+            case "PUNCH":
+                playSFXUsingID(2);
+                break;
+            case "FIRE":
+                playSFXUsingID(3);
+                break;
+            case "ICE":
+                playSFXUsingID(4);
+                break;
+            case "WIND":
+                playSFXUsingID(5);
+                break;
+            case "THUNDER":
+                playSFXUsingID(6);
+                break;
+            case "TAUNT":
+                playSFXUsingID(7);
+                break;
+            case "EXAMINE":
+                playSFXUsingID(8);
+                break;
+            case "SING":
+                playSFXUsingID(9);
+                break;
+            case "TAKEDAMAGE":
+                playSFXUsingID(10);
+                break;
+            case "HEAL":
+                playSFXUsingID(11);
+                break;
+            case "DEFEND":
+                playSFXUsingID(12);
+                break;
+            case "HEARTBEAT":
+                playSFXUsingID(13);
+                break;
+            case "LEVELUP":
+                playSFXUsingID(14);
+                break;
+            case "ENEMYDEFEATED":
+                playSFXUsingID(15);
+                break;
+            case "GAINEXP":
+                playSFXUsingID(16);
+                break;
+            case "DIE":
+                playSFXUsingID(17);
+                break;
+            case "SAVE":
+                playSFXUsingID(18);
+                break;
+            case "LEVERPULLED":
+                playSFXUsingID(19);
+                break;
+            case "GARGOYLEINPLACE":
+                playSFXUsingID(20);
+                break;
+            case "PUSHINGGARGOYLE":
+                playSFXUsingID(21);
+                break;
+            case "DOORUNLOCKED":
+                playSFXUsingID(22);
+                break;
+            case "CLIMBSTAIRS":
+                playSFXUsingID(23);
+                break;
+            case "CONFIRM":
+                playSFXUsingID(24);
+                break;
+            case "HOVER":
+                playSFXUsingID(25);
+                break;
+            case "PAUSE":
+                playSFXUsingID(26);
+                break;
+            case "UNPAUSE":
+                playSFXUsingID(27);
+                break;
+            case "DENY":
+                playSFXUsingID(28);
+                break;
+            case "DECLINE":
+                playSFXUsingID(29);
+                break;
+            default:
+                Debug.LogWarning("The SFX [" + sfx + "] could not be found.");
+                break;
+        }
+    }
+    public void playSFX(int id)
+    {
+        playSFXUsingID(id - 1);
+    }
+
+    private void playSFXUsingID(int ID)
+    {
+        SFXAvailable[ID].volume = (SFXVolume * MasterVolume);
+        SFXAvailable[ID].Play();
+    }
+
     private void playSongUsingID(int ID, float speed)
     {
         //BGMAvailable[ID].Play();

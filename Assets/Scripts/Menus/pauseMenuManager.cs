@@ -124,8 +124,8 @@ public class pauseMenuManager : MonoBehaviour
         OptionsTXT.transform.DOMove(locations[7].transform.position, 1);
         PartyLevelTXT.transform.DOMove(locations[8].transform.position, 1);
 
-        OptionsMenu.transform.DOMove(locations[10].transform.position, 1);
-        OptionsMenu.SetActive(false);
+        OptionsMenu.transform.DOMove(locations[10].transform.position, 1).OnComplete(() => { OptionsMenu.SetActive(false); });
+        
     }
 
     public void confirmMainMenu()
