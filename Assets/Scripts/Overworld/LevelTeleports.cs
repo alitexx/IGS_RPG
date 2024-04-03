@@ -11,10 +11,12 @@ public class LevelTeleports : MonoBehaviour
     public GameObject portalParent1;
     public GameObject portalParent2;
     public GameObject portalParent3;
+    public GameObject portalParent4;
     public Collider2D Player;
     public Transform destination1;
     public Transform destination2;
     public Transform destination3;
+    public Transform destination4;
 
     public GameObject ContinueUI;
     public PlayerController PlayerController;
@@ -54,12 +56,19 @@ public class LevelTeleports : MonoBehaviour
             Player.transform.position = new Vector3(destination2.position.x, destination2.position.y);
             Destroy(portalParent2);
         }
-        else
+        else if(Level == 3)
         {
             PlayerController.isfrozen = false;
             ContinueUI.SetActive(false);
             Player.transform.position = new Vector3(destination3.position.x, destination3.position.y);
             Destroy(portalParent3);
+        }
+        else
+        {
+            PlayerController.isfrozen = false;
+            ContinueUI.SetActive(false);
+            Player.transform.position = new Vector3(destination4.position.x, destination4.position.y);
+            Destroy(portalParent4);
         }
 
     }

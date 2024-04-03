@@ -251,15 +251,18 @@ public class PlayerController : MonoBehaviour
     {
         if (KisaBoss == true)
         {
-            KisaRenderer.sprite = absorbKisa;
+            Destroy(Kisa);
+            //KisaRenderer.sprite = absorbKisa;
         }
         else if (NicolBoss == true)
         {
-            NicolRenderer.sprite = absorbNicol;
+            Destroy(Nicol);
+            //NicolRenderer.sprite = absorbNicol;
         }
         else if (SophieBoss == true)
         {
-            SophieRenderer.sprite = absorbSophie;
+            Destroy(Sophie);
+            //SophieRenderer.sprite = absorbSophie;
         }
     }
 
