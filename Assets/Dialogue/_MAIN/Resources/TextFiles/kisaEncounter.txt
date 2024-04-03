@@ -19,4 +19,5 @@ alan.Move(0.45 0 -spd 0.8)
 alan "Kisa-"
 Highlight(kisa -o true)
 kisa "AAIIEEE!! A MONSTER! GET AWAY GET AWAY GET AWAY!"
+Hide(alan kisa)
 endDialogue("KISA")

@@ -1,6 +1,3 @@
-CreateCharacter(kisa -enabled false)
-CreateCharacter(alan -enabled false)
-CreateCharacter(nicol -enabled false)
 kisa.Move(0.2 0 -spd 3)
 nicol.Move(0.8 0 -spd 3)
 alan.Move(0.05 0 -spd 3)
@@ -35,5 +32,6 @@ Highlight(alan -o true)
 alan "Ah, yes. How could I have forgotten?"
 Highlight(nicol -o true)
 nicol "Prepare yourself, for Lord Nicol is prepared for battle! En garde!"
+Hide(nicol alan kisa)
 endDialogue("NICOL")
 
