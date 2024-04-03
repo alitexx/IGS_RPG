@@ -1,7 +1,5 @@
-CreateCharacter(kisa -enabled false)
-CreateCharacter(alan -enabled false)
 kisa.Move(0.7 0 -spd 3)
-sophie.Move(0.45 0 -spd 3)
+alan.Move(0.45 0 -spd 3)
 wait(0.75)
 Show(kisa)
 Show(alan)
@@ -28,4 +26,5 @@ Highlight(kisa -o true)
 kisa "Sorry? What could I be sorry for?"
 Highlight(alan -o true)
 alan "Nevermind."
+Hide(alan kisa)
 endDialogue()

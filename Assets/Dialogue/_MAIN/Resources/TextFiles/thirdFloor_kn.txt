@@ -1,0 +1,21 @@
+wait(0.75)
+Show(nicol)
+Show(alan)
+Show(kisa)
+Highlight(nicol -o true)
+nicol "Ah, at last. The final level of this wretched tower."
+Highlight(kisa -o true)
+kisa "Truly?"
+Highlight(nicol -o true)
+nicol "Yes! Probably! Maybe!"
+nicol "Regardless, I sense the presence of a powerful magic user! The lich is most definitely near!"
+Highlight(alan -o true)
+alan "How does one sense the presence of magic users?"
+Highlight(nicol -o true)
+nicol "It requires years of experience, my good friend! I can feel the air thicken, a storm is brewing! The ground rumbles with anticipation!"
+Highlight(kisa -o true)
+kisa "A storm? Could you be sensing Sophie, not a lich?"
+Highlight(nicol -o true)
+nicol "Ah, yes! Sophia! I had forgotten that she was farther ahead. My apologies."
+nicol "I shall accompany your merry party. Lead the way, Alan!"
+endDialogue()
