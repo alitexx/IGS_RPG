@@ -135,14 +135,29 @@ public class LevelManager : MonoBehaviour
     {
         level++;
         currentEXP -= lvlUpThreshold;
-        
+
+
+        /*0 Strength*/
+        /*1 Magic Attack*/ 
+        /*2 Defense*/ 
+        /*3 Speed*/ 
+        /*4 Health*/ 
+        /*5 MaxHealth*/ 
+        /*6 Mana*/ 
+        /*7 MaxMana*/
+
         for (int i = 0; i < battleController.partyMembers.Count; i++)
         {
             if (battleController.partyMembers[i].statSheet.name == "Tank Guy")
             {
                 battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
-                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Defense"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
                 battleController.partyMembers[i].statSheet.stats["Health"] += 1;
+                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
+                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
 
                 if (kisaAbsorb)
                 {
@@ -158,22 +173,36 @@ public class LevelManager : MonoBehaviour
                     battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
                 }
 
+
                 if (sophieAbsorb)
                 {
                     battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
-                    battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
+                    battleController.partyMembers[i].statSheet.stats["Defense"] += 1;
                 }
+           
+
             }
             else if (battleController.partyMembers[i].statSheet.name == "Mage Guy")
             {
-                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
-                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
-                battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 2;
+                battleController.partyMembers[i].statSheet.stats["Defense"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Health"] += 1;
+                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Mana"] += 2;
+                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 2;
             }
             else if (battleController.partyMembers[i].statSheet.name == "Bard Guy")
             {
-                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 1;
-                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 2;
+                battleController.partyMembers[i].statSheet.stats["Defense"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Health"] += 2;
+                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 2;
+                battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
+                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
 
                 if (battleController.partyMembers[i].IsDead() == false)
                 {
@@ -182,8 +211,14 @@ public class LevelManager : MonoBehaviour
             }
             else if (battleController.partyMembers[i].statSheet.name == "Monk Guy")
             {
-                battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Strength"] += 2;
                 battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Defense"] += 2;
+                battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Health"] += 1;
+                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
+                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
             }
         }
     }
@@ -300,9 +335,54 @@ public class LevelManager : MonoBehaviour
         return bardStoredStats;
     }
 
-    public void SetEnemyStats(int[] lSlimeStats, int[] lGhostStats, int[] lSkeletonStats, int[] lWraithStats)
+    public int[] SetSlimeStats(int[] lSlimeStats)
+    {
+        for (int i = 0; i < lSlimeStats.Length; i++)
+        {
+            lSlimeStats[i] += 1 * (level - 1);
+        }
+
+        lSlimeStats[4] += 2 * (level - 1);
+        lSlimeStats[5] += 2 * (level - 1);
+
+        return lSlimeStats;
+    }
+
+    public int[] SetSkeletonStats(int[] lSkeletonStats)
+    {
+        for (int i = 0; i < lSkeletonStats.Length; i++)
+        {
+            lSkeletonStats[i] += 1 * (level - 1);
+        }
+        lSkeletonStats[0] += 2 * (level - 1);
+
+        return lSkeletonStats;
+    }
+
+    public int[] SetGhostStats(int[] lGhostStats)
+    {
+        for (int i = 0; i < lGhostStats.Length; i++)
+        {
+            lGhostStats[i] += 1 * (level - 1);
+        }
+        lGhostStats[2] += 2 * (level - 1);
+        lGhostStats[0] += 1 * (level - 1);
+
+        return lGhostStats;
+    }
+
+    public int[] SetWraithStats(int[] lWraithStats)
     {
 
+        for (int i = 0; i < lWraithStats.Length; i++)
+        {
+            lWraithStats[i] += 1 * (level - 1);
+        }
+        lWraithStats[0] += 2 * (level - 1);
+        lWraithStats[4] += 1 * (level - 1);
+        lWraithStats[5] += 1 * (level - 1);
+
+        return lWraithStats;
     }
 
     public int GetCharHealth(string charName)

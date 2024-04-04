@@ -60,7 +60,10 @@ public class BattleController : MonoBehaviour
         bardStats = levelManager.SetBardStats();
         mageStats = levelManager.SetMageStats();
 
-        levelManager.SetEnemyStats(slimeStats, ghostStats, skeletonStats, wraithStats);
+        slimeStats = levelManager.SetSlimeStats(slimeStats);
+        ghostStats = levelManager.SetGhostStats(ghostStats);
+        skeletonStats = levelManager.SetSkeletonStats(skeletonStats);
+        wraithStats = levelManager.SetWraithStats(wraithStats);
     }
 
     private void OnEnable()
@@ -548,40 +551,35 @@ public class BattleController : MonoBehaviour
 
         if (activeChar.statSheet.stats["Mana"] > 0)
         {
-            if (activeChar.statSheet.name == "Tank Guy")
+            state = State.Busy;
+
+            backButton.SetActive(true);
+
+            alanFireMagicButton.SetActive(true);
+
+            if (levelManager.nicolAbsorb == true)
             {
-                state = State.Busy;
-
-                backButton.SetActive(true);
-
-                alanFireMagicButton.SetActive(true);
-
-                if (levelManager.nicolAbsorb == true)
-                {
-                    nicolIceMagicButton.SetActive(true);
-                }
-
-                if (levelManager.sophieAbsorb == true)
-                {
-                    sophieElectricMagicButton.SetActive(true);
-                }
-
-                if (levelManager.kisaAbsorb == true)
-                {
-                    kisaWindMagicButton.SetActive(true);
-                }
+                nicolIceMagicButton.SetActive(true);
             }
-            else
+
+            if (levelManager.sophieAbsorb == true)
             {
-                state = State.Busy;
-
-                StartCoroutine(MagicTargeting());
+                sophieElectricMagicButton.SetActive(true);
             }
-        }
+
+            if (levelManager.kisaAbsorb == true)
+            {
+                kisaWindMagicButton.SetActive(true);
+            }
+            }
         else
         {
-            Debug.Log("Out of mana idiot");
+            state = State.Busy;
+
+            StartCoroutine(MagicTargeting());
         }
+        
+
     }
 
     #region Magic Buttons
