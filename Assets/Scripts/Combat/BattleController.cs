@@ -796,6 +796,13 @@ public class BattleController : MonoBehaviour
                 yield return null;
             }
 
+            Vector3 position = activeChar.GetPosition();
+            ParticleManager healParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
+            healParticle.animator.SetBool("HealFX", true);
+
+            ParticleManager tauntParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
+            tauntParticle.animator.SetBool("TauntFX", true);
+
             isTaunting = true;
 
             activeChar.healthSystem.Heal(activeChar.statSheet.stats["MaxHealth"] / 2);
@@ -885,10 +892,18 @@ public class BattleController : MonoBehaviour
                 yield return null;
             }
 
+            Vector3 singPosition = activeChar.GetPosition();
+            ParticleManager singParticle = Instantiate(activeChar.particleManager, singPosition, Quaternion.identity, activeChar.transform);
+            singParticle.animator.SetBool("KisaSingFX", true);
+
             backButton.SetActive(false);
 
             for (int i = 0; i < playerList.Count; i++)
             {
+                Vector3 position = activeChar.GetPosition();
+                ParticleManager healParticle = Instantiate(playerList[i].particleManager, position, Quaternion.identity, playerList[i].transform);
+                healParticle.animator.SetBool("HealFX", true);
+
                 playerList[i].healthSystem.Heal(playerList[i].statSheet.stats["MaxHealth"] / 2);
             }
 
