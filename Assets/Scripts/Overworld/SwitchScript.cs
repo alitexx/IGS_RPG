@@ -43,11 +43,12 @@ public class SwitchScript : MonoBehaviour
         
         if (collision.gameObject.tag == "Switch")
         {
+            audioManager.playSFX(20);
             Debug.Log("Collided");
             RB.velocity = Vector3.zero;
             RB.isKinematic = true;
             isOnSwitch = true;
-            audioManager.playSFX(20);
+            audioManager.playSFX(22);
             Destroy(Door);
         }
     }

@@ -39,11 +39,12 @@ public class LeverScript : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player" && Input.GetKeyDown("space"))
             {
+                audioManager.playSFX(19);
                 Debug.Log(":D");
                 Destroy(Door);
                 spriteRenderer.sprite = newSprite;
                 flipped = true;
-                audioManager.playSFX(19);
+                audioManager.playSFX(22);
             }
             
         }
