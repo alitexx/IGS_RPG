@@ -8,7 +8,8 @@ public class SwitchScript : MonoBehaviour
     public GameObject Door;
     public Rigidbody2D RB;
     public bool isOnSwitch;
-    
+    public audioManager audioManager;
+
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class SwitchScript : MonoBehaviour
         {
             RB.isKinematic = false;
             RB.velocity = Vector3.zero;
+            audioManager.playSFX(21);
         }
         
     }
@@ -41,10 +43,12 @@ public class SwitchScript : MonoBehaviour
         
         if (collision.gameObject.tag == "Switch")
         {
+            audioManager.playSFX(20);
             Debug.Log("Collided");
             RB.velocity = Vector3.zero;
             RB.isKinematic = true;
             isOnSwitch = true;
+            audioManager.playSFX(22);
             Destroy(Door);
         }
     }
