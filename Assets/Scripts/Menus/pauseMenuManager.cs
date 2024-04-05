@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class pauseMenuManager : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class pauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject PartyLevelTXT;
     [SerializeField] private GameObject OptionsMenu;
     [SerializeField] private GameObject Buttons;
+
+    [SerializeField] private Image[] partymemberImages;
+    [SerializeField] private Sprite[] partymemberSprites;
+    [SerializeField] private GameObject[] partymemberIconAssets;
 
     // when menu is opened, check the state of the party. party members you dont own are grayed out,
     // party members that are dead have a red X over them
@@ -139,5 +144,42 @@ public class pauseMenuManager : MonoBehaviour
         //DOFade for the bg
         darkenBG.SetActive(false);
         ConfirmMainMenu.SetActive(false);
+    }
+
+    public void partyMemberAdded(string partyMember)
+    {
+        switch (partyMember.ToUpper())
+        {
+            case "KISA":
+                partymemberImages[0].sprite = partymemberSprites[0];
+                partymemberIconAssets[0].SetActive(false);
+                break;
+            case "NICOL":
+                partymemberImages[1].sprite = partymemberSprites[2];
+                partymemberIconAssets[2].SetActive(false);
+                break;
+            case "SOPHIE":
+                partymemberImages[2].sprite = partymemberSprites[4];
+                partymemberIconAssets[4].SetActive(false);
+                break;
+        }
+    }
+    public void partyMemberKilled(string partyMember)
+    {
+        switch (partyMember.ToUpper())
+        {
+            case "KISA":
+                partymemberImages[0].sprite = partymemberSprites[1];
+                //partymemberIconAssets[1].SetActive(true);
+                break;
+            case "NICOL":
+                partymemberImages[1].sprite = partymemberSprites[3];
+                //partymemberIconAssets[3].SetActive(true);
+                break;
+            case "SOPHIE":
+                partymemberImages[2].sprite = partymemberSprites[5];
+                //partymemberIconAssets[5].SetActive(true);
+                break;
+        }
     }
 }

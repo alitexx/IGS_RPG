@@ -1,3 +1,5 @@
+Hide(alan)
+Hide(kisa)
 kisa.Move(0.7 0 -spd 3)
 wait(1.5)
 Show(kisa)

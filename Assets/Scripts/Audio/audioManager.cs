@@ -5,9 +5,6 @@ using DG.Tweening;
 
 public class audioManager : MonoBehaviour
 {
-    protected float MasterVolume = audioStatics.MasterVolume;
-    protected float BGMVolume = audioStatics.BGMVolume;
-    protected float SFXVolume = audioStatics.SFXVolume;
     [SerializeField] private AudioSource[] BGMAvailable;
     [SerializeField] private AudioSource[] SFXAvailable;
 
@@ -184,12 +181,12 @@ public class audioManager : MonoBehaviour
     }
     public void playSFX(int id)
     {
-        playSFXUsingID(id - 1);
+        playSFXUsingID(id-1);
     }
 
     private void playSFXUsingID(int ID)
     {
-        SFXAvailable[ID].volume = (SFXVolume * MasterVolume);
+        SFXAvailable[ID].volume = (audioStatics.SFXVolume * audioStatics.MasterVolume);
         SFXAvailable[ID].Play();
     }
 
@@ -204,7 +201,7 @@ public class audioManager : MonoBehaviour
         //    }
         //    currentlyPlaying = BGMAvailable[ID];
         //});
-        BGMAvailable[ID].DOFade(BGMVolume * MasterVolume, speed).OnComplete(() =>
+        BGMAvailable[ID].DOFade(audioStatics.BGMVolume * audioStatics.MasterVolume, speed).OnComplete(() =>
         {
             if (currentlyPlaying)
             {

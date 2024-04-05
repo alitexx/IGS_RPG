@@ -13,6 +13,9 @@ public class LevelManager : MonoBehaviour
     public bool nicolAbsorb;
     public bool sophieAbsorb;
 
+    [SerializeField] private pauseMenuManager pauseMenuManager;
+    [SerializeField] private mainDialogueManager mainDialogueManager;
+
     static LevelManager Instance;
 
     public BattleController battleController;
@@ -280,14 +283,22 @@ public class LevelManager : MonoBehaviour
         {
             bardStoredStats[4] += (2 * (level - 1));
             bardStoredStats[5] += (2 * (level - 1));
+
+            //the only time you gain a new party member will be after a boss fight, so I can put these here
+            mainDialogueManager.dialogueSTART("kisaPostFight_k");
+            pauseMenuManager.partyMemberAdded("KISA");
         }
         else if (memberName == "Nicol")
         {
             mageStoredStats[1] += (2 * (level - 1));
+            mainDialogueManager.dialogueSTART("nicolPostFight_kn");
+            pauseMenuManager.partyMemberAdded("NICOL");
         }
         else if (memberName == "Sophie")
         {
             monkStoredStats[0] += (2 * (level - 1));
+            mainDialogueManager.dialogueSTART("sophiePostFight_kns");
+            pauseMenuManager.partyMemberAdded("SOPHIE");
         }
     }
 
@@ -299,19 +310,21 @@ public class LevelManager : MonoBehaviour
 
             battleController.partyMembers[0].statSheet.stats["Health"] += (2 * (level - 1));
             battleController.partyMembers[0].statSheet.stats["MaxHealth"] += (2 * (level - 1));
+            pauseMenuManager.partyMemberKilled("KISA");
         }
         else if (memberName == "Nicol")
         {
             nicolAbsorb = true;
 
             battleController.partyMembers[0].statSheet.stats["Magic Attack"] += (2 * (level - 1));
-
+            pauseMenuManager.partyMemberKilled("NICOL");
         }
         else if (memberName == "Sophie")
         {
             sophieAbsorb = true;
 
             battleController.partyMembers[0].statSheet.stats["Strength"] += (2 * (level - 1));
+            pauseMenuManager.partyMemberKilled("SOPHIE");
         }
     }
 
