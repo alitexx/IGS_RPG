@@ -10,7 +10,7 @@ namespace CHARACTERS
     {
         public const bool ENABLE_ON_START = false;
         private const float UNHIGHLIGHTED_DARKEN_STRENGTH = 0.65f;
-        public const bool DEFAULT_ORIENTATION_IS_FACING_LEFT = true;
+        public const bool DEFAULT_ORIENTATION_IS_FACING_LEFT = false;
         public const string ANIMATION_REFRESH_TRIGGER = "Refresh";
 
         public string name = "";

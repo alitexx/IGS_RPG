@@ -26,6 +26,7 @@ namespace COMMANDS
             database.AddCommand("sort", new Action<string[]>(Sort));
             database.AddCommand("highlight", new Func<string[], IEnumerator>(HighlightAll));
             database.AddCommand("unhighlight", new Func<string[], IEnumerator>(UnhighlightAll));
+            database.AddCommand("flip", new Func<string[], IEnumerator>(FlipSprite));
 
             //Add commands to characters
             CommandDatabase baseCommands = CommandManager.instance.CreateSubDatabase(CommandManager.DATABASE_CHARACTERS_BASE);
@@ -40,7 +41,8 @@ namespace COMMANDS
 
             //Add character specific databases
             CommandDatabase spriteCommands = CommandManager.instance.CreateSubDatabase(CommandManager.DATABASE_CHARACTERS_SPRITE);
-            spriteCommands.AddCommand("setsprite", new Func<string[], IEnumerator>(SetSprite));
+            database.AddCommand("setsprite", new Func<string[], IEnumerator>(SetSprite));
+            
         }
 
         #region Global Commands
@@ -510,7 +512,7 @@ namespace COMMANDS
             parameters.TryGetValue(new string[] { "-l", "-layer" }, out layer, defaultValue: 0);
 
             //Try to get the transition speed
-            bool specifiedSpeed = parameters.TryGetValue(PARAM_SPEED, out speed, defaultValue: 0.1f);
+            bool specifiedSpeed = parameters.TryGetValue(PARAM_SPEED, out speed, defaultValue: 1f);
 
             //Try to get whether this is an immediate transition or not
             if (!specifiedSpeed)
@@ -518,6 +520,7 @@ namespace COMMANDS
 
             //Run the logic
             Sprite sprite = character.GetSprite(spriteName);
+            Debug.Log(spriteName);
 
             if (sprite == null)
                 yield break;
@@ -530,6 +533,39 @@ namespace COMMANDS
             {
                 CommandManager.instance.AddTerminationActionToCurrentProcess(() => { character?.SetSprite(sprite, layer); });
                 yield return character.TransitionSprite(sprite, layer, speed);
+            }
+
+        }
+
+        public static IEnumerator FlipSprite(string[] data)
+        {
+            //format: SetSprite(character sprite)
+             Character_Sprite character = CharacterManager.instance.GetCharacter(data[0], createIfDoesNotExist: false) as Character_Sprite;
+            bool immediate = false;
+            float speed;
+
+            if (character == null || data.Length < 1)
+                yield break;
+
+            //Grab the extra parameters
+            var parameters = ConvertDataToParameters(data, startingIndex: 1);
+
+            //Try to get the transition speed
+            bool specifiedSpeed = parameters.TryGetValue(PARAM_SPEED, out speed, defaultValue: 0.1f);
+
+            //Try to get whether this is an immediate transition or not
+            if (!specifiedSpeed)
+                parameters.TryGetValue(PARAM_IMMEDIATE, out immediate, defaultValue: true);
+
+            //Run the logic
+            if (immediate)
+            {
+                character.Flip(speed, true);
+            }
+            else
+            {
+                CommandManager.instance.AddTerminationActionToCurrentProcess(() => { character?.Flip(speed, true); });
+                yield return character.Flip(speed, true);
             }
 
         }

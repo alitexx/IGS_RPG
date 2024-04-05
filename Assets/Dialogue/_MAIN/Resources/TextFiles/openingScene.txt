@@ -47,13 +47,14 @@ Unhighlight(sophie kisa nicol alan -o fals4)
 sophie.Hide()
 wait(1)
 Highlight(kisa -o true)
-kisa "\"Good luck without me\"? As if! I will show her who is a waste!"
+kisa "\"\Good luck without me\"\? As if! I will show her who is a waste!"
 kisa.Move(0.4 0 -spd 1)
 kisa "This is fine! I can do this... I have never done it before, but it cannot be that dreadful...can it?"
 nicol.Move(0.2 0 -spd 1)
 Highlight(nicol -o true)
 nicol "Do not worry, Kisa! I, Lord Nicol, the greatest aristocat to have walked this plane of existence, will clear a way for you."
-nicol [flipped] "And Alan! Do not think that our rivalry has ended, my dear friend! I shall eagerly await your presence at the top of this grand tower, where we shall duel when our eyes meet!"
+SetSprite(nicol flipped)
+nicol "And Alan! Do not think that our rivalry has ended, my dear friend! I shall eagerly await your presence at the top of this grand tower, where we shall duel when our eyes meet!"
 nicol.Move(0.4 0 -spd 1)
 Unhighlight(nicol kisa alan -o false)
 nicol.Hide()

@@ -80,7 +80,7 @@ namespace CHARACTERS
                 return Array.Find(spriteArray, sprite => sprite.name == spriteName);
             } else
             {
-                return Resources.Load<Sprite>($"{artAssetsDirectory}/{spriteName}");
+                return Resources.Load<Sprite>($"{artAssetsDirectory}/{spriteName.Substring(1)}");
             }
         }
 
@@ -161,6 +161,28 @@ namespace CHARACTERS
                 return;
             }
             TransitionSprite(sprite, layer);
+        }
+
+        public override IEnumerator FaceDirection(bool faceLeft, float speedMultiplier, bool immediate)
+        {
+            foreach(CharacterSpriteLayer layer in layers)
+            {
+                if (faceLeft)
+                {
+                    layer.FaceLeft(speedMultiplier, immediate);
+                } else
+                {
+                    layer.FaceRight(speedMultiplier, immediate);
+                }
+            }
+
+            yield return null;
+
+            while (layers.Any(l => l.isFlipping))
+            {
+                yield return null;
+            }
+            co_flipping = null;
         }
     }
 }
