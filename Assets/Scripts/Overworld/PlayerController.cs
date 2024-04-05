@@ -61,6 +61,9 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer SophieRenderer;
     public Sprite absorbSophie;
 
+    // for starting dialogue
+    [SerializeField] private mainDialogueManager mainDialogueManager;
+
 
     private void Start()
     {
@@ -147,26 +150,48 @@ public class PlayerController : MonoBehaviour
         {
             isfrozen = true;
 
-            if (collision.gameObject.name == "1")
+            switch (collision.gameObject.name)
             {
-                KisaBoss = true;
+                case "1":
+                    KisaBoss = true;
+                    mainDialogueManager.dialogueSTART("kisaEncounter");
+                    break;
+                case "2":
+                    NicolBoss = true;
+                    if (hasKisa)
+                    {
+                        mainDialogueManager.dialogueSTART("nicolEncounter_k");
+                    } else
+                    {
+                        mainDialogueManager.dialogueSTART("nicolEncounter_x");
+                    }
+                    break;
+                case "3":
+                    SophieBoss = true;
+                    if (hasKisa && hasNicol)
+                    {
+                        mainDialogueManager.dialogueSTART("sophieEncounter_kn");
+                    }
+                    else if (hasKisa)
+                    {
+                        mainDialogueManager.dialogueSTART("sophieEncounter_kx");
+                    }
+                    else if (hasKisa)
+                    {
+                        mainDialogueManager.dialogueSTART("sophieEncounter_xn");
+                    }
+                    else
+                    {
+                        mainDialogueManager.dialogueSTART("sophieEncounter_xx");
+                    }
+                    break;
+                default:
+                    //i dont have these done yet
+                    LichBoss = true;
+                    break;
             }
-            else if (collision.gameObject.name == "2")
-            {
-                NicolBoss = true;
-            }
-            else if (collision.gameObject.name == "3")
-            {
-                SophieBoss = true;
-            }
-            else
-            {
-                LichBoss = true;
-            }
-
-            //do anything else (like party members)
-
-            battleFade.SetBool("BattleStarting", true);
+            //starting battle is now determined by the dialogue system! haha!
+            //battleFade.SetBool("BattleStarting", true);
             Destroy(collision.gameObject);
         }
 
@@ -179,6 +204,13 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.name == "level2")
         {
             Level = 2;
+            if (hasKisa)
+            {
+                mainDialogueManager.dialogueSTART("secondFloor_k");
+            } else
+            {
+                mainDialogueManager.dialogueSTART("secondFloor_x");
+            }
         }
 
         if (collision.gameObject.name == "level3")

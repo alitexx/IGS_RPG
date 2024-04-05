@@ -28,25 +28,29 @@ namespace COMMANDS
         {
             Debug.Log("YAY THE CODE RAN");
             MainDiaManager = GameObject.FindGameObjectWithTag("MainDialogueManager").GetComponent<mainDialogueManager>();
-            MainDiaManager.dialogueEND();
+            
 
             if (bossName == "NULL")
             {
+                MainDiaManager.dialogueEND();
                 return;
-            }
-            switch (bossName.ToUpper())
+            } else
             {
-                case "KISA":
-                    break;
-                case "NICOL":
-                    break;
-                case "SOPHIE":
-                    break;
-                case "LICH":
-                    break;
-                case "SECRET":
-                    break;
+                MainDiaManager.dialogueEND(true);
             }
+            //switch (bossName.ToUpper())
+            //{
+            //    case "KISA":
+            //        break;
+            //    case "NICOL":
+            //        break;
+            //    case "SOPHIE":
+            //        break;
+            //    case "LICH":
+            //        break;
+            //    case "SECRET":
+            //        break;
+            //}
         }
     }
 }

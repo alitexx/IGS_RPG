@@ -25,12 +25,14 @@ public class mainDialogueManager : MonoBehaviour
     [SerializeField] private Transform dialogueBox;
     [SerializeField] private audioManager am;
 
+    public Animator battleFade;
+
     [SerializeField] private PlayerController playerController;
 
     // when loading something from resources, you dont specify the file extension
     //[SerializeField] private TextAsset fileName;
     public bool dialogueRunning = false; // Track if dialogue coroutine is running
-    private string fileName = "TextFiles/openingScene";
+    private string fileName = "openingScene";
 
     private string currentlyRunningText = "";
 
@@ -43,12 +45,12 @@ public class mainDialogueManager : MonoBehaviour
     //MUST PASS IN THE 
     public void dialogueSTART(string dialogueFile)
     {
-        //validate input before continuing
+        //change bgm depending on what got passed in
 
         // Only start the coroutine if it's not already running
         if (!dialogueRunning)
         {
-            StartCoroutine(completeDialogue(dialogueFile));
+            StartCoroutine(completeDialogue("TextFiles/"+dialogueFile));
             dialogueRunning = true; // Set the flag to true when starting the coroutine
 
             currentlyRunningText = dialogueFile;
@@ -73,20 +75,27 @@ public class mainDialogueManager : MonoBehaviour
         yield return StartCoroutine(Run(dialogueFile));
     }
 
-    public void dialogueEND()
+    public void dialogueEND(bool isBoss = false)
     {
         // Stop the dialogue coroutine if it's running
         if (dialogueRunning)
         {
-            am.playBGM("T2");
+            
             StopCoroutine(completeDialogue(currentlyRunningText));
             dialogueRunning = false; // Set the flag to false when stopping the coroutine
             currentlyRunningText = "";
-            playerController.isfrozen = false;
+            
 
             top.DOMove(tweenOutPositions[0].transform.position, 2);
             bottom.DOMove(tweenOutPositions[1].transform.position, 2);
             dialogueBox.DOMove(tweenOutPositions[2].transform.position, 2);
+            if (isBoss)
+            {
+                battleFade.SetBool("BattleStarting", true);
+                return;
+            }
+            am.playBGM("T2");
+            playerController.isfrozen = false;
         }
     }
 }
