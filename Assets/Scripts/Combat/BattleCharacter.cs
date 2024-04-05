@@ -215,7 +215,16 @@ public class BattleCharacter : MonoBehaviour
         //This clump of code is how to get the particle manager to do stuff
         Vector3 position = targetCharacter.GetPosition();
         ParticleManager particle = Instantiate(particleManager, position, Quaternion.identity, targetCharacter.transform);
-        particle.animator.SetBool("PunchFX", true);
+
+
+        if (attacker.statSheet.name == "Tank Guy" || attacker.statSheet.name == "Wraith Guy" || attacker.statSheet.name == "Skeleton Guy" || attacker.statSheet.name == "Mage Guy")
+        {
+            particle.animator.SetBool("SlashFX", true);
+        }
+        else
+        {
+            particle.animator.SetBool("PunchFX", true);
+        }
 
 
         targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
@@ -241,7 +250,14 @@ public class BattleCharacter : MonoBehaviour
         state = State.Attacking;
         attacker.animator.SetBool("MagAttacking", true);
 
-        attacker.statSheet.stats["Mana"]--;
+        if (attacker.statSheet.stats["Mana"] > 0)
+        {
+            attacker.statSheet.stats["Mana"]--;
+        }
+        else
+        {
+            healthSystem.Damage(attacker.statSheet.stats["MaxHealth"] / 4);
+        }
 
         if (attacker.GIsPlayerTeam)
         {
@@ -258,6 +274,30 @@ public class BattleCharacter : MonoBehaviour
             yield return null;
         }
 
+        animator.SetBool("MagAttacking", false);
+
+        Vector3 position = targetCharacter.GetPosition();
+        ParticleManager particle = Instantiate(particleManager, position, Quaternion.identity, targetCharacter.transform);
+
+        if (attacker.statSheet.magicElement == "Fire")
+        {
+            particle.animator.SetBool("FireFX", true);
+        }
+        else if (attacker.statSheet.magicElement == "Ice")
+        {
+            particle.animator.SetBool("IceFX", true);
+        }
+        else if (attacker.statSheet.magicElement == "Wind")
+        {
+            particle.animator.SetBool("WindFX", true);
+        }
+        else if (attacker.statSheet.magicElement == "Electric")
+        {
+            particle.animator.SetBool("ElectricFX", true);
+        }
+
+        yield return new WaitForSeconds(.6f);
+
         if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)
         {
             targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"] * 2, 0 /*Placeholder because magic ignores defense*/);
@@ -267,7 +307,6 @@ public class BattleCharacter : MonoBehaviour
             targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"], 0 /*Placeholder because magic ignores defense*/ );
         }
 
-        animator.SetBool("MagAttacking", false);
 
         state = State.Busy;
 

@@ -9,6 +9,7 @@ public class SavepointScript : MonoBehaviour
     float maxDistance = 1.5f;
     float DistanceBetweenObjects;
     public LevelManager levelManager;
+    public audioManager audioManager;
 
     // Start is called before the first frame update
     private void Update()
@@ -20,6 +21,7 @@ public class SavepointScript : MonoBehaviour
         {
             //call function to heal, and eventually save.
             levelManager.FullHeal();
+            audioManager.playSFX(18);
             //confirm save/heal as a menu or something (name.setactive(true)
             Debug.Log("YIPEEEE");
         }

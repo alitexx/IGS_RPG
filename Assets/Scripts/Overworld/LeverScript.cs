@@ -10,28 +10,43 @@ public class LeverScript : MonoBehaviour
     float DistanceBetweenObjects;
     public SpriteRenderer spriteRenderer;
     public Sprite newSprite;
+    public audioManager audioManager;
+    private bool flipped;
 
     private void Update()
     {
         
-        DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
-
-        if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown("space"))
+        if (flipped == false)
         {
-            Debug.Log(":D");
-            Destroy(Door);
-            spriteRenderer.sprite = newSprite;
+            DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
+
+            if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown("space"))
+            {
+                Debug.Log(":D");
+                Destroy(Door);
+                spriteRenderer.sprite = newSprite;
+                flipped = true;
+                
+            }
+            
         }
     
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && Input.GetKeyDown("space"))
+        if (flipped == false)
         {
-            Debug.Log(":D");
-            Destroy(Door);
-            spriteRenderer.sprite = newSprite;
+            if (collision.gameObject.tag == "Player" && Input.GetKeyDown("space"))
+            {
+                audioManager.playSFX(19);
+                Debug.Log(":D");
+                Destroy(Door);
+                spriteRenderer.sprite = newSprite;
+                flipped = true;
+                audioManager.playSFX(22);
+            }
+            
         }
     }
 }
