@@ -27,4 +27,4 @@ kisa "Sorry? What could I be sorry for?"
 Highlight(alan -o true)
 alan "Nevermind."
 Hide(alan kisa)
-endDialogue()
+endDialogue(false)

@@ -11,7 +11,7 @@ public class audioManager : MonoBehaviour
     [SerializeField] private AudioSource[] BGMAvailable;
     [SerializeField] private AudioSource[] SFXAvailable;
 
-    private static AudioSource currentlyPlaying;
+    public static AudioSource currentlyPlaying;
 
     // HOW IT WORKS!!
     // you have to pass in the song name and the speed you'd like it to fade in/out

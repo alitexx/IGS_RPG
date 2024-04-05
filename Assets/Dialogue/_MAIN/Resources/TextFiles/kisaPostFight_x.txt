@@ -1,0 +1,3 @@
+alan "this is a placeholder because i havent gotten this far"
+kisa "WOOOOO IM A GHOST!!! IM A GHOST!!!"
+endDialogue(false)

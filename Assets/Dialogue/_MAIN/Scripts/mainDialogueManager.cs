@@ -21,6 +21,7 @@ public class mainDialogueManager : MonoBehaviour
     [SerializeField] private Transform bottom;
     [SerializeField] private Transform top;
     [SerializeField] private GameObject[] tweenInPositions;
+    [SerializeField] private SignInteraction firstSign;
     [SerializeField] private GameObject[] tweenOutPositions;
     [SerializeField] private Transform dialogueBox;
     [SerializeField] private audioManager am;
@@ -80,7 +81,10 @@ public class mainDialogueManager : MonoBehaviour
         // Stop the dialogue coroutine if it's running
         if (dialogueRunning)
         {
-            
+            if (currentlyRunningText == "openingScene")
+            {
+                firstSign.enabled = true;
+            }
             StopCoroutine(completeDialogue(currentlyRunningText));
             dialogueRunning = false; // Set the flag to false when stopping the coroutine
             currentlyRunningText = "";

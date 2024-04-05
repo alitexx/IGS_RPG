@@ -11,10 +11,18 @@ public class Options : MonoBehaviour
     public void onMasterSliderChanged(float value)
     {
         audioStatics.MasterVolume = value;
+        if (audioManager.currentlyPlaying)
+        {
+            audioManager.currentlyPlaying.volume = audioStatics.MasterVolume * audioStatics.BGMVolume;
+        }
     }
     public void onBGMSliderChanged(float value)
     {
         audioStatics.BGMVolume = value;
+        if (audioManager.currentlyPlaying)
+        {
+            audioManager.currentlyPlaying.volume = audioStatics.MasterVolume * audioStatics.BGMVolume;
+        }
     }
     public void onSFXSliderChanged(float value)
     {

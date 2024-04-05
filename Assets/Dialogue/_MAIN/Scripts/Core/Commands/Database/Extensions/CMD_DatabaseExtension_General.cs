@@ -13,7 +13,7 @@ namespace COMMANDS
         new public static void Extend(CommandDatabase database)
         {
             database.AddCommand("wait", new Func<string, IEnumerator>(Wait));
-            database.AddCommand("endDialogue", new Action<string>(endDialogue));
+            database.AddCommand("endDialogue", new Action<string> (endDialogue));
         }
 
         private static IEnumerator Wait(string data)
@@ -24,20 +24,24 @@ namespace COMMANDS
             }
         }
 
-        private static void endDialogue(string bossName = "NULL")
+        private static void endDialogue(string isBoss)
         {
-            Debug.Log("YAY THE CODE RAN");
-            MainDiaManager = GameObject.FindGameObjectWithTag("MainDialogueManager").GetComponent<mainDialogueManager>();
             
+            MainDiaManager = GameObject.FindGameObjectWithTag("MainDialogueManager").GetComponent<mainDialogueManager>();
 
-            if (bossName == "NULL")
-            {
-                MainDiaManager.dialogueEND();
-                return;
-            } else
+            if (isBoss == "true")
             {
                 MainDiaManager.dialogueEND(true);
             }
+            else if (isBoss == "false")
+            {
+                MainDiaManager.dialogueEND(false);
+            }
+            else
+            {
+                Debug.Log(isBoss + " needs to be a true or a false.");
+            }
+
             //switch (bossName.ToUpper())
             //{
             //    case "KISA":

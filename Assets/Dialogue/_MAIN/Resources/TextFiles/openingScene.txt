@@ -64,4 +64,4 @@ alan "(...Interesting. It appears I will be completing this quest solo, at least
 alan "(I will certainly find them on my way, perhaps I could probe them further on the cause of this sudden disagreement.)"
 alan.Hide()
 wait(0.5)
-endDialogue()
+endDialogue(false)
