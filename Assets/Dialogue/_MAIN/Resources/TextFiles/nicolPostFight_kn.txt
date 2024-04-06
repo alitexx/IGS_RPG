@@ -12,6 +12,9 @@ Highlight(alan -o true)
 alan "We shall see when the time comes. Are we ready to continue?"
 Highlight(kisa -o true)
 kisa "Yes, please. The sooner we defeat this lich, the sooner this will be over."
+Highlight(nicol -o true)
 nicol "Of course! I, Nicol, the greatest aristocat, have already solved all mysteries on this floor. Let us continue!"
-Hide(nicol kisa alan)
-endDialogue()
+Hide(nicol)
+Hide(kisa)
+Hide(alan)
+endDialogue(false)

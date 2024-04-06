@@ -36,33 +36,41 @@ Highlight(nicol -o true)
 nicol "What a show that would be, indeed! Perhaps we should cheer from the sides, like we are at the arena in the city."
 Highlight(kisa -o true)
 kisa "A waste?! As if you could reach the top without my songs!"
-nicol.Move(0.15 0 -spd 2)
+nicol.Move(0.175 0 -spd 2)
 Show(alan)
 Highlight(alan -o true)
-alan "(I'm not quite following, what's happening?)"
+alan.SetPriority(1)
+alan "(I'm not quite following, what is happening?)"
 alan "(Before we walked in everyone seemed to get along, but now...)"
 Highlight(sophie -o true)
+sophie.SetPriority(2)
 sophie "Goodbye. Good luck without me."
-Unhighlight(sophie kisa nicol alan -o fals4)
 sophie.Hide()
-wait(1)
+wait(1.5)
 Highlight(kisa -o true)
-kisa "\"\Good luck without me\"\? As if! I will show her who is a waste!"
+kisa "Good luck without me? As if! I will show her who is a waste!"
 kisa.Move(0.4 0 -spd 1)
 kisa "This is fine! I can do this... I have never done it before, but it cannot be that dreadful...can it?"
 nicol.Move(0.2 0 -spd 1)
 Highlight(nicol -o true)
+nicol.SetPriority(2)
 nicol "Do not worry, Kisa! I, Lord Nicol, the greatest aristocat to have walked this plane of existence, will clear a way for you."
 SetSprite(nicol flipped)
 nicol "And Alan! Do not think that our rivalry has ended, my dear friend! I shall eagerly await your presence at the top of this grand tower, where we shall duel when our eyes meet!"
+SetSprite(nicol nicol)
 nicol.Move(0.4 0 -spd 1)
 Unhighlight(nicol kisa alan -o false)
 nicol.Hide()
 kisa.Hide()
 wait(1)
 Highlight(alan -o true)
+alan.Move(0.1 0 -spd 0.5)
 alan "(...Interesting. It appears I will be completing this quest solo, at least for the moment.)"
 alan "(I will certainly find them on my way, perhaps I could probe them further on the cause of this sudden disagreement.)"
 alan.Hide()
+sophie.SetPriority(0)
+alan.SetPriority(0)
+nicol.SetPriority(0)
+kisa.SetPriority(0)
 wait(0.5)
 endDialogue(false)

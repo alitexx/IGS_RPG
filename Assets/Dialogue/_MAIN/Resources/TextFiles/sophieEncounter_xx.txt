@@ -1,0 +1,32 @@
+alan.Move(0.2 0 -spd 3)
+sophie.Move(0.7 0 -spd 3)
+Hide(sophie)
+Hide(alan)
+wait(0.75)
+Show(sophie)
+Highlight(sophie -o true)
+sophie "<i>Fucking</i> hell..."
+Show(alan)
+sophie "Oh, lovely. You."
+sophie.Move(0.6 0 -spd 2)
+sophie "Here to ridicule me, are you?"
+Highlight(alan -o true)
+alan "..."
+wait(2)
+Highlight(sophie -o true)
+sophie "Your gaze feels... excessive. Must you glare at me with such hatred?"
+sophie.Move(0.45 0 -spd 1)
+sophie "No, on closer inspection, it is not a glare of hatred... it is the vacant stare of a weary man. Have you been sleeping well as of late?"
+Highlight(alan -o true)
+alan "You sound just like her."
+Highlight(sophie -o true)
+sophie "Her?"
+Highlight(alan -o true)
+alan "Yes... perhaps you two are similar. It is a shame that you will not live to meet her or see the fruits of my labor."
+Highlight(sophie -o true)
+sophie "Alan, is that a threat? You may stay here and speak in riddles if that is your desire, but I must continue searching for a way forward. I must avenge my students."
+Highlight(alan -o true)
+alan "One more. One more and she returns."
+Hide(sophie)
+Hide(alan)
+endDialogue(true)

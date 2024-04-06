@@ -1,3 +1,7 @@
-alan "this is a placeholder because i havent gotten this far"
-kisa "WOOOOO IM A GHOST!!! IM A GHOST!!!"
+wait(0.75)
+Show(alan)
+Highlight(alan -o true)
+alan "(One down... that felt horrible. She was just a kid.)"
+alan "(Although I <i>do</i> feel more powerful, and Kisa did attack me first. Sorry Kisa.)"
+alan "(I should keep moving and focus on something else, not... what I just did.)"
 endDialogue(false)

@@ -1,0 +1,9 @@
+wait(0.75)
+Show(alan)
+Highlight(alan -o true)
+alan "(Almost there.)"
+alan "(I must bring her back. I need her back. Nicol was just like every other wizard, and I am not responsible for his death. He's helping a greater cause!)"
+alan "(He would have wanted this if he understood. He did not. He thought I was mad, deranged even. I'm not. I'm perfectly sane.)"
+alan "(This is all for Leora.)"
+Hide(alan)
+endDialogue(false)

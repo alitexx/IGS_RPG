@@ -1,0 +1,71 @@
+alan.Move(0 0 -spd 3)
+nicol.Move(0.2 0 -spd 3)
+kisa.Move(0.35 0 -spd 3)
+sophie.Move(0.7 0 -spd 3)
+Hide(sophie)
+Hide(nicol)
+Hide(alan)
+Hide(kisa)
+wait(1)
+Show(sophie)
+Highlight(sophie -o true)
+sophie "Damn it..."
+Show(alan)
+Highlight(alan -o true)
+alan "We have claimed this victory through fair contest and honorable combat. Allow us to aid you."
+Highlight(sophie -o true)
+sophie "I... must honor the terms of our agreement. I will allow you to assist me."
+Show(nicol)
+Highlight(nicol -o true)
+nicol "Good! Welcome back, Sophia!"
+Show(kisa)
+Highlight(kisa -o true)
+kisa "Yeah... good to have you back."
+Highlight(nicol -o true)
+nicol "Kisa, you lack enthusiasm! Sophia has returned to our merry party!"
+Highlight(sophie -o true)
+sophie "Temporarily."
+Highlight(nicol -o true)
+nicol "Temporarily! This calls for a celebration!"
+Highlight(sophie -o true)
+sophie "No it does not. I will travel with you until the lich is defeated, and then I will take my leave."
+Highlight(alan -o true)
+alan "We will have time for idle discussion later. For now, we should focus on finding a way forward."
+Highlight(nicol -o true)
+nicol "Ah, yes! The unopenable door! Come now, let us explore!"
+nicol.Move(0 0 -spd 3.5)
+Highlight(sophie -o true)
+sophie "Sounds good. Lead on, Alan. I will follow suit."
+alan.Move(0 0 -spd 3)
+Hide(alan)
+wait(1)
+sophie "Kisa."
+Highlight(kisa -o true)
+kisa "Y-yes Sophie?"
+Highlight(sophie -o true)
+sophie "I had no intention of wounding you with my words. I require time to sort matters of the heart out."
+Highlight(kisa -o true)
+kisa "Does this mean..?"
+Highlight(sophie -o true)
+sophie "I admit, your confession blindsighted me. I do not wish to jump into such matters without proper thought and consideration."
+sophie "I apologize for my actions before, I... was concerned I had caused a rift between us."
+sophie "Would you allow me time to deliberate my feelings?"
+Highlight(kisa -o true)
+kisa "Yes, yes of course!"
+kisa "I feared the worst, that you were declining my request. I may have misinterpreted your intentions, but… I am joyous that I was mistaken!"
+Highlight(sophie -o true)
+sophie "I am glad we could discuss and clarify this. We should regroup with Alan and Nicol, we can converse about this in more detail at a later date."
+endDialogue(false)
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,8 @@
 kisa.Move(0.6 0 -spd 3)
 alan.Move(0.05 0 -spd 3)
-wait(0.75)
+Hide(alan)
+Hide(kisa)
+wait(1)
 Show(kisa)
 Highlight(kisa -o true)
 kisa "Alan?"
@@ -8,9 +10,28 @@ Show(alan)
 Highlight(alan -o true)
 alan "Yes, Kisa?"
 Highlight(kisa -o true)
-kisa "This is a placeholder because I'm still testing"
+kisa "Do you recall Sophie's insensitive demeanor at the entry of this tower? How she accused me, with my refined sensibilities, of harboring an attitude?"
 Highlight(alan -o true)
-alan "Oh. Cool!"
+alan "Ah yes, your refined sensibilities. I vaguely recall such an event."
+Highlight(kisa -o true)
+kisa "Do not use that tone of voice. Regardless..."
+kisa "Sophie and I had an intimate discussion yesterday evening. I opened my heart to her, only to find her reception less than favorable. "
+kisa "Naturally, I was quite crestfallen. Sophie interpreted my demeanor as one of annoyance and indifference, leading to her persistence earlier."
+kisa "I inform you of this because Sophie, though formidable in strength, lacks awareness of emotions. I fear that this will lead to further conflict."
+Highlight(alan -o true)
+alan "Thank you for telling me, that was oddly sensible of you to confide in me."
+Highlight(kisa -o true)
+kisa "Excuse me, I am sensible all of the time!"
+Highlight(alan -o true)
+alan "Of course you are. And where is your weapon?"
+Highlight(kisa -o true)
+kisa "...I may have lost it on the journey. A lute works just as well, you will see!"
+Highlight(alan -o true)
+alan "Sure. Regardless, we will reunite with Sophie together. She is a woman of honor, I am confident she is not truly upset over something so minor."
+Highlight(kisa -o true)
+kisa "Yes... let us hope so."
+Hide(alan)
+Hide(kisa)
 endDialogue(false)
 
 

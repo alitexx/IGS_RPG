@@ -18,4 +18,4 @@ kisa "A storm? Could you be sensing Sophie, not a lich?"
 Highlight(nicol -o true)
 nicol "Ah, yes! Sophia! I had forgotten that she was farther ahead. My apologies."
 nicol "I shall accompany your merry party. Lead the way, Alan!"
-endDialogue()
+endDialogue(false)

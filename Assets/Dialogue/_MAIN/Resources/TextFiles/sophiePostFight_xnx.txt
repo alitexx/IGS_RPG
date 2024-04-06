@@ -1,0 +1,15 @@
+alan.Move(0.6 0 -spd 3)
+nicol.Move(0.1 0 -spd 3)
+kisa.Move(0.35 0 -spd 3)
+sophie.Move(0.7 0 -spd 3)
+Hide(nicol)
+Hide(alan)
+wait(0.75)
+Show(alan)
+Show(nicol)
+Highlight(nicol -o true)
+nicol "Not only are you skilled in battle, you have mastered the art of trickery."
+nicol "It is difficult to fool me, however this is unnecessary. An innocent life has been taken, another life."
+nicol "Do you wish to drag me along and view my suffering? If that is the case, you will not see me shed a tear."
+nicol "Let us continue this quest, for the sooner it is complete, the sooner I can mourn my fallen companions."
+endDialogue(false)

@@ -1,6 +1,9 @@
 kisa.Move(0.2 0 -spd 3)
 nicol.Move(0.8 0 -spd 3)
 alan.Move(0.05 0 -spd 3)
+Hide(nicol)
+Hide(alan)
+Hide(kisa)
 wait(0.75)
 Show(nicol)
 Highlight(nicol -o true)
@@ -8,10 +11,12 @@ nicol "Prepare yourselves, unholy spirits! Lord Nicol's conquest of this tower c
 Show(alan)
 Show(kisa)
 wait(0.5)
-nicol [flipped]"Why, if it isn't my favorite rival and my favorite bard! Alan and Kisa!"
+SetSprite(nicol flipped)
+nicol "Why, if it isn't my favorite rival and my favorite bard! Alan and Kisa!"
 nicol.Move(0.6 0 -spd 2)
 nicol "I see that you have been through treacherous trials and tribulations to reach this point, have you not? What a fine job you two have done!"
 Highlight(kisa -o true)
+kisa.Move(0.25 0 -spd 1.5)
 kisa "Nicol! You promised to clear the way for me! Why did you leave me on the first floor?"
 Highlight(nicol -o true)
 nicol "I did not abandon you! You were right behind me all along, were you not?"
@@ -20,8 +25,11 @@ kisa "No! The floor ensnared me!"
 Highlight(nicol -o true)
 nicol "That is unfortunate! But you have learned a valuable lesson, have you not? Do not let it capture you next time, my dear Kisa!"
 nicol "Let us hold onto this topic for the moment. There are much more pressing matters that need our attention."
+nicol.SetPriority(1)
 nicol.Move(0.3 0 -spd 3)
 kisa.Move(0.7 0 -spd 3)
+wait(0.1)
+SetSprite(kisa flipped)
 Highlight(nicol -o true)
 nicol "We have unsettled business, you and I."
 Highlight(alan -o true)
@@ -32,6 +40,9 @@ Highlight(alan -o true)
 alan "Ah, yes. How could I have forgotten?"
 Highlight(nicol -o true)
 nicol "Prepare yourself, for Lord Nicol is prepared for battle! En garde!"
-Hide(nicol alan kisa)
-endDialogue("NICOL")
+Hide(nicol)
+Hide(alan)
+Hide(kisa)
+nicol.SetPriority(0)
+endDialogue(true)
 

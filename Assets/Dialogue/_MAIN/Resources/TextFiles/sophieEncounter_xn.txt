@@ -1,0 +1,60 @@
+alan.Move(0 0 -spd 3)
+nicol.Move(0.2 0 -spd 3)
+sophie.Move(0.7 0 -spd 3)
+Hide(sophie)
+Hide(nicol)
+Hide(alan)
+wait(0.75)
+Show(sophie)
+Highlight(sophie -o true)
+sophie "<i>Fucking</i> hell..."
+Show(alan)
+Show(nicol)
+Highlight(nicol -o true)
+nicol.Move(0.4 0 -spd 2)
+nicol "Hello, Sophia!"
+Highlight(sophie -o true)
+sophie "..."
+Highlight(alan -o true)
+alan.SetPriority(1)
+nicol.Move(0 0 -spd 2)
+alan.Move(0.2 0 -spd 2)
+alan "How fares the epic adventures of Sophie the Lich Slayer? Need a hand?"
+Highlight(sophie -o true)
+sophie.Move(0.65 0 -spd 2)
+sophie "Do not mock me. And no, I do not need your assistance."
+sophie "This door will not open. There are no levers, no buttons. Nothing."
+Highlight(alan -o true)
+alan "Could the solution be in a separate room?"
+Highlight(sophie -o true)
+sophie "I have checked every location on this floor. This is the door to the next level."
+Highlight(alan -o true)
+alan "I suppose that could be true... however, each door we have encountered had a mechanism to pry it open. I would assume this one is no different."
+sophie.Move(0.6 0 -spd 2)
+Highlight(sophie -o true)
+sophie "What is with that tone, Alan? Are you suddenly doubting my abilities?"
+Highlight(nicol -o true)
+nicol "Now, now, there is no need to squabble. Words can resolve disputes just as effectively as weapons."
+Highlight(sophie -o true)
+sophie "And why is Nicol... sensible? Something is not right."
+sophie "Is Kisa involved in this? I see that she is absent from your group."
+Highlight(nicol -o true)
+nicol "That can be explained in due time over a refreshing cup of tea! Let us all take a deep breath to relax."
+Highlight(alan -o true)
+alan "Kisa is involved. I killed her."
+alan "I understand your reverence for honesty, and I will not hide my sins. It was my hand that ended Kisa’s life; my desires overtook me, and I lost control."
+Highlight(sophie -o true)
+sophie "You WHAT?!"
+Highlight(nicol -o true)
+SetSprite(nicol flipped)
+nicol "Alan-"
+Highlight(alan -o true)
+alan "I apologize, truly. It was not wise of me, and I will not allow it to happen again."
+Highlight(sophie -o true)
+sophie.Move(0.7 0 -spd 1)
+sophie "No, no no no. You don't understand. You don't... You don't-"
+sophie "Kisa was my... she... Gods damn it!"
+sophie "You will pay for this!"
+endDialogue(true)
+
+

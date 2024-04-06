@@ -1,6 +1,6 @@
+kisa.Move(0.7 0 -spd 3)
 Hide(alan)
 Hide(kisa)
-kisa.Move(0.7 0 -spd 3)
 wait(1.5)
 Show(kisa)
 Highlight(kisa -o true)
@@ -17,7 +17,7 @@ Highlight(kisa -o true)
 kisa "Oh, woe is me! A poor little bard, abandoned by her companions..."
 Highlight(alan -o true)
 alan "(I suppose I should help her now. Her whining is only going to attract more enemies.)"
-alan.Move(0.45 0 -spd 0.8)
+alan.Move(0.3 0 -spd 1)
 alan "Kisa-"
 Highlight(kisa -o true)
 kisa "AAIIEEE!! A MONSTER! GET AWAY GET AWAY GET AWAY!"

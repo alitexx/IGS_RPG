@@ -1,0 +1,11 @@
+alan.Move(0.4 0 -spd 3)
+Hide(alan)
+wait(1)
+Show(alan)
+Highlight(alan -o true)
+alan "I have done it."
+alan "I HAVE DONE IT! HAHAHAHAHAHAHAHAHAHAHAHA!"
+alan "Oh Leora, I have completed my quest. Three souls I have gathered, stained my hands in darkness, yet I would gladly retread this righteous path for you."
+alan "The Lich’s demise is but a trivial matter now. I will ascend this tower and see you again, my Leora!"
+Hide(alan)
+endDialogue(false)
