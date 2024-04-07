@@ -291,13 +291,29 @@ public class LevelManager : MonoBehaviour
         else if (memberName == "Nicol")
         {
             mageStoredStats[1] += (2 * (level - 1));
-            mainDialogueManager.dialogueSTART("nicolPostFight_kn");
+            if (kisaAbsorb)
+            {
+                mainDialogueManager.dialogueSTART("nicolPostFight_xn");
+            } else
+            {
+                mainDialogueManager.dialogueSTART("nicolPostFight_kn");
+            }
             pauseMenuManager.partyMemberAdded("NICOL");
         }
         else if (memberName == "Sophie")
         {
             monkStoredStats[0] += (2 * (level - 1));
-            mainDialogueManager.dialogueSTART("sophiePostFight_kns");
+            if (kisaAbsorb)
+            {
+                mainDialogueManager.dialogueSTART("sophiePostFight_xns");
+            } else if (nicolAbsorb)
+            {
+                mainDialogueManager.dialogueSTART("sophiePostFight_kxs");
+            }
+            else
+            {
+                mainDialogueManager.dialogueSTART("sophiePostFight_kns");
+            }
             pauseMenuManager.partyMemberAdded("SOPHIE");
         }
     }
@@ -307,9 +323,10 @@ public class LevelManager : MonoBehaviour
         if (memberName == "Kisa")
         {
             kisaAbsorb = true;
-
             battleController.partyMembers[0].statSheet.stats["Health"] += (2 * (level - 1));
             battleController.partyMembers[0].statSheet.stats["MaxHealth"] += (2 * (level - 1));
+            // will always be the same dialogue
+            mainDialogueManager.dialogueSTART("kisaPostFight_x");
             pauseMenuManager.partyMemberKilled("KISA");
         }
         else if (memberName == "Nicol")
@@ -317,13 +334,38 @@ public class LevelManager : MonoBehaviour
             nicolAbsorb = true;
 
             battleController.partyMembers[0].statSheet.stats["Magic Attack"] += (2 * (level - 1));
+            //determine what dialogue shoule be played
+            if (kisaAbsorb)
+            {
+                mainDialogueManager.dialogueSTART("nicolPostFight_xx");
+            }
+            else
+            {
+                mainDialogueManager.dialogueSTART("nicolPostFight_kx");
+            }
             pauseMenuManager.partyMemberKilled("NICOL");
         }
         else if (memberName == "Sophie")
         {
             sophieAbsorb = true;
-
             battleController.partyMembers[0].statSheet.stats["Strength"] += (2 * (level - 1));
+            //determine what dialogue shoule be played
+            if (kisaAbsorb && nicolAbsorb)
+            {
+                mainDialogueManager.dialogueSTART("sophiePostFight_xxx");
+            }
+            else if (kisaAbsorb)
+            {
+                mainDialogueManager.dialogueSTART("sophiePostFight_xnx");
+            }
+            else if (nicolAbsorb)
+            {
+                mainDialogueManager.dialogueSTART("sophiePostFight_kxx");
+            }
+            else
+            {
+                mainDialogueManager.dialogueSTART("sophiePostFight_knx");
+            }
             pauseMenuManager.partyMemberKilled("SOPHIE");
         }
     }

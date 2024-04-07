@@ -207,20 +207,25 @@ public class PlayerController : MonoBehaviour
             if (hasKisa)
             {
                 mainDialogueManager.dialogueSTART("secondFloor_k");
-            } else
-            {
-                mainDialogueManager.dialogueSTART("secondFloor_x");
             }
         }
 
         if (collision.gameObject.name == "level3")
         {
             Level = 3;
+            if (hasKisa && hasNicol)
+            {
+                mainDialogueManager.dialogueSTART("thirdFloor_kn");
+            }
         }
 
         if (collision.gameObject.name == "level4")
         {
             Level = 4;
+            if (hasKisa && hasNicol && hasSophie)
+            {
+                mainDialogueManager.dialogueSTART("fourthFloor_kns");
+            }
         }
          
          

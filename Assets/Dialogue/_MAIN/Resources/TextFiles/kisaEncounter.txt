@@ -1,5 +1,5 @@
 Hide(alan)
-kisa.Move(0.7 0 1 false true)
+kisa.Move(0.75 0 1 false true)
 Hide(kisa)
 wait(3)
 Show(kisa)

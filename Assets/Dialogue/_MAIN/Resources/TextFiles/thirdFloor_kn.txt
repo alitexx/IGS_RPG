@@ -1,5 +1,5 @@
-kisa.Move(0.375 0 -spd 3)
-nicol.Move(0.7 0 -spd 3)
+kisa.Move(0.425 0 -spd 3)
+nicol.Move(0.75 0 -spd 3)
 alan.Move(0.05 0 -spd 3)
 SetSprite(nicol nicol)
 SetSprite(kisa kisa)
