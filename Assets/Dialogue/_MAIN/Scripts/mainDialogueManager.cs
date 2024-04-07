@@ -33,13 +33,14 @@ public class mainDialogueManager : MonoBehaviour
     // when loading something from resources, you dont specify the file extension
     //[SerializeField] private TextAsset fileName;
     public bool dialogueRunning = false; // Track if dialogue coroutine is running
-    private string fileName = "openingScene";
+    private string fileName = "secondFloor_k";
 
     private string currentlyRunningText = "";
 
     private void Start()
     {
-        am.playBGM("T4"); // temporary
+        //am.playBGM("T4"); // temporary
+        //StartCoroutine(completeDialogue("TextFiles/deleteAfterTesting"));
         dialogueSTART(fileName); // only here for testing
     }
 
@@ -60,6 +61,31 @@ public class mainDialogueManager : MonoBehaviour
             top.DOMove(tweenInPositions[0].transform.position, 1.5f);
             bottom.DOMove(tweenInPositions[1].transform.position, 1.5f);
             dialogueBox.DOMove(tweenInPositions[2].transform.position, 1.5f);
+            switch (dialogueFile)
+            {
+                case "kisaPostFight_k":
+                case "nicolEncounter_k":
+                case "nicolPostFight_kn":
+                case "sophiePostFight_kns":
+                    am.playBGM("T5");
+                    break;
+                case "kisaPostFight_x":
+                case "nicolPostFight_kx":
+                case "nicolPostFight_xx":
+                case "sophiePostFight_knx":
+                case "sophiePostFight_xnx":
+                case "sophiePostFight_kxx":
+                case "sophieEncounter_xxx":
+                    am.playBGM("T6");
+                    break;
+                case "secondFloor_k":
+                case "thirdFloor_kn":
+                case "fourthFloor_kns":
+                    break;
+                default:
+                    am.playBGM("T4");
+                    break;
+            }
         }
     }
 

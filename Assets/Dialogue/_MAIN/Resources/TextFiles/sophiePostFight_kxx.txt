@@ -1,0 +1,22 @@
+Hide(kisa)
+Hide(alan)
+wait(1)
+Show(kisa)
+Highlight(kisa -o true)
+kisa "Sophie..?"
+kisa "SOPHIE! No... no no no... This is a nightmare... this is a nightmare and I will wake up any minute."
+Show(alan)
+Highlight(alan -o true)
+alan "Stop your whining. We still have a lich to defeat, remember?"
+Highlight(kisa -o true)
+kisa "Alan, how can you be so calm in these situations?! Two of our allies were slain by you! This is not just!"
+Highlight(alan -o true)
+alan "How many times must I tell you? They were your allies, not mine. They are equal to every other monster we have slain. I am here for one goal, and I will accomplish that goal at any cost."
+alan "Now, we must find a way forward. With no more of this sentimental shit. This is the harsh reality of our world, do you understand?"
+Highlight(kisa -o true)
+kisa "...I understand."
+Hide(alan)
+Highlight(kisa -o true)
+kisa "Gods, grant me strength. This feels unjust. Alan was once so noble, yet now... I question his virtues."
+Hide(kisa)
+endDialogue(false)

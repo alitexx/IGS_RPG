@@ -1,13 +1,13 @@
-kisa.Move(0.7 0 -spd 3)
 Hide(alan)
+kisa.Move(0.7 0 1 false true)
 Hide(kisa)
-wait(1.5)
+wait(3)
 Show(kisa)
 Highlight(kisa -o true)
 kisa "Gods! Why must it be so difficult to free one's foot from such a simple trap?"
 Highlight(alan -o true)
-alan "(It appears the floor caved in beneath Kisa and she got stuck. Unfortunate.)"
 Show(alan)
+alan "(It appears the floor caved in beneath Kisa and she got stuck. Unfortunate.)"
 Highlight(kisa -o true)
 kisa "Ugh, what is the use?! I'll die here..!"
 kisa "Dead on my first adventure. Mother will ridicule me so... Father tells stories of his grand adventures, yet his daughter will fall due to her poor perception."
@@ -15,6 +15,7 @@ Highlight(alan -o true)
 alan "(...And she is just as dramatic as I remember.)"
 Highlight(kisa -o true)
 kisa "Oh, woe is me! A poor little bard, abandoned by her companions..."
+kisa "Perhaps I could sing a sorrowful tune to keep myself from going mad. Ahem... I'm just a girl in the world-"
 Highlight(alan -o true)
 alan "(I suppose I should help her now. Her whining is only going to attract more enemies.)"
 alan.Move(0.3 0 -spd 1)

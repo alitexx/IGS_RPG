@@ -1,0 +1,23 @@
+Hide(sophie)
+Hide(kisa)
+Hide(alan)
+wait(1)
+Show(sophie)
+Highlight(sophie -o true)
+sophie "Damn it. I have let you down, Nicol. I apologize."
+Show(kisa)
+Highlight(kisa -o true)
+kisa "Sophie..?"
+Highlight(sophie -o true)
+sophie "Do not fear, Kisa. All will be revealed in due time. For now, let us focus on finishing our task as soon as possible. I do not wish to linger here with <i>him</i>."
+Show(alan)
+Highlight(alan -o true)
+alan "I agree. Let us continue."
+Highlight(kisa -o true)
+kisa "Well, alright. We must unlock this door next, yes?"
+Highlight(sophie -o true)
+sophie "Yes. I shall lend you my strength and assist for the time being. Swiftly now, let us press forward."
+Hide(sophie)
+Hide(kisa)
+Hide(alan)
+endDialogue(false)

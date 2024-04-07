@@ -1,3 +1,7 @@
+alan.Move(0.3 0 -spd 1)
+kisa.Move(0.7 0 1 false true)
+Hide(alan)
+Hide(kisa)
 wait(0.75)
 Show(kisa)
 Show(alan)
@@ -6,10 +10,11 @@ kisa "You win, you monster. Go now, slash me to pieces, and end this bard's exis
 Highlight(alan -o true)
 alan "Kisa. Calm yourself, it's me."
 Highlight(kisa -o true)
+SetSprite(kisa flipped)
 kisa "Hm? Oh! Alan! Hello."
 kisa "Wait... Alan?! YOU were the brute attacking me?! How DARE you!"
 Highlight(alan -o true)
-alan "First of all, no, I was not attacking you. I was loosening the flooring so you could slip out."
+alan "First of all, no, I was not attacking you. I was prying you loose with the flat side of my blade. Did you genuinely believe I would harm you?"
 alan "Second, were you not the one frantically flailing your lute about? Is that how you choose to defend yourself?"
 Highlight(kisa -o true)
 kisa "Oh. Oops."
@@ -19,7 +24,7 @@ kisa.Move(0.65 0 -spd 3)
 wait(0.25)
 kisa "Well, we should continue. I'll follow you."
 Highlight(alan -o true)
-alan "Really? No \"Sorry for trying to kill you, Alan\"?"
+alan "Really? No 'Sorry for trying to kill you, Alan'?"
 Highlight(kisa -o true)
 kisa "Sorry? What could I be sorry for?"
 Highlight(alan -o true)
