@@ -24,7 +24,7 @@ kisa.Move(0.65 0 -spd 3)
 wait(0.25)
 kisa "Well, we should continue. I'll follow you."
 Highlight(alan -o true)
-alan "Really? No 'Sorry for trying to kill you, Alan'?"
+alan "Really? No ''Sorry for trying to kill you, Alan''?"
 Highlight(kisa -o true)
 kisa "Sorry? What could I be sorry for?"
 Highlight(alan -o true)

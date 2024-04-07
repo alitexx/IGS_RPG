@@ -1,7 +1,7 @@
 alan.Move(0 0 -spd 3)
-nicol.Move(0.2 0 -spd 3)
-kisa.Move(0.35 0 -spd 3)
-sophie.Move(0.7 0 -spd 3)
+nicol.Move(0.25 0 -spd 3)
+kisa.Move(0.4 0 -spd 3)
+sophie.Move(0.85 0 -spd 3)
 Hide(sophie)
 Hide(nicol)
 Hide(alan)
@@ -9,35 +9,36 @@ Hide(kisa)
 wait(0.75)
 Show(sophie)
 Highlight(sophie -o true)
-sophie "<i>Fucking</i> hell..."
+sophie "By the seven hells..."
 Show(alan)
 SetSprite(kisa kisa)
 Show(kisa)
 Show(nicol)
+wait(1)
 Highlight(nicol -o true)
-nicol.Move(0.35 0 -spd 2)
-kisa.Move(0.2 0 -spd 2)
+nicol.Move(0.45 0 -spd 3)
+kisa.Move(0.25 0 -spd 3)
 nicol "There she is! Lovely Sophia!"
 Highlight(sophie -o true)
 sophie "..."
 Highlight(alan -o true)
-alan.SetPriority(1)
-nicol.Move(0 0 -spd 2)
-alan.Move(0.2 0 -spd 2)
 alan "How fares the epic adventures of Sophie the Lich Slayer? Need a hand?"
 Highlight(sophie -o true)
-sophie.Move(0.65 0 -spd 2)
+sophie.Move(0.75 0 -spd 2)
 sophie "Do not mock me. And no, I do not need your assistance."
 sophie "This door will not open. There are no levers, no buttons. Nothing."
 Highlight(kisa -o true)
-kisa "Could the solution be in a separate room?"
 kisa.SetPriority(2)
+kisa "Could the solution be in an adjacent room?"
 Highlight(sophie -o true)
 sophie "I have checked every location on this floor. This is the door to the next level."
 Highlight(kisa -o true)
 kisa "I apologize... simply attempting to assist you."
 Highlight(sophie -o true)
 sophie "I do not <i>need</i> your assistance."
+kisa.Move(0 0 -spd 2)
+nicol.Move(0.2 0 -spd 2)
+alan.Move(0.4 0 -spd 2)
 Highlight(alan -o true)
 alan.SetPriority(3)
 alan "But we <i>need</i> to pass. Hurry up or let us help you."
@@ -45,12 +46,10 @@ Highlight(sophie -o true)
 sophie.Move(0.6 0 -spd 2)
 sophie "Rush me and it will be the last thing you do. I am more than capable. Leave me be."
 Highlight(kisa -o true)
-kisa.SetPriority(4)
 kisa "Alan, maybe we back off-"
 Highlight(nicol -o true)
 nicol.SetPriority(5)
-kisa.Move(0 0 -spd 2)
-nicol.Move(0.2 0 -spd 2)
+nicol.Move(0.225 0 -spd 2)
 nicol "Nonsense! I support a well-mannered sparring session. It helps clear the head!"
 Highlight(sophie -o true)
 sophie.SetPriority(5)

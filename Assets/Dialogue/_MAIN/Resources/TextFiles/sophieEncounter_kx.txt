@@ -1,46 +1,48 @@
 alan.Move(0.1 0 -spd 3)
 kisa.Move(0.3 0 -spd 3)
-sophie.Move(0.7 0 -spd 3)
+sophie.Move(0.85 0 -spd 3)
 Hide(sophie)
 Hide(kisa)
 Hide(alan)
 wait(0.75)
 Show(sophie)
 Highlight(sophie -o true)
-sophie "<i>Fucking</i> hell..."
+sophie "By the seven hells..."
 Show(alan)
+alan.SetPriority(1)
 Show(kisa)
+wait(1)
 Highlight(kisa -o true)
 kisa.SetPriority(1)
-kisa.Move(0.6 0 -spd 2.5)
+kisa.Move(0.75 0 -spd 3)
 kisa "SOPHIE! Thank the Gods you are alive and well..."
 Highlight(sophie -o true)
 sophie "Kisa? Why do you embrace me so?"
 Highlight(kisa -o true)
 kisa "Oh. My apologies."
-kisa.Move(0.5 0 -spd 2.5)
+kisa.Move(0.65 0 -spd 2.5)
 wait(0.5)
 kisa "There has been a minor... predicament. Do you happen to know if any specters roam these halls? And if so, could they mimic the living?"
 Highlight(sophie -o true)
 sophie "Specters? I have vanquished a handful. As for mimicking the living, I doubt they could accomplish such a feat."
-sophie.Move(0.65 0 -spd 1.5)
+sophie.Move(0.825 0 -spd 1.5)
 sophie "Your tone worries me. Is all well?"
 Highlight(kisa -o true)
-kisa "Nicol was... he looked and spoke as if he was our companion. He fell to Alan’s blade, I believe a specter took the form of Nicol to trick us and Alan noticed far before I could."
+kisa "Nicol was... he looked and spoke as if he was our companion. He fell to Alan's blade, I believe a specter took the form of Nicol to trick us and Alan noticed far before I could."
 kisa "Alan is not the type to kill without reason. But if Nicol was not a specter, then... what?"
 Highlight(sophie -o true)
-sophie.Move(0.5 0 -spd 2)
-kisa.Move(0.7 0 -spd 2)
+sophie.Move(0.6 0 -spd 2)
+kisa.Move(0.9 0 -spd 2)
 SetSprite(kisa flipped)
 sophie.SetPriority(2)
 sophie "Alan, is this true? Did Nicol meet his end by your hand?"
 Highlight(alan -o true)
 alan "..."
 Highlight(kisa -o true)
-kisa.Move(0.675 0 -spd 1)
+kisa.Move(0.875 0 -spd 1)
 kisa "Sophie? I have told you, it was not the real Nicol."
 Highlight(sophie -o true)
-sophie.Move(0.5 0 -spd 2)
+sophie.Move(0.55 0 -spd 2)
 sophie "Answer the question."
 Highlight(alan -o true)
 alan "He was your ally, not mine."

@@ -1,17 +1,21 @@
-alan.Move(0.6 0 -spd 3)
-nicol.Move(0.1 0 -spd 3)
-kisa.Move(0.35 0 -spd 3)
-sophie.Move(0.7 0 -spd 3)
+alan.Move(0.1 0 -spd 3)
+nicol.Move(0.7 0 -spd 3)
 Hide(nicol)
 Hide(alan)
+SetSprite(nicol flipped)
 wait(0.75)
 Show(alan)
 Show(nicol)
 Highlight(nicol -o true)
 nicol "Not only are you skilled in battle, you have mastered the art of trickery."
-nicol "It is difficult to fool me, however this is unnecessary. An innocent life has been taken, another life."
-nicol "Do you wish to drag me along and view my suffering? If that is the case, you will not see me shed a tear."
-nicol "Let us continue this quest, for the sooner it is complete, the sooner I can mourn my fallen companions."
+nicol "It is difficult to fool me, however your actions are irregular and unrequired. Who taught you the knight's code? I have yet to see a knight act so dishonorably."
+Highlight(alan -o true)
+alan.Move(0.2 0 -spd 2)
+alan "Do not bring my mentor into this. My actions are just."
+Highlight(nicol -o true)
+nicol "How dare you utter the word 'justice' with hands stained in the blood of your comrades. You sicken me."
+SetSprite(nicol nicol)
+nicol "There is nothing more to be said. Let us continue, I shall mourn our comrades once we have completed our task."
 Hide(nicol)
 Hide(alan)
 endDialogue(false)

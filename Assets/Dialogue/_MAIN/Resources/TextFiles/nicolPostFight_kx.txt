@@ -1,20 +1,25 @@
+kisa.Move(0.3 0 -spd 3)
+alan.Move(0.05 0 -spd 3)
 wait(0.75)
 Show(kisa)
 Show(alan)
 Highlight(kisa -o true)
 kisa "By the heavens..."
+kisa.Move(0.5 0 -spd 3)
 kisa "Is he... is he alright?! Nicol? NICOL?!"
 kisa "Alan, how could you? Nicol is..."
 Highlight(alan -o true)
 alan "I understand."
-wait(2)
 Highlight(kisa -o true)
-kisa "Do you have nothing to say for yourself?! Nicol was our ally!"
+SetSprite(kisa flipped)
+kisa "Do you have nothing to say for yourself?! Nicol is our ally!"
 Highlight(alan -o true)
 alan "I do not need to defend myself. Nicol was your ally, not mine."
+alan.Move(0 0 -spd 0.2)
 Hide(alan)
-wait(2)
+wait(1.25)
 Highlight(kisa -o true)
+SetSprite(kisa kisa)
 kisa "All is well, Kisa. There must be a reasonable explanation for this."
 kisa "Maybe this was an illusion! Yes, that was a specter using the form of Nicol. Nicol is alive and well. He must be."
 Hide(kisa)

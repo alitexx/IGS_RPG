@@ -11,6 +11,7 @@ Show(nicol)
 Highlight(nicol -o true)
 nicol "Ah, at last. The final level of this wretched tower."
 Show(kisa)
+SetSprite(kisa flipped)
 Highlight(kisa -o true)
 kisa "Was that not what you proclaimed when we ventured to the third level? How are you certain?"
 Highlight(nicol -o true)
@@ -26,9 +27,16 @@ nicol "My, my! What camaraderie!"
 Highlight(kisa -o true)
 kisa "Nicol! Do not be so... so..."
 Highlight(nicol -o true)
+SetSprite(kisa kisa)
 nicol "Ohoho! The flush of your cheeks speaks more truths than your lips ever could!"
 Highlight(kisa -o true)
+SetSprite(kisa flipped)
 kisa "NICOL!"
 Show(alan)
 Highlight(alan -o true)
 alan "(...I have no interest in this idle chit-chat. I will continue and hope they follow.)"
+Hide(sophie)
+Hide(kisa)
+Hide(alan)
+Hide(nicol)
+endDialogue(false)

@@ -1,7 +1,6 @@
-CreateCharacter(kisa -enabled false)
-CreateCharacter(alan -enabled false)
+SetSprite(kisa flipped)
 kisa.Move(0.6 0 -spd 3)
-alan.Move(0.05 0 -spd 3)
+alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(kisa)
 wait(1)
@@ -17,19 +16,23 @@ Highlight(alan -o true)
 alan "Ah yes, your refined sensibilities. I vaguely recall such an event."
 Highlight(kisa -o true)
 kisa "Do not use that tone of voice. Regardless..."
+kisa.Move(0.65 0 -spd 1)
+SetSprite(kisa kisa)
 kisa "Sophie and I had an intimate discussion yesterday evening. I opened my heart to her, only to find her reception less than favorable. "
 kisa "Naturally, I was quite crestfallen. Sophie interpreted my demeanor as one of annoyance and indifference, leading to her persistence earlier."
+SetSprite(kisa flipped)
+kisa.Move(0.6 0 -spd 1)
 kisa "I inform you of this because Sophie, though formidable in strength, lacks awareness of emotions. I fear that this will lead to further conflict."
 Highlight(alan -o true)
-alan "Thank you for telling me, that was oddly sensible of you to confide in me."
+alan "Thank you for telling me, that was uncharacteristically sensible of you to confide in me."
 Highlight(kisa -o true)
-kisa "Excuse me, I am sensible all of the time!"
+kisa "Excuse me, I am sensible!"
 Highlight(alan -o true)
 alan "Of course you are. And where is your weapon?"
 Highlight(kisa -o true)
-kisa "...I may have lost it on the journey. A lute works just as well, you will see!"
+kisa "...I may have lost it on the journey. My lute works just as well, you will see!"
 Highlight(alan -o true)
-alan "Sure. Regardless, we will reunite with Sophie together. She is a woman of honor, I am confident she is not truly upset over something so minor."
+alan "Sure. Regardless, we will reunite with Sophie together. She is noble, I assure you she is not upset over such trivial matters."
 Highlight(kisa -o true)
 kisa "Yes... let us hope so."
 Hide(alan)

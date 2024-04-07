@@ -13,9 +13,19 @@ nicol "Why, if it isn't my favorite rival, Alan!"
 nicol.Move(0.6 0 -spd 2)
 wait(0.5)
 nicol "Pray tell, did you chance upon encountering Kisa?"
-wait(3)
+wait(1)
+alan "..."
+wait(1)
+Highlight(nicol -o true)
+SetSprite(nicol nicol)
 nicol "Your silence is startling, to say the least. Where might Kisa be?"
+wait(1)
+SetSprite(nicol flipped)
 nicol "...I sense something is amiss. Alan, speak to me, my companion. What have you done with Kisa?"
+Highlight(alan -o true)
 alan "Have our eyes not met? You promised me a duel, Nicol."
-nicol "I suppose I have. Very well, let our blades speak our truths."
+Highlight(nicol -o true)
+nicol "I suppose they have. Very well, let our blades speak our truths."
+Hide(nicol)
+Hide(alan)
 endDialogue(true)

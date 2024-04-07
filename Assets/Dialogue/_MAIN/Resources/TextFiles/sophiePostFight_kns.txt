@@ -1,7 +1,7 @@
-alan.Move(0 0 -spd 3)
+alan.Move(0.4 0 -spd 3)
 nicol.Move(0.2 0 -spd 3)
-kisa.Move(0.35 0 -spd 3)
-sophie.Move(0.7 0 -spd 3)
+kisa.Move(0.0 0 -spd 3)
+sophie.Move(0.75 0 -spd 3)
 Hide(sophie)
 Hide(nicol)
 Hide(alan)
@@ -11,9 +11,11 @@ Show(sophie)
 Highlight(sophie -o true)
 sophie "Damn it..."
 Show(alan)
+alan.SetPriority(1)
 Highlight(alan -o true)
 alan "We have claimed this victory through fair contest and honorable combat. Allow us to aid you."
 Highlight(sophie -o true)
+sophie.SetPriority(2)
 sophie "I... must honor the terms of our agreement. I will allow you to assist me."
 Show(nicol)
 Highlight(nicol -o true)
@@ -21,40 +23,56 @@ nicol "Good! Welcome back, Sophia!"
 Show(kisa)
 Highlight(kisa -o true)
 kisa "Yeah... good to have you back."
+SetSprite(nicol flipped)
 Highlight(nicol -o true)
 nicol "Kisa, you lack enthusiasm! Sophia has returned to our merry party!"
 Highlight(sophie -o true)
 sophie "Temporarily."
 Highlight(nicol -o true)
+SetSprite(nicol nicol)
 nicol "Temporarily! This calls for a celebration!"
 Highlight(sophie -o true)
 sophie "No it does not. I will travel with you until the lich is defeated, and then I will take my leave."
 Highlight(alan -o true)
+alan.SetPriority(5)
 alan "We will have time for idle discussion later. For now, we should focus on finding a way forward."
 Highlight(nicol -o true)
 nicol "Ah, yes! The unopenable door! Come now, let us explore!"
+SetSprite(nicol flipped)
 nicol.Move(0 0 -spd 3.5)
+Hide(nicol)
 Highlight(sophie -o true)
 sophie "Sounds good. Lead on, Alan. I will follow suit."
 alan.Move(0 0 -spd 3)
 Hide(alan)
 wait(1)
+SetSprite(kisa flipped)
 sophie "Kisa."
 Highlight(kisa -o true)
+SetSprite(kisa kisa)
+kisa.Move(0.1 0 -spd 1)
 kisa "Y-yes Sophie?"
 Highlight(sophie -o true)
+sophie.Move(0.6 0 -spd 1)
 sophie "I had no intention of wounding you with my words. I require time to sort matters of the heart out."
 Highlight(kisa -o true)
 kisa "Does this mean..?"
 Highlight(sophie -o true)
 sophie "I admit, your confession blindsighted me. I do not wish to jump into such matters without proper thought and consideration."
 sophie "I apologize for my actions before, I... was concerned I had caused a rift between us."
-sophie "Would you allow me time to deliberate my feelings?"
+sophie "Would you allow me time to deliberate?"
 Highlight(kisa -o true)
+kisa.Move(0.25 0 -spd 2)
 kisa "Yes, yes of course!"
-kisa "I feared the worst, that you were declining my request. I may have misinterpreted your intentions, but… I am joyous that I was mistaken!"
+kisa "I feared the worst, that you were declining my request. I may have misinterpreted your intentions, but... I am joyous that I was mistaken!"
 Highlight(sophie -o true)
 sophie "I am glad we could discuss and clarify this. We should regroup with Alan and Nicol, we can converse about this in more detail at a later date."
+Hide(sophie)
+Hide(kisa)
+alan.SetPriority(0)
+nicol.SetPriority(0)
+kisa.SetPriority(0)
+sophie.SetPriority(0)
 endDialogue(false)
 
 

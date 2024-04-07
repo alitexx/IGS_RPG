@@ -48,7 +48,7 @@ sophie "Goodbye. Good luck without me."
 sophie.Hide()
 wait(1.5)
 Highlight(kisa -o true)
-kisa "Good luck without me? As if! I will show her who is a waste!"
+kisa "''Good luck without me''? As if! I will show her who is a waste!"
 kisa.Move(0.5 0 -spd 1.5)
 kisa "This is fine! I can do this... I have never done it before, but it cannot be that dreadful...can it?"
 nicol.Move(0.3 0 -spd 1.5)

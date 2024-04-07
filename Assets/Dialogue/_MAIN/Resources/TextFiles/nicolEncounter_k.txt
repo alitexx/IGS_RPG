@@ -4,6 +4,7 @@ alan.Move(0.05 0 -spd 3)
 Hide(nicol)
 Hide(alan)
 Hide(kisa)
+SetSprite(kisa kisa)
 wait(0.75)
 Show(nicol)
 Highlight(nicol -o true)
@@ -17,14 +18,14 @@ nicol.Move(0.6 0 -spd 2)
 nicol "I see that you have been through treacherous trials and tribulations to reach this point, have you not? What a fine job you two have done!"
 Highlight(kisa -o true)
 kisa.Move(0.25 0 -spd 1.5)
-kisa "Nicol! You promised to clear the way for me! Why did you leave me on the first floor?"
+kisa "Nicol! You promised to clear the way for me! Why did you abandon me on the first floor?"
 Highlight(nicol -o true)
-nicol "I did not abandon you! You were right behind me all along, were you not?"
+nicol "I did not abandon you! You were following behind me this whole adventure, were you not?"
 Highlight(kisa -o true)
-kisa "No! The floor ensnared me!"
+kisa "No! I was trapped, the floor caved in beneath me!"
 Highlight(nicol -o true)
-nicol "That is unfortunate! But you have learned a valuable lesson, have you not? Do not let it capture you next time, my dear Kisa!"
-nicol "Let us hold onto this topic for the moment. There are much more pressing matters that need our attention."
+nicol "That is unfortunate, I apologize for my oversight! But you have learned a valuable lesson, have you not? Do not let it capture you next time, my dear Kisa!"
+nicol "Let us hold onto this topic for the moment. There are <i>much</i> more pressing matters that need our attention."
 nicol.SetPriority(1)
 nicol.Move(0.3 0 -spd 3)
 kisa.Move(0.7 0 -spd 3)

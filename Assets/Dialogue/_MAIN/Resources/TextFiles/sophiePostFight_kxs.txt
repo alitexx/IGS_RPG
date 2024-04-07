@@ -1,16 +1,21 @@
+alan.Move(0 0 -spd 3)
+kisa.Move(0.3 0 -spd 3)
+sophie.Move(0.85 0 -spd 3)
 Hide(sophie)
 Hide(kisa)
 Hide(alan)
 wait(1)
 Show(sophie)
+Show(kisa)
+Show(alan)
 Highlight(sophie -o true)
 sophie "Damn it. I have let you down, Nicol. I apologize."
-Show(kisa)
 Highlight(kisa -o true)
+kisa.Move(0.45 0 -spd 2)
 kisa "Sophie..?"
 Highlight(sophie -o true)
+sophie.Move(0.8 0 -spd 2)
 sophie "Do not fear, Kisa. All will be revealed in due time. For now, let us focus on finishing our task as soon as possible. I do not wish to linger here with <i>him</i>."
-Show(alan)
 Highlight(alan -o true)
 alan "I agree. Let us continue."
 Highlight(kisa -o true)

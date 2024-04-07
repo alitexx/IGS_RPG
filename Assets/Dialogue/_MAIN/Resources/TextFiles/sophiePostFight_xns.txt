@@ -1,19 +1,25 @@
-Hide(sophie)
-Hide(nicol)
-Hide(alan)
+CreateCharacter(nicol -enabled false)
+CreateCharacter(sophie -enabled false)
+CreateCharacter(alan -enabled false)
+alan.Move(0.3 0 -spd 3)
+nicol.Move(0.05 0 -spd 3)
+sophie.Move(0.75 0 -spd 3)
 wait(1)
 Show(sophie)
+Show(nicol)
+Show(alan)
 Highlight(sophie -o true)
 sophie "Damn it..!"
-Show(alan)
 Highlight(alan -o true)
-alan "Sophie, I am sorry. I was controlled by my impulses, I was foolish."
-alan "Please,  trust me once more, and know that these acts will not be committed again. My intentions are devoid of malice."
+alan.Move(0.4 0 -spd 2)
+alan "Sophie, I apologize once more. I was controlled by my impulses, I was foolish."
+alan "Please,  trust me and know that these acts will not be committed again. My intentions are devoid of malice."
 Highlight(sophie -o true)
+sophie.Move(0.7 0 -spd 3)
 sophie "I will <i>never</i> trust you."
-sophie "I shall stay by your side, solely to ensure Nicol remains untouched. It is the least I can do, but know that once the lich is defeated, our paths shall diverge and I desire not to cross them again. Is this understood?"
+sophie "I shall stay by your side for Nicol's sake. It is the least I can do, but know that once the lich is defeated, our paths shall diverge and I desire not to cross them again. Is this understood?"
 Highlight(alan -o true)
-alan "Understood"
+alan "Understood."
 Hide(sophie)
 Hide(nicol)
 Hide(alan)
