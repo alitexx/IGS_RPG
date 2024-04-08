@@ -190,17 +190,64 @@ public class audioManager : MonoBehaviour
         SFXAvailable[ID].Play();
     }
 
+    //private void PlaySongUsingID(int ID, float speed)
+    //{
+    //    if (ID == 9)
+    //    {
+    //        BGMAvailable[10].volume = (audioStatics.SFXVolume * audioStatics.MasterVolume);
+    //        BGMAvailable[10].Play();
+    //        while (!BGMAvailable[10].isPlaying)
+    //        {
+    //            //play other music
+    //        }
+    //    } else
+    //    {
+    //        BGMAvailable[ID].Play();
+    //        BGMAvailable[ID].DOFade(audioStatics.BGMVolume * audioStatics.MasterVolume, speed).OnComplete(() =>
+    //        {
+    //            if (currentlyPlaying)
+    //            {
+    //                currentlyPlaying.Stop();
+    //            }
+    //            currentlyPlaying = BGMAvailable[ID];
+    //        });
+    //    }
+    //}
+
     private void playSongUsingID(int ID, float speed)
     {
+        if (ID == 9)
+        {
+            // Play the first audio clip
+            AudioSource firstAudioSource = BGMAvailable[10];
+            firstAudioSource.volume = audioStatics.BGMVolume * audioStatics.MasterVolume;
+            firstAudioSource.Play();
+
+            // Schedule the second audio clip to play after the first one finishes
+            StartCoroutine(PlayVictory(firstAudioSource, ID, speed));
+        }
+        else
+        {
+            // Play the second audio clip directly
+            PlayOtherAudio(ID, speed);
+        }
+    }
+
+    private IEnumerator PlayVictory(AudioSource firstAudioSource, int ID, float speed)
+    {
+        // Wait until the first audio clip finishes playing
+        while (firstAudioSource.isPlaying)
+        {
+            yield return null;
+        }
+
+        // Play the second audio clip
+        PlayOtherAudio(ID, speed);
+    }
+
+    private void PlayOtherAudio(int ID, float speed)
+    {
         BGMAvailable[ID].Play();
-        //This uses set variables, the new version uses variables the player changes!!
-        //BGMAvailable[ID].DOFade(0.5f, speed).OnComplete(() => {
-        //    if (currentlyPlaying)
-        //    {
-        //        currentlyPlaying.Stop();
-        //    }
-        //    currentlyPlaying = BGMAvailable[ID];
-        //});
         BGMAvailable[ID].DOFade(audioStatics.BGMVolume * audioStatics.MasterVolume, speed).OnComplete(() =>
         {
             if (currentlyPlaying)
@@ -210,4 +257,5 @@ public class audioManager : MonoBehaviour
             currentlyPlaying = BGMAvailable[ID];
         });
     }
+
 }
