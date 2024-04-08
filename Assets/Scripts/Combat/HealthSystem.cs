@@ -58,7 +58,6 @@ public class HealthSystem
     public void Heal(int healAmount)
     {
 
-
         health += healAmount;
 
         if (health > maxHealth)

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using DG.Tweening.Core.Easing;
 using JetBrains.Annotations;
 using System;
 using System.Collections;
@@ -136,6 +137,15 @@ public class BattleController : MonoBehaviour
         else if (playerController.LichBoss)
         {
             
+        }
+
+        if (partyBoss == false)
+        {
+            am.playBGM("T3");
+        }
+        else if (partyBoss == true)
+        {
+            am.playBGM("T6");
         }
 
 
@@ -360,6 +370,8 @@ public class BattleController : MonoBehaviour
     private bool partyBoss;
 
     public Animator battleFadeAnim;
+
+    public audioManager am;
     
     //Keys
 
@@ -641,14 +653,17 @@ public class BattleController : MonoBehaviour
 
     public void specialButton()
     {
-        state = State.Busy;
-
         /*activeChar.specialMove(enemyChar, activeChar, () =>
         {
             ChooseNextActiveChar();
         });*/
 
-        StartCoroutine(SpecialTargeting());
+        if (activeChar.specialAvailable == true)
+        {
+            state = State.Busy;
+
+            StartCoroutine(SpecialTargeting());
+        }
     }
 
     public void Die()
@@ -807,9 +822,10 @@ public class BattleController : MonoBehaviour
 
             activeChar.healthSystem.Heal(activeChar.statSheet.stats["MaxHealth"] / 2);
 
-            ChooseNextActiveChar();
-
             backButton.SetActive(false);
+
+            //ChooseNextActiveChar();
+            
         }
         //Mage
         else if (activeChar.statSheet.specialMove == 2)
@@ -852,6 +868,12 @@ public class BattleController : MonoBehaviour
                 yield return null;
             }
 
+            Vector3 position = enemyList[enemyNum].GetPosition();
+            ParticleManager weaknessParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
+            weaknessParticle.animator.SetBool("WeaknessFX", true);
+
+            yield return new WaitForSeconds(1.5f);
+
             enemyList[enemyNum].weaknessObject.SetActive(true);
 
             if (enemyList[enemyNum].statSheet.weakness == "Fire")
@@ -880,7 +902,7 @@ public class BattleController : MonoBehaviour
 
             backButton.SetActive(false);
 
-            ChooseNextActiveChar();
+            //ChooseNextActiveChar();
         }
         //Bard
         else if (activeChar.statSheet.specialMove == 3)
@@ -900,14 +922,17 @@ public class BattleController : MonoBehaviour
 
             for (int i = 0; i < playerList.Count; i++)
             {
-                Vector3 position = activeChar.GetPosition();
-                ParticleManager healParticle = Instantiate(playerList[i].particleManager, position, Quaternion.identity, playerList[i].transform);
+                ParticleManager healParticle;
+
+                Vector3 position = playerList[i].GetPosition();
+
+                healParticle = Instantiate(playerList[i].particleManager, position, Quaternion.identity, playerList[i].transform);
                 healParticle.animator.SetBool("HealFX", true);
 
                 playerList[i].healthSystem.Heal(playerList[i].statSheet.stats["MaxHealth"] / 2);
             }
 
-            ChooseNextActiveChar();
+            //ChooseNextActiveChar();
         }
         //Monk
         else if (activeChar.statSheet.specialMove == 4)
@@ -927,7 +952,7 @@ public class BattleController : MonoBehaviour
                 enemyList[i].GotDamaged(activeChar.statSheet.stats["Strength"], enemyList[i].statSheet.stats["Defense"]);
             }
 
-            ChooseNextActiveChar();
+            //ChooseNextActiveChar();
         }
         else
         {
@@ -972,6 +997,11 @@ public class BattleController : MonoBehaviour
 
             enemyList[enemyNum].HideTargetCircle();
         }
+
+        activeChar.specialAvailable = false;
+
+        ChooseNextActiveChar();
+
     }
 
     #endregion
@@ -1316,6 +1346,8 @@ public class BattleController : MonoBehaviour
         }
         else if (enemyList.Count == 0 || AllEnemyDead == true)
         {
+            am.playBGM("T9");
+
             battleFadeAnim.SetBool("BattleOver", true);
             
             if (tutorialHandler.activeInHierarchy)

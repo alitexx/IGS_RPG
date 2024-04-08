@@ -44,6 +44,9 @@ public class BattleCharacter : MonoBehaviour
     public Animator animator;
 
     public ParticleManager particleManager;
+
+    public bool specialAvailable;
+
     private enum State
     {
         Idle, 
@@ -55,6 +58,7 @@ public class BattleCharacter : MonoBehaviour
     private void Awake()
     {
         state = State.Idle;
+        specialAvailable = true;
         selectionCircleObject = transform.Find("Outline").gameObject;
         targetingCircleObject = transform.Find("TargetCircle").gameObject;
         weaknessObject = transform.Find("Weakness").gameObject;
