@@ -91,7 +91,7 @@ public class BattleCharacter : MonoBehaviour
             //textures and animations
             if (statSheet.name == "Tank Guy")
             {
-                charSprite.color = Color.magenta;
+                //charSprite.color = Color.magenta;
                 animator.SetBool("isTank", true);
             }
             else if (statSheet.name == "Mage Guy")
@@ -110,8 +110,8 @@ public class BattleCharacter : MonoBehaviour
                 animator.SetBool("isBard", true);
             }
 
-            healthBar = new World_Bar(transform, new Vector3(0, 0.8f), new Vector3(1, 0.2f), Color.grey, Color.green, healthSystem.GetHealthPercent(), 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
-            manaBar = new World_Bar(transform, new Vector3(0, 1f), new Vector3(1, 0.2f), Color.grey, Color.blue, (float)statSheet.stats["Mana"] / statSheet.stats["MaxMana"], 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
+            healthBar = new World_Bar(transform, new Vector3(0, 0.8f), new Vector3(1, 0.2f), Color.grey, Color.green, healthSystem.GetHealthPercent(), 100, new World_Bar.Outline { color = Color.black, size = 0.15f });
+            manaBar = new World_Bar(transform, new Vector3(0, 1f), new Vector3(1, 0.2f), Color.grey, Color.blue, (float)statSheet.stats["Mana"] / statSheet.stats["MaxMana"], 100, new World_Bar.Outline { color = Color.black, size = 0.15f });
         }
         else
         {

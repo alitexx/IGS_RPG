@@ -470,8 +470,8 @@ public class BattleController : MonoBehaviour
         }*/
 
         
-
-        if (fightingButtons.activeInHierarchy == true)
+        //Keybinds
+        /*if (fightingButtons.activeInHierarchy == true)
         {
             if (Input.GetKeyDown(attackKey))
             {
@@ -500,7 +500,7 @@ public class BattleController : MonoBehaviour
             {
                 BackButton();
             }
-        }
+        }*/
     }
 
     #region Buttons
