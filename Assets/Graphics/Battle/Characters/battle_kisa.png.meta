@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 609381f2df0e6364e86ff5618b509f38
+guid: 908836f99a8c4bd45b609db2ac1c93fc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -104,12 +104,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: battle_kisa_0
+      name: battle_kisaNEW_0
       rect:
         serializedVersion: 2
         x: 0
         y: 576
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -118,19 +118,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af8fe46fbab8c02449d4d5b346e98b8b
-      internalID: 1457087225
+      spriteID: 64f81fb16eb38ef49ad90bf9937f7a43
+      internalID: -1497250860
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_1
+      name: battle_kisaNEW_1
       rect:
         serializedVersion: 2
-        x: 67
+        x: 73
         y: 576
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -139,19 +139,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b25603504baf8cb4e8938833b7d0b2c8
-      internalID: 2006771174
+      spriteID: 3ad92645a6b319444bfe79d19010bb04
+      internalID: 630722640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_2
+      name: battle_kisaNEW_2
       rect:
         serializedVersion: 2
         x: 0
         y: 512
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -160,19 +160,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a43f89449520be45b9858d483c3f561
-      internalID: -110400027
+      spriteID: 5636a2efed8a31c4c9fb15ce48777ac6
+      internalID: 1886904231
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_3
+      name: battle_kisaNEW_3
       rect:
         serializedVersion: 2
-        x: 67
+        x: 73
         y: 512
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -181,19 +181,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d06f5f125c95df543abca1cde8204042
-      internalID: -1592746787
+      spriteID: 9033ab1e4ffc378439fd69d88df45b35
+      internalID: -388309410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_4
+      name: battle_kisaNEW_4
       rect:
         serializedVersion: 2
-        x: 134
+        x: 146
         y: 512
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -202,19 +202,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ed0e934871f4734e916806fa8acc00b
-      internalID: -1804260406
+      spriteID: f8611cd1dcd551242a7984a6d8e4e572
+      internalID: -1417646711
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_5
+      name: battle_kisaNEW_5
       rect:
         serializedVersion: 2
         x: 0
         y: 448
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -223,19 +223,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10ae52b3b17668543bfccfd586fad189
-      internalID: 1725911969
+      spriteID: d46482d572650c04caa4041e65258bcb
+      internalID: 1323269828
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_6
+      name: battle_kisaNEW_6
       rect:
         serializedVersion: 2
-        x: 67
+        x: 73
         y: 448
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -244,19 +244,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c05121e5c71ec340be43e9d5e5d7afd
-      internalID: -2140004963
+      spriteID: 91a01d9f2a65d2740ba27b0829fe7c83
+      internalID: 1189649309
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_7
+      name: battle_kisaNEW_7
       rect:
         serializedVersion: 2
-        x: 134
+        x: 146
         y: 448
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -265,19 +265,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a3e155177b575a4399428efdd8c20c6
-      internalID: 837759257
+      spriteID: d7a8e060500fa204a815dd332ec5c88d
+      internalID: -1620392308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_8
+      name: battle_kisaNEW_8
       rect:
         serializedVersion: 2
         x: 0
         y: 384
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -286,19 +286,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69c46179015076b4b91f63e92a4368a3
-      internalID: -1962462997
+      spriteID: 66a96176c92380646b75de6e7ee14969
+      internalID: -1991338389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_9
+      name: battle_kisaNEW_9
       rect:
         serializedVersion: 2
-        x: 67
+        x: 73
         y: 384
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -307,19 +307,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e027d78895f55048afd79abb52e87e1
-      internalID: -509695368
+      spriteID: e5fea410e9c2b184aba39b059955b6e8
+      internalID: -466252989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_10
+      name: battle_kisaNEW_10
       rect:
         serializedVersion: 2
-        x: 134
+        x: 146
         y: 384
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -328,19 +328,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a552333e9482b2346a348527e8b5d746
-      internalID: -621553685
+      spriteID: 585718ac0d35b5742be42b1ac8b3c916
+      internalID: -933581393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_11
+      name: battle_kisaNEW_11
       rect:
         serializedVersion: 2
         x: 0
         y: 320
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -349,19 +349,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d3a05533f5e1be449ea5c50ef29255d
-      internalID: 1944555299
+      spriteID: 53ecdefd6dd3ce24abb09e0e7e6d6e1c
+      internalID: -905862422
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_12
+      name: battle_kisaNEW_12
       rect:
         serializedVersion: 2
-        x: 67
+        x: 73
         y: 320
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -370,19 +370,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 928f573c45ff478408a56c80d9cc2037
-      internalID: -349118860
+      spriteID: c32e780c9a33bde429897ab1a0dfaa6e
+      internalID: 771374173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_13
+      name: battle_kisaNEW_13
       rect:
         serializedVersion: 2
-        x: 134
+        x: 146
         y: 320
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -391,19 +391,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f05508191c25347419b781f40b7b22df
-      internalID: 1831528127
+      spriteID: b6527285a7a06594fbb7e4ba8e052a1e
+      internalID: -1939344066
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_14
+      name: battle_kisaNEW_14
       rect:
         serializedVersion: 2
         x: 0
         y: 256
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -412,19 +412,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4ee780dd516e794bb695e79313f50f0
-      internalID: -1774844901
+      spriteID: acfce60f6c8468240aeed40bf5facadb
+      internalID: -1385149861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_15
+      name: battle_kisaNEW_15
       rect:
         serializedVersion: 2
-        x: 67
+        x: 73
         y: 256
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -433,19 +433,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ddc4c724ef32964b86b832824323baa
-      internalID: 597490925
+      spriteID: d72ac130b33f16f4b8714a6d62825dd0
+      internalID: -563234149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_16
+      name: battle_kisaNEW_16
       rect:
         serializedVersion: 2
-        x: 134
+        x: 146
         y: 256
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -454,19 +454,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36da968d7248e0a41984bf52e30c7e08
-      internalID: 1350002755
+      spriteID: 174a9b8066f43af4fb68b16f1cbb1c1d
+      internalID: 1723080929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_17
+      name: battle_kisaNEW_17
       rect:
         serializedVersion: 2
         x: 0
         y: 192
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -475,19 +475,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4083e6dec367ad647b21a3f754daa710
-      internalID: -233600362
+      spriteID: 1a4a15473bf07df4e8221cce23db163c
+      internalID: 311038810
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_18
+      name: battle_kisaNEW_18
       rect:
         serializedVersion: 2
-        x: 67
+        x: 73
         y: 192
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -496,19 +496,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75fce83f9f1bd5f4f89282d36a37c18f
-      internalID: 1853807879
+      spriteID: c9dca32b87817674ab1ce76c7e7d7248
+      internalID: -690613823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_19
+      name: battle_kisaNEW_19
       rect:
         serializedVersion: 2
-        x: 134
+        x: 146
         y: 192
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -517,19 +517,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d528323263bd6de499c274385f4b01dc
-      internalID: 612130535
+      spriteID: 5d7a902743de9d5478c6a68c3c62addb
+      internalID: 1973994541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_20
+      name: battle_kisaNEW_20
       rect:
         serializedVersion: 2
         x: 0
         y: 128
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -538,19 +538,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ca68df2b80b9c84a9467b0f5f861977
-      internalID: -1297606452
+      spriteID: 57f703eef9100cd4b9a7d286383c833b
+      internalID: 1759536426
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_21
+      name: battle_kisaNEW_21
       rect:
         serializedVersion: 2
-        x: 67
+        x: 73
         y: 128
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -559,19 +559,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87913277ab73a5048bb7e08e030d4f19
-      internalID: -162197078
+      spriteID: daf6ffaa71bc8cb4abad5996b26b0d1d
+      internalID: 1634698599
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_22
+      name: battle_kisaNEW_22
       rect:
         serializedVersion: 2
-        x: 134
+        x: 146
         y: 128
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -580,19 +580,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a89c2e56cfa9c2146b5ae429533cd628
-      internalID: 1055301669
+      spriteID: 513f8095fcf26ff4c9a01913113acbbb
+      internalID: 724242819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_23
+      name: battle_kisaNEW_23
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -601,19 +601,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e6d4399fa6e57d48bcfc719adb9105f
-      internalID: 1673396182
+      spriteID: d1bc9991235c83343b0a1d1c92577c7a
+      internalID: -944442011
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_24
+      name: battle_kisaNEW_24
       rect:
         serializedVersion: 2
-        x: 67
+        x: 73
         y: 64
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -622,19 +622,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d731c6c971a2fbd47b2cb0da32061523
-      internalID: 1385167470
+      spriteID: 0b7ea43511388134aa8ac21876c26ddd
+      internalID: -190151044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_25
+      name: battle_kisaNEW_25
       rect:
         serializedVersion: 2
-        x: 134
+        x: 146
         y: 64
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -643,19 +643,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f57d578c51d662b48930165d0ba99555
-      internalID: -977823570
+      spriteID: 6f49812e40a490c4696097fe403a635c
+      internalID: -490462384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_26
+      name: battle_kisaNEW_26
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -664,19 +664,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ac94b01b005f8044b82b178c60260a8
-      internalID: -258689191
+      spriteID: c8cb27665b4a5da4faf5525587107fe6
+      internalID: -625033974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: battle_kisa_27
+      name: battle_kisaNEW_27
       rect:
         serializedVersion: 2
-        x: 67
+        x: 73
         y: 0
-        width: 67
+        width: 73
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -685,8 +685,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 050c96e5342ec9d4a95f2d6974c6c0de
-      internalID: 1098133646
+      spriteID: b34b82080f96b784db79c76afea84c9b
+      internalID: -894519927
       vertices: []
       indices: 
       edges: []
@@ -702,34 +702,34 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      battle_kisa_26: -258689191
-      battle_kisa_3: -1592746787
-      battle_kisa_23: 1673396182
-      battle_kisa_5: 1725911969
-      battle_kisa_9: -509695368
-      battle_kisa_25: -977823570
-      battle_kisa_10: -621553685
-      battle_kisa_8: -1962462997
-      battle_kisa_18: 1853807879
-      battle_kisa_22: 1055301669
-      battle_kisa_13: 1831528127
-      battle_kisa_24: 1385167470
-      battle_kisa_4: -1804260406
-      battle_kisa_15: 597490925
-      battle_kisa_16: 1350002755
-      battle_kisa_2: -110400027
-      battle_kisa_21: -162197078
-      battle_kisa_11: 1944555299
-      battle_kisa_7: 837759257
-      battle_kisa_12: -349118860
-      battle_kisa_14: -1774844901
-      battle_kisa_19: 612130535
-      battle_kisa_0: 1457087225
-      battle_kisa_1: 2006771174
-      battle_kisa_20: -1297606452
-      battle_kisa_27: 1098133646
-      battle_kisa_17: -233600362
-      battle_kisa_6: -2140004963
+      battle_kisaNEW_21: 1634698599
+      battle_kisaNEW_0: -1497250860
+      battle_kisaNEW_10: -933581393
+      battle_kisaNEW_11: -905862422
+      battle_kisaNEW_5: 1323269828
+      battle_kisaNEW_24: -190151044
+      battle_kisaNEW_23: -944442011
+      battle_kisaNEW_17: 311038810
+      battle_kisaNEW_25: -490462384
+      battle_kisaNEW_4: -1417646711
+      battle_kisaNEW_6: 1189649309
+      battle_kisaNEW_7: -1620392308
+      battle_kisaNEW_19: 1973994541
+      battle_kisaNEW_12: 771374173
+      battle_kisaNEW_1: 630722640
+      battle_kisaNEW_3: -388309410
+      battle_kisaNEW_14: -1385149861
+      battle_kisaNEW_27: -894519927
+      battle_kisaNEW_18: -690613823
+      battle_kisaNEW_8: -1991338389
+      battle_kisaNEW_13: -1939344066
+      battle_kisaNEW_15: -563234149
+      battle_kisaNEW_26: -625033974
+      battle_kisaNEW_2: 1886904231
+      battle_kisaNEW_9: -466252989
+      battle_kisaNEW_16: 1723080929
+      battle_kisaNEW_22: 724242819
+      battle_kisaNEW_20: 1759536426
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
