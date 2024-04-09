@@ -208,6 +208,8 @@ public class PlayerController : MonoBehaviour
             {
                 mainDialogueManager.dialogueSTART("secondFloor_k");
             }
+            //Do anything else if needed
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.name == "level3")
@@ -217,6 +219,8 @@ public class PlayerController : MonoBehaviour
             {
                 mainDialogueManager.dialogueSTART("thirdFloor_kn");
             }
+            //Do anything else if needed
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.name == "level4")
@@ -226,9 +230,11 @@ public class PlayerController : MonoBehaviour
             {
                 mainDialogueManager.dialogueSTART("fourthFloor_kns");
             }
+            //Do anything else if needed
+            Destroy(collision.gameObject);
         }
-         
-         
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
