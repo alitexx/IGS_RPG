@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class MainMenu : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class MainMenu : MonoBehaviour
 
     public void Startgame()
     {
-        MainMenuUI.SetActive(false);
+        //ADD SOMETHING HERE ABOUT LOADING SAVE DATA!!
+
+        MainMenuUI.GetComponent<CanvasGroup>().DOFade(0,1.5f).OnComplete(() => { MainMenuUI.SetActive(false); });
         openingCutscene.dialogueSTART();
         //SceneManager.LoadScene("OpeningCutscene"); //loads main level
     }

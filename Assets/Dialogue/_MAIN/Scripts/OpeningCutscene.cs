@@ -37,7 +37,7 @@ public class OpeningCutscene : MonoBehaviour
         Character_Sprite alan = CreateCharacter("alan") as Character_Sprite;
         //yield return new WaitForSeconds(2f);
         yield return alan.Hide();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         //image of isen fades in
         cutsceneassets[0].SetActive(true);
         alan.Say("Isen. A large island in the corner of the world, a place rarely traveled to due to treacherous waters and an abundance of thieves.");

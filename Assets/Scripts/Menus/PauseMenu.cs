@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject battleUI;
     public GameObject quickPauseUI;
     public GameObject SettingsUI;
+    [SerializeField] private audioManager am;
     [SerializeField] private mainDialogueManager mainDialogueManager;
 
     // Update is called once per frame
@@ -45,6 +46,7 @@ public class PauseMenu : MonoBehaviour
 
     private void resume_quickpause()
     {
+        am.playSFX(28);
         quickPauseUI.SetActive(false);
         Time.timeScale = 1.0f;
         GamePaused = false; // change bool
@@ -52,6 +54,7 @@ public class PauseMenu : MonoBehaviour
 
     private void pause_quickpause()
     {
+        am.playSFX(27);
         quickPauseUI.SetActive(true);
         Time.timeScale = 0f;
         GamePaused = true; // change bool
@@ -60,6 +63,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        am.playSFX(28);
         PauseMenuUI.SetActive(false); // deactivate the pause menu
         playerController.isfrozen = false;
         GamePaused = false; // change bool
@@ -67,16 +71,17 @@ public class PauseMenu : MonoBehaviour
     
     void Pause()
     {
+        am.playSFX(27);
         PauseMenuUI.SetActive(true); // activate the pause menu
         playerController.isfrozen = true;
         GamePaused = true; // change bool
     }
 
-    public void Settings()
-    {
-        SettingsUI.SetActive(true);
-        PauseMenuUI.SetActive(false);
-    }
+    //public void Settings()
+    //{
+    //    SettingsUI.SetActive(true);
+    //    PauseMenuUI.SetActive(false);
+    //}
 
     public void LoadMenu()
     {
