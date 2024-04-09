@@ -21,8 +21,16 @@ public class killFriendManager : MonoBehaviour
     //[SerializeField] private LevelManager levelManager;
     [SerializeField] private Sprite[] elementsSprites;
 
+    private bool killingMaybe;
+    private bool befriendingMaybe;
+
+    public BattleController battleController;
+
     private void Awake()
     {
+        killingMaybe = false;
+        befriendingMaybe = false;
+
         if (true) // replace this with if they've seen the tutorial
         {
             tutorialBG.DOFade(1, 1);
@@ -88,11 +96,23 @@ public class killFriendManager : MonoBehaviour
 
     public void exitKillFriendMenu()
     {
+        if (killingMaybe)
+        {
+            battleController.AbsorbButton();
+        }
+        else if (befriendingMaybe)
+        {
+            battleController.BefriendButton();
+        }
+
+
         truebgFade.SetActive(false);
         closeAreYouSure();
         tweenInObjects[0].GetComponent<RectTransform>().DOMove(locations[2].position, 1);
         tweenInObjects[1].GetComponent<RectTransform>().DOMove(locations[3].position, 1);
         tweenInObjects[2].GetComponent<RectTransform>().DOMove(locations[4].position, 1);
+
+        
     }
 
     public void openAreYouSure(bool isKilling)
@@ -102,10 +122,12 @@ public class killFriendManager : MonoBehaviour
         if (isKilling)
         {
             areYouSureText.text = "You have chosen to kill Kisa. Are you sure?";
+            killingMaybe = true;
         }
         else
         {
             areYouSureText.text = "You have chosen to befriend Kisa. Are you sure?";
+            befriendingMaybe = true;
         }
         areYouSureMenu.SetActive(true);
         areYouSureMenu.GetComponent<RectTransform>().DOMove(locations[0].position, 1);
@@ -115,6 +137,9 @@ public class killFriendManager : MonoBehaviour
     {
         tutorialBG.DOFade(0, 1).OnComplete(() => { tutorialBG.gameObject.SetActive(false);});
         areYouSureMenu.GetComponent<RectTransform>().DOMove(locations[1].position, 1).OnComplete(() => { areYouSureMenu.SetActive(false); });
+
+        killingMaybe = false;
+        befriendingMaybe = false;
     }
 
 }
