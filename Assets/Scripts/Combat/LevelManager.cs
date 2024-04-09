@@ -132,6 +132,8 @@ public class LevelManager : MonoBehaviour
         level = 1;
         lvlUpThreshold = 10;
         currentEXP = 0;
+
+        FullHeal();
     }
 
     public void LevelUp()

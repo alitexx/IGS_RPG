@@ -1156,16 +1156,6 @@ public class BattleController : MonoBehaviour
         //Removing dead characters from the queue
         if (characterQueue.Peek().healthSystem.GetHealth() == 0)
         {
-            //if the dead character is an enemy
-            /*if (characterQueue.Peek().GIsPlayerTeam == false)
-            {
-                enemyList.Remove(characterQueue.Peek());
-            }
-            //if the dead character is a player
-            else
-            {
-                playerList.Remove(characterQueue.Peek());
-            }*/
 
             characterQueue.Dequeue();
 
@@ -1380,6 +1370,11 @@ public class BattleController : MonoBehaviour
 
             #region Destroy Existing Char
 
+            if (befriendOrAbsorbButton.activeInHierarchy == false)
+            {
+                partyMembers.Clear();
+            }
+
             playerList.Clear();
 
             characterQueue.Clear();
@@ -1467,6 +1462,7 @@ public class BattleController : MonoBehaviour
             befriendOrAbsorbButton.SetActive(false);
         }
 
+        partyMembers.Clear();
         playerController.isfrozen = false;
         battleObject.SetActive(false);
     }
@@ -1501,6 +1497,7 @@ public class BattleController : MonoBehaviour
             befriendOrAbsorbButton.SetActive(false);
         }
 
+        partyMembers.Clear();
         playerController.isfrozen = false;
         battleObject.SetActive(false);
     }

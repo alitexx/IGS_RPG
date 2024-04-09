@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class pauseMenuManager : MonoBehaviour
 {
@@ -28,6 +29,11 @@ public class pauseMenuManager : MonoBehaviour
 
     // when menu is opened, check the state of the party. party members you dont own are grayed out,
     // party members that are dead have a red X over them
+
+    public void changePartyLevelTXT(int partylevel)
+    {
+        PartyLevelTXT.GetComponent<TextMeshProUGUI>().text = ("Party Level:" + partylevel.ToString());
+    }
 
     public void PartyMemberClicked(string whoWasIt)
     {

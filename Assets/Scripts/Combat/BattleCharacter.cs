@@ -43,6 +43,8 @@ public class BattleCharacter : MonoBehaviour
 
     public Animator animator;
 
+    public audioManager am;
+
     public ParticleManager particleManager;
 
     public bool specialAvailable;
@@ -224,6 +226,7 @@ public class BattleCharacter : MonoBehaviour
         if (attacker.statSheet.name == "Tank Guy" || attacker.statSheet.name == "Wraith Guy" || attacker.statSheet.name == "Skeleton Guy" || attacker.statSheet.name == "Mage Guy")
         {
             particle.animator.SetBool("SlashFX", true);
+            
         }
         else
         {
