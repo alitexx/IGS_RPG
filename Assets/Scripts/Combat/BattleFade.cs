@@ -28,4 +28,9 @@ public class BattleFade : MonoBehaviour
 
         am.playBGM("T2");
     }
+
+    public void playBattleStartSFX()
+    {
+        am.playSFX(1);
+    }
 }
