@@ -20,6 +20,7 @@ public class killFriendManager : MonoBehaviour
     // might be needed later, commented out for now
     //[SerializeField] private LevelManager levelManager;
     [SerializeField] private Sprite[] elementsSprites;
+    private string charInQuestion;
 
     private bool killingMaybe;
     private bool befriendingMaybe;
@@ -58,38 +59,57 @@ public class killFriendManager : MonoBehaviour
         tutorialBG.DOFade(0, 1).OnComplete(() => { tutorialBG.gameObject.SetActive(false); truebgFade.SetActive(true); });
     }
 
-
+    ///NOTE!!!! THIS IS DONE!!!! You just need to call the function and pass in the boss's name, you MUST pass in the boss name as either "Kisa", "Nicol", or "Sophie"!!! please lol
     public void EditTextInformation(string bossName)
     {
+        charInQuestion = bossName;
         switch (bossName.ToUpper())
         {
             //placeholders right now because my computer is stupid
             case "KISA":
                 elementIcon[0].sprite = elementsSprites[0];
                 elementIcon[1].sprite = elementsSprites[0];
-                killText[0].text = "";
-                killText[1].text = "";
-                befriendText[0].text = "";
-                befriendText[1].text = "";
-                befriendText[2].text = "";
+                killText[0].text = "Alan gains a bonus:\r\n" +
+                    "Strength: <color=#3B7D4F>+0</color>\r\n" +
+                    "Magic Attack: <color=#3B7D4F>"+ (LevelManager.level) +"</color>\r\n" +
+                    "Defense: <color=#3B7D4F>+0</color>\r\n" +
+                    "Speed: <color=#3B7D4F>+0</color>\r\n" +
+                    "Max Health: <color=#3B7D4F>"+ (2*(LevelManager.level-1)) +"</color>\r\n" +
+                    "Max Mana: <color=#3B7D4F>"+ (LevelManager.level) +"</color>";
+                killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nWind";
+                befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Kisa</color>";
+                befriendText[1].text = "\r\nSpecial Ability: <color=#cf752b>Sing</color>\r\nHeals all allies by 50% of their maximum Health.";
+                befriendText[2].text = "Kisa's Magic Element:\r\n\r\n\r\n\r\nWind";
                 break;
             case "NICOL":
                 elementIcon[0].sprite = elementsSprites[1];
                 elementIcon[1].sprite = elementsSprites[1];
-                killText[0].text = "";
-                killText[1].text = "";
-                befriendText[0].text = "";
-                befriendText[1].text = "";
-                befriendText[2].text = "";
+                killText[0].text = "Alan gains a bonus:\r\n" +
+                    "Strength: <color=#3B7D4F>+0</color>\r\n" +
+                    "Magic Attack: <color=#3B7D4F>" + (2 * (LevelManager.level - 1)) + "</color>\r\n" +
+                    "Defense: <color=#3B7D4F>+0</color>\r\n" +
+                    "Speed: <color=#3B7D4F>" + (LevelManager.level) + "</color>\r\n" +
+                    "Max Health: <color=#3B7D4F>+0</color>\r\n" +
+                    "Max Mana: <color=#3B7D4F>" + (LevelManager.level) + "</color>";
+                killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nIce";
+                befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Nicol</color>";
+                befriendText[1].text = "\r\nSpecial Ability: <color=#cf752b>Examine</color>\r\nView one enemy's weakness.";
+                befriendText[2].text = "Nicol's Magic Element:\r\n\r\n\r\n\r\nIce";
                 break;
             case "SOPHIE":
                 elementIcon[0].sprite = elementsSprites[2];
                 elementIcon[1].sprite = elementsSprites[2];
-                killText[0].text = "";
-                killText[1].text = "";
-                befriendText[0].text = "";
-                befriendText[1].text = "";
-                befriendText[2].text = "";
+                killText[0].text = "Alan gains a bonus:\r\n" +
+                    "Strength: <color=#3B7D4F>" + (2 * (LevelManager.level - 1)) + "</color>\r\n" +
+                    "Magic Attack: <color=#3B7D4F>+0</color>\r\n" +
+                    "Defense: <color=#3B7D4F>" + (LevelManager.level) + "</color>\r\n" +
+                    "Speed: <color=#3B7D4F>" + (LevelManager.level) + "</color>\r\n" +
+                    "Max Health: <color=#3B7D4F>+0</color>\r\n" +
+                    "Max Mana: <color=#3B7D4F>+0</color>";
+                killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nElectric";
+                befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Sophie</color>";
+                befriendText[1].text = "\r\nSpecial Ability: <color=#cf752b>Thunderstorm</color>\r\nAttack all enemies with electric magic.";
+                befriendText[2].text = "Sophie's Magic Element:\r\n\r\n\r\n\r\nElectric";
                 break;
         }
     }
@@ -121,12 +141,12 @@ public class killFriendManager : MonoBehaviour
         tutorialBG.DOFade(1, 1);
         if (isKilling)
         {
-            areYouSureText.text = "You have chosen to kill Kisa. Are you sure?";
+            areYouSureText.text = "You have chosen to <color=#AD2F45>kill</color> " + charInQuestion + ". Are you sure?";
             killingMaybe = true;
         }
         else
         {
-            areYouSureText.text = "You have chosen to befriend Kisa. Are you sure?";
+            areYouSureText.text = "You have chosen to <color=#FF5277>befriend</color> " + charInQuestion + ". Are you sure?";
             befriendingMaybe = true;
         }
         areYouSureMenu.SetActive(true);

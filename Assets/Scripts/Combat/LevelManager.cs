@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class LevelManager : MonoBehaviour
 {
     public int currentEXP = 0;
-    public int level = 1;
+    public static int level = 1;
     public int lvlUpThreshold = 10;
 
     public bool kisaAbsorb;
@@ -324,9 +324,14 @@ public class LevelManager : MonoBehaviour
     {
         if (memberName == "Kisa")
         {
+            //before: health increased by 2 * level -1
+            //new: health increased by 2 * level -1, max mana increased by level, magic attack increased by level
             kisaAbsorb = true;
             battleController.partyMembers[0].statSheet.stats["Health"] += (2 * (level - 1));
             battleController.partyMembers[0].statSheet.stats["MaxHealth"] += (2 * (level - 1));
+            battleController.partyMembers[0].statSheet.stats["Mana"] += (level);
+            battleController.partyMembers[0].statSheet.stats["MaxMana"] += (level);
+            battleController.partyMembers[0].statSheet.stats["Magic Attack"] += (level);
             // will always be the same dialogue
             mainDialogueManager.dialogueSTART("kisaPostFight_x");
             pauseMenuManager.partyMemberKilled("KISA");
@@ -334,8 +339,12 @@ public class LevelManager : MonoBehaviour
         else if (memberName == "Nicol")
         {
             nicolAbsorb = true;
-
+            //before: magic attack increased by 2 * level -1
+            //new: magic attack increaed by 2 * level -1, speed increased by level, max mana increased by level
             battleController.partyMembers[0].statSheet.stats["Magic Attack"] += (2 * (level - 1));
+            battleController.partyMembers[0].statSheet.stats["Speed"] += (level);
+            battleController.partyMembers[0].statSheet.stats["Mana"] += (level);
+            battleController.partyMembers[0].statSheet.stats["MaxMana"] += (level);
             //determine what dialogue shoule be played
             if (kisaAbsorb)
             {
@@ -350,7 +359,11 @@ public class LevelManager : MonoBehaviour
         else if (memberName == "Sophie")
         {
             sophieAbsorb = true;
+            //before: strength increased by 2 * level -1
+            //new: strength increased by 2 * level -1, speed increased by level, defense increased by level
             battleController.partyMembers[0].statSheet.stats["Strength"] += (2 * (level - 1));
+            battleController.partyMembers[0].statSheet.stats["Speed"] += (level);
+            battleController.partyMembers[0].statSheet.stats["Defense"] += (level);
             //determine what dialogue shoule be played
             if (kisaAbsorb && nicolAbsorb)
             {
