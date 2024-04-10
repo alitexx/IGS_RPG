@@ -30,9 +30,10 @@ public class pauseMenuManager : MonoBehaviour
     // when menu is opened, check the state of the party. party members you dont own are grayed out,
     // party members that are dead have a red X over them
 
+    //this is already done somewhere else, just leaving the code in case it breaks anything
     public void changePartyLevelTXT(int partylevel)
     {
-        PartyLevelTXT.GetComponent<TextMeshProUGUI>().text = ("Party Level:" + partylevel.ToString());
+        PartyLevelTXT.GetComponent<TextMeshProUGUI>().text = ("Party Level:" + LevelManager.level);
     }
 
     public void PartyMemberClicked(string whoWasIt)

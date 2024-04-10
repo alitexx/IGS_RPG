@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject SettingsUI;
     [SerializeField] private audioManager am;
     [SerializeField] private mainDialogueManager mainDialogueManager;
+    [SerializeField] private TextMeshProUGUI PartyLevelTXT;
 
     // Update is called once per frame
     void Update()
@@ -39,6 +41,7 @@ public class PauseMenu : MonoBehaviour
                 else
                 {
                     Pause(); //if game is going, pause
+                    PartyLevelTXT.text = ("Party Level:" + LevelManager.level);
                 }
             }
         }
