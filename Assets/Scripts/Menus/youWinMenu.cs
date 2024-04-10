@@ -52,7 +52,7 @@ public class youWinMenu : MonoBehaviour
             float newValue = Mathf.Lerp(currentExperience, totalEXP, elapsedTime / duration);
             currentEXP.text = Mathf.RoundToInt(newValue).ToString() + "/100";
             //huh??
-            //expSliderBar.fillAmount = (float)currentExperience / 100f;
+            expSliderBar.fillAmount = (float)currentExperience / 1000f;
             elapsedTime += Time.deltaTime;
             // Check if current experience reaches 100, if so, pause the coroutine
             if (currentExperience >= 100)
