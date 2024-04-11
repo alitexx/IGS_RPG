@@ -82,11 +82,11 @@ public class killFriendManager : MonoBehaviour
                 elementIcon[1].sprite = elementsSprites[0];
                 killText[0].text = "Alan gains a bonus:\r\n" +
                     "Strength: <color=#3B7D4F>+0</color>\r\n" +
-                    "Magic Attack: <color=#3B7D4F>"+ (LevelManager.level) +"</color>\r\n" +
+                    "Magic Attack: <color=#3B7D4F>+"+ (LevelManager.level) +"</color>\r\n" +
                     "Defense: <color=#3B7D4F>+0</color>\r\n" +
                     "Speed: <color=#3B7D4F>+0</color>\r\n" +
-                    "Max Health: <color=#3B7D4F>"+ (2*(LevelManager.level-1)) +"</color>\r\n" +
-                    "Max Mana: <color=#3B7D4F>"+ (LevelManager.level) +"</color>";
+                    "Max Health: <color=#3B7D4F>+"+ (2*(LevelManager.level-1)) +"</color>\r\n" +
+                    "Max Mana: <color=#3B7D4F>+"+ (LevelManager.level) +"</color>";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nWind";
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Kisa</color>";
                 befriendText[1].text = "\r\nSpecial Ability: <color=#cf752b>Sing</color>\r\nHeals all allies by 50% of their maximum Health.";
@@ -97,11 +97,11 @@ public class killFriendManager : MonoBehaviour
                 elementIcon[1].sprite = elementsSprites[1];
                 killText[0].text = "Alan gains a bonus:\r\n" +
                     "Strength: <color=#3B7D4F>+0</color>\r\n" +
-                    "Magic Attack: <color=#3B7D4F>" + (2 * (LevelManager.level - 1)) + "</color>\r\n" +
+                    "Magic Attack: <color=#3B7D4F>+" + (2 * (LevelManager.level - 1)) + "</color>\r\n" +
                     "Defense: <color=#3B7D4F>+0</color>\r\n" +
-                    "Speed: <color=#3B7D4F>" + (LevelManager.level) + "</color>\r\n" +
+                    "Speed: <color=#3B7D4F>+" + (LevelManager.level) + "</color>\r\n" +
                     "Max Health: <color=#3B7D4F>+0</color>\r\n" +
-                    "Max Mana: <color=#3B7D4F>" + (LevelManager.level) + "</color>";
+                    "Max Mana: <color=#3B7D4F>+" + (LevelManager.level) + "</color>";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nIce";
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Nicol</color>";
                 befriendText[1].text = "\r\nSpecial Ability: <color=#cf752b>Examine</color>\r\nView one enemy's weakness.";
@@ -111,10 +111,10 @@ public class killFriendManager : MonoBehaviour
                 elementIcon[0].sprite = elementsSprites[2];
                 elementIcon[1].sprite = elementsSprites[2];
                 killText[0].text = "Alan gains a bonus:\r\n" +
-                    "Strength: <color=#3B7D4F>" + (2 * (LevelManager.level - 1)) + "</color>\r\n" +
+                    "Strength: <color=#3B7D4F>+" + (2 * (LevelManager.level - 1)) + "</color>\r\n" +
                     "Magic Attack: <color=#3B7D4F>+0</color>\r\n" +
-                    "Defense: <color=#3B7D4F>" + (LevelManager.level) + "</color>\r\n" +
-                    "Speed: <color=#3B7D4F>" + (LevelManager.level) + "</color>\r\n" +
+                    "Defense: <color=#3B7D4F>+" + (LevelManager.level) + "</color>\r\n" +
+                    "Speed: <color=#3B7D4F>+" + (LevelManager.level) + "</color>\r\n" +
                     "Max Health: <color=#3B7D4F>+0</color>\r\n" +
                     "Max Mana: <color=#3B7D4F>+0</color>";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nElectric";
