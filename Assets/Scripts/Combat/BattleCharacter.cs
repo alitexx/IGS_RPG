@@ -44,6 +44,7 @@ public class BattleCharacter : MonoBehaviour
     public Animator animator;
 
     public audioManager am;
+    public GameObject amGameObject;
 
     public ParticleManager particleManager;
 
@@ -59,6 +60,10 @@ public class BattleCharacter : MonoBehaviour
 
     private void Awake()
     {
+        
+        amGameObject = GameObject.Find("/-- AUDIO --");
+        am = amGameObject.GetComponent<audioManager>();
+
         state = State.Idle;
         specialAvailable = true;
         selectionCircleObject = transform.Find("Outline").gameObject;
@@ -225,11 +230,12 @@ public class BattleCharacter : MonoBehaviour
 
         if (attacker.statSheet.name == "Tank Guy" || attacker.statSheet.name == "Wraith Guy" || attacker.statSheet.name == "Skeleton Guy" || attacker.statSheet.name == "Mage Guy")
         {
+            am.playSFX(2);
             particle.animator.SetBool("SlashFX", true);
-            
         }
         else
         {
+            am.playSFX(3);
             particle.animator.SetBool("PunchFX", true);
         }
 
@@ -288,22 +294,28 @@ public class BattleCharacter : MonoBehaviour
 
         if (attacker.statSheet.magicElement == "Fire")
         {
+            am.playSFX(4);
             particle.animator.SetBool("FireFX", true);
+            yield return new WaitForSeconds(.6f);
         }
         else if (attacker.statSheet.magicElement == "Ice")
         {
+            am.playSFX(5);
             particle.animator.SetBool("IceFX", true);
+            yield return new WaitForSeconds(1.4f);
         }
         else if (attacker.statSheet.magicElement == "Wind")
         {
+            am.playSFX(6);
             particle.animator.SetBool("WindFX", true);
+            yield return new WaitForSeconds(.6f);
         }
         else if (attacker.statSheet.magicElement == "Electric")
         {
+            am.playSFX(7);
             particle.animator.SetBool("ElectricFX", true);
+            yield return new WaitForSeconds(.6f);
         }
-
-        yield return new WaitForSeconds(.6f);
 
         if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)
         {
@@ -395,15 +407,26 @@ public class BattleCharacter : MonoBehaviour
             damageMinusDefense = 0;
         }
 
+
         animator.SetBool("Hurt", true);
 
         if (isBlocking)
         {
+            if (GIsPlayerTeam)
+            {
+                am.playSFX(13);
+            }
+
             healthSystem.Damage(damageMinusDefense / 2);
             //Debug.Log("Defender Health: " + healthSystem.GetHealth());
         }
         else
         {
+            if (GIsPlayerTeam)
+            {
+                am.playSFX(11);
+            }
+
             healthSystem.Damage(damageMinusDefense);
             //Debug.Log("Defender Health: " + healthSystem.GetHealth());
         }

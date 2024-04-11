@@ -71,6 +71,8 @@ public class BattleController : MonoBehaviour
 
     private void OnEnable()
     {
+        levelManager.gainedEXP = 0;
+
         partyBoss = false;
 
         SetStats();
@@ -565,34 +567,39 @@ public class BattleController : MonoBehaviour
 
         if (activeChar.statSheet.stats["Mana"] > 0)
         {
-            state = State.Busy;
-
-            backButton.SetActive(true);
-
-            alanFireMagicButton.SetActive(true);
-
-            if (levelManager.nicolAbsorb == true)
+            if (activeChar.statSheet.name == "Tank Guy")
             {
-                nicolIceMagicButton.SetActive(true);
+                state = State.Busy;
+
+                backButton.SetActive(true);
+
+                alanFireMagicButton.SetActive(true);
+
+                if (levelManager.nicolAbsorb == true)
+                {
+                    nicolIceMagicButton.SetActive(true);
+                }
+
+                if (levelManager.sophieAbsorb == true)
+                {
+                    sophieElectricMagicButton.SetActive(true);
+                }
+
+                if (levelManager.kisaAbsorb == true)
+                {
+                    kisaWindMagicButton.SetActive(true);
+                }
             }
 
-            if (levelManager.sophieAbsorb == true)
+            else
             {
-                sophieElectricMagicButton.SetActive(true);
-            }
+                state = State.Busy;
 
-            if (levelManager.kisaAbsorb == true)
-            {
-                kisaWindMagicButton.SetActive(true);
-            }
-            }
-        else
-        {
-            state = State.Busy;
+                backButton.SetActive(true);
 
-            StartCoroutine(MagicTargeting());
+                StartCoroutine(MagicTargeting());
+            }
         }
-        
 
     }
 
@@ -817,6 +824,10 @@ public class BattleController : MonoBehaviour
             ParticleManager healParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
             healParticle.animator.SetBool("HealFX", true);
 
+            am.playSFX(12);
+
+            am.playSFX(8);
+
             ParticleManager tauntParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
             tauntParticle.animator.SetBool("TauntFX", true);
 
@@ -874,6 +885,8 @@ public class BattleController : MonoBehaviour
             ParticleManager weaknessParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
             weaknessParticle.animator.SetBool("WeaknessFX", true);
 
+            am.playSFX(9);
+
             yield return new WaitForSeconds(1.5f);
 
             enemyList[enemyNum].weaknessObject.SetActive(true);
@@ -919,6 +932,7 @@ public class BattleController : MonoBehaviour
             Vector3 singPosition = activeChar.GetPosition();
             ParticleManager singParticle = Instantiate(activeChar.particleManager, singPosition, Quaternion.identity, activeChar.transform);
             singParticle.animator.SetBool("KisaSingFX", true);
+            am.playSFX(10);
 
             backButton.SetActive(false);
 
@@ -932,6 +946,7 @@ public class BattleController : MonoBehaviour
                 healParticle.animator.SetBool("HealFX", true);
 
                 playerList[i].healthSystem.Heal(playerList[i].statSheet.stats["MaxHealth"] / 2);
+                am.playSFX(12);
             }
 
             //ChooseNextActiveChar();
@@ -1122,6 +1137,7 @@ public class BattleController : MonoBehaviour
             if (playerList[i].statSheet.stats["Health"] <= 0)
             {
                 playerList.RemoveAt(i);
+                am.playSFX(18);
             }
         }
 
@@ -1133,10 +1149,13 @@ public class BattleController : MonoBehaviour
 
                 Destroy(enemyList[i].gameObject);
 
+                am.playSFX(16);
+
                 //Works, but game doesn't give time for enemy to fade out, and that can cause issues
                 //StartCoroutine(FadeOut(enemyList[i]));
 
-                levelManager.currentEXP += 2;
+
+                levelManager.gainedEXP += 25;
             }
         }
 
@@ -1362,12 +1381,10 @@ public class BattleController : MonoBehaviour
                 battleObject.SetActive(false);
             }
 
-            
-
-            while (levelManager.currentEXP >= levelManager.lvlUpThreshold)
+            /*while (levelManager.currentEXP >= levelManager.lvlUpThreshold)
             {
                 levelManager.LevelUp();
-            }
+            }*/
 
             levelManager.StoreStats();
 

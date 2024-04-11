@@ -22,12 +22,23 @@ public class youWinMenu : MonoBehaviour
     private int remainingExp;
     private float fillAmountVal;
 
+    public LevelManager levelManager;
+
     private int gainedExperience = 20;
     private int currentExperience = 0;
     private Coroutine gainExperienceCoroutine;
 
     private void OnEnable()
     {
+
+        SetGainedExperience(levelManager.gainedEXP);
+
+        
+
+        currentExperience = levelManager.currentEXP;
+
+        currentEXP.text = currentExperience + " / 100";
+
         //play the you win animation
         am.playBGM("T9", 0.1f);
         youWinText.DOMove(locations[0].position, 0.35f).OnComplete(() => {
@@ -72,6 +83,7 @@ public class youWinMenu : MonoBehaviour
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
+            levelManager.LevelUp();
             gainedEXP.gameObject.SetActive(false);
             expBar.gameObject.SetActive(false);
             levelUpObject.SetActive(true);
@@ -87,6 +99,7 @@ public class youWinMenu : MonoBehaviour
             // Check if current experience reaches 100, if so, pause the coroutine
             if (currentExperience >= 100)
             {
+
                 newValue = Mathf.Lerp(currentExperience, 100, elapsedTime / duration);
                 currentEXP.text = Mathf.RoundToInt(newValue).ToString() + "/100";
                 // Clamp the float value between 0 and 1
@@ -123,8 +136,8 @@ public class youWinMenu : MonoBehaviour
     // Method to continue the level gaining animation after clicking the continue button
     public void ContinueLevelGaining()
     {
+        gainedExperience = (currentExperience + gainedExperience) - 100;
         currentExperience = 0; // Reset current EXP to 0 after leveling up
-        gainedExperience -= 100;
         hasUpdatedGained = true;
         levelUpObject.SetActive(false);
         expBar.gameObject.SetActive(true);

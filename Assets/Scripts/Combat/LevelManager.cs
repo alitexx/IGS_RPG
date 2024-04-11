@@ -5,9 +5,9 @@ using UnityEngine.Rendering;
 
 public class LevelManager : MonoBehaviour
 {
+    public int gainedEXP = 0;
     public int currentEXP = 0;
     public static int level = 1;
-    public int lvlUpThreshold = 10;
 
     public bool kisaAbsorb;
     public bool nicolAbsorb;
@@ -17,6 +17,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private mainDialogueManager mainDialogueManager;
 
     static LevelManager Instance;
+
+    public audioManager am;
 
     public BattleController battleController;
 
@@ -130,7 +132,6 @@ public class LevelManager : MonoBehaviour
         nicolAbsorb = false;
         sophieAbsorb = false;
         level = 1;
-        lvlUpThreshold = 10;
         currentEXP = 0;
 
         FullHeal();
@@ -138,9 +139,11 @@ public class LevelManager : MonoBehaviour
 
     public void LevelUp()
     {
-        level++;
-        currentEXP -= lvlUpThreshold;
+        am.playSFX(15);
 
+        level++;
+
+        //Debug.Log(level);
 
         /*0 Strength*/
         /*1 Magic Attack*/ 
