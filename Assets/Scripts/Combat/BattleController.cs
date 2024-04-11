@@ -25,7 +25,24 @@ public class BattleController : MonoBehaviour
 
     BattleCharacter SpawningEnemy(/*BattleCharacter enemySpawning*/)
     {
-        int randomiser = Random.Range(1, 5);
+        int randomiser = 1;
+
+        if (playerController.Level == 1)
+        {
+            randomiser = 1;
+        }
+        else if (playerController.Level == 2)
+        {
+            randomiser = Random.Range(1, 3);
+        }
+        else if (playerController.Level == 3)
+        {
+            randomiser = Random.Range(1, 4);
+        }
+        else if (playerController.Level == 4)
+        {
+            randomiser = Random.Range(1, 5);
+        }
 
         BattleCharacter enemySpawning;
 
@@ -43,13 +60,13 @@ public class BattleController : MonoBehaviour
         }
         else if (randomiser == 3)
         {
-            enemySpawning = SpawnCharacter(false, wraithStats, "Wraith Guy", 0, 4, 2);
+            enemySpawning = SpawnCharacter(false, ghostStats, "Ghost Guy", 0, 4, 3);
 
             return enemySpawning;
         }
         else
         {
-            enemySpawning = SpawnCharacter(false, ghostStats, "Ghost Guy", 0, 4, 3);
+            enemySpawning = SpawnCharacter(false, wraithStats, "Wraith Guy", 0, 4, 2);
 
             return enemySpawning;
         }
@@ -309,7 +326,7 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7};
 
     static public int[] wraithStats = {
-        /*Strength*/ 11,
+        /*Strength*/ 9,
         /*Magic Attack*/ 1,
         /*Defense*/ 5, 
         /*Speed*/ 5, 
@@ -399,7 +416,7 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7};
 
         int[] lWraithStats = {
-        /*Strength*/ 11,
+        /*Strength*/ 9,
         /*Magic Attack*/ 1,
         /*Defense*/ 5, 
         /*Speed*/ 5, 
