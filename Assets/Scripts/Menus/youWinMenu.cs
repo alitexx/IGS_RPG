@@ -17,7 +17,7 @@ public class youWinMenu : MonoBehaviour
     [SerializeField] private audioManager am;
     [SerializeField] Animator battleEnterAnimator;
     [SerializeField] private mainDialogueManager mainDialogueManager;
-    public static string loadedDialogue;
+    public static string loadedDialogue = "...";
     private bool hasUpdatedGained = false;
     private int remainingExp;
     private float fillAmountVal;
@@ -30,10 +30,12 @@ public class youWinMenu : MonoBehaviour
 
     private void OnEnable()
     {
-
+        //this should change position based on what i do with kill/befriend
+        am.stopHeartbeatSFX();
+        //
         SetGainedExperience(levelManager.gainedEXP);
 
-        
+        am.stopBGM(0.1f);
 
         currentExperience = levelManager.currentEXP;
 

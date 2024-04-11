@@ -3480,6 +3480,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ds: {fileID: 0}
+  button: {fileID: 0}
+  buttonTXT: {fileID: 0}
+  am: {fileID: 0}
 --- !u!224 &221265008
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5493,6 +5496,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ds: {fileID: 0}
+  button: {fileID: 0}
+  buttonTXT: {fileID: 0}
+  am: {fileID: 0}
 --- !u!1 &396687475
 GameObject:
   m_ObjectHideFlags: 0
@@ -10672,7 +10678,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.4
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -15115,7 +15121,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.8
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -21575,7 +21581,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.7
+  m_Value: 0.6
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

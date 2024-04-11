@@ -5,7 +5,8 @@ using UnityEngine;
 public static class audioStatics
 {
     public static float MasterVolume = 0.5f;
-    public static float BGMVolume = 0.5f;
-    public static float SFXVolume = 1f;
-    public static float VoiceVolume = 0.7f;
+    public static float BGMVolume = 0.4f;
+    public static float SFXVolume = 0.8f;
+    public static float VoiceVolume = 0.6f;
+    public static string interractButton = "space";
 }

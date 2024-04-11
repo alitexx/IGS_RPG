@@ -7,7 +7,7 @@ public class audioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource[] BGMAvailable;
     [SerializeField] private AudioSource[] SFXAvailable;
-
+    [SerializeField] private AudioSource voiceVol;
     public static AudioSource currentlyPlaying;
 
     // HOW IT WORKS!!
@@ -15,7 +15,10 @@ public class audioManager : MonoBehaviour
     // speed defaults to 1, but SPEED MUST ALWAYS BE GREATER THAN 0.1!!!
     // A script calls playBGM, playBGM checks to see if there is a song currently playing.
     // it then finds the audio using the string passed in. it reassigns currentlyPlaying to the new audio.
-
+    private void Start()
+    {
+        voiceVol.volume = audioStatics.VoiceVolume * audioStatics.MasterVolume;
+    }
     public void playBGM(string songToPlay, float speed = 1)
     {
         stopBGM(speed, true);
@@ -80,6 +83,10 @@ public class audioManager : MonoBehaviour
             }
         }
         
+    }
+    public void stopHeartbeatSFX() // only used for heartbeat
+    {
+        SFXAvailable[13].Stop();
     }
 
     public void playSFX(string sfx)

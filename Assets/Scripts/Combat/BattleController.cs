@@ -149,7 +149,9 @@ public class BattleController : MonoBehaviour
         }
         else if (partyBoss == true)
         {
-            am.playBGM("T6");
+            //for right now im making it the normal music cause idk if i like this music w/ boss fights
+            //am.playBGM("T6");
+            am.playBGM("T3");
         }
 
 
@@ -1372,6 +1374,7 @@ public class BattleController : MonoBehaviour
             {
                 //we should probably change the music here or smth
                 am.playSFX(14);
+                am.playBGM("T6");
                 befriendOrAbsorbButton.SetActive(true);
             }
             else

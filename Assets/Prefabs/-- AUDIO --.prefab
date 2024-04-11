@@ -2042,6 +2042,7 @@ MonoBehaviour:
   - {fileID: 7564308854993600203}
   - {fileID: 7564308855420491919}
   - {fileID: 7564308855522020198}
+  voiceVol: {fileID: 7564308855769680302}
 --- !u!1 &7564308855769680288
 GameObject:
   m_ObjectHideFlags: 0
