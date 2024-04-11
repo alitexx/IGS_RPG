@@ -25,7 +25,24 @@ public class BattleController : MonoBehaviour
 
     BattleCharacter SpawningEnemy(/*BattleCharacter enemySpawning*/)
     {
-        int randomiser = Random.Range(1, 5);
+        int randomiser = 1;
+
+        if (playerController.Level == 1)
+        {
+            randomiser = 1;
+        }
+        else if (playerController.Level == 2)
+        {
+            randomiser = Random.Range(1, 3);
+        }
+        else if (playerController.Level == 3)
+        {
+            randomiser = Random.Range(1, 4);
+        }
+        else if (playerController.Level == 4)
+        {
+            randomiser = Random.Range(1, 5);
+        }
 
         BattleCharacter enemySpawning;
 
@@ -43,13 +60,13 @@ public class BattleController : MonoBehaviour
         }
         else if (randomiser == 3)
         {
-            enemySpawning = SpawnCharacter(false, wraithStats, "Wraith Guy", 0, 4, 2);
+            enemySpawning = SpawnCharacter(false, ghostStats, "Ghost Guy", 0, 4, 3);
 
             return enemySpawning;
         }
         else
         {
-            enemySpawning = SpawnCharacter(false, ghostStats, "Ghost Guy", 0, 4, 3);
+            enemySpawning = SpawnCharacter(false, wraithStats, "Wraith Guy", 0, 4, 2);
 
             return enemySpawning;
         }
@@ -71,6 +88,8 @@ public class BattleController : MonoBehaviour
 
     private void OnEnable()
     {
+        ResetStats(true, false);
+
         levelManager.gainedEXP = 0;
 
         partyBoss = false;
@@ -307,7 +326,7 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7};
 
     static public int[] wraithStats = {
-        /*Strength*/ 11,
+        /*Strength*/ 9,
         /*Magic Attack*/ 1,
         /*Defense*/ 5, 
         /*Speed*/ 5, 
@@ -325,6 +344,117 @@ public class BattleController : MonoBehaviour
         /*MaxHealth*/ 7,
         /*Mana*/ 6,
         /*MaxMana*/ 7};
+
+    void ResetStats(bool resetEnemy, bool resetPlayer)
+    {
+        #region local Stats
+
+        //Tank Stats
+        int[] lTankStats = {
+        /*Strength*/ 10,
+        /*Magic Attack*/ 4,
+        /*Defense*/ 5, 
+        /*Speed*/ 3, 
+        /*Health*/ 18, 
+        /*MaxHealth*/ 18,
+        /*Mana*/ 4,
+        /*MaxMana*/ 4};
+
+        //Mage Stats
+        int[] lMageStats = {
+        /*Strength*/ 7,
+        /*Magic Attack*/ 13,
+        /*Defense*/ 4, 
+        /*Speed*/ 5, 
+        /*Health*/ 8, 
+        /*MaxHealth*/ 8,
+        /*Mana*/ 9,
+        /*MaxMana*/ 9};
+
+        //Monk Stats
+        int[] lMonkStats = {
+        /*Strength*/ 13,
+        /*Magic Attack*/ 7,
+        /*Defense*/ 4, 
+        /*Speed*/ 6, 
+        /*Health*/ 10, 
+        /*MaxHealth*/ 10,
+        /*Mana*/ 5,
+        /*MaxMana*/ 5};
+
+        //Bard Stats
+        int[] lBardStats = {
+        /*Strength*/ 6,
+        /*Magic Attack*/ 5,
+        /*Defense*/ 4, 
+        /*Speed*/ 2, 
+        /*Health*/ 15, 
+        /*MaxHealth*/ 15,
+        /*Mana*/ 7,
+        /*MaxMana*/ 7};
+
+        //Slime Stats
+        int[] lSlimeStats = {
+        /*Strength*/ 7,
+        /*Magic Attack*/ 1,
+        /*Defense*/ 3, 
+        /*Speed*/ 2, 
+        /*Health*/ 20, 
+        /*MaxHealth*/ 20,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7};
+
+        //Skeleton Stats
+        int[] lSkeletonStats = {
+        /*Strength*/ 7,
+        /*Magic Attack*/ 1,
+        /*Defense*/ 7, 
+        /*Speed*/ 3, 
+        /*Health*/ 10, 
+        /*MaxHealth*/ 10,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7};
+
+        int[] lWraithStats = {
+        /*Strength*/ 9,
+        /*Magic Attack*/ 1,
+        /*Defense*/ 5, 
+        /*Speed*/ 5, 
+        /*Health*/ 17, 
+        /*MaxHealth*/ 17,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7};
+
+        int[] lGhostStats = {
+        /*Strength*/ 9,
+        /*Magic Attack*/ 1,
+        /*Defense*/ 11, 
+        /*Speed*/ 4, 
+        /*Health*/ 7, 
+        /*MaxHealth*/ 7,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7};
+
+        #endregion
+
+        if (resetPlayer)
+        {
+            tankStats = lTankStats;
+            mageStats = lMageStats;
+            monkStats = lMonkStats;
+            bardStats = lBardStats;
+        }
+
+        if (resetEnemy)
+        {
+            slimeStats = lSlimeStats;
+            ghostStats = lGhostStats;
+            wraithStats = lWraithStats;
+            skeletonStats = lSkeletonStats;
+        }
+    }
+
+   
 
     #endregion
 
@@ -426,34 +556,7 @@ public class BattleController : MonoBehaviour
 
     private void Start()
     {
-        //True for an ally, false for an enemy
-        //Moved all the start code to awake
-        /*playerChar = SpawnCharacter(true, playerStats);
-        secondPlayerChar = SpawnCharacter(true, secondPlayerStats);
-        enemyChar = SpawnCharacter(false, enemyStats);
-
-        if (playerChar.statSheet.stats["Speed"] < enemyChar.statSheet.stats["Speed"])
-        {
-            state = State.Busy;
-            characterQueue.Enqueue(enemyChar);
-            characterQueue.Enqueue(secondPlayerChar);
-            characterQueue.Enqueue(playerChar);
-        }
-        else
-        {
-            state = State.WaitingForPlayer;
-            characterQueue.Enqueue(playerChar);
-            characterQueue.Enqueue(secondPlayerChar);
-            characterQueue.Enqueue(enemyChar);
-        }
-
-        //state = State.WaitingForPlayer;
-
-        SetActiveCharBattle(characterQueue.Peek());
-        ChooseNextActiveChar();
-
-        playerWinText.SetActive(false);
-        enemyWinText.SetActive(false);*/
+        ResetStats(true, true);
     }
 
     private void Update()
@@ -567,41 +670,39 @@ public class BattleController : MonoBehaviour
         });*/
 
 
-        if (activeChar.statSheet.stats["Mana"] > 0)
+        if (activeChar.statSheet.name == "Tank Guy")
         {
-            if (activeChar.statSheet.name == "Tank Guy")
+            state = State.Busy;
+
+            backButton.SetActive(true);
+
+            alanFireMagicButton.SetActive(true);
+
+            if (levelManager.nicolAbsorb == true)
             {
-                state = State.Busy;
-
-                backButton.SetActive(true);
-
-                alanFireMagicButton.SetActive(true);
-
-                if (levelManager.nicolAbsorb == true)
-                {
-                    nicolIceMagicButton.SetActive(true);
-                }
-
-                if (levelManager.sophieAbsorb == true)
-                {
-                    sophieElectricMagicButton.SetActive(true);
-                }
-
-                if (levelManager.kisaAbsorb == true)
-                {
-                    kisaWindMagicButton.SetActive(true);
-                }
+                nicolIceMagicButton.SetActive(true);
             }
 
-            else
+            if (levelManager.sophieAbsorb == true)
             {
-                state = State.Busy;
+                sophieElectricMagicButton.SetActive(true);
+            }
 
-                backButton.SetActive(true);
-
-                StartCoroutine(MagicTargeting());
+            if (levelManager.kisaAbsorb == true)
+            {
+                kisaWindMagicButton.SetActive(true);
             }
         }
+
+        else
+        {
+            state = State.Busy;
+
+            backButton.SetActive(true);
+
+            StartCoroutine(MagicTargeting());
+        }
+        
 
     }
 
@@ -1485,6 +1586,8 @@ public class BattleController : MonoBehaviour
             befriendOrAbsorbButton.SetActive(false);
         }
 
+        playerController.joinParty();
+
         partyMembers.Clear();
         playerController.isfrozen = false;
         battleObject.SetActive(false);
@@ -1519,6 +1622,8 @@ public class BattleController : MonoBehaviour
 
             befriendOrAbsorbButton.SetActive(false);
         }
+
+        playerController.Absorb();
 
         partyMembers.Clear();
         playerController.isfrozen = false;

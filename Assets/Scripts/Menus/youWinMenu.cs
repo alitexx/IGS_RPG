@@ -94,6 +94,7 @@ public class youWinMenu : MonoBehaviour
             StopCoroutine(gainExperienceCoroutine);
             yield return new WaitForSeconds(1); // Wait for player interaction with level up screen
             newValue = 0;
+            expSliderBar.fillAmount = 0;
             currentExperience = 0; // Reset current EXP to 0 after leveling up
             remainingExp -= 100; // Deduct 100 from remaining EXP
         }
