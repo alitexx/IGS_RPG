@@ -16,6 +16,8 @@ public class youWinMenu : MonoBehaviour
     [SerializeField] private GameObject levelUpObject;
     [SerializeField] private audioManager am;
     [SerializeField] Animator battleEnterAnimator;
+    [SerializeField] private mainDialogueManager mainDialogueManager;
+    public static string loadedDialogue;
     private bool hasUpdatedGained = false;
     private int remainingExp;
     private float fillAmountVal;
@@ -140,6 +142,11 @@ public class youWinMenu : MonoBehaviour
             youWinText.DOMove(locations[3].position, 0.25f).OnComplete(() => {
                 youWinText.position = locations[4].position;
                 battleEnterAnimator.SetBool("BattleOver", false);
+                if (loadedDialogue != "...")
+                {
+                    mainDialogueManager.dialogueSTART(loadedDialogue);
+                    loadedDialogue = "...";
+                }
             });
         });
     }

@@ -17,6 +17,7 @@ public class killFriendManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] killText;
     [SerializeField] private TextMeshProUGUI[] befriendText;
     [SerializeField] private Image[] elementIcon;
+    [SerializeField] private PlayerController playerController;
     // might be needed later, commented out for now
     //[SerializeField] private LevelManager levelManager;
     [SerializeField] private Sprite[] elementsSprites;
@@ -32,6 +33,17 @@ public class killFriendManager : MonoBehaviour
         killingMaybe = false;
         befriendingMaybe = false;
 
+        if (playerController.KisaBoss)
+        {
+            charInQuestion = "Kisa";
+        } else if (playerController.NicolBoss)
+        {
+            charInQuestion = "Nicol";
+        } else if (playerController.SophieBoss)
+        {
+            charInQuestion = "Sophie";
+        }
+        EditTextInformation(charInQuestion);
         if (true) // replace this with if they've seen the tutorial
         {
             tutorialBG.DOFade(1, 1);
@@ -62,7 +74,6 @@ public class killFriendManager : MonoBehaviour
     ///NOTE!!!! THIS IS DONE!!!! You just need to call the function and pass in the boss's name, you MUST pass in the boss name as either "Kisa", "Nicol", or "Sophie"!!! please lol
     public void EditTextInformation(string bossName)
     {
-        charInQuestion = bossName;
         switch (bossName.ToUpper())
         {
             //placeholders right now because my computer is stupid

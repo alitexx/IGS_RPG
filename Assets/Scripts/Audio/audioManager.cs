@@ -190,7 +190,7 @@ public class audioManager : MonoBehaviour
     {
         if(ID == 13)
         {
-            currentlyPlaying.DOFade(audioStatics.SFXVolume * audioStatics.MasterVolume, (30f));
+            SFXAvailable[ID].DOFade((audioStatics.SFXVolume * audioStatics.MasterVolume)/3, (60f));
             SFXAvailable[ID].Play();
             return;
         }

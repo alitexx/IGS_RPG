@@ -1352,7 +1352,7 @@ public class BattleController : MonoBehaviour
             if (playerController.KisaBoss || playerController.NicolBoss || playerController.SophieBoss)
             {
                 //we should probably change the music here or smth
-                am.playSFX("14");
+                am.playSFX(14);
                 befriendOrAbsorbButton.SetActive(true);
             }
             else

@@ -287,7 +287,8 @@ public class LevelManager : MonoBehaviour
             bardStoredStats[5] += (2 * (level - 1));
 
             //the only time you gain a new party member will be after a boss fight, so I can put these here
-            mainDialogueManager.dialogueSTART("kisaPostFight_k");
+            youWinMenu.loadedDialogue = "kisaPostFight_k";
+            //mainDialogueManager.dialogueSTART("kisaPostFight_k");
             pauseMenuManager.partyMemberAdded("KISA");
         }
         else if (memberName == "Nicol")
@@ -295,10 +296,12 @@ public class LevelManager : MonoBehaviour
             mageStoredStats[1] += (2 * (level - 1));
             if (kisaAbsorb)
             {
-                mainDialogueManager.dialogueSTART("nicolPostFight_xn");
+                youWinMenu.loadedDialogue = "nicolPostFight_xn";
+                //mainDialogueManager.dialogueSTART("nicolPostFight_xn");
             } else
             {
-                mainDialogueManager.dialogueSTART("nicolPostFight_kn");
+                youWinMenu.loadedDialogue = "nicolPostFight_kn";
+                //mainDialogueManager.dialogueSTART("nicolPostFight_kn");
             }
             pauseMenuManager.partyMemberAdded("NICOL");
         }
@@ -307,14 +310,17 @@ public class LevelManager : MonoBehaviour
             monkStoredStats[0] += (2 * (level - 1));
             if (kisaAbsorb)
             {
-                mainDialogueManager.dialogueSTART("sophiePostFight_xns");
+                youWinMenu.loadedDialogue = "sophiePostFight_xns";
+                //mainDialogueManager.dialogueSTART("sophiePostFight_xns");
             } else if (nicolAbsorb)
             {
-                mainDialogueManager.dialogueSTART("sophiePostFight_kxs");
+                youWinMenu.loadedDialogue = "sophiePostFight_kxs";
+                //mainDialogueManager.dialogueSTART("sophiePostFight_kxs");
             }
             else
             {
-                mainDialogueManager.dialogueSTART("sophiePostFight_kns");
+                youWinMenu.loadedDialogue = "sophiePostFight_kns";
+                //mainDialogueManager.dialogueSTART("sophiePostFight_kns");
             }
             pauseMenuManager.partyMemberAdded("SOPHIE");
         }
@@ -333,7 +339,8 @@ public class LevelManager : MonoBehaviour
             battleController.partyMembers[0].statSheet.stats["MaxMana"] += (level);
             battleController.partyMembers[0].statSheet.stats["Magic Attack"] += (level);
             // will always be the same dialogue
-            mainDialogueManager.dialogueSTART("kisaPostFight_x");
+            youWinMenu.loadedDialogue = "kisaPostFight_x";
+            //mainDialogueManager.dialogueSTART("kisaPostFight_x");
             pauseMenuManager.partyMemberKilled("KISA");
         }
         else if (memberName == "Nicol")
@@ -348,10 +355,12 @@ public class LevelManager : MonoBehaviour
             //determine what dialogue shoule be played
             if (kisaAbsorb)
             {
+                youWinMenu.loadedDialogue = "nicolPostFight_xx";
                 mainDialogueManager.dialogueSTART("nicolPostFight_xx");
             }
             else
             {
+                youWinMenu.loadedDialogue = "nicolPostFight_kx";
                 mainDialogueManager.dialogueSTART("nicolPostFight_kx");
             }
             pauseMenuManager.partyMemberKilled("NICOL");
@@ -367,19 +376,23 @@ public class LevelManager : MonoBehaviour
             //determine what dialogue shoule be played
             if (kisaAbsorb && nicolAbsorb)
             {
-                mainDialogueManager.dialogueSTART("sophiePostFight_xxx");
+                youWinMenu.loadedDialogue = "sophiePostFight_xxx";
+                //mainDialogueManager.dialogueSTART("sophiePostFight_xxx");
             }
             else if (kisaAbsorb)
             {
-                mainDialogueManager.dialogueSTART("sophiePostFight_xnx");
+                youWinMenu.loadedDialogue = "sophiePostFight_xnx";
+                //mainDialogueManager.dialogueSTART("sophiePostFight_xnx");
             }
             else if (nicolAbsorb)
             {
-                mainDialogueManager.dialogueSTART("sophiePostFight_kxx");
+                youWinMenu.loadedDialogue = "sophiePostFight_kxx";
+                //mainDialogueManager.dialogueSTART("sophiePostFight_kxx");
             }
             else
             {
-                mainDialogueManager.dialogueSTART("sophiePostFight_knx");
+                youWinMenu.loadedDialogue = "sophiePostFight_knx";
+                //mainDialogueManager.dialogueSTART("sophiePostFight_knx");
             }
             pauseMenuManager.partyMemberKilled("SOPHIE");
         }
