@@ -1380,7 +1380,7 @@ public class BattleController : MonoBehaviour
             else
             {
                 youWin.SetActive(true);
-                playerController.isfrozen = false;
+                //playerController.isfrozen = false;
                 battleObject.SetActive(false);
             }
 

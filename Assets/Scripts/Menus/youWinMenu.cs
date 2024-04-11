@@ -17,6 +17,7 @@ public class youWinMenu : MonoBehaviour
     [SerializeField] private audioManager am;
     [SerializeField] Animator battleEnterAnimator;
     [SerializeField] private mainDialogueManager mainDialogueManager;
+    [SerializeField] private PlayerController playerController;
     public static string loadedDialogue = "...";
     private bool hasUpdatedGained = false;
     private int remainingExp;
@@ -167,6 +168,7 @@ public class youWinMenu : MonoBehaviour
                     loadedDialogue = "...";
                 }
                 this.gameObject.SetActive(false);
+                playerController.isfrozen = false;
             });
         });
     }
