@@ -313,14 +313,17 @@ public class PlayerController : MonoBehaviour
     {
         if (KisaBoss == true)
         {
+            Destroy(Kisa);
             //delete or do whatever we want 
         }
         else if (NicolBoss == true)
         {
+            Destroy(Nicol);
             //delete or do whatever we want
         }
         else if (SophieBoss == true)
         {
+            Destroy(Sophie);
             //delete or do whatever we want
         }
     }

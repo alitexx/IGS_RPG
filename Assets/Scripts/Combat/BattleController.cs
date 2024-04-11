@@ -653,41 +653,39 @@ public class BattleController : MonoBehaviour
         });*/
 
 
-        if (activeChar.statSheet.stats["Mana"] > 0)
+        if (activeChar.statSheet.name == "Tank Guy")
         {
-            if (activeChar.statSheet.name == "Tank Guy")
+            state = State.Busy;
+
+            backButton.SetActive(true);
+
+            alanFireMagicButton.SetActive(true);
+
+            if (levelManager.nicolAbsorb == true)
             {
-                state = State.Busy;
-
-                backButton.SetActive(true);
-
-                alanFireMagicButton.SetActive(true);
-
-                if (levelManager.nicolAbsorb == true)
-                {
-                    nicolIceMagicButton.SetActive(true);
-                }
-
-                if (levelManager.sophieAbsorb == true)
-                {
-                    sophieElectricMagicButton.SetActive(true);
-                }
-
-                if (levelManager.kisaAbsorb == true)
-                {
-                    kisaWindMagicButton.SetActive(true);
-                }
+                nicolIceMagicButton.SetActive(true);
             }
 
-            else
+            if (levelManager.sophieAbsorb == true)
             {
-                state = State.Busy;
+                sophieElectricMagicButton.SetActive(true);
+            }
 
-                backButton.SetActive(true);
-
-                StartCoroutine(MagicTargeting());
+            if (levelManager.kisaAbsorb == true)
+            {
+                kisaWindMagicButton.SetActive(true);
             }
         }
+
+        else
+        {
+            state = State.Busy;
+
+            backButton.SetActive(true);
+
+            StartCoroutine(MagicTargeting());
+        }
+        
 
     }
 
@@ -1571,6 +1569,8 @@ public class BattleController : MonoBehaviour
             befriendOrAbsorbButton.SetActive(false);
         }
 
+        playerController.joinParty();
+
         partyMembers.Clear();
         playerController.isfrozen = false;
         battleObject.SetActive(false);
@@ -1605,6 +1605,8 @@ public class BattleController : MonoBehaviour
 
             befriendOrAbsorbButton.SetActive(false);
         }
+
+        playerController.Absorb();
 
         partyMembers.Clear();
         playerController.isfrozen = false;
