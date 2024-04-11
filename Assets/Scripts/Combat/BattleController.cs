@@ -71,6 +71,8 @@ public class BattleController : MonoBehaviour
 
     private void OnEnable()
     {
+        ResetStats(true, false);
+
         levelManager.gainedEXP = 0;
 
         partyBoss = false;
@@ -326,6 +328,117 @@ public class BattleController : MonoBehaviour
         /*Mana*/ 6,
         /*MaxMana*/ 7};
 
+    void ResetStats(bool resetEnemy, bool resetPlayer)
+    {
+        #region local Stats
+
+        //Tank Stats
+        int[] lTankStats = {
+        /*Strength*/ 10,
+        /*Magic Attack*/ 4,
+        /*Defense*/ 5, 
+        /*Speed*/ 3, 
+        /*Health*/ 18, 
+        /*MaxHealth*/ 18,
+        /*Mana*/ 4,
+        /*MaxMana*/ 4};
+
+        //Mage Stats
+        int[] lMageStats = {
+        /*Strength*/ 7,
+        /*Magic Attack*/ 13,
+        /*Defense*/ 4, 
+        /*Speed*/ 5, 
+        /*Health*/ 8, 
+        /*MaxHealth*/ 8,
+        /*Mana*/ 9,
+        /*MaxMana*/ 9};
+
+        //Monk Stats
+        int[] lMonkStats = {
+        /*Strength*/ 13,
+        /*Magic Attack*/ 7,
+        /*Defense*/ 4, 
+        /*Speed*/ 6, 
+        /*Health*/ 10, 
+        /*MaxHealth*/ 10,
+        /*Mana*/ 5,
+        /*MaxMana*/ 5};
+
+        //Bard Stats
+        int[] lBardStats = {
+        /*Strength*/ 6,
+        /*Magic Attack*/ 5,
+        /*Defense*/ 4, 
+        /*Speed*/ 2, 
+        /*Health*/ 15, 
+        /*MaxHealth*/ 15,
+        /*Mana*/ 7,
+        /*MaxMana*/ 7};
+
+        //Slime Stats
+        int[] lSlimeStats = {
+        /*Strength*/ 7,
+        /*Magic Attack*/ 1,
+        /*Defense*/ 3, 
+        /*Speed*/ 2, 
+        /*Health*/ 20, 
+        /*MaxHealth*/ 20,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7};
+
+        //Skeleton Stats
+        int[] lSkeletonStats = {
+        /*Strength*/ 7,
+        /*Magic Attack*/ 1,
+        /*Defense*/ 7, 
+        /*Speed*/ 3, 
+        /*Health*/ 10, 
+        /*MaxHealth*/ 10,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7};
+
+        int[] lWraithStats = {
+        /*Strength*/ 11,
+        /*Magic Attack*/ 1,
+        /*Defense*/ 5, 
+        /*Speed*/ 5, 
+        /*Health*/ 17, 
+        /*MaxHealth*/ 17,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7};
+
+        int[] lGhostStats = {
+        /*Strength*/ 9,
+        /*Magic Attack*/ 1,
+        /*Defense*/ 11, 
+        /*Speed*/ 4, 
+        /*Health*/ 7, 
+        /*MaxHealth*/ 7,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7};
+
+        #endregion
+
+        if (resetPlayer)
+        {
+            tankStats = lTankStats;
+            mageStats = lMageStats;
+            monkStats = lMonkStats;
+            bardStats = lBardStats;
+        }
+
+        if (resetEnemy)
+        {
+            slimeStats = lSlimeStats;
+            ghostStats = lGhostStats;
+            wraithStats = lWraithStats;
+            skeletonStats = lSkeletonStats;
+        }
+    }
+
+   
+
     #endregion
 
     //Magic Types
@@ -426,34 +539,7 @@ public class BattleController : MonoBehaviour
 
     private void Start()
     {
-        //True for an ally, false for an enemy
-        //Moved all the start code to awake
-        /*playerChar = SpawnCharacter(true, playerStats);
-        secondPlayerChar = SpawnCharacter(true, secondPlayerStats);
-        enemyChar = SpawnCharacter(false, enemyStats);
-
-        if (playerChar.statSheet.stats["Speed"] < enemyChar.statSheet.stats["Speed"])
-        {
-            state = State.Busy;
-            characterQueue.Enqueue(enemyChar);
-            characterQueue.Enqueue(secondPlayerChar);
-            characterQueue.Enqueue(playerChar);
-        }
-        else
-        {
-            state = State.WaitingForPlayer;
-            characterQueue.Enqueue(playerChar);
-            characterQueue.Enqueue(secondPlayerChar);
-            characterQueue.Enqueue(enemyChar);
-        }
-
-        //state = State.WaitingForPlayer;
-
-        SetActiveCharBattle(characterQueue.Peek());
-        ChooseNextActiveChar();
-
-        playerWinText.SetActive(false);
-        enemyWinText.SetActive(false);*/
+        ResetStats(true, true);
     }
 
     private void Update()
