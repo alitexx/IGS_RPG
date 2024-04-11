@@ -259,10 +259,13 @@ public class BattleController : MonoBehaviour
 
     #region Stats
 
+    //WHEN CHANGING STATS CHANGE THEM IN LEVEL MANAGER AS WELL
+
+
     //Tank Stats
     static public int[] tankStats = {
         /*Strength*/ 10,
-        /*Magic Attack*/ 4,
+        /*Magic Attack*/ 5,
         /*Defense*/ 5, 
         /*Speed*/ 3, 
         /*Health*/ 18, 
@@ -295,7 +298,7 @@ public class BattleController : MonoBehaviour
     //Bard Stats
     static public int[] bardStats = {
         /*Strength*/ 6,
-        /*Magic Attack*/ 5,
+        /*Magic Attack*/ 6,
         /*Defense*/ 4, 
         /*Speed*/ 2, 
         /*Health*/ 15, 
@@ -309,8 +312,8 @@ public class BattleController : MonoBehaviour
         /*Magic Attack*/ 1,
         /*Defense*/ 3, 
         /*Speed*/ 2, 
-        /*Health*/ 20, 
-        /*MaxHealth*/ 20,
+        /*Health*/ 17, 
+        /*MaxHealth*/ 17,
         /*Mana*/ 6,
         /*MaxMana*/ 7};
 
@@ -352,7 +355,7 @@ public class BattleController : MonoBehaviour
         //Tank Stats
         int[] lTankStats = {
         /*Strength*/ 10,
-        /*Magic Attack*/ 4,
+        /*Magic Attack*/ 5,
         /*Defense*/ 5, 
         /*Speed*/ 3, 
         /*Health*/ 18, 
@@ -385,7 +388,7 @@ public class BattleController : MonoBehaviour
         //Bard Stats
         int[] lBardStats = {
         /*Strength*/ 6,
-        /*Magic Attack*/ 5,
+        /*Magic Attack*/ 6,
         /*Defense*/ 4, 
         /*Speed*/ 2, 
         /*Health*/ 15, 
@@ -399,8 +402,8 @@ public class BattleController : MonoBehaviour
         /*Magic Attack*/ 1,
         /*Defense*/ 3, 
         /*Speed*/ 2, 
-        /*Health*/ 20, 
-        /*MaxHealth*/ 20,
+        /*Health*/ 17, 
+        /*MaxHealth*/ 17,
         /*Mana*/ 6,
         /*MaxMana*/ 7};
 
@@ -1250,15 +1253,33 @@ public class BattleController : MonoBehaviour
             {
                 //Can put death animation here
 
+                if (enemyList[i].statSheet.name == "Slime Guy")
+                {
+                    levelManager.gainedEXP += 25;
+                }
+                else if (enemyList[i].statSheet.name == "Skeleton Guy")
+                {
+                    levelManager.gainedEXP += 30;
+                }
+                else if (enemyList[i].statSheet.name == "Ghost Guy")
+                {
+                    levelManager.gainedEXP += 35;
+                }
+                else if (enemyList[i].statSheet.name == "Wraith Guy")
+                {
+                    levelManager.gainedEXP += 40;
+                }
+                else
+                {
+                    levelManager.gainedEXP += 100;
+                }
+
                 Destroy(enemyList[i].gameObject);
 
                 am.playSFX(16);
 
                 //Works, but game doesn't give time for enemy to fade out, and that can cause issues
                 //StartCoroutine(FadeOut(enemyList[i]));
-
-
-                levelManager.gainedEXP += 25;
             }
         }
 

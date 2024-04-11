@@ -25,14 +25,14 @@ public class LevelManager : MonoBehaviour
     #region Stats to Store
 
     static private int[] tankStoredStats = new int[8] {
-        /*0 Strength*/ 10,
-        /*1 Magic Attack*/ 4,
-        /*2 Defense*/ 5, 
-        /*3 Speed*/ 3, 
-        /*4 Health*/ 18, 
-        /*5 MaxHealth*/ 18,
-        /*6 Mana*/ 4,
-        /*7 MaxMana*/ 4
+        /*Strength*/ 10,
+        /*Magic Attack*/ 5,
+        /*Defense*/ 5, 
+        /*Speed*/ 3, 
+        /*Health*/ 18, 
+        /*MaxHealth*/ 18,
+        /*Mana*/ 4,
+        /*MaxMana*/ 4
 };
 
     static private int[] mageStoredStats = new int[8] {
@@ -59,7 +59,7 @@ public class LevelManager : MonoBehaviour
 
     static private int[] bardStoredStats = new int[8] {
         /*0 Strength*/ 6,
-        /*1 Magic Attack*/ 5,
+        /*1 Magic Attack*/ 6,
         /*2 Defense*/ 4, 
         /*3 Speed*/ 2, 
         /*4 Health*/ 15, 
@@ -76,8 +76,8 @@ public class LevelManager : MonoBehaviour
         /*1 Magic Attack*/ 1,
         /*2 Defense*/ 3, 
         /*3 Speed*/ 2, 
-        /*4 Health*/ 20, 
-        /*5 MaxHealth*/ 20,
+        /*4 Health*/ 17, 
+        /*5 MaxHealth*/ 17,
         /*6 Mana*/ 6,
         /*7 MaxMana*/ 7};
 
@@ -93,7 +93,7 @@ public class LevelManager : MonoBehaviour
         /*7 MaxMana*/ 7};
 
     static public int[] wraithStats = {
-        /*0 Strength*/ 11,
+        /*0 Strength*/ 9,
         /*1 Magic Attack*/ 1,
         /*2 Defense*/ 5, 
         /*3 Speed*/ 5, 
@@ -117,6 +117,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         /*if (Instance != null)
         {
             Destroy(this.gameObject);
