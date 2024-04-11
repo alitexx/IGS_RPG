@@ -14,6 +14,8 @@ using Random = UnityEngine.Random;
 
 public class BattleController : MonoBehaviour
 {
+    //for displaying the you win menu
+    [SerializeField] private GameObject youWin;
     public static BattleController GetInstance()
     {
         return instance;
@@ -1336,15 +1338,11 @@ public class BattleController : MonoBehaviour
         }
         else if (enemyList.Count == 0 || AllEnemyDead == true)
         {
-            am.playBGM("T9");
-
-            battleFadeAnim.SetBool("BattleOver", true);
-            
             if (tutorialHandler.activeInHierarchy)
             {
                 tutorialHandler.SetActive(false);
             }
-
+            
             playerController.isSlime = false;
             playerController.isSkeleton = false;
             playerController.isWraith = false;
@@ -1353,13 +1351,18 @@ public class BattleController : MonoBehaviour
 
             if (playerController.KisaBoss || playerController.NicolBoss || playerController.SophieBoss)
             {
+                //we should probably change the music here or smth
+                am.playSFX("14");
                 befriendOrAbsorbButton.SetActive(true);
             }
             else
             {
+                youWin.SetActive(true);
                 playerController.isfrozen = false;
                 battleObject.SetActive(false);
             }
+
+            
 
             while (levelManager.currentEXP >= levelManager.lvlUpThreshold)
             {
@@ -1423,7 +1426,7 @@ public class BattleController : MonoBehaviour
                 Destroy(FourthEnemy.gameObject);
             }
             #endregion
-
+            //battleFadeAnim.SetBool("BattleOver", true);
             return true;
         }
         else

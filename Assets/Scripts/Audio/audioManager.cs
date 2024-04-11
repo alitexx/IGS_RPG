@@ -20,6 +20,8 @@ public class audioManager : MonoBehaviour
     {
         stopBGM(speed, true);
 
+        //i should put a check here that says if its the same song just don't play it but thats a lot of work rn so just try not to do it
+
         switch (songToPlay.ToUpper())
         {
             case "T1": case "OPENING":
@@ -186,6 +188,12 @@ public class audioManager : MonoBehaviour
 
     private void playSFXUsingID(int ID)
     {
+        if(ID == 13)
+        {
+            currentlyPlaying.DOFade(audioStatics.SFXVolume * audioStatics.MasterVolume, (30f));
+            SFXAvailable[ID].Play();
+            return;
+        }
         SFXAvailable[ID].volume = (audioStatics.SFXVolume * audioStatics.MasterVolume);
         SFXAvailable[ID].Play();
     }

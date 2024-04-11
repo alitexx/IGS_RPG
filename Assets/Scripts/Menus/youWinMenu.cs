@@ -14,17 +14,20 @@ public class youWinMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gainedEXP;
     [SerializeField] private TextMeshProUGUI currentEXP;
     [SerializeField] private GameObject levelUpObject;
+    [SerializeField] private audioManager am;
+    [SerializeField] Animator battleEnterAnimator;
     private bool hasUpdatedGained = false;
     private int remainingExp;
     private float fillAmountVal;
 
-    private int gainedExperience = 150;
+    private int gainedExperience = 20;
     private int currentExperience = 0;
     private Coroutine gainExperienceCoroutine;
 
     private void OnEnable()
     {
         //play the you win animation
+        am.playBGM("T9", 0.1f);
         youWinText.DOMove(locations[0].position, 0.35f).OnComplete(() => {
             youWinText.DOMove(locations[1].position, 0.7f).OnComplete(() => {
                 expBar.gameObject.SetActive(true);
@@ -109,6 +112,7 @@ public class youWinMenu : MonoBehaviour
     }
 
     // USE THIS TO SET HOW MUCH EXP HAS BEEN GAINED!!
+    //set this before leveling up!!
     public void SetGainedExperience(int exp)
     {
         gainedExperience = exp;
@@ -129,10 +133,13 @@ public class youWinMenu : MonoBehaviour
     public void closeYouWinMenu()
     {
         expBar.DOFade(0, 0.5f).OnComplete(() => { expBar.gameObject.SetActive(false); });
+        am.playBGM("T2");
+        battleEnterAnimator.SetBool("BattleOver", true);
         endBattleButton.DOMove(locations[5].position, 1f).OnComplete(() => { endBattleButton.gameObject.SetActive(false); });
         youWinText.DOMove(locations[2].position, 0.35f).OnComplete(() => {
             youWinText.DOMove(locations[3].position, 0.25f).OnComplete(() => {
                 youWinText.position = locations[4].position;
+                battleEnterAnimator.SetBool("BattleOver", false);
             });
         });
     }

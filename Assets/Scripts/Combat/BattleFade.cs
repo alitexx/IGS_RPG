@@ -11,6 +11,7 @@ public class BattleFade : MonoBehaviour
     public GameObject battleUI;
     public audioManager am;
     [SerializeField] private RectTransform[] battleTXTlocations;
+    [SerializeField] private GameObject youWin;
 
 
     void Start()
@@ -27,9 +28,7 @@ public class BattleFade : MonoBehaviour
 
     public void BattleEnded()
     {
-        animator.SetBool("BattleOver", false);
-
-        am.playBGM("T2");
+        youWin.SetActive(true);
     }
 
     public void playBattleStartSFX()
