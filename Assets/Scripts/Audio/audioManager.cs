@@ -18,6 +18,7 @@ public class audioManager : MonoBehaviour
     private void Start()
     {
         voiceVol.volume = audioStatics.VoiceVolume * audioStatics.MasterVolume;
+        BGMAvailable[0].DOFade(audioStatics.BGMVolume * audioStatics.MasterVolume, 0.5f);
     }
     public void playBGM(string songToPlay, float speed = 1)
     {
