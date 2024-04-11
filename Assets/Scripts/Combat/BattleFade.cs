@@ -28,7 +28,7 @@ public class BattleFade : MonoBehaviour
 
     public void BattleEnded()
     {
-        youWin.SetActive(true);
+        youWin.SetActive(false);
     }
 
     public void playBattleStartSFX()

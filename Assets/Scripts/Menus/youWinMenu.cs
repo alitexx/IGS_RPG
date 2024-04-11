@@ -25,7 +25,7 @@ public class youWinMenu : MonoBehaviour
     public LevelManager levelManager;
 
     private int gainedExperience = 20;
-    private int currentExperience = 0;
+    private int currentExperience;
     private Coroutine gainExperienceCoroutine;
 
     private void OnEnable()
@@ -39,7 +39,7 @@ public class youWinMenu : MonoBehaviour
 
         currentExperience = levelManager.currentEXP;
 
-        currentEXP.text = currentExperience + " / 100";
+        currentEXP.text = currentExperience + "/100";
 
         //play the you win animation
         am.playBGM("T9", 0.1f);
@@ -55,6 +55,7 @@ public class youWinMenu : MonoBehaviour
 
     IEnumerator ShowGainedExperience()
     {
+        currentEXP.text = currentExperience.ToString() + "/100";
         yield return new WaitForSeconds(0.75f); // Wait for 0.75 second after expBar fades in
         gainedEXP.gameObject.SetActive(true);
         if (!hasUpdatedGained)
@@ -99,16 +100,16 @@ public class youWinMenu : MonoBehaviour
         while (newValue < remainingExp)
         {
             // Check if current experience reaches 100, if so, pause the coroutine
-            if (currentExperience >= 100)
-            {
+            //if (currentExperience >= 100)
+            //{
 
-                newValue = Mathf.Lerp(currentExperience, 100, elapsedTime / duration);
-                currentEXP.text = Mathf.RoundToInt(newValue).ToString() + "/100";
-                // Clamp the float value between 0 and 1
-                fillAmountVal = Mathf.Lerp(currentExperience / 100f, 1, elapsedTime / duration);
-                expSliderBar.fillAmount = fillAmountVal;
-                elapsedTime += Time.deltaTime;
-            }
+            //    newValue = Mathf.Lerp(currentExperience, 100, elapsedTime / duration);
+            //    currentEXP.text = Mathf.RoundToInt(newValue).ToString() + "/100";
+            //    Clamp the float value between 0 and 1
+            //    fillAmountVal = Mathf.Lerp(currentExperience / 100f, 1, elapsedTime / duration);
+            //    expSliderBar.fillAmount = fillAmountVal;
+            //    elapsedTime += Time.deltaTime;
+            //}
             //if they didnt level up, show gaining exp
             newValue = Mathf.Lerp(currentExperience, totalEXP, elapsedTime / duration);
             currentEXP.text = Mathf.RoundToInt(newValue).ToString() + "/100";
@@ -121,11 +122,14 @@ public class youWinMenu : MonoBehaviour
 
         // If coroutine completes without pausing, update the current EXP to the target value
         yield return new WaitForSeconds(1);
-        currentEXP.text = Mathf.RoundToInt(newValue).ToString() + "/100";
+        levelManager.currentEXP = Mathf.RoundToInt(newValue);
+        currentExperience = Mathf.RoundToInt(newValue);
+        currentEXP.text = Mathf.RoundToInt(currentExperience).ToString() + "/100";
         hasUpdatedGained = false;
         expSliderBar.fillAmount = fillAmountVal;
         endBattleButton.gameObject.SetActive(true);
         endBattleButton.DOMove(locations[6].position, 1f);
+        
     }
 
     // USE THIS TO SET HOW MUCH EXP HAS BEEN GAINED!!
@@ -162,27 +166,9 @@ public class youWinMenu : MonoBehaviour
                     mainDialogueManager.dialogueSTART(loadedDialogue);
                     loadedDialogue = "...";
                 }
+                this.gameObject.SetActive(false);
             });
         });
-    }
-}
-
-public class FillSetter : MonoBehaviour
-{
-    public Image imageToFill;
-    public float myFloat;
-
-    void Update()
-    {
-        // Ensure the imageToFill and myFloat are set correctly
-        if (imageToFill != null)
-        {
-            // Clamp the float value between 0 and 1
-            myFloat = Mathf.Clamp01(myFloat);
-
-            // Set the fill amount of the image
-            imageToFill.fillAmount = myFloat;
-        }
     }
 }
 
