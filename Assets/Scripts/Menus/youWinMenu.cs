@@ -174,6 +174,7 @@ public class youWinMenu : MonoBehaviour
                 }
                 playerController.isfrozen = false;
                 expBar.gameObject.SetActive(false);
+                gainedEXP.gameObject.SetActive(false);
                 this.gameObject.SetActive(false);
             });
         });
