@@ -15,6 +15,10 @@ public class levelUpUI : MonoBehaviour
     [SerializeField] private PlayerController pc;
     [SerializeField] private youWinMenu ywm;
     public BattleController battleController;
+
+    public LevelManager levelManager;
+
+    
     #region PreviousStats
 
     static private List<List<int>> previousStats = new List<List<int>>()
@@ -33,9 +37,30 @@ public class levelUpUI : MonoBehaviour
     };
     #endregion
 
+    #region Newer Ststs
+
+    static private List<int[]> currentStats = new List<int[]>()
+    {   //0: strength
+        //1: magic attacl
+        //2: defense
+        //3: speed
+        //4: health
+        //5: max health
+        //6: mana
+        //7: max mana
+        new int[] {10, 5, 5, 3, 18, 18, 4, 4},  // Alan
+        new int[] {7, 13, 4, 5, 8, 8, 9, 9},    // Nicol
+        new int[] { 13, 7, 4, 6, 10, 10, 5, 5 },  // Sophie
+        new int[] { 6, 6, 4, 2, 15, 15, 7, 7 }    // Kisa
+    };
+
+    #endregion
+
 
     private void OnEnable()
     {
+        getCurrentStats();
+
         setStatsGained();
         boxesToDisplay[1].SetActive(pc.hasKisa);
         boxesToDisplay[2].SetActive(pc.hasNicol);
@@ -47,6 +72,14 @@ public class levelUpUI : MonoBehaviour
         });
     }
 
+    void getCurrentStats()
+    {
+        currentStats[0] = levelManager.SetTankStats();
+        currentStats[1] = levelManager.SetMageStats();
+        currentStats[2] = levelManager.SetMonkStats();
+        currentStats[3] = levelManager.SetBardStats();
+    }
+
     public void setStatsGained()
     {
         for (int i = 0; i < 4; i++)
@@ -55,6 +88,7 @@ public class levelUpUI : MonoBehaviour
             {
                 continue;
             }
+            /*
             statBonusTXT[i].text = 
                     "Strength: " + battleController.partyMembers[i].statSheet.stats["Strength"] + "(<color=#3B7D4F>+" + (battleController.partyMembers[i].statSheet.stats["Strength"]- previousStats[i][0]) + "</color>)\r\n" +
                     "Mag. ATK: " + battleController.partyMembers[i].statSheet.stats["Magic Attack"] + "(<color=#3B7D4F>+" + (battleController.partyMembers[i].statSheet.stats["Magic Attack"] - previousStats[i][1]) + "</color>\r\n" +
@@ -71,6 +105,24 @@ public class levelUpUI : MonoBehaviour
             previousStats[i][5] = battleController.partyMembers[i].statSheet.stats["MaxHealth"];
             previousStats[i][6] = battleController.partyMembers[i].statSheet.stats["Mana"];
             previousStats[i][7] = battleController.partyMembers[i].statSheet.stats["MaxMana"];
+            */
+
+            statBonusTXT[i].text =
+                    "Strength: " + currentStats[i][0] + "(<color=#3B7D4F>+" + (currentStats[i][0] - previousStats[i][0]) + "</color>)\r\n" +
+                    "Mag. ATK: " + currentStats[i][1] + "(<color=#3B7D4F>+" + (currentStats[i][1] - previousStats[i][1]) + "</color>\r\n" +
+                    "Defense: " + currentStats[i][2] + "(<color=#3B7D4F>+" + (currentStats[i][2] - previousStats[i][2]) + "</color>)\r\n" +
+                    "Speed: " + currentStats[i][3] + "(<color=#3B7D4F>+" + (currentStats[i][3] - previousStats[i][3]) + "</color>)\r\n" +
+                    "Max Health: " + currentStats[i][5] + "(<color=#3B7D4F>+" + (currentStats[i][5] - previousStats[i][5]) + "</color>)\r\n" +
+                    "Max Mana: " + currentStats[i][7] + "(<color=#3B7D4F>+" + (currentStats[i][7] - previousStats[i][7]) + "</color>)";
+
+            previousStats[i][0] = currentStats[i][0];
+            previousStats[i][1] = currentStats[i][1];
+            previousStats[i][2] = currentStats[i][2];
+            previousStats[i][3] = currentStats[i][3];
+            previousStats[i][4] = currentStats[i][4];
+            previousStats[i][5] = currentStats[i][5];
+            previousStats[i][6] = currentStats[i][6];
+            previousStats[i][7] = currentStats[i][7];
         }
     }
 

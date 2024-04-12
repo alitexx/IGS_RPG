@@ -141,7 +141,6 @@ public class LevelManager : MonoBehaviour
 
     public void LevelUp()
     {
-        am.playSFX(15);
 
         level++;
 
@@ -160,12 +159,12 @@ public class LevelManager : MonoBehaviour
         {
             if (battleController.partyMembers[i].statSheet.name == "Tank Guy")
             {
-                battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Strength"] += 2;
                 battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
                 battleController.partyMembers[i].statSheet.stats["Defense"] += 1;
                 battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
-                battleController.partyMembers[i].statSheet.stats["Health"] += 1;
-                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Health"] += 2;
+                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 2;
                 battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
                 battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
 

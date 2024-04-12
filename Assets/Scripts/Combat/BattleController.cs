@@ -1511,6 +1511,11 @@ public class BattleController : MonoBehaviour
                 levelManager.LevelUp();
             }*/
 
+            if ((levelManager.gainedEXP + levelManager.currentEXP >= 100))
+            {
+                levelManager.LevelUp();
+            }
+
             levelManager.StoreStats();
 
             #region Destroy Existing Char

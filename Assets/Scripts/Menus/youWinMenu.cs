@@ -87,7 +87,8 @@ public class youWinMenu : MonoBehaviour
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
-            levelManager.LevelUp();
+            am.playSFX(15);
+            //levelManager.LevelUp();
             gainedEXP.gameObject.SetActive(false);
             expBar.gameObject.SetActive(false);
             levelUpObject.SetActive(true);
