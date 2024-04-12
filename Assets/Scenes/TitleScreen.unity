@@ -835,7 +835,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 29
+          m_IntArgument: 30
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3483,6 +3483,7 @@ MonoBehaviour:
   button: {fileID: 0}
   buttonTXT: {fileID: 0}
   am: {fileID: 0}
+  voiceVol: {fileID: 0}
 --- !u!224 &221265008
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5499,6 +5500,7 @@ MonoBehaviour:
   button: {fileID: 0}
   buttonTXT: {fileID: 0}
   am: {fileID: 0}
+  voiceVol: {fileID: 0}
 --- !u!1 &396687475
 GameObject:
   m_ObjectHideFlags: 0
@@ -21946,7 +21948,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -163.8, y: 43.7}
+  m_AnchoredPosition: {x: -978, y: -951}
   m_SizeDelta: {x: 115.61, y: 33.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1853803493
@@ -23289,6 +23291,7 @@ MonoBehaviour:
   - {fileID: 762968997}
   - {fileID: 1422354686}
   - {fileID: 848791241}
+  voiceVol: {fileID: 0}
 --- !u!4 &1958329217
 Transform:
   m_ObjectHideFlags: 0

@@ -160,16 +160,20 @@ public class youWinMenu : MonoBehaviour
         battleEnterAnimator.SetBool("BattleOver", true);
         endBattleButton.DOMove(locations[5].position, 1f).OnComplete(() => { endBattleButton.gameObject.SetActive(false); });
         youWinText.DOMove(locations[2].position, 0.35f).OnComplete(() => {
-            youWinText.DOMove(locations[3].position, 0.25f).OnComplete(() => {
-                youWinText.position = locations[4].position;
+            
+            youWinText.DOMove(locations[3].position, 0.75f).OnComplete(() => {
                 battleEnterAnimator.SetBool("BattleOver", false);
+                youWinText.position = locations[4].position;
                 if (loadedDialogue != "...")
                 {
                     mainDialogueManager.dialogueSTART(loadedDialogue);
                     loadedDialogue = "...";
+                    this.gameObject.SetActive(false);
+                    return;
                 }
-                this.gameObject.SetActive(false);
                 playerController.isfrozen = false;
+                expBar.gameObject.SetActive(false);
+                this.gameObject.SetActive(false);
             });
         });
     }
