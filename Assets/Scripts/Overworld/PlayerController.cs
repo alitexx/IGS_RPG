@@ -41,8 +41,17 @@ public class PlayerController : MonoBehaviour
     public bool SophieBoss = false;
     public bool LichBoss = false;
 
-    //Level Number
+    //Save Data vars
     public int Level = 1;
+    public int partyLevel = 1;
+    public float[] playerPosition = new float[2];
+    int KisainParty = 0;
+    int NicolinParty = 0;
+    int SophieinParty = 0;
+    int KisaAbsorbed = 0;
+    int NicolAbsorbed = 0;
+    int SophieAbsorbed = 0;
+    int HasBeenThruTutorial = 0;
 
     //Camera Movement Detecter
     public CamMovementDetect cameraMovementDetecter;
@@ -63,6 +72,8 @@ public class PlayerController : MonoBehaviour
 
     // for starting dialogue
     [SerializeField] private mainDialogueManager mainDialogueManager;
+
+    public LevelManager levelManager;
 
 
     private void Start()
@@ -128,6 +139,26 @@ public class PlayerController : MonoBehaviour
             waypointTrail[3].position = waypointTrail[2].position;
         }
         */
+
+        partyLevel = LevelManager.level;
+
+        playerPosition[0] = transform.position.x;
+        playerPosition[1] = transform.position.y;
+
+        if(hasKisa == true) 
+        {
+            KisainParty = 1;
+        }
+
+        if (hasNicol == true)
+        {
+            NicolinParty = 1;
+        }
+
+        if (hasSophie == true)
+        {
+            SophieinParty = 1;
+        }
     }
 
     void FixedUpdate()
@@ -296,16 +327,20 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(Kisa);
             //KisaRenderer.sprite = absorbKisa;
+            KisaAbsorbed = 1;
+            HasBeenThruTutorial = 1;
         }
         else if (NicolBoss == true)
         {
             Destroy(Nicol);
             //NicolRenderer.sprite = absorbNicol;
+            NicolAbsorbed = 1;
         }
         else if (SophieBoss == true)
         {
             Destroy(Sophie);
             //SophieRenderer.sprite = absorbSophie;
+            SophieAbsorbed = 1;
         }
     }
 
@@ -315,6 +350,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(Kisa);
             //delete or do whatever we want 
+            HasBeenThruTutorial = 1;
         }
         else if (NicolBoss == true)
         {
@@ -327,4 +363,72 @@ public class PlayerController : MonoBehaviour
             //delete or do whatever we want
         }
     }
+
+    public void saveGame()
+    {
+        PlayerPrefs.SetInt("PartyLevel", partyLevel);
+        PlayerPrefs.SetFloat("PlayerPositionX", playerPosition[0]);
+        PlayerPrefs.SetFloat("PlauerPositionY", playerPosition[1]);
+        PlayerPrefs.SetInt("hasKisa", KisainParty);
+        PlayerPrefs.SetInt("hasNicol", NicolinParty);
+        PlayerPrefs.SetInt("hasSophie", SophieinParty);
+        PlayerPrefs.SetInt("AbsorbedKisa", KisaAbsorbed);
+        PlayerPrefs.SetInt("AbsorbedNicol", NicolAbsorbed);
+        PlayerPrefs.SetInt("AbsorbedSophie", SophieAbsorbed);
+        PlayerPrefs.SetInt("FloorLevel", Level);
+        PlayerPrefs.SetInt("HasBeenThruTutorial", HasBeenThruTutorial);
+        PlayerPrefs.Save();
+    }
+
+    public void DeleteSave() 
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
+    public void loadGame() 
+    {
+        LevelManager.level = PlayerPrefs.GetInt("PartyLevel");
+        playerPosition[0] = PlayerPrefs.GetFloat("PlayerPositionX");
+        playerPosition[1] = PlayerPrefs.GetFloat("PlayerPositiony");
+        transform.position = new Vector2(playerPosition[0], playerPosition[1]);
+        KisainParty = PlayerPrefs.GetInt("hasKisa");
+        if (KisainParty == 1)
+        {
+            hasKisa = true;
+        }
+        else
+        {
+            hasKisa = false;
+        }
+
+        NicolinParty = PlayerPrefs.GetInt("hasNicol");
+        if (NicolinParty == 1)
+        {
+            hasNicol = true;
+        }
+        else
+        {
+            hasNicol = false;
+        }
+
+        SophieinParty = PlayerPrefs.GetInt("hasSophie");
+        if (SophieinParty == 1)
+        {
+            hasSophie = true;
+        }
+        else
+        {
+            hasSophie = false;
+        }
+
+        KisaAbsorbed = PlayerPrefs.GetInt("AbsorbedKisa");
+        NicolAbsorbed = PlayerPrefs.GetInt("AbsorbedNicol");
+        SophieAbsorbed = PlayerPrefs.GetInt("AbsorbedSophie");
+
+        Level = PlayerPrefs.GetInt("FloorLevel");
+        HasBeenThruTutorial = PlayerPrefs.GetInt("HasBeenThruTutorial");
+
+
+    }
+
 }

@@ -10,6 +10,8 @@ public class SavepointScript : MonoBehaviour
     float DistanceBetweenObjects;
     public LevelManager levelManager;
     public audioManager audioManager;
+    public PlayerController playerController;
+    //public GameObject SaveConfirm;
 
     // Start is called before the first frame update
     private void Update()
@@ -22,6 +24,7 @@ public class SavepointScript : MonoBehaviour
             //call function to heal, and eventually save.
             levelManager.FullHeal();
             audioManager.playSFX(19);
+            playerController.saveGame();
             //confirm save/heal as a menu or something (name.setactive(true)
             Debug.Log("YIPEEEE");
         }
