@@ -1,0 +1,33 @@
+kisa.Move(0.85 0 -spd 3)
+nicol.Move(0.35 0 -spd 3)
+alan.Move(0 0 -spd 3)
+sophie.Move(0.6 0 -spd 3)
+Hide(nicol)
+Hide(alan)
+Hide(kisa)
+Hide(sophie)
+wait(0.75)
+nicol "And so our journey comes to an end."
+sophie "It appears so. I have learned what has become of my students, and although I am saddened, I am glad to have gotten the chance to avenge them."
+alan "I am sorry for your loss, Sophie. I wish we could have done more to help..."
+sophie "It is alright, Alan. I will notify their families once we return."
+nicol "Although I also sympathize with your loss, we should not end this on a somber note! We have defeated a great evil today, I believe this is cause for celebration."
+kisa "I would not object to such a thing. This is what adventurers do, yes?"
+nicol "Yes! Tis written in ''Adventuring 101'', written by yours truly!"
+kisa "You have written a novel?! Why did you not inform me of such earlier, Nicol?"
+nicol "I lost the novel while traveling overseas. Krakens are nasty creatures, they have no taste! Twas almost complete!"
+kisa "You have encountered a KRAKEN?!"
+sophie "Please do not allow him to tell the tale. We will be here for a century."
+sophie "So, we are all in agreeance about a celebration? Alan?"
+alan "Oh! Yes, celebration. Sounds good."
+alan "(I do not want to voice my fears, but I am nervous. The last time I had a celebration was the night before Leora passed.)"
+nicol "Huzzah! Come now, this is no place for heroes such as ourselves! Drinks are on me!"
+alan "(Perhaps it is time to embrace the present. I cared much for Leora, but she would have wished for my happiness.)"
+alan "(That must be correct. Leora often recounted tales of triumph and tribulation; her passing was a tribulation, but there would be moments of triumph, such as now. I have a feeling of closure and companionship I lacked prior.)"
+kisa "Alan? Are you coming?"
+alan "Yes! I apologize, I am right behind you."
+Hide(sophie)
+Hide(kisa)
+Hide(alan)
+Hide(nicol)
+endDialogue(false)

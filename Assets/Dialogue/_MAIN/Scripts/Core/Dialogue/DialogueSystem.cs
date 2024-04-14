@@ -27,6 +27,8 @@ namespace DIALOGUE
         public AudioSource charVoice;
         public Image textbox;
 
+        public GameObject continueButton; // for the bottom of the screen
+
         public bool isRunningConversation => conversationManager.isRunning;
 
         private void Awake()
@@ -47,6 +49,7 @@ namespace DIALOGUE
         {
             if (_initialized) { return; }
             architect = new TextArchitect(dialogueContainer.dialogueText);
+            architect.continueButton = this.continueButton;
             // to share architects
             conversationManager = new ConversationManager(architect, charVoice);
         }

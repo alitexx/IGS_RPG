@@ -5,11 +5,13 @@ using DIALOGUE;
 
 public class PlayerInputManager : MonoBehaviour
 {
+    [SerializeField] private GameObject continueButton;
     private void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && PauseMenu.GamePaused == false)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(audioStatics.interractButton)) && PauseMenu.GamePaused == false)
         {
-             PromptAdvance();
+            PromptAdvance();
+            continueButton.SetActive(false);
         }
     }
     public void PromptAdvance()

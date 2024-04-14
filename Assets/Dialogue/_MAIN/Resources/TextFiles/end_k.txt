@@ -1,0 +1,16 @@
+Hide(sophie)
+Hide(nicol)
+Hide(alan)
+Hide(kisa)
+wait(1)
+kisa "The lich was correct."
+alan "Excuse me?"
+kisa "You heard me. The lich was correct in his assessment."
+kisa "Why do you show me mercy but not them?! What changed?!"
+alan "They are serving a better purpose, Kisa. You are useless to me now."
+alan "What do you think you're doing?"
+kisa "Stopping you. You kept me alive so I could heal your injuries. Is that it? And now that you have no business in this tower, you want to discard me?"
+kisa "I am tired of everyone acting as if my only use is being a bard, and without my songs I am nothing. I am living. I am breathing. I am strong!"
+kisa "Nicol and Sophie saw my strength, they saw me as a person. You see me as another pawn in your twisted game. I'm done!"
+kisa "This is for Nicol and Sophie! They will guide me to victory!"
+endDialogue(true)

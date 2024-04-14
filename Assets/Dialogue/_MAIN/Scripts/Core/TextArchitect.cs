@@ -29,6 +29,8 @@ public class TextArchitect
 
     public bool hurryUp = false; // when true, text moves at double speed
 
+    public GameObject continueButton;
+
     public AudioSource audioPlayer;
     public TextArchitect(TextMeshProUGUI tmpro_ui) // if we give it a tmproUGUI
     {
@@ -89,6 +91,7 @@ public class TextArchitect
     {
         buildProcess = null;
         hurryUp = false;
+        continueButton.SetActive(true);
     }
 
     public void ForceComplete()
