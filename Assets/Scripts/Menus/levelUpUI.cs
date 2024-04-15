@@ -62,9 +62,9 @@ public class levelUpUI : MonoBehaviour
         getCurrentStats();
 
         setStatsGained();
-        boxesToDisplay[1].SetActive(pc.hasKisa);
-        boxesToDisplay[2].SetActive(pc.hasNicol);
-        boxesToDisplay[3].SetActive(pc.hasSophie);
+        boxesToDisplay[1].SetActive(pc.hasNicol);
+        boxesToDisplay[2].SetActive(pc.hasSophie);
+        boxesToDisplay[3].SetActive(pc.hasKisa);
         lvlUpText.DOMove(locations[0].position, 0.5f).OnComplete(() => {
             lvlupboxes.DOMove(locations[1].position, 0.75f).OnComplete(() => {
                 exitlvlUpBTN.DOMove(locations[2].position, 1f);
@@ -84,7 +84,7 @@ public class levelUpUI : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            if ((!pc.hasKisa && i == 1) || (!pc.hasNicol && i == 2) || (!pc.hasSophie && i == 3))
+            if ((!pc.hasNicol && i == 1) || (!pc.hasSophie && i == 2) || (!pc.hasKisa && i == 3))
             {
                 continue;
             }

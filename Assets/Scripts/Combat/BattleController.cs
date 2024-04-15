@@ -88,6 +88,8 @@ public class BattleController : MonoBehaviour
 
     private void OnEnable()
     {
+
+
         ResetStats(true, false);
 
         levelManager.gainedEXP = 0;
@@ -97,6 +99,8 @@ public class BattleController : MonoBehaviour
         SetStats();
 
         befriendOrAbsorbButton.SetActive(false);
+
+        Debug.Log("Kisa health: " + bardStats[5]);
 
         instance = this;
 
@@ -1615,7 +1619,7 @@ public class BattleController : MonoBehaviour
         playerController.joinParty();
 
         partyMembers.Clear();
-        playerController.isfrozen = false;
+        //playerController.isfrozen = false;
         battleObject.SetActive(false);
     }
 
@@ -1652,7 +1656,7 @@ public class BattleController : MonoBehaviour
         playerController.Absorb();
 
         partyMembers.Clear();
-        playerController.isfrozen = false;
+        //playerController.isfrozen = false;
         battleObject.SetActive(false);
     }
 }

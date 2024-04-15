@@ -70,6 +70,54 @@ public class LevelManager : MonoBehaviour
 
     #endregion
 
+    #region Starting Stats
+
+    static private int[] tankStartStats = new int[8] {
+        /*Strength*/ 10,
+        /*Magic Attack*/ 5,
+        /*Defense*/ 5, 
+        /*Speed*/ 3, 
+        /*Health*/ 18, 
+        /*MaxHealth*/ 18,
+        /*Mana*/ 4,
+        /*MaxMana*/ 4
+};
+
+    static private int[] mageStartStats = new int[8] {
+        /*0 Strength*/ 7,
+        /*1 Magic Attack*/ 13,
+        /*2 Defense*/ 4, 
+        /*3 Speed*/ 5, 
+        /*4 Health*/ 8, 
+        /*5 MaxHealth*/ 8,
+        /*6 Mana*/ 9,
+        /*7 MaxMana*/ 9
+    };
+
+    static private int[] monkStartStats = new int[8] {
+        /*0 Strength*/ 13,
+        /*1 Magic Attack*/ 7,
+        /*2 Defense*/ 4, 
+        /*3 Speed*/ 6, 
+        /*4 Health*/ 10, 
+        /*5 MaxHealth*/ 10,
+        /*6 Mana*/ 5,
+        /*7 MaxMana*/ 5
+    };
+
+    static private int[] bardStartStats = new int[8] {
+        /*0 Strength*/ 6,
+        /*1 Magic Attack*/ 6,
+        /*2 Defense*/ 4, 
+        /*3 Speed*/ 2, 
+        /*4 Health*/ 15, 
+        /*5 MaxHealth*/ 15,
+        /*6 Mana*/ 7,
+        /*7 MaxMana*/ 7
+    };
+
+    #endregion
+
     #region EnemyStats 
     static public int[] slimeStats = {
         /*0 Strength*/ 7,
@@ -117,7 +165,15 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < 8; i++)
+        {
+            tankStoredStats[i] = tankStartStats[i];
+            mageStoredStats[i] = mageStartStats[i];
+            monkStoredStats[i] = monkStartStats[i];
+            bardStoredStats[i] = bardStartStats[i];
+        }
 
+        Debug.Log("tank strength: " + tankStoredStats[0]);
 
         /*if (Instance != null)
         {
@@ -191,7 +247,8 @@ public class LevelManager : MonoBehaviour
            
 
             }
-            else if (battleController.partyMembers[i].statSheet.name == "Mage Guy")
+            
+            if (battleController.partyMembers[i].statSheet.name == "Mage Guy")
             {
                 battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
                 battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 2;
@@ -202,7 +259,8 @@ public class LevelManager : MonoBehaviour
                 battleController.partyMembers[i].statSheet.stats["Mana"] += 2;
                 battleController.partyMembers[i].statSheet.stats["MaxMana"] += 2;
             }
-            else if (battleController.partyMembers[i].statSheet.name == "Bard Guy")
+            
+            if (battleController.partyMembers[i].statSheet.name == "Bard Guy")
             {
                 battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
                 battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 2;
@@ -218,7 +276,8 @@ public class LevelManager : MonoBehaviour
                     battleController.partyMembers[i].statSheet.stats["Health"] += 1;
                 }
             }
-            else if (battleController.partyMembers[i].statSheet.name == "Monk Guy")
+            
+            if (battleController.partyMembers[i].statSheet.name == "Monk Guy")
             {
                 battleController.partyMembers[i].statSheet.stats["Strength"] += 2;
                 battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
@@ -247,7 +306,8 @@ public class LevelManager : MonoBehaviour
                 tankStoredStats[6] = battleController.partyMembers[i].statSheet.stats["Mana"];
                 tankStoredStats[7] = battleController.partyMembers[i].statSheet.stats["MaxMana"];
             }
-            else if (battleController.partyMembers[i].statSheet.name == "Mage Guy")
+            
+            if (battleController.partyMembers[i].statSheet.name == "Mage Guy")
             {
                 mageStoredStats[0] = battleController.partyMembers[i].statSheet.stats["Strength"];
                 mageStoredStats[1] = battleController.partyMembers[i].statSheet.stats["Magic Attack"];
@@ -258,7 +318,8 @@ public class LevelManager : MonoBehaviour
                 mageStoredStats[6] = battleController.partyMembers[i].statSheet.stats["Mana"];
                 mageStoredStats[7] = battleController.partyMembers[i].statSheet.stats["MaxMana"];
             }
-            else if (battleController.partyMembers[i].statSheet.name == "Bard Guy")
+            
+            if (battleController.partyMembers[i].statSheet.name == "Bard Guy")
             {
                 bardStoredStats[0] = battleController.partyMembers[i].statSheet.stats["Strength"];
                 bardStoredStats[1] = battleController.partyMembers[i].statSheet.stats["Magic Attack"];
@@ -269,7 +330,8 @@ public class LevelManager : MonoBehaviour
                 bardStoredStats[6] = battleController.partyMembers[i].statSheet.stats["Mana"];
                 bardStoredStats[7] = battleController.partyMembers[i].statSheet.stats["MaxMana"];
             }
-            else if (battleController.partyMembers[i].statSheet.name == "Monk Guy")
+            
+            if (battleController.partyMembers[i].statSheet.name == "Monk Guy")
             {
                 monkStoredStats[0] = battleController.partyMembers[i].statSheet.stats["Strength"];
                 monkStoredStats[1] = battleController.partyMembers[i].statSheet.stats["Magic Attack"];
