@@ -16,13 +16,19 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private audioManager am;
     [SerializeField] private mainDialogueManager mainDialogueManager;
     [SerializeField] private TextMeshProUGUI PartyLevelTXT;
+    public static bool canOpenPause = true;
+
+    private void Start()
+    {
+        canOpenPause = true;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) //on escape press
+        if (Input.GetKeyDown(KeyCode.Escape) && canOpenPause) //on escape press
         {
-            if (mainDialogueManager.dialogueRunning || battleUI.activeInHierarchy == true)//OR we are in battle
+            if (mainDialogueManager.dialogueRunning || battleUI.activeInHierarchy == true)
             {
                 if (GamePaused)
                 {
