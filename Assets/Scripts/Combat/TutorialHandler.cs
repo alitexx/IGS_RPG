@@ -12,6 +12,8 @@ public class TutorialHandler : MonoBehaviour
     public GameObject magicTutorial;
     public GameObject targetTutorial;
 
+    [SerializeField] private GameObject[] tutorialMenus;
+
     private int tutorialCounter;
 
     private void Start()
@@ -30,8 +32,9 @@ public class TutorialHandler : MonoBehaviour
         if (Input.GetKeyDown(battleController.confirmKey) && battleController.state == BattleController.State.Busy && battleController.backButton.activeInHierarchy && battleController.alanFireMagicButton.activeInHierarchy == false)
         {
             tutorialCounter++;
+            //tutorialMenus[tutorialCounter - 1].SetActive(false);
+            //tutorialMenus[tutorialCounter].SetActive(true);
         }
-
         if (tutorialCounter == 0)
         {
             if (battleController.backButton.activeInHierarchy)
