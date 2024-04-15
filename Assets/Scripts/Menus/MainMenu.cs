@@ -7,7 +7,14 @@ using DG.Tweening;
 public class MainMenu : MonoBehaviour
 {
     public GameObject MainMenuUI;
+    public CanvasGroup fadedbg;
     public OpeningCutscene openingCutscene;
+    [SerializeField] private audioManager am;
+
+    private void Start()
+    {
+        am.playBGM("T1");
+    }
 
     public void Startgame()
     {
@@ -23,11 +30,16 @@ public class MainMenu : MonoBehaviour
         Application.Quit(); //quits
     }
 
-    public void Options()
+    public void OptionsOpen()
     {
-        //add code for options (maybe different scene?)
+        fadedbg.gameObject.SetActive(true);
+        fadedbg.DOFade(1, 1);
     }
 
+    public void OptionsClose()
+    {
+        fadedbg.DOFade(0, 1).OnComplete(() => { fadedbg.gameObject.SetActive(false); });
+    }
     public void Controls()
     {
         //add code for controls (maybe different scene?)

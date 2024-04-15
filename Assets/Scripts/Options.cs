@@ -13,12 +13,20 @@ public class Options : MonoBehaviour
     [SerializeField] private TextMeshProUGUI buttonTXT;
     [SerializeField] private audioManager am;
     [SerializeField] private AudioSource voiceVol;
+    [SerializeField] private Slider[] optionsSliders;
     private bool waitingForKeyPress = false;
     private string keyPressed;
 
     void Start()
     {
-        //button.onClick.AddListener(StartWaitingForInput);
+        optionsSliders[0].value = audioStatics.MasterVolume;
+        optionsSliders[1].value = audioStatics.BGMVolume;
+        optionsSliders[2].value = audioStatics.SFXVolume;
+        optionsSliders[3].value = audioStatics.VoiceVolume;
+        optionsSliders[4].value = audioStatics.TextSpeedMultiplier;
+        ds.architect.speedMultiplier = audioStatics.TextSpeedMultiplier;
+        voiceVol.volume = audioStatics.VoiceVolume * audioStatics.MasterVolume;
+        buttonTXT.text = audioStatics.interractButton;
     }
     void Update()
     {
@@ -70,9 +78,8 @@ public class Options : MonoBehaviour
     }
     public void onTextSpeedSliderChanged(float value)
     {
+        audioStatics.TextSpeedMultiplier = value;
         ds.architect.speedMultiplier = value;
     }
-
-
 }
 

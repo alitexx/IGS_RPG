@@ -22,6 +22,7 @@ public class creditsManager : MonoBehaviour
     [SerializeField] private GameObject[] charactersOnTitle;
     [SerializeField] private CanvasGroup fadeOutBG;
     [SerializeField] private CanvasGroup fadeInBG;
+    [SerializeField] private CanvasGroup ReturnButton;
     [SerializeField] private audioManager audioManager;
     // 0 = kisa
     // 1 = nicol
@@ -62,7 +63,9 @@ public class creditsManager : MonoBehaviour
         fadeInBG.DOFade(0, 2).OnComplete(() => {
             fadeInBG.gameObject.SetActive(false);
             textScroll.DOMove(finalTextPos.position, 50).OnComplete(() => {
-                fadeOutBG.DOFade(0, 5);
+                fadeOutBG.DOFade(0, 5).OnComplete(() => {
+                    ReturnButton.DOFade(1, 1);
+                });
             });
         });
         
@@ -70,6 +73,7 @@ public class creditsManager : MonoBehaviour
     public void ReturnToTitle()
     {
         audioManager.playSFX(25);
+        audioManager.stopBGM(2);
         fadeInBG.gameObject.SetActive(true);
         fadeInBG.DOFade(1, 2).OnComplete(() => {
             SceneManager.LoadScene("TitleScreen");
