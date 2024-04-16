@@ -158,12 +158,16 @@ public class BattleCharacter : MonoBehaviour
                 //charSprite.color = Color.grey;
                 animator.SetBool("isGhost", true);
             }
+            else if (statSheet.name == "Mage Guy")
+            {
+                animator.SetBool("isBadNicol", true);
+            }
             else if (statSheet.name == "Lich Guy")
             {
                 animator.SetBool("isLich", true);
             }
 
-            healthBar = new World_Bar(transform, new Vector3(0, 0.8f), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
+            healthBar = new World_Bar(transform, new Vector3(0, -0.8f), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         }
 
         if (LIsPlayerTeam) 
@@ -355,6 +359,7 @@ public class BattleCharacter : MonoBehaviour
             targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"], 0 /*Placeholder because magic ignores defense*/ );
         }
 
+        yield return new WaitForSeconds(.5f);
 
         state = State.Busy;
 

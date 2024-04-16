@@ -280,7 +280,7 @@ public class BattleController : MonoBehaviour
     //Mage Stats
     static public int[] mageStats = {
         /*Strength*/ 7,
-        /*Magic Attack*/ 13,
+        /*Magic Attack*/ 8,
         /*Defense*/ 4, 
         /*Speed*/ 5, 
         /*Health*/ 8, 
@@ -380,7 +380,7 @@ public class BattleController : MonoBehaviour
         //Mage Stats
         int[] lMageStats = {
         /*Strength*/ 7,
-        /*Magic Attack*/ 13,
+        /*Magic Attack*/ 8,
         /*Defense*/ 4, 
         /*Speed*/ 5, 
         /*Health*/ 8, 

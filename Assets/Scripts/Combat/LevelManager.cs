@@ -37,7 +37,7 @@ public class LevelManager : MonoBehaviour
 
     static private int[] mageStoredStats = new int[8] {
         /*0 Strength*/ 7,
-        /*1 Magic Attack*/ 13,
+        /*1 Magic Attack*/ 8,
         /*2 Defense*/ 4, 
         /*3 Speed*/ 5, 
         /*4 Health*/ 8, 
@@ -85,7 +85,7 @@ public class LevelManager : MonoBehaviour
 
     static private int[] mageStartStats = new int[8] {
         /*0 Strength*/ 7,
-        /*1 Magic Attack*/ 13,
+        /*1 Magic Attack*/ 8,
         /*2 Defense*/ 4, 
         /*3 Speed*/ 5, 
         /*4 Health*/ 8, 
