@@ -100,7 +100,7 @@ public class BattleController : MonoBehaviour
 
         befriendOrAbsorbButton.SetActive(false);
 
-        Debug.Log("Kisa health: " + bardStats[5]);
+        
 
         instance = this;
 
