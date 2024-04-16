@@ -173,8 +173,6 @@ public class LevelManager : MonoBehaviour
             bardStoredStats[i] = bardStartStats[i];
         }
 
-        Debug.Log("tank strength: " + tankStoredStats[0]);
-
         /*if (Instance != null)
         {
             Destroy(this.gameObject);

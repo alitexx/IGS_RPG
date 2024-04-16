@@ -509,6 +509,7 @@ MonoBehaviour:
   am: {fileID: 0}
   amGameObject: {fileID: 0}
   particleManager: {fileID: 4836191928861364526, guid: 90e2bdc31e6857a43bb8c4f9b4a25c3e, type: 3}
+  damagePopup: {fileID: 825852696272911183, guid: 370aad247ef72d241ae78cd4f777f267, type: 3}
   specialAvailable: 0
 --- !u!95 &7197455562530669128
 Animator:

@@ -163,7 +163,7 @@ public class BattleController : MonoBehaviour
         }
         else if (playerController.LichBoss)
         {
-            
+            firstEnemy = SpawnCharacter(false, lichStats, "Lich Guy", 0, 5, 4);
         }
 
         if (partyBoss == false)
@@ -352,6 +352,16 @@ public class BattleController : MonoBehaviour
         /*Mana*/ 6,
         /*MaxMana*/ 7};
 
+    static public int[] lichStats = {
+        /*Strength*/ 9,
+        /*Magic Attack*/ 12,
+        /*Defense*/ 7, 
+        /*Speed*/ 4, 
+        /*Health*/ 50, 
+        /*MaxHealth*/ 50,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7};
+
     void ResetStats(bool resetEnemy, bool resetPlayer)
     {
         #region local Stats
@@ -442,6 +452,16 @@ public class BattleController : MonoBehaviour
         /*Mana*/ 6,
         /*MaxMana*/ 7};
 
+        int[] lLichStats = {
+        /*Strength*/ 9,
+        /*Magic Attack*/ 12,
+        /*Defense*/ 7, 
+        /*Speed*/ 4, 
+        /*Health*/ 50, 
+        /*MaxHealth*/ 50,
+        /*Mana*/ 6,
+        /*MaxMana*/ 7};
+
         #endregion
 
         if (resetPlayer)
@@ -458,6 +478,7 @@ public class BattleController : MonoBehaviour
             ghostStats = lGhostStats;
             wraithStats = lWraithStats;
             skeletonStats = lSkeletonStats;
+            lichStats = lLichStats;
         }
     }
 
@@ -472,7 +493,8 @@ public class BattleController : MonoBehaviour
         {1 , "Ice"},
         {2 , "Electric"},
         {3 , "Wind"},
-        {4 , "No Magic"}
+        {4 , "No Magic"},
+        {5 , "Bone" }
     };
 
     public Sprite fire;
@@ -568,6 +590,7 @@ public class BattleController : MonoBehaviour
 
     private void Update()
     {
+
         if (state == State.WaitingForPlayer)
         {
             fightingButtons.SetActive(true);
