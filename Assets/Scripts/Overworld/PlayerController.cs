@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
                     {
                         mainDialogueManager.dialogueSTART("sophieEncounter_kx");
                     }
-                    else if (hasKisa)
+                    else if (hasNicol)
                     {
                         mainDialogueManager.dialogueSTART("sophieEncounter_xn");
                     }
