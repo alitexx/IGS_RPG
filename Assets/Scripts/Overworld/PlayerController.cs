@@ -235,7 +235,10 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.name == "level1")
         {
-            ///start dialogue
+            //start dialogue
+            hasKisa = false;
+            hasNicol = false;
+            hasSophie = false;
         }
         
         if (collision.gameObject.name == "level2")
