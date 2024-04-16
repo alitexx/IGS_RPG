@@ -4,6 +4,7 @@ using UnityEngine;
 using CHARACTERS;
 using DIALOGUE;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class mainDialogueManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class mainDialogueManager : MonoBehaviour
 
     [SerializeField] private Transform bottom;
     [SerializeField] private Transform top;
+    [SerializeField] private CanvasGroup fadeOut;
     [SerializeField] private GameObject[] tweenInPositions;
     [SerializeField] private SignInteraction firstSign;
     [SerializeField] private GameObject[] tweenOutPositions;
@@ -107,12 +109,46 @@ public class mainDialogueManager : MonoBehaviour
         // Stop the dialogue coroutine if it's running
         if (dialogueRunning)
         {
+            StopCoroutine(completeDialogue(currentlyRunningText));
+            dialogueRunning = false; // Set the flag to false when stopping the coroutine
             if (currentlyRunningText == "openingScene")
             {
                 firstSign.enabled = true;
             }
-            StopCoroutine(completeDialogue(currentlyRunningText));
-            dialogueRunning = false; // Set the flag to false when stopping the coroutine
+            switch (currentlyRunningText) // if this is the end of a route
+            {
+                case "end_genocide":// 0 = everyone dead
+                    creditsManager.endingID = 0;
+                    fadeOut.DOFade(1,3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
+                    break;
+                case "end_n":// 1 = only nicol alive
+                    creditsManager.endingID = 1;
+                    fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
+                    break;
+                case "end_ns":// 2 = nicol and sophie alive
+                    creditsManager.endingID = 2;
+                    fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
+                    break;
+                case "end_k_postFight":// 3 = kisa alive
+                    creditsManager.endingID = 3;
+                    fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
+                    break;
+                case "end_ks":// 4 = kisa and sophie alive
+                    creditsManager.endingID = 4;
+                    fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
+                    break;
+                case "end_kn":// 5 = kisa and nicol alive
+                    creditsManager.endingID = 5;
+                    fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
+                    break;
+                case "end_kns":// 6 = everyone alive!!
+                    creditsManager.endingID = 6;
+                    fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
+                    break;
+                case "end_k": // kisa fight GO!
+                    Debug.Log("Kisa boss!! Kisa secret boss! KISA SECRET BOSS GO!!!");
+                    break;
+            }
             currentlyRunningText = "";
             
 
