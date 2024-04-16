@@ -233,6 +233,10 @@ public class PlayerController : MonoBehaviour
             //do something with dialogue idk lmao
         }
 
+        if (collision.gameObject.name == "level1")
+        {
+            ///start dialogue
+        }
         
         if (collision.gameObject.name == "level2")
         {
