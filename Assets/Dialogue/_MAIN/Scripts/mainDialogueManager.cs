@@ -43,7 +43,7 @@ public class mainDialogueManager : MonoBehaviour
     {
         //am.playBGM("T4"); // temporary
         //StartCoroutine(completeDialogue("TextFiles/deleteAfterTesting"));
-        dialogueSTART(fileName); // only here for testing
+        //dialogueSTART(fileName); // only here for testing
     }
 
     //MUST PASS IN THE 

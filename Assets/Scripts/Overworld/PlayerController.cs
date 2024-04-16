@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
                     {
                         mainDialogueManager.dialogueSTART("sophieEncounter_kx");
                     }
-                    else if (hasKisa)
+                    else if (hasNicol)
                     {
                         mainDialogueManager.dialogueSTART("sophieEncounter_xn");
                     }
@@ -233,6 +233,13 @@ public class PlayerController : MonoBehaviour
             //do something with dialogue idk lmao
         }
 
+        if (collision.gameObject.name == "level1")
+        {
+            //start dialogue
+            hasKisa = false;
+            hasNicol = false;
+            hasSophie = false;
+        }
         
         if (collision.gameObject.name == "level2")
         {
