@@ -383,6 +383,10 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("BattleTutorialCleared", BattleTutorialCleared);
         PlayerPrefs.Save();
         Debug.Log("Saved stuff?");
+        Debug.Log(playerPosition[0]);
+        Debug.Log(playerPosition[1]);
+        Debug.Log(partyLevel);
+        Debug.Log(Level);
     }
 
     public void DeleteSave() 
