@@ -51,7 +51,8 @@ public class PlayerController : MonoBehaviour
     int KisaAbsorbed = 0;
     int NicolAbsorbed = 0;
     int SophieAbsorbed = 0;
-    int HasBeenThruTutorial = 0;
+    public int HasBeenThruTutorial = 0;
+    public int BattleTutorialCleared = 0;
 
     //Camera Movement Detecter
     public CamMovementDetect cameraMovementDetecter;
@@ -367,6 +368,7 @@ public class PlayerController : MonoBehaviour
 
     public void saveGame()
     {
+        BattleTutorialCleared = 1;
         PlayerPrefs.SetInt("PartyLevel", partyLevel);
         PlayerPrefs.SetFloat("PlayerPositionX", playerPosition[0]);
         PlayerPrefs.SetFloat("PlauerPositionY", playerPosition[1]);
@@ -378,12 +380,15 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("AbsorbedSophie", SophieAbsorbed);
         PlayerPrefs.SetInt("FloorLevel", Level);
         PlayerPrefs.SetInt("HasBeenThruTutorial", HasBeenThruTutorial);
+        PlayerPrefs.SetInt("BattleTutorialCleared", BattleTutorialCleared);
         PlayerPrefs.Save();
+        Debug.Log("Saved stuff?");
     }
 
     public void DeleteSave() 
     {
         PlayerPrefs.DeleteAll();
+        Debug.Log("Deleted save");
     }
 
     public void loadGame() 
@@ -428,8 +433,8 @@ public class PlayerController : MonoBehaviour
 
         Level = PlayerPrefs.GetInt("FloorLevel");
         HasBeenThruTutorial = PlayerPrefs.GetInt("HasBeenThruTutorial");
-
-
+        BattleTutorialCleared = PlayerPrefs.GetInt("BattleTutorialCleared");
+        Debug.Log("Loaded save?");
     }
 
 }
