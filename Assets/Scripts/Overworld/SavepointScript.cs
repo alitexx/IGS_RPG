@@ -19,7 +19,7 @@ public class SavepointScript : MonoBehaviour
 
         DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
 
-        if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown("space"))
+        if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.interractButton))
         {
             //call function to heal, and eventually save.
             levelManager.FullHeal();
