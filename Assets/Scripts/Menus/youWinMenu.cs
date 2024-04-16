@@ -33,6 +33,8 @@ public class youWinMenu : MonoBehaviour
     {
         //this should change position based on what i do with kill/befriend
         am.stopHeartbeatSFX();
+        //cannot open pause menu at this time
+        PauseMenu.canOpenPause = false;
         //
         SetGainedExperience(levelManager.gainedEXP);
 
@@ -163,6 +165,7 @@ public class youWinMenu : MonoBehaviour
         youWinText.DOMove(locations[2].position, 0.35f).OnComplete(() => {
             
             youWinText.DOMove(locations[3].position, 0.75f).OnComplete(() => {
+                PauseMenu.canOpenPause = false;
                 battleEnterAnimator.SetBool("BattleOver", false);
                 youWinText.position = locations[4].position;
                 if (loadedDialogue != "...")

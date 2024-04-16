@@ -31,7 +31,7 @@ namespace DIALOGUE
 
         public bool isRunningConversation => conversationManager.isRunning;
 
-        private void Awake()
+        private void Awake() 
         {
             if (instance == null)
             {
@@ -50,6 +50,7 @@ namespace DIALOGUE
             if (_initialized) { return; }
             architect = new TextArchitect(dialogueContainer.dialogueText);
             architect.continueButton = this.continueButton;
+            architect.speedMultiplier = audioStatics.TextSpeedMultiplier;
             // to share architects
             conversationManager = new ConversationManager(architect, charVoice);
         }

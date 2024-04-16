@@ -32,33 +32,33 @@ public class creditsManager : MonoBehaviour
 
     private void OnEnable()
     {
-        //switch (endingID)
-        //{
-        //    case 0:
-        //        charactersOnTitle[0].SetActive(false);
-        //        charactersOnTitle[1].SetActive(false);
-        //        charactersOnTitle[2].SetActive(false);
-        //        break;
-        //    case 1:
-        //        charactersOnTitle[0].SetActive(false);
-        //        charactersOnTitle[2].SetActive(false);
-        //        break;
-        //    case 2:
-        //        charactersOnTitle[1].SetActive(false);
-        //        charactersOnTitle[2].SetActive(false);
-        //        break;
-        //    case 3:
-        //        charactersOnTitle[1].SetActive(false);
-        //        charactersOnTitle[2].SetActive(false);
-        //        charactersOnTitle[3].SetActive(false);
-        //        break;
-        //    case 4:
-        //        charactersOnTitle[1].SetActive(false);
-        //        break;
-        //    case 5:
-        //        charactersOnTitle[2].SetActive(false);
-        //        break;
-        //}
+        switch (endingID)
+        {
+            case 0:
+                charactersOnTitle[0].SetActive(false);
+                charactersOnTitle[1].SetActive(false);
+                charactersOnTitle[2].SetActive(false);
+                break;
+            case 1:
+                charactersOnTitle[0].SetActive(false);
+                charactersOnTitle[2].SetActive(false);
+                break;
+            case 2:
+                charactersOnTitle[1].SetActive(false);
+                charactersOnTitle[2].SetActive(false);
+                break;
+            case 3:
+                charactersOnTitle[1].SetActive(false);
+                charactersOnTitle[2].SetActive(false);
+                charactersOnTitle[3].SetActive(false);
+                break;
+            case 4:
+                charactersOnTitle[1].SetActive(false);
+                break;
+            case 5:
+                charactersOnTitle[2].SetActive(false);
+                break;
+        }
         audioManager.playBGM("T10");
         fadeInBG.DOFade(0, 2).OnComplete(() => {
             fadeInBG.gameObject.SetActive(false);

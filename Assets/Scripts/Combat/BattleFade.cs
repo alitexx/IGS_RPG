@@ -16,13 +16,13 @@ public class BattleFade : MonoBehaviour
 
     void Start()
     {
-        
         battleFadeObj.SetActive(true);
     }
 
     public void BattleStarted()
     {
         animator.SetBool("BattleStarting", false);
+        PauseMenu.canOpenPause = false;
         battleUI.SetActive(true);
     }
 
@@ -33,6 +33,7 @@ public class BattleFade : MonoBehaviour
 
     public void playBattleStartSFX()
     {
+        PauseMenu.canOpenPause = false;
         am.playSFX(1);
 
         // start battle text start anim
@@ -43,6 +44,7 @@ public class BattleFade : MonoBehaviour
                 battleTXT.DOMove(battleTXTlocations[2].position, 0.25f).OnComplete(() => {
                     battleTXT.position = battleTXTlocations[3].position;
                     battleTXT.gameObject.SetActive(false);
+                    PauseMenu.canOpenPause = true;
                 });
             });
         });

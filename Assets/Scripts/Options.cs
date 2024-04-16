@@ -24,7 +24,6 @@ public class Options : MonoBehaviour
         optionsSliders[2].value = audioStatics.SFXVolume;
         optionsSliders[3].value = audioStatics.VoiceVolume;
         optionsSliders[4].value = audioStatics.TextSpeedMultiplier;
-        ds.architect.speedMultiplier = audioStatics.TextSpeedMultiplier;
         voiceVol.volume = audioStatics.VoiceVolume * audioStatics.MasterVolume;
         buttonTXT.text = audioStatics.interractButton;
     }
@@ -79,7 +78,6 @@ public class Options : MonoBehaviour
     public void onTextSpeedSliderChanged(float value)
     {
         audioStatics.TextSpeedMultiplier = value;
-        ds.architect.speedMultiplier = value;
     }
 }
 

@@ -27,8 +27,32 @@ public class pauseMenuManager : MonoBehaviour
     [SerializeField] private Sprite[] partymemberSprites;
     [SerializeField] private GameObject[] partymemberIconAssets;
 
-    // when menu is opened, check the state of the party. party members you dont own are grayed out,
-    // party members that are dead have a red X over them
+    private void OnEnable()
+    {
+        //place all sprites where they need to be
+        //if the options menu is open, close it
+        if (OptionsMenu.activeSelf)
+        {
+            Buttons.transform.position = locations[0].transform.position;
+            OptionsTXT.transform.position = locations[7].transform.position;
+            PartyLevelTXT.transform.position = locations[8].transform.position;
+            OptionsMenu.transform.position = locations[10].transform.position;
+            OptionsMenu.SetActive(false);
+
+        } else if (ConfirmMainMenu.activeSelf) // if the confirm menu is open, close it
+        {
+            darkenBG.SetActive(false);
+            ConfirmMainMenu.SetActive(false);
+        }
+        for (int i = 0; i < 4; i++) // for each party member, make sure they're in the correct position and the menu isnt open
+        {
+            partyMemberIcons[i].position = locations[0].transform.position;
+            buttonOn[i].SetActive(true);
+            buttonOff[i].SetActive(false);
+        }
+        characterinspector.SetActive(false);
+
+    }
 
     //this is already done somewhere else, just leaving the code in case it breaks anything
     public void changePartyLevelTXT(int partylevel)
