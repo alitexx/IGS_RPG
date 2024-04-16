@@ -31,9 +31,9 @@ public class levelUpUI : MonoBehaviour
         //6: mana
         //7: max mana
         new List<int>() {10, 5, 5, 3, 18, 18, 4, 4},  // Alan
+        new List<int>() {6, 6, 4, 2, 15, 15, 7, 7},    // Kisa
         new List<int>() {7, 13, 4, 5, 8, 8, 9, 9},    // Nicol
-        new List<int>() {13, 7, 4, 6, 10, 10, 5, 5},  // Sophie
-        new List<int>() {6, 6, 4, 2, 15, 15, 7, 7}    // Kisa
+        new List<int>() {13, 7, 4, 6, 10, 10, 5, 5}  // Sophie
     };
     #endregion
 
@@ -49,9 +49,9 @@ public class levelUpUI : MonoBehaviour
         //6: mana
         //7: max mana
         new int[] {10, 5, 5, 3, 18, 18, 4, 4},  // Alan
+        new int[] { 6, 6, 4, 2, 15, 15, 7, 7 },    // Kisa
         new int[] {7, 13, 4, 5, 8, 8, 9, 9},    // Nicol
-        new int[] { 13, 7, 4, 6, 10, 10, 5, 5 },  // Sophie
-        new int[] { 6, 6, 4, 2, 15, 15, 7, 7 }    // Kisa
+        new int[] { 13, 7, 4, 6, 10, 10, 5, 5 }  // Sophie
     };
 
     #endregion
@@ -62,9 +62,9 @@ public class levelUpUI : MonoBehaviour
         getCurrentStats();
 
         setStatsGained();
-        boxesToDisplay[1].SetActive(pc.hasNicol);
-        boxesToDisplay[2].SetActive(pc.hasSophie);
-        boxesToDisplay[3].SetActive(pc.hasKisa);
+        boxesToDisplay[1].SetActive(pc.hasKisa);
+        boxesToDisplay[2].SetActive(pc.hasNicol);
+        boxesToDisplay[3].SetActive(pc.hasSophie);
         lvlUpText.DOMove(locations[0].position, 0.5f).OnComplete(() => {
             lvlupboxes.DOMove(locations[1].position, 0.75f).OnComplete(() => {
                 exitlvlUpBTN.DOMove(locations[2].position, 1f);
@@ -75,16 +75,16 @@ public class levelUpUI : MonoBehaviour
     void getCurrentStats()
     {
         currentStats[0] = levelManager.SetTankStats();
-        currentStats[1] = levelManager.SetMageStats();
-        currentStats[2] = levelManager.SetMonkStats();
-        currentStats[3] = levelManager.SetBardStats();
+        currentStats[1] = levelManager.SetBardStats();
+        currentStats[2] = levelManager.SetMageStats();
+        currentStats[3] = levelManager.SetMonkStats();
     }
 
     public void setStatsGained()
     {
         for (int i = 0; i < 4; i++)
         {
-            if ((!pc.hasNicol && i == 1) || (!pc.hasSophie && i == 2) || (!pc.hasKisa && i == 3))
+            if ((!pc.hasKisa && i == 1) || (!pc.hasNicol && i == 2) || (!pc.hasSophie && i == 3))
             {
                 continue;
             }

@@ -247,7 +247,7 @@ public class LevelManager : MonoBehaviour
            
 
             }
-            
+            //Nicol
             if (battleController.partyMembers[i].statSheet.name == "Mage Guy")
             {
                 battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
@@ -259,7 +259,7 @@ public class LevelManager : MonoBehaviour
                 battleController.partyMembers[i].statSheet.stats["Mana"] += 2;
                 battleController.partyMembers[i].statSheet.stats["MaxMana"] += 2;
             }
-            
+            //Kisa
             if (battleController.partyMembers[i].statSheet.name == "Bard Guy")
             {
                 battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
@@ -276,7 +276,7 @@ public class LevelManager : MonoBehaviour
                     battleController.partyMembers[i].statSheet.stats["Health"] += 1;
                 }
             }
-            
+            //Sophie
             if (battleController.partyMembers[i].statSheet.name == "Monk Guy")
             {
                 battleController.partyMembers[i].statSheet.stats["Strength"] += 2;
@@ -349,8 +349,14 @@ public class LevelManager : MonoBehaviour
     {
         if (memberName == "Kisa")
         {
+            bardStoredStats[0] += (1 * (level - 1));
+            bardStoredStats[1] += (2 * (level - 1));
+            bardStoredStats[2] += (1 * (level - 1));
+            bardStoredStats[3] += (1 * (level - 1));
             bardStoredStats[4] += (2 * (level - 1));
             bardStoredStats[5] += (2 * (level - 1));
+            bardStoredStats[6] += (1 * (level - 1));
+            bardStoredStats[7] += (1 * (level - 1));
 
             //the only time you gain a new party member will be after a boss fight, so I can put these here
             youWinMenu.loadedDialogue = "kisaPostFight_k";
@@ -359,7 +365,15 @@ public class LevelManager : MonoBehaviour
         }
         else if (memberName == "Nicol")
         {
+            mageStoredStats[0] += (1 * (level - 1));
             mageStoredStats[1] += (2 * (level - 1));
+            mageStoredStats[2] += (1 * (level - 1));
+            mageStoredStats[3] += (1 * (level - 1));
+            mageStoredStats[4] += (1 * (level - 1));
+            mageStoredStats[5] += (1 * (level - 1));
+            mageStoredStats[6] += (2 * (level - 1));
+            mageStoredStats[7] += (2 * (level - 1));
+
             if (kisaAbsorb)
             {
                 youWinMenu.loadedDialogue = "nicolPostFight_xn";
@@ -374,6 +388,14 @@ public class LevelManager : MonoBehaviour
         else if (memberName == "Sophie")
         {
             monkStoredStats[0] += (2 * (level - 1));
+            monkStoredStats[1] += (1 * (level - 1));
+            monkStoredStats[2] += (2 * (level - 1));
+            monkStoredStats[3] += (1 * (level - 1));
+            monkStoredStats[4] += (1 * (level - 1));
+            monkStoredStats[5] += (1 * (level - 1));
+            monkStoredStats[6] += (1 * (level - 1));
+            monkStoredStats[7] += (1 * (level - 1));
+
             if (kisaAbsorb)
             {
                 youWinMenu.loadedDialogue = "sophiePostFight_xns";
