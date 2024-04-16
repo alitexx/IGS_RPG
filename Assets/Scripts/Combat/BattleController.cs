@@ -1256,6 +1256,9 @@ public class BattleController : MonoBehaviour
             if (enemyList[i].statSheet.stats["Health"] <= 0)
             {
                 //Can put death animation here
+                Vector3 position = enemyList[i].GetPosition();
+                ParticleManager particle = Instantiate(enemyList[i].particleManager, position, Quaternion.identity, enemyList[i].transform);
+                particle.animator.SetBool("ElectricFX", true);
 
                 if (enemyList[i].statSheet.name == "Slime Guy")
                 {

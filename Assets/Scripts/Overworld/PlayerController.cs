@@ -218,6 +218,7 @@ public class PlayerController : MonoBehaviour
                     break;
                 default:
                     //i dont have these done yet
+                    //yeah that's fair
                     LichBoss = true;
                     break;
             }

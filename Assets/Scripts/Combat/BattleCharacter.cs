@@ -410,6 +410,8 @@ public class BattleCharacter : MonoBehaviour
 
         animator.SetBool("Hurt", true);
 
+
+
         if (isBlocking)
         {
             if (GIsPlayerTeam)
@@ -444,6 +446,8 @@ public class BattleCharacter : MonoBehaviour
         {
             yield return null;
         }
+
+        yield return new WaitForSeconds(0.3f);
 
         /*if (isBlocking)
         {

@@ -76,6 +76,9 @@ TagManager:
   - name: BattleBackground
     uniqueID: 378357621
     locked: 0
+  - name: BattleCharBackground
+    uniqueID: 721837427
+    locked: 0
   - name: BattleUI
     uniqueID: 2618943339
     locked: 0
