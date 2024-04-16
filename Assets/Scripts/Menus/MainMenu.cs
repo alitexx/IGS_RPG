@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public CanvasGroup fadedbg;
     public OpeningCutscene openingCutscene;
     [SerializeField] private audioManager am;
+    [SerializeField] private PlayerController playerController;
 
     private void Start()
     {
@@ -19,9 +20,20 @@ public class MainMenu : MonoBehaviour
     public void Startgame()
     {
         //ADD SOMETHING HERE ABOUT LOADING SAVE DATA!!
+        if (playerController.BattleTutorialCleared == 1)
+        {
+            //load scene first? then call the load save?
+            playerController.loadGame();
+        }
+        else
+        {
+            //do the normal game start
+        }
+        
 
         MainMenuUI.GetComponent<CanvasGroup>().DOFade(0,1.5f).OnComplete(() => { MainMenuUI.SetActive(false); });
         openingCutscene.dialogueSTART();
+        playerController.loadGame();
         //SceneManager.LoadScene("OpeningCutscene"); //loads main level
     }
 

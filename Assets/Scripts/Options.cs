@@ -12,6 +12,7 @@ public class Options : MonoBehaviour
     [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI buttonTXT;
     [SerializeField] private audioManager am;
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private AudioSource voiceVol;
     [SerializeField] private Slider[] optionsSliders;
     private bool waitingForKeyPress = false;
@@ -78,6 +79,10 @@ public class Options : MonoBehaviour
     public void onTextSpeedSliderChanged(float value)
     {
         audioStatics.TextSpeedMultiplier = value;
+    }
+    public void deleteSaveData()
+    {
+        playerController.DeleteSave();
     }
 }
 
