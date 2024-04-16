@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using UnityEngine.U2D;
 using CodeMonkey;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class BattleCharacter : MonoBehaviour
 {
@@ -47,6 +48,12 @@ public class BattleCharacter : MonoBehaviour
     public GameObject amGameObject;
 
     public ParticleManager particleManager;
+
+    [SerializeField] private Transform damagePopup;
+
+    private GameObject healthParent;
+    private Transform healthObject;
+    private TextMeshProUGUI healthText;
 
     public bool specialAvailable;
 
@@ -90,27 +97,37 @@ public class BattleCharacter : MonoBehaviour
 
         healthSystem.OnHealthChanged += HealthSystem_OnHealthChanged;
 
+        healthParent = GameObject.Find("/Battle");
+
         if (LIsPlayerTeam)
         {
             //Ally
             //textures and animations
             if (statSheet.name == "Tank Guy")
             {
+                healthObject = healthParent.transform.Find("Canvas/HPAmounts/Alan/AlanBG/AlanHP");
+                healthText = healthObject.GetComponent<TextMeshProUGUI>();
                 //charSprite.color = Color.magenta;
                 animator.SetBool("isTank", true);
             }
             else if (statSheet.name == "Mage Guy")
             {
+                healthObject = healthParent.transform.Find("Canvas/HPAmounts/Nicol/BG/NicolHP");
+                healthText = healthObject.GetComponent<TextMeshProUGUI>();
                 //charSprite.color = Color.red;
                 animator.SetBool("isMage", true);
             }
             else if (statSheet.name == "Monk Guy")
             {
+                healthObject = healthParent.transform.Find("Canvas/HPAmounts/Sophie/BG/SophieHP");
+                healthText = healthObject.GetComponent<TextMeshProUGUI>();
                 //charSprite.color = Color.yellow;
                 animator.SetBool("isMonk", true);
             }
             else if (statSheet.name == "Bard Guy")
             {
+                healthObject = healthParent.transform.Find("Canvas/HPAmounts/Kisa/BG/KisaHP");
+                healthText = healthObject.GetComponent<TextMeshProUGUI>();
                 //charSprite.color = Color.green;
                 animator.SetBool("isBard", true);
             }
@@ -141,10 +158,18 @@ public class BattleCharacter : MonoBehaviour
                 //charSprite.color = Color.grey;
                 animator.SetBool("isGhost", true);
             }
+            else if (statSheet.name == "Lich Guy")
+            {
+                animator.SetBool("isLich", true);
+            }
 
             healthBar = new World_Bar(transform, new Vector3(0, 0.8f), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
         }
 
+        if (LIsPlayerTeam) 
+        { 
+            healthText.text = statSheet.stats["Health"].ToString() + "/" + statSheet.stats["MaxHealth"].ToString();
+        }
 
         PlayAnimIdle();
     }
@@ -263,13 +288,17 @@ public class BattleCharacter : MonoBehaviour
         state = State.Attacking;
         attacker.animator.SetBool("MagAttacking", true);
 
-        if (attacker.statSheet.stats["Mana"] > 0)
+
+        if (attacker.GIsPlayerTeam)
         {
-            attacker.statSheet.stats["Mana"]--;
-        }
-        else
-        {
-            healthSystem.Damage(attacker.statSheet.stats["MaxHealth"] / 4);
+            if (attacker.statSheet.stats["Mana"] > 0)
+            {
+                attacker.statSheet.stats["Mana"]--;
+            }
+            else
+            {
+                healthSystem.Damage(attacker.statSheet.stats["MaxHealth"] / 4);
+            }
         }
 
         if (attacker.GIsPlayerTeam)
@@ -419,6 +448,10 @@ public class BattleCharacter : MonoBehaviour
                 am.playSFX(13);
             }
 
+            Transform damagePopupTransform = Instantiate(damagePopup, transform.position, Quaternion.identity);
+            DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
+            damPopScript.Setup(damageMinusDefense / 2);
+
             healthSystem.Damage(damageMinusDefense / 2);
             //Debug.Log("Defender Health: " + healthSystem.GetHealth());
         }
@@ -429,11 +462,20 @@ public class BattleCharacter : MonoBehaviour
                 am.playSFX(11);
             }
 
+            Transform damagePopupTransform = Instantiate(damagePopup, transform.position, Quaternion.identity);
+            DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
+            damPopScript.Setup(damageMinusDefense);
+
             healthSystem.Damage(damageMinusDefense);
             //Debug.Log("Defender Health: " + healthSystem.GetHealth());
         }
 
         statSheet.stats["Health"] = healthSystem.GetHealth();
+
+        if (GIsPlayerTeam)
+        {
+            healthText.text = statSheet.stats["Health"].ToString() + "/" + statSheet.stats["MaxHealth"].ToString();
+        }
 
         StartCoroutine(WaitUntilHurtOver(damageMinusDefense));
 
