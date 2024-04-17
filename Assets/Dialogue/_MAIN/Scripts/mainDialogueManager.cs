@@ -27,6 +27,7 @@ public class mainDialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] tweenOutPositions;
     [SerializeField] private Transform dialogueBox;
     [SerializeField] private audioManager am;
+    [SerializeField] private GameObject[] cutsceneScenes;
 
     public Animator battleFade;
 
@@ -158,10 +159,19 @@ public class mainDialogueManager : MonoBehaviour
             if (isBoss)
             {
                 battleFade.SetBool("BattleStarting", true);
+                //for(int i = 0; i < cutsceneScenes.Length; i++)
+                //{
+                //    cutsceneScenes[i].SetActive(true);
+                //}
                 return;
             }
             am.playBGM("T2");
             playerController.isfrozen = false;
         }
+    }
+
+    public void addCutscene(int whichImage)
+    {
+        cutsceneScenes[whichImage].SetActive(true);
     }
 }

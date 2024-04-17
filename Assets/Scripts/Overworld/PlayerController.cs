@@ -218,9 +218,35 @@ public class PlayerController : MonoBehaviour
                     }
                     break;
                 default:
-                    //i dont have these done yet
-                    //yeah that's fair
                     LichBoss = true;
+                    if (hasKisa && hasNicol && hasSophie)
+                    {
+                        mainDialogueManager.dialogueSTART("lichEncounter_kns");
+                    }
+                    else if (hasKisa && hasNicol)
+                    {
+                        mainDialogueManager.dialogueSTART("lichEncounter_knx");
+                    }
+                    else if (hasKisa && hasSophie)
+                    {
+                        mainDialogueManager.dialogueSTART("lichEncounter_kxs");
+                    }
+                    else if (hasNicol && hasSophie)
+                    {
+                        mainDialogueManager.dialogueSTART("lichEncounter_xns");
+                    }
+                    else if (hasKisa)
+                    {
+                        mainDialogueManager.dialogueSTART("lichEncounter_kxx");
+                    }
+                    else if (hasNicol)
+                    {
+                        mainDialogueManager.dialogueSTART("lichEncounter_xnx");
+                    }
+                    else
+                    {
+                        mainDialogueManager.dialogueSTART("lichEncounter_xxx");
+                    }
                     break;
             }
             //starting battle is now determined by the dialogue system! haha!
