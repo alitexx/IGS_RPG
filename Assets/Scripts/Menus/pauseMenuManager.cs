@@ -27,6 +27,11 @@ public class pauseMenuManager : MonoBehaviour
     [SerializeField] private Sprite[] partymemberSprites;
     [SerializeField] private GameObject[] partymemberIconAssets;
 
+    //SaveMenu Stuff
+    [SerializeField] private GameObject SaveMenu;
+    [SerializeField] private SavepointScript savepointScript;
+    [SerializeField] private PlayerController playerController;
+
     private void OnEnable()
     {
         //place all sprites where they need to be
@@ -212,5 +217,19 @@ public class pauseMenuManager : MonoBehaviour
                 //partymemberIconAssets[5].SetActive(true);
                 break;
         }
+    }
+
+    public void returnSaveMenu()
+    {
+        SaveMenu.SetActive(false);
+        playerController.isfrozen = false;
+
+    }
+
+    public void confirmSave()
+    {
+        savepointScript.confirmedSave();
+        SaveMenu.SetActive(false);
+        playerController.isfrozen = false;
     }
 }

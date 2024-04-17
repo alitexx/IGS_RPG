@@ -11,6 +11,7 @@ public class SavepointScript : MonoBehaviour
     public LevelManager levelManager;
     public audioManager audioManager;
     public PlayerController playerController;
+    public GameObject SaveMenu;
     //public GameObject SaveConfirm;
 
     // Start is called before the first frame update
@@ -22,12 +23,19 @@ public class SavepointScript : MonoBehaviour
         if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.interractButton))
         {
             //call function to heal, and eventually save.
-            levelManager.FullHeal();
-            audioManager.playSFX(19);
-            playerController.saveGame();
-            //confirm save/heal as a menu or something (name.setactive(true)
-            Debug.Log("YIPEEEE");
+            SaveMenu.SetActive(true);
+            playerController.isfrozen = true;
+            
         }
 
+    }
+
+    public void confirmedSave()
+    {
+        levelManager.FullHeal();
+        audioManager.playSFX(19);
+        playerController.saveGame();
+        //confirm save/heal as a menu or something (name.setactive(true)
+        Debug.Log("YIPEEEE");
     }
 }
