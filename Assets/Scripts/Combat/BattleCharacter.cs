@@ -162,6 +162,10 @@ public class BattleCharacter : MonoBehaviour
             {
                 animator.SetBool("isBadNicol", true);
             }
+            else if (statSheet.name == "Monk Guy")
+            {
+                animator.SetBool("isBadSophie", true);
+            }
             else if (statSheet.name == "Lich Guy")
             {
                 animator.SetBool("isLich", true);
