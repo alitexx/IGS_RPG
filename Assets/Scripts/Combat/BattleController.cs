@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class BattleController : MonoBehaviour
@@ -537,6 +538,11 @@ public class BattleController : MonoBehaviour
     public Animator battleFadeAnim;
 
     public audioManager am;
+
+    [SerializeField] private GameObject specialObject;
+    public UnityEngine.UI.Image specialButton;
+    public Sprite specReady;
+    public Sprite specNotReady;
     
     //Keys
 
@@ -586,6 +592,7 @@ public class BattleController : MonoBehaviour
     private void Start()
     {
         ResetStats(true, true);
+        specialButton = specialObject.GetComponent<UnityEngine.UI.Image>();
     }
 
     private void Update()
@@ -594,6 +601,15 @@ public class BattleController : MonoBehaviour
         if (state == State.WaitingForPlayer)
         {
             fightingButtons.SetActive(true);
+
+            if (activeChar.specialAvailable)
+            {
+                specialButton.sprite = specReady;
+            }
+            else
+            {
+                specialButton.sprite = specNotReady;
+            }
         }
         else
         {
@@ -793,7 +809,7 @@ public class BattleController : MonoBehaviour
 
     #endregion
 
-    public void specialButton()
+    public void SpecialButton()
     {
         /*activeChar.specialMove(enemyChar, activeChar, () =>
         {
