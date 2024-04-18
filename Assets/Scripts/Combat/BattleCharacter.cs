@@ -89,7 +89,7 @@ public class BattleCharacter : MonoBehaviour
     }
 
     //Sprite 
-    public void Setup(bool LIsPlayerTeam)
+    public void Setup(bool LIsPlayerTeam, int stageLevel)
     {
         this.GIsPlayerTeam = LIsPlayerTeam;
 
@@ -137,6 +137,8 @@ public class BattleCharacter : MonoBehaviour
         }
         else
         {
+            animator.SetInteger("StageLevel", stageLevel);
+
             //enemy
             if (statSheet.name == "Slime Guy")
             {

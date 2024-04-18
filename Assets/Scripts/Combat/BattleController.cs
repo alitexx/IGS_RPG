@@ -1223,7 +1223,7 @@ public class BattleController : MonoBehaviour
         }
 
 
-        battleCharacter.Setup(isPlayerTeam);
+        battleCharacter.Setup(isPlayerTeam, playerController.Level);
         
         characterQueue.Enqueue(battleCharacter);
 
