@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     //Save Data vars
     public int Level = 1;
     public int partyLevel = 1;
+    public int currentEXP = 0;
     public float[] playerPosition = new float[2];
     int KisainParty = 0;
     int NicolinParty = 0;
@@ -140,7 +141,8 @@ public class PlayerController : MonoBehaviour
             waypointTrail[3].position = waypointTrail[2].position;
         }
         */
-
+        
+        //Save stuff
         partyLevel = LevelManager.level;
 
         playerPosition[0] = transform.position.x;
@@ -267,7 +269,7 @@ public class PlayerController : MonoBehaviour
             hasSophie = false;
         }
         
-        if (collision.gameObject.name == "level2")
+        if (collision.gameObject.name == "level2" && Level != 2)
         {
             Level = 2;
             if (hasKisa)
@@ -278,7 +280,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.name == "level3")
+        if (collision.gameObject.name == "level3" && Level != 3)
         {
             Level = 3;
             if (hasKisa && hasNicol)
@@ -289,7 +291,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.name == "level4")
+        if (collision.gameObject.name == "level4" && Level != 4)
         {
             Level = 4;
             if (hasKisa && hasNicol && hasSophie)
@@ -403,6 +405,7 @@ public class PlayerController : MonoBehaviour
     {
         BattleTutorialCleared = 1;
         PlayerPrefs.SetInt("PartyLevel", partyLevel);
+        PlayerPrefs.SetInt("CurrentEXP", levelManager.currentEXP);
         PlayerPrefs.SetFloat("PlayerPositionX", playerPosition[0]);
         PlayerPrefs.SetFloat("PlauerPositionY", playerPosition[1]);
         PlayerPrefs.SetInt("hasKisa", KisainParty);
@@ -431,6 +434,7 @@ public class PlayerController : MonoBehaviour
     public void loadGame() 
     {
         LevelManager.level = PlayerPrefs.GetInt("PartyLevel");
+        levelManager.currentEXP = PlayerPrefs.GetInt("CurrentEXP");
         playerPosition[0] = PlayerPrefs.GetFloat("PlayerPositionX");
         playerPosition[1] = PlayerPrefs.GetFloat("PlayerPositiony");
         transform.position = new Vector2(playerPosition[0], playerPosition[1]);

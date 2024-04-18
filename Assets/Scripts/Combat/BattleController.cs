@@ -1696,6 +1696,8 @@ public class BattleController : MonoBehaviour
 
     public void AbsorbButton()
     {
+        playerController.Absorb();
+
         if (playerController.KisaBoss == true)
         {
             //Bard
@@ -1724,7 +1726,7 @@ public class BattleController : MonoBehaviour
             befriendOrAbsorbButton.SetActive(false);
         }
 
-        playerController.Absorb();
+        
 
         partyMembers.Clear();
         //playerController.isfrozen = false;
