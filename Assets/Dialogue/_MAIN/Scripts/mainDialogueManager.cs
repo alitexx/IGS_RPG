@@ -45,6 +45,10 @@ public class mainDialogueManager : MonoBehaviour
         //am.playBGM("T4"); // temporary
         //StartCoroutine(completeDialogue("TextFiles/deleteAfterTesting"));
         //dialogueSTART(fileName); // only here for testing
+        if (playerController.BattleTutorialCleared == 1)
+        {
+            playerController.loadGame();
+        }
     }
 
     //MUST PASS IN THE 
