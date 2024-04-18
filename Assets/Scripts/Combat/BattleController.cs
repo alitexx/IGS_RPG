@@ -953,6 +953,8 @@ public class BattleController : MonoBehaviour
                 yield return null;
             }
 
+            activeChar.animator.SetBool("MagAttacking", true);
+
             Vector3 position = activeChar.GetPosition();
             ParticleManager healParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
             healParticle.animator.SetBool("HealFX", true);
@@ -961,12 +963,15 @@ public class BattleController : MonoBehaviour
 
             am.playSFX(8);
 
+
             ParticleManager tauntParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
             tauntParticle.animator.SetBool("TauntFX", true);
 
             isTaunting = true;
 
             activeChar.healthSystem.Heal(activeChar.statSheet.stats["MaxHealth"] / 2);
+
+            activeChar.ChangeHealthText();
 
             backButton.SetActive(false);
 
@@ -1062,6 +1067,8 @@ public class BattleController : MonoBehaviour
                 yield return null;
             }
 
+            activeChar.animator.SetBool("MagAttacking", true);
+
             Vector3 singPosition = activeChar.GetPosition();
             ParticleManager singParticle = Instantiate(activeChar.particleManager, singPosition, Quaternion.identity, activeChar.transform);
             singParticle.animator.SetBool("KisaSingFX", true);
@@ -1079,7 +1086,11 @@ public class BattleController : MonoBehaviour
                 healParticle.animator.SetBool("HealFX", true);
 
                 playerList[i].healthSystem.Heal(playerList[i].statSheet.stats["MaxHealth"] / 2);
+
+                playerList[i].ChangeHealthText();
+
                 am.playSFX(12);
+                
             }
 
             //ChooseNextActiveChar();
@@ -1259,7 +1270,11 @@ public class BattleController : MonoBehaviour
         }
 
         activeChar = battleCharacter;
-        activeChar.ShowSelectionCircle();
+
+        if (activeChar.GIsPlayerTeam)
+        {
+            activeChar.ShowSelectionCircle();
+        }
     }
 
     //changes turns
@@ -1385,6 +1400,13 @@ public class BattleController : MonoBehaviour
                         ChooseNextActiveChar();
                     });
                 }
+                else if (activeChar.statSheet.magicElement == "Bone")
+                {
+                    activeChar.magAttack(playerList[enemyTarget], activeChar, () =>
+                    {
+                        ChooseNextActiveChar();
+                    });
+                }
                 else
                 {
                     int whichAttack = Random.Range(1, 3);
@@ -1412,6 +1434,13 @@ public class BattleController : MonoBehaviour
                 if (activeChar.statSheet.magicElement == "No Magic")
                 {
                     activeChar.Attack(tankChar, activeChar, () =>
+                    {
+                        ChooseNextActiveChar();
+                    });
+                }
+                else if (activeChar.statSheet.magicElement == "Bone")
+                {
+                    activeChar.magAttack(tankChar, activeChar, () =>
                     {
                         ChooseNextActiveChar();
                     });

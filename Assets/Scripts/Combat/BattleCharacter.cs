@@ -53,7 +53,7 @@ public class BattleCharacter : MonoBehaviour
 
     private GameObject healthParent;
     private Transform healthObject;
-    private TextMeshProUGUI healthText;
+    public TextMeshProUGUI healthText;
 
     public bool specialAvailable;
 
@@ -132,8 +132,8 @@ public class BattleCharacter : MonoBehaviour
                 animator.SetBool("isBard", true);
             }
 
-            healthBar = new World_Bar(transform, new Vector3(0, 0.8f), new Vector3(1, 0.2f), Color.grey, Color.green, healthSystem.GetHealthPercent(), 100, new World_Bar.Outline { color = Color.black, size = 0.15f });
-            manaBar = new World_Bar(transform, new Vector3(0, 1f), new Vector3(1, 0.2f), Color.grey, Color.blue, (float)statSheet.stats["Mana"] / statSheet.stats["MaxMana"], 100, new World_Bar.Outline { color = Color.black, size = 0.15f });
+            healthBar = new World_Bar(transform, new Vector3(0, 1.4f), new Vector3(1, 0.2f), Color.grey, Color.green, healthSystem.GetHealthPercent(), 100, new World_Bar.Outline { color = Color.black, size = 0.15f });
+            manaBar = new World_Bar(transform, new Vector3(0, 1.6f), new Vector3(1, 0.2f), Color.grey, Color.blue, (float)statSheet.stats["Mana"] / statSheet.stats["MaxMana"], 100, new World_Bar.Outline { color = Color.black, size = 0.15f });
         }
         else
         {
@@ -224,6 +224,7 @@ public class BattleCharacter : MonoBehaviour
                 }
                 break;
         }
+
     }
     
 
@@ -232,6 +233,8 @@ public class BattleCharacter : MonoBehaviour
     {
         return transform.position;
     }
+
+    #region Attacks, Hurt, and Animations
     public void Attack(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
     {
         Vector3 slideCloseToTargetPosition = targetCharacter.GetPosition() + (GetPosition() - targetCharacter.GetPosition()).normalized * 3f;
@@ -291,6 +294,8 @@ public class BattleCharacter : MonoBehaviour
     public void AttackOver()
     {
         state = State.Busy;
+
+        animator.SetBool("Attacking", false);
     }
 
     public void magAttack(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
@@ -314,6 +319,11 @@ public class BattleCharacter : MonoBehaviour
         if (attacker.GIsPlayerTeam)
         {
             manaBar.SetSize((float)attacker.statSheet.stats["Mana"] / attacker.statSheet.stats["MaxMana"]);
+        }
+
+        if (attacker.statSheet.magicElement == "Bone")
+        {
+            LichAttack(targetCharacter);
         }
 
         StartCoroutine(WaitUntilMagAttackOver(targetCharacter, attacker, onAttackComplete));
@@ -375,6 +385,8 @@ public class BattleCharacter : MonoBehaviour
     public void magAttackOver()
     {
         state = State.Busy;
+
+        animator.SetBool("MagAttacking", false);
     }
 
     /*public void specialMove(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
@@ -485,7 +497,7 @@ public class BattleCharacter : MonoBehaviour
 
         if (GIsPlayerTeam)
         {
-            healthText.text = statSheet.stats["Health"].ToString() + "/" + statSheet.stats["MaxHealth"].ToString();
+            ChangeHealthText();
         }
 
         StartCoroutine(WaitUntilHurtOver(damageMinusDefense));
@@ -519,6 +531,21 @@ public class BattleCharacter : MonoBehaviour
     public void HurtOver()
     {
         animator.SetBool("Hurt", false);
+    }
+
+    public void LichAttack(BattleCharacter target)
+    {
+        Vector3 position = target.GetPosition();
+        ParticleManager particle = Instantiate(particleManager, position, Quaternion.identity, target.transform);
+        particle.animator.SetBool("LichFX", true);
+    }
+
+    #endregion
+
+    public void ChangeHealthText()
+    {
+        statSheet.stats["Health"] = healthSystem.GetHealth();
+        healthText.text = statSheet.stats["Health"].ToString() + "/" + statSheet.stats["MaxHealth"].ToString();
     }
 
     //Code for checking if an enemy is dead

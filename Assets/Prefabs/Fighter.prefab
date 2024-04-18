@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356762443280982835}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.332, z: 1}
+  m_LocalPosition: {x: -0, y: 1.9, z: 1}
   m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 0.49999997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -510,6 +510,7 @@ MonoBehaviour:
   amGameObject: {fileID: 0}
   particleManager: {fileID: 4836191928861364526, guid: 90e2bdc31e6857a43bb8c4f9b4a25c3e, type: 3}
   damagePopup: {fileID: 825852696272911183, guid: 370aad247ef72d241ae78cd4f777f267, type: 3}
+  healthText: {fileID: 0}
   specialAvailable: 0
 --- !u!95 &7197455562530669128
 Animator:
