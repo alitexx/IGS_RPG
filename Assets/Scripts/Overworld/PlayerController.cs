@@ -267,7 +267,7 @@ public class PlayerController : MonoBehaviour
             hasSophie = false;
         }
         
-        if (collision.gameObject.name == "level2")
+        if (collision.gameObject.name == "level2" && Level != 2)
         {
             Level = 2;
             if (hasKisa)
@@ -278,7 +278,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.name == "level3")
+        if (collision.gameObject.name == "level3" && Level != 3)
         {
             Level = 3;
             if (hasKisa && hasNicol)
@@ -289,7 +289,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.name == "level4")
+        if (collision.gameObject.name == "level4" && Level != 4)
         {
             Level = 4;
             if (hasKisa && hasNicol && hasSophie)
