@@ -28,6 +28,7 @@ public class mainDialogueManager : MonoBehaviour
     [SerializeField] private Transform dialogueBox;
     [SerializeField] private audioManager am;
     [SerializeField] private GameObject[] cutsceneScenes;
+    [SerializeField] private GameObject[] cutsceneVariations;
 
     public Animator battleFade;
 
@@ -176,6 +177,31 @@ public class mainDialogueManager : MonoBehaviour
 
     public void addCutscene(int whichImage)
     {
-        cutsceneScenes[whichImage].SetActive(true);
+        //do a switch statement here for if the cutscene is one that requires changing based on current party members
+        switch (whichImage)
+        {
+            case 0: // COME HERE!!! FIX THIS!! EDIT THIS!!!
+                if (!playerController.hasKisa)
+                {
+                    cutsceneVariations[0].SetActive(false);
+                }
+                if (!playerController.hasNicol)
+                {
+                    cutsceneVariations[1].SetActive(false);
+                }
+                if (!playerController.hasSophie)
+                {
+                    cutsceneVariations[2].SetActive(false);
+                }
+                break;
+        }
+        if (whichImage >= 0 && whichImage <= cutsceneScenes.Length)
+        {
+            cutsceneScenes[whichImage].SetActive(true);
+        } else
+        {
+            Debug.LogWarning("You need to pass in a number from 0 to " + cutsceneScenes.Length.ToString() + "for cutscenes!");
+        }
+        
     }
 }

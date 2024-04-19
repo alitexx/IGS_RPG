@@ -14,6 +14,7 @@ namespace COMMANDS
         {
             database.AddCommand("wait", new Func<string, IEnumerator>(Wait));
             database.AddCommand("endDialogue", new Action<string> (endDialogue));
+            database.AddCommand("addCutscene", new Action<string>(addCutscene));
         }
 
         private static IEnumerator Wait(string data)
@@ -41,20 +42,12 @@ namespace COMMANDS
             {
                 Debug.Log(isBoss + " needs to be a true or a false.");
             }
+        }
+        private static void addCutscene(string whichCutscene)
+        {
 
-            //switch (bossName.ToUpper())
-            //{
-            //    case "KISA":
-            //        break;
-            //    case "NICOL":
-            //        break;
-            //    case "SOPHIE":
-            //        break;
-            //    case "LICH":
-            //        break;
-            //    case "SECRET":
-            //        break;
-            //}
+            MainDiaManager = GameObject.FindGameObjectWithTag("MainDialogueManager").GetComponent<mainDialogueManager>();
+            MainDiaManager.addCutscene(int.Parse(whichCutscene));
         }
     }
 }
