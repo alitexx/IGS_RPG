@@ -28,9 +28,33 @@ public class creditsManager : MonoBehaviour
     // 1 = nicol
     // 2 = sophie
     // 3 = alan
+    [SerializeField] private Animator animator;
+
+    IEnumerator runText()
+    {
+        // Turn on the animation controller
+        animator.enabled = true;
+
+        // Play the animation
+        animator.Play("credits");
+
+        // Wait until the animation completes
+        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
+        {
+            yield return null;
+        }
+
+        // Disable the animation controller
+        animator.enabled = false;
+        textScroll.position = finalTextPos.position;
+
+        fadeOutBG.DOFade(0, 5).OnComplete(() => {
+            ReturnButton.DOFade(1, 1);
+        });
+    }
 
 
-    private void OnEnable()
+private void OnEnable()
     {
         switch (endingID)
         {
@@ -62,11 +86,7 @@ public class creditsManager : MonoBehaviour
         audioManager.playBGM("T10");
         fadeInBG.DOFade(0, 2).OnComplete(() => {
             fadeInBG.gameObject.SetActive(false);
-            textScroll.DOMove(finalTextPos.position, 50).OnComplete(() => {
-                fadeOutBG.DOFade(0, 5).OnComplete(() => {
-                    ReturnButton.DOFade(1, 1);
-                });
-            });
+            StartCoroutine(runText());
         });
         
     }
