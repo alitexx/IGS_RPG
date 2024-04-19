@@ -21,7 +21,7 @@ public class youWinMenu : MonoBehaviour
     public static string loadedDialogue = "...";
     private bool hasUpdatedGained = false;
     private int remainingExp;
-    private float fillAmountVal;
+    private float fillAmountVal = 0;
 
     public LevelManager levelManager;
 
@@ -91,11 +91,11 @@ public class youWinMenu : MonoBehaviour
             }
             am.playSFX(15);
             //levelManager.LevelUp();
-            gainedEXP.gameObject.SetActive(false);
-            expBar.gameObject.SetActive(false);
+            //gainedEXP.gameObject.SetActive(false);
+            //expBar.gameObject.SetActive(false);
             levelUpObject.SetActive(true);
             StopCoroutine(gainExperienceCoroutine);
-            yield return new WaitForSeconds(1); // Wait for player interaction with level up screen
+            yield return new WaitForSeconds(0.25f); // Wait for player interaction with level up screen
             newValue = 0;
             expSliderBar.fillAmount = 0;
             currentExperience = 0; // Reset current EXP to 0 after leveling up
@@ -126,12 +126,12 @@ public class youWinMenu : MonoBehaviour
         }
 
         // If coroutine completes without pausing, update the current EXP to the target value
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
+        expSliderBar.fillAmount = fillAmountVal;
         levelManager.currentEXP = Mathf.RoundToInt(newValue);
         currentExperience = Mathf.RoundToInt(newValue);
         currentEXP.text = Mathf.RoundToInt(currentExperience).ToString() + "/100";
         hasUpdatedGained = false;
-        expSliderBar.fillAmount = fillAmountVal;
         endBattleButton.gameObject.SetActive(true);
         endBattleButton.DOMove(locations[6].position, 1f);
         
@@ -149,10 +149,12 @@ public class youWinMenu : MonoBehaviour
     {
         gainedExperience = (currentExperience + gainedExperience) - 100;
         currentExperience = 0; // Reset current EXP to 0 after leveling up
+        expSliderBar.fillAmount = 0;
+        fillAmountVal = 0;
         hasUpdatedGained = true;
         levelUpObject.SetActive(false);
-        expBar.gameObject.SetActive(true);
-        gainedEXP.gameObject.SetActive(true);
+        //expBar.gameObject.SetActive(true);
+        //gainedEXP.gameObject.SetActive(true);
         gainExperienceCoroutine = StartCoroutine(ShowGainedExperience());
     }
 

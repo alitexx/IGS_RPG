@@ -14,6 +14,7 @@ public class levelUpUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] statBonusTXT;
     [SerializeField] private PlayerController pc;
     [SerializeField] private youWinMenu ywm;
+    [SerializeField] private CanvasGroup darkbg;
     public BattleController battleController;
 
     public LevelManager levelManager;
@@ -59,13 +60,13 @@ public class levelUpUI : MonoBehaviour
 
     private void OnEnable()
     {
+        darkbg.DOFade(1, 0.75f);
         getCurrentStats();
-
         setStatsGained();
         boxesToDisplay[1].SetActive(pc.hasKisa);
         boxesToDisplay[2].SetActive(pc.hasNicol);
         boxesToDisplay[3].SetActive(pc.hasSophie);
-        lvlUpText.DOMove(locations[0].position, 0.5f).OnComplete(() => {
+        lvlUpText.DOMove(locations[0].position, 0.35f).OnComplete(() => {
             lvlupboxes.DOMove(locations[1].position, 0.75f).OnComplete(() => {
                 exitlvlUpBTN.DOMove(locations[2].position, 1f);
             });
@@ -108,12 +109,12 @@ public class levelUpUI : MonoBehaviour
             */
 
             statBonusTXT[i].text =
-                    "Strength: " + currentStats[i][0] + "(<color=#3B7D4F>+" + (currentStats[i][0] - previousStats[i][0]) + "</color>)\r\n" +
-                    "Mag. ATK: " + currentStats[i][1] + "(<color=#3B7D4F>+" + (currentStats[i][1] - previousStats[i][1]) + "</color>\r\n" +
-                    "Defense: " + currentStats[i][2] + "(<color=#3B7D4F>+" + (currentStats[i][2] - previousStats[i][2]) + "</color>)\r\n" +
-                    "Speed: " + currentStats[i][3] + "(<color=#3B7D4F>+" + (currentStats[i][3] - previousStats[i][3]) + "</color>)\r\n" +
-                    "Max Health: " + currentStats[i][5] + "(<color=#3B7D4F>+" + (currentStats[i][5] - previousStats[i][5]) + "</color>)\r\n" +
-                    "Max Mana: " + currentStats[i][7] + "(<color=#3B7D4F>+" + (currentStats[i][7] - previousStats[i][7]) + "</color>)";
+                    "Strength: " + currentStats[i][0] + " (<color=#3B7D4F>+" + (currentStats[i][0] - previousStats[i][0]) + "</color>)\r\n" +
+                    "Mag. ATK: " + currentStats[i][1] + " (<color=#3B7D4F>+" + (currentStats[i][1] - previousStats[i][1]) + "</color>)\r\n" +
+                    "Defense: " + currentStats[i][2] + " (<color=#3B7D4F>+" + (currentStats[i][2] - previousStats[i][2]) + "</color>)\r\n" +
+                    "Speed: " + currentStats[i][3] + " (<color=#3B7D4F>+" + (currentStats[i][3] - previousStats[i][3]) + "</color>)\r\n" +
+                    "Max Health: " + currentStats[i][5] + " (<color=#3B7D4F>+" + (currentStats[i][5] - previousStats[i][5]) + "</color>)\r\n" +
+                    "Max Mana: " + currentStats[i][7] + " (<color=#3B7D4F>+" + (currentStats[i][7] - previousStats[i][7]) + "</color>)";
 
             previousStats[i][0] = currentStats[i][0];
             previousStats[i][1] = currentStats[i][1];
@@ -128,11 +129,12 @@ public class levelUpUI : MonoBehaviour
 
     public void exitLevelUpUI()
     {
+        darkbg.DOFade(1, 0.75f);
         exitlvlUpBTN.DOMove(locations[4].position, 0.5f);
         lvlupboxes.DOMove(locations[4].position, 0.75f);
         lvlUpText.DOMove(locations[0].position, 1f).OnComplete(() => {
-                this.gameObject.SetActive(false);
-                ywm.ContinueLevelGaining();
+            ywm.ContinueLevelGaining();
+            this.gameObject.SetActive(false);
         });
     }
 }
