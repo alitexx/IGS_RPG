@@ -58,7 +58,7 @@ public class pause_characterInspection : MonoBehaviour
                 break;
         }
         stats_1.text = $"Strength: {selectedCharacterStats[0]}\r\nMagic Attack: {selectedCharacterStats[1]}\r\nDefense: {selectedCharacterStats[2]}\r\nSpeed: {selectedCharacterStats[3]}";
-        stats_2.text = $"Health: {selectedCharacterStats[4]}/{selectedCharacterStats[5]}\r\n\r\nMana: {selectedCharacterStats[6]}/{selectedCharacterStats[7]}";
+        stats_2.text = $"Health: {selectedCharacterStats[4]}/{selectedCharacterStats[5]}\r\nMana: {selectedCharacterStats[6]}/{selectedCharacterStats[7]}";
         HPMPSliders[0].value = selectedCharacterStats[4] / selectedCharacterStats[5];
         HPMPSliders[1].value = selectedCharacterStats[6] / selectedCharacterStats[7];
         selectedCharacterStats = null;
