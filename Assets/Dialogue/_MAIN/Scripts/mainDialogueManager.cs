@@ -180,7 +180,7 @@ public class mainDialogueManager : MonoBehaviour
         //do a switch statement here for if the cutscene is one that requires changing based on current party members
         switch (whichImage)
         {
-            case 0: // COME HERE!!! FIX THIS!! EDIT THIS!!!
+            case 0:
                 if (!playerController.hasKisa)
                 {
                     cutsceneVariations[0].SetActive(false);
@@ -194,13 +194,32 @@ public class mainDialogueManager : MonoBehaviour
                     cutsceneVariations[2].SetActive(false);
                 }
                 break;
+            case 2:
+                if (!playerController.hasKisa)
+                {
+                    cutsceneVariations[3].SetActive(false);
+                }
+                if (!playerController.hasNicol)
+                {
+                    cutsceneVariations[4].SetActive(false);
+                }
+                if (!playerController.hasSophie)
+                {
+                    cutsceneVariations[5].SetActive(false);
+                }
+                if(playerController.hasKisa && !playerController.hasNicol && !playerController.hasSophie) // if this is a kisa only route
+                {
+                    cutsceneVariations[3].SetActive(false);
+                    cutsceneVariations[6].SetActive(true);
+                }
+                break;
         }
         if (whichImage >= 0 && whichImage <= cutsceneScenes.Length)
         {
             cutsceneScenes[whichImage].SetActive(true);
         } else
         {
-            Debug.LogWarning("You need to pass in a number from 0 to " + cutsceneScenes.Length.ToString() + "for cutscenes!");
+            Debug.LogWarning("You need to pass in a number from 0 to " + cutsceneScenes.Length.ToString() + "for cutscenes! See _MainDialogueManager game object for the list of cutscenes.");
         }
         
     }
