@@ -9,6 +9,7 @@ kisa "Sophie, you are worrying me. You never hesitate, yet you do so now. Where 
 sophie "I hesitate because I do not know the best way to inform you of his whereabouts. It is a difficult topic to discuss with anyone, even someone I hold in high regard."
 sophie "I was not expecting such an event to transpire, and your blissful ignorance is... surprising, to say the least."
 alan "Perhaps it is a conversation best had outside of the tower."
+addCutscene(2)
 sophie "I agree. Come, Kisa, I will attempt to articulate the events as we walk."
 kisa "I do not know why you must articulate your words so! It must be simple, yes? Did he wander off to... I do not know, a farm? He looks like a cat, maybe he saw a mouse. Does he eat mice?"
 sophie "No. Well, perhaps one could think of it in that way."

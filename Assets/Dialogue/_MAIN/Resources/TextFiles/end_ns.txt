@@ -6,6 +6,7 @@ nicol "And so our journey comes to an end. We live to fight another day!"
 sophie "..."
 nicol "Sophia, what is with the long face? We have completed our mission, you have avenged your students!"
 sophie "I... wish I had done things differently. She could have been here with us."
+addCutscene(2)
 nicol "I understand. You had no hand to play in what has happened, yet you find that you are the one to blame."
 nicol "Let us leave this place, yes? We can discuss these matters elsewhere."
 nicol "Good luck, my rival. May you accomplish your end goal, whatever it may be."

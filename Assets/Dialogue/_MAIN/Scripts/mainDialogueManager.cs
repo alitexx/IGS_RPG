@@ -29,6 +29,7 @@ public class mainDialogueManager : MonoBehaviour
     [SerializeField] private audioManager am;
     [SerializeField] private GameObject[] cutsceneScenes;
     [SerializeField] private GameObject[] cutsceneVariations;
+    [SerializeField] private GameObject continueTextPrompt;
 
     public Animator battleFade;
 
@@ -37,18 +38,22 @@ public class mainDialogueManager : MonoBehaviour
     // when loading something from resources, you dont specify the file extension
     //[SerializeField] private TextAsset fileName;
     public bool dialogueRunning = false; // Track if dialogue coroutine is running
-    private string fileName = "openingScene";
+    private string fileName = "end_genocide";
 
     private string currentlyRunningText = "";
 
     private void Start()
     {
-        //am.playBGM("T4"); // temporary
-        //StartCoroutine(completeDialogue("TextFiles/deleteAfterTesting"));
+        //make characters
+        StartCoroutine(completeDialogue("TextFiles/deleteAfterTesting"));
+
         //dialogueSTART(fileName); // only here for testing
         if (playerController.BattleTutorialCleared == 1)
         {
             playerController.loadGame();
+        } else // if they have not cleared the tutorial
+        {
+            dialogueSTART(fileName);
         }
     }
 
@@ -117,10 +122,11 @@ public class mainDialogueManager : MonoBehaviour
         {
             StopCoroutine(completeDialogue(currentlyRunningText));
             dialogueRunning = false; // Set the flag to false when stopping the coroutine
-            if (currentlyRunningText == "openingScene")
+            if (currentlyRunningText == "prologue")
             {
                 firstSign.enabled = true;
             }
+            //for determining endings
             switch (currentlyRunningText) // if this is the end of a route
             {
                 case "end_genocide":// 0 = everyone dead
@@ -156,18 +162,17 @@ public class mainDialogueManager : MonoBehaviour
                     break;
             }
             currentlyRunningText = "";
-            
-
+            continueTextPrompt.SetActive(false);
             top.DOMove(tweenOutPositions[0].transform.position, 2);
             bottom.DOMove(tweenOutPositions[1].transform.position, 2);
             dialogueBox.DOMove(tweenOutPositions[2].transform.position, 2);
             if (isBoss)
             {
                 battleFade.SetBool("BattleStarting", true);
-                //for(int i = 0; i < cutsceneScenes.Length; i++)
-                //{
-                //    cutsceneScenes[i].SetActive(true);
-                //}
+                for (int i = 0; i < cutsceneScenes.Length; i++)
+                {
+                    cutsceneScenes[i].SetActive(false);
+                }
                 return;
             }
             am.playBGM("T2");

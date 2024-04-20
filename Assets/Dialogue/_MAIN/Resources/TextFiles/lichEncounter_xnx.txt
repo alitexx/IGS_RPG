@@ -4,10 +4,12 @@ Hide(nicol)
 Hide(alan)
 Hide(kisa)
 wait(1)
+addCutscene(0)
 alan "Lich! Prepare to meet your doom, justice will be served!"
 lich "Oh? It appears more glory-seeking rats have crawled into my domain."
 lich "Why must you mortals be so keen on disrupting my work? You come in droves but are so fragile. No matter, your souls shall sate my hunger tonight."
 nicol "I have vanquished my fair share of liches, yet I had forgotten the oppressive aura they emit; their destruction for selfish gain sickens me."
+addCutscene(1)
 lich "Are we not all driven by self-interest? You adventurers use the term justice when you deem your actions 'right', but you enforce justice for your own benefit. We are but two sides of the same coin."
 lich "I can sense your hesitation, you know I speak the truth. You have witnessed such acts of 'righteousness'. You have a fellow soul reaper in your midst. Why do you stand by him if he is my equal?"
 lich "Regardless, the more souls I collect, the stronger I become. Your group will make a fine addition to my collection."

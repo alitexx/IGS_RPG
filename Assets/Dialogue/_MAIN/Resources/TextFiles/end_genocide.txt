@@ -6,9 +6,16 @@ wait(1)
 alan "You are in my way. Move."
 lich "Oh? It appears another glory-seeking rat has crawled into my domain."
 lich "Why must you mortals be so keen on disrupting my work? You come in droves but are so fragile. No matter, your soul shall-"
+addCutscene(4)
+wait(0.5)
+addCutscene(5)
+wait(2)
+addCutscene(6)
+wait(2)
 alan "I do not fear you, lich."
 leora "Alan..."
 alan "Leora! It is truly you!"
+addCutscene(7)
 leora "Do not come near. I do not wish to embrace you."
 alan "What? Leora, what could you mean?"
 leora "Open your eyes, behold the consequences of your actions. You betrayed all that the knight’s code stands for."
@@ -19,6 +26,7 @@ leora "You have let the words of a devil twist your perception, Alan. What you h
 leora "Alas, I cannot change the past. Three innocents have been slain, but one can always work towards redemption."
 alan "No, they weren’t innocent! They attacked me first, I <i>had</i> to defeat them!"
 leora "Alan, do you know the concept of mercy? You could have chosen to show any one of them mercy, yet you let your obsession with my return cloud your vision."
+addCutscene(8)
 miguel "Ta-dah! Leora has returned, Alan! Isn't this splendid?"
 alan "No, it is not splendid. I wanted everything to return to the way it was... why? Why can I do nothing right?"
 miguel "Cheer up, friend! I am sure you would feel better if you collected a few more souls for me..."
@@ -26,12 +34,15 @@ alan "That is the last thing I would like to do. Is our contract not complete? W
 miguel "What is with the surprise? Have you not read the fine print?"
 alan "Fine print? There was no fine print!"
 miguel "Oh, it seems you did not read the contract in its entirety."
+addCutscene(9)
 miguel "''Section D23: Upon the collection of three souls, both contracting parties are bound by the following terms until either A: The revived party deceases or B: Either signatory meets demise.''"
 alan "There has to be a mistake, that is not true!"
 miguel "Trust me, my friend, I do not make mistakes. If you'd like to void the contract, that could be permitted, however..."
+addCutscene(10)
 miguel "I would be required to subject her to a gradual incineration and send her to the deepest layer of Hell. That is what happens to those involved in an infernal contract, I'm afraid."
 miguel "So? What will it be?"
 leora "Alan... end the contract. I do not care what becomes of me, you cannot keep collecting innocent souls for this devil. I have died once, I am not afraid to die again. End it."
+addCutscene(11)
 alan "No... I cannot end it. I cannot have you taken from me again."
 alan "I will do as the devil says."
 leora "NO! End the contract! ALAN!"

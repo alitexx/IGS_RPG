@@ -7,6 +7,7 @@ alan "What will become of this tower?"
 nicol "The lich interwove his magic into these very walls. Now that he has been slain, all hostile creates should be subdued, lessening the violence in Isen..."
 nicol "Please do not speak the words I fear you will."
 alan "What? Without a lich, this tower is simply a structure, is it not? It could be restored and reborn as a place of hope instead of despair."
+addCutscene(2)
 nicol "I am doubtful, given your recent actions. But I cannot halt your plans."
 nicol "One day, we may meet again, my rival. I hope you do not become my nemesis by then."
 endDialogue(false)
