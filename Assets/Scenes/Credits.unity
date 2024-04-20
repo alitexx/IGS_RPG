@@ -2366,8 +2366,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2643,7 +2643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1429834544
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3482,8 +3482,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3887,28 +3887,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "After the events at the lich\u2019s tower, Alan takes a much-needed break
-    from his duties to prioritize his mental well-being. This time is short-lived,
-    as Alan tends to find himself in the middle of conflict, fighting for the side
-    of justice. He would go on many adventures, but unlike this quest, the temptation
-    to revive his mentor had vanished. He would sometimes get wistful reminiscing
-    about Leora, but he accepted the past was the past and it was time to move on.\r\n\r\nOnce
-    their celebration concluded, Kisa ran home to tell her family of her journey.
-    They were dismissive of her accomplishments and critical of her desire to continue
-    the dangerous life of an adventurer. Kisa was furious, especially since she went
-    through this ordeal to impress them. She ran away days later, choosing a life
-    of excitement over a life of normalcy.\r\n\r\nNicol disappeared soon after the
-    party\u2019s celebration, continuing his carefree exploration of this world.
-    He still treasures the bond he has with his companions, somehow winding up back
-    in Isen for holidays to reunite with them. Despite all of his journey and experiences,
-    Nicol never lost his childlike wonder for uncovering the secrets of the world\r\n\r\nSophie
-    held a small funeral for her fallen students on her arrival home, still feeling
-    a twinge of guilt; if only she knew of the danger awaiting them, she could have
-    prevented their deaths. Twas a fleeting thought, as she knew she could not change
-    the past. Sophie reopened her dojo and expected this to become a distant memory,
-    yet she found herself reminiscing on the fond times with her companions. It was
-    then that she knew how to respond to Kisa, and finally told Kisa the words she
-    wanted to hear.\r\n"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 950642c6951a98740b8a4932108fa64a, type: 2}
   m_sharedMaterial: {fileID: -1194781364847082302, guid: 950642c6951a98740b8a4932108fa64a, type: 2}
