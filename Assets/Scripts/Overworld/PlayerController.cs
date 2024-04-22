@@ -247,7 +247,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        mainDialogueManager.dialogueSTART("lichEncounter_xxx");
+                        mainDialogueManager.dialogueSTART("end_genocide");
                     }
                     break;
             }

@@ -22,6 +22,7 @@ public class mainDialogueManager : MonoBehaviour
     [SerializeField] private Transform bottom;
     [SerializeField] private Transform top;
     [SerializeField] private CanvasGroup fadeOut;
+    [SerializeField] private CanvasGroup cutsceneBG;
     [SerializeField] private GameObject[] tweenInPositions;
     [SerializeField] private SignInteraction firstSign;
     [SerializeField] private GameObject[] tweenOutPositions;
@@ -74,6 +75,10 @@ public class mainDialogueManager : MonoBehaviour
             top.DOMove(tweenInPositions[0].transform.position, 1.5f);
             bottom.DOMove(tweenInPositions[1].transform.position, 1.5f);
             dialogueBox.DOMove(tweenInPositions[2].transform.position, 1.5f);
+            if (dialogueFile.StartsWith("end"))
+            {
+                cutsceneBG.DOFade(1, 1f);
+            }
             switch (dialogueFile)
             {
                 case "kisaPostFight_k":

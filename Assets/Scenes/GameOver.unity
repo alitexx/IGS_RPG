@@ -3386,7 +3386,7 @@ MonoBehaviour:
   - {fileID: 2091868161}
   - {fileID: 847966554}
   - {fileID: 651965268}
-  voiceVol: {fileID: 0}
+  voiceVol: {fileID: 1375333272}
 --- !u!4 &1002747116
 Transform:
   m_ObjectHideFlags: 0
