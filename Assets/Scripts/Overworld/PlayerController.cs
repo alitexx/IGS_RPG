@@ -152,15 +152,27 @@ public class PlayerController : MonoBehaviour
         {
             KisainParty = 1;
         }
+        else
+        {
+            KisainParty = 0;
+        }
 
         if (hasNicol == true)
         {
             NicolinParty = 1;
         }
+        else
+        {
+            NicolinParty = 0;
+        }
 
         if (hasSophie == true)
         {
             SophieinParty = 1;
+        }
+        else
+        {
+            SophieinParty = 0;
         }
     }
 
@@ -428,11 +440,12 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("BattleTutorialCleared", BattleTutorialCleared);
         PlayerPrefs.Save();
         Debug.Log("Saved stuff?");
-        Debug.Log(PlayerPrefs.GetFloat("PlayerPositionX"));
-        Debug.Log(PlayerPrefs.GetFloat("PlayerPositionY"));
-        Debug.Log(PlayerPrefs.GetInt("CurrentEXP"));
-        Debug.Log(PlayerPrefs.GetInt("FloorLevel"));
-        Debug.Log(PlayerPrefs.GetInt("PartyLevel"));
+        //Debug.Log(PlayerPrefs.GetFloat("PlayerPositionX"));
+        //Debug.Log(PlayerPrefs.GetFloat("PlayerPositionY"));
+        //Debug.Log(PlayerPrefs.GetInt("CurrentEXP"));
+        //Debug.Log(PlayerPrefs.GetInt("FloorLevel"));
+        //Debug.Log(PlayerPrefs.GetInt("PartyLevel"));
+        Debug.Log(PlayerPrefs.GetInt("hasKisa"));
     }
 
     public void DeleteSave() 
@@ -450,6 +463,9 @@ public class PlayerController : MonoBehaviour
         playerPosition[1] = PlayerPrefs.GetFloat("PlayerPositionY");
         transform.position = new Vector2(playerPosition[0], playerPosition[1]);
         KisainParty = PlayerPrefs.GetInt("hasKisa");
+
+        Debug.Log("HasKisa: " + KisainParty);
+
         if (KisainParty == 1)
         {
             hasKisa = true;

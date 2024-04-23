@@ -168,6 +168,8 @@ public class LevelManager : MonoBehaviour
     {
         level = playerController.partyLevel;
 
+        //Debug.Log(tankStoredStats[5]);
+
         /*if (Instance != null)
         {
             Destroy(this.gameObject);
@@ -192,9 +194,9 @@ public class LevelManager : MonoBehaviour
     {
         level = loadedLevel;
 
-        Debug.Log(level);
+        //Debug.Log(level);
 
-        if (playerController.BattleTutorialCleared == 1)
+        if (playerController.BattleTutorialCleared != 1)
         {
             for (int i = 0; i < 8; i++)
             {
@@ -219,7 +221,7 @@ public class LevelManager : MonoBehaviour
             tankStoredStats[5] += (1 * (level - 1));
         }
 
-        Debug.Log(tankStoredStats[5]);
+        //Debug.Log(tankStoredStats[5]);
     }
 
     public void LevelUp()
