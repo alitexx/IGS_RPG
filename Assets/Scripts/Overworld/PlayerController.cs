@@ -186,6 +186,9 @@ public class PlayerController : MonoBehaviour
 
             switch (collision.gameObject.name)
             {
+                case "0":
+                    //start pre-tutorial dialogue
+                    //start tutorial fight
                 case "1":
                     KisaBoss = true;
                     mainDialogueManager.dialogueSTART("kisaEncounter");
