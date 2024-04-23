@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private pauseMenuManager pauseMenuManager;
     [SerializeField] private mainDialogueManager mainDialogueManager;
+    [SerializeField] private PlayerController playerController;
 
     static LevelManager Instance;
 
@@ -508,11 +509,11 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < lSlimeStats.Length; i++)
         {
-            lSlimeStats[i] += 1 * (level - 1);
+            lSlimeStats[i] += 1 * (playerController.Level - 1);
         }
 
-        lSlimeStats[4] += 2 * (level - 1);
-        lSlimeStats[5] += 2 * (level - 1);
+        lSlimeStats[4] += 2 * (playerController.Level - 1);
+        lSlimeStats[5] += 2 * (playerController.Level - 1);
 
         return lSlimeStats;
     }
@@ -521,9 +522,9 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < lSkeletonStats.Length; i++)
         {
-            lSkeletonStats[i] += 1 * (level - 1);
+            lSkeletonStats[i] += 1 * (playerController.Level - 1);
         }
-        lSkeletonStats[0] += 2 * (level - 1);
+        lSkeletonStats[0] += 2 * (playerController.Level - 1);
 
         return lSkeletonStats;
     }
@@ -532,10 +533,10 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < lGhostStats.Length; i++)
         {
-            lGhostStats[i] += 1 * (level - 1);
+            lGhostStats[i] += 1 * (playerController.Level - 1);
         }
-        lGhostStats[2] += 2 * (level - 1);
-        lGhostStats[0] += 1 * (level - 1);
+        lGhostStats[2] += 2 * (playerController.Level - 1);
+        lGhostStats[0] += 1 * (playerController.Level - 1);
 
         return lGhostStats;
     }
@@ -545,11 +546,11 @@ public class LevelManager : MonoBehaviour
 
         for (int i = 0; i < lWraithStats.Length; i++)
         {
-            lWraithStats[i] += 1 * (level - 1);
+            lWraithStats[i] += 1 * (playerController.Level - 1);
         }
-        lWraithStats[0] += 2 * (level - 1);
-        lWraithStats[4] += 1 * (level - 1);
-        lWraithStats[5] += 1 * (level - 1);
+        lWraithStats[0] += 2 * (playerController.Level - 1);
+        lWraithStats[4] += 1 * (playerController.Level - 1);
+        lWraithStats[5] += 1 * (playerController.Level - 1);
 
         return lWraithStats;
     }

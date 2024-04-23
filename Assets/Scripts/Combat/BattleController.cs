@@ -171,19 +171,19 @@ public class BattleController : MonoBehaviour
         }
         else if (playerController.KisaBoss)
         {
-            firstEnemy = SpawnCharacter(false, bardStats, "Bard Guy", 3, 3, 0);
+            firstEnemy = SpawnCharacter(false, evilBardStats, "Bard Guy", 3, 3, 0);
             partyBoss = true;
             //howManyToSpawn = 0;
         }
         else if (playerController.NicolBoss)
         {
-            firstEnemy = SpawnCharacter(false, mageStats, "Mage Guy", 2, 1, 2);
+            firstEnemy = SpawnCharacter(false, evilMageStats, "Mage Guy", 2, 1, 2);
             partyBoss = true;
             //howManyToSpawn = 0;
         }
         else if (playerController.SophieBoss)
         {
-            firstEnemy = SpawnCharacter(false, monkStats, "Monk Guy", 4, 2, 3);
+            firstEnemy = SpawnCharacter(false, evilMonkStats, "Monk Guy", 4, 2, 3);
             partyBoss = true;
             //howManyToSpawn = 0;
         }
@@ -314,6 +314,16 @@ public class BattleController : MonoBehaviour
         /*Mana*/ 9,
         /*MaxMana*/ 9};
 
+    static public int[] evilMageStats = {
+        /*Strength*/ 10,
+        /*Magic Attack*/ 13,
+        /*Defense*/ 4, 
+        /*Speed*/ 5, 
+        /*Health*/ 40, 
+        /*MaxHealth*/ 40,
+        /*Mana*/ 9,
+        /*MaxMana*/ 9};
+
     //Monk Stats
     static public int[] monkStats = {
         /*Strength*/ 13,
@@ -325,6 +335,16 @@ public class BattleController : MonoBehaviour
         /*Mana*/ 5,
         /*MaxMana*/ 5};
 
+    static public int[] evilMonkStats = {
+        /*Strength*/ 17,
+        /*Magic Attack*/ 13,
+        /*Defense*/ 8, 
+        /*Speed*/ 6, 
+        /*Health*/ 50, 
+        /*MaxHealth*/ 50,
+        /*Mana*/ 5,
+        /*MaxMana*/ 5};
+
     //Bard Stats
     static public int[] bardStats = {
         /*Strength*/ 6,
@@ -333,6 +353,16 @@ public class BattleController : MonoBehaviour
         /*Speed*/ 4, 
         /*Health*/ 15, 
         /*MaxHealth*/ 15,
+        /*Mana*/ 7,
+        /*MaxMana*/ 7};
+
+    static public int[] evilBardStats = {
+        /*Strength*/ 8,
+        /*Magic Attack*/ 9,
+        /*Defense*/ 5, 
+        /*Speed*/ 4, 
+        /*Health*/ 30, 
+        /*MaxHealth*/ 30,
         /*Mana*/ 7,
         /*MaxMana*/ 7};
 
@@ -1231,46 +1261,46 @@ public class BattleController : MonoBehaviour
         {
             if (playerList.Count == 0)
             {
-                position = new Vector3(mainCamera.transform.position.x - 3, mainCamera.transform.position.y - 5.5f);
+                position = new Vector3(mainCamera.transform.position.x - 4, mainCamera.transform.position.y - 5.5f);
             }
             else if (playerList.Count == 1)
             {
-                position = new Vector3(mainCamera.transform.position.x - 6, mainCamera.transform.position.y - 5.5f);
+                position = new Vector3(mainCamera.transform.position.x - 7, mainCamera.transform.position.y - 5.5f);
             }
             else if (playerList.Count == 2)
             {
-                position = new Vector3(mainCamera.transform.position.x - 0, mainCamera.transform.position.y - 5.5f);
+                position = new Vector3(mainCamera.transform.position.x - 1, mainCamera.transform.position.y - 5.5f);
             }
             else if (playerList.Count == 3)
             {
-                position = new Vector3(mainCamera.transform.position.x - 9, mainCamera.transform.position.y - 5.5f);
+                position = new Vector3(mainCamera.transform.position.x - 10, mainCamera.transform.position.y - 5.5f);
             }
             else
             {
-                position = new Vector3(mainCamera.transform.position.x - 5, mainCamera.transform.position.y - 5.5f);
+                position = new Vector3(mainCamera.transform.position.x - 6, mainCamera.transform.position.y - 5.5f);
             }
         }
         else
         {
             if (enemyList.Count == 0)
             {
-                position = new Vector3(mainCamera.transform.position.x - 0, mainCamera.transform.position.y + 3);
+                position = new Vector3(mainCamera.transform.position.x + 1, mainCamera.transform.position.y + 3);
             }
             else if (enemyList.Count == 1)
             {
-                position = new Vector3(mainCamera.transform.position.x + 3, mainCamera.transform.position.y + 3);
+                position = new Vector3(mainCamera.transform.position.x + 4, mainCamera.transform.position.y + 3);
             }
             else if (enemyList.Count == 2)
             {
-                position = new Vector3(mainCamera.transform.position.x + 6, mainCamera.transform.position.y + 3);
+                position = new Vector3(mainCamera.transform.position.x + 7, mainCamera.transform.position.y + 3);
             }
             else if (enemyList.Count == 3)
             {
-                position = new Vector3(mainCamera.transform.position.x + 9, mainCamera.transform.position.y + 3);
+                position = new Vector3(mainCamera.transform.position.x + 10, mainCamera.transform.position.y + 3);
             }
             else
             {
-                position = new Vector3(mainCamera.transform.position.x + 0, mainCamera.transform.position.y + 3);
+                position = new Vector3(mainCamera.transform.position.x + 1, mainCamera.transform.position.y + 3);
             }
         }
         Transform characterTransform =  Instantiate(playerCharacterTransform, position, Quaternion.identity, fighterObject.transform);
