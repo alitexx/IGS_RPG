@@ -18,6 +18,7 @@ TagManager:
   - MainDialogueManager
   - TutorialSlime
   - CharVoice
+  - Audio
   layers:
   - Default
   - TransparentFX

@@ -19,17 +19,17 @@ namespace COMMANDS
 
         new public static void Extend(CommandDatabase database)
         {
-            database.AddCommand("playsfx", new Action<string[]>(PlaySFX));
-            database.AddCommand("stopsfx", new Action<string>(StopSFX));
+            database.AddCommand("old_playsfx", new Action<string[]>(PlaySFX));
+            database.AddCommand("old_stopsfx", new Action<string>(StopSFX));
 
-            database.AddCommand("playvoice", new Action<string[]>(PlayVoice));
-            database.AddCommand("stopvoice", new Action<string>(StopSFX));
+            database.AddCommand("old_playvoice", new Action<string[]>(PlayVoice));
+            database.AddCommand("old_stopvoice", new Action<string>(StopSFX));
 
-            database.AddCommand("playsong", new Action<string[]>(PlaySong));
-            database.AddCommand("playambience", new Action<string[]>(PlayAmbience));
+            database.AddCommand("old_playsong", new Action<string[]>(PlaySong));
+            database.AddCommand("old_playambience", new Action<string[]>(PlayAmbience));
 
-            database.AddCommand("stopsong", new Action<string>(StopSong));
-            database.AddCommand("stopambience", new Action<string>(StopAmbience));
+            database.AddCommand("old_stopsong", new Action<string>(StopSong));
+            database.AddCommand("old_stopambience", new Action<string>(StopAmbience));
         }
 
         private static void PlaySFX(string[] data)
