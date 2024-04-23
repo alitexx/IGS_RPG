@@ -407,7 +407,7 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("PartyLevel", partyLevel);
         PlayerPrefs.SetInt("CurrentEXP", levelManager.currentEXP);
         PlayerPrefs.SetFloat("PlayerPositionX", playerPosition[0]);
-        PlayerPrefs.SetFloat("PlauerPositionY", playerPosition[1]);
+        PlayerPrefs.SetFloat("PlayerPositionY", playerPosition[1]);
         PlayerPrefs.SetInt("hasKisa", KisainParty);
         PlayerPrefs.SetInt("hasNicol", NicolinParty);
         PlayerPrefs.SetInt("hasSophie", SophieinParty);
@@ -419,11 +419,11 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("BattleTutorialCleared", BattleTutorialCleared);
         PlayerPrefs.Save();
         Debug.Log("Saved stuff?");
-        Debug.Log(PlayerPrefs.GetFloat("playerPositionX"));
-        Debug.Log(PlayerPrefs.GetFloat("playerPositionY"));
-        Debug.Log(PlayerPrefs.GetFloat("CurrentEXP"));
-        Debug.Log(PlayerPrefs.GetFloat("FloorLevel"));
-        Debug.Log(PlayerPrefs.GetFloat("PartyLevel"));
+        Debug.Log(PlayerPrefs.GetFloat("PlayerPositionX"));
+        Debug.Log(PlayerPrefs.GetFloat("PlayerPositionY"));
+        Debug.Log(PlayerPrefs.GetInt("CurrentEXP"));
+        Debug.Log(PlayerPrefs.GetInt("FloorLevel"));
+        Debug.Log(PlayerPrefs.GetInt("PartyLevel"));
     }
 
     public void DeleteSave() 
@@ -438,7 +438,7 @@ public class PlayerController : MonoBehaviour
         LevelManager.level = PlayerPrefs.GetInt("PartyLevel");
         levelManager.currentEXP = PlayerPrefs.GetInt("CurrentEXP");
         playerPosition[0] = PlayerPrefs.GetFloat("PlayerPositionX");
-        playerPosition[1] = PlayerPrefs.GetFloat("PlayerPositiony");
+        playerPosition[1] = PlayerPrefs.GetFloat("PlayerPositionY");
         transform.position = new Vector2(playerPosition[0], playerPosition[1]);
         KisainParty = PlayerPrefs.GetInt("hasKisa");
         if (KisainParty == 1)
