@@ -109,28 +109,28 @@ public class BattleCharacter : MonoBehaviour
             //textures and animations
             if (statSheet.name == "Tank Guy")
             {
-                healthObject = healthParent.transform.Find("Canvas/HPAmounts/Alan/AlanBG/AlanHP");
+                healthObject = healthParent.transform.Find("Canvas/HP&Sides/HPAmounts/Alan/AlanBG/AlanHP");
                 healthText = healthObject.GetComponent<TextMeshProUGUI>();
                 //charSprite.color = Color.magenta;
                 animator.SetBool("isTank", true);
             }
             else if (statSheet.name == "Mage Guy")
             {
-                healthObject = healthParent.transform.Find("Canvas/HPAmounts/Nicol/BG/NicolHP");
+                healthObject = healthParent.transform.Find("Canvas/HP&Sides/HPAmounts/Nicol/BG/NicolHP");
                 healthText = healthObject.GetComponent<TextMeshProUGUI>();
                 //charSprite.color = Color.red;
                 animator.SetBool("isMage", true);
             }
             else if (statSheet.name == "Monk Guy")
             {
-                healthObject = healthParent.transform.Find("Canvas/HPAmounts/Sophie/BG/SophieHP");
+                healthObject = healthParent.transform.Find("Canvas/HP&Sides/HPAmounts/Sophie/BG/SophieHP");
                 healthText = healthObject.GetComponent<TextMeshProUGUI>();
                 //charSprite.color = Color.yellow;
                 animator.SetBool("isMonk", true);
             }
             else if (statSheet.name == "Bard Guy")
             {
-                healthObject = healthParent.transform.Find("Canvas/HPAmounts/Kisa/BG/KisaHP");
+                healthObject = healthParent.transform.Find("Canvas/HP&Sides/HPAmounts/Kisa/BG/KisaHP");
                 healthText = healthObject.GetComponent<TextMeshProUGUI>();
                 //charSprite.color = Color.green;
                 animator.SetBool("isBard", true);
