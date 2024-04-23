@@ -145,7 +145,7 @@ public class killFriendManager : MonoBehaviour
             // do something special here for this
             partymembersFadeOut.DOFade(1, 0.5f).OnComplete(() => {
                 cutToBlack.SetActive(true);
-                //finalWordsScript
+                finalWordsScript.playFinalWords(charInQuestion);
             });
             }
         else if (befriendingMaybe)

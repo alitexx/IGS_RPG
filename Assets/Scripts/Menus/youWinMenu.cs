@@ -18,6 +18,9 @@ public class youWinMenu : MonoBehaviour
     [SerializeField] Animator battleEnterAnimator;
     [SerializeField] private mainDialogueManager mainDialogueManager;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private CanvasGroup killedPartyMemberBG;
+    public bool killedPartyMember;
+
     public static string loadedDialogue = "...";
     private bool hasUpdatedGained = false;
     private int remainingExp;
@@ -33,6 +36,10 @@ public class youWinMenu : MonoBehaviour
     {
         //this should change position based on what i do with kill/befriend
         am.stopHeartbeatSFX();
+        if (killedPartyMember)
+        {
+
+        }
         //cannot open pause menu at this time
         PauseMenu.canOpenPause = false;
         //
