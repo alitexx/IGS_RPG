@@ -1391,19 +1391,23 @@ public class BattleController : MonoBehaviour
 
                 if (enemyList[i].statSheet.name == "Slime Guy")
                 {
-                    levelManager.gainedEXP += 25;
+                    levelManager.gainedEXP += Convert.ToInt32(((100*playerController.Level) / LevelManager.level) * (0.25f));
+                    //levelManager.gainedEXP += 25;
                 }
                 else if (enemyList[i].statSheet.name == "Skeleton Guy")
                 {
-                    levelManager.gainedEXP += 30;
+                    levelManager.gainedEXP += Convert.ToInt32(((100 * playerController.Level) / LevelManager.level) * (0.3f));
+                    //levelManager.gainedEXP += 30;
                 }
                 else if (enemyList[i].statSheet.name == "Ghost Guy")
                 {
-                    levelManager.gainedEXP += 35;
+                    levelManager.gainedEXP += Convert.ToInt32(((100 * playerController.Level) / LevelManager.level) * (0.35f));
+                    //levelManager.gainedEXP += 35;
                 }
                 else if (enemyList[i].statSheet.name == "Wraith Guy")
                 {
-                    levelManager.gainedEXP += 40;
+                    levelManager.gainedEXP += Convert.ToInt32(((100 * playerController.Level) / LevelManager.level) * (0.4f));
+                    //levelManager.gainedEXP += 40;
                 }
                 else
                 {

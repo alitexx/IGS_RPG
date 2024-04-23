@@ -26,6 +26,7 @@ public class killFriendManager : MonoBehaviour
     [SerializeField] private Sprite[] elementsSprites;
     [SerializeField] private CanvasGroup partymembersFadeOut;
     [SerializeField] private GameObject cutToBlack;
+    [SerializeField] private partyFinalWords finalWordsScript;
 
     private string charInQuestion;
 
@@ -142,8 +143,10 @@ public class killFriendManager : MonoBehaviour
             battleController.AbsorbButton();
             alanAnimator.SetTrigger("kill");
             // do something special here for this
-            cutToBlack.SetActive(true);
-            
+            partymembersFadeOut.DOFade(1, 0.5f).OnComplete(() => {
+                cutToBlack.SetActive(true);
+                //finalWordsScript
+            });
             }
         else if (befriendingMaybe)
         {
