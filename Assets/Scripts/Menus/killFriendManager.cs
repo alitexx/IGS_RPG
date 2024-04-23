@@ -24,6 +24,9 @@ public class killFriendManager : MonoBehaviour
     // might be needed later, commented out for now
     //[SerializeField] private LevelManager levelManager;
     [SerializeField] private Sprite[] elementsSprites;
+    [SerializeField] private CanvasGroup partymembersFadeOut;
+    [SerializeField] private GameObject cutToBlack;
+
     private string charInQuestion;
 
     private bool killingMaybe;
@@ -133,17 +136,29 @@ public class killFriendManager : MonoBehaviour
 
     public void exitKillFriendMenu()
     {
+        //a choice has been made
         if (killingMaybe)
         {
             battleController.AbsorbButton();
             alanAnimator.SetTrigger("kill");
             // do something special here for this
-        }
+            cutToBlack.SetActive(true);
+            
+            }
         else if (befriendingMaybe)
         {
             battleController.BefriendButton();
             alanAnimator.SetTrigger("befriend");
+            closeAreYouSure();
+            tweenInObjects[0].GetComponent<RectTransform>().DOMove(locations[2].position, 1);
+            tweenInObjects[1].GetComponent<RectTransform>().DOMove(locations[3].position, 1);
+            tweenInObjects[2].GetComponent<RectTransform>().DOMove(locations[4].position, 1);
             //slowly fade out alan and the other party member
+            partymembersFadeOut.DOFade(1,1f).OnComplete(() => { partymembersFadeOut.DOFade(0, 2f).OnComplete(() => {
+                truebgFade.SetActive(false);
+            });
+            });
+            return;
         }
 
 
