@@ -480,8 +480,20 @@ public class PlayerController : MonoBehaviour
         }
 
         KisaAbsorbed = PlayerPrefs.GetInt("AbsorbedKisa");
+        if (KisaAbsorbed == 1)
+        {
+            levelManager.kisaAbsorb = true;
+        }
         NicolAbsorbed = PlayerPrefs.GetInt("AbsorbedNicol");
+        if(NicolAbsorbed == 1)
+        {
+            levelManager.nicolAbsorb = true;
+        }
         SophieAbsorbed = PlayerPrefs.GetInt("AbsorbedSophie");
+        if(SophieAbsorbed == 1)
+        {
+            levelManager.sophieAbsorb = true;
+        }
 
         Level = PlayerPrefs.GetInt("FloorLevel");
         HasBeenThruTutorial = PlayerPrefs.GetInt("HasBeenThruTutorial");
