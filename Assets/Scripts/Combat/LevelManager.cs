@@ -166,13 +166,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 8; i++)
-        {
-            tankStoredStats[i] = tankStartStats[i];
-            mageStoredStats[i] = mageStartStats[i];
-            monkStoredStats[i] = monkStartStats[i];
-            bardStoredStats[i] = bardStartStats[i];
-        }
+        level = playerController.partyLevel;
 
         /*if (Instance != null)
         {
@@ -185,13 +179,47 @@ public class LevelManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);*/
 
-        kisaAbsorb = false;
-        nicolAbsorb = false;
-        sophieAbsorb = false;
-        level = 1;
-        currentEXP = 0;
+        //kisaAbsorb = false;
+        //nicolAbsorb = false;
+        //sophieAbsorb = false;
+        //level = 1;
+        //currentEXP = 0;
 
         FullHeal();
+    }
+
+    public void LoadStats(int loadedLevel)
+    {
+        level = loadedLevel;
+
+        Debug.Log(level);
+
+        if (playerController.BattleTutorialCleared == 1)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                tankStoredStats[i] = tankStartStats[i];
+                mageStoredStats[i] = mageStartStats[i];
+                monkStoredStats[i] = monkStartStats[i];
+                bardStoredStats[i] = bardStartStats[i];
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                tankStoredStats[i] += (1 * (level - 1));
+                mageStoredStats[i] += (1 * (level - 1));
+                bardStoredStats[i] += (1 * (level - 1));
+                monkStoredStats[i] += (1 * (level - 1));
+            }
+
+            tankStoredStats[0] += (1 * (level - 1));
+            tankStoredStats[4] += (1 * (level - 1));
+            tankStoredStats[5] += (1 * (level - 1));
+        }
+
+        Debug.Log(tankStoredStats[5]);
     }
 
     public void LevelUp()

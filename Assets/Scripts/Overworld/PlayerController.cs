@@ -444,7 +444,7 @@ public class PlayerController : MonoBehaviour
     public void loadGame() 
     {
         Debug.Log("loading...");
-        LevelManager.level = PlayerPrefs.GetInt("PartyLevel");
+        //LevelManager.level = PlayerPrefs.GetInt("PartyLevel");
         levelManager.currentEXP = PlayerPrefs.GetInt("CurrentEXP");
         playerPosition[0] = PlayerPrefs.GetFloat("PlayerPositionX");
         playerPosition[1] = PlayerPrefs.GetFloat("PlayerPositionY");
@@ -499,6 +499,8 @@ public class PlayerController : MonoBehaviour
         HasBeenThruTutorial = PlayerPrefs.GetInt("HasBeenThruTutorial");
         BattleTutorialCleared = PlayerPrefs.GetInt("BattleTutorialCleared");
         Debug.Log("Loaded save?");
+
+        levelManager.LoadStats(PlayerPrefs.GetInt("PartyLevel"));
     }
 
 }
