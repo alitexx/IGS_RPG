@@ -18,6 +18,9 @@ public class killFriendManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] befriendText;
     [SerializeField] private Image[] elementIcon;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private Animator alanAnimator;
+    [SerializeField] private Image PartyMemberInQuestion;
+    [SerializeField] private Sprite[] partyMembersAvailable;
     // might be needed later, commented out for now
     //[SerializeField] private LevelManager levelManager;
     [SerializeField] private Sprite[] elementsSprites;
@@ -36,12 +39,15 @@ public class killFriendManager : MonoBehaviour
         if (playerController.KisaBoss)
         {
             charInQuestion = "Kisa";
+            PartyMemberInQuestion.sprite = partyMembersAvailable[0];
         } else if (playerController.NicolBoss)
         {
             charInQuestion = "Nicol";
+            PartyMemberInQuestion.sprite = partyMembersAvailable[1];
         } else if (playerController.SophieBoss)
         {
             charInQuestion = "Sophie";
+            PartyMemberInQuestion.sprite = partyMembersAvailable[2];
         }
         EditTextInformation(charInQuestion);
         if (true) // replace this with if they've seen the tutorial
@@ -130,10 +136,14 @@ public class killFriendManager : MonoBehaviour
         if (killingMaybe)
         {
             battleController.AbsorbButton();
+            alanAnimator.SetTrigger("kill");
+            // do something special here for this
         }
         else if (befriendingMaybe)
         {
             battleController.BefriendButton();
+            alanAnimator.SetTrigger("befriend");
+            //slowly fade out alan and the other party member
         }
 
 
