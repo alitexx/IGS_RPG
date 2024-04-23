@@ -39,7 +39,7 @@ public class TutorialHandler : MonoBehaviour
             case 3: // activate target tutorial
                 targetTutorialText.text = "Use the A and D keys to select a target, then press " + audioStatics.interractButton.ToString() + " to attack!";
                 targetTutorial.SetActive(true);
-                tutorialMenus[tutorialCounter].SetActive(false);
+                //tutorialMenus[tutorialCounter].SetActive(false);
                 break;
 
         }

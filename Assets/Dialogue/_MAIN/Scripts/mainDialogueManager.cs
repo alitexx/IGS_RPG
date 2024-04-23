@@ -48,14 +48,14 @@ public class mainDialogueManager : MonoBehaviour
         //make characters
         StartCoroutine(completeDialogue("TextFiles/deleteAfterTesting"));
 
-        //dialogueSTART(fileName); // only here for testing
+        /*//dialogueSTART(fileName); // only here for testing
         if (playerController.BattleTutorialCleared == 1)
         {
             playerController.loadGame();
         } else // if they have not cleared the tutorial
         {
             dialogueSTART(fileName);
-        }
+        }*/
     }
 
     //MUST PASS IN THE 

@@ -89,7 +89,32 @@ public class BattleController : MonoBehaviour
 
     private void OnEnable()
     {
+        if (playerController.hasKisa)
+        {
+            kisaHealthText.SetActive(true);
+        }
+        else 
+        {
+            kisaHealthText.SetActive(false);
+        }
 
+        if (playerController.hasSophie)
+        {
+            sophieHealthText.SetActive(true);
+        }
+        else
+        {
+            sophieHealthText.SetActive(false);
+        }
+
+        if (playerController.hasNicol)
+        {
+            nicolHealthText.SetActive(true);
+        }
+        else
+        {
+            nicolHealthText.SetActive(false);
+        }
 
         ResetStats(true, false);
 
@@ -305,7 +330,7 @@ public class BattleController : MonoBehaviour
         /*Strength*/ 6,
         /*Magic Attack*/ 6,
         /*Defense*/ 4, 
-        /*Speed*/ 2, 
+        /*Speed*/ 4, 
         /*Health*/ 15, 
         /*MaxHealth*/ 15,
         /*Mana*/ 7,
@@ -405,7 +430,7 @@ public class BattleController : MonoBehaviour
         /*Strength*/ 6,
         /*Magic Attack*/ 6,
         /*Defense*/ 4, 
-        /*Speed*/ 2, 
+        /*Speed*/ 4, 
         /*Health*/ 15, 
         /*MaxHealth*/ 15,
         /*Mana*/ 7,
@@ -532,6 +557,7 @@ public class BattleController : MonoBehaviour
     public GameObject alanFireMagicButton;
 
     public GameObject tutorialHandler;
+    [SerializeField] private GameObject attackButtonBlocker;
 
     private bool partyBoss;
 
@@ -543,7 +569,11 @@ public class BattleController : MonoBehaviour
     public UnityEngine.UI.Image specialButton;
     public Sprite specReady;
     public Sprite specNotReady;
-    
+
+    [SerializeField] private GameObject kisaHealthText;
+    [SerializeField] private GameObject nicolHealthText;
+    [SerializeField] private GameObject sophieHealthText;
+
     //Keys
 
     public KeyCode attackKey = KeyCode.W;
@@ -615,6 +645,15 @@ public class BattleController : MonoBehaviour
         {
             fightingButtons.SetActive(false);
         }  
+
+        if (alanFireMagicButton.activeInHierarchy)
+        {
+            attackButtonBlocker.SetActive(false);
+        }
+        else
+        {
+            attackButtonBlocker.SetActive(true);
+        }
 
         /* Testing how to instantiate the particle effects
          * if (Input.GetKeyDown(KeyCode.G))
@@ -716,7 +755,7 @@ public class BattleController : MonoBehaviour
         });*/
 
 
-        if (activeChar.statSheet.name == "Tank Guy")
+        if (activeChar.statSheet.name == "Tank Guy") //&& levelManager.kisaAbsorb || activeChar.statSheet.name == "Tank Guy" && levelManager.nicolAbsorb || activeChar.statSheet.name == "Tank Guy" && levelManager.sophieAbsorb)
         {
             state = State.Busy;
 
@@ -1300,6 +1339,7 @@ public class BattleController : MonoBehaviour
         {
             if (playerList[i].statSheet.stats["Health"] <= 0)
             {
+                playerList[i].AllyFadeOut();
                 playerList.RemoveAt(i);
                 am.playSFX(18);
             }
@@ -1307,12 +1347,12 @@ public class BattleController : MonoBehaviour
 
         for (int i = 0; i < enemyList.Count; i++)
         {
-            if (enemyList[i].statSheet.stats["Health"] <= 0)
+            if (enemyList[i].statSheet.stats["Health"] <= 0 || enemyList[i] == null)
             {
                 //Can put death animation here
-                Vector3 position = enemyList[i].GetPosition();
+                /*Vector3 position = enemyList[i].GetPosition();
                 ParticleManager particle = Instantiate(enemyList[i].particleManager, position, Quaternion.identity, enemyList[i].transform);
-                particle.animator.SetBool("ElectricFX", true);
+                particle.animator.SetBool("ElectricFX", true);*/
 
                 if (enemyList[i].statSheet.name == "Slime Guy")
                 {
@@ -1335,7 +1375,9 @@ public class BattleController : MonoBehaviour
                     levelManager.gainedEXP += 100;
                 }
 
-                Destroy(enemyList[i].gameObject);
+                //enemyList[i].EnemyFadeOut();
+                StartCoroutine(enemyList[i].EnemyFadeOut());
+                enemyList.RemoveAt(i);
 
                 am.playSFX(16);
 

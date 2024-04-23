@@ -9,6 +9,8 @@ using UnityEngine.U2D;
 using CodeMonkey;
 using UnityEngine.UIElements;
 using TMPro;
+using DG.Tweening;
+using Random = UnityEngine.Random;
 
 public class BattleCharacter : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class BattleCharacter : MonoBehaviour
     //stats used on BattleController
     //private CharacterData characterData = new CharacterData("Bob", playerStats, "Fire", "Is a cube", true);
     //private CharacterData enemyData = new CharacterData("Bob", enemyStats, "Fire", "Is a cube", false);
+
+    [SerializeField] private GameObject fighterObject;
 
     public CharacterData statSheet;
     public bool isBlocking;
@@ -167,6 +171,10 @@ public class BattleCharacter : MonoBehaviour
             else if (statSheet.name == "Monk Guy")
             {
                 animator.SetBool("isBadSophie", true);
+            }
+            else if (statSheet.name == "Bard Guy")
+            {
+                animator.SetBool("isBadKisa", true);
             }
             else if (statSheet.name == "Lich Guy")
             {
@@ -552,6 +560,32 @@ public class BattleCharacter : MonoBehaviour
     public bool IsDead()
     {
         return healthSystem.IsDead();
+    }
+
+    public void AllyFadeOut()
+    {
+        Transform position = fighterObject.transform;
+        
+        fighterObject.transform.DOMoveY(transform.position.y - 6, 0.7f);
+    }
+
+    public IEnumerator EnemyFadeOut()
+    {
+        for (float f = 1; f >= 0; f -= 0.05f)
+        {
+            Color c = charSprite.material.color;
+            c.a = f;
+            c.r = Random.Range(0, 1f);
+            c.g = Random.Range(0, 1f);
+            c.b = Random.Range(0, 1f);
+
+
+            charSprite.color = c;
+
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        Destroy(fighterObject);
     }
 
     private void SlideToPosition(Vector3 slideTargetPosition, Action onSlideComplete)
