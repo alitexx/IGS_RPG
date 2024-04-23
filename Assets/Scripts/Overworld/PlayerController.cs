@@ -193,6 +193,7 @@ public class PlayerController : MonoBehaviour
                     tutorialFight = true;
                     tutorialHandler.SetActive(true);
                     mainDialogueManager.dialogueSTART("tutorialEncounter");
+                    youWinMenu.loadedDialogue = "partySplit";
                     break;
                 case "1":
                     KisaBoss = true;

@@ -31,6 +31,7 @@ public class mainDialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] cutsceneScenes;
     [SerializeField] private GameObject[] cutsceneVariations;
     [SerializeField] private GameObject continueTextPrompt;
+    [SerializeField] private GameObject firstSlime;
 
     public Animator battleFade;
 
@@ -79,6 +80,9 @@ public class mainDialogueManager : MonoBehaviour
             if (dialogueFile.StartsWith("end"))
             {
                 cutsceneBG.DOFade(1, 1f);
+            } else if (dialogueFile == "partySplit")
+            {
+                firstSlime.SetActive(false);
             }
             switch (dialogueFile)
             {
