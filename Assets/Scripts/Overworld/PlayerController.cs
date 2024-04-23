@@ -152,15 +152,27 @@ public class PlayerController : MonoBehaviour
         {
             KisainParty = 1;
         }
+        else if(hasKisa == false)
+        {
+            KisainParty = 0;
+        }
 
         if (hasNicol == true)
         {
             NicolinParty = 1;
         }
+        if (hasNicol == false)
+        {
+            NicolinParty = 0;
+        }
 
         if (hasSophie == true)
         {
             SophieinParty = 1;
+        }
+        if(hasSophie == false)
+        {
+            SophieinParty = 0;
         }
     }
 
