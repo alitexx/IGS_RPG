@@ -587,6 +587,9 @@ public class BattleController : MonoBehaviour
     public GameObject alanFireMagicButton;
 
     public GameObject tutorialHandler;
+    [SerializeField] TutorialHandler tutH;
+    public bool coroutineRunning;
+
     [SerializeField] private GameObject attackButtonBlocker;
 
     private bool partyBoss;
@@ -657,6 +660,9 @@ public class BattleController : MonoBehaviour
         {
             ResetStats(true, true);
         }
+
+        coroutineRunning = false;
+
         specialButton = specialObject.GetComponent<UnityEngine.UI.Image>();
     }
 
@@ -743,6 +749,8 @@ public class BattleController : MonoBehaviour
     {
         StopAllCoroutines();
 
+        coroutineRunning = false;
+
         for (int i = 0; i < enemyList.Count; i++)
         {
             enemyList[i].HideTargetCircle();
@@ -792,9 +800,16 @@ public class BattleController : MonoBehaviour
 
         if (activeChar.statSheet.name == "Tank Guy") //&& levelManager.kisaAbsorb || activeChar.statSheet.name == "Tank Guy" && levelManager.nicolAbsorb || activeChar.statSheet.name == "Tank Guy" && levelManager.sophieAbsorb)
         {
-            state = State.Busy;
+            if (tutH.tutorialCounter == 8)
+            {
+                tutH.continueTutorial();
+            }
+            else
+            {
+                backButton.SetActive(true);
+            }
 
-            backButton.SetActive(true);
+            state = State.Busy;
 
             alanFireMagicButton.SetActive(true);
 
@@ -914,6 +929,7 @@ public class BattleController : MonoBehaviour
     {
         int enemyNum = 0;
 
+        coroutineRunning = true;
 
         backButton.SetActive(true);
 
@@ -958,12 +974,15 @@ public class BattleController : MonoBehaviour
 
         enemyList[enemyNum].HideTargetCircle();
 
-
         backButton.SetActive(false);
+
+        coroutineRunning = false;
     }
 
     private IEnumerator BlockConfirm()
     {
+        coroutineRunning = true;
+
         backButton.SetActive(true);
 
         while (!Input.GetKeyDown(confirmKey))
@@ -976,10 +995,14 @@ public class BattleController : MonoBehaviour
         ChooseNextActiveChar();
 
         backButton.SetActive(false);
+
+        coroutineRunning = false;
     }
 
     private IEnumerator MagicTargeting()
     {
+        coroutineRunning = true;
+
         int enemyNum = 0;
 
         enemyList[enemyNum].ShowTargetCircle();
@@ -1025,12 +1048,16 @@ public class BattleController : MonoBehaviour
         {
             ChooseNextActiveChar();
         });
+
+        coroutineRunning = false;
     }
 
     private bool isTaunting = false;
 
     private IEnumerator SpecialTargeting()
     {
+        coroutineRunning = true;
+
         int enemyNum = 0;
 
         //Tank
@@ -1109,6 +1136,8 @@ public class BattleController : MonoBehaviour
                 yield return null;
             }
 
+            backButton.SetActive(false);
+
             Vector3 position = enemyList[enemyNum].GetPosition();
             ParticleManager weaknessParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
             weaknessParticle.animator.SetBool("WeaknessFX", true);
@@ -1141,9 +1170,6 @@ public class BattleController : MonoBehaviour
             }
 
             enemyList[enemyNum].HideTargetCircle();
-
-
-            backButton.SetActive(false);
 
             //ChooseNextActiveChar();
         }
@@ -1253,6 +1279,7 @@ public class BattleController : MonoBehaviour
 
         ChooseNextActiveChar();
 
+        coroutineRunning = false;
     }
 
     #endregion

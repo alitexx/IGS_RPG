@@ -15,12 +15,12 @@ public class TutorialHandler : MonoBehaviour
     public GameObject targetTutorial;
 
     [SerializeField] private GameObject[] tutorialMenus;
-    [SerializeField] private GameObject[] tutorialHoles; // used to put holes in the dark bg so players can see things
+    public GameObject[] tutorialHoles; // used to put holes in the dark bg so players can see things
     [SerializeField] private TextMeshProUGUI targetTutorialText;
 
     [SerializeField] private CanvasGroup darkBG;
 
-    private int tutorialCounter;
+    public int tutorialCounter;
     private GameObject previousHole; // for turning on/off the holes in the tutorial
 
     private void Start()
@@ -53,7 +53,7 @@ public class TutorialHandler : MonoBehaviour
             case 3: // activate target tutorial
                 tutorialHoles[1].SetActive(true);
                 previousHole = tutorialHoles[1];
-                targetTutorialText.text = "Use the A and D keys to select a target, then press " + audioStatics.interractButton.ToString() + " to attack!";
+                targetTutorialText.text = "Use the A and D keys to select a target, then press " + audioStatics.interractButton.ToString() + " to confirm!";
                 targetTutorial.SetActive(true);
                 //tutorialMenus[tutorialCounter].SetActive(false);
                 break;
@@ -87,6 +87,48 @@ public class TutorialHandler : MonoBehaviour
         if (Input.GetKeyDown(battleController.confirmKey) && battleController.state == BattleController.State.Busy && battleController.backButton.activeInHierarchy && battleController.alanFireMagicButton.activeInHierarchy == false)
         {
             continueTutorial();
+        }
+
+        if (battleController.coroutineRunning == true)
+        {
+            targetTutorial.SetActive(true);
+        }
+        else
+        {
+            targetTutorial.SetActive(false);
+        }
+
+        if (battleController.state == BattleController.State.Busy)
+        {
+            fadeOutBG();
+        }
+        else
+        {
+            fadeInBG();
+        }
+
+        if (tutorialCounter == 4)
+        {
+            if (battleController.state == BattleController.State.WaitingForPlayer)
+            {
+                tutorialMenus[tutorialCounter].SetActive(true);
+            }
+            else
+            {
+                tutorialMenus[tutorialCounter].SetActive(false);
+            }
+        }
+
+        if (tutorialCounter == 6)
+        {
+            if (battleController.state == BattleController.State.WaitingForPlayer)
+            {
+                tutorialMenus[tutorialCounter].SetActive(true);
+            }
+            else
+            {
+                tutorialMenus[tutorialCounter].SetActive(false);
+            }
         }
         //if (tutorialCounter == 0)
         //{
