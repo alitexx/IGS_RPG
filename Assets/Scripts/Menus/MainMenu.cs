@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
         if (playerController.BattleTutorialCleared == 1)
         {
             //load scene first? then call the load save?
-            playerController.loadGame();
+            //playerController.loadGame();
         }
         else
         {
@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour
 
         MainMenuUI.GetComponent<CanvasGroup>().DOFade(0,1.5f).OnComplete(() => { MainMenuUI.SetActive(false); });
         openingCutscene.dialogueSTART();
-        playerController.loadGame();
+        //playerController.loadGame();
         //SceneManager.LoadScene("OpeningCutscene"); //loads main level
     }
 

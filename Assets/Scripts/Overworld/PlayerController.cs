@@ -419,10 +419,11 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("BattleTutorialCleared", BattleTutorialCleared);
         PlayerPrefs.Save();
         Debug.Log("Saved stuff?");
-        Debug.Log(playerPosition[0]);
-        Debug.Log(playerPosition[1]);
-        Debug.Log(partyLevel);
-        Debug.Log(Level);
+        Debug.Log(PlayerPrefs.GetFloat("playerPositionX"));
+        Debug.Log(PlayerPrefs.GetFloat("playerPositionY"));
+        Debug.Log(PlayerPrefs.GetFloat("CurrentEXP"));
+        Debug.Log(PlayerPrefs.GetFloat("FloorLevel"));
+        Debug.Log(PlayerPrefs.GetFloat("PartyLevel"));
     }
 
     public void DeleteSave() 
@@ -433,6 +434,7 @@ public class PlayerController : MonoBehaviour
 
     public void loadGame() 
     {
+        Debug.Log("loading...");
         LevelManager.level = PlayerPrefs.GetInt("PartyLevel");
         levelManager.currentEXP = PlayerPrefs.GetInt("CurrentEXP");
         playerPosition[0] = PlayerPrefs.GetFloat("PlayerPositionX");
