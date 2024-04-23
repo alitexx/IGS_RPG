@@ -1,0 +1,53 @@
+CreateCharacter(kisa -enabled false)
+CreateCharacter(alan -enabled false)
+CreateCharacter(sophie -enabled false)
+CreateCharacter(nicol -enabled false)
+alan.Move(0 0 -spd 3)
+kisa.Move(0.25 0 -spd 3)
+sophie.Move(0.425 0 -spd 3)
+nicol.Move(0.8 0 -spd 3)
+wait(0.75)
+SetSprite(nicol flipped)
+Show(nicol)
+Highlight(nicol -o true)
+nicol "At last, we have arrived! Let us defeat this wretched lich and become heroes of legend!"
+Show(sophie)
+Highlight(sophie -o true)
+sophie "Do not be so brash. My students mirror your ambition, craving glory, yet their fate remains a mystery. I am not here to become a hero, I am here to locate them."
+Show(nicol)
+Highlight(nicol -o true)
+nicol "Bah! A world without heroes is not worth living! Evil must meet its match!"
+SetSprite(nicol nicol)
+nicol.Move(1 0 -spd 3)
+Hide(Nicol)
+alan.SetPriority(2)
+Show(alan)
+Highlight(alan -o true)
+alan "Nicol, do not-"
+alan "(Too late. Nicol is sprinting through the dungeon. He is too excited to be here of all places, no doubt.)"
+kisa.SetPriority(1)
+Show(kisa)
+Highlight(kisa -o true)
+kisa "Well, no use in standing around. Let us continue, yes?"
+Hide(kisa)
+kisa.Move(1 0 -spd 1)
+wait(2)
+sophie.SetPriority(2)
+Highlight(sophie -o true)
+sophie "Alan, may I ask you a question? Have you noticed anything amiss about Kisa?"
+sophie "On any other occasion, she is cheerful and glued to my side. Yet today, she seems rather withdrawn."
+alan.Move(0.05 0 -spd 1)
+alan.SetPriority(3)
+Highlight(alan -o true)
+alan "I cannot say for certain... perhaps she is stressed? She has only slain minor threats prior, unlike the rest of us."
+Highlight(sophie -o true)
+sophie.SetPriority(3)
+sophie "That is a possibility. We should catch up with those two before they encounter a threat."
+Hide(kisa)
+Hide(alan)
+Hide(sophie)
+alan.SetPriority(0)
+sophie.SetPriority(0)
+kisa.SetPriority(0)
+Hide(nicol)
+endDialogue(false)

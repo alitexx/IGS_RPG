@@ -1,0 +1,30 @@
+CreateCharacter(kisa -enabled false)
+CreateCharacter(alan -enabled false)
+CreateCharacter(sophie -enabled false)
+CreateCharacter(nicol -enabled false)
+alan.Move(0 0 -spd 3)
+kisa.Move(0.5 0 -spd 3)
+sophie.Move(0.2 0 -spd 3)
+nicol.Move(0.8 0 -spd 3)
+wait(0.75)
+Show(nicol)
+Highlight(nicol -o true)
+nicol "This breath shall be your last, slime! Prepare to face the great aristocat, Lord Nicol!"
+Show(kisa)
+Highlight(kisa -o true)
+kisa "Huh... Do slimes breathe?"
+Highlight(nicol -o true)
+SetSprite(nicol flipped)
+nicol "Yes! Probably! Maybe?"
+SetSprite(nicol nicol)
+nicol "It does not matter, for my blade shall slay this slime!"
+Show(alan)
+Show(sophie)
+sophie.Move(0.25 0 -spd 3)
+Highlight(sophie -o true)
+sophie "As expected, they have encountered an obstacle. Those two attract unwanted attention, especially when they venture off alone. Let us assist them, Alan."
+Hide(nicol)
+Hide(kisa)
+Hide(sophie)
+Hide(alan)
+endDialogue(true)

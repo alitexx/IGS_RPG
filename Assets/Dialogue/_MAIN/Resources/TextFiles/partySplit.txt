@@ -1,0 +1,89 @@
+CreateCharacter(kisa -enabled false)
+CreateCharacter(sophie -enabled false)
+CreateCharacter(nicol -enabled false)
+CreateCharacter(alan -enabled false)
+alan.SetPriority(2)
+alan.Move(0 0 -spd 3)
+kisa.Move(0.65 0 -spd 3)
+sophie.Move(0.2 0 -spd 3)
+nicol.Move(0.875 0 -spd 3)
+wait(0.75)
+SetSprite(nicol flipped)
+Show(nicol)
+Highlight(nicol -o true)
+nicol "Huzzah! Our first victory, thanks to yours truly!"
+Show(sophie)
+Highlight(sophie -o true)
+sophie "It was a team effort, Nicol. Each of us played a role, and while your aid was appreciated, victory was not solely yours."
+SetSprite(kisa flipped)
+Show(kisa)
+Highlight(kisa -o true)
+kisa "Oh, of course, Sophie. After all, teamwork makes the dream work, does it not? Though sometimes dreams have a way of slipping through our fingers, no matter how hard we work."
+sophie.Move(0.3 0 -spd 2)
+Highlight(sophie -o true)
+sophie "Your tone gives away your irritation, Kisa. Let us air our grievances; Why the avoidance? What breeds this sudden chill between us?"
+SetSprite(kisa kisa)
+Highlight(kisa -o true)
+kisa "Irritated? Me? Not at all. Everything's peachy."
+Highlight(sophie -o true)
+sophie "Once more you evade. Silence does not resolve anything. Are you planning to hold this grudge indefinitely?"
+nicol.Move(0.85 0 -spd 2)
+Highlight(nicol -o true)
+nicol "Forgive the intrusion, Sophia, but perhaps this discourse is better suited for privacy."
+Highlight(sophie -o true)
+sophie "I do not take orders from stray cats. Stay out of this."
+SetSprite(kisa flipped)
+nicol.Move(0.625 0 -spd 3)
+kisa.Move(0.9 0 -spd 3)
+Highlight(nicol -o true)
+nicol "Stray cats?! Why, I never-"
+Highlight(kisa -o true)
+kisa "Sophie, that was uncalled for. Nicol is more than just a cat; he is our comrade."
+Show(alan)
+Highlight(alan -o true)
+alan "(Normally, I would tune out their chatter, but this disagreement seems to be escalating. It might be wise to intervene before it worsens.)"
+alan.Move(0.05 0 -spd 2)
+alan "Friends, let us pause. Is this truly worth the argument?"
+sophie.SetPriority(1)
+Highlight(sophie -o true)
+sophie.Move(0.35 0 -spd 2)
+sophie "I stand by my words. I alone cling to reason, yet I am treated like a tyrant. My guidance is dismissed and my efforts belittled, leaving me feeling disrespected by you whom I consider allies."
+kisa.Move(0.875 0 -spd 2)
+Highlight(kisa -o true)
+kisa "We respect you, Sophie! But sometimes... tact eludes you?"
+SetSprite(nicol nicol)
+sophie.Move(0.625 0 -spd 2)
+nicol.Move(0.3 0 -spd 3)
+Highlight(sophie -o true)
+sophie "You dare call me tactless?! Coming from you-"
+sophie "...No. I will not waste my time on pointless and childish squabbles. I will search for my students, with or without my allies."
+Hide(sophie)
+wait(2)
+nicol.Move(0.4 0 -spd 2)
+Highlight(nicol -o true)
+nicol "Pah! A stray cat? Sophie must have woken on the wrong side of the bed! I am not some stray; I am an aristocat! Dignity is my mantle!"
+nicol "Come, Kisa! Let's scale this tower faster than Sophie could ever imagine! We shall become legends, and Sophie will have to acknowledge our strength!"
+SetSprite(nicol flipped)
+nicol "And <i>you</i>, Alan! You, my great rival, play the most important role of all! You shall be the one to test the limits of my strength! Our next encounter shall be a duel to remember!"
+SetSprite(nicol nicol)
+nicol.Move(0.5 0 -spd 3)
+Hide(nicol)
+Highlight(kisa -o true)
+kisa "Nicol! Wait!"
+kisa.Move(0.45 0 -spd 3)
+Hide(kisa)
+wait(2)
+alan.Move(0.1 0 -spd 1.5)
+Highlight(alan -o true)
+alan "(It seems I have been overlooked. Lovely. I might not be as vocal as the others, but being completely forgotten stings a bit.)"
+alan "(Though Nicol did acknowledge my existence when he declared that I would be the one to test his strength, it is disheartening to be reduced to merely that—a trial of prowess rather than an ally.)"
+alan "(Nevertheless, onward I go. Surely, I will catch up with them soon.)"
+sophie.SetPriority(0)
+alan.SetPriority(0)
+nicol.SetPriority(0)
+kisa.SetPriority(0)
+Hide(alan)
+Hide(nicol)
+Hide(kisa)
+Hide(sophie)
+endDialogue(false)

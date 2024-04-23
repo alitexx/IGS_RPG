@@ -39,7 +39,7 @@ public class mainDialogueManager : MonoBehaviour
     // when loading something from resources, you dont specify the file extension
     //[SerializeField] private TextAsset fileName;
     public bool dialogueRunning = false; // Track if dialogue coroutine is running
-    private string fileName = "end_genocide";
+    private string fileName = "prologue";
 
     private string currentlyRunningText = "";
 
@@ -48,14 +48,15 @@ public class mainDialogueManager : MonoBehaviour
         //make characters
         StartCoroutine(completeDialogue("TextFiles/deleteAfterTesting"));
 
-        /*//dialogueSTART(fileName); // only here for testing
+        //dialogueSTART(fileName); // only here for testing
         if (playerController.BattleTutorialCleared == 1)
         {
             playerController.loadGame();
-        } else // if they have not cleared the tutorial
+        }
+        else // if they have not cleared the tutorial
         {
             dialogueSTART(fileName);
-        }*/
+        }
     }
 
     //MUST PASS IN THE 
@@ -99,6 +100,9 @@ public class mainDialogueManager : MonoBehaviour
                 case "secondFloor_k":
                 case "thirdFloor_kn":
                 case "fourthFloor_kns":
+                case "level1_slime":
+                case "level1_skeleton":
+                case "tutorialEncounter":
                     break;
                 default:
                     am.playBGM("T4");

@@ -1,0 +1,9 @@
+alan.Move(0.1 0 -spd 3)
+wait(0.75)
+Show(alan)
+Highlight(alan -o true)
+alan "(Should skeletons prove this formidable, I worry what other perils await me within this tower.)"
+alan "(From a tactical standpoint, harvesting the souls of my companions is wise, yet the idea of extinguishing their lives weighs heavily upon me.)"
+alan "(I am torn. Perhaps by forging ahead, clarity shall find me.)"
+Hide(alan)
+endDialogue(false)

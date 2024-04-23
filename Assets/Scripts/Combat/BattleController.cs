@@ -574,6 +574,8 @@ public class BattleController : MonoBehaviour
     [SerializeField] private GameObject nicolHealthText;
     [SerializeField] private GameObject sophieHealthText;
 
+    [SerializeField] private GameObject turnOffForKillBefriend;
+
     //Keys
 
     public KeyCode attackKey = KeyCode.W;
@@ -1614,6 +1616,8 @@ public class BattleController : MonoBehaviour
                 //we should probably change the music here or smth
                 am.playSFX(14);
                 am.playBGM("T6");
+
+                turnOffForKillBefriend.SetActive(false);
                 befriendOrAbsorbButton.SetActive(true);
             }
             else
@@ -1730,7 +1734,7 @@ public class BattleController : MonoBehaviour
         }
 
         playerController.joinParty();
-
+        turnOffForKillBefriend.SetActive(true);
         partyMembers.Clear();
         //playerController.isfrozen = false;
         battleObject.SetActive(false);
@@ -1768,8 +1772,8 @@ public class BattleController : MonoBehaviour
             befriendOrAbsorbButton.SetActive(false);
         }
 
-        
 
+        turnOffForKillBefriend.SetActive(true);
         partyMembers.Clear();
         //playerController.isfrozen = false;
         battleObject.SetActive(false);

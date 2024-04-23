@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class TutorialHandler : MonoBehaviour
 {
@@ -14,9 +15,13 @@ public class TutorialHandler : MonoBehaviour
     public GameObject targetTutorial;
 
     [SerializeField] private GameObject[] tutorialMenus;
+    [SerializeField] private GameObject[] tutorialHoles; // used to put holes in the dark bg so players can see things
     [SerializeField] private TextMeshProUGUI targetTutorialText;
 
+    [SerializeField] private CanvasGroup darkBG;
+
     private int tutorialCounter;
+    private GameObject previousHole; // for turning on/off the holes in the tutorial
 
     private void Start()
     {
@@ -34,15 +39,47 @@ public class TutorialHandler : MonoBehaviour
         tutorialCounter++;
         tutorialMenus[tutorialCounter - 1].SetActive(false);
         tutorialMenus[tutorialCounter].SetActive(true);
+        if (previousHole)
+        {
+            previousHole.SetActive(false);
+            previousHole = null;
+        }
         switch (tutorialCounter)
         {
+            case 1:
+                tutorialHoles[0].SetActive(true);
+                previousHole = tutorialHoles[0];
+                break;
             case 3: // activate target tutorial
+                tutorialHoles[1].SetActive(true);
+                previousHole = tutorialHoles[1];
                 targetTutorialText.text = "Use the A and D keys to select a target, then press " + audioStatics.interractButton.ToString() + " to attack!";
                 targetTutorial.SetActive(true);
                 //tutorialMenus[tutorialCounter].SetActive(false);
                 break;
-
+            case 5:
+                tutorialHoles[2].SetActive(true);
+                previousHole = tutorialHoles[2];
+                break;
+            case 7:
+                tutorialHoles[3].SetActive(true);
+                previousHole = tutorialHoles[3];
+                break;
+            case 8:
+                tutorialHoles[4].SetActive(true);
+                previousHole = tutorialHoles[4];
+                break;
         }
+    }
+
+    public void fadeOutBG()
+    {
+        darkBG.DOFade(0, 0.75f);
+    }
+
+    public void fadeInBG()
+    {
+        darkBG.DOFade(1, 0.75f);
     }
 
     private void Update()

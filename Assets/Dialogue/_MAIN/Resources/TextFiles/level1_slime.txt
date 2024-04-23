@@ -1,0 +1,10 @@
+CreateCharacter(alan -enabled false)
+alan.Move(0.1 0 -spd 3)
+wait(0.75)
+Show(alan)
+Highlight(alan -o true)
+alan "(Curses... Though my injuries are not severe, that slime proved more formidable than I had expected.)"
+alan "(Perhaps... Perhaps I commence my gathering of souls? Not only would it bolster my strength, but it would advance my quest to revive Leora.)"
+alan "(But no... slaying my companions is a sin. I must press onward, perhaps strength will find me on this path.)"
+Hide(alan)
+endDialogue(false)
