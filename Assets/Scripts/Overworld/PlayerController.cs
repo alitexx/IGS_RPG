@@ -189,6 +189,11 @@ public class PlayerController : MonoBehaviour
                 case "0":
                     //start pre-tutorial dialogue
                     //start tutorial fight
+                    isSlime = true;
+                    tutorialFight = true;
+                    tutorialHandler.SetActive(true);
+                    mainDialogueManager.dialogueSTART("tutorialEncounter");
+                    break;
                 case "1":
                     KisaBoss = true;
                     mainDialogueManager.dialogueSTART("kisaEncounter");
