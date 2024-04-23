@@ -653,7 +653,10 @@ public class BattleController : MonoBehaviour
 
     private void Start()
     {
-        ResetStats(true, true);
+        if (playerController.BattleTutorialCleared != 1)
+        {
+            ResetStats(true, true);
+        }
         specialButton = specialObject.GetComponent<UnityEngine.UI.Image>();
     }
 

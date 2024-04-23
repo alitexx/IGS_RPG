@@ -6,6 +6,7 @@ public class LoadifSaved : MonoBehaviour
 {
 
     public PlayerController playerController;
+    //[SerializeField] private LevelManager levelManager;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,7 @@ public class LoadifSaved : MonoBehaviour
         {
             //called
             playerController.loadGame();
+            //levelManager.LoadStats();
         }
     }
 
