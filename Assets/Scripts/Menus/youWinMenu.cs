@@ -170,6 +170,14 @@ public class youWinMenu : MonoBehaviour
                 PauseMenu.canOpenPause = true;
                 battleEnterAnimator.SetBool("BattleOver", false);
                 youWinText.position = locations[4].position;
+                if (loadedDialogue == "Cutscene") // this is the end of the game. send to maindialoguemanager
+                {
+                    //find id
+                    mainDialogueManager.dialogueSTART(findEndingID());
+                    loadedDialogue = "...";
+                    this.gameObject.SetActive(false);
+                    return;
+                }
                 if (loadedDialogue != "...")
                 {
                     mainDialogueManager.dialogueSTART(loadedDialogue);
@@ -185,45 +193,37 @@ public class youWinMenu : MonoBehaviour
             });
         });
     }
+
+    // run only when loaded dialogue == cutscene. this is for the end of the game
+    private string findEndingID()
+    {
+
+        //this is a very long and confusing nested if statement that is kinda like a tree
+        // i dont know how best to explain it but it does what it needs to
+        if (playerController.hasKisa)
+        {
+            if (playerController.hasNicol)
+            {
+                if (playerController.hasSophie)
+                {
+                    return "end_kns";
+                }
+                return "end_ns";
+            }
+            if (playerController.hasSophie)
+            {
+                return "end_ks";
+            }
+            return "end_k";
+        }
+        if (playerController.hasNicol)
+        {
+            if (playerController.hasSophie)
+            {
+                return "end_ns";
+            }
+            return "end_n";
+        }
+        return "end_genocide";
+    }
 }
-
-//old script, the one above was made using the help of mr GPT
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using TMPro;
-//using DG.Tweening;
-
-//public class youWinMenu : MonoBehaviour
-//{
-//    [SerializeField] private RectTransform[] locations;
-//    [SerializeField] private RectTransform youWinText;
-//    [SerializeField] private CanvasGroup expBar;
-//    [SerializeField] private RectTransform endBattleButton;
-//    [SerializeField] private TextMeshProUGUI gainedEXP;
-//    [SerializeField] private TextMeshProUGUI CurrentEXP;
-//    private void OnEnable()
-//    {
-//        youWinText.DOMove(locations[0].position, 0.35f).OnComplete(() => {
-//            youWinText.DOMove(locations[1].position, 0.7f).OnComplete(() => {
-//                expBar.gameObject.SetActive(true);
-//                expBar.DOFade(1, 1);
-//            });
-//        });
-//    }
-
-
-
-
-//    public void closeYouWinMenu()
-//    {
-//        //do whatever you need to do to end battle
-//        expBar.DOFade(0, 1).OnComplete(() => {expBar.gameObject.SetActive(false);});
-//        endBattleButton.DOMove(locations[5].position, 1f);
-//        youWinText.DOMove(locations[2].position, 0.35f).OnComplete(() => {
-//            youWinText.DOMove(locations[3].position, 0.25f).OnComplete(() => {
-//                youWinText.position = locations[4].position;
-//            });
-//        });
-//    }
-//}

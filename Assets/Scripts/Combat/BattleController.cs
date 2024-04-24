@@ -1685,6 +1685,13 @@ public class BattleController : MonoBehaviour
             playerController.isSkeleton = false;
             playerController.isWraith = false;
             playerController.isInvisGuy = false;
+            if (playerController.LichBoss)
+            {
+
+                youWinMenu.loadedDialogue = "Cutscene";
+            }
+
+            //remove lich boss
             playerController.LichBoss = false;
 
             if (playerController.KisaBoss || playerController.NicolBoss || playerController.SophieBoss)
