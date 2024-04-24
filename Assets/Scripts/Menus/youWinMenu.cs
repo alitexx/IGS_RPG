@@ -167,7 +167,7 @@ public class youWinMenu : MonoBehaviour
         endBattleButton.DOMove(locations[5].position, 1f).OnComplete(() => { endBattleButton.gameObject.SetActive(false); });
         youWinText.DOMove(locations[2].position, 0.35f).OnComplete(() => {
             youWinText.DOMove(locations[3].position, 0.75f).OnComplete(() => {
-                PauseMenu.canOpenPause = false;
+                PauseMenu.canOpenPause = true;
                 battleEnterAnimator.SetBool("BattleOver", false);
                 youWinText.position = locations[4].position;
                 if (loadedDialogue != "...")

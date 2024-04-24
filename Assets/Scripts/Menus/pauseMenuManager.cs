@@ -214,17 +214,17 @@ public class pauseMenuManager : MonoBehaviour
             case "KISA":
                 partymemberImages[0].sprite = partymemberSprites[1];
                 //partymemberIconAssets[1].SetActive(true);
-                charNames[0].font = fonts[1];
+                charNames[0].text = "";
                 break;
             case "NICOL":
                 partymemberImages[1].sprite = partymemberSprites[3];
                 //partymemberIconAssets[3].SetActive(true);
-                charNames[1].font = fonts[1];
+                charNames[1].text = "";
                 break;
             case "SOPHIE":
                 partymemberImages[2].sprite = partymemberSprites[5];
                 //partymemberIconAssets[5].SetActive(true);
-                charNames[2].font = fonts[1];
+                charNames[2].text = "";
                 break;
         }
     }
