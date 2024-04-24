@@ -21,20 +21,29 @@ public class partyFinalWords : MonoBehaviour
 
     [SerializeField] private BattleController battleController;
 
+    [SerializeField] private Transform continuePromptOBJ;
+    [SerializeField] private Transform[] continuePromptOBJLocs;
+
     private float oldDialogueSpeed = 1;
     // Start is called before the first frame update
     public void playFinalWords(string whichPartyMember)
     {
         audioManager.stopBGM(0.1f);
+        //adjust font
         dialogueText.fontSize = 16;
         dialogueText.alignment = TextAlignmentOptions.Center;
         //move dialogue box to where it needs to be
         dialogueText.text = "";
         dialogueText.transform.position = textLoc[0].position;
+        //cut to black
         cutToBlack.gameObject.SetActive(true);
         cutToBlack.alpha = 1;
         audioManager.stopHeartbeatSFX();
+        //save what the dialogue speed was
         oldDialogueSpeed = ds.architect.speedMultiplier;
+        //move continue prompt out of the way
+        continuePromptOBJ.position = continuePromptOBJLocs[0].position;
+        //determine which party member was killed and act accordingly
         switch (whichPartyMember.ToUpper())
         {
             case "KISA":
@@ -80,7 +89,7 @@ public class partyFinalWords : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 audioManager.playSFX(11);
                 yield return new WaitForSeconds(2f);
-                audioManager.playSFX(18);
+                audioManager.playSFX(16);
                 yield return new WaitForSeconds(3f);
                 break;
             case 1: // nicol death
@@ -97,7 +106,7 @@ public class partyFinalWords : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 audioManager.playSFX(11);
                 yield return new WaitForSeconds(2f);
-                audioManager.playSFX(18);
+                audioManager.playSFX(16);
                 yield return new WaitForSeconds(3f);
                 break;
             case 2: // sophie death if she is the only one killed
@@ -112,7 +121,7 @@ public class partyFinalWords : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 audioManager.playSFX(11);
                 yield return new WaitForSeconds(2f);
-                audioManager.playSFX(18);
+                audioManager.playSFX(16);
                 yield return new WaitForSeconds(3f);
                 break;
             case 3: //sophie death if someone else is dead
@@ -131,7 +140,7 @@ public class partyFinalWords : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 audioManager.playSFX(11);
                 yield return new WaitForSeconds(2f);
-                audioManager.playSFX(18);
+                audioManager.playSFX(16);
                 yield return new WaitForSeconds(3f);
                 break;
             case 4: // sophie death if everyone else is dead
@@ -150,7 +159,7 @@ public class partyFinalWords : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 audioManager.playSFX(11);
                 yield return new WaitForSeconds(2f);
-                audioManager.playSFX(18);
+                audioManager.playSFX(16);
                 yield return new WaitForSeconds(3f);
                 break;
         }
@@ -161,7 +170,12 @@ public class partyFinalWords : MonoBehaviour
             cutToBlack.gameObject.SetActive(false);
             battleController.AbsorbButton();
             dialogueText.fontSize = 8;
-            dialogueText.alignment = TextAlignmentOptions.Left;
+            dialogueText.alignment = TextAlignmentOptions.TopLeft;
+            dialogueText.text = "";
+
+            //bring back continue prompt
+            continuePromptOBJ.gameObject.SetActive(false);
+            continuePromptOBJ.position = continuePromptOBJLocs[1].position;
         });
     }
     public void openYouWin()
