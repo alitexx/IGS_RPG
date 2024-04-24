@@ -32,6 +32,10 @@ public class pauseMenuManager : MonoBehaviour
     [SerializeField] private SavepointScript savepointScript;
     [SerializeField] private PlayerController playerController;
 
+    // changing font of names
+    [SerializeField] private TextMeshProUGUI[] charNames;
+    [SerializeField] private TMP_FontAsset[] fonts;
+
     private void OnEnable()
     {
         //place all sprites where they need to be
@@ -189,14 +193,17 @@ public class pauseMenuManager : MonoBehaviour
             case "KISA":
                 partymemberImages[0].sprite = partymemberSprites[0];
                 partymemberIconAssets[0].SetActive(false);
+                charNames[0].font = fonts[0];
                 break;
             case "NICOL":
                 partymemberImages[1].sprite = partymemberSprites[2];
                 partymemberIconAssets[2].SetActive(false);
+                charNames[1].font = fonts[0];
                 break;
             case "SOPHIE":
                 partymemberImages[2].sprite = partymemberSprites[4];
                 partymemberIconAssets[4].SetActive(false);
+                charNames[2].font = fonts[0];
                 break;
         }
     }
@@ -207,14 +214,17 @@ public class pauseMenuManager : MonoBehaviour
             case "KISA":
                 partymemberImages[0].sprite = partymemberSprites[1];
                 //partymemberIconAssets[1].SetActive(true);
+                charNames[0].font = fonts[1];
                 break;
             case "NICOL":
                 partymemberImages[1].sprite = partymemberSprites[3];
                 //partymemberIconAssets[3].SetActive(true);
+                charNames[1].font = fonts[1];
                 break;
             case "SOPHIE":
                 partymemberImages[2].sprite = partymemberSprites[5];
                 //partymemberIconAssets[5].SetActive(true);
+                charNames[2].font = fonts[1];
                 break;
         }
     }

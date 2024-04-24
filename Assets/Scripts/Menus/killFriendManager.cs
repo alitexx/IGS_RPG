@@ -33,8 +33,8 @@ public class killFriendManager : MonoBehaviour
     private bool befriendingMaybe;
 
     public BattleController battleController;
-
-    private void Awake()
+    
+    private void OnEnable()
     {
         partymembersFadeOut.DOFade(1, 1.5f);
         killingMaybe = false;

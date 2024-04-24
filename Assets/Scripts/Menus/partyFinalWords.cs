@@ -21,8 +21,6 @@ public class partyFinalWords : MonoBehaviour
 
     [SerializeField] private BattleController battleController;
 
-
-
     private float oldDialogueSpeed = 1;
     // Start is called before the first frame update
     public void playFinalWords(string whichPartyMember)
@@ -163,7 +161,7 @@ public class partyFinalWords : MonoBehaviour
             cutToBlack.gameObject.SetActive(false);
             battleController.AbsorbButton();
             dialogueText.fontSize = 8;
-            dialogueText.alignment = TextAlignmentOptions.Left;
+            dialogueText.alignment = TextAlignmentOptions.Left | TextAlignmentOptions.Top;
         });
     }
     public void openYouWin()

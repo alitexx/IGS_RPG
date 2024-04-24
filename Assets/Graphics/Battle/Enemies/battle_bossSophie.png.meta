@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -996,7 +996,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      battle_bossSophie_36: -935113459
       battle_bossSophie_41: -1325053205
       battle_bossSophie_34: 1451055061
       battle_bossSophie_24: 1657644408
@@ -1032,6 +1031,7 @@ TextureImporter:
       battle_bossSophie_3: -954175789
       battle_bossSophie_15: -394655386
       battle_bossSophie_30: -875072055
+      battle_bossSophie_36: -935113459
       battle_bossSophie_14: -334256430
       battle_bossSophie_12: 1285748584
       battle_bossSophie_23: 573112227

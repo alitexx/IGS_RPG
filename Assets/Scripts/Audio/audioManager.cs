@@ -235,13 +235,14 @@ public class audioManager : MonoBehaviour
         if (ID == 8)
         {
             // Play the first audio clip
+            AudioSource firstAudioSource = BGMAvailable[10];
+            firstAudioSource.volume = audioStatics.BGMVolume * audioStatics.MasterVolume;
+            firstAudioSource.pitch = 1;
+            firstAudioSource.Play();
             if (youWinMenu.killedPartyMember)
             {
                 changePitch(10, 0.9f, 5f);
             }
-            AudioSource firstAudioSource = BGMAvailable[10];
-            firstAudioSource.volume = audioStatics.BGMVolume * audioStatics.MasterVolume;
-            firstAudioSource.Play();
 
             // Schedule the second audio clip to play after the first one finishes
             StartCoroutine(PlayVictory(firstAudioSource, ID, speed));
