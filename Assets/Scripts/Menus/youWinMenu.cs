@@ -163,11 +163,9 @@ public class youWinMenu : MonoBehaviour
     {
         killedPartyMember = false;
         expBar.DOFade(0, 0.5f).OnComplete(() => { expBar.gameObject.SetActive(false); });
-        am.playBGM("T2");
         battleEnterAnimator.SetBool("BattleOver", true);
         endBattleButton.DOMove(locations[5].position, 1f).OnComplete(() => { endBattleButton.gameObject.SetActive(false); });
         youWinText.DOMove(locations[2].position, 0.35f).OnComplete(() => {
-            
             youWinText.DOMove(locations[3].position, 0.75f).OnComplete(() => {
                 PauseMenu.canOpenPause = false;
                 battleEnterAnimator.SetBool("BattleOver", false);
@@ -179,6 +177,7 @@ public class youWinMenu : MonoBehaviour
                     this.gameObject.SetActive(false);
                     return;
                 }
+                am.playBGM("T2");
                 playerController.isfrozen = false;
                 expBar.gameObject.SetActive(false);
                 gainedEXP.gameObject.SetActive(false);

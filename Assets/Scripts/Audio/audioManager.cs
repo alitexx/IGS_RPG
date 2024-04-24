@@ -9,6 +9,7 @@ public class audioManager : MonoBehaviour
     [SerializeField] private AudioSource[] SFXAvailable;
     [SerializeField] private AudioSource voiceVol;
     public static AudioSource currentlyPlaying;
+    private int songID = 20; // for playbgm
 
     // HOW IT WORKS!!
     // you have to pass in the song name and the speed you'd like it to fade in/out
@@ -22,45 +23,50 @@ public class audioManager : MonoBehaviour
     }
     public void playBGM(string songToPlay, float speed = 1)
     {
-        stopBGM(speed, true);
-
-        //i should put a check here that says if its the same song just don't play it but thats a lot of work rn so just try not to do it
-
-        switch (songToPlay.ToUpper())
+        switch (songToPlay.ToUpper()) // change songID based on the input
         {
             case "T1": case "OPENING":
-                playSongUsingID(0, speed);
+                songID = 0;
                 break;
             case "T2": case "OVERWORLD":
-                playSongUsingID(1, speed);
+                songID = 1;
                 break;
             case "T3": case "BATTLE":
-                playSongUsingID(2, speed);
+                songID = 2;
                 break;
             case "T4": case "TENSE": case "CONVERSING(TENSE)":
-                playSongUsingID(3, speed);
+                songID = 3;
                 break;
             case "T5": case "HAPPY": case "CONVERSING(HAPPY)":
-                playSongUsingID(4, speed);
+                songID = 4;
                 break;
             case "T6": case "PARTYCIDE":
-                playSongUsingID(5, speed);
+                songID = 5;
                 break;
             case "T7": case "LICH": case "THE LICH": case "THELICH":
-                playSongUsingID(6, speed);
+                songID = 6;
                 break;
             case "T8": case "GAME OVER": case "GAMEOVER": case "DEFEAT":
-                playSongUsingID(7, speed);
+                songID = 7;
                 break;
             case "T9": case "VICTORY":
-                playSongUsingID(8, speed);
+                songID = 8;
                 break;
             case "T10": case "CREDITS":
-                playSongUsingID(9, speed);
+                songID = 9;
                 break;
             default:
                 Debug.LogWarning("The BGM [" + songToPlay + "] could not be found.");
                 break;
+        }
+        if (BGMAvailable[songID] == currentlyPlaying) // if the song is already playing, do nothing
+        {
+            return;
+        }
+        else
+        {
+            stopBGM(speed, true);
+            playSongUsingID(songID, speed);
         }
     }
 
@@ -232,14 +238,14 @@ public class audioManager : MonoBehaviour
 
     private void playSongUsingID(int ID, float speed)
     {
-        if (ID == 8)
+        if (ID == 8) // if this is the you win screen
         {
             // Play the first audio clip
             AudioSource firstAudioSource = BGMAvailable[10];
             firstAudioSource.volume = audioStatics.BGMVolume * audioStatics.MasterVolume;
             firstAudioSource.pitch = 1;
             firstAudioSource.Play();
-            if (youWinMenu.killedPartyMember)
+            if (youWinMenu.killedPartyMember) // if a party member has been killed, change pitch
             {
                 changePitch(10, 0.9f, 5f);
             }
@@ -272,6 +278,7 @@ public class audioManager : MonoBehaviour
         if (youWinMenu.killedPartyMember)
         {
             changePitch(ID);
+            BGMAvailable[10].pitch = 1f;
         }
         BGMAvailable[ID].DOFade(audioStatics.BGMVolume * audioStatics.MasterVolume, speed).OnComplete(() =>
         {
