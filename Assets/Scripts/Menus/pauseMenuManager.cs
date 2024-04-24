@@ -233,7 +233,7 @@ public class pauseMenuManager : MonoBehaviour
     {
         SaveMenu.SetActive(false);
         playerController.isfrozen = false;
-
+        PauseMenu.canOpenPause = true;
     }
 
     public void confirmSave()

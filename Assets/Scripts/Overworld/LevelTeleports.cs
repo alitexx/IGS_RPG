@@ -36,6 +36,7 @@ public class LevelTeleports : MonoBehaviour
 
         if (Vector2.Distance(transform.position, col.transform.position) > distance)
         {
+            PauseMenu.canOpenPause = false;
             ContinueUI.SetActive(true);
             PlayerController.isfrozen = true;
         }
@@ -77,6 +78,7 @@ public class LevelTeleports : MonoBehaviour
 
     public void Stay()
     {
+        PauseMenu.canOpenPause = true;
         PlayerController.isfrozen = false;
         ContinueUI.SetActive(false);
         return;

@@ -23,17 +23,17 @@ public class SavepointScript : MonoBehaviour
         if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.interractButton))
         {
             //call function to heal, and eventually save.
+            levelManager.FullHeal();
+            audioManager.playSFX(19);
             SaveMenu.SetActive(true);
             playerController.isfrozen = true;
-            
+            PauseMenu.canOpenPause = false;
         }
 
     }
 
     public void confirmedSave()
     {
-        levelManager.FullHeal();
-        audioManager.playSFX(19);
         playerController.saveGame();
         //confirm save/heal as a menu or something (name.setactive(true)
         Debug.Log("YIPEEEE");
