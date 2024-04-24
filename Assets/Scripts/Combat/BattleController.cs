@@ -289,7 +289,7 @@ public class BattleController : MonoBehaviour
 
     #region Stats
 
-    //WHEN CHANGING STATS CHANGE THEM IN LEVEL MANAGER AS WELL
+    //WHEN CHANGING STATS CHANGE THEM IN LEVEL MANAGER AND LEVELUPUI AS WELL
 
 
     //Tank Stats
@@ -1223,9 +1223,21 @@ public class BattleController : MonoBehaviour
 
             backButton.SetActive(false);
 
+            activeChar.animator.SetBool("MagAttacking", true);
+
+            yield return new WaitForSeconds(1.7f);
+
+
 
             for (int i = 0; i < enemyList.Count; i++)
             {
+                ParticleManager lightningParticle;
+
+                Vector3 position = enemyList[i].GetPosition();
+
+                lightningParticle = Instantiate(enemyList[i].particleManager, position, Quaternion.identity, enemyList[i].transform);
+                lightningParticle.animator.SetBool("ElectricFX", true);
+
                 enemyList[i].GotDamaged(activeChar.statSheet.stats["Strength"], enemyList[i].statSheet.stats["Defense"]);
             }
 

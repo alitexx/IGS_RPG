@@ -32,8 +32,8 @@ public class levelUpUI : MonoBehaviour
         //6: mana
         //7: max mana
         new List<int>() {10, 5, 5, 3, 18, 18, 4, 4},  // Alan
-        new List<int>() {6, 6, 4, 2, 15, 15, 7, 7},    // Kisa
-        new List<int>() {7, 13, 4, 5, 8, 8, 9, 9},    // Nicol
+        new List<int>() {6, 6, 4, 4, 15, 15, 7, 7},    // Kisa
+        new List<int>() {7, 8, 4, 5, 8, 8, 9, 9},    // Nicol
         new List<int>() {13, 7, 4, 6, 10, 10, 5, 5}  // Sophie
     };
     #endregion

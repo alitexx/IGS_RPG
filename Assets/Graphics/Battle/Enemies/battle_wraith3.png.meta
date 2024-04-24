@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -726,8 +726,8 @@ TextureImporter:
       battle_wraith3_21: -1925944924
       battle_wraith3_8: -434468615
       battle_wraith3_18: -1304142896
-      battle_wraith3_19: -2088294717
       battle_wraith3_27: 754062087
+      battle_wraith3_19: -2088294717
       battle_wraith3_6: 760667620
       battle_wraith3_1: 1434637814
   spritePackingTag: 

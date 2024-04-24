@@ -40,6 +40,7 @@ public class BattleCharacter : MonoBehaviour
 
     //temporarily telling who it is
     public SpriteRenderer charSprite;
+    public GameObject spriteObject;
 
     public HealthSystem healthSystem;
     //temporary health bar
@@ -148,21 +149,27 @@ public class BattleCharacter : MonoBehaviour
             {
                 //charSprite.color = Color.cyan;
                 animator.SetBool("isSlime", true);
+                spriteObject.transform.position = new Vector3(spriteObject.transform.position.x, 0.2f, spriteObject.transform.position.z);
+                spriteObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
             else if (statSheet.name == "Skeleton Guy")
             {
                 //charSprite.color = Color.white;
                 animator.SetBool("isSkeleton", true);
+                spriteObject.transform.position = new Vector3(spriteObject.transform.position.x, 0.1f, spriteObject.transform.position.z);
+                spriteObject.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
             }
             else if (statSheet.name == "Wraith Guy")
             {
                 //charSprite.color = Color.black;
                 animator.SetBool("isWraith", true);
+                spriteObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
             else if (statSheet.name == "Ghost Guy")
             {
                 //charSprite.color = Color.grey;
                 animator.SetBool("isGhost", true);
+                spriteObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
             else if (statSheet.name == "Mage Guy")
             {

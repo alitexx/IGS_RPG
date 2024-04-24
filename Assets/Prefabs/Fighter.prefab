@@ -591,6 +591,7 @@ MonoBehaviour:
   weaknessImage: {fileID: 3714340667494519407}
   GIsPlayerTeam: 0
   charSprite: {fileID: 7771544044199383721}
+  spriteObject: {fileID: 2837969348187055215}
   animator: {fileID: 7197455562530669128}
   am: {fileID: 0}
   amGameObject: {fileID: 0}
