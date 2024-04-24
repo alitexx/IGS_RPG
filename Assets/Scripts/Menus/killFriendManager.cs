@@ -25,7 +25,6 @@ public class killFriendManager : MonoBehaviour
     //[SerializeField] private LevelManager levelManager;
     [SerializeField] private Sprite[] elementsSprites;
     [SerializeField] private CanvasGroup partymembersFadeOut;
-    [SerializeField] private GameObject cutToBlack;
     [SerializeField] private partyFinalWords finalWordsScript;
 
     private string charInQuestion;
@@ -37,22 +36,27 @@ public class killFriendManager : MonoBehaviour
 
     private void Awake()
     {
+        partymembersFadeOut.DOFade(1, 1.5f);
         killingMaybe = false;
         befriendingMaybe = false;
-
+        PauseMenu.canOpenPause = false;
         if (playerController.KisaBoss)
         {
+            Debug.Log("kisa");
             charInQuestion = "Kisa";
             PartyMemberInQuestion.sprite = partyMembersAvailable[0];
         } else if (playerController.NicolBoss)
         {
+            Debug.Log("nicol");
             charInQuestion = "Nicol";
             PartyMemberInQuestion.sprite = partyMembersAvailable[1];
         } else if (playerController.SophieBoss)
         {
+            Debug.Log("sophie");
             charInQuestion = "Sophie";
             PartyMemberInQuestion.sprite = partyMembersAvailable[2];
         }
+        Debug.Log(charInQuestion);
         EditTextInformation(charInQuestion);
         if (true) // replace this with if they've seen the tutorial
         {
@@ -140,17 +144,16 @@ public class killFriendManager : MonoBehaviour
         //a choice has been made
         if (killingMaybe)
         {
-            battleController.AbsorbButton();
-            alanAnimator.SetTrigger("kill");
-            // do something special here for this
+            youWinMenu.killedPartyMember = true;
+            alanAnimator.SetTrigger("kill"); // play kill anim
             partymembersFadeOut.DOFade(1, 0.5f).OnComplete(() => {
-                cutToBlack.SetActive(true);
                 finalWordsScript.playFinalWords(charInQuestion);
+                alanAnimator.SetTrigger("return"); // returns to idle
+                partymembersFadeOut.DOFade(0, 2f);
             });
             }
         else if (befriendingMaybe)
         {
-            battleController.BefriendButton();
             alanAnimator.SetTrigger("befriend");
             closeAreYouSure();
             tweenInObjects[0].GetComponent<RectTransform>().DOMove(locations[2].position, 1);
@@ -158,14 +161,17 @@ public class killFriendManager : MonoBehaviour
             tweenInObjects[2].GetComponent<RectTransform>().DOMove(locations[4].position, 1);
             //slowly fade out alan and the other party member
             partymembersFadeOut.DOFade(1,1f).OnComplete(() => { partymembersFadeOut.DOFade(0, 2f).OnComplete(() => {
-                truebgFade.SetActive(false);
+                battleController.BefriendButton();
+                truebgFade.GetComponent<killFriendBG>().fadeOut();
+                finalWordsScript.openYouWin();
+                alanAnimator.SetTrigger("return"); // returns to idle
             });
             });
             return;
         }
 
 
-        truebgFade.SetActive(false);
+        truebgFade.GetComponent<killFriendBG>().fadeOut();
         closeAreYouSure();
         tweenInObjects[0].GetComponent<RectTransform>().DOMove(locations[2].position, 1);
         tweenInObjects[1].GetComponent<RectTransform>().DOMove(locations[3].position, 1);

@@ -1128,7 +1128,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -12207,6 +12207,7 @@ MonoBehaviour:
   elementInfo: {fileID: 1397179231}
   elementIcon: {fileID: 1201820963}
   levelManager: {fileID: 0}
+  HPMPSliders: []
   elementsIcons:
   - {fileID: 21300000, guid: 10555cc5425770c4ca917a1b4121fd0c, type: 3}
   - {fileID: 21300000, guid: 22153721b62df874c830052847e9ad00, type: 3}
@@ -12332,7 +12333,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0

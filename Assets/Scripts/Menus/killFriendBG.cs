@@ -10,9 +10,11 @@ public class killFriendBG : MonoBehaviour
         this.gameObject.GetComponent<CanvasGroup>().DOFade(1, 30);
     }
 
-    // This function is called when the behaviour becomes disabled or inactive
-    void OnDisable()
+    public void fadeOut()
     {
-        this.gameObject.GetComponent<CanvasGroup>().alpha = 0;
+        this.gameObject.GetComponent<CanvasGroup>().DOFade(0, 1).OnComplete(() => {
+            this.gameObject.GetComponent<CanvasGroup>().alpha = 0;
+            this.gameObject.SetActive(false);
+            });
     }
 }

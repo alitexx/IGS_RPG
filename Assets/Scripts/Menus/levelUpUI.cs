@@ -129,10 +129,10 @@ public class levelUpUI : MonoBehaviour
 
     public void exitLevelUpUI()
     {
-        darkbg.DOFade(1, 0.75f);
+        darkbg.DOFade(0, 0.75f);
         exitlvlUpBTN.DOMove(locations[4].position, 0.5f);
         lvlupboxes.DOMove(locations[4].position, 0.75f);
-        lvlUpText.DOMove(locations[0].position, 1f).OnComplete(() => {
+        lvlUpText.DOMove(locations[3].position, 1f).OnComplete(() => {
             ywm.ContinueLevelGaining();
             this.gameObject.SetActive(false);
         });

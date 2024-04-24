@@ -19,7 +19,7 @@ public class youWinMenu : MonoBehaviour
     [SerializeField] private mainDialogueManager mainDialogueManager;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private CanvasGroup killedPartyMemberBG;
-    public bool killedPartyMember;
+    public static bool killedPartyMember = false;
 
     public static string loadedDialogue = "...";
     private bool hasUpdatedGained = false;
@@ -34,12 +34,6 @@ public class youWinMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        //this should change position based on what i do with kill/befriend
-        am.stopHeartbeatSFX();
-        if (killedPartyMember)
-        {
-
-        }
         //cannot open pause menu at this time
         PauseMenu.canOpenPause = false;
         //
@@ -167,6 +161,7 @@ public class youWinMenu : MonoBehaviour
 
     public void closeYouWinMenu()
     {
+        killedPartyMember = false;
         expBar.DOFade(0, 0.5f).OnComplete(() => { expBar.gameObject.SetActive(false); });
         am.playBGM("T2");
         battleEnterAnimator.SetBool("BattleOver", true);

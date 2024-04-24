@@ -75,6 +75,7 @@ public class audioManager : MonoBehaviour
         }
         if (currentlyPlaying)
         {
+            currentlyPlaying.pitch = 1f;
             if (playingMusicAfter)
             {
                 currentlyPlaying.DOFade(0, (speed - 0.05f));
@@ -83,7 +84,6 @@ public class audioManager : MonoBehaviour
                 currentlyPlaying.DOFade(0, (speed - 0.05f)).OnComplete(() => { currentlyPlaying.Stop(); });
             }
         }
-        
     }
     public void stopHeartbeatSFX() // only used for heartbeat
     {
@@ -235,6 +235,10 @@ public class audioManager : MonoBehaviour
         if (ID == 8)
         {
             // Play the first audio clip
+            if (youWinMenu.killedPartyMember)
+            {
+                changePitch(10, 0.9f, 5f);
+            }
             AudioSource firstAudioSource = BGMAvailable[10];
             firstAudioSource.volume = audioStatics.BGMVolume * audioStatics.MasterVolume;
             firstAudioSource.Play();
@@ -264,6 +268,10 @@ public class audioManager : MonoBehaviour
     private void PlayOtherAudio(int ID, float speed)
     {
         BGMAvailable[ID].Play();
+        if (youWinMenu.killedPartyMember)
+        {
+            changePitch(ID);
+        }
         BGMAvailable[ID].DOFade(audioStatics.BGMVolume * audioStatics.MasterVolume, speed).OnComplete(() =>
         {
             if (currentlyPlaying)
@@ -274,4 +282,9 @@ public class audioManager : MonoBehaviour
         });
     }
 
+
+    public void changePitch(int id, float toValue = 0.8f, float speed = 5f)
+    {
+        BGMAvailable[id].DOPitch(toValue, speed);
+    }
 }

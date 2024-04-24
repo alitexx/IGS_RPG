@@ -30,8 +30,6 @@ public class OpeningCutscene : MonoBehaviour
         SceneManager.LoadScene("RPG_World");
     }
 
-
-    //next thing to do: figure out how to make speech progress on click. its done somewhere in this code, but idk where honestly
     IEnumerator completeDialogue()
     {
         Character_Sprite alan = CreateCharacter("alan") as Character_Sprite;
