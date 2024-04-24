@@ -12,6 +12,7 @@ public class killFriendBG : MonoBehaviour
 
     public void fadeOut()
     {
+        this.gameObject.GetComponent<CanvasGroup>().DOKill();
         this.gameObject.GetComponent<CanvasGroup>().DOFade(0, 1).OnComplete(() => {
             this.gameObject.GetComponent<CanvasGroup>().alpha = 0;
             this.gameObject.SetActive(false);

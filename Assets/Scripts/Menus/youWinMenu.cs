@@ -40,7 +40,7 @@ public class youWinMenu : MonoBehaviour
         SetGainedExperience(levelManager.gainedEXP);
 
         am.stopBGM(0.1f);
-
+        am.stopHeartbeatSFX();
         currentExperience = levelManager.currentEXP;
 
         currentEXP.text = currentExperience + "/100";

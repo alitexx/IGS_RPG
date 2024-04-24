@@ -161,7 +161,7 @@ public class partyFinalWords : MonoBehaviour
             cutToBlack.gameObject.SetActive(false);
             battleController.AbsorbButton();
             dialogueText.fontSize = 8;
-            dialogueText.alignment = TextAlignmentOptions.Left | TextAlignmentOptions.Top;
+            dialogueText.alignment = TextAlignmentOptions.Left;
         });
     }
     public void openYouWin()
