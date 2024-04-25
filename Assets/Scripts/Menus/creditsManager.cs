@@ -109,11 +109,8 @@ private void OnEnable()
                 charactersOnTitle[1].SetActive(false);
                 charactersOnTitle[2].SetActive(false);
                 charactersOnTitle[3].SetActive(false);
-                endingText.text = "Alan was slain during his quest to the lich's tower. His body was never found, but the knights held a small burial for their fallen comrade. " +
-                    "His fellow knights believed he died a hero, but only one person knows the truth.\r\n\r\nKisa was the only survivor of the events at the lich's tower. " +
-                    "She continued her life as a bard, documenting her stories for future generations to enjoy. Her life became a popular fable, her story entertaining yet " +
-                    "teaching the valuable lesson of raising your voice and fighting for those you hold dear. Even on her deathbed, she was thinking of her friends she lost " +
-                    "that day, grateful to be reuniting with them soon.\r\n\r\nNicol's last known location was at the lich's tower. As a nomad by nature without any close " +
+                endingText.text = "Alan was never seen again after the incident at the lich's tower.\r\n\r\nKisa was never seen again after the incident at the lich's tower." +
+                    "Nicol's last known location was at the lich's tower. As a nomad by nature without any close " +
                     "ties, his absence went unnoticed by most except for the party he journeyed with. Although he left a lasting impression on those he encountered, his " +
                     "transient lifestyle caused him to gradually fade into obscurity.\r\n\r\nSophie was absent when it came time to avenge her students. Her strength was " +
                     "undeniable, and many found it difficult to believe that the lich had claimed her. Meanwhile, her dojo faced closure and was undergoing transformation " +
