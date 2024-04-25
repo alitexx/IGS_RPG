@@ -12,6 +12,7 @@ public class SavepointScript : MonoBehaviour
     public audioManager audioManager;
     public PlayerController playerController;
     public GameObject SaveMenu;
+    [SerializeField] private mainDialogueManager mainDialogueManager;
     //public GameObject SaveConfirm;
 
     // Start is called before the first frame update
@@ -20,7 +21,7 @@ public class SavepointScript : MonoBehaviour
 
         DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
 
-        if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.interractButton))
+        if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.interractButton) && !mainDialogueManager.dialogueRunning)
         {
             //call function to heal, and eventually save.
             levelManager.FullHeal();

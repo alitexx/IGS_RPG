@@ -9,4 +9,4 @@ Highlight(alan -o true)
 alan "(The lich is within reach, soon this quest shall be over.)"
 alan "(This may be the last time I venture with this party... it is a strange feeling. I can sort out my emotions at a later date, I must prepare for battle.)"
 Hide(alan)
-endDialogue(true)
+endDialogue(false)
