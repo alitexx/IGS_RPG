@@ -1,0 +1,11 @@
+alan.Move(0.15 0 -spd 3)
+wait(0.75)
+Show(alan)
+Highlight(alan -o true)
+alan "(Curses... Though my injuries are not severe, the enemies of this tower proved more formidable than I had expected.)"
+alan.Move(0.175 0 -spd 1)
+alan "(Perhaps... Perhaps I commence my gathering of souls? Not only would it bolster my strength, but it would advance my quest to revive Leora.)"
+alan "(From a tactical standpoint, harvesting the souls of my companions is wise, yet the idea of extinguishing their lives weighs heavily upon me.)"
+alan "(But no, slaying my companions is a sin. I must press onward, perhaps strength will find me on this path.)"
+Hide(alan)
+endDialogue(true)

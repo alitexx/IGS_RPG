@@ -175,8 +175,9 @@ public class mainDialogueManager : MonoBehaviour
                     creditsManager.endingID = 6;
                     fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
                     break;
-                case "end_k": // kisa fight GO!
-                    Debug.Log("Kisa boss!! Kisa secret boss! KISA SECRET BOSS GO!!!");
+                case "end_k": // was going to be Kisa boss fight, removed that because we don't have time
+                    creditsManager.endingID = 3;
+                    fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
                     break;
             }
             currentlyRunningText = "";

@@ -15,6 +15,8 @@ using Random = UnityEngine.Random;
 
 public class BattleController : MonoBehaviour
 {
+    private bool hasContemplatedKilling = false;
+
     //for displaying the you win menu
     [SerializeField] private GameObject youWin;
     public static BattleController GetInstance()
@@ -1719,6 +1721,12 @@ public class BattleController : MonoBehaviour
             }
             else
             {
+                //NOTE!! ASK BRANDON ABT PLAYER LIST!!!
+                if (LevelManager.level == 1 && playerList[0].statSheet.stats["Health"] <= 6 && !hasContemplatedKilling)
+                {
+                    hasContemplatedKilling = true;
+                    youWinMenu.loadedDialogue = "contemplateKilling";
+                }
                 youWin.SetActive(true);
                 //playerController.isfrozen = false;
                 battleObject.SetActive(false);
