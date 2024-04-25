@@ -33,6 +33,8 @@ public class mainDialogueManager : MonoBehaviour
     [SerializeField] private GameObject continueTextPrompt;
     [SerializeField] private GameObject firstSlime;
 
+    [SerializeField] private pauseMenuManager pauseMenuManager;
+
     public Animator battleFade;
 
     [SerializeField] private PlayerController playerController;
@@ -79,6 +81,9 @@ public class mainDialogueManager : MonoBehaviour
                 cutsceneBG.DOFade(1, 1f);
             } else if (dialogueFile == "partySplit")
             {
+                pauseMenuManager.partyMemberAbsent("KISA");
+                pauseMenuManager.partyMemberAbsent("NICOL");
+                pauseMenuManager.partyMemberAbsent("SOPHIE");
                 firstSlime.SetActive(false);
             }
             switch (dialogueFile)
@@ -134,6 +139,9 @@ public class mainDialogueManager : MonoBehaviour
             dialogueRunning = false; // Set the flag to false when stopping the coroutine
             if (currentlyRunningText == "prologue")
             {
+                pauseMenuManager.partyMemberAdded("KISA");
+                pauseMenuManager.partyMemberAdded("NICOL");
+                pauseMenuManager.partyMemberAdded("SOPHIE");
                 firstSign.enabled = true;
             }
             //for determining endings

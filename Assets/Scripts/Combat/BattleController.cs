@@ -936,7 +936,6 @@ public class BattleController : MonoBehaviour
 
     #region Targeting Coroutines
 
-    public KeyCode confirmKey = KeyCode.Space;
 
     //When these coroutines are called, the while loop while loop indefinitely until the enter or "return" key is pressed
     private IEnumerator AttackTargeting()
@@ -949,7 +948,7 @@ public class BattleController : MonoBehaviour
 
         enemyList[enemyNum].ShowTargetCircle();
 
-        while (!Input.GetKeyDown(confirmKey))
+        while (!Input.GetKeyDown(audioStatics.interractButton))
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
@@ -999,7 +998,7 @@ public class BattleController : MonoBehaviour
 
         backButton.SetActive(true);
 
-        while (!Input.GetKeyDown(confirmKey))
+        while (!Input.GetKeyDown(audioStatics.interractButton))
         {
             yield return null;
         }
@@ -1021,7 +1020,7 @@ public class BattleController : MonoBehaviour
 
         enemyList[enemyNum].ShowTargetCircle();
 
-        while (!Input.GetKeyDown(confirmKey))
+        while (!Input.GetKeyDown(audioStatics.interractButton))
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
@@ -1080,7 +1079,7 @@ public class BattleController : MonoBehaviour
         {
             backButton.SetActive(true);
 
-            while (!Input.GetKeyDown(confirmKey))
+            while (!Input.GetKeyDown(audioStatics.interractButton))
             {
                 yield return null;
             }
@@ -1119,7 +1118,7 @@ public class BattleController : MonoBehaviour
 
             enemyList[enemyNum].ShowTargetCircle();
 
-            while (!Input.GetKeyDown(confirmKey))
+            while (!Input.GetKeyDown(audioStatics.interractButton))
             {
                 if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
                 {
@@ -1193,7 +1192,7 @@ public class BattleController : MonoBehaviour
         {
             backButton.SetActive(true);
 
-            while (!Input.GetKeyDown(confirmKey))
+            while (!Input.GetKeyDown(audioStatics.interractButton))
             {
                 yield return null;
             }
@@ -1231,7 +1230,7 @@ public class BattleController : MonoBehaviour
         {
             backButton.SetActive(true);
 
-            while (!Input.GetKeyDown(confirmKey))
+            while (!Input.GetKeyDown(audioStatics.interractButton))
             {
                 yield return null;
             }
@@ -1265,7 +1264,7 @@ public class BattleController : MonoBehaviour
 
             enemyList[enemyNum].ShowTargetCircle();
 
-            while (!Input.GetKeyDown(confirmKey))
+            while (!Input.GetKeyDown(audioStatics.interractButton))
             {
                 if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
                 {
@@ -1445,22 +1444,22 @@ public class BattleController : MonoBehaviour
 
                 if (enemyList[i].statSheet.name == "Slime Guy")
                 {
-                    levelManager.gainedEXP += Convert.ToInt32(((100*playerController.Level) / LevelManager.level) * (0.25f));
+                    levelManager.gainedEXP += Convert.ToInt32((((100*playerController.Level) / LevelManager.level) * (0.25f)) / enemyList.Count);
                     //levelManager.gainedEXP += 25;
                 }
                 else if (enemyList[i].statSheet.name == "Skeleton Guy")
                 {
-                    levelManager.gainedEXP += Convert.ToInt32(((100 * playerController.Level) / LevelManager.level) * (0.3f));
+                    levelManager.gainedEXP += Convert.ToInt32((((100 * playerController.Level) / LevelManager.level) * (0.3f)) / enemyList.Count);
                     //levelManager.gainedEXP += 30;
                 }
                 else if (enemyList[i].statSheet.name == "Ghost Guy")
                 {
-                    levelManager.gainedEXP += Convert.ToInt32(((100 * playerController.Level) / LevelManager.level) * (0.35f));
+                    levelManager.gainedEXP += Convert.ToInt32((((100 * playerController.Level) / LevelManager.level) * (0.35f)) / enemyList.Count);
                     //levelManager.gainedEXP += 35;
                 }
                 else if (enemyList[i].statSheet.name == "Wraith Guy")
                 {
-                    levelManager.gainedEXP += Convert.ToInt32(((100 * playerController.Level) / LevelManager.level) * (0.4f));
+                    levelManager.gainedEXP += Convert.ToInt32((((100 * playerController.Level) / LevelManager.level) * (0.4f)) / enemyList.Count);
                     //levelManager.gainedEXP += 40;
                 }
                 else

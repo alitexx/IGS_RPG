@@ -47,7 +47,7 @@ public class PauseMenu : MonoBehaviour
                 else
                 {
                     Pause(); //if game is going, pause
-                    PartyLevelTXT.text = ("Party Level:" + LevelManager.level);
+                    PartyLevelTXT.text = ("Party Level: " + LevelManager.level);
                 }
             }
         }

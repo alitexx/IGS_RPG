@@ -36,6 +36,7 @@ public class youWinMenu : MonoBehaviour
     {
         //cannot open pause menu at this time
         PauseMenu.canOpenPause = false;
+        expBar.gameObject.SetActive(false);
         //
         SetGainedExperience(levelManager.gainedEXP);
 
@@ -134,7 +135,7 @@ public class youWinMenu : MonoBehaviour
         currentEXP.text = Mathf.RoundToInt(currentExperience).ToString() + "/100";
         hasUpdatedGained = false;
         endBattleButton.gameObject.SetActive(true);
-        endBattleButton.DOMove(locations[6].position, 1f);
+        endBattleButton.DOMove(locations[6].position, 0.65f);
         
     }
 

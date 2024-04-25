@@ -43,23 +43,23 @@ public class pause_characterInspection : MonoBehaviour
                 selectedCharacterStats = levelManager.SetBardStats();
                 characterName.text = "Kisa";
                 characterInfo.text = "An elven bard. Her family doubts her adventuring capabilities due to her pampered upbringing and pompous demeanor, but she wishes to prove them wrong.";
-                specialInfo.text = "Special Ability:\r\nSing\r\n\r\n\r\n\r\nHeal the party by 50%.";
+                specialInfo.text = "Special Ability: Sing\r\n\r\n\r\n\r\nHeal the party by 50%.";
                 elementInfo.text = "Magical Element\r\n\r\n\r\n\r\n\r\nWind";
                 elementIcon.sprite = elementsIcons[1];
                 break;
             case 2: // nicol
                 selectedCharacterStats = levelManager.SetMageStats();
                 characterName.text = "Nicol";
-                characterInfo.text = "A cat-like red magician. Raised by magicians, he now wanders the globe for the sake of exploration, frequently calling himself an \"aristocat\".";
-                specialInfo.text = "Special Ability:\r\nExamine\r\n\r\n\r\n\r\nView one enemy's weakness.";
+                characterInfo.text = "A cat-like red magician. Raised by magicians, he now wanders the globe for the sake of exploration, calling himself an \"aristocat\".";
+                specialInfo.text = "Special Ability: Examine\r\n\r\n\r\n\r\nView one enemy's weakness.";
                 elementInfo.text = "Magical Element\r\n\r\n\r\n\r\n\r\nIce";
                 elementIcon.sprite = elementsIcons[2];
                 break;
             case 3: // sophie
                 selectedCharacterStats = levelManager.SetMonkStats();
                 characterName.text = "Sophie";
-                characterInfo.text = "A monk from a far-off land. She abandoned her royal title to live a simpler life in Isen. She owns a renowned dojo in the heart of Isen and set out on this journey to find her missing students.";
-                specialInfo.text = "Special Ability:\r\nThunderstorm\r\n\r\n\r\n\r\nAttack all enemies with electric magic.";
+                characterInfo.text = "A monk from a far-off land. She owns a renowned dojo in the heart of Isen and set out on this journey to find her missing students.";
+                specialInfo.text = "Special Ability: Thunderstorm\r\n\r\n\r\n\r\nAttack all enemies with a physical attack.";
                 elementInfo.text = "Magical Element\r\n\r\n\r\n\r\n\r\nElectric";
                 elementIcon.sprite = elementsIcons[3];
                 break;

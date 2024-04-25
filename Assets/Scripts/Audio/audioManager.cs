@@ -247,7 +247,7 @@ public class audioManager : MonoBehaviour
             firstAudioSource.Play();
             if (youWinMenu.killedPartyMember) // if a party member has been killed, change pitch
             {
-                changePitch(10, 0.9f, 5f);
+                changePitch(10, 0.95f, 2f);
             }
 
             // Schedule the second audio clip to play after the first one finishes

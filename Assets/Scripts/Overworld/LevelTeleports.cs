@@ -45,35 +45,29 @@ public class LevelTeleports : MonoBehaviour
 
     public void Next()
     {
+        audioManager.playSFX(23);
+        PlayerController.isfrozen = false;
+        PauseMenu.canOpenPause = true;
         if (Level == 1)
         {
-            audioManager.playSFX(23);
-            PlayerController.isfrozen = false;
             Player.transform.position = new Vector3(destination1.position.x, destination1.position.y);
             Destroy(portalParent1);
         }
         else if (Level == 2)
         {
-            audioManager.playSFX(23);
-            PlayerController.isfrozen = false;
             Player.transform.position = new Vector3(destination2.position.x, destination2.position.y);
             Destroy(portalParent2);
         }
         else if(Level == 3)
         {
-            audioManager.playSFX(23);
-            PlayerController.isfrozen = false;
             Player.transform.position = new Vector3(destination3.position.x, destination3.position.y);
             Destroy(portalParent3);
         }
         else
         {
-            audioManager.playSFX(23);
-            PlayerController.isfrozen = false;
             Player.transform.position = new Vector3(destination4.position.x, destination4.position.y);
             Destroy(portalParent4);
         }
-
     }
 
     public void Stay()

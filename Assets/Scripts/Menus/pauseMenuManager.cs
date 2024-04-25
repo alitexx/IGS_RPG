@@ -228,7 +228,27 @@ public class pauseMenuManager : MonoBehaviour
                 break;
         }
     }
-
+    public void partyMemberAbsent(string partyMember) // when they're living but not in the party
+    {
+        switch (partyMember.ToUpper())
+        {
+            case "KISA":
+                partymemberImages[0].sprite = partymemberSprites[6];
+                partymemberIconAssets[0].SetActive(true);
+                charNames[0].font = fonts[1];
+                break;
+            case "NICOL":
+                partymemberImages[1].sprite = partymemberSprites[7];
+                partymemberIconAssets[2].SetActive(true);
+                charNames[1].font = fonts[1];
+                break;
+            case "SOPHIE":
+                partymemberImages[2].sprite = partymemberSprites[8];
+                partymemberIconAssets[4].SetActive(true);
+                charNames[2].font = fonts[1];
+                break;
+        }
+    }
     public void returnSaveMenu()
     {
         SaveMenu.SetActive(false);
