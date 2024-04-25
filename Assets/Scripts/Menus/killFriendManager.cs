@@ -4,6 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+using DIALOGUE;
 
 public class killFriendManager : MonoBehaviour
 {
@@ -52,6 +54,12 @@ public class killFriendManager : MonoBehaviour
             PartyMemberInQuestion.sprite = partyMembersAvailable[1];
         } else if (playerController.SophieBoss)
         {
+            if (playerController.absorbKisa && playerController.absorbNicol)
+            {
+                StartCoroutine(genocideEncounter());
+                return;
+            }
+
             Debug.Log("sophie");
             charInQuestion = "Sophie";
             PartyMemberInQuestion.sprite = partyMembersAvailable[2];
@@ -73,6 +81,18 @@ public class killFriendManager : MonoBehaviour
         //    });
         //    tutorialBG.DOFade(0, 1).OnComplete(() => { tutorialBG.gameObject.SetActive(false); truebgFade.SetActive(true); });
         //}
+    }
+
+    IEnumerator genocideEncounter()
+    {
+        Debug.Log("genocide GO!!!");
+        killingMaybe = true;
+        charInQuestion = "Sophie";
+        PartyMemberInQuestion.sprite = partyMembersAvailable[2];
+        truebgFade.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        //increase heartbeat sound?
+        exitKillFriendMenu();
     }
 
     public void closeKillFriendTutorial()
