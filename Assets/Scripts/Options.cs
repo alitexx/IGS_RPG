@@ -15,6 +15,7 @@ public class Options : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private AudioSource voiceVol;
     [SerializeField] private Slider[] optionsSliders;
+    [SerializeField] private GameObject DeleteSaveMenu;
     private bool waitingForKeyPress = false;
     private string keyPressed;
 
@@ -82,7 +83,8 @@ public class Options : MonoBehaviour
     }
     public void deleteSaveData()
     {
-        playerController.DeleteSave();
+        //playerController.DeleteSave();
+        DeleteSaveMenu.SetActive(true);
     }
 }
 

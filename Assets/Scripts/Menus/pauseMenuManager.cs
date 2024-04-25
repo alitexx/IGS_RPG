@@ -31,6 +31,7 @@ public class pauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject SaveMenu;
     [SerializeField] private SavepointScript savepointScript;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private GameObject DeleteMenu;
 
     // changing font of names
     [SerializeField] private TextMeshProUGUI[] charNames;
@@ -261,5 +262,17 @@ public class pauseMenuManager : MonoBehaviour
         savepointScript.confirmedSave();
         SaveMenu.SetActive(false);
         playerController.isfrozen = false;
+    }
+
+    public void returnDeleteMenu()
+    {
+        DeleteMenu.SetActive(false);
+    }
+
+    public void confirmSaveDelete()
+    {
+        playerController.DeleteSave();
+        DeleteMenu.SetActive(false);
+
     }
 }
