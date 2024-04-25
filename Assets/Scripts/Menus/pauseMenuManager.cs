@@ -273,6 +273,6 @@ public class pauseMenuManager : MonoBehaviour
     {
         playerController.DeleteSave();
         DeleteMenu.SetActive(false);
-
+        SceneManager.LoadScene("TitleScreen"); // loads menu
     }
 }
