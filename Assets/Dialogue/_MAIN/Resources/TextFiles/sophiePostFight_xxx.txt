@@ -3,8 +3,8 @@ Hide(alan)
 wait(1)
 Show(alan)
 Highlight(alan -o true)
-alan "I have done it."
-alan "I HAVE DONE IT! HAHAHAHAHAHAHAHAHAHAHAHA!"
+alan "It's done."
+alan "How easy it was, I should have done this long ago. Leora... you could have awakened much sooner."
 alan "Oh Leora, I have completed my quest. Three souls I have gathered, stained my hands in darkness, yet I would gladly retread this righteous path for you."
 alan "The Lich's demise is but a trivial matter now. I will ascend this tower and see you again! Tis only a matter of time!"
 Hide(alan)
