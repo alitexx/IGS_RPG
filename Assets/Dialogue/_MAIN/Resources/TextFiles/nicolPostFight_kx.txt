@@ -20,7 +20,7 @@ Hide(alan)
 wait(1.25)
 Highlight(kisa -o true)
 SetSprite(kisa kisa)
-kisa "All is well, Kisa. There must be a reasonable explanation for this."
-kisa "Maybe this was an illusion! Yes, that was a specter using the form of Nicol. Nicol is alive and well. He must be."
+kisa "... No this– I do not... There must be a reasonable explanation for this, there must be."
+kisa "An illusion? Yes, yes, that must be it. A-A specter using the form of Nicol. Nicol is alive and well! All is well. Everything is fine."
 Hide(kisa)
 endDialogue(false)

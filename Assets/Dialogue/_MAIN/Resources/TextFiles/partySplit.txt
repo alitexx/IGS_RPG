@@ -21,12 +21,12 @@ Highlight(kisa -o true)
 kisa "Oh, of course, Sophie. After all, teamwork makes the dream work, does it not? Though sometimes dreams have a way of slipping through our fingers, no matter how hard we work."
 sophie.Move(0.3 0 -spd 2)
 Highlight(sophie -o true)
-sophie "Your tone gives away your irritation, Kisa. Let us air our grievances; Why the avoidance? What breeds this sudden chill between us?"
+sophie "Enough of this avoidance, your tone gives away your irritation quite clearly. Announce your grievance and be done with it."
 SetSprite(kisa kisa)
 Highlight(kisa -o true)
 kisa "Irritated? Me? Not at all. Everything's peachy."
 Highlight(sophie -o true)
-sophie "Once more you evade. Silence does not resolve anything. Are you planning to hold this grudge indefinitely?"
+sophie "Must you continue to evade? It has not done anything to soothe your irritation thus far. Do you intend to sigh and mutter until you blow it away?"
 nicol.Move(0.85 0 -spd 2)
 Highlight(nicol -o true)
 nicol "Forgive the intrusion, Sophia, but perhaps this discourse is better suited for privacy."
@@ -47,7 +47,8 @@ alan "Friends, let us pause. Is this truly worth the argument?"
 sophie.SetPriority(1)
 Highlight(sophie -o true)
 sophie.Move(0.35 0 -spd 2)
-sophie "I stand by my words. I alone cling to reason, yet I am treated like a tyrant. My guidance is dismissed and my efforts belittled, leaving me feeling disrespected by you whom I consider allies."
+sophie "Tell me, how are we supposed to slay this beast together if we cannot communicate a shred of information to each other?"
+sophie "What is the point of working together if any attempt at allyship is dismissed with a flippant hand? And you wish me to pause at such disrespect?"
 kisa.Move(0.875 0 -spd 2)
 Highlight(kisa -o true)
 kisa "We respect you, Sophie! But sometimes... tact eludes you?"

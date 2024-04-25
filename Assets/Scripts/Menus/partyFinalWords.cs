@@ -131,9 +131,9 @@ public class partyFinalWords : MonoBehaviour
                 yield return new WaitForSeconds(2.5f);
                 sophie_x.Say("Damn it...");
                 yield return new WaitForSeconds(3f);
-                sophie_x.Say("Do you know no shame? Picking and choosing who deserves to live...");
+                sophie_x.Say("Have you no shame? Taking the mantle of reaper, as if you have the right.");
                 yield return new WaitForSeconds(5f);
-                sophie_x.Say("You are sick and twisted. I will do all in my power to bring you down, for my allies' sake.");
+                sophie_x.Say("Kill me, coward. I will be there waiting when you come to your pathetic end.");
                 yield return new WaitForSeconds(5f);
                 dialogueText.transform.position = textLoc[1].position;
                 audioManager.playSFX(2);
@@ -148,11 +148,11 @@ public class partyFinalWords : MonoBehaviour
                 Character_Sprite sophie_genocide = CreateCharacter("sophie_killed") as Character_Sprite;
                 yield return sophie_genocide.Hide();
                 yield return new WaitForSeconds(2.5f);
-                sophie_genocide.Say("You wield their magic... So this is the fate that befell Nicol and Kisa.");
+                sophie_genocide.Say("You...! You wield their magic?");
                 yield return new WaitForSeconds(4f);
-                sophie_genocide.Say("Am I next? Is this how my tale ends?");
+                sophie_genocide.Say("You have killed our companions and now I am next, is that it?");
                 yield return new WaitForSeconds(4f);
-                sophie_genocide.Say("I refuse to let you escape unpunished..!");
+                sophie_genocide.Say("From the start, was this your intention? Damn you...");
                 yield return new WaitForSeconds(4f);
                 dialogueText.transform.position = textLoc[1].position;
                 audioManager.playSFX(2);

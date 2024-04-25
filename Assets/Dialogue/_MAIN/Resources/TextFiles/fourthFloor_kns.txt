@@ -25,7 +25,7 @@ sophie "Undead are more powerful the closer they are to their reanimator. The so
 Highlight(nicol -o true)
 nicol "My, my! What camaraderie!"
 Highlight(kisa -o true)
-kisa "Nicol! Do not be so... so..."
+kisa "Nicol! Watch your tongue!"
 Highlight(nicol -o true)
 SetSprite(kisa kisa)
 nicol "Ohoho! The flush of your cheeks speaks more truths than your lips ever could!"
@@ -34,7 +34,7 @@ SetSprite(kisa flipped)
 kisa "NICOL!"
 Show(alan)
 Highlight(alan -o true)
-alan "(...I have no interest in this idle chit-chat. I will continue and hope they follow.)"
+alan "(Despite their actions, they seem to be getting along better. Hopefully it lasts through this fight.)"
 Hide(sophie)
 Hide(kisa)
 Hide(alan)

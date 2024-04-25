@@ -18,8 +18,8 @@ Highlight(alan -o true)
 alan "How fares the epic adventures of Sophie the Lich Slayer? Need a hand?"
 Highlight(sophie -o true)
 sophie.Move(0.75 0 -spd 2)
-sophie "Do not mock me. And no, I do not need your assistance."
-sophie "This door will not open. There are no levers, no buttons. Nothing."
+sophie "Mock me again, knight, and see what happens to that hand you offer. I do not want your help, though I doubt it would be of any use on this blasted floor."
+sophie "This door holds no keyhole, nor are there any mechanisms in sight. I have already attempted to knock it down by force, yet it stands just as strong."
 Highlight(alan -o true)
 alan "Could the solution be in an adjacent room?"
 Highlight(sophie -o true)
@@ -37,21 +37,22 @@ sophie "Is Kisa involved in this? I see that she is absent from your group."
 Highlight(nicol -o true)
 nicol "That can be explained in due time over a refreshing cup of tea! Let us all take a deep breath to relax-"
 Highlight(alan -o true)
-alan "Kisa is involved. I killed her."
+alan "Kisa is involved. There was an... an accident. I slew her by mistake."
 Highlight(sophie -o true)
 sophie "You WHAT?!"
 Highlight(nicol -o true)
 SetSprite(nicol flipped)
-nicol "Alan-"
+nicol "Sophie-"
 Highlight(alan -o true)
-alan "I understand your reverence for honesty, and I will not hide my sins. It was my hand that ended Kisa's life; my desires overtook me, and I lost control."
+alan "I know you are honorable and I do not wish to hide my sins from you, of all people. I lost control of myself and this was the dreadful outcome. I am sorry."
 Highlight(alan -o true)
 alan "I apologize, truly. It was not wise of me, and I will not allow it to happen again."
 Highlight(sophie -o true)
 sophie.Move(0.75 0 -spd 1)
-sophie "No, no no no. You don't understand. You don't... You don't-"
+sophie "How could you? I do not understand how one accidentally <i>murders</i> their- Dear, Gods Kisa–"
+sophie "Just last evening she... I... Gods, damn you!"
 sophie.Move(0.7 0 -spd 1)
-sophie "Kisa was my... she... Gods damn it! I will avenge her!"
+sophie "You will pay for this!"
 Hide(sophie)
 Hide(nicol)
 Hide(alan)

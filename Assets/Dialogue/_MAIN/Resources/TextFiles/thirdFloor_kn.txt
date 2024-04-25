@@ -18,11 +18,14 @@ nicol "Regardless, I sense the presence of a powerful magic user! The lich is mo
 Highlight(alan -o true)
 alan "How does one sense the presence of magic users?"
 Highlight(nicol -o true)
-nicol "It requires years of experience, my good friend! I can feel the air thicken, a storm is brewing! The ground rumbles with anticipation!"
+nicol "It requires years of experience, my good friend! I can feel the air air thickening, a storm is brewing! The ground rumbles with anticipation!"
 Highlight(kisa -o true)
 kisa "A storm? Could you be sensing Sophie, not a lich?"
 Highlight(nicol -o true)
 nicol "Ah, yes! Sophia! I had forgotten that she was farther ahead. My apologies."
+Highlight(kisa -o true)
+kisa "..."
+Highlight(nicol -o true)
 SetSprite(nicol nicol)
 nicol "I shall accompany your merry party. Lead the way, Alan!"
 Hide(nicol)

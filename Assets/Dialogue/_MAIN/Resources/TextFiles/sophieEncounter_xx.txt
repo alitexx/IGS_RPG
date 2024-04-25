@@ -7,7 +7,7 @@ Show(sophie)
 Highlight(sophie -o true)
 sophie "By the seven hells..."
 Show(alan)
-sophie "Oh, lovely. You."
+wait(1)
 sophie.Move(0.8 0 -spd 2)
 sophie "Here to ridicule me, are you?"
 Highlight(alan -o true)
@@ -16,17 +16,18 @@ wait(1)
 Highlight(sophie -o true)
 sophie "Your gaze feels... excessive. Must you glare at me with such hatred?"
 sophie.Move(0.6 0 -spd 1)
-sophie "No, on closer inspection, it is not a glare of hatred... it is the vacant stare of a weary man. Have you been sleeping well as of late?"
+sophie "... No, on closer inspection, it is not a glare of hatred... it is the vacant stare of a weary man. Have you been sleeping well as of late?"
 Highlight(alan -o true)
 alan "You sound just like her."
 Highlight(sophie -o true)
 sophie "Her?"
 Highlight(alan -o true)
-alan "Yes... perhaps you two are similar. It is a shame that you will not live to meet her or see the fruits of my labor."
+alan "Yes... perhaps you two are similar. It makes sense in a way, to trade a likeness for another."
 Highlight(sophie -o true)
-sophie "Alan, is that a threat? You may stay here and speak in riddles if that is your desire, but I must continue searching for a way forward. I must avenge my students."
+sophie "... Is that a threat? Are you that foolish?"
+sophie "I have not the faintest as to what has gotten into you and I do not care. Stand there and speak in riddles if that is your wish– I will kill the lich myself as I said I would. Some of us have a duty to others."
 Highlight(alan -o true)
-alan "One more. One more and she returns."
+alan "Believe me, I do as well."
 Hide(sophie)
 Hide(alan)
 endDialogue(true)

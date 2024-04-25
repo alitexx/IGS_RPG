@@ -12,14 +12,14 @@ Highlight(sophie -o true)
 sophie "Damn it..!"
 Highlight(alan -o true)
 alan.Move(0.4 0 -spd 2)
-alan "Sophie, I apologize once more. I was controlled by my impulses, I was foolish."
-alan "Please,  trust me and know that these acts will not be committed again. My intentions are devoid of malice."
+alan "Sophie, I am sorry. I was controlled by my impulses, I was foolish, it was a <i>mistake</i>."
+alan "Please, trust me when I say–"
 Highlight(sophie -o true)
 sophie.Move(0.7 0 -spd 3)
 sophie "I will <i>never</i> trust you."
-sophie "I shall stay by your side for Nicol's sake. It is the least I can do, but know that once the lich is defeated, our paths shall diverge and I desire not to cross them again. Is this understood?"
+sophie "I shall stay by your side to ensure Nicol's safety. It is the least I can do, but know that once the lich is defeated, our paths shall diverge and they will never cross again. Understood?"
 Highlight(alan -o true)
-alan "Understood."
+alan "I- Yes, of course."
 Hide(sophie)
 Hide(nicol)
 Hide(alan)

@@ -24,8 +24,12 @@ nicol "I did not abandon you! You were following behind me this whole adventure,
 Highlight(kisa -o true)
 kisa "No! I was trapped, the floor caved in beneath me!"
 Highlight(nicol -o true)
-nicol "That is unfortunate, I apologize for my oversight! But you have learned a valuable lesson, have you not? Do not let it capture you next time, my dear Kisa!"
-nicol "Let us hold onto this topic for the moment. There are <i>much</i> more pressing matters that need our attention."
+nicol "That is most unfortunate, I apologize for my oversight! But you have learned a valuable lesson, have you not? Do not let it capture you next time, my dear Kisa!"
+Highlight(kisa -o true)
+kisa.Move(0.4 0 -spd 1.5)
+kisa "Next time? Next time I will not pair with such a-"
+Highlight(nicol -o true)
+nicol "Let us set aside this topic for the moment, friend."
 nicol.SetPriority(1)
 nicol.Move(0.35 0 -spd 3)
 kisa.Move(0.75 0 -spd 3)

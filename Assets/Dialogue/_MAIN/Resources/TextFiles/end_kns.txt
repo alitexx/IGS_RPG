@@ -8,19 +8,19 @@ Hide(kisa)
 Hide(sophie)
 wait(0.75)
 nicol "And so our journey comes to an end."
-sophie "It appears so. I have learned what has become of my students, and although I am saddened, I am glad to have gotten the chance to avenge them."
+sophie "It appears so. I have learned what has become of my students. I hope they find peace in the knowledge they have been avenged by a friend."
 alan "I am sorry for your loss, Sophie. I wish we could have done more to help..."
-sophie "It is alright, Alan. I will notify their families once we return."
 addCutscene(2)
-nicol "Although I also sympathize with your loss, we should not end this on a somber note! We have defeated a great evil today, I believe this is cause for celebration."
-kisa "I would not object to such a thing. This is what adventurers do, yes?"
-nicol "Yes! Tis written in ''Adventuring 101'', written by yours truly!"
+sophie "They died valiantly. Let us not take that away from them in this moment."
+nicol "I sympathize with your loss, friend, and also your outlook. We have defeated a great evil today for the sake many. I believe this is no greater cause for a celebration."
+kisa "I would not object to such a thing. That is what adventurers do, yes?"
+nicol "Yes! Tis written in ''Adventuring 101'', penned by yours truly!"
 kisa "You have written a novel?! Why did you not inform me of such earlier, Nicol?"
-nicol "I lost the novel while traveling overseas. Krakens are nasty creatures, they have no taste! Twas almost complete!"
+nicol "I lost the novel while traveling overseas. Krakens are nasty creatures, they have no taste!"
 kisa "You have encountered a KRAKEN?!"
 sophie "Please do not allow him to tell the tale. We will be here for a century."
 sophie "So, we are all in agreeance about a celebration? Alan?"
-alan "Oh! Yes, celebration. Sounds good."
+alan "... Oh, yes– celebration. Sounds well."
 alan "(I do not want to voice my fears, but I am nervous. The last time I had a celebration was the night before Leora passed.)"
 nicol "Huzzah! Come now, this is no place for heroes such as ourselves! Drinks are on me!"
 addCutscene(3)

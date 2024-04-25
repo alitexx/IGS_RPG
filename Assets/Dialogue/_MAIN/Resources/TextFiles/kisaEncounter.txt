@@ -14,10 +14,10 @@ kisa "Dead on my first adventure. Mother will ridicule me so... Father tells sto
 Highlight(alan -o true)
 alan "(...And she is just as dramatic as I remember.)"
 Highlight(kisa -o true)
-kisa "Oh, woe is me! A poor little bard, abandoned by her companions..."
-kisa "Perhaps I could sing a sorrowful tune to keep myself from going mad. Ahem... I'm just a girl in the world-"
+kisa "Oh, woe is me! A poor bard, abandoned by her companions..."
+kisa "Perhaps I could sing a soothing tune to put the monsters asleep, lest they find me before my friends. Ahem... A wistful breeze graces the trees..."
 Highlight(alan -o true)
-alan "(I suppose I should help her now. Her whining is only going to attract more enemies.)"
+alan "(I suppose I should help her now. I'd rather not find out if monsters can truly be put to sleep.)"
 alan.Move(0.3 0 -spd 1)
 alan "Kisa-"
 Highlight(kisa -o true)

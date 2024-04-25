@@ -18,24 +18,24 @@ wait(1)
 Highlight(nicol -o true)
 nicol.Move(0.45 0 -spd 3)
 kisa.Move(0.25 0 -spd 3)
-nicol "There she is! Lovely Sophia!"
+nicol "There she is! Lovely Sophia, we have returned!"
 Highlight(sophie -o true)
 sophie "..."
 Highlight(alan -o true)
 alan "How fares the epic adventures of Sophie the Lich Slayer? Need a hand?"
 Highlight(sophie -o true)
 sophie.Move(0.75 0 -spd 2)
-sophie "Do not mock me. And no, I do not need your assistance."
-sophie "This door will not open. There are no levers, no buttons. Nothing."
+sophie "Mock me again, knight, and see what happens to that hand you offer. I do not want your help, though I doubt it would be of any use on this blasted floor."
+sophie "This door holds no keyhole, nor are there any mechanisms in sight. I have already attempted to knock it down by force, yet it stands just as strong."
 Highlight(kisa -o true)
 kisa.SetPriority(2)
 kisa "Could the solution be in an adjacent room?"
 Highlight(sophie -o true)
-sophie "I have checked every location on this floor. This is the door to the next level."
+sophie "As if I had not thought of that. I have already checked, there is nothing."
 Highlight(kisa -o true)
-kisa "I apologize... simply attempting to assist you."
+kisa "There is no need to be so cross with me, Sophie. I am only trying to help."
 Highlight(sophie -o true)
-sophie "I do not <i>need</i> your assistance."
+sophie "Did you not hear me? I do not <i>need</i> your assistance."
 kisa.Move(0 0 -spd 2)
 nicol.Move(0.2 0 -spd 2)
 alan.Move(0.4 0 -spd 2)
@@ -54,6 +54,8 @@ nicol "Nonsense! I support a well-mannered sparring session. It helps clear the 
 Highlight(sophie -o true)
 sophie.SetPriority(5)
 sophie "Sparring? That could be beneficial. Once you are incapacitated, I can continue without your whines. Come at me."
+Highlight(alan -o true)
+alan "*Sigh* Why does this keep happening? Alright, on with it then."
 Hide(sophie)
 Hide(nicol)
 Hide(alan)

@@ -2,7 +2,7 @@ alan.Move(0.2 0 -spd 3)
 wait(0.75)
 Show(alan)
 Highlight(alan -o true)
-alan "(One down... that was far more unpleasant than I had anticipated. She was so young...)"
+alan "(Dear Gods... that was far more unpleasant than I had anticipated. She was so young...)"
 alan "(Although I <i>do</i> feel more powerful. My apologies, Kisa.)"
 alan "(I must redirect my thoughts and concentrate on the task at hand, not... what I just did.)"
 Hide(alan)

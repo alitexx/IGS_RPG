@@ -2,9 +2,11 @@ alan.Move(0.15 0 -spd 3)
 wait(0.75)
 Show(alan)
 Highlight(alan -o true)
-alan "(Almost there.)"
-alan "(I must bring her back. I need her back. Nicol was just like every other wizard, and I am not responsible for his death. He's helping a greater cause!)"
-alan "(He would have wanted this if he understood. He did not. He thought I was mad, deranged even. I'm not. I'm perfectly sane.)"
+alan "(That was... easier. Much easier.)"
+alan "(I do not feel so bad now. In fact, I feel better. Calmer. Clearer.)"
+alan "(... The way he looked at me, just before. I think it should frighten me, yet I feel... Nothing.)"
+alan "(What did it feel like before this moment? I cannot remember.)"
+alan "(...)"
 alan "(This is all for Leora.)"
 Hide(alan)
 endDialogue(false)

@@ -4,37 +4,56 @@ alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(kisa)
 wait(1)
-Show(kisa)
-Highlight(kisa -o true)
-kisa "Alan?"
 Show(alan)
 Highlight(alan -o true)
-alan "Yes, Kisa?"
+alan "Since I freed you from the floorboards, some might say you owe me something in return."
+Show(kisa)
 Highlight(kisa -o true)
-kisa "Do you recall Sophie's insensitive demeanor at the entry of this tower? How she accused me, with my refined sensibilities, of harboring an attitude?"
+kisa "Oh so you have taken to blackmail, have you Alan? And here I thought you were a respectable if not socially awkward knight."
 Highlight(alan -o true)
-alan "Ah yes, your refined sensibilities. I vaguely recall such an event."
+alan "...Apologies for the disappointment."
+Highlight(kisa -o true)
+kisa "Yes, well, not all things can be helped. What is your demand then? Out with your ridiculousness."
+Highlight(alan -o true)
+alan "About earlier, with Sophie. What was it you were hiding?"
+Highlight(kisa -o true)
+SetSprite(kisa kisa)
+kisa "Oh. That."
+Highlight(alan -o true)
+alan "Yes. Considering it is the source of this headache, I think it fair to know why we are split apart in this manner."
+Highlight(kisa -o true)
+kisa "...Perhaps, you are correct."
+kisa "Well to be perfectly candid, I am surprised she knew at all something was amiss with my refined demeanor."
+kisa "I hardly was obvious, she must be the most excellent reader of a person's true feelings to see beyond my facade."
+Highlight(alan -o true)
+alan "I have never seen subtly quite like yours, Kisa, it is true."
+SetSprite(kisa flipped)
 Highlight(kisa -o true)
 kisa "Do not use that tone of voice. Regardless..."
-kisa.Move(0.7 0 -spd 1)
+kisa.Move(0.67 0 -spd 1)
 SetSprite(kisa kisa)
-kisa "Sophie and I had an intimate discussion yesterday evening. I opened my heart to her, only to find her reception less than favorable. "
-kisa "Naturally, I was quite crestfallen. Sophie interpreted my demeanor as one of annoyance and indifference, leading to her persistence earlier."
+kisa "The cause of my distress lies in last evening, when I initiated a… personal discussion with Sophie. I revealed the true feelings of my heart to her, only to find her reception less than favorable."
+kisa "Naturally, I was quite crestfallen. However, it seems Sophie is even denser still, as she apparently sees no reason for my wounds to have continued into daybreak."
 SetSprite(kisa flipped)
 kisa.Move(0.65 0 -spd 1)
-kisa "I inform you of this because Sophie, though formidable in strength, lacks awareness of emotions. I fear that this will lead to further conflict."
+kisa "I believe she thought I took a petty dislike to her, which is why she was so persistent this morning. I do not tell you this to gossip, Alan, so do not think lowly of me if you were."
+kisa "I think it is quite clear that Sophie is a formidable opponent and her lack of awareness when it comes to emotions could prove a further problem when we encounter her again."
 Highlight(alan -o true)
-alan "Thank you for telling me, that was uncharacteristically sensible of you to confide in me."
+alan "I see. Thank you for telling me, that was oddly sensible of you, Kisa."
 Highlight(kisa -o true)
-kisa "Excuse me, I am sensible!"
+kisa "Excuse me, I am sensible all of the time!"
 Highlight(alan -o true)
 alan "Of course you are. And where is your weapon?"
 Highlight(kisa -o true)
-kisa "...I may have lost it on the journey. My lute works just as well, you will see!"
+kisa "...I may have lost it on the journey. A lute works just as well, you will see!"
 Highlight(alan -o true)
-alan "Sure. Regardless, we will reunite with Sophie together. She is noble, I assure you she is not upset over such trivial matters."
+alan "Sure. Thankfully for you, we will reunite with Sophie together. And perhaps things will work out more in your favor once we clear the air."
 Highlight(kisa -o true)
-kisa "Yes... let us hope so."
+kisa "What is it you are saying?"
+Highlight(alan -o true)
+alan "Considering what you said and what we have seen, it is not unlikely she did not fully understand your confession, or perhaps needed to sit with it for a time."
+Highlight(kisa -o true)
+kisa "I see. Perhaps... Perhaps you are right. I hope you are."
 Hide(alan)
 Hide(kisa)
 endDialogue(false)

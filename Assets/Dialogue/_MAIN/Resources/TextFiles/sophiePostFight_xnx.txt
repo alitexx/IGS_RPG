@@ -7,15 +7,16 @@ wait(0.75)
 Show(alan)
 Show(nicol)
 Highlight(nicol -o true)
-nicol "Not only are you skilled in battle, you have mastered the art of trickery."
-nicol "It is difficult to fool me, however your actions are irregular and unrequired. Who taught you the knight's code? I have yet to see a knight act so dishonorably."
+nicol "I see I have been made a fool. I thought you merely a swordsman, not a trickster. Tell me, when shall your horns sprout so I can discover I ventured with the devil?"
+alan "..."
+nicol "Nothing to say? No attempt to defend your shriveling honor? And you call yourself a knight. How pitiful your lecturer must be, to raise you into *this*–"
 Highlight(alan -o true)
 alan.Move(0.2 0 -spd 2)
-alan "Do not bring my mentor into this. My actions are just."
+alan "You watch your mouth, beast. You know nothing of which you speak. I have my reasons."
 Highlight(nicol -o true)
-nicol "How dare you utter the word 'justice' with hands stained in the blood of your comrades. You sicken me."
+nicol "Beast? <b> Beast? <i>The only beast in this place is you and the lich, my friend. </i></b>"
 SetSprite(nicol nicol)
-nicol "There is nothing more to be said. Let us continue, I shall mourn our comrades once we have completed our task."
+nicol "Enough. Let this end. I shall mourn the fallen once I have left this suffocating air."
 Hide(nicol)
 Hide(alan)
 endDialogue(false)

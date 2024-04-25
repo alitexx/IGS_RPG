@@ -5,13 +5,13 @@ wait(0.75)
 Show(nicol)
 Show(alan)
 Highlight(nicol -o true)
-nicol "What is this..? You chose to spare my soul, but not the soul of Kisa? What trait must I possess to make myself valuable in your eyes?"
+nicol "What is this..? You chose to spare my soul, but not the soul of Kisa? What is it that I possess that makes my life worth sparing?"
 Highlight(alan -o true)
-alan "I wish for redemption. Kisa's aggression ignited a tempest within me, and I lost control. I apologize for my misguided actions."
+alan "I... I wish for redemption. It was an accident, I was not in a clear state of mind. Kisa attacked me and I became blinded. I am sorry to tell you what I have done."
 Highlight(nicol -o true)
-nicol "Kisa has earned your apologies, not I. There must have been an opportunity for a peaceful resolution, even if it was not apparent."
+nicol "... Not as sorry as I. Kisa was hardly a threat on her own, I do not see how a peaceful resolution was not available."
 SetSprite(nicol nicol)
-nicol "Regardless, we must push forward. Let us continue, yes?"
+nicol "... Let us continue."
 Hide(nicol)
 Hide(alan)
 endDialogue(false)

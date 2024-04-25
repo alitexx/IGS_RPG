@@ -25,7 +25,7 @@ nicol "...I sense something is amiss. Alan, speak to me, my companion. What have
 Highlight(alan -o true)
 alan "Have our eyes not met? You promised me a duel, Nicol."
 Highlight(nicol -o true)
-nicol "I suppose I have. Very well, let our blades speak our truths."
+nicol "... I suppose I have. Very well, let our blades speak our truths."
 Hide(nicol)
 Hide(alan)
 endDialogue(true)

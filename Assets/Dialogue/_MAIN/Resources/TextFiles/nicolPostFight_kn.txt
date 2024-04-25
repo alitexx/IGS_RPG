@@ -11,11 +11,11 @@ nicol "Not bad, my friend! Your strength expands exponentially, what a glorious 
 Highlight(alan -o true)
 alan "You're not so bad yourself. If Kisa was not here, you may have defeated me."
 Highlight(nicol -o true)
-nicol "Fair point, my companion! No matter, I shall continue to hone my skills and face you again soon! I shall have my victory!"
+nicol "Fair point, my companion! No matter, I shall continue to hone my skills and face you again soon! And then, I shall have my victory!"
 Highlight(alan -o true)
 alan "We shall see when the time comes. Are we ready to continue?"
 Highlight(kisa -o true)
-kisa "Yes, please. The sooner we defeat this lich, the sooner this will be over."
+kisa "Yes, please. The sooner we defeat this lich, the sooner we can leave this dreadful place."
 Highlight(nicol -o true)
 nicol "Of course! I, Nicol, the greatest aristocat, have already solved all mysteries on this floor. Let us continue!"
 Hide(nicol)
