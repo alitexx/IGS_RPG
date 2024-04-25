@@ -55,6 +55,7 @@ public class BattleCharacter : MonoBehaviour
     public ParticleManager particleManager;
 
     [SerializeField] private Transform damagePopup;
+    [SerializeField] private Transform weakPopup;
 
     private GameObject healthParent;
     private Transform healthObject;
@@ -94,7 +95,7 @@ public class BattleCharacter : MonoBehaviour
     }
 
     //Sprite 
-    public void Setup(bool LIsPlayerTeam, int stageLevel)
+    public void Setup(bool LIsPlayerTeam, int stageLevel, bool RightMostFighter)
     {
         this.GIsPlayerTeam = LIsPlayerTeam;
 
@@ -135,6 +136,11 @@ public class BattleCharacter : MonoBehaviour
                 healthText = healthObject.GetComponent<TextMeshProUGUI>();
                 //charSprite.color = Color.green;
                 animator.SetBool("isBard", true);
+            }
+
+            if (RightMostFighter)
+            {
+                charSprite.sortingOrder = 3;
             }
 
             healthBar = new World_Bar(transform, new Vector3(0, 1.4f), new Vector3(1, 0.2f), Color.grey, Color.green, healthSystem.GetHealthPercent(), 100, new World_Bar.Outline { color = Color.black, size = 0.15f });
@@ -384,6 +390,9 @@ public class BattleCharacter : MonoBehaviour
         if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)
         {
             targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"] * 2, 0 /*Placeholder because magic ignores defense*/);
+            Vector3 weaknessPosition = targetCharacter.GetPosition();
+            weaknessPosition.x -= 1.5f;
+            Transform weakPopUpTransform = Instantiate(weakPopup, weaknessPosition, Quaternion.identity);
         }
         else
         {
@@ -580,6 +589,11 @@ public class BattleCharacter : MonoBehaviour
     {
         for (float f = 1; f >= 0; f -= 0.05f)
         {
+            if (charSprite == null)
+            {
+                continue;
+            }
+
             Color c = charSprite.material.color;
             c.a = f;
             c.r = Random.Range(0, 1f);

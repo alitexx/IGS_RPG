@@ -83,6 +83,9 @@ TagManager:
   - name: BattleUI
     uniqueID: 2618943339
     locked: 0
+  - name: RightMostFighter
+    uniqueID: 1781141715
+    locked: 0
   - name: BattleFX
     uniqueID: 1008058787
     locked: 0

@@ -361,12 +361,12 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7};
 
     static public int[] evilBardStats = {
-        /*Strength*/ 8,
-        /*Magic Attack*/ 9,
+        /*Strength*/ 10,
+        /*Magic Attack*/ 7,
         /*Defense*/ 5, 
-        /*Speed*/ 4, 
-        /*Health*/ 30, 
-        /*MaxHealth*/ 30,
+        /*Speed*/ 2, 
+        /*Health*/ 35, 
+        /*MaxHealth*/ 35,
         /*Mana*/ 7,
         /*MaxMana*/ 7};
 
@@ -1315,6 +1315,9 @@ public class BattleController : MonoBehaviour
     private BattleCharacter SpawnCharacter(bool isPlayerTeam, int[] statsToUse, string LName, int lSpecial, int lMagicType, int lMagicWeakness)
     {
         Vector3 position;
+
+        bool isRightMostFighter = false;
+
         if (isPlayerTeam)
         {
             if (playerList.Count == 0)
@@ -1328,6 +1331,7 @@ public class BattleController : MonoBehaviour
             else if (playerList.Count == 2)
             {
                 position = new Vector3(mainCamera.transform.position.x - 1, mainCamera.transform.position.y - 5.5f);
+                isRightMostFighter = true;
             }
             else if (playerList.Count == 3)
             {
@@ -1379,7 +1383,7 @@ public class BattleController : MonoBehaviour
         }
 
 
-        battleCharacter.Setup(isPlayerTeam, playerController.Level);
+        battleCharacter.Setup(isPlayerTeam, playerController.Level, isRightMostFighter);
         
         characterQueue.Enqueue(battleCharacter);
 
@@ -1710,6 +1714,7 @@ public class BattleController : MonoBehaviour
             //remove lich boss
             playerController.LichBoss = false;
 
+           
             if (playerController.KisaBoss || playerController.NicolBoss || playerController.SophieBoss)
             {
                 //we should probably change the music here or smth
@@ -1755,7 +1760,7 @@ public class BattleController : MonoBehaviour
             playerList.Clear();
 
             characterQueue.Clear();
-            
+
             alreadyWent.Clear();
 
             enemyList.Clear();
@@ -1764,7 +1769,7 @@ public class BattleController : MonoBehaviour
             {
                 Destroy(tankChar.gameObject);
             }
-            
+
             if (monkChar != null)
             {
                 Destroy(monkChar.gameObject);
@@ -1800,6 +1805,8 @@ public class BattleController : MonoBehaviour
                 Destroy(FourthEnemy.gameObject);
             }
             #endregion
+
+
             //battleFadeAnim.SetBool("BattleOver", true);
             return true;
         }
