@@ -18535,7 +18535,7 @@ MonoBehaviour:
   - {fileID: 224554584}
   - {fileID: 366710483}
   ds: {fileID: 1466655096}
-  fadeInScript: {fileID: 0}
+  fadeInScript: {fileID: 962356377}
 --- !u!4 &1503023980
 Transform:
   m_ObjectHideFlags: 0
