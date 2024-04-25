@@ -7,8 +7,8 @@ namespace COMMANDS
 {
     public class CMD_DatabaseExtension_General : CMD_DatabaseExtension
     {
-        [SerializeField] private static mainDialogueManager MainDiaManager = GameObject.FindGameObjectWithTag("MainDialogueManager").GetComponent<mainDialogueManager>();
-        [SerializeField] private static audioManager audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<audioManager>();
+        [SerializeField] private static mainDialogueManager MainDiaManager;
+        [SerializeField] private static audioManager audioManager;
 
         new public static void Extend(CommandDatabase database)
         {
@@ -30,7 +30,7 @@ namespace COMMANDS
 
         private static void endDialogue(string isBoss)
         {
-            //MainDiaManager = GameObject.FindGameObjectWithTag("MainDialogueManager").GetComponent<mainDialogueManager>();
+            MainDiaManager = GameObject.FindGameObjectWithTag("MainDialogueManager").GetComponent<mainDialogueManager>();
 
             if (isBoss == "true")
             {
@@ -47,23 +47,23 @@ namespace COMMANDS
         }
         private static void addCutscene(string whichCutscene)
         {
-            //MainDiaManager = GameObject.FindGameObjectWithTag("MainDialogueManager").GetComponent<mainDialogueManager>();
+            MainDiaManager = GameObject.FindGameObjectWithTag("MainDialogueManager").GetComponent<mainDialogueManager>();
             MainDiaManager.addCutscene(int.Parse(whichCutscene));
         }
         private static void playSFX(string whichSFX)
         {
-            //audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<audioManager>();
             audioManager.playSFX(int.Parse(whichSFX));
         }
         private static void playBGM(string whichSong)
         {
-            //audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<audioManager>();
             audioManager.playBGM(whichSong);
         }
 
         private static void stopBGM(string speed = "1")
         {
-            //audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<audioManager>();
             audioManager.stopBGM(float.Parse(speed));
         }
     }

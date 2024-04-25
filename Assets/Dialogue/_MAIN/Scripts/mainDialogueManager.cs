@@ -46,9 +46,6 @@ public class mainDialogueManager : MonoBehaviour
 
     private void Start()
     {
-        //make characters
-        StartCoroutine(completeDialogue("TextFiles/deleteAfterTesting"));
-
         //dialogueSTART(fileName); // only here for testing
         if (playerController.BattleTutorialCleared == 1)
         {

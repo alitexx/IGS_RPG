@@ -12,6 +12,7 @@ public class OpeningCutscene : MonoBehaviour
     private Character CreateCharacter(string name) => CharacterManager.instance.CreateCharacter(name);
     [SerializeField] private GameObject[] cutsceneassets;
     [SerializeField] private DialogueSystem ds;
+    [SerializeField] private fadeInScript fadeInScript;
     //private void Start()
     //{
     //    dialogueSTART(); // only here for testing
@@ -27,7 +28,7 @@ public class OpeningCutscene : MonoBehaviour
 
     public void skipDialogue()
     {
-        SceneManager.LoadScene("RPG_World");
+        fadeInScript.fadeToRPGWorld();
     }
 
     IEnumerator completeDialogue()
@@ -66,7 +67,7 @@ public class OpeningCutscene : MonoBehaviour
         alan.Say("It did not help that from the outset we struggled to get along. Perhaps if we were a better team, I would not feel so conflicted.");
         yield return new WaitForSeconds(6f);
         //send player to game screen
-        SceneManager.LoadScene("RPG_World"); //loads main level
+        fadeInScript.fadeToRPGWorld(); //loads main level
     }
 }
 
