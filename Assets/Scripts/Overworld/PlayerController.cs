@@ -78,6 +78,9 @@ public class PlayerController : MonoBehaviour
     public LevelManager levelManager;
 
 
+    [SerializeField] private pauseMenuManager pauseMenuManager;
+
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -469,6 +472,8 @@ public class PlayerController : MonoBehaviour
         if (KisainParty == 1)
         {
             hasKisa = true;
+            pauseMenuManager.partyMemberAdded("Kisa");
+
         }
         else
         {
@@ -479,6 +484,7 @@ public class PlayerController : MonoBehaviour
         if (NicolinParty == 1)
         {
             hasNicol = true;
+            pauseMenuManager.partyMemberAdded("NICOL");
         }
         else
         {
@@ -489,6 +495,7 @@ public class PlayerController : MonoBehaviour
         if (SophieinParty == 1)
         {
             hasSophie = true;
+            pauseMenuManager.partyMemberAdded("SOPHIE");
         }
         else
         {
@@ -499,16 +506,19 @@ public class PlayerController : MonoBehaviour
         if (KisaAbsorbed == 1)
         {
             levelManager.kisaAbsorb = true;
+            pauseMenuManager.partyMemberKilled("KISA");
         }
         NicolAbsorbed = PlayerPrefs.GetInt("AbsorbedNicol");
         if(NicolAbsorbed == 1)
         {
             levelManager.nicolAbsorb = true;
+            pauseMenuManager.partyMemberKilled("KISA");
         }
         SophieAbsorbed = PlayerPrefs.GetInt("AbsorbedSophie");
         if(SophieAbsorbed == 1)
         {
             levelManager.sophieAbsorb = true;
+            pauseMenuManager.partyMemberKilled("KISA");
         }
 
         Level = PlayerPrefs.GetInt("FloorLevel");
