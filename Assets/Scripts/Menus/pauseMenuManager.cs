@@ -273,6 +273,5 @@ public class pauseMenuManager : MonoBehaviour
     {
         playerController.DeleteSave();
         DeleteMenu.SetActive(false);
-
     }
 }

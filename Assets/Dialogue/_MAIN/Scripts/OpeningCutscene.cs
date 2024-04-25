@@ -12,7 +12,8 @@ public class OpeningCutscene : MonoBehaviour
     private Character CreateCharacter(string name) => CharacterManager.instance.CreateCharacter(name);
     [SerializeField] private GameObject[] cutsceneassets;
     [SerializeField] private DialogueSystem ds;
-    [SerializeField] private fadeInScript fadeInScript;
+    [SerializeField] private MainMenu menu;
+    private string tempInterractButton;
     //private void Start()
     //{
     //    dialogueSTART(); // only here for testing
@@ -21,21 +22,22 @@ public class OpeningCutscene : MonoBehaviour
     //MUST PASS IN THE 
     public void dialogueSTART()
     {
-        //validate input before continuing
+        ////validate input before continuing
+        //tempInterractButton = audioStatics.interractButton;
+        //audioStatics.interractButton = string.Empty;
         ds.architect.speedMultiplier = 0.5f;
         StartCoroutine(completeDialogue());
     }
 
     public void skipDialogue()
     {
-        fadeInScript.fadeToRPGWorld();
+        menu.fadeToRPGWorld();
     }
 
     IEnumerator completeDialogue()
     {
-        Character_Sprite alan = CreateCharacter("alan") as Character_Sprite;
+        Character_Text alan = CreateCharacter("alan_firstCutscene") as Character_Text;
         //yield return new WaitForSeconds(2f);
-        yield return alan.Hide();
         yield return new WaitForSeconds(1.5f);
         //image of isen fades in
         cutsceneassets[0].SetActive(true);
@@ -67,7 +69,8 @@ public class OpeningCutscene : MonoBehaviour
         alan.Say("It did not help that from the outset we struggled to get along. Perhaps if we were a better team, I would not feel so conflicted.");
         yield return new WaitForSeconds(6f);
         //send player to game screen
-        fadeInScript.fadeToRPGWorld(); //loads main level
+        //audioStatics.interractButton = tempInterractButton;
+        menu.fadeToRPGWorld(); //loads main level
     }
 }
 
