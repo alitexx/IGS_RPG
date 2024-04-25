@@ -89,6 +89,8 @@ public class BattleController : MonoBehaviour
 
     private void OnEnable()
     {
+        manaObject.SetActive(false);
+
         if (playerController.hasKisa)
         {
             kisaHealthText.SetActive(true);
@@ -607,6 +609,11 @@ public class BattleController : MonoBehaviour
     [SerializeField] private GameObject nicolHealthText;
     [SerializeField] private GameObject sophieHealthText;
 
+    [SerializeField] private GameObject manaObject;
+    [SerializeField] private UnityEngine.UI.Slider manaSlider;
+    [SerializeField] private TextMeshProUGUI manaText;
+
+
     [SerializeField] private GameObject turnOffForKillBefriend;
 
     //Keys
@@ -751,6 +758,8 @@ public class BattleController : MonoBehaviour
 
         coroutineRunning = false;
 
+        manaObject.SetActive(false);
+
         for (int i = 0; i < enemyList.Count; i++)
         {
             enemyList[i].HideTargetCircle();
@@ -797,6 +806,11 @@ public class BattleController : MonoBehaviour
             ChooseNextActiveChar();
         });*/
 
+        manaSlider.value = (float)(activeChar.statSheet.stats["Mana"] / activeChar.statSheet.stats["MaxMana"]);
+        manaText.text = activeChar.statSheet.stats["Mana"] + "/" + activeChar.statSheet.stats["MaxMana"];
+
+
+        manaObject.SetActive(true);
 
         if (activeChar.statSheet.name == "Tank Guy") //&& levelManager.kisaAbsorb || activeChar.statSheet.name == "Tank Guy" && levelManager.nicolAbsorb || activeChar.statSheet.name == "Tank Guy" && levelManager.sophieAbsorb)
         {
@@ -1041,6 +1055,7 @@ public class BattleController : MonoBehaviour
 
         enemyList[enemyNum].HideTargetCircle();
 
+        manaObject.SetActive(false);
 
         backButton.SetActive(false);
 
