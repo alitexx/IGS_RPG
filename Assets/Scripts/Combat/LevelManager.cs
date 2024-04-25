@@ -257,7 +257,7 @@ public class LevelManager : MonoBehaviour
                 {
                     battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 2;
                     battleController.partyMembers[i].statSheet.stats["Health"] += 2;
-                    battleController.partyMembers[i].statSheet.stats["MagicAttack"] += 1;
+                    battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
                     battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
                     battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
                 }
@@ -265,7 +265,7 @@ public class LevelManager : MonoBehaviour
                 if (nicolAbsorb)
                 {
                     battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
-                    battleController.partyMembers[i].statSheet.stats["MagicAttack"] += 1;
+                    battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
                     battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
                     battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
                     battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
@@ -275,7 +275,7 @@ public class LevelManager : MonoBehaviour
                 if (sophieAbsorb)
                 {
                     battleController.partyMembers[i].statSheet.stats["Strength"] += 2;
-                    battleController.partyMembers[i].statSheet.stats["MagicAttack"] += 1;
+                    battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
                     battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
                 }
            
@@ -453,6 +453,8 @@ public class LevelManager : MonoBehaviour
             }
             pauseMenuManager.partyMemberAdded("SOPHIE");
         }
+
+        StoreStats();
     }
 
     public void AbsorbPartyMember(string memberName)
@@ -477,7 +479,8 @@ public class LevelManager : MonoBehaviour
             nicolAbsorb = true;
             //before: magic attack increased by 2 * level -1
             //new: magic attack increaed by 2 * level -1, speed increased by level, max mana increased by level
-            battleController.partyMembers[0].statSheet.stats["Magic Attack"] += (2 * (level - 1));
+            battleController.partyMembers[0].statSheet.stats["Strength"] += (level);
+            battleController.partyMembers[0].statSheet.stats["Magic Attack"] += (level);
             battleController.partyMembers[0].statSheet.stats["Speed"] += (level);
             battleController.partyMembers[0].statSheet.stats["Mana"] += (level);
             battleController.partyMembers[0].statSheet.stats["MaxMana"] += (level);
@@ -501,7 +504,7 @@ public class LevelManager : MonoBehaviour
             //new: strength increased by 2 * level -1, speed increased by level, defense increased by level
             battleController.partyMembers[0].statSheet.stats["Strength"] += (2 * (level - 1));
             battleController.partyMembers[0].statSheet.stats["Speed"] += (level);
-            battleController.partyMembers[0].statSheet.stats["Defense"] += (level);
+            battleController.partyMembers[0].statSheet.stats["Magic Attack"] += (level);
             //determine what dialogue shoule be played
             if (kisaAbsorb && nicolAbsorb)
             {
@@ -525,6 +528,8 @@ public class LevelManager : MonoBehaviour
             }
             pauseMenuManager.partyMemberKilled("SOPHIE");
         }
+
+        StoreStats();
     }
 
     public int[] SetTankStats()
