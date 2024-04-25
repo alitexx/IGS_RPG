@@ -1716,6 +1716,7 @@ public class BattleController : MonoBehaviour
                 am.playSFX(14);
                 am.playBGM("T6");
 
+                hasContemplatedKilling = true; // can no longer contemplate killing
                 turnOffForKillBefriend.SetActive(false);
                 befriendOrAbsorbButton.SetActive(true);
             }
