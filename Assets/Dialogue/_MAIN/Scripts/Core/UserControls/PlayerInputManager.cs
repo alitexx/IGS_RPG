@@ -8,7 +8,8 @@ public class PlayerInputManager : MonoBehaviour
     [SerializeField] private GameObject continueButton;
     private void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(audioStatics.interractButton)) && PauseMenu.GamePaused == false)
+        Debug.Log(PauseMenu.GamePaused);
+        if ((Input.GetKeyDown(audioStatics.interractButton)) && PauseMenu.GamePaused == false)
         {
             PromptAdvance();
             continueButton.SetActive(false);

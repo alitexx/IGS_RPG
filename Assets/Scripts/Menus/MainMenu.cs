@@ -10,11 +10,14 @@ public class MainMenu : MonoBehaviour
     public CanvasGroup fadedbg;
     public OpeningCutscene openingCutscene;
     [SerializeField] private audioManager am;
+    [SerializeField] private CanvasGroup fadeIn;
     [SerializeField] private PlayerController playerController;
 
     private void Start()
     {
         am.playBGM("T1");
+        fadeIn.alpha = 1;
+        fadeIn.DOFade(0, 1f);
     }
 
     public void Startgame()
@@ -35,6 +38,16 @@ public class MainMenu : MonoBehaviour
         openingCutscene.dialogueSTART();
         //playerController.loadGame();
         //SceneManager.LoadScene("OpeningCutscene"); //loads main level
+    }
+
+    public void fadeToRPGWorld()
+    {
+        fadeIn.blocksRaycasts = true;
+        fadeIn.DOFade(1, 1f).OnComplete(() =>
+        {
+            fadeIn.DOKill();
+            SceneManager.LoadScene("RPG_World");
+        });
     }
 
     public void QuitGame()
