@@ -9,7 +9,7 @@ kisa.Move(0.5 0 -spd 3)
 kisa "Is he... is he alright?! Nicol? NICOL?!"
 kisa "Alan, how could you? Nicol is..."
 Highlight(alan -o true)
-alan "I understand."
+alan "..."
 Highlight(kisa -o true)
 SetSprite(kisa flipped)
 kisa "Do you have nothing to say for yourself?! Nicol is our ally!"
