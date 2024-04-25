@@ -516,6 +516,14 @@ public class PlayerController : MonoBehaviour
         BattleTutorialCleared = PlayerPrefs.GetInt("BattleTutorialCleared");
         Debug.Log("Loaded save?");
 
+        if(SophieAbsorbed == 1 && NicolAbsorbed == 1 && KisaAbsorbed == 1)// if they've killed everyone
+        {
+            mainDialogueManager.dialogueSTART("load_genocide"); // play dialogue when player loads in
+        } else if (Level <= 1 && Level >= 4) // just a quick check so dialogue doesn't break. this should be true, but it doesnt hurt to double check
+        {
+            mainDialogueManager.dialogueSTART("load_floor" + Level.ToString()); // play dialogue when player loads in. changes based on floor
+        }
+
         levelManager.LoadStats(PlayerPrefs.GetInt("PartyLevel"));
     }
 

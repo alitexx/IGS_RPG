@@ -1,0 +1,12 @@
+CreateCharacter(kisa -enabled false)
+CreateCharacter(alan -enabled false)
+CreateCharacter(sophie -enabled false)
+CreateCharacter(nicol -enabled false)
+alan.Move(0.15 0 -spd 3)
+wait(0.75)
+Show(alan)
+Highlight(alan -o true)
+alan "(The second floor is much more difficult than the first. I wonder how many floors there are to this tower?)"
+alan "(I will figure it out soon. For now, I continue.)"
+Hide(alan)
+endDialogue(true)

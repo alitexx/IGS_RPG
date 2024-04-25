@@ -1,0 +1,12 @@
+CreateCharacter(kisa -enabled false)
+CreateCharacter(alan -enabled false)
+CreateCharacter(sophie -enabled false)
+CreateCharacter(nicol -enabled false)
+alan.Move(0.15 0 -spd 3)
+wait(0.75)
+Show(alan)
+Highlight(alan -o true)
+alan "(I cannot explain it, yet somehow I know a difficult fight ahead of me. Could it be the lich, or something else..?)"
+alan "(No matter, for I am prepared for any scenario. Do your worst, you wretched tower.)"
+Hide(alan)
+endDialogue(true)
