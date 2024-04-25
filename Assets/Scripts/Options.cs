@@ -4,6 +4,7 @@ using UnityEngine;
 using DIALOGUE;
 using UnityEngine.UI;
 using TMPro;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 public class Options : MonoBehaviour
 {
@@ -38,6 +39,13 @@ public class Options : MonoBehaviour
             {
                 if (Input.GetKeyDown(keyCode))
                 {
+                    //make sure they cannot assign w, a, s, d or up, down, left, right,
+                    if (keyCode == KeyCode.W || keyCode == KeyCode.A || keyCode == KeyCode.S || keyCode == KeyCode.D || keyCode == KeyCode.UpArrow || keyCode == KeyCode.DownArrow || keyCode == KeyCode.LeftArrow || keyCode == KeyCode.RightArrow)
+                    {
+                        //wait for 1 second
+                        StartCoroutine(WaitForKeyPress(keyCode));
+                        continue;
+                    }
                     keyPressed = keyCode.ToString();
                     buttonTXT.text = keyPressed;
                     waitingForKeyPress = false;
@@ -47,6 +55,16 @@ public class Options : MonoBehaviour
             }
         }
     }
+
+    IEnumerator WaitForKeyPress(KeyCode keyCode)
+    {
+        waitingForKeyPress = false;
+        buttonTXT.text = "Cannot Assign " + keyCode.ToString().ToUpper();
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        //return to old text
+        buttonTXT.text = keyPressed;
+    }
+
 
     public void StartWaitingForInput()
     {

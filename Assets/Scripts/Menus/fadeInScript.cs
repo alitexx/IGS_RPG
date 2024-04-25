@@ -20,4 +20,11 @@ public class fadeInScript : MonoBehaviour
                 SceneManager.LoadScene("RPG_World");
             });
     }
+    public void fadeToMainMenu()
+    {
+        this.GetComponent<CanvasGroup>().DOFade(1, 1f).OnComplete(() =>
+        {
+            SceneManager.LoadScene("TitleScreen");
+        });
+    }
 }
