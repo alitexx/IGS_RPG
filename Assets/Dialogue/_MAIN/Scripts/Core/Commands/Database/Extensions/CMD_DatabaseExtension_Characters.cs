@@ -520,7 +520,6 @@ namespace COMMANDS
 
             //Run the logic
             Sprite sprite = character.GetSprite(spriteName);
-            Debug.Log(spriteName);
 
             if (sprite == null)
                 yield break;

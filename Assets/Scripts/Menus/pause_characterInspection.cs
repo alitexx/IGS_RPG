@@ -19,7 +19,14 @@ public class pause_characterInspection : MonoBehaviour
 
     [SerializeField] private Sprite[] elementsIcons;
 
-
+    /*0 Strength*/
+    /*1 Magic Attack*/
+    /*2 Defense*/
+    /*3 Speed*/
+    /*4 Health*/
+    /*5 MaxHealth*/
+    /*6 Mana*/
+    /*7 MaxMana*/
     public void characterInspection(int character)
     {
         switch(character)
@@ -59,8 +66,12 @@ public class pause_characterInspection : MonoBehaviour
         }
         stats_1.text = $"Strength: {selectedCharacterStats[0]}\r\nMagic Attack: {selectedCharacterStats[1]}\r\nDefense: {selectedCharacterStats[2]}\r\nSpeed: {selectedCharacterStats[3]}";
         stats_2.text = $"Health: {selectedCharacterStats[4]}/{selectedCharacterStats[5]}\r\nMana: {selectedCharacterStats[6]}/{selectedCharacterStats[7]}";
-        HPMPSliders[0].value = selectedCharacterStats[4] / selectedCharacterStats[5];
-        HPMPSliders[1].value = selectedCharacterStats[6] / selectedCharacterStats[7];
+        Debug.Log("HP : " + selectedCharacterStats[4].ToString());
+        Debug.Log("HP MAX : " + selectedCharacterStats[5].ToString());
+        Debug.Log("MP : " + selectedCharacterStats[6].ToString());
+        Debug.Log("MP MAX : " + selectedCharacterStats[7].ToString());
+        HPMPSliders[0].value = (float)selectedCharacterStats[4] / selectedCharacterStats[5];
+        HPMPSliders[1].value = (float)selectedCharacterStats[6] / selectedCharacterStats[7];
         selectedCharacterStats = null;
     }
 }

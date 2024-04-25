@@ -806,7 +806,7 @@ public class BattleController : MonoBehaviour
             ChooseNextActiveChar();
         });*/
 
-        manaSlider.value = (float)(activeChar.statSheet.stats["Mana"] / activeChar.statSheet.stats["MaxMana"]);
+        manaSlider.value = (float)((float)activeChar.statSheet.stats["Mana"] / activeChar.statSheet.stats["MaxMana"]);
         manaText.text = activeChar.statSheet.stats["Mana"] + "/" + activeChar.statSheet.stats["MaxMana"];
 
 
