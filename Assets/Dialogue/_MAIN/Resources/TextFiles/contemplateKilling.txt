@@ -8,4 +8,4 @@ alan "(Perhaps... Perhaps I commence my gathering of souls? Not only would it bo
 alan "(From a tactical standpoint, harvesting the souls of my companions is wise, yet the idea of extinguishing their lives weighs heavily upon me.)"
 alan "(But no, slaying my companions is a sin. I must press onward, perhaps strength will find me on this path.)"
 Hide(alan)
-endDialogue(true)
+endDialogue(false)
