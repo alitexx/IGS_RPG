@@ -120,46 +120,46 @@ public class LevelManager : MonoBehaviour
     #endregion
 
     #region EnemyStats 
-    static public int[] slimeStats = {
-        /*0 Strength*/ 7,
-        /*1 Magic Attack*/ 1,
-        /*2 Defense*/ 3, 
-        /*3 Speed*/ 2, 
-        /*4 Health*/ 17, 
-        /*5 MaxHealth*/ 17,
-        /*6 Mana*/ 6,
-        /*7 MaxMana*/ 7};
+    //static public int[] slimeStats = {
+    //    /*0 Strength*/ 7,
+    //    /*1 Magic Attack*/ 1,
+    //    /*2 Defense*/ 3, 
+    //    /*3 Speed*/ 2, 
+    //    /*4 Health*/ 17, 
+    //    /*5 MaxHealth*/ 17,
+    //    /*6 Mana*/ 6,
+    //    /*7 MaxMana*/ 7};
 
-    //Skeleton Stats
-    static public int[] skeletonStats = {
-        /*0 Strength*/ 7,
-        /*1 Magic Attack*/ 1,
-        /*2 Defense*/ 7, 
-        /*3 Speed*/ 3, 
-        /*4 Health*/ 10, 
-        /*5 MaxHealth*/ 10,
-        /*6 Mana*/ 6,
-        /*7 MaxMana*/ 7};
+    ////Skeleton Stats
+    //static public int[] skeletonStats = {
+    //    /*0 Strength*/ 7,
+    //    /*1 Magic Attack*/ 1,
+    //    /*2 Defense*/ 7, 
+    //    /*3 Speed*/ 3, 
+    //    /*4 Health*/ 10, 
+    //    /*5 MaxHealth*/ 10,
+    //    /*6 Mana*/ 6,
+    //    /*7 MaxMana*/ 7};
 
-    static public int[] wraithStats = {
-        /*0 Strength*/ 9,
-        /*1 Magic Attack*/ 1,
-        /*2 Defense*/ 5, 
-        /*3 Speed*/ 5, 
-        /*4 Health*/ 17, 
-        /*5 MaxHealth*/ 17,
-        /*6 Mana*/ 6,
-        /*7 MaxMana*/ 7};
+    //static public int[] wraithStats = {
+    //    /*0 Strength*/ 9,
+    //    /*1 Magic Attack*/ 1,
+    //    /*2 Defense*/ 5, 
+    //    /*3 Speed*/ 5, 
+    //    /*4 Health*/ 17, 
+    //    /*5 MaxHealth*/ 17,
+    //    /*6 Mana*/ 6,
+    //    /*7 MaxMana*/ 7};
 
-    static public int[] ghostStats = {
-        /*0 Strength*/ 9,
-        /*1 Magic Attack*/ 1,
-        /*2 Defense*/ 11, 
-        /*3 Speed*/ 4, 
-        /*4 Health*/ 7, 
-        /*5 MaxHealth*/ 7,
-        /*6 Mana*/ 6,
-        /*7 MaxMana*/ 7};
+    //static public int[] ghostStats = {
+    //    /*0 Strength*/ 9,
+    //    /*1 Magic Attack*/ 1,
+    //    /*2 Defense*/ 11, 
+    //    /*3 Speed*/ 4, 
+    //    /*4 Health*/ 7, 
+    //    /*5 MaxHealth*/ 7,
+    //    /*6 Mana*/ 6,
+    //    /*7 MaxMana*/ 7};
 
     #endregion
 
@@ -196,6 +196,8 @@ public class LevelManager : MonoBehaviour
 
         //Debug.Log(level);
 
+
+
         if (playerController.BattleTutorialCleared != 1)
         {
             for (int i = 0; i < 8; i++)
@@ -205,23 +207,136 @@ public class LevelManager : MonoBehaviour
                 monkStoredStats[i] = monkStartStats[i];
                 bardStoredStats[i] = bardStartStats[i];
             }
+
+            //Setting previous stats for level up UI
+            for (int i = 0; i < 4; i++)
+            {
+                if (i == 0)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        levelUpUI.previousStats[i][j] = tankStoredStats[j];
+                    }
+                }
+                else if (i == 1)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        levelUpUI.previousStats[i][j] = bardStoredStats[j];
+                    }
+                }
+                else if (i == 2)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        levelUpUI.previousStats[i][j] = mageStoredStats[j];
+                    }
+                }
+                else if (i == 3)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        levelUpUI.previousStats[i][j] = monkStoredStats[j];
+                    }
+                }
+            }
         }
         else
         {
             for (int i = 0; i < 8; i++)
             {
-                tankStoredStats[i] += (1 * (level - 1));
-                mageStoredStats[i] += (1 * (level - 1));
-                bardStoredStats[i] += (1 * (level - 1));
-                monkStoredStats[i] += (1 * (level - 1));
+                tankStoredStats[i] = tankStartStats[i] + (1 * (level - 1));
+                mageStoredStats[i] = mageStartStats[i] + (1 * (level - 1));
+                bardStoredStats[i] = bardStartStats[i] +  (1 * (level - 1));
+                monkStoredStats[i] = monkStartStats[i] + (1 * (level - 1));
             }
 
+            //Tank
             tankStoredStats[0] += (1 * (level - 1));
+            tankStoredStats[2] += (1 * (level - 1));
             tankStoredStats[4] += (1 * (level - 1));
             tankStoredStats[5] += (1 * (level - 1));
+
+            if (kisaAbsorb)
+            {
+                tankStoredStats[1] += (1 * (level - 1));
+                tankStoredStats[4] += (2 * (level - 1));
+                tankStoredStats[5] += (2 * (level - 1));
+                tankStoredStats[6] += (1 * (level - 1));
+                tankStoredStats[7] += (1 * (level - 1));
+            }
+
+            if (nicolAbsorb)
+            {
+                tankStoredStats[0] += (1 * (level - 1));
+                tankStoredStats[1] += (1 * (level - 1));
+                tankStoredStats[3] += (1 * (level - 1));
+                tankStoredStats[6] += (1 * (level - 1));
+                tankStoredStats[7] += (1 * (level - 1));
+            }
+
+            if (sophieAbsorb)
+            {
+                tankStoredStats[0] += (2 * (level - 1));
+                tankStoredStats[1] += (1 * (level - 1));
+                tankStoredStats[3] += (1 * (level - 1));
+            }
+
+
+            //Mage
+            mageStoredStats[0] += (1 * (level - 1));
+            mageStoredStats[1] += (1 * (level - 1));
+            mageStoredStats[3] += (1 * (level - 1));
+            mageStoredStats[6] += (1 * (level - 1));
+            mageStoredStats[7] += (1 * (level - 1));
+
+            //Bard
+            bardStoredStats[1] += (1 * (level - 1));
+            bardStoredStats[4] += (2 * (level - 1));
+            bardStoredStats[5] += (2 * (level - 1));
+            bardStoredStats[6] += (1 * (level - 1));
+            bardStoredStats[7] += (1 * (level - 1));
+
+            //Monk
+            monkStoredStats[0] += (2 * (level - 1));
+            monkStoredStats[1] += (1 * (level - 1));
+            monkStoredStats[3] += (1 * (level - 1));
         }
 
         //Debug.Log(tankStoredStats[5]);
+
+        //Setting previous stats for level up UI
+        for (int i = 0; i < 4; i++)
+        {
+            if (i == 0)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    levelUpUI.previousStats[i][j] = tankStoredStats[j];
+                }
+            }
+            else if (i == 1)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    levelUpUI.previousStats[i][j] = bardStoredStats[j];
+                }
+            }
+            else if (i == 2)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    levelUpUI.previousStats[i][j] = mageStoredStats[j];
+                }
+            }
+            else if (i == 3)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    levelUpUI.previousStats[i][j] = monkStoredStats[j];
+                }
+            }
+        }
     }
 
     public void LevelUp()
@@ -390,14 +505,14 @@ public class LevelManager : MonoBehaviour
     {
         if (memberName == "Kisa")
         {
-            bardStoredStats[0] += (1 * (level - 1));
-            bardStoredStats[1] += (2 * (level - 1));
-            bardStoredStats[2] += (1 * (level - 1));
-            bardStoredStats[3] += (1 * (level - 1));
-            bardStoredStats[4] += (2 * (level - 1));
-            bardStoredStats[5] += (2 * (level - 1));
-            bardStoredStats[6] += (1 * (level - 1));
-            bardStoredStats[7] += (1 * (level - 1));
+            bardStoredStats[0] = bardStartStats[0] + (1 * (level - 1));
+            bardStoredStats[1] = bardStartStats[1] + (2 * (level - 1));
+            bardStoredStats[2] = bardStartStats[2] + (1 * (level - 1));
+            bardStoredStats[3] = bardStartStats[3] + (1 * (level - 1));
+            bardStoredStats[4] = bardStartStats[4] + (2 * (level - 1));
+            bardStoredStats[5] = bardStartStats[5] + (2 * (level - 1));
+            bardStoredStats[6] = bardStartStats[6] + (1 * (level - 1));
+            bardStoredStats[7] = bardStartStats[7] + (1 * (level - 1));
 
             //the only time you gain a new party member will be after a boss fight, so I can put these here
             youWinMenu.loadedDialogue = "kisaPostFight_k";
@@ -406,14 +521,14 @@ public class LevelManager : MonoBehaviour
         }
         else if (memberName == "Nicol")
         {
-            mageStoredStats[0] += (1 * (level - 1));
-            mageStoredStats[1] += (2 * (level - 1));
-            mageStoredStats[2] += (1 * (level - 1));
-            mageStoredStats[3] += (1 * (level - 1));
-            mageStoredStats[4] += (1 * (level - 1));
-            mageStoredStats[5] += (1 * (level - 1));
-            mageStoredStats[6] += (2 * (level - 1));
-            mageStoredStats[7] += (2 * (level - 1));
+            mageStoredStats[0] = mageStartStats[0] + (1 * (level - 1));
+            mageStoredStats[1] = mageStartStats[1] + (2 * (level - 1));
+            mageStoredStats[2] = mageStartStats[2] + (1 * (level - 1));
+            mageStoredStats[3] = mageStartStats[3] + (1 * (level - 1));
+            mageStoredStats[4] = mageStartStats[4] + (1 * (level - 1));
+            mageStoredStats[5] = mageStartStats[5] + (1 * (level - 1));
+            mageStoredStats[6] = mageStartStats[6] + (2 * (level - 1));
+            mageStoredStats[7] = mageStartStats[7] + (2 * (level - 1));
 
             if (kisaAbsorb)
             {
@@ -428,14 +543,14 @@ public class LevelManager : MonoBehaviour
         }
         else if (memberName == "Sophie")
         {
-            monkStoredStats[0] += (2 * (level - 1));
-            monkStoredStats[1] += (1 * (level - 1));
-            monkStoredStats[2] += (2 * (level - 1));
-            monkStoredStats[3] += (1 * (level - 1));
-            monkStoredStats[4] += (1 * (level - 1));
-            monkStoredStats[5] += (1 * (level - 1));
-            monkStoredStats[6] += (1 * (level - 1));
-            monkStoredStats[7] += (1 * (level - 1));
+            monkStoredStats[0] = monkStartStats[0] + (2 * (level - 1));
+            monkStoredStats[1] = monkStartStats[1] + (1 * (level - 1));
+            monkStoredStats[2] = monkStartStats[2] + (2 * (level - 1));
+            monkStoredStats[3] = monkStartStats[3] + (1 * (level - 1));
+            monkStoredStats[4] = monkStartStats[4] + (1 * (level - 1));
+            monkStoredStats[5] = monkStartStats[5] + (1 * (level - 1));
+            monkStoredStats[6] = monkStartStats[6] + (1 * (level - 1));
+            monkStoredStats[7] = monkStartStats[7] + (1 * (level - 1));
 
             if (kisaAbsorb)
             {

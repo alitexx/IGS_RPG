@@ -22,7 +22,7 @@ public class levelUpUI : MonoBehaviour
     
     #region PreviousStats
 
-    static private List<List<int>> previousStats = new List<List<int>>()
+    static public List<List<int>> previousStats = new List<List<int>>()
     {   //0: strength
         //1: magic attacl
         //2: defense
