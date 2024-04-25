@@ -372,7 +372,7 @@ public class BattleController : MonoBehaviour
 
     //Slime Stats
     static public int[] slimeStats = {
-        /*Strength*/ 7,
+        /*Strength*/ 8,
         /*Magic Attack*/ 1,
         /*Defense*/ 3, 
         /*Speed*/ 2, 
@@ -383,7 +383,7 @@ public class BattleController : MonoBehaviour
 
     //Skeleton Stats
     static public int[] skeletonStats = {
-        /*Strength*/ 7,
+        /*Strength*/ 8,
         /*Magic Attack*/ 1,
         /*Defense*/ 7, 
         /*Speed*/ 3, 
@@ -472,7 +472,7 @@ public class BattleController : MonoBehaviour
 
         //Slime Stats
         int[] lSlimeStats = {
-        /*Strength*/ 7,
+        /*Strength*/ 8,
         /*Magic Attack*/ 1,
         /*Defense*/ 3, 
         /*Speed*/ 2, 
@@ -483,7 +483,7 @@ public class BattleController : MonoBehaviour
 
         //Skeleton Stats
         int[] lSkeletonStats = {
-        /*Strength*/ 7,
+        /*Strength*/ 8,
         /*Magic Attack*/ 1,
         /*Defense*/ 7, 
         /*Speed*/ 3, 
