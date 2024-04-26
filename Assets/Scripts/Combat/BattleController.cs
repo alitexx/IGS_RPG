@@ -138,7 +138,7 @@ public class BattleController : MonoBehaviour
 
         //True for an ally, false for an enemy
 
-        tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1, 0, 1);
+        tankChar = SpawnCharacter(true, tankStats, "Tank Guy", 1, 0, 0);
 
         if (playerController.hasNicol && levelManager.GetCharHealth("Mage Guy") != 0)
         {
@@ -163,7 +163,7 @@ public class BattleController : MonoBehaviour
         }
         else if (playerController.isSkeleton) 
         { 
-            firstEnemy = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0, 4, 1);
+            firstEnemy = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0, 4, 3);
         }
         else if (playerController.isWraith)
         {
@@ -171,7 +171,7 @@ public class BattleController : MonoBehaviour
         }
         else if (playerController.isInvisGuy)
         {
-            firstEnemy = SpawnCharacter(false, ghostStats, "Ghost Guy", 0, 4, 3);
+            firstEnemy = SpawnCharacter(false, ghostStats, "Ghost Guy", 0, 4, 1);
         }
         else if (playerController.KisaBoss)
         {
@@ -319,8 +319,8 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 9};
 
     static public int[] evilMageStats = {
-        /*Strength*/ 10,
-        /*Magic Attack*/ 13,
+        /*Strength*/ 14,
+        /*Magic Attack*/ 12,
         /*Defense*/ 4, 
         /*Speed*/ 5, 
         /*Health*/ 40, 
@@ -383,9 +383,9 @@ public class BattleController : MonoBehaviour
 
     //Skeleton Stats
     static public int[] skeletonStats = {
-        /*Strength*/ 8,
+        /*Strength*/ 7,
         /*Magic Attack*/ 1,
-        /*Defense*/ 7, 
+        /*Defense*/ 4, 
         /*Speed*/ 3, 
         /*Health*/ 10, 
         /*MaxHealth*/ 10,
@@ -393,7 +393,7 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7};
 
     static public int[] wraithStats = {
-        /*Strength*/ 9,
+        /*Strength*/ 10,
         /*Magic Attack*/ 1,
         /*Defense*/ 5, 
         /*Speed*/ 5, 
@@ -403,7 +403,7 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7};
 
     static public int[] ghostStats = {
-        /*Strength*/ 9,
+        /*Strength*/ 11,
         /*Magic Attack*/ 1,
         /*Defense*/ 11, 
         /*Speed*/ 4, 
@@ -483,9 +483,9 @@ public class BattleController : MonoBehaviour
 
         //Skeleton Stats
         int[] lSkeletonStats = {
-        /*Strength*/ 8,
+        /*Strength*/ 7,
         /*Magic Attack*/ 1,
-        /*Defense*/ 7, 
+        /*Defense*/ 4, 
         /*Speed*/ 3, 
         /*Health*/ 10, 
         /*MaxHealth*/ 10,
@@ -493,7 +493,7 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7};
 
         int[] lWraithStats = {
-        /*Strength*/ 9,
+        /*Strength*/ 10,
         /*Magic Attack*/ 1,
         /*Defense*/ 5, 
         /*Speed*/ 5, 
@@ -791,12 +791,16 @@ public class BattleController : MonoBehaviour
             ChooseNextActiveChar();
         });*/
 
+        backButton.SetActive(true);
+
         StartCoroutine(AttackTargeting()); 
     }
 
     public void defendButton()
     {
         state = State.Busy;
+
+        backButton.SetActive(true);
 
         StartCoroutine(BlockConfirm());
     }
@@ -920,6 +924,8 @@ public class BattleController : MonoBehaviour
         {
             ChooseNextActiveChar();
         });*/
+
+        backButton.SetActive(true);
 
         if (activeChar.specialAvailable == true)
         {

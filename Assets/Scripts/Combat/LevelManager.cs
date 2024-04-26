@@ -168,6 +168,11 @@ public class LevelManager : MonoBehaviour
     {
         level = playerController.partyLevel;
 
+        if (playerController.BattleTutorialCleared != 1)
+        {
+            LoadStats(1);
+        }
+
         //Debug.Log(tankStoredStats[5]);
 
         /*if (Instance != null)
@@ -603,12 +608,12 @@ public class LevelManager : MonoBehaviour
             if (kisaAbsorb)
             {
                 youWinMenu.loadedDialogue = "nicolPostFight_xx";
-                mainDialogueManager.dialogueSTART("nicolPostFight_xx");
+                //mainDialogueManager.dialogueSTART("nicolPostFight_xx");
             }
             else
             {
                 youWinMenu.loadedDialogue = "nicolPostFight_kx";
-                mainDialogueManager.dialogueSTART("nicolPostFight_kx");
+                //mainDialogueManager.dialogueSTART("nicolPostFight_kx");
             }
             pauseMenuManager.partyMemberKilled("NICOL");
         }
@@ -710,7 +715,7 @@ public class LevelManager : MonoBehaviour
         {
             lWraithStats[i] += 4 * (playerController.Level - 1);
         }
-        lWraithStats[0] += 2 * (playerController.Level - 1);
+        lWraithStats[0] += 1 * (playerController.Level - 1);
         lWraithStats[4] += 1 * (playerController.Level - 1);
         lWraithStats[5] += 1 * (playerController.Level - 1);
 

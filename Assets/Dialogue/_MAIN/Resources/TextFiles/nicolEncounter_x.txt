@@ -13,6 +13,7 @@ nicol "Why, if it isn't my favorite rival, Alan!"
 nicol.Move(0.6 0 -spd 2)
 wait(0.5)
 nicol "Pray tell, did you chance upon encountering Kisa?"
+stopBGM(3)
 wait(1)
 alan "..."
 wait(1)

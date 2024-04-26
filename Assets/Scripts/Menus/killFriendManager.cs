@@ -54,6 +54,8 @@ public class killFriendManager : MonoBehaviour
             PartyMemberInQuestion.sprite = partyMembersAvailable[1];
         } else if (playerController.SophieBoss)
         {
+            Debug.Log(playerController.absorbKisa);
+            Debug.Log(playerController.absorbNicol);
             if (playerController.absorbKisa && playerController.absorbNicol)
             {
                 StartCoroutine(genocideEncounter());
