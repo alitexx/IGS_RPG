@@ -516,13 +516,13 @@ public class PlayerController : MonoBehaviour
         if(NicolAbsorbed == 1)
         {
             levelManager.nicolAbsorb = true;
-            pauseMenuManager.partyMemberKilled("KISA");
+            pauseMenuManager.partyMemberKilled("NICOL");
         }
         SophieAbsorbed = PlayerPrefs.GetInt("AbsorbedSophie");
         if(SophieAbsorbed == 1)
         {
             levelManager.sophieAbsorb = true;
-            pauseMenuManager.partyMemberKilled("KISA");
+            pauseMenuManager.partyMemberKilled("SOPHIE");
         }
 
         Level = PlayerPrefs.GetInt("FloorLevel");
