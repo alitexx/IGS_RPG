@@ -54,14 +54,11 @@ public class killFriendManager : MonoBehaviour
             PartyMemberInQuestion.sprite = partyMembersAvailable[1];
         } else if (playerController.SophieBoss)
         {
-            Debug.Log(playerController.absorbKisa);
-            Debug.Log(playerController.absorbNicol);
-            if (playerController.absorbKisa && playerController.absorbNicol)
+            if (!playerController.hasKisa && !playerController.hasNicol) // if you don't have either nicol or kisa in the party, then it's a genocide run
             {
                 StartCoroutine(genocideEncounter());
                 return;
             }
-
             Debug.Log("sophie");
             charInQuestion = "Sophie";
             PartyMemberInQuestion.sprite = partyMembersAvailable[2];

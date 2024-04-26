@@ -53,7 +53,7 @@ public class TutorialHandler : MonoBehaviour
             case 3: // activate target tutorial
                 tutorialHoles[1].SetActive(true);
                 previousHole = tutorialHoles[1];
-                targetTutorialText.text = "Use the A and D keys to select a target, then press " + audioStatics.interractButton.ToString() + " to confirm!";
+                targetTutorialText.text = "Use the A and D keys to select a target, then press <color=#ad2f45>" + audioStatics.interractButton.ToString().ToUpper() + "</color> to confirm!";
                 targetTutorial.SetActive(true);
                 //tutorialMenus[tutorialCounter].SetActive(false);
                 break;

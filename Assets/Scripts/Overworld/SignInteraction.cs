@@ -29,7 +29,7 @@ public class SignInteraction : MonoBehaviour
                 switch (optionalText.name)
                 {
                     case "room2Sign":
-                        optionalText.text = "Press " + audioStatics.interractButton + " to interact with levers, they open locked doors.";
+                        optionalText.text = "Press " + audioStatics.interractButton.ToUpper() + " to interact with levers, they open locked doors.";
                         break;
                 }
             }

@@ -152,7 +152,7 @@ private void OnEnable()
                     "secrets of the world\r\n\r\nSophie held a small funeral for her fallen students on her arrival home, still feeling a twinge of guilt; if only she knew " +
                     "of the danger awaiting them, she could have prevented their deaths. Twas a fleeting thought, as she knew she could not change the past. Sophie reopened " +
                     "her dojo and expected this to become a distant memory, yet she found herself reminiscing on the fond times with her companions. It was then that she knew " +
-                    "how to respond to Kisa, and finally told Kisa the words she wanted to hear.";
+                    "how to respond to Kisa's proposal.";
                 break;
         }
         audioManager.playBGM("T10");

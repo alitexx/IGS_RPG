@@ -121,6 +121,7 @@ public class mainDialogueManager : MonoBehaviour
                     am.playBGM("T2");
                     break;
                 case "sophieEncounter_xx":
+                case "sophiePostFight_xxx":
                     am.stopBGM(1);
                     break;
                 default:

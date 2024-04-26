@@ -39,10 +39,11 @@ public class youWinMenu : MonoBehaviour
         expBar.gameObject.SetActive(false);
         gainedEXP.gameObject.SetActive(false);
         SetGainedExperience(levelManager.gainedEXP);
-
         am.stopBGM(0.1f);
         am.stopHeartbeatSFX();
         currentExperience = levelManager.currentEXP;
+
+        fillAmountVal = currentExperience / 100;
 
         currentEXP.text = currentExperience + "/100";
 
