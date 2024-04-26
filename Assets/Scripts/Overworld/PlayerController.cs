@@ -477,7 +477,7 @@ public class PlayerController : MonoBehaviour
         {
             hasKisa = true;
             pauseMenuManager.partyMemberAdded("Kisa");
-
+            
         }
         else
         {

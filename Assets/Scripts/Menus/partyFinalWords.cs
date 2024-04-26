@@ -165,10 +165,11 @@ public class partyFinalWords : MonoBehaviour
         }
         //set back to normal
         ds.architect.speedMultiplier = oldDialogueSpeed;
+        battleController.AbsorbButton();
         openYouWin();
         cutToBlack.DOFade(0, 1).OnComplete(() => {
             cutToBlack.gameObject.SetActive(false);
-            battleController.AbsorbButton();
+            //battleController.AbsorbButton();
             dialogueText.fontSize = 8;
             dialogueText.alignment = TextAlignmentOptions.TopLeft;
             dialogueText.text = "";
