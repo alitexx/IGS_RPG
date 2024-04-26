@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         am.playBGM("T1");
         fadeIn.alpha = 1;
         fadeIn.DOFade(0, 1f);
