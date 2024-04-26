@@ -37,7 +37,7 @@ public class youWinMenu : MonoBehaviour
         //cannot open pause menu at this time
         PauseMenu.canOpenPause = false;
         expBar.gameObject.SetActive(false);
-        //
+        gainedEXP.gameObject.SetActive(false);
         SetGainedExperience(levelManager.gainedEXP);
 
         am.stopBGM(0.1f);

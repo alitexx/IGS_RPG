@@ -94,7 +94,7 @@ public class partyFinalWords : MonoBehaviour
                 break;
             case 1: // nicol death
                 ds.architect.speedMultiplier = 0.5f;
-                Character_Sprite nicol = CreateCharacter("nicol_killed") as Character_Sprite;
+                Character_Text nicol = CreateCharacter("nicol_killed") as Character_Text;
                 yield return nicol.Hide();
                 yield return new WaitForSeconds(2.5f);
                 nicol.Say("It appears my time is at an end, my life's flame extinguished by the hands of my rival.");
@@ -111,7 +111,7 @@ public class partyFinalWords : MonoBehaviour
                 break;
             case 2: // sophie death if she is the only one killed
                 ds.architect.speedMultiplier = 0.5f;
-                Character_Sprite sophie = CreateCharacter("sophie_killed") as Character_Sprite;
+                Character_Text sophie = CreateCharacter("sophie_killed") as Character_Text;
                 yield return sophie.Hide();
                 yield return new WaitForSeconds(2.5f);
                 sophie.Say("You bitch. This is not sparring.");
@@ -126,7 +126,7 @@ public class partyFinalWords : MonoBehaviour
                 break;
             case 3: //sophie death if someone else is dead
                 ds.architect.speedMultiplier = 0.5f;
-                Character_Sprite sophie_x = CreateCharacter("sophie_killed") as Character_Sprite;
+                Character_Text sophie_x = CreateCharacter("sophie_killed") as Character_Text;
                 yield return sophie_x.Hide();
                 yield return new WaitForSeconds(2.5f);
                 sophie_x.Say("Damn it...");
@@ -145,7 +145,7 @@ public class partyFinalWords : MonoBehaviour
                 break;
             case 4: // sophie death if everyone else is dead
                 ds.architect.speedMultiplier = 0.5f;
-                Character_Sprite sophie_genocide = CreateCharacter("sophie_killed") as Character_Sprite;
+                Character_Text sophie_genocide = CreateCharacter("sophie_killed") as Character_Text;
                 yield return sophie_genocide.Hide();
                 yield return new WaitForSeconds(2.5f);
                 sophie_genocide.Say("You...! You wield their magic?");

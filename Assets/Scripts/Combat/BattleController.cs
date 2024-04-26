@@ -372,7 +372,7 @@ public class BattleController : MonoBehaviour
 
     //Slime Stats
     static public int[] slimeStats = {
-        /*Strength*/ 7,
+        /*Strength*/ 8,
         /*Magic Attack*/ 1,
         /*Defense*/ 3, 
         /*Speed*/ 2, 
@@ -383,7 +383,7 @@ public class BattleController : MonoBehaviour
 
     //Skeleton Stats
     static public int[] skeletonStats = {
-        /*Strength*/ 7,
+        /*Strength*/ 8,
         /*Magic Attack*/ 1,
         /*Defense*/ 7, 
         /*Speed*/ 3, 
@@ -472,7 +472,7 @@ public class BattleController : MonoBehaviour
 
         //Slime Stats
         int[] lSlimeStats = {
-        /*Strength*/ 7,
+        /*Strength*/ 8,
         /*Magic Attack*/ 1,
         /*Defense*/ 3, 
         /*Speed*/ 2, 
@@ -483,7 +483,7 @@ public class BattleController : MonoBehaviour
 
         //Skeleton Stats
         int[] lSkeletonStats = {
-        /*Strength*/ 7,
+        /*Strength*/ 8,
         /*Magic Attack*/ 1,
         /*Defense*/ 7, 
         /*Speed*/ 3, 
@@ -1455,17 +1455,17 @@ public class BattleController : MonoBehaviour
                 }
                 else if (enemyList[i].statSheet.name == "Skeleton Guy")
                 {
-                    levelManager.gainedEXP += Convert.ToInt32((((100 * playerController.Level) / LevelManager.level) * (0.3f)) / enemyList.Count);
+                    levelManager.gainedEXP += Convert.ToInt32((((100 * playerController.Level) / LevelManager.level) * (0.45f)) / enemyList.Count);
                     //levelManager.gainedEXP += 30;
                 }
                 else if (enemyList[i].statSheet.name == "Ghost Guy")
                 {
-                    levelManager.gainedEXP += Convert.ToInt32((((100 * playerController.Level) / LevelManager.level) * (0.35f)) / enemyList.Count);
+                    levelManager.gainedEXP += Convert.ToInt32((((100 * playerController.Level) / LevelManager.level) * (0.6f)) / enemyList.Count);
                     //levelManager.gainedEXP += 35;
                 }
                 else if (enemyList[i].statSheet.name == "Wraith Guy")
                 {
-                    levelManager.gainedEXP += Convert.ToInt32((((100 * playerController.Level) / LevelManager.level) * (0.4f)) / enemyList.Count);
+                    levelManager.gainedEXP += Convert.ToInt32((((100 * playerController.Level) / LevelManager.level) * (0.75f)) / enemyList.Count);
                     //levelManager.gainedEXP += 40;
                 }
                 else

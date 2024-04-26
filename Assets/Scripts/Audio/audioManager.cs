@@ -81,13 +81,12 @@ public class audioManager : MonoBehaviour
         }
         if (currentlyPlaying)
         {
-            currentlyPlaying.pitch = 1f;
             if (playingMusicAfter)
             {
-                currentlyPlaying.DOFade(0, (speed - 0.05f));
+                currentlyPlaying.DOFade(0, (speed - 0.05f)).OnComplete(() => { currentlyPlaying.pitch = 1f; });
             } else
             {
-                currentlyPlaying.DOFade(0, (speed - 0.05f)).OnComplete(() => { currentlyPlaying.Stop(); });
+                currentlyPlaying.DOFade(0, (speed - 0.05f)).OnComplete(() => { currentlyPlaying.Stop(); currentlyPlaying.pitch = 1f; });
             }
         }
     }
@@ -274,14 +273,17 @@ public class audioManager : MonoBehaviour
 
     private void PlayOtherAudio(int ID, float speed)
     {
-        BGMAvailable[ID].Play();
         if (youWinMenu.killedPartyMember)
         {
-            changePitch(ID);
-            BGMAvailable[10].pitch = 1f;
+            BGMAvailable[ID].pitch = 0.8f;
         }
+        BGMAvailable[ID].Play();
         BGMAvailable[ID].DOFade(audioStatics.BGMVolume * audioStatics.MasterVolume, speed).OnComplete(() =>
         {
+            if (youWinMenu.killedPartyMember)
+            {
+                BGMAvailable[10].pitch = 1f;
+            }
             if (currentlyPlaying)
             {
                 currentlyPlaying.Stop();

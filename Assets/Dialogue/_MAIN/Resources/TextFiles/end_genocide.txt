@@ -3,22 +3,27 @@ CreateCharacter(leora -enabled false)
 CreateCharacter(miguel -enabled false)
 Hide(alan)
 wait(1)
+addCutscene(0)
 alan "You are in my way. Move."
 lich "Oh? It appears another glory-seeking rat has crawled into my domain."
 lich "Why must you mortals be so keen on disrupting my work? You come in droves but are so fragile. No matter, your soul shall-"
+playSFX(2)
+stopBGM(0.11)
 addCutscene(4)
-wait(0.5)
+wait(0.35)
 addCutscene(5)
 wait(2)
+playSFX(16)
 addCutscene(6)
 wait(2)
 alan "I do not fear you, lich."
 leora "Alan..."
 alan "Leora! It is truly you!"
-addCutscene(7)
+playBGM(T6)
 leora "Do not come near. I do not wish to embrace you."
+addCutscene(7)
 alan "What? Leora, what could you mean?"
-leora "Open your eyes, behold the consequences of your actions. You betrayed all that the knight’s code stands for."
+leora "Open your eyes, behold the consequences of your actions. You betrayed all that the knight's code stands for."
 alan "No, that is wrong... I took their lives for you, to bring my fellow knight back to this plane of existence. Is that not honorable?"
 leora "I have failed you as your mentor and friend. Do not attempt to conceal your hunger for power by declaring you acted for my sake. See how powerful you have become, was this power obtained justly?"
 alan "That is not... I did not do it for the power!"
@@ -46,4 +51,5 @@ addCutscene(11)
 alan "No... I cannot end it. I cannot have you taken from me again."
 alan "I will do as the devil says."
 leora "NO! End the contract! ALAN!"
+playSFX(24)
 endDialogue(false)

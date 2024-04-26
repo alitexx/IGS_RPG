@@ -14,7 +14,7 @@ Highlight(alan -o true)
 alan.Move(0.2 0 -spd 2)
 alan "You watch your mouth, beast. You know nothing of which you speak. I have my reasons."
 Highlight(nicol -o true)
-nicol "Beast? <b> Beast? <i>The only beast in this place is you and the lich, my friend. </i></b>"
+nicol "Beast? <i>Beast?</i> The only beast in this place is you and the lich, my <i>friend.</i>"
 SetSprite(nicol nicol)
 nicol "Enough. Let this end. I shall mourn the fallen once I have left this suffocating air."
 Hide(nicol)

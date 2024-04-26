@@ -110,6 +110,13 @@ public class mainDialogueManager : MonoBehaviour
                 case "level1_skeleton":
                 case "tutorialEncounter":
                     break;
+                case "load_floor1":
+                case "load_floor2":
+                case "load_floor3":
+                case "load_floor4":
+                case "load_genocide":
+                    am.playBGM("T2");
+                    break;
                 default:
                     am.playBGM("T4");
                     break;

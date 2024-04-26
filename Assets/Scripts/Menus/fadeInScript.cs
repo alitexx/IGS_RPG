@@ -12,11 +12,8 @@ public class fadeInScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (fadeIn)
-        {
-            fadeIn.alpha = 1;
-            fadeIn.DOFade(0, 1f);
-        }
+        fadeIn.alpha = 1;
+        fadeIn.DOFade(0, 1f);
     }
 
     public void fadeToRPGWorld()

@@ -10,4 +10,5 @@ addCutscene(2)
 nicol "I understand. You had no hand to play in what has happened, yet you find that you are the one to blame."
 nicol "Let us leave this place, yes? We can discuss these matters elsewhere."
 nicol "Good luck, my rival. May you accomplish your end goal, whatever it may be."
+playSFX(24)
 endDialogue(false)
