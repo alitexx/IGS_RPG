@@ -8,6 +8,6 @@ public static class audioStatics
     public static float BGMVolume = 0.4f;
     public static float SFXVolume = 0.8f;
     public static float VoiceVolume = 0.6f;
-    public static string interractButton = "space";
+    public static string interractButton = "mouse0";
     public static float TextSpeedMultiplier = 1f;
 }

@@ -28,7 +28,7 @@ public class Options : MonoBehaviour
         optionsSliders[3].value = audioStatics.VoiceVolume;
         optionsSliders[4].value = audioStatics.TextSpeedMultiplier;
         voiceVol.volume = audioStatics.VoiceVolume * audioStatics.MasterVolume;
-        buttonTXT.text = audioStatics.interractButton;
+        buttonTXT.text = audioStatics.interractButton.ToUpper();
     }
     void Update()
     {
@@ -47,7 +47,7 @@ public class Options : MonoBehaviour
                         continue;
                     }
                     keyPressed = keyCode.ToString();
-                    buttonTXT.text = keyPressed;
+                    buttonTXT.text = keyPressed.ToUpper();
                     waitingForKeyPress = false;
                     am.playSFX(25);
                     break;
