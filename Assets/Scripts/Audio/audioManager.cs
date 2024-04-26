@@ -83,7 +83,13 @@ public class audioManager : MonoBehaviour
         {
             if (playingMusicAfter)
             {
-                currentlyPlaying.DOFade(0, (speed - 0.05f)).OnComplete(() => { currentlyPlaying.pitch = 1f; });
+                currentlyPlaying.DOFade(0, (speed - 0.05f)).OnComplete(() => { 
+                    //this is the only music that stays at the same pitch
+                    if(currentlyPlaying != BGMAvailable[1])
+                    {
+                        currentlyPlaying.pitch = 1f;
+                    }
+                });
             } else
             {
                 currentlyPlaying.DOFade(0, (speed - 0.05f)).OnComplete(() => { currentlyPlaying.Stop(); currentlyPlaying.pitch = 1f; });

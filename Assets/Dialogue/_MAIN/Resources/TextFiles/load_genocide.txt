@@ -8,4 +8,4 @@ Show(alan)
 Highlight(alan -o true)
 alan "..."
 Hide(alan)
-endDialogue(true)
+endDialogue(false)

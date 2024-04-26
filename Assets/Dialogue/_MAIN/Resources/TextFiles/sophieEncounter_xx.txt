@@ -1,5 +1,5 @@
 alan.Move(0.2 0 -spd 3)
-sophie.Move(0.85 0 -spd 3)
+sophie.Move(0.85 0 -spd 10)
 Hide(sophie)
 Hide(alan)
 wait(0.75)
@@ -17,6 +17,7 @@ Highlight(sophie -o true)
 sophie "Your gaze feels... excessive. Must you glare at me with such hatred?"
 sophie.Move(0.6 0 -spd 1)
 sophie "... No, on closer inspection, it is not a glare of hatred... it is the vacant stare of a weary man. Have you been sleeping well as of late?"
+playBGM(T6)
 Highlight(alan -o true)
 alan "You sound just like her."
 Highlight(sophie -o true)
@@ -25,7 +26,8 @@ Highlight(alan -o true)
 alan "Yes... perhaps you two are similar. It makes sense in a way, to trade a likeness for another."
 Highlight(sophie -o true)
 sophie "... Is that a threat? Are you that foolish?"
-sophie "I have not the faintest as to what has gotten into you and I do not care. Stand there and speak in riddles if that is your wish– I will kill the lich myself as I said I would. Some of us have a duty to others."
+sophie "I have not the faintest as to what has gotten into you and I do not care."
+sophie "Stand there and speak in riddles if that is your wish– I will kill the lich myself as I said I would. Some of us have a duty to others."
 Highlight(alan -o true)
 alan "Believe me, I do as well."
 Hide(sophie)

@@ -90,6 +90,7 @@ public class mainDialogueManager : MonoBehaviour
             {
                 case "kisaPostFight_k":
                 case "nicolEncounter_k":
+                case "nicolEncounter_x":
                 case "nicolPostFight_kn":
                 case "sophiePostFight_kns":
                     am.playBGM("T5");
@@ -100,7 +101,6 @@ public class mainDialogueManager : MonoBehaviour
                 case "sophiePostFight_knx":
                 case "sophiePostFight_xnx":
                 case "sophiePostFight_kxx":
-                case "sophieEncounter_xxx":
                     am.playBGM("T6");
                     break;
                 case "secondFloor_k":
@@ -114,8 +114,14 @@ public class mainDialogueManager : MonoBehaviour
                 case "load_floor2":
                 case "load_floor3":
                 case "load_floor4":
-                case "load_genocide":
                     am.playBGM("T2");
+                    break;
+                case "load_genocide":
+                    am.changePitch(1, 0.8f, 0.01f);
+                    am.playBGM("T2");
+                    break;
+                case "sophieEncounter_xx":
+                    am.stopBGM(1);
                     break;
                 default:
                     am.playBGM("T4");
@@ -157,35 +163,35 @@ public class mainDialogueManager : MonoBehaviour
                 case "end_genocide":// 0 = everyone dead
                     creditsManager.endingID = 0;
                     fadeOut.DOFade(1,3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
-                    break;
+                    return;
                 case "end_n":// 1 = only nicol alive
                     creditsManager.endingID = 1;
                     fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
-                    break;
+                    return;
                 case "end_ns":// 2 = nicol and sophie alive
                     creditsManager.endingID = 2;
                     fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
-                    break;
+                    return;
                 case "end_k_postFight":// 3 = kisa alive
                     creditsManager.endingID = 3;
                     fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
-                    break;
+                    return;
                 case "end_ks":// 4 = kisa and sophie alive
                     creditsManager.endingID = 4;
                     fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
-                    break;
+                    return;
                 case "end_kn":// 5 = kisa and nicol alive
                     creditsManager.endingID = 5;
                     fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
-                    break;
+                    return;
                 case "end_kns":// 6 = everyone alive!!
                     creditsManager.endingID = 6;
                     fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
-                    break;
+                    return;
                 case "end_k": // was going to be Kisa boss fight, removed that because we don't have time
                     creditsManager.endingID = 3;
                     fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
-                    break;
+                    return;
             }
             currentlyRunningText = "";
             continueTextPrompt.SetActive(false);
@@ -243,6 +249,16 @@ public class mainDialogueManager : MonoBehaviour
                     cutsceneVariations[3].SetActive(false);
                     cutsceneVariations[6].SetActive(true);
                 }
+                break;
+            case 4:
+                cutsceneScenes[0].SetActive(false);
+                break;
+            case 9:
+                cutsceneScenes[4].SetActive(false);
+                cutsceneScenes[5].SetActive(false);
+                cutsceneScenes[6].SetActive(false);
+                cutsceneScenes[7].SetActive(false);
+                cutsceneScenes[8].SetActive(false);
                 break;
         }
         if (whichImage >= 0 && whichImage <= cutsceneScenes.Length)

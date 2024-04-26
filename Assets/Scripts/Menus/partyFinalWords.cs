@@ -144,6 +144,8 @@ public class partyFinalWords : MonoBehaviour
                 yield return new WaitForSeconds(3f);
                 break;
             case 4: // sophie death if everyone else is dead
+                //change the pitch of the overworld for the rest of the run
+                audioManager.changePitch(1, 0.8f, 1);
                 ds.architect.speedMultiplier = 0.5f;
                 Character_Text sophie_genocide = CreateCharacter("sophie_killed") as Character_Text;
                 yield return sophie_genocide.Hide();
