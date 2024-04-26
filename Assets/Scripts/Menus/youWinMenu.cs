@@ -52,7 +52,7 @@ public class youWinMenu : MonoBehaviour
         youWinText.DOMove(locations[0].position, 0.35f).OnComplete(() => {
             youWinText.DOMove(locations[1].position, 0.7f).OnComplete(() => {
                 expBar.gameObject.SetActive(true);
-                expBar.DOFade(1, 1).OnComplete(() => {
+                expBar.DOFade(1, .5f).OnComplete(() => {
                     gainExperienceCoroutine = StartCoroutine(ShowGainedExperience());
                 });
             });
@@ -61,18 +61,18 @@ public class youWinMenu : MonoBehaviour
 
     IEnumerator ShowGainedExperience()
     {
-        currentEXP.text = currentExperience.ToString() + "/100";
-        yield return new WaitForSeconds(0.75f); // Wait for 0.75 second after expBar fades in
+        currentEXP.text = currentExperience + "/100";
+        yield return new WaitForSeconds(0.25f); // Wait for 0.75 second after expBar fades in
         gainedEXP.gameObject.SetActive(true);
         if (!hasUpdatedGained)
         {
             gainedEXP.text = "+" + gainedExperience + " EXP";
         }
 
-        yield return new WaitForSeconds(1); // Wait for 1 second before increasing current EXP
+        yield return new WaitForSeconds(0.5f); // Wait for 1 second before increasing current EXP
         int totalEXP = currentExperience + gainedExperience;
 
-        float duration = 1f; // Duration for the increase animation
+        float duration = 0.75f; // Duration for the increase animation
         float elapsedTime = 0f;
 
         int levelUpCount = totalEXP / 100; // Check how many times player leveled up
@@ -136,7 +136,7 @@ public class youWinMenu : MonoBehaviour
         currentEXP.text = Mathf.RoundToInt(currentExperience).ToString() + "/100";
         hasUpdatedGained = false;
         endBattleButton.gameObject.SetActive(true);
-        endBattleButton.DOMove(locations[6].position, 0.65f);
+        endBattleButton.DOMove(locations[6].position, 0.35f);
         
     }
 
@@ -166,7 +166,7 @@ public class youWinMenu : MonoBehaviour
         killedPartyMember = false;
         expBar.DOFade(0, 0.5f).OnComplete(() => { expBar.gameObject.SetActive(false); });
         battleEnterAnimator.SetBool("BattleOver", true);
-        endBattleButton.DOMove(locations[5].position, 1f).OnComplete(() => { endBattleButton.gameObject.SetActive(false); });
+        endBattleButton.DOMove(locations[5].position, 0.5f).OnComplete(() => { endBattleButton.gameObject.SetActive(false); });
         youWinText.DOMove(locations[2].position, 0.35f).OnComplete(() => {
             youWinText.DOMove(locations[3].position, 0.75f).OnComplete(() => {
                 PauseMenu.canOpenPause = true;

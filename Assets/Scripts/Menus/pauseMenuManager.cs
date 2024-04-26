@@ -37,6 +37,11 @@ public class pauseMenuManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] charNames;
     [SerializeField] private TMP_FontAsset[] fonts;
 
+    //exp
+    [SerializeField] private LevelManager levelManager;
+    [SerializeField] private TextMeshProUGUI expbartext;
+    [SerializeField] private Image expslider;
+
     private void OnEnable()
     {
         //place all sprites where they need to be
@@ -61,7 +66,9 @@ public class pauseMenuManager : MonoBehaviour
             buttonOff[i].SetActive(false);
         }
         characterinspector.SetActive(false);
-
+        //change exp bar to be correct value
+        expbartext.text = (100 - levelManager.currentEXP).ToString() + " EXP to next level";
+        expslider.fillAmount = ((float)levelManager.currentEXP / 100);
     }
 
     //this is already done somewhere else, just leaving the code in case it breaks anything
@@ -252,9 +259,9 @@ public class pauseMenuManager : MonoBehaviour
     }
     public void returnSaveMenu()
     {
+        PauseMenu.canOpenPause = true;
         SaveMenu.SetActive(false);
         playerController.isfrozen = false;
-        PauseMenu.canOpenPause = true;
     }
 
     public void confirmSave()
