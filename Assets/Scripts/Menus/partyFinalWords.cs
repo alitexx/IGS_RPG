@@ -95,7 +95,6 @@ public class partyFinalWords : MonoBehaviour
             case 1: // nicol death
                 ds.architect.speedMultiplier = 0.5f;
                 Character_Text nicol = CreateCharacter("nicol_killed") as Character_Text;
-                yield return nicol.Hide();
                 yield return new WaitForSeconds(2.5f);
                 nicol.Say("It appears my time is at an end, my life's flame extinguished by the hands of my rival.");
                 yield return new WaitForSeconds(5f);
@@ -112,7 +111,6 @@ public class partyFinalWords : MonoBehaviour
             case 2: // sophie death if she is the only one killed
                 ds.architect.speedMultiplier = 0.5f;
                 Character_Text sophie = CreateCharacter("sophie_killed") as Character_Text;
-                yield return sophie.Hide();
                 yield return new WaitForSeconds(2.5f);
                 sophie.Say("You bitch. This is not sparring.");
                 yield return new WaitForSeconds(4f);
@@ -127,7 +125,6 @@ public class partyFinalWords : MonoBehaviour
             case 3: //sophie death if someone else is dead
                 ds.architect.speedMultiplier = 0.5f;
                 Character_Text sophie_x = CreateCharacter("sophie_killed") as Character_Text;
-                yield return sophie_x.Hide();
                 yield return new WaitForSeconds(2.5f);
                 sophie_x.Say("Damn it...");
                 yield return new WaitForSeconds(3f);
@@ -148,7 +145,6 @@ public class partyFinalWords : MonoBehaviour
                 audioManager.changePitch(1, 0.8f, 1);
                 ds.architect.speedMultiplier = 0.5f;
                 Character_Text sophie_genocide = CreateCharacter("sophie_killed") as Character_Text;
-                yield return sophie_genocide.Hide();
                 yield return new WaitForSeconds(2.5f);
                 sophie_genocide.Say("You...! You wield their magic?");
                 yield return new WaitForSeconds(4f);
