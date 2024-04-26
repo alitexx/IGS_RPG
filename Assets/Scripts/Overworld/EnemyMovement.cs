@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
     public Rigidbody2D EnemyRB;
     public GameObject Target;
     public float maxDistance = 5f;
+    public float fleeDistanceThreshold = 10f; // Adjust this value as needed
     float DistanceBetweenObjects;
     private Animator animator;
     private Vector2 input;
@@ -38,7 +39,19 @@ public class EnemyMovement : MonoBehaviour
         {
             if ((DistanceBetweenObjects <= maxDistance) /*&& (PlayerController.isfrozen == false)*/)
             {
-                EnemyRB.transform.position = Vector2.MoveTowards(EnemyRB.transform.position, TargetRB.transform.position, Speed * Time.deltaTime);
+                if (PlayerController.partyLevel >3*PlayerController.Level)
+                {
+                    Vector3 moveDirection = (transform.position - TargetRB.transform.position).normalized;
+                    // Player is high level, so flee from the player
+                    EnemyRB.transform.position = Vector2.MoveTowards(EnemyRB.transform.position, transform.position + moveDirection * fleeDistanceThreshold, (Speed * Time.deltaTime/1.25f));
+                }
+                else
+                {
+                    // Player is not high level or too close, so approach the player
+                    EnemyRB.transform.position = Vector2.MoveTowards(EnemyRB.transform.position, TargetRB.transform.position, Speed * Time.deltaTime);
+                }
+
+                //EnemyRB.transform.position = Vector2.MoveTowards(EnemyRB.transform.position, TargetRB.transform.position, Speed * Time.deltaTime);
 
                 //Animations
                 animator.SetBool("isMoving", true);
@@ -78,67 +91,3 @@ public class EnemyMovement : MonoBehaviour
         
     }
 }
-
-//what mr gpt told me to do
-//i think lines 125-128 is where the major changes are
-
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-
-//public class EnemyMovement : MonoBehaviour
-//{
-//    public float Speed = 3f;
-//    public Rigidbody2D TargetRB;
-//    public Rigidbody2D EnemyRB;
-//    public GameObject Target;
-//    public float maxDistance = 5f;
-//    public float fleeDistanceThreshold = 10f; // Adjust this value as needed
-//    public PlayerController PlayerController;
-//    private Animator animator;
-//    private Vector2 input;
-
-//    private void Start()
-//    {
-//        animator = GetComponent<Animator>();
-//        animator.SetFloat("moveX", 0);
-//        animator.SetFloat("moveY", 0);
-//    }
-
-//    // Update is called once per frame
-//    void Update()
-//    {
-//        float distanceToTarget = Vector3.Distance(transform.position, Target.transform.position);
-
-//        if (distanceToTarget > maxDistance)
-//        {
-//            animator.SetBool("isMoving", false);
-//            return; // No need to continue if the player is out of range
-//        }
-
-//        if (!PlayerController.isfrozen)
-//        {
-//            if (distanceToTarget <= maxDistance)
-//            {
-//                Vector3 moveDirection = (transform.position - TargetRB.transform.position).normalized;
-
-//                if (distanceToTarget > fleeDistanceThreshold && PlayerController.level >= 10)
-//                {
-//                    // Player is high level, so flee from the player
-//                    EnemyRB.transform.position = Vector2.MoveTowards(EnemyRB.transform.position, transform.position + moveDirection * fleeDistanceThreshold, Speed * Time.deltaTime);
-//                }
-//                else
-//                {
-//                    // Player is not high level or too close, so approach the player
-//                    EnemyRB.transform.position = Vector2.MoveTowards(EnemyRB.transform.position, TargetRB.transform.position, Speed * Time.deltaTime);
-//                }
-
-//                // Animations
-//                animator.SetBool("isMoving", true);
-//                animator.SetFloat("moveX", -moveDirection.x);
-//                animator.SetFloat("moveY", -moveDirection.y);
-//                animator.SetFloat("speed", Speed);
-//            }
-//        }
-//    }
-//}
