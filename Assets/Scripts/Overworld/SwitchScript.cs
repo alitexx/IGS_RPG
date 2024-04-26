@@ -10,6 +10,7 @@ public class SwitchScript : MonoBehaviour
     public bool isOnSwitch;
     public audioManager audioManager;
     public GameObject Switch;
+    public PlayerController playerController;
 
 
     private void Start()
@@ -45,6 +46,7 @@ public class SwitchScript : MonoBehaviour
         if (collision.gameObject.tag == "Switch")
         {
             gameObject.transform.position = Switch.transform.position;
+            playerController.DoorsOpened += 1;
             audioManager.playSFX(20);
             Debug.Log("Collided");
             RB.velocity = Vector3.zero;

@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
     int SophieAbsorbed = 0;
     public int HasBeenThruTutorial = 0;
     public int BattleTutorialCleared = 0;
+    public int DoorsOpened = 0;
+    public GameObject[] Doors; 
 
     //Camera Movement Detecter
     public CamMovementDetect cameraMovementDetecter;
@@ -96,6 +98,7 @@ public class PlayerController : MonoBehaviour
         tutorialHandler.SetActive(false);
 
         battleUI.SetActive(false);
+
     }
 
     private void Awake()
@@ -428,6 +431,7 @@ public class PlayerController : MonoBehaviour
     public void saveGame()
     {
         BattleTutorialCleared = 1;
+        PlayerPrefs.SetInt("DoorsOpened", DoorsOpened);
         PlayerPrefs.SetInt("PartyLevel", partyLevel);
         PlayerPrefs.SetInt("CurrentEXP", levelManager.currentEXP);
         PlayerPrefs.SetFloat("PlayerPositionX", playerPosition[0]);
@@ -538,6 +542,13 @@ public class PlayerController : MonoBehaviour
         }
 
         levelManager.LoadStats(PlayerPrefs.GetInt("PartyLevel"));
+
+        //God awful door saves
+        DoorsOpened = PlayerPrefs.GetInt("DoorsOpened");
+        if (DoorsOpened == 1)
+        {
+            Doors[0].gameObject.SetActive(false);
+        }
     }
 
 }

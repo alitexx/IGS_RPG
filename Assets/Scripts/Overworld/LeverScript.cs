@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LeverScript : MonoBehaviour
@@ -11,6 +12,7 @@ public class LeverScript : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite newSprite;
     public audioManager audioManager;
+    public PlayerController playerController;
     private bool flipped;
 
     private void Update()
@@ -44,6 +46,7 @@ public class LeverScript : MonoBehaviour
                 Destroy(Door);
                 spriteRenderer.sprite = newSprite;
                 flipped = true;
+                playerController.DoorsOpened += 1;
                 audioManager.playSFX(22);
             }
             
