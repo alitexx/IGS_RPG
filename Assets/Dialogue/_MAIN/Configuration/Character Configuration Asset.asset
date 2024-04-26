@@ -43,28 +43,28 @@ MonoBehaviour:
     characterType: 0
     charNameHolder: {fileID: 21300000, guid: 83ec3482aed89e043a6b19d635582830, type: 3}
     charVoice: {fileID: 8300000, guid: 831d1b3a82516f34b956a49dc0b60820, type: 3}
-  - name: Devil
-    alias: miguel
+  - name: miguel
+    alias: Devil
     characterType: 0
     charNameHolder: {fileID: 21300000, guid: 83ec3482aed89e043a6b19d635582830, type: 3}
     charVoice: {fileID: 8300000, guid: e035f0ccf3188ae4c83436c9784f9924, type: 3}
   - name: Kisa_killed
-    alias: kisa_killed
+    alias: '     '
     characterType: 0
     charNameHolder: {fileID: 21300000, guid: 83ec3482aed89e043a6b19d635582830, type: 3}
     charVoice: {fileID: 8300000, guid: a6624ca272f5ca744b0f04745fcd2010, type: 3}
   - name: Sophie_killed
-    alias: sophie_killed
+    alias: '   '
     characterType: 0
     charNameHolder: {fileID: 21300000, guid: 83ec3482aed89e043a6b19d635582830, type: 3}
     charVoice: {fileID: 8300000, guid: 512e89c02f969e248834de5abd873d40, type: 3}
   - name: Nicol_killed
-    alias: nicol_killed
+    alias: ' '
     characterType: 0
     charNameHolder: {fileID: 21300000, guid: 83ec3482aed89e043a6b19d635582830, type: 3}
     charVoice: {fileID: 8300000, guid: ac605fe24885b5a49b73b88d96cc8cb3, type: 3}
   - name: alan_firstCutscene
-    alias: alan_firstCutscene
+    alias: '  '
     characterType: 0
     charNameHolder: {fileID: 21300000, guid: 83ec3482aed89e043a6b19d635582830, type: 3}
     charVoice: {fileID: 8300000, guid: 57681f59a71bb17438f025f923730097, type: 3}

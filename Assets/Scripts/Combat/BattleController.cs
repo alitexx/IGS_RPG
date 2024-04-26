@@ -602,9 +602,11 @@ public class BattleController : MonoBehaviour
 
     public audioManager am;
 
-    [SerializeField] private GameObject specialObject;
-    public UnityEngine.UI.Image specialButton;
+    [SerializeField] private UnityEngine.UI.Button specialObject;
+    [SerializeField] private UnityEngine.UI.Image specialSprite;
+    private SpriteState specialSpriteState;
     public Sprite specReady;
+    public Sprite specReady2;
     public Sprite specNotReady;
 
     [SerializeField] private GameObject kisaHealthText;
@@ -669,10 +671,8 @@ public class BattleController : MonoBehaviour
         {
             ResetStats(true, true);
         }
-
+        specialSpriteState = specialObject.spriteState;
         coroutineRunning = false;
-
-        specialButton = specialObject.GetComponent<UnityEngine.UI.Image>();
     }
 
     private void Update()
@@ -682,14 +682,17 @@ public class BattleController : MonoBehaviour
         {
             fightingButtons.SetActive(true);
 
-            if (activeChar.specialAvailable)
+            if (activeChar.specialAvailable) // this now changes the highlighted color too
             {
-                specialButton.sprite = specReady;
+                specialSprite.sprite = specReady;
+                specialSpriteState.highlightedSprite = specReady2;
             }
             else
             {
-                specialButton.sprite = specNotReady;
+                specialSprite.sprite = specNotReady;
+                specialSpriteState.highlightedSprite = specNotReady;
             }
+            specialObject.spriteState = specialSpriteState;
         }
         else
         {
@@ -925,13 +928,17 @@ public class BattleController : MonoBehaviour
             ChooseNextActiveChar();
         });*/
 
-        backButton.SetActive(true);
 
         if (activeChar.specialAvailable == true)
         {
+            backButton.SetActive(true);
             state = State.Busy;
 
             StartCoroutine(SpecialTargeting());
+            am.playSFX(26);
+        } else
+        {
+            am.playSFX(29);
         }
     }
 

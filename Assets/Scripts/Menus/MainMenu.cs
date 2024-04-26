@@ -49,6 +49,15 @@ public class MainMenu : MonoBehaviour
             SceneManager.LoadScene("RPG_World");
         });
     }
+    public void fadeToMainMenu()
+    {
+        fadeIn.blocksRaycasts = true;
+        fadeIn.DOFade(1, 1f).OnComplete(() =>
+        {
+            fadeIn.DOKill();
+            SceneManager.LoadScene("TitleScreen");
+        });
+    }
 
     public void QuitGame()
     {
