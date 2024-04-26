@@ -1748,6 +1748,7 @@ public class BattleController : MonoBehaviour
                 hasContemplatedKilling = true; // can no longer contemplate killing
                 turnOffForKillBefriend.SetActive(false);
                 befriendOrAbsorbButton.SetActive(true);
+                playerController.gameObject.GetComponent<SpriteRenderer>().enabled = true;
             }
             else
             {
