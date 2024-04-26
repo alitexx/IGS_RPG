@@ -19,7 +19,7 @@ public class BattleCharacter : MonoBehaviour
     //private CharacterData characterData = new CharacterData("Bob", playerStats, "Fire", "Is a cube", true);
     //private CharacterData enemyData = new CharacterData("Bob", enemyStats, "Fire", "Is a cube", false);
 
-    [SerializeField] private GameObject fighterObject;
+    public GameObject fighterObject;
 
     public CharacterData statSheet;
     public bool isBlocking;

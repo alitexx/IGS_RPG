@@ -1678,6 +1678,17 @@ public class BattleController : MonoBehaviour
         //Debug.Log("Enemycount: " + enemyList.Count);
     }
 
+
+    private IEnumerator AlanDied()
+    {
+        Transform position = tankChar.fighterObject.transform;
+
+        tankChar.fighterObject.transform.DOMoveY(tankChar.fighterObject.transform.position.y - 6, 0.7f);
+
+        yield return new WaitForSeconds(.8f);
+
+        SceneManager.LoadScene("GameOver");
+    }
     //Who died
     private bool TestBattleOver()
     {
@@ -1704,7 +1715,7 @@ public class BattleController : MonoBehaviour
             playerController.SophieBoss = false;
             playerController.LichBoss = false;
 
-            SceneManager.LoadScene("GameOver");
+            StartCoroutine(AlanDied());
             return true;
         }
         else if (enemyList.Count == 0 || AllEnemyDead == true)
