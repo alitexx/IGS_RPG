@@ -545,10 +545,12 @@ public class PlayerController : MonoBehaviour
 
         //God awful door saves
         DoorsOpened = PlayerPrefs.GetInt("DoorsOpened");
-        if (DoorsOpened == 1)
+        for (int i = 0; i < DoorsOpened;i++)
         {
-            Doors[0].gameObject.SetActive(false);
+            Doors[i].gameObject.SetActive(false);
         }
+        
+        
     }
 
 }
