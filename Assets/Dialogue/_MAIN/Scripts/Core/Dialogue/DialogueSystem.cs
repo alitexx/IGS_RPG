@@ -31,6 +31,11 @@ namespace DIALOGUE
 
         public bool isRunningConversation => conversationManager.isRunning;
 
+        public void setTextSpeed(float value)
+        {
+            architect.speedMultiplier = value;
+        }
+
         private void Awake() 
         {
             if (instance == null)

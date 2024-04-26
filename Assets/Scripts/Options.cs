@@ -97,6 +97,13 @@ public class Options : MonoBehaviour
     }
     public void onTextSpeedSliderChanged(float value)
     {
+        try
+        {
+            ds.setTextSpeed(value);
+        } catch
+        {
+            Debug.Log("For some reason, I cannot set the speed");
+        }
         audioStatics.TextSpeedMultiplier = value;
     }
     public void deleteSaveData()

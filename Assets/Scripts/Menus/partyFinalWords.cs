@@ -77,7 +77,9 @@ public class partyFinalWords : MonoBehaviour
                 ds.architect.speedMultiplier = 0.5f;
                 Character_Text kisa = CreateCharacter("kisa_killed") as Character_Text;
                 yield return new WaitForSeconds(2.5f);
-                kisa.Say("Alan? You were the one attacking me? How dare-");
+                kisa.Say("     ");
+                yield return new WaitForSeconds(0.01f);
+                kisa.Say("Alan? You were the brute attacking me? How dare-");
                 yield return new WaitForSeconds(4f);
                 kisa.Say("W-wait! Stop! Alan!");
                 yield return new WaitForSeconds(3f);
@@ -96,6 +98,8 @@ public class partyFinalWords : MonoBehaviour
                 ds.architect.speedMultiplier = 0.5f;
                 Character_Text nicol = CreateCharacter("nicol_killed") as Character_Text;
                 yield return new WaitForSeconds(2.5f);
+                nicol.Say("     ");
+                yield return new WaitForSeconds(0.01f);
                 nicol.Say("It appears my time is at an end, my life's flame extinguished by the hands of my rival.");
                 yield return new WaitForSeconds(5f);
                 nicol.Say("While I had hoped to fall in a grand showdown of good versus evil, it seems fate had different plans.");
@@ -112,6 +116,8 @@ public class partyFinalWords : MonoBehaviour
                 ds.architect.speedMultiplier = 0.5f;
                 Character_Text sophie = CreateCharacter("sophie_killed") as Character_Text;
                 yield return new WaitForSeconds(2.5f);
+                sophie.Say("     ");
+                yield return new WaitForSeconds(0.01f);
                 sophie.Say("You bitch. This is not sparring.");
                 yield return new WaitForSeconds(4f);
                 dialogueText.transform.position = textLoc[1].position;
@@ -126,6 +132,8 @@ public class partyFinalWords : MonoBehaviour
                 ds.architect.speedMultiplier = 0.5f;
                 Character_Text sophie_x = CreateCharacter("sophie_killed") as Character_Text;
                 yield return new WaitForSeconds(2.5f);
+                sophie_x.Say("     ");
+                yield return new WaitForSeconds(0.01f);
                 sophie_x.Say("Damn it...");
                 yield return new WaitForSeconds(3f);
                 sophie_x.Say("Have you no shame? Taking the mantle of reaper, as if you have the right.");
@@ -146,6 +154,8 @@ public class partyFinalWords : MonoBehaviour
                 ds.architect.speedMultiplier = 0.5f;
                 Character_Text sophie_genocide = CreateCharacter("sophie_killed") as Character_Text;
                 yield return new WaitForSeconds(2.5f);
+                sophie_genocide.Say("     ");
+                yield return new WaitForSeconds(0.01f);
                 sophie_genocide.Say("You...! You wield their magic?");
                 yield return new WaitForSeconds(4f);
                 sophie_genocide.Say("You have killed our companions and now I am next, is that it?");
