@@ -1749,6 +1749,7 @@ public class BattleController : MonoBehaviour
                 youWin.SetActive(true);
                 //playerController.isfrozen = false;
                 battleObject.SetActive(false);
+                playerController.gameObject.GetComponent<SpriteRenderer>().enabled = true;
             }
 
             /*while (levelManager.currentEXP >= levelManager.lvlUpThreshold)

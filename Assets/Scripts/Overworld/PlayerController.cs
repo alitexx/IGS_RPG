@@ -341,6 +341,7 @@ public class PlayerController : MonoBehaviour
             isSkeleton = false;
             tutorialFight = false;
 
+
             if (collision.gameObject.tag == "Slime")
             {
 
@@ -348,6 +349,7 @@ public class PlayerController : MonoBehaviour
                 isfrozen = true;
                 isSlime = true;
                 battleFade.SetBool("BattleStarting", true);
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
 
             if (collision.gameObject.tag == "TutorialSlime")
@@ -358,6 +360,7 @@ public class PlayerController : MonoBehaviour
                 tutorialFight = true;
                 tutorialHandler.SetActive(true);
                 battleFade.SetBool("BattleStarting", true);
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
 
             if (collision.gameObject.tag == "Wraith")
@@ -366,6 +369,7 @@ public class PlayerController : MonoBehaviour
                 isfrozen = true;
                 isWraith = true;
                 battleFade.SetBool("BattleStarting", true);
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
 
             if (collision.gameObject.tag == "InvisGuy")
@@ -374,6 +378,7 @@ public class PlayerController : MonoBehaviour
                 isfrozen = true;
                 isInvisGuy = true;
                 battleFade.SetBool("BattleStarting", true);
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
 
             if (collision.gameObject.tag == "Skeleton")
@@ -382,6 +387,7 @@ public class PlayerController : MonoBehaviour
                 isfrozen = true;
                 isSkeleton = true;
                 battleFade.SetBool("BattleStarting", true);
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
     }
 
