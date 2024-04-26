@@ -791,12 +791,16 @@ public class BattleController : MonoBehaviour
             ChooseNextActiveChar();
         });*/
 
+        backButton.SetActive(true);
+
         StartCoroutine(AttackTargeting()); 
     }
 
     public void defendButton()
     {
         state = State.Busy;
+
+        backButton.SetActive(true);
 
         StartCoroutine(BlockConfirm());
     }
@@ -920,6 +924,8 @@ public class BattleController : MonoBehaviour
         {
             ChooseNextActiveChar();
         });*/
+
+        backButton.SetActive(true);
 
         if (activeChar.specialAvailable == true)
         {
