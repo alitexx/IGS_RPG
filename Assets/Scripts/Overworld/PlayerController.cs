@@ -55,7 +55,8 @@ public class PlayerController : MonoBehaviour
     public int HasBeenThruTutorial = 0;
     public int BattleTutorialCleared = 0;
     public int DoorsOpened = 0;
-    public GameObject[] Doors; 
+    public GameObject[] Doors;
+    public GameObject slime;
 
     //Camera Movement Detecter
     public CamMovementDetect cameraMovementDetecter;
@@ -527,6 +528,10 @@ public class PlayerController : MonoBehaviour
 
         Level = PlayerPrefs.GetInt("FloorLevel");
         HasBeenThruTutorial = PlayerPrefs.GetInt("HasBeenThruTutorial");
+        if(HasBeenThruTutorial == 1)
+        {
+            slime.gameObject.SetActive(false);
+        }
         BattleTutorialCleared = PlayerPrefs.GetInt("BattleTutorialCleared");
         Debug.Log("Loaded save?");
 
