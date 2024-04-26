@@ -393,7 +393,7 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7};
 
     static public int[] wraithStats = {
-        /*Strength*/ 12,
+        /*Strength*/ 10,
         /*Magic Attack*/ 1,
         /*Defense*/ 5, 
         /*Speed*/ 5, 
@@ -493,7 +493,7 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7};
 
         int[] lWraithStats = {
-        /*Strength*/ 9,
+        /*Strength*/ 10,
         /*Magic Attack*/ 1,
         /*Defense*/ 5, 
         /*Speed*/ 5, 

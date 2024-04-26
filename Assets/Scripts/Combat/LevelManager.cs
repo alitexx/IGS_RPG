@@ -715,7 +715,7 @@ public class LevelManager : MonoBehaviour
         {
             lWraithStats[i] += 4 * (playerController.Level - 1);
         }
-        lWraithStats[0] += 2 * (playerController.Level - 1);
+        lWraithStats[0] += 1 * (playerController.Level - 1);
         lWraithStats[4] += 1 * (playerController.Level - 1);
         lWraithStats[5] += 1 * (playerController.Level - 1);
 
