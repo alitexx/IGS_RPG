@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1.0f;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         waypointTrail = new Transform[4] {

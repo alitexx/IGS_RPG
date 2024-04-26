@@ -21,6 +21,7 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         canOpenPause = true;
+        GamePaused = false;
     }
 
     // Update is called once per frame
