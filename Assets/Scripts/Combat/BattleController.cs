@@ -1465,6 +1465,11 @@ public class BattleController : MonoBehaviour
 
         for (int i = 0; i < enemyList.Count; i++)
         {
+            if (i >= enemyList.Count)
+            {
+                continue;
+            }
+
             if (enemyList[i].statSheet.stats["Health"] <= 0 || enemyList[i] == null)
             {
                 //Can put death animation here
@@ -1498,27 +1503,29 @@ public class BattleController : MonoBehaviour
                 }
 
                 //enemyList[i].EnemyFadeOut();
+                //Debug.Log(i + " " + BattleCharacter.FadeOneRunning);
 
                 if (BattleCharacter.FadeOneRunning == true && BattleCharacter.FadeTwoRunning == false)
                 {
                     StartCoroutine(enemyList[i].SecondEnemyFadeOut());
-                    Debug.Log("Fade two");
+                    //Debug.Log(enemyList[i].statSheet.name + i + " Fade two");
                 }
 
                 if (BattleCharacter.FadeOneRunning == false && BattleCharacter.FadeTwoRunning == false)
                 {
                     StartCoroutine(enemyList[i].EnemyFadeOut());
-                    Debug.Log("Fade One");
+                    //Debug.Log(enemyList[i].statSheet.name + i + "Fade One");
                 }
 
                 if (BattleCharacter.FadeOneRunning == true && BattleCharacter.FadeTwoRunning == true) //&& BattleCharacter.FadeThreeRunning == false)
                 {
                     StartCoroutine(enemyList[i].ThirdEnemyFadeOut());
-                    Debug.Log("Fade three");
+                    //Debug.Log(enemyList[i].statSheet.name + i + "Fade three");
                 }
 
 
                 enemyList.RemoveAt(i);
+                i--;
 
                 am.playSFX(16);
 
