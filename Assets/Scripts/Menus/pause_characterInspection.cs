@@ -35,7 +35,7 @@ public class pause_characterInspection : MonoBehaviour
             case 0: // alan
                 selectedCharacterStats = levelManager.SetTankStats();
                 characterInfo.text = "A knight sworn to protect Isen. He is searching for a way to bring back his fallen mentor.";
-                specialInfo.text = "Special Move: <color=#ffee83>Taunt</color>\r\nIncrease Alan's health points by half of his maximum health, but attract the attacks of enemies.";
+                specialInfo.text = "Special Move: <color=#ffee83>Taunt</color>\r\nIncrease Alan's health points by half of his maximum health, but become the target of enemy attacks for 1 turn.";
                 
                 if (playerControl.KisaAbsorbed == 1)
                 {
@@ -86,7 +86,7 @@ public class pause_characterInspection : MonoBehaviour
             case 2: // nicol
                 selectedCharacterStats = levelManager.SetMageStats();
                 characterInfo.text = "A cat-like red magician. Raised by magicians, he now wanders the globe for the sake of exploration, calling himself an \"aristocat\".";
-                specialInfo.text = "Special Move: <color=#ffee83>Examine</color>\r\nUsing keen senses, pinpoint an enemy's element weakness.";
+                specialInfo.text = "Special Move: <color=#ffee83>Examine</color>\r\nUsing keen senses, pinpoint an enemy's elemental weakness.";
                 elementInfo.text = "Magical Element\r\n\r\n\r\n\r\n\r\nIce";
                 elementIcon.sprite = elementsIcons[2];
                 break;

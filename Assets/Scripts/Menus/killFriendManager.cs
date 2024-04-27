@@ -63,23 +63,23 @@ public class killFriendManager : MonoBehaviour
             charInQuestion = "Sophie";
             PartyMemberInQuestion.sprite = partyMembersAvailable[2];
         }
-        Debug.Log(charInQuestion);
         EditTextInformation(charInQuestion);
-        if (true) // replace this with if they've seen the tutorial
+        if (!playerController.hasKisa || playerController.KisaAbsorbed == 1) // replace this with if they've seen the tutorial
         {
             tutorialBG.DOFade(1, 1);
             tutorialMenu.SetActive(true);
             tutorialMenu.GetComponent<RectTransform>().DOMove(locations[0].position, 1);
         }
-        //else
-        //{
-        //    truebgFade.SetActive(true);
-        //    tweenInObjects[2].GetComponent<RectTransform>().DOMove(locations[0].position, 1).OnComplete(() => {
-        //        tweenInObjects[0].GetComponent<RectTransform>().DOMove(locations[0].position, 1);
-        //        tweenInObjects[1].GetComponent<RectTransform>().DOMove(locations[0].position, 1);
-        //    });
-        //    tutorialBG.DOFade(0, 1).OnComplete(() => { tutorialBG.gameObject.SetActive(false); truebgFade.SetActive(true); });
-        //}
+        else
+        {
+            truebgFade.SetActive(true);
+            tweenInObjects[2].GetComponent<RectTransform>().DOMove(locations[0].position, 1).OnComplete(() =>
+            {
+                tweenInObjects[0].GetComponent<RectTransform>().DOMove(locations[0].position, 1);
+                tweenInObjects[1].GetComponent<RectTransform>().DOMove(locations[0].position, 1);
+            });
+            tutorialBG.DOFade(0, 1).OnComplete(() => { tutorialBG.gameObject.SetActive(false); truebgFade.SetActive(true); });
+        }
     }
 
     IEnumerator genocideEncounter()
