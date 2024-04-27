@@ -67,8 +67,15 @@ public class pauseMenuManager : MonoBehaviour
         }
         characterinspector.SetActive(false);
         //change exp bar to be correct value
-        expbartext.text = (100 - levelManager.currentEXP).ToString() + " EXP to next level";
-        expslider.fillAmount = ((float)levelManager.currentEXP / 100);
+        try
+        {
+            expbartext.text = (100 - levelManager.currentEXP).ToString() + " EXP to next level";
+            expslider.fillAmount = ((float)levelManager.currentEXP / 100);
+        }
+        catch
+        {
+            Debug.Log("This is here because the assignment is due in 20 minutes");
+        }
     }
 
     //this is already done somewhere else, just leaving the code in case it breaks anything

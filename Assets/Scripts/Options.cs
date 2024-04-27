@@ -40,16 +40,18 @@ public class Options : MonoBehaviour
                 if (Input.GetKeyDown(keyCode))
                 {
                     //make sure they cannot assign w, a, s, d or up, down, left, right,
-                    if (keyCode == KeyCode.W || keyCode == KeyCode.A || keyCode == KeyCode.S || keyCode == KeyCode.D || keyCode == KeyCode.UpArrow || keyCode == KeyCode.DownArrow || keyCode == KeyCode.LeftArrow || keyCode == KeyCode.RightArrow)
+                    if (keyCode == KeyCode.W || keyCode == KeyCode.A || keyCode == KeyCode.S || keyCode == KeyCode.D || keyCode == KeyCode.UpArrow || keyCode == KeyCode.DownArrow || keyCode == KeyCode.LeftArrow || keyCode == KeyCode.RightArrow || keyCode == KeyCode.Mouse1)
                     {
                         //wait for 1 second
                         StartCoroutine(WaitForKeyPress(keyCode));
                         continue;
                     }
-                    keyPressed = keyCode.ToString();
-                    buttonTXT.text = keyPressed.ToUpper();
-                    waitingForKeyPress = false;
-                    am.playSFX(25);
+                        keyPressed = keyCode.ToString();
+                        buttonTXT.text = keyPressed.ToUpper();
+                        audioStatics.keycodeInterractButton = keyCode;
+                        audioStatics.interractButton = keyPressed;
+                        waitingForKeyPress = false;
+                        am.playSFX(25);
                     break;
                 }
             }
