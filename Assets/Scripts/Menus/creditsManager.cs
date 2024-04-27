@@ -119,9 +119,9 @@ private void OnEnable()
             case 4:// 4 = kisa and sophie alive
                 charactersOnTitle[1].SetActive(false);
                 endingText.text = "Despite continuing his life as a knight, Alan was haunted by the weight of his actions. Witnessing the profound impact of Nicol's death on " +
-                    "the party, he swore never to harvest another soul. After his future epic adventures, the lich's tower gradually faded into distant memory.\r\n\r\nFor " +
-                    "years following Nicol's death, Kisa clung to a stubborn belief in his continued existence, despite Sophie's attempts to convince her otherwise. Then, in " +
-                    "a sudden, crushing moment of clarity, the truth washed over her: Nicol was gone.Years of suppressed grief flooded her being, leaving her shattered. Seeking " +
+                    "the party, he swore never to harvest another soul. After his future epic adventures, the lich's tower gradually faded into distant memory.\r\n\r\n" +
+                    "In the days following Nicol's death, Kisa struggled to accept that he was gone and lived in a state of denial, despite knowing deep down the truth. Then, in " +
+                    "a sudden, crushing moment of clarity, the truth washed over her: Nicol was gone.Years of suppressed grief flooded her being, leaving her confused and heartbroken. Seeking " +
                     "solace, she turned to the one person she trusted most.\r\n\r\nNicol's last known location was at the lich's tower. As a nomad by nature without any close " +
                     "ties, his absence went unnoticed by most except for the party he journeyed with.Although he left a lasting impression on those he encountered, his transient " +
                     "lifestyle caused him to gradually fade into obscurity.\r\n\r\nPaying homage to Nicol's memory, Sophie quietly honors him through subtle gestures, such as " +

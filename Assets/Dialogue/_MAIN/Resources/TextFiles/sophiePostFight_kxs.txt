@@ -22,7 +22,7 @@ alan "I agree. Let us continue."
 Highlight(kisa -o true)
 kisa "... Alright. We must unlock this door, yes?"
 Highlight(sophie -o true)
-sophie "Yes. I shall lend you my strength and assist for the time being. Swiftly now, let us press forward."
+sophie "Yes. I shall aid the search for the mechanism."
 Hide(sophie)
 Hide(kisa)
 Hide(alan)

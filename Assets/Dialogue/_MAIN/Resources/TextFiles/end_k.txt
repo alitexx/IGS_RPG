@@ -15,4 +15,4 @@ kisa "I am tired of everyone acting as if my only use is being a bard, and witho
 kisa "Nicol and Sophie saw my strength, they saw me as a person. You see me as another pawn in your twisted game. I'm done!"
 kisa "This is for Nicol and Sophie! They will guide me to victory!"
 playSFX(1)
-endDialogue(true)
+endDialogue(false)

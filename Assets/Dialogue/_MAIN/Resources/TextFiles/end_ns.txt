@@ -4,11 +4,11 @@ Hide(alan)
 wait(1)
 nicol "And so our journey comes to an end. We live to fight another day!"
 sophie "..."
-nicol "Sophia, what is with the long face? We have completed our mission, you have avenged your students!"
-sophie "I... wish I had done things differently. She could have been here with us."
+nicol "Sophia, what has captured your tongue from rejoice? The lich is dead and you have honored you students efforts."
+sophie "And what of Kisa's efforts? Who shall honor them, besides I with my sadness? I am stricken by all I could have done differently to ensure she her presence."
 addCutscene(2)
 nicol "I understand. You had no hand to play in what has happened, yet you find that you are the one to blame."
 nicol "Let us leave this place, yes? We can discuss these matters elsewhere."
-nicol "Good luck, my rival. May you accomplish your end goal, whatever it may be."
+nicol "Farewell, Alan. May you grow wiser."
 playSFX(24)
 endDialogue(false)

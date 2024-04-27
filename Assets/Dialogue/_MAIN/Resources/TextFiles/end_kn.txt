@@ -6,9 +6,9 @@ nicol "And so our journey comes to an end. We live to fight another day!"
 kisa "...We did it. Hooray."
 addCutscene(2)
 alan "Kisa..."
-kisa "I will excuse myself now. See you."
-nicol "I suppose I must depart as well. New continents will not discover themselves!"
-nicol "I will escort you out, dear Kisa. There may be some lingering specters that need slaying!"
-alan "Will do. Good luck, you two."
+kisa "I will excuse myself now. Goodbye, Alan."
+nicol "Yes, I must depart as well."
+nicol "Let me escort you out, Kisa, dear. There may be lingering monsters that could try to halt you."
+alan "Farewell."
 playSFX(24)
 endDialogue(false)

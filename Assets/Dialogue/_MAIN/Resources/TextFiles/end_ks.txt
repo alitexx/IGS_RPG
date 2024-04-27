@@ -3,15 +3,14 @@ Hide(kisa)
 Hide(alan)
 wait(1)
 sophie "And so our journey comes to an end."
-kisa "Without Nicol, as well... Tell me, Sophie, where is he?"
+kisa "Without Nicol, as well... Tell me, Sophie, what you believe to have happened?"
 sophie "Kisa..."
-kisa "Sophie, you are worrying me. You never hesitate, yet you do so now. Where is Nicol?"
+kisa "Your hesitation frightens me, Sophie."
 addCutscene(2)
-sophie "I hesitate because I do not know the best way to inform you of his whereabouts. It is a difficult topic to discuss with anyone, even someone I hold in high regard."
-sophie "I was not expecting such an event to transpire, and your blissful ignorance is... surprising, to say the least."
-alan "Perhaps it is a conversation best had outside of the tower."
-sophie "I agree. Come, Kisa, I will attempt to articulate the events as we walk."
-kisa "I do not know why you must articulate your words so! It must be simple, yes? Did he wander off to... I do not know, a farm? He looks like a cat, maybe he saw a mouse. Does he eat mice?"
-sophie "No. Well, perhaps one could think of it in that way."
+sophie "... Perhaps, we should head outside. I will tell you in truth once this bloody place is behind us."
+alan "... I will wait here. To give you space on your exit."
+sophie "Yes, that would be for the best."
+kisa "Why would that be so, Sophie? For Alan to not be with us as we leave?"
+sophie "You will understand. First, we leave."
 playSFX(24)
 endDialogue(false)

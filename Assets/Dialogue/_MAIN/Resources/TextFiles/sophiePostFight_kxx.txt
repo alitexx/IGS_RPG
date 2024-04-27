@@ -14,18 +14,18 @@ alan "Stop your whining. We still have a lich to defeat, remember?"
 Highlight(kisa -o true)
 SetSprite(kisa flipped)
 kisa.Move(0.5 0 -spd 2)
-kisa "Alan, how can you be so calm in these situations?! Two of our allies were slain by you! This is not just!"
+kisa "I could you say that to me? I have just watched as someone I trusted killed our friends! What have you done! Dear Gods, what have you done..."
 Highlight(alan -o true)
 alan.Move(0.15 0 -spd 2)
-alan "How many times must I repeat myself? They were your allies, not mine. They are equal to every other monster we have slain. I am here for one goal, and I will accomplish that goal at any cost."
-alan "Now, we must find a way forward. With no more of this sentimental shit. This is the harsh reality of our world, do you understand?"
+alan "Your friends, Kisa, yours. But nevermind that, it has been done, there is no point in questioning it now. We will kill the lich and be done with it."
+alan "I have spared you, so at the very least you could summon the will to be helpful."
 Highlight(kisa -o true)
-kisa "...I understand."
+kisa "..."
 Hide(alan)
 wait(2)
 Highlight(kisa -o true)
 SetSprite(kisa kisa)
 kisa.Move(0.6 0 -spd 0.5)
-kisa "Gods, grant me strength. This feels unjust. Alan was once so noble, yet now... I question his virtues."
+kisa "Gods, what am I to do. I feel sick. And our friends, I..."
 Hide(kisa)
 endDialogue(false)

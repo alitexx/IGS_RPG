@@ -11,20 +11,20 @@ Show(kisa)
 Highlight(kisa -o true)
 kisa "Sophie?!"
 kisa.Move(0.75 0 -spd 3)
-kisa "No, no no no... This is all wrong!"
-kisa "I... I thought we were sparring..."
+kisa "My Gods, what have you done?"
+kisa "You were supposed to fight, not <i>kill</i>!"
 Highlight(nicol -o true)
 nicol.Move(0.45 0 -spd 2)
-nicol "Her aggression was excessive, thus this is a consequence of her actions."
+nicol "Her aggression was unnecessary, but Alan even I hesitate to say yours was."
 nicol "Though we may find it difficult to accept, we must understand that this was one of the outcomes of this battle. Sophie could have easily done the same to us, could she not?"
 Highlight(kisa -o true)
 SetSprite(kisa flipped)
 kisa.Move(0.7 0 -spd 3)
-kisa "But she wouldn't! Sophie would never hurt me!"
+kisa "Sophie would have never! Alan, how could you do this? I <i>told</i> you I–"
 Highlight(alan -o true)
 alan.SetPriority(1)
 alan.Move(0.1 0 -spd 1)
-alan "Kisa, it may be difficult to understand, but Sophie was not sparring. The dispute early into our venture of this tower, her sour mood just now... she was prepared to deal a fatal blow."
+alan "You told me her emotions could cause us trouble and they did. I feared to what length that trouble could escalate, so I did what needed to be done."
 alan "I had to protect us, it was my duty as a knight. I apologize."
 Highlight(kisa -o true)
 SetSprite(kisa kisa)
@@ -32,11 +32,11 @@ kisa.Move(0.75 0 -spd 1)
 kisa "Why... why did I falter? I could have shielded her and spared her from this fate!"
 Highlight(nicol -o true)
 nicol.Move(0.6 0 -spd 1.5)
-nicol "Now, Kisa, what is done is done. You could not have taken that attack and survived."
+nicol "Kisa, do not torment yourself with your future insight. I doubt even Sophie would have wanted you to get injured in her battle."
 SetSprite(nicol flipped)
-nicol "Alan, perhaps we could promptly conclude this adventure? Kisa will be alright, however, she requires time to mourn this loss."
+nicol "Alan, I believe it best if we end our association as promptly as possible. I do not fear your hand but... I question your judgement. Let us slay the Lich and be done with this."
 Highlight(alan -o true)
-alan "Understood. We shall make haste."
+alan "...Understood."
 alan.SetPriority(0)
 Hide(nicol)
 Hide(alan)
