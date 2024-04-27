@@ -9,17 +9,18 @@ Show(sophie)
 Show(kisa)
 Show(alan)
 Highlight(sophie -o true)
-sophie "Damn it. I have let you down, Nicol. I apologize."
+sophie "How insufferable, to be spared by tainted hands. How livid our friend must be."
 Highlight(kisa -o true)
 kisa.Move(0.45 0 -spd 2)
 kisa "Sophie..?"
 Highlight(sophie -o true)
 sophie.Move(0.8 0 -spd 2)
-sophie "Do not fear, Kisa. All will be revealed in due time. For now, let us focus on finishing our task as soon as possible. I do not wish to linger here with <i>him</i>."
+sophie "You will not come to harm, Kisa, I will make sure of it. The lich still reigns and though it pains me to stand in his presence, we must ensure that it is slain."
+sophie "It seems he was only after the aristocat, so let us press forward swiftly so this dreadful chapter can close."
 Highlight(alan -o true)
 alan "I agree. Let us continue."
 Highlight(kisa -o true)
-kisa "Well, alright. We must unlock this door next, yes?"
+kisa "... Alright. We must unlock this door, yes?"
 Highlight(sophie -o true)
 sophie "Yes. I shall lend you my strength and assist for the time being. Swiftly now, let us press forward."
 Hide(sophie)
