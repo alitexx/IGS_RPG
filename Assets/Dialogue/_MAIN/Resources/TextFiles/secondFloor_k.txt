@@ -32,7 +32,7 @@ Highlight(kisa -o true)
 kisa "Do not use that tone of voice. Regardless..."
 kisa.Move(0.67 0 -spd 1)
 SetSprite(kisa kisa)
-kisa "The cause of my distress lies in last evening, when I initiated a… personal discussion with Sophie. I revealed the true feelings of my heart to her, only to find her reception less than favorable."
+kisa "The cause of my distress lies in last evening, when I initiated a... personal discussion with Sophie. I revealed the true feelings of my heart to her, only to find her reception less than favorable."
 kisa "Naturally, I was quite crestfallen. However, it seems Sophie is even denser still, as she apparently sees no reason for my wounds to have continued into daybreak."
 SetSprite(kisa flipped)
 kisa.Move(0.65 0 -spd 1)

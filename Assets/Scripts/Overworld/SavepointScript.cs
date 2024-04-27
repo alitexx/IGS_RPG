@@ -21,7 +21,7 @@ public class SavepointScript : MonoBehaviour
 
         DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
 
-        if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.interractButton) && !mainDialogueManager.dialogueRunning)
+        if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.interractButton) && !mainDialogueManager.dialogueRunning && SaveMenu.activeInHierarchy == false)
         {
             //call function to heal, and eventually save.
             levelManager.FullHeal();
@@ -38,5 +38,6 @@ public class SavepointScript : MonoBehaviour
         playerController.saveGame();
         //confirm save/heal as a menu or something (name.setactive(true)
         Debug.Log("YIPEEEE");
+        PauseMenu.canOpenPause = true;
     }
 }

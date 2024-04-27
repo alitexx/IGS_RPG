@@ -49,9 +49,9 @@ public class PlayerController : MonoBehaviour
     int KisainParty = 0;
     int NicolinParty = 0;
     int SophieinParty = 0;
-    int KisaAbsorbed = 0;
-    int NicolAbsorbed = 0;
-    int SophieAbsorbed = 0;
+    public int KisaAbsorbed = 0;
+    public int NicolAbsorbed = 0;
+    public int SophieAbsorbed = 0;
     public int HasBeenThruTutorial = 0;
     public int BattleTutorialCleared = 0;
     public int DoorsOpened = 0;
@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1.0f;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         waypointTrail = new Transform[4] {

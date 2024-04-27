@@ -122,7 +122,7 @@ public class killFriendManager : MonoBehaviour
                     "Max Mana: <color=#3B7D4F>+"+ (LevelManager.level) +"</color>";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nWind";
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Kisa</color>";
-                befriendText[1].text = "\r\nSpecial Ability: <color=#cf752b>Sing</color>\r\nHeals all allies by 50% of their maximum Health.";
+                befriendText[1].text = "\r\nSpecial Move: <color=#cf752b>Sing</color>\r\nHeals the party by 50% of their maximum Health.";
                 befriendText[2].text = "Kisa's Magic Element:\r\n\r\n\r\n\r\nWind";
                 break;
             case "NICOL":
@@ -137,7 +137,7 @@ public class killFriendManager : MonoBehaviour
                     "Max Mana: <color=#3B7D4F>+" + (LevelManager.level) + "</color>";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nIce";
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Nicol</color>";
-                befriendText[1].text = "\r\nSpecial Ability: <color=#cf752b>Examine</color>\r\nView one enemy's weakness.";
+                befriendText[1].text = "\r\nSpecial Move: <color=#cf752b>Examine</color>\r\nPinpoint an enemy's weakness.";
                 befriendText[2].text = "Nicol's Magic Element:\r\n\r\n\r\n\r\nIce";
                 break;
             case "SOPHIE":
@@ -152,7 +152,7 @@ public class killFriendManager : MonoBehaviour
                     "Max Mana: <color=#3B7D4F>+0</color>";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nElectric";
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Sophie</color>";
-                befriendText[1].text = "\r\nSpecial Ability: <color=#cf752b>Thunderstorm</color>\r\nAttack all enemies with electric magic.";
+                befriendText[1].text = "\r\nSpecial Move: <color=#cf752b>Thunderstorm</color>\r\nHit all enemies with a physical attack.";
                 befriendText[2].text = "Sophie's Magic Element:\r\n\r\n\r\n\r\nElectric";
                 break;
         }

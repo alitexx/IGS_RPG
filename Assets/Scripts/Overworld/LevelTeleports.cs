@@ -42,6 +42,10 @@ public class LevelTeleports : MonoBehaviour
         }
         
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        PauseMenu.canOpenPause = true;
+    }
 
     public void Next()
     {
