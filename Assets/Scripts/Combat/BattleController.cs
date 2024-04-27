@@ -57,13 +57,13 @@ public class BattleController : MonoBehaviour
         }
         else if(randomiser == 2)
         {
-            enemySpawning = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0, 4, 1);
+            enemySpawning = SpawnCharacter(false, skeletonStats, "Skeleton Guy", 0, 4, 3);
 
             return enemySpawning;
         }
         else if (randomiser == 3)
         {
-            enemySpawning = SpawnCharacter(false, ghostStats, "Ghost Guy", 0, 4, 3);
+            enemySpawning = SpawnCharacter(false, ghostStats, "Ghost Guy", 0, 4, 1);
 
             return enemySpawning;
         }
@@ -313,8 +313,8 @@ public class BattleController : MonoBehaviour
         /*Magic Attack*/ 8,
         /*Defense*/ 4, 
         /*Speed*/ 5, 
-        /*Health*/ 8, 
-        /*MaxHealth*/ 8,
+        /*Health*/ 11, 
+        /*MaxHealth*/ 11,
         /*Mana*/ 9,
         /*MaxMana*/ 9};
 
@@ -333,9 +333,9 @@ public class BattleController : MonoBehaviour
         /*Strength*/ 13,
         /*Magic Attack*/ 7,
         /*Defense*/ 4, 
-        /*Speed*/ 6, 
-        /*Health*/ 10, 
-        /*MaxHealth*/ 10,
+        /*Speed*/ 8, 
+        /*Health*/ 13, 
+        /*MaxHealth*/ 13,
         /*Mana*/ 5,
         /*MaxMana*/ 5};
 
@@ -344,8 +344,8 @@ public class BattleController : MonoBehaviour
         /*Magic Attack*/ 13,
         /*Defense*/ 8, 
         /*Speed*/ 6, 
-        /*Health*/ 50, 
-        /*MaxHealth*/ 50,
+        /*Health*/ 80, 
+        /*MaxHealth*/ 80,
         /*Mana*/ 5,
         /*MaxMana*/ 5};
 
@@ -413,12 +413,12 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7};
 
     static public int[] lichStats = {
-        /*Strength*/ 9,
-        /*Magic Attack*/ 12,
+        /*Strength*/ 12,
+        /*Magic Attack*/ 13,
         /*Defense*/ 7, 
         /*Speed*/ 4, 
-        /*Health*/ 50, 
-        /*MaxHealth*/ 50,
+        /*Health*/ 120, 
+        /*MaxHealth*/ 120,
         /*Mana*/ 6,
         /*MaxMana*/ 7};
 
@@ -443,8 +443,8 @@ public class BattleController : MonoBehaviour
         /*Magic Attack*/ 8,
         /*Defense*/ 4, 
         /*Speed*/ 5, 
-        /*Health*/ 8, 
-        /*MaxHealth*/ 8,
+        /*Health*/ 11, 
+        /*MaxHealth*/ 11,
         /*Mana*/ 9,
         /*MaxMana*/ 9};
 
@@ -453,9 +453,9 @@ public class BattleController : MonoBehaviour
         /*Strength*/ 13,
         /*Magic Attack*/ 7,
         /*Defense*/ 4, 
-        /*Speed*/ 6, 
-        /*Health*/ 10, 
-        /*MaxHealth*/ 10,
+        /*Speed*/ 8, 
+        /*Health*/ 13, 
+        /*MaxHealth*/ 13,
         /*Mana*/ 5,
         /*MaxMana*/ 5};
 
@@ -1195,6 +1195,7 @@ public class BattleController : MonoBehaviour
             }
             else
             {
+                enemyList[enemyNum].weaknessImage.sprite = null;
                 Debug.Log("No weakness");
             }
 
@@ -1267,7 +1268,7 @@ public class BattleController : MonoBehaviour
                 lightningParticle = Instantiate(enemyList[i].particleManager, position, Quaternion.identity, enemyList[i].transform);
                 lightningParticle.animator.SetBool("ElectricFX", true);
 
-                enemyList[i].GotDamaged(activeChar.statSheet.stats["Strength"], enemyList[i].statSheet.stats["Defense"]);
+                enemyList[i].GotDamaged(activeChar.statSheet.stats["Magic Attack"], 0);//enemyList[i].statSheet.stats["Defense"]);
             }
 
             //ChooseNextActiveChar();
@@ -1844,6 +1845,9 @@ public class BattleController : MonoBehaviour
 
     public void BefriendButton()
     {
+
+        playerController.joinParty();
+
         if (playerController.KisaBoss == true)
         {
             //Bard
@@ -1872,7 +1876,6 @@ public class BattleController : MonoBehaviour
             befriendOrAbsorbButton.SetActive(false);
         }
 
-        playerController.joinParty();
         turnOffForKillBefriend.SetActive(true);
         partyMembers.Clear();
         //playerController.isfrozen = false;
