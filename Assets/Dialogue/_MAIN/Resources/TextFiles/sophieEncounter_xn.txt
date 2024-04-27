@@ -30,12 +30,10 @@ sophie.Move(0.7 0 -spd 2)
 Highlight(sophie -o true)
 sophie "What is with that tone, Alan? Are you suddenly doubting my abilities?"
 Highlight(nicol -o true)
-nicol "Now, now, there is no need to squabble. Words can resolve disputes just as effectively as weapons."
+nicol "There has been far too much conflict today, could we take a breath and make amends? The solution to this mystery could be discovered if we worked as a team."
 Highlight(sophie -o true)
 sophie "And why is Nicol... sensible? Something is not right."
 sophie "Is Kisa involved in this? I see that she is absent from your group."
-Highlight(nicol -o true)
-nicol "That can be explained in due time over a refreshing cup of tea! Let us all take a deep breath to relax-"
 Highlight(alan -o true)
 alan "Kisa is involved. There was an... an accident. I slew her by mistake."
 Highlight(sophie -o true)

@@ -1,7 +1,7 @@
 alan.Move(0 0 -spd 3)
 nicol.Move(0.25 0 -spd 3)
 kisa.Move(0.4 0 -spd 3)
-sophie.Move(0.85 0 -spd 3)
+sophie.Move(0.85 0 1 false true)
 Hide(sophie)
 Hide(nicol)
 Hide(alan)
@@ -24,7 +24,7 @@ sophie "..."
 Highlight(alan -o true)
 alan "How fares the epic adventures of Sophie the Lich Slayer? Need a hand?"
 Highlight(sophie -o true)
-sophie.Move(0.75 0 -spd 2)
+sophie.Move(0.825 0 -spd 2)
 sophie "Mock me again, knight, and see what happens to that hand you offer. I do not want your help, though I doubt it would be of any use on this blasted floor."
 sophie "This door holds no keyhole, nor are there any mechanisms in sight. I have already attempted to knock it down by force, yet it stands just as strong."
 Highlight(kisa -o true)
@@ -43,7 +43,7 @@ Highlight(alan -o true)
 alan.SetPriority(3)
 alan "But we <i>need</i> to pass. Hurry up or let us help you."
 Highlight(sophie -o true)
-sophie.Move(0.6 0 -spd 2)
+sophie.Move(0.8 0 -spd 2)
 sophie "Rush me and it will be the last thing you do. I am more than capable. Leave me be."
 Highlight(kisa -o true)
 kisa "Alan, maybe we back off-"
@@ -55,6 +55,7 @@ Highlight(sophie -o true)
 sophie.SetPriority(5)
 sophie "Sparring? That could be beneficial. Once you are incapacitated, I can continue without your whines. Come at me."
 Highlight(alan -o true)
+nicol.SetPriority(6)
 alan "*Sigh* Why does this keep happening? Alright, on with it then."
 Hide(sophie)
 Hide(nicol)

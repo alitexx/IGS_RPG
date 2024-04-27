@@ -6,48 +6,47 @@ Hide(kisa)
 Hide(alan)
 wait(0.75)
 Show(sophie)
+sophie.SetPriority(1)
 Highlight(sophie -o true)
 sophie "By the seven hells..."
 Show(alan)
-alan.SetPriority(1)
+alan.SetPriority(2)
 Show(kisa)
 wait(1)
 Highlight(kisa -o true)
-kisa.SetPriority(1)
+kisa.SetPriority(2)
 kisa.Move(0.75 0 -spd 3)
 kisa "SOPHIE! Thank the Gods you are alive and well..."
 Highlight(sophie -o true)
-sophie "Kisa? Why do you embrace me so?"
+sophie "Kisa? What is with your franticness? And why do you embrace me?"
 Highlight(kisa -o true)
 kisa "Oh. My apologies."
 kisa.Move(0.65 0 -spd 2.5)
 wait(0.5)
-kisa "There has been a minor... predicament. Do you happen to know if any specters roam these halls? And if so, could they mimic the living?"
+kisa "Alan he– I mean we encountered... Tell me, Sophie, have you met any specters in these halls? Ones that mimic the living?"
 Highlight(sophie -o true)
-sophie "Specters? I have vanquished a handful. As for mimicking the living, I doubt they could accomplish such a feat."
+sophie "Specters? I have vanquished a handful, though all were certainly ghoulish. I do not think them capable of such trickery."
 sophie.Move(0.825 0 -spd 1.5)
-sophie "Your tone worries me. Is all well?"
+sophie "Your tone worries me, why do you ask?"
 Highlight(kisa -o true)
-kisa "Nicol was... he looked and spoke as if he was our companion. He fell to Alan's blade, I believe a specter took the form of Nicol to trick us and Alan noticed far before I could."
-kisa "Alan is not the type to kill without reason. But if Nicol was not a specter, then... what?"
+kisa "...We encountered Nicol, or what I thought to be Nicol. He-It looked and spoke as if he were our friend, but Alan slew him just as all the other creatures we encountered."
+kisa "I know I lack experience in these matters and reasoned that my eyes failed to see the mirage. But if what you say is true, I-I do not..."
 Highlight(sophie -o true)
 sophie.Move(0.6 0 -spd 2)
 kisa.Move(0.9 0 -spd 2)
 SetSprite(kisa flipped)
-sophie.SetPriority(2)
+sophie.SetPriority(3)
 sophie "Alan, is this true? Did Nicol meet his end by your hand?"
 Highlight(alan -o true)
 alan "..."
 Highlight(kisa -o true)
-kisa.Move(0.875 0 -spd 1)
-kisa "Sophie? I have told you, it was not the real Nicol."
 Highlight(sophie -o true)
 sophie.Move(0.55 0 -spd 2)
-sophie "Answer the question."
+sophie "Answer."
 Highlight(alan -o true)
 alan "He was your ally, not mine."
 Highlight(sophie -o true)
-sophie "So be it. I do not take the loss of a companion lightly, though they may have been irresponsible at times. Expect no mercy from me, as Nicol found none from you."
+sophie "Is that how you live with your sins? By cowardishly setting aside your deceit? I will give you more than you deserve with this shred of honesty: Expect no mercy from this encounter, as Nicol found none from you."
 Hide(sophie)
 Hide(kisa)
 Hide(alan)
