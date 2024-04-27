@@ -22,7 +22,7 @@ public class LeverScript : MonoBehaviour
         {
             DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
 
-            if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.interractButton))
+            if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.keycodeInterractButton))
             {
                 Debug.Log(":D");
                 Destroy(Door);
@@ -39,7 +39,7 @@ public class LeverScript : MonoBehaviour
     {
         if (flipped == false)
         {
-            if (collision.gameObject.tag == "Player" && Input.GetKeyDown(audioStatics.interractButton))
+            if (collision.gameObject.tag == "Player" && Input.GetKeyDown(audioStatics.keycodeInterractButton))
             {
                 Debug.Log(":D");
                 Destroy(Door);
