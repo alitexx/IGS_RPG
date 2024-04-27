@@ -53,29 +53,29 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 1886904231, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.11666667
+    - time: 0.16666667
       value: {fileID: -388309410, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.23333333
+    - time: 0.33333334
       value: {fileID: -1417646711, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.35
+    - time: 0.41666666
       value: {fileID: 1323269828, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.46666667
+    - time: 0.5
       value: {fileID: 1189649309, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.5833333
+    - time: 0.6666667
       value: {fileID: -1620392308, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.7
+    - time: 0.8333333
       value: {fileID: -1991338389, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.81666666
+    - time: 1.2
       value: {fileID: -466252989, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.93333334
+    - time: 1.25
       value: {fileID: -933581393, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 1.05
+    - time: 1.3
       value: {fileID: -905862422, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 1.1666666
+    - time: 1.35
       value: {fileID: 771374173, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 1.2833333
+    - time: 1.4333333
       value: {fileID: -1939344066, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 1.4
+    - time: 1.7833333
       value: {fileID: -1939344066, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
     attribute: m_Sprite
     path: Sprite
@@ -128,7 +128,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.4166666
+    m_StopTime: 1.8
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -262,7 +262,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1.4166666
+  - time: 1.2
+    functionName: punchHit
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.7833333
     functionName: AttackOver
     data: 
     objectReferenceParameter: {fileID: 0}
