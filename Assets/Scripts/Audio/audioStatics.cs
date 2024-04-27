@@ -8,7 +8,7 @@ public static class audioStatics
     public static float BGMVolume = 0.4f;
     public static float SFXVolume = 0.8f;
     public static float VoiceVolume = 0.6f;
-    public static string interractButton = "Mouse0";
-    public static KeyCode keycodeInterractButton = KeyCode.Mouse0;
+    public static string interractButton = "space";
+    public static KeyCode keycodeInterractButton = KeyCode.Space;
     public static float TextSpeedMultiplier = 1f;
 }
