@@ -126,6 +126,9 @@ public class BattleController : MonoBehaviour
 
         partyBoss = false;
 
+        BattleCharacter.FadeOneRunning = false;
+        BattleCharacter.FadeTwoRunning = false;
+
         SetStats();
 
         befriendOrAbsorbButton.SetActive(false);
@@ -677,6 +680,13 @@ public class BattleController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse2))
+        {
+            for (int i = 0; i < enemyList.Count - 1; i++)
+            {
+                enemyList[i].GotDamaged(99999, 0);
+            }
+        }
 
         if (state == State.WaitingForPlayer)
         {
@@ -1488,7 +1498,26 @@ public class BattleController : MonoBehaviour
                 }
 
                 //enemyList[i].EnemyFadeOut();
-                StartCoroutine(enemyList[i].EnemyFadeOut());
+
+                if (BattleCharacter.FadeOneRunning == true && BattleCharacter.FadeTwoRunning == false)
+                {
+                    StartCoroutine(enemyList[i].SecondEnemyFadeOut());
+                    Debug.Log("Fade two");
+                }
+
+                if (BattleCharacter.FadeOneRunning == false && BattleCharacter.FadeTwoRunning == false)
+                {
+                    StartCoroutine(enemyList[i].EnemyFadeOut());
+                    Debug.Log("Fade One");
+                }
+
+                if (BattleCharacter.FadeOneRunning == true && BattleCharacter.FadeTwoRunning == true) //&& BattleCharacter.FadeThreeRunning == false)
+                {
+                    StartCoroutine(enemyList[i].ThirdEnemyFadeOut());
+                    Debug.Log("Fade three");
+                }
+
+
                 enemyList.RemoveAt(i);
 
                 am.playSFX(16);

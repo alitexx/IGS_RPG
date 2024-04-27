@@ -585,7 +585,69 @@ public class BattleCharacter : MonoBehaviour
         fighterObject.transform.DOMoveY(transform.position.y - 6, 0.7f);
     }
 
+    #region EnemyFade
+
+    static public bool FadeOneRunning;
+    static public bool FadeTwoRunning;
+
+
     public IEnumerator EnemyFadeOut()
+    {
+        FadeOneRunning = true;
+
+        for (float f = 1; f >= 0; f -= 0.05f)
+        {
+            if (charSprite == null)
+            {
+                continue;
+            }
+
+            Color c = charSprite.material.color;
+            c.a = f;
+            c.r = Random.Range(0, 1f);
+            c.g = Random.Range(0, 1f);
+            c.b = Random.Range(0, 1f);
+
+
+            charSprite.color = c;
+
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        FadeOneRunning = false;
+
+        Destroy(fighterObject);
+    }
+
+    public IEnumerator SecondEnemyFadeOut()
+    {
+        FadeTwoRunning = true;
+
+        for (float f = 1; f >= 0; f -= 0.05f)
+        {
+            if (charSprite == null)
+            {
+                continue;
+            }
+
+            Color c = charSprite.material.color;
+            c.a = f;
+            c.r = Random.Range(0, 1f);
+            c.g = Random.Range(0, 1f);
+            c.b = Random.Range(0, 1f);
+
+
+            charSprite.color = c;
+
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        FadeTwoRunning = false;
+
+        Destroy(fighterObject);
+    }
+
+    public IEnumerator ThirdEnemyFadeOut()
     {
         for (float f = 1; f >= 0; f -= 0.05f)
         {
@@ -606,8 +668,11 @@ public class BattleCharacter : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
 
+
         Destroy(fighterObject);
     }
+
+    #endregion
 
     private void SlideToPosition(Vector3 slideTargetPosition, Action onSlideComplete)
     {
