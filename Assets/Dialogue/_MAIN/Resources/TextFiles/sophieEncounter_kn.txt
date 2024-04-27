@@ -55,7 +55,7 @@ Highlight(sophie -o true)
 sophie.SetPriority(5)
 sophie "Sparring? That could be beneficial. Once you are incapacitated, I can continue without your whines. Come at me."
 Highlight(alan -o true)
-nicol.SetPriority(6)
+alan.SetPriority(6)
 alan "*Sigh* Why does this keep happening? Alright, on with it then."
 Hide(sophie)
 Hide(nicol)
