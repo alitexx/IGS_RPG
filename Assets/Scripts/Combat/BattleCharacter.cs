@@ -319,6 +319,22 @@ public class BattleCharacter : MonoBehaviour
         animator.SetBool("Attacking", false);
     }
 
+    // FOR ATTACKING ANIMATIONS!!
+
+    public void slashHit()
+    {
+        //state = State.Busy;
+        //animator.SetBool("Attacking", false);
+    }
+
+    public void punchHit()
+    {
+        //state = State.Busy;
+        //animator.SetBool("Attacking", false);
+    }
+
+    //
+
     public void magAttack(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
     {
         state = State.Attacking;
