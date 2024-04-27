@@ -680,13 +680,14 @@ public class BattleController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse2))
+        //Command for killing all but one enemy in combat
+        /*if (Input.GetKeyDown(KeyCode.Mouse2))
         {
             for (int i = 0; i < enemyList.Count - 1; i++)
             {
                 enemyList[i].GotDamaged(99999, 0);
             }
-        }
+        }*/
 
         if (state == State.WaitingForPlayer)
         {
