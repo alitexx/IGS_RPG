@@ -1504,7 +1504,8 @@ public class BattleController : MonoBehaviour
 
                 //enemyList[i].EnemyFadeOut();
                 //Debug.Log(i + " " + BattleCharacter.FadeOneRunning);
-
+                
+                //Checking if another enemy is dying, and playing the another coroutine if it is
                 if (BattleCharacter.FadeOneRunning == true && BattleCharacter.FadeTwoRunning == false)
                 {
                     StartCoroutine(enemyList[i].SecondEnemyFadeOut());

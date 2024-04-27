@@ -256,6 +256,11 @@ public class BattleCharacter : MonoBehaviour
     }
 
     #region Attacks, Hurt, and Animations
+
+    private BattleCharacter gAttacker = null;
+    private BattleCharacter gTarget = null;
+    private Vector3 gPosition;
+
     public void Attack(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
     {
         Vector3 slideCloseToTargetPosition = targetCharacter.GetPosition() + (GetPosition() - targetCharacter.GetPosition()).normalized * 3f;
@@ -271,6 +276,12 @@ public class BattleCharacter : MonoBehaviour
             attacker.animator.SetBool("Attacking", true);
             state = State.Attacking;
 
+            Vector3 position = targetCharacter.GetPosition();
+
+            gPosition = position;
+            gAttacker = attacker;
+            gTarget = targetCharacter;
+
             StartCoroutine(WaitUntilAttackOver(targetCharacter, attacker, startingPosition, onAttackComplete));
         });
     }
@@ -283,11 +294,11 @@ public class BattleCharacter : MonoBehaviour
         }
 
         //This clump of code is how to get the particle manager to do stuff
-        Vector3 position = targetCharacter.GetPosition();
-        ParticleManager particle = Instantiate(particleManager, position, Quaternion.identity, targetCharacter.transform);
+        //Vector3 position = targetCharacter.GetPosition();
+        //ParticleManager particle = Instantiate(particleManager, position, Quaternion.identity, targetCharacter.transform);
 
 
-        if (attacker.statSheet.name == "Tank Guy" || attacker.statSheet.name == "Wraith Guy" || attacker.statSheet.name == "Skeleton Guy" || attacker.statSheet.name == "Mage Guy")
+        /*if (attacker.statSheet.name == "Tank Guy" || attacker.statSheet.name == "Wraith Guy" || attacker.statSheet.name == "Skeleton Guy" || attacker.statSheet.name == "Mage Guy")
         {
             am.playSFX(2);
             particle.animator.SetBool("SlashFX", true);
@@ -296,7 +307,7 @@ public class BattleCharacter : MonoBehaviour
         {
             am.playSFX(3);
             particle.animator.SetBool("PunchFX", true);
-        }
+        }*/
 
 
         targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
@@ -323,12 +334,16 @@ public class BattleCharacter : MonoBehaviour
 
     public void slashHit()
     {
+        ParticleManager particle = Instantiate(particleManager, gPosition, Quaternion.identity, gTarget.transform);
+        particle.animator.SetBool("SlashFX", true);
         //state = State.Busy;
         //animator.SetBool("Attacking", false);
     }
 
     public void punchHit()
     {
+        ParticleManager particle = Instantiate(particleManager, gPosition, Quaternion.identity, gTarget.transform);
+        particle.animator.SetBool("PunchFX", true);
         //state = State.Busy;
         //animator.SetBool("Attacking", false);
     }
