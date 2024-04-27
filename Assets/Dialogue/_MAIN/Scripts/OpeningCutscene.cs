@@ -13,6 +13,7 @@ public class OpeningCutscene : MonoBehaviour
     [SerializeField] private GameObject[] cutsceneassets;
     [SerializeField] private DialogueSystem ds;
     [SerializeField] private MainMenu menu;
+    //[SerializeField] private PlayerController playerController;
     private string tempInterractButton;
     //private void Start()
     //{
@@ -22,11 +23,18 @@ public class OpeningCutscene : MonoBehaviour
     //MUST PASS IN THE 
     public void dialogueSTART()
     {
-        ////validate input before continuing
-        //tempInterractButton = audioStatics.interractButton;
-        //audioStatics.interractButton = string.Empty;
-        ds.architect.speedMultiplier = 0.5f;
-        StartCoroutine(completeDialogue());
+        if(PlayerPrefs.GetInt("BattleTutorialCleared") == 0)
+        {
+            ////validate input before continuing
+            //tempInterractButton = audioStatics.interractButton;
+            //audioStatics.interractButton = string.Empty;
+            ds.architect.speedMultiplier = 0.5f;
+            StartCoroutine(completeDialogue());
+        }
+        else
+        {
+            skipDialogue();
+        }
     }
 
     public void skipDialogue()
