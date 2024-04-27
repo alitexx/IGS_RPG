@@ -41,8 +41,8 @@ public class LevelManager : MonoBehaviour
         /*1 Magic Attack*/ 8,
         /*2 Defense*/ 4, 
         /*3 Speed*/ 5, 
-        /*4 Health*/ 8, 
-        /*5 MaxHealth*/ 8,
+        /*4 Health*/ 11, 
+        /*5 MaxHealth*/ 11,
         /*6 Mana*/ 9,
         /*7 MaxMana*/ 9
     };
@@ -51,9 +51,9 @@ public class LevelManager : MonoBehaviour
         /*0 Strength*/ 13,
         /*1 Magic Attack*/ 7,
         /*2 Defense*/ 4, 
-        /*3 Speed*/ 6, 
-        /*4 Health*/ 10, 
-        /*5 MaxHealth*/ 10,
+        /*3 Speed*/ 8, 
+        /*4 Health*/ 13, 
+        /*5 MaxHealth*/ 13,
         /*6 Mana*/ 5,
         /*7 MaxMana*/ 5
     };
@@ -89,8 +89,8 @@ public class LevelManager : MonoBehaviour
         /*1 Magic Attack*/ 8,
         /*2 Defense*/ 4, 
         /*3 Speed*/ 5, 
-        /*4 Health*/ 8, 
-        /*5 MaxHealth*/ 8,
+        /*4 Health*/ 11, 
+        /*5 MaxHealth*/ 11,
         /*6 Mana*/ 9,
         /*7 MaxMana*/ 9
     };
@@ -99,9 +99,9 @@ public class LevelManager : MonoBehaviour
         /*0 Strength*/ 13,
         /*1 Magic Attack*/ 7,
         /*2 Defense*/ 4, 
-        /*3 Speed*/ 6, 
-        /*4 Health*/ 10, 
-        /*5 MaxHealth*/ 10,
+        /*3 Speed*/ 8, 
+        /*4 Health*/ 13, 
+        /*5 MaxHealth*/ 13,
         /*6 Mana*/ 5,
         /*7 MaxMana*/ 5
     };
@@ -258,7 +258,7 @@ public class LevelManager : MonoBehaviour
 
             //Tank
             tankStoredStats[0] += (1 * (level - 1));
-            tankStoredStats[2] += (1 * (level - 1));
+            //tankStoredStats[2] += (1 * (level - 1));
             tankStoredStats[4] += (1 * (level - 1));
             tankStoredStats[5] += (1 * (level - 1));
 
@@ -267,8 +267,8 @@ public class LevelManager : MonoBehaviour
                 tankStoredStats[1] += (1 * (level - 1));
                 tankStoredStats[4] += (2 * (level - 1));
                 tankStoredStats[5] += (2 * (level - 1));
-                tankStoredStats[6] += (1 * (level - 1));
-                tankStoredStats[7] += (1 * (level - 1));
+                //tankStoredStats[6] += (1 * (level - 1));
+                //tankStoredStats[7] += (1 * (level - 1));
             }
 
             if (nicolAbsorb)
@@ -292,15 +292,15 @@ public class LevelManager : MonoBehaviour
             mageStoredStats[0] += (1 * (level - 1));
             mageStoredStats[1] += (1 * (level - 1));
             mageStoredStats[3] += (1 * (level - 1));
-            mageStoredStats[6] += (1 * (level - 1));
-            mageStoredStats[7] += (1 * (level - 1));
+            //mageStoredStats[6] += (1 * (level - 1));
+            //mageStoredStats[7] += (1 * (level - 1));
 
             //Bard
             bardStoredStats[1] += (1 * (level - 1));
             bardStoredStats[4] += (2 * (level - 1));
             bardStoredStats[5] += (2 * (level - 1));
-            bardStoredStats[6] += (1 * (level - 1));
-            bardStoredStats[7] += (1 * (level - 1));
+            //bardStoredStats[6] += (1 * (level - 1));
+            //bardStoredStats[7] += (1 * (level - 1));
 
             //Monk
             monkStoredStats[0] += (2 * (level - 1));
@@ -366,7 +366,7 @@ public class LevelManager : MonoBehaviour
             {
                 battleController.partyMembers[i].statSheet.stats["Strength"] += 2;
                 battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
-                battleController.partyMembers[i].statSheet.stats["Defense"] += 2;
+                battleController.partyMembers[i].statSheet.stats["Defense"] += 1;
                 battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
                 battleController.partyMembers[i].statSheet.stats["Health"] += 2;
                 battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 2;
@@ -378,8 +378,8 @@ public class LevelManager : MonoBehaviour
                     battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 2;
                     battleController.partyMembers[i].statSheet.stats["Health"] += 2;
                     battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
-                    battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
-                    battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
+                    //battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
+                    //battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
                 }
 
                 if (nicolAbsorb)
@@ -409,8 +409,8 @@ public class LevelManager : MonoBehaviour
                 battleController.partyMembers[i].statSheet.stats["Defense"] += 1;
                 battleController.partyMembers[i].statSheet.stats["Speed"] += 2;
                 battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 1;
-                battleController.partyMembers[i].statSheet.stats["Mana"] += 2;
-                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 2;
+                battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
+                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
 
                 if (battleController.partyMembers[i].IsDead() == false)
                 {
@@ -425,8 +425,8 @@ public class LevelManager : MonoBehaviour
                 battleController.partyMembers[i].statSheet.stats["Defense"] += 1;
                 battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
                 battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 3;
-                battleController.partyMembers[i].statSheet.stats["Mana"] += 2;
-                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 2;
+                battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
+                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
 
                 if (battleController.partyMembers[i].IsDead() == false)
                 {
@@ -679,6 +679,7 @@ public class LevelManager : MonoBehaviour
             lSlimeStats[i] += 4 * (playerController.Level - 1);
         }
 
+        lSlimeStats[0] += 1 * (playerController.Level - 1);
         lSlimeStats[4] += 2 * (playerController.Level - 1);
         lSlimeStats[5] += 2 * (playerController.Level - 1);
 
