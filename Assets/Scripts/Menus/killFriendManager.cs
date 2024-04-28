@@ -137,7 +137,7 @@ public class killFriendManager : MonoBehaviour
                     "Max Mana: <color=#3B7D4F>+" + (LevelManager.level) + "</color>";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nIce";
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Nicol</color>";
-                befriendText[1].text = "\r\nSpecial Move: <color=#cf752b>Examine</color>\r\nPinpoint an enemy's weakness.";
+                befriendText[1].text = "\r\nSpecial Move: <color=#cf752b>Declare Victory</color>\r\nDecrease enemy defense, Increase your strength.";
                 befriendText[2].text = "Nicol's Magic Element:\r\n\r\n\r\n\r\nIce";
                 break;
             case "SOPHIE":

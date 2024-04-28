@@ -86,7 +86,7 @@ public class pause_characterInspection : MonoBehaviour
             case 2: // nicol
                 selectedCharacterStats = levelManager.SetMageStats();
                 characterInfo.text = "A cat-like red magician. Raised by magicians, he now wanders the globe for the sake of exploration, calling himself an \"aristocat\".";
-                specialInfo.text = "Special Move: <color=#ffee83>Examine</color>\r\nUsing keen senses, pinpoint an enemy's elemental weakness.";
+                specialInfo.text = "Special Move: <color=#ffee83>Declare Victory</color>\r\nProclaim your victory! Decrease all enemies' defense and temporarily increase Nicol's Strength.";
                 elementInfo.text = "Magical Element\r\n\r\n\r\n\r\n\r\nIce";
                 elementIcon.sprite = elementsIcons[2];
                 break;
