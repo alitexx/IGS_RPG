@@ -28,7 +28,7 @@ public class LeverScript : MonoBehaviour
                 Destroy(Door);
                 spriteRenderer.sprite = newSprite;
                 flipped = true;
-                
+                audioManager.playSFX(20);
             }
             
         }

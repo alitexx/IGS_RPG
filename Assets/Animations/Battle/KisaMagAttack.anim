@@ -55,27 +55,27 @@ AnimationClip:
       value: {fileID: -1385149861, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
     - time: 0.16666667
       value: {fileID: -563234149, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.33333334
+    - time: 0.25
       value: {fileID: 1723080929, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.45
+    - time: 0.33333334
       value: {fileID: 311038810, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.53333336
+    - time: 0.41666666
       value: {fileID: -690613823, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.75
+    - time: 0.6666667
       value: {fileID: 1973994541, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.8666667
+    - time: 0.78333336
       value: {fileID: 1759536426, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 0.96666664
+    - time: 0.8833333
       value: {fileID: 1634698599, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 1.05
+    - time: 0.96666664
       value: {fileID: 724242819, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 1.1333333
+    - time: 1.05
       value: {fileID: -944442011, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 1.2
+    - time: 1.1166667
       value: {fileID: -190151044, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 1.2666667
+    - time: 1.1833333
       value: {fileID: -490462384, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
-    - time: 1.6666666
+    - time: 1.3333334
       value: {fileID: -490462384, guid: 908836f99a8c4bd45b609db2ac1c93fc, type: 3}
     attribute: m_Sprite
     path: Sprite
@@ -128,7 +128,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.6833333
+    m_StopTime: 1.35
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -262,7 +262,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1.6666666
+  - time: 1.3333334
     functionName: magAttackOver
     data: 
     objectReferenceParameter: {fileID: 0}

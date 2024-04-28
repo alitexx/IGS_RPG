@@ -516,14 +516,14 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 7};
 
         int[] lLichStats = {
-        /*Strength*/ 9,
-        /*Magic Attack*/ 12,
+        /*Strength*/ 15,
+        /*Magic Attack*/ 15,
         /*Defense*/ 7, 
         /*Speed*/ 4, 
-        /*Health*/ 50, 
-        /*MaxHealth*/ 50,
-        /*Mana*/ 6,
-        /*MaxMana*/ 7};
+        /*Health*/ 120, 
+        /*MaxHealth*/ 120,
+        /*Mana*/ 9,
+        /*MaxMana*/ 10};
 
         #endregion
 

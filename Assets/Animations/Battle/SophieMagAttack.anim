@@ -53,35 +53,35 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 1720571526, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 0.33333334
+    - time: 0.083333336
       value: {fileID: -1601605186, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 0.5833333
+    - time: 0.18333334
       value: {fileID: 2139017927, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 0.8333333
+    - time: 0.28333333
       value: {fileID: -597566817, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 1.0833334
+    - time: 0.38333333
       value: {fileID: -860144406, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 1.25
+    - time: 0.48333332
       value: {fileID: 1003504976, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 1.3833333
+    - time: 0.6166667
       value: {fileID: -148735343, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 1.5166667
+    - time: 0.75
       value: {fileID: -1537370374, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 1.6666666
+    - time: 0.9
       value: {fileID: 544415572, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 1.8166667
+    - time: 1.05
       value: {fileID: 1161522115, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 1.9833333
+    - time: 1.1666666
       value: {fileID: -1274908575, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 2.0333333
+    - time: 1.2166667
       value: {fileID: -2002022128, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 2.0833333
+    - time: 1.2666667
       value: {fileID: 1752684734, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 2.1333334
+    - time: 1.3166667
       value: {fileID: 1113672974, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 2.2
+    - time: 1.3833333
       value: {fileID: -2038559418, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
-    - time: 2.3333333
+    - time: 1.5833334
       value: {fileID: -2038559418, guid: e4c2df76b51b6dd458ce0ad7e8433dfb, type: 3}
     attribute: m_Sprite
     path: Sprite
@@ -137,7 +137,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2.35
+    m_StopTime: 1.6
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -271,7 +271,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 2.3333333
+  - time: 1.5833334
     functionName: magAttackOver
     data: 
     objectReferenceParameter: {fileID: 0}
