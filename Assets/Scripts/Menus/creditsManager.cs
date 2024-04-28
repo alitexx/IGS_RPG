@@ -121,9 +121,9 @@ private void OnEnable()
                 endingText.text = "Despite continuing his life as a knight, Alan was haunted by the weight of his actions. Witnessing the profound impact of Nicol's death on " +
                     "the party, he swore never to harvest another soul. After his future epic adventures, the lich's tower gradually faded into distant memory.\r\n\r\n" +
                     "In the days following Nicol's death, Kisa struggled to accept that he was gone and lived in a state of denial, despite knowing deep down the truth. Then, in " +
-                    "a sudden, crushing moment of clarity, the truth washed over her: Nicol was gone.Years of suppressed grief flooded her being, leaving her confused and heartbroken. Seeking " +
+                    "a sudden, crushing moment of clarity, the truth washed over her: Nicol was gone. Years of suppressed grief flooded her being, leaving her confused and heartbroken. Seeking " +
                     "solace, she turned to the one person she trusted most.\r\n\r\nNicol's last known location was at the lich's tower. As a nomad by nature without any close " +
-                    "ties, his absence went unnoticed by most except for the party he journeyed with.Although he left a lasting impression on those he encountered, his transient " +
+                    "ties, his absence went unnoticed by most except for the party he journeyed with. Although he left a lasting impression on those he encountered, his transient " +
                     "lifestyle caused him to gradually fade into obscurity.\r\n\r\nPaying homage to Nicol's memory, Sophie quietly honors him through subtle gestures, such as " +
                     "keeping a small memento of him in a cherished place within her dojo. She had resigned herself to the notion that she would never again see her former " +
                     "companions, until Kisa arrived at her doorstep seeking solace. Bound by their shared sorrow, they found comfort in each other's presence. Recognizing " +
@@ -136,7 +136,7 @@ private void OnEnable()
                     "by guilt over Sophie's demise, Kisa found solace in confronting her emotions with Nicol's support. Accepting Nicol's offer to join his expeditions, she " +
                     "embarked on a journey of healing, both physically and emotionally, until her wounds had finally begun to mend.\r\n\r\nSensing Kisa's profound anguish in " +
                     "the wake of Sophie's passing, Nicol extended his hand in companionship. Welcoming Kisa's presence on their travels, he found comfort in their shared " +
-                    "mourning, grateful for the camaraderie amid their grief.\r\n\r\nSophie was absent when it came time to avenge her students.Her strength was undeniable, " +
+                    "mourning, grateful for the camaraderie amid their grief.\r\n\r\nSophie was absent when it came time to avenge her students. Her strength was undeniable, " +
                     "and many found it difficult to believe that the lich had claimed her. Meanwhile, her dojo faced closure and was undergoing transformation into a florist's " +
                     "shop. Sophie's family, unaware of her fate, assumed she was thriving in Isen, oblivious to her untimely demise.";
                 break;
