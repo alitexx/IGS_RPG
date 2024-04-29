@@ -178,7 +178,7 @@ public class killFriendManager : MonoBehaviour
             tweenInObjects[1].GetComponent<RectTransform>().DOMove(locations[3].position, 1);
             tweenInObjects[2].GetComponent<RectTransform>().DOMove(locations[4].position, 1);
             //slowly fade out alan and the other party member
-            partymembersFadeOut.DOFade(1,1f).OnComplete(() => { partymembersFadeOut.DOFade(0, 2f).OnComplete(() => {
+            partymembersFadeOut.DOFade(1,2.5f).OnComplete(() => { partymembersFadeOut.DOFade(0, 2f).OnComplete(() => {
                 battleController.BefriendButton();
                 truebgFade.GetComponent<killFriendBG>().fadeOut();
                 finalWordsScript.openYouWin();
