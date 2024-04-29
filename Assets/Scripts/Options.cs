@@ -46,12 +46,16 @@ public class Options : MonoBehaviour
                         StartCoroutine(WaitForKeyPress(keyCode));
                         continue;
                     }
-                        keyPressed = keyCode.ToString();
-                        buttonTXT.text = keyPressed.ToUpper();
-                        audioStatics.keycodeInterractButton = keyCode;
-                        audioStatics.interractButton = keyPressed;
-                        waitingForKeyPress = false;
-                        am.playSFX(25);
+                    keyPressed = keyCode.ToString();
+                    buttonTXT.text = keyPressed.ToUpper();
+                    audioStatics.keycodeInterractButton = keyCode;
+                    audioStatics.interractButton = keyPressed;
+                    if (keyCode == KeyCode.Mouse0)
+                    {
+                        audioStatics.interractButton = "L Click";
+                    }
+                    waitingForKeyPress = false;
+                    am.playSFX(25);
                     break;
                 }
             }
