@@ -314,7 +314,7 @@ public class BattleController : MonoBehaviour
     static public int[] mageStats = {
         /*Strength*/ 7,
         /*Magic Attack*/ 8,
-        /*Defense*/ 4, 
+        /*Defense*/ 8, 
         /*Speed*/ 5, 
         /*Health*/ 11, 
         /*MaxHealth*/ 11,
@@ -322,12 +322,12 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 9};
 
     static public int[] evilMageStats = {
-        /*Strength*/ 14,
+        /*Strength*/ 20,
         /*Magic Attack*/ 12,
         /*Defense*/ 4, 
         /*Speed*/ 5, 
-        /*Health*/ 40, 
-        /*MaxHealth*/ 40,
+        /*Health*/ 55, 
+        /*MaxHealth*/ 55,
         /*Mana*/ 9,
         /*MaxMana*/ 9};
 
@@ -343,12 +343,12 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 5};
 
     static public int[] evilMonkStats = {
-        /*Strength*/ 17,
+        /*Strength*/ 19,
         /*Magic Attack*/ 13,
         /*Defense*/ 8, 
         /*Speed*/ 6, 
-        /*Health*/ 80, 
-        /*MaxHealth*/ 80,
+        /*Health*/ 120, 
+        /*MaxHealth*/ 120,
         /*Mana*/ 5,
         /*MaxMana*/ 5};
 
@@ -375,7 +375,7 @@ public class BattleController : MonoBehaviour
 
     //Slime Stats
     static public int[] slimeStats = {
-        /*Strength*/ 8,
+        /*Strength*/ 7,
         /*Magic Attack*/ 1,
         /*Defense*/ 3, 
         /*Speed*/ 2, 
@@ -408,7 +408,7 @@ public class BattleController : MonoBehaviour
     static public int[] ghostStats = {
         /*Strength*/ 11,
         /*Magic Attack*/ 1,
-        /*Defense*/ 11, 
+        /*Defense*/ 99, 
         /*Speed*/ 4, 
         /*Health*/ 7, 
         /*MaxHealth*/ 7,
@@ -420,8 +420,8 @@ public class BattleController : MonoBehaviour
         /*Magic Attack*/ 13,
         /*Defense*/ 7, 
         /*Speed*/ 4, 
-        /*Health*/ 120, 
-        /*MaxHealth*/ 120,
+        /*Health*/ 200, 
+        /*MaxHealth*/ 200,
         /*Mana*/ 6,
         /*MaxMana*/ 7};
 
@@ -444,7 +444,7 @@ public class BattleController : MonoBehaviour
         int[] lMageStats = {
         /*Strength*/ 7,
         /*Magic Attack*/ 8,
-        /*Defense*/ 4, 
+        /*Defense*/ 8, 
         /*Speed*/ 5, 
         /*Health*/ 11, 
         /*MaxHealth*/ 11,
@@ -475,7 +475,7 @@ public class BattleController : MonoBehaviour
 
         //Slime Stats
         int[] lSlimeStats = {
-        /*Strength*/ 8,
+        /*Strength*/ 7,
         /*Magic Attack*/ 1,
         /*Defense*/ 3, 
         /*Speed*/ 2, 
@@ -508,22 +508,12 @@ public class BattleController : MonoBehaviour
         int[] lGhostStats = {
         /*Strength*/ 9,
         /*Magic Attack*/ 1,
-        /*Defense*/ 11, 
+        /*Defense*/ 99, 
         /*Speed*/ 4, 
         /*Health*/ 7, 
         /*MaxHealth*/ 7,
         /*Mana*/ 6,
         /*MaxMana*/ 7};
-
-        int[] lLichStats = {
-        /*Strength*/ 15,
-        /*Magic Attack*/ 15,
-        /*Defense*/ 7, 
-        /*Speed*/ 4, 
-        /*Health*/ 120, 
-        /*MaxHealth*/ 120,
-        /*Mana*/ 9,
-        /*MaxMana*/ 10};
 
         #endregion
 
@@ -541,7 +531,6 @@ public class BattleController : MonoBehaviour
             ghostStats = lGhostStats;
             wraithStats = lWraithStats;
             skeletonStats = lSkeletonStats;
-            lichStats = lLichStats;
         }
     }
 
