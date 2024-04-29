@@ -358,9 +358,15 @@ public class BattleCharacter : MonoBehaviour
 
         if (attacker.GIsPlayerTeam)
         {
-            if (attacker.statSheet.stats["Mana"] > 0)
+            if (attacker.statSheet.stats["Mana"] > 1)
             {
                 attacker.statSheet.stats["Mana"] -= 2;
+            }
+            else if (attacker.statSheet.stats["Mana"] == 1)
+            {
+                attacker.statSheet.stats["Mana"] -= 1;
+                healthSystem.Damage(attacker.statSheet.stats["MaxHealth"] / 8);
+                ChangeHealthText();
             }
             else
             {
