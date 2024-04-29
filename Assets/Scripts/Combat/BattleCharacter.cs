@@ -63,6 +63,9 @@ public class BattleCharacter : MonoBehaviour
 
     public bool specialAvailable;
 
+    // for when the player uses hp as mana
+    [SerializeField] private CanvasGroup redBG;
+
     private enum State
     {
         Idle, 
@@ -365,11 +368,23 @@ public class BattleCharacter : MonoBehaviour
             else if (attacker.statSheet.stats["Mana"] == 1)
             {
                 attacker.statSheet.stats["Mana"] -= 1;
+                redBG = GameObject.FindGameObjectWithTag("RedBG").GetComponent<CanvasGroup>();
+                redBG.DOFade(0.5f, 0.5f).OnComplete(() => {
+                    redBG.DOFade(0.5f, 0.5f).OnComplete(() => {
+                        redBG.DOFade(0, 0.5f);
+                    });
+                });
                 healthSystem.Damage(attacker.statSheet.stats["MaxHealth"] / 8);
                 ChangeHealthText();
             }
             else
             {
+                redBG = GameObject.FindGameObjectWithTag("RedBG").GetComponent<CanvasGroup>();
+                redBG.DOFade(1f, 0.5f).OnComplete(() => {
+                    redBG.DOFade(1f, 0.5f).OnComplete(() => {
+                        redBG.DOFade(0, 0.5f);
+                    });
+                });
                 healthSystem.Damage(attacker.statSheet.stats["MaxHealth"] / 4);
                 ChangeHealthText();
             }
