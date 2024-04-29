@@ -91,6 +91,9 @@ public class BattleController : MonoBehaviour
 
     private void OnEnable()
     {
+        nicolBuffed = false;
+        amountBuffed = 0;
+
         manaObject.SetActive(false);
 
         if (playerController.hasKisa)
@@ -581,6 +584,9 @@ public class BattleController : MonoBehaviour
     public GameObject sophieElectricMagicButton;
     public GameObject kisaWindMagicButton;
     public GameObject alanFireMagicButton;
+
+    private bool nicolBuffed;
+    private int amountBuffed;
 
     public GameObject tutorialHandler;
     [SerializeField] TutorialHandler tutH;
@@ -1127,15 +1133,15 @@ public class BattleController : MonoBehaviour
         //Mage
         else if (activeChar.statSheet.specialMove == 2)
         {
-            //Showing weakness
+            //Debuff to enemies and self-buff
 
             backButton.SetActive(true);
 
-            enemyList[enemyNum].ShowTargetCircle();
+            //enemyList[enemyNum].ShowTargetCircle();
 
             while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
             {
-                if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+                /*if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
                 {
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == enemyList.Count - 1)
@@ -1160,14 +1166,13 @@ public class BattleController : MonoBehaviour
                         enemyNum--;
                     }
                     enemyList[enemyNum].ShowTargetCircle();
-                }
+                }*/
 
                 yield return null;
             }
 
-            backButton.SetActive(false);
-
-            Vector3 position = enemyList[enemyNum].GetPosition();
+            //Revealing Weakness
+            /*Vector3 position = enemyList[enemyNum].GetPosition();
             ParticleManager weaknessParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
             weaknessParticle.animator.SetBool("WeaknessFX", true);
 
@@ -1199,7 +1204,31 @@ public class BattleController : MonoBehaviour
                 Debug.Log("No weakness");
             }
 
-            enemyList[enemyNum].HideTargetCircle();
+            enemyList[enemyNum].HideTargetCircle();*/
+
+            backButton.SetActive(false);
+
+            //Buffing
+            Vector3 buffPosition = activeChar.GetPosition();
+            ParticleManager buffParticle = Instantiate(activeChar.particleManager, buffPosition, Quaternion.identity, activeChar.transform);
+            buffParticle.animator.SetBool("TauntFX", true);
+            am.playSFX(8);
+
+            nicolBuffed = true;
+            amountBuffed = (int)(activeChar.statSheet.stats["Strength"] * 0.35);
+
+            activeChar.statSheet.stats["Strength"] += amountBuffed;
+
+            //Debuffing
+            for (int i = 0; i < enemyList.Count; i++)
+            {
+                Vector3 debuffPosition = enemyList[i].GetPosition();
+                ParticleManager debuffParticle = Instantiate(enemyList[i].particleManager, debuffPosition, Quaternion.identity, enemyList[i].transform);
+                debuffParticle.animator.SetBool("DebuffFX", true);
+
+                enemyList[i].statSheet.stats["Defense"] -= (int)(enemyList[i].statSheet.stats["Defense"] * (0.35f));
+            }
+
 
             //ChooseNextActiveChar();
         }
@@ -1796,6 +1825,14 @@ public class BattleController : MonoBehaviour
             {
                 levelManager.LevelUp();
             }*/
+
+            for (int i = 0; i < partyMembers.Count; i++)
+            {
+                if (partyMembers[i].statSheet.name == "Mage Guy")
+                {
+                    partyMembers[i].statSheet.stats["Strength"] -= amountBuffed;
+                }
+            }
 
             if ((levelManager.gainedEXP + levelManager.currentEXP >= 100))
             {
