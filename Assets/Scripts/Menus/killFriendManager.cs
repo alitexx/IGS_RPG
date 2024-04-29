@@ -56,7 +56,11 @@ public class killFriendManager : MonoBehaviour
         {
             if (!playerController.hasKisa && !playerController.hasNicol) // if you don't have either nicol or kisa in the party, then it's a genocide run
             {
-                StartCoroutine(genocideEncounter());
+                charInQuestion = "Sophie";
+                PartyMemberInQuestion.sprite = partyMembersAvailable[2];
+                killingMaybe = true;
+                exitKillFriendMenu(5);
+                truebgFade.SetActive(true);
                 return;
             }
             Debug.Log("sophie");
@@ -82,16 +86,16 @@ public class killFriendManager : MonoBehaviour
         }
     }
 
-    IEnumerator genocideEncounter()
+    IEnumerator alanKillPartyAnim(float timeToWait)
     {
-        Debug.Log("genocide GO!!!");
-        killingMaybe = true;
-        charInQuestion = "Sophie";
-        PartyMemberInQuestion.sprite = partyMembersAvailable[2];
-        truebgFade.SetActive(true);
-        yield return new WaitForSeconds(5f);
-        //increase heartbeat sound?
-        exitKillFriendMenu();
+        yield return new WaitForSeconds(timeToWait);
+        alanAnimator.SetTrigger("kill"); // play kill anim
+        partymembersFadeOut.DOFade(1, 0.5f).OnComplete(() => {
+            finalWordsScript.playFinalWords(charInQuestion);
+            alanAnimator.SetTrigger("return"); // returns to idle
+            partymembersFadeOut.DOFade(0, 2f);
+        });
+        StopCoroutine(alanKillPartyAnim(timeToWait));
     }
 
     public void closeKillFriendTutorial()
@@ -158,18 +162,13 @@ public class killFriendManager : MonoBehaviour
         }
     }
 
-    public void exitKillFriendMenu()
+    public void exitKillFriendMenu(float killSpeed = 2)
     {
         //a choice has been made
         if (killingMaybe)
         {
             youWinMenu.killedPartyMember = true;
-            alanAnimator.SetTrigger("kill"); // play kill anim
-            partymembersFadeOut.DOFade(1, 0.5f).OnComplete(() => {
-                finalWordsScript.playFinalWords(charInQuestion);
-                alanAnimator.SetTrigger("return"); // returns to idle
-                partymembersFadeOut.DOFade(0, 2f);
-            });
+            StartCoroutine(alanKillPartyAnim(killSpeed));
             }
         else if (befriendingMaybe)
         {
