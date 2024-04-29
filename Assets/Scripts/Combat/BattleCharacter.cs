@@ -365,6 +365,7 @@ public class BattleCharacter : MonoBehaviour
             else
             {
                 healthSystem.Damage(attacker.statSheet.stats["MaxHealth"] / 4);
+                ChangeHealthText();
             }
         }
 
