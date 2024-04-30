@@ -329,8 +329,8 @@ public class BattleController : MonoBehaviour
         /*Magic Attack*/ 12,
         /*Defense*/ 4, 
         /*Speed*/ 3, 
-        /*Health*/ 55, 
-        /*MaxHealth*/ 55,
+        /*Health*/ 80, 
+        /*MaxHealth*/ 80,
         /*Mana*/ 9,
         /*MaxMana*/ 9};
 
