@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private pauseMenuManager pauseMenuManager;
 
-
+    [SerializeField] private GameObject[] cutscenes;
     private void Start()
     {
         Time.timeScale = 1.0f;
@@ -560,6 +560,44 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < DoorsOpened;i++)
         {
             Doors[i].gameObject.SetActive(false);
+        }
+
+        //delete objects depending on level
+
+        switch (Level)
+        {
+            case 1:
+                //make this collidable
+                
+                cutscenes[0].SetActive(true);
+                if (KisaAbsorbed == 1 || KisainParty == 1)
+                {
+                    //delete models too
+                    cutscenes[5].SetActive(false);
+                    cutscenes[9].SetActive(false);
+                }
+                break;
+            case 2:
+                cutscenes[1].SetActive(false);
+                if (NicolAbsorbed == 1 || NicolinParty == 1)
+                {
+                    cutscenes[6].SetActive(false);
+                    cutscenes[10].SetActive(false);
+                }
+                break;
+            case 3:
+                cutscenes[2].SetActive(false);
+                if (SophieAbsorbed == 1 || SophieinParty == 1)
+                {
+                    cutscenes[7].SetActive(false);
+                    cutscenes[11].SetActive(false);
+                }
+                break;
+            case 4:
+                cutscenes[3].SetActive(false);
+                break;
+            default:
+                break;
         }
         
         
