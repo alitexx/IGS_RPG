@@ -8,8 +8,9 @@ Show(alan)
 Show(nicol)
 Highlight(nicol -o true)
 nicol "I see I have been made a fool. I thought you merely a swordsman, not a trickster. Tell me, when shall your horns sprout so I can discover I ventured with the devil?"
+Highlight(alan -o true)
 alan "..."
-nicol "Nothing to say? No attempt to defend your shriveling honor? And you call yourself a knight. How pitiful your lecturer must be, to raise you into *this*–"
+nicol "Nothing to say? No attempt to defend your shriveling honor? And you call yourself a knight. How pitiful your lecturer must be, to raise you into <i>this</i>–"
 Highlight(alan -o true)
 alan.Move(0.2 0 -spd 2)
 alan "You watch your mouth, beast. You know nothing of which you speak. I have my reasons."

@@ -39,11 +39,9 @@ alan "Kisa is involved. There was an... an accident. I slew her by mistake."
 Highlight(sophie -o true)
 sophie "You WHAT?!"
 Highlight(nicol -o true)
-SetSprite(nicol flipped)
 nicol "Sophie-"
 Highlight(alan -o true)
 alan "I know you are honorable and I do not wish to hide my sins from you, of all people. I lost control of myself and this was the dreadful outcome. I am sorry."
-Highlight(alan -o true)
 alan "I apologize, truly. It was not wise of me, and I will not allow it to happen again."
 Highlight(sophie -o true)
 sophie.Move(0.75 0 -spd 1)

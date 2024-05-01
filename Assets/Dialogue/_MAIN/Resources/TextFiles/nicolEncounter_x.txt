@@ -15,6 +15,7 @@ wait(0.5)
 nicol "Pray tell, did you chance upon encountering Kisa?"
 stopBGM(3)
 wait(1)
+Highlight(alan -o true)
 alan "..."
 wait(1)
 Highlight(nicol -o true)
