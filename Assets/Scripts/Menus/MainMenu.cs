@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
+    //Used for displaying the version of lone labyrinth
+    public TextMeshProUGUI versionText;
+
     public GameObject MainMenuUI;
     public CanvasGroup fadedbg;
     public OpeningCutscene openingCutscene;
@@ -19,6 +23,10 @@ public class MainMenu : MonoBehaviour
         am.playBGM("T1");
         fadeIn.alpha = 1;
         fadeIn.DOFade(0, 1f);
+        if (versionText)
+        {
+            versionText.text = "Version:" + Application.version;
+        }
     }
 
     public void Startgame()
