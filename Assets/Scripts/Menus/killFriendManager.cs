@@ -90,6 +90,7 @@ public class killFriendManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToWait);
         alanAnimator.SetTrigger("kill"); // play kill anim
+        yield return new WaitForSeconds(0.7f);
         partymembersFadeOut.DOFade(1, 0.5f).OnComplete(() => {
             finalWordsScript.playFinalWords(charInQuestion);
             alanAnimator.SetTrigger("return"); // returns to idle
@@ -162,7 +163,7 @@ public class killFriendManager : MonoBehaviour
         }
     }
 
-    public void exitKillFriendMenu(float killSpeed = 2)
+    public void exitKillFriendMenu(float killSpeed = 0.25f)
     {
         //a choice has been made
         if (killingMaybe)
