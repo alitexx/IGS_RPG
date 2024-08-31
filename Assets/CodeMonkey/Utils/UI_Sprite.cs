@@ -75,7 +75,7 @@ namespace CodeMonkey.Utils {
             UI_Sprite uiSprite = new UI_Sprite(parent, Assets.i.s_White, anchoredPosition, size, color);
             uiSprite.AddButton(ClickFunc, () => uiSprite.SetColor(colorOver), () => uiSprite.SetColor(color));
             uiTextComplex = new UI_TextComplex(uiSprite.gameObject.transform, Vector2.zero, 12, '#', text, null, null);
-            uiTextComplex.SetTextColor(Color.black);
+            uiTextComplex.SetTextColor(new Color(20 / 255f, 24 / 255f, 46 / 255f));
             uiTextComplex.SetAnchorMiddle();
             uiTextComplex.CenterOnPosition(Vector2.zero);
             return uiSprite;

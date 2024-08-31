@@ -146,8 +146,8 @@ public class BattleCharacter : MonoBehaviour
                 charSprite.sortingOrder = 3;
             }
 
-            healthBar = new World_Bar(transform, new Vector3(0, 1.4f), new Vector3(1, 0.2f), Color.grey, Color.green, healthSystem.GetHealthPercent(), 100, new World_Bar.Outline { color = Color.black, size = 0.15f });
-            manaBar = new World_Bar(transform, new Vector3(0, 1.6f), new Vector3(1, 0.2f), Color.grey, Color.blue, (float)statSheet.stats["Mana"] / statSheet.stats["MaxMana"], 100, new World_Bar.Outline { color = Color.black, size = 0.15f });
+            healthBar = new World_Bar(transform, new Vector3(0, 1.4f), new Vector3(1, 0.2f), new Color(58 / 255f, 63 / 255f, 94 / 255f), new Color(99 / 255f, 171 / 255f, 63 / 255f), healthSystem.GetHealthPercent(), 100, new World_Bar.Outline { color = new Color(1 / 255f, 3 / 255f, 16 / 255f), size = 0.15f });
+            manaBar = new World_Bar(transform, new Vector3(0, 1.6f), new Vector3(1, 0.2f), new Color(58 / 255f, 63 / 255f, 94 / 255f), new Color(79 / 255f, 164 / 255f, 184 / 255f), (float)statSheet.stats["Mana"] / statSheet.stats["MaxMana"], 100, new World_Bar.Outline { color = new Color(1 / 255f, 3 / 255f, 16 / 255f), size = 0.15f });
         }
         else
         {
@@ -197,7 +197,7 @@ public class BattleCharacter : MonoBehaviour
                 animator.SetBool("isLich", true);
             }
 
-            healthBar = new World_Bar(transform, new Vector3(0, -0.8f), new Vector3(1, 0.2f), Color.grey, Color.red, 1f, 100, new World_Bar.Outline { color = Color.black, size = 0.2f });
+            healthBar = new World_Bar(transform, new Vector3(0, -0.8f), new Vector3(1, 0.2f), new Color(58 / 255f, 63 / 255f, 94 / 255f), new Color(230 / 255f, 69 / 255f, 94 / 255f), 1f, 100, new World_Bar.Outline { color = new Color(1 / 255f, 3 / 255f, 16 / 255f), size = 0.2f });
         }
 
         if (LIsPlayerTeam) 

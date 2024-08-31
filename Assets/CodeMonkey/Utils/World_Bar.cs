@@ -31,7 +31,8 @@ namespace CodeMonkey.Utils {
 
         public class Outline {
             public float size = 1f;
-            public Color color = Color.black;
+            //This is the dark blue in the color pallete
+            public Color color = new Color(20 / 255f, 24 / 255f, 46 / 255f);
         }
 
         public static World_Bar Create(Vector3 localPosition, Vector3 localScale, Color? backgroundColor, Color barColor, float sizeRatio, Outline outline = null) {

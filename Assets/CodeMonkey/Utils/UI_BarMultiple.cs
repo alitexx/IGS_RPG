@@ -29,7 +29,7 @@ namespace CodeMonkey.Utils {
         
         public class Outline {
             public float size = 1f;
-            public Color color = Color.black;
+            public Color color = new Color(20 / 255f, 24 / 255f, 46 / 255f);
             public Outline(float size, Color color) {
                 this.size = size;
                 this.color = color;
