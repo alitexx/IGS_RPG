@@ -21,7 +21,15 @@ alan "(I suppose I should help her now. I'd rather not find out if monsters can 
 alan.Move(0.3 0 -spd 1)
 alan "Kisa-"
 Highlight(kisa -o true)
+SetSprite(kisa flipped)
 kisa "AAIIEEE!! A MONSTER! GET AWAY GET AWAY GET AWAY!"
+alan.Move(0.35 0 -spd 1)
+Highlight(alan -o true)
+alan "A monster? No, I am not-"
+Highlight(kisa -o true)
+kisa "YOU BRUTE! LEAVE ME BE!"
+Highlight(alan -o true)
+alan "(Kisa is swinging at me with her eyes closed. There is no reasoning with her, but I could try to pry her loose. She may think I am attacking her, but she will come to her senses once she is free.)"
 Hide(alan)
 Hide(kisa)
 endDialogue(true)
