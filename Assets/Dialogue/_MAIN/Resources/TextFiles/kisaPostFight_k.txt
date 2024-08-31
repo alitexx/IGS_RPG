@@ -20,7 +20,7 @@ alan "First of all, no, I was not attacking you. I was prying you loose with the
 alan "Second, were you not the one frantically flailing your lute about? If anything you were the most brute-like."
 Highlight(kisa -o true)
 kisa "Rude!"
-kisa.Move(0.725 0.2 -spd 3.5)
+kisa.Move(0.725 0.1 -spd 3.5)
 wait(0.2)
 kisa.Move(0.7 0 -spd 3.5)
 wait(0.25)

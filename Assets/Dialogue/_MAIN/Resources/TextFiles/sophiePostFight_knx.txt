@@ -15,7 +15,7 @@ kisa.Move(0.75 0 -spd 3)
 kisa "My Gods, what have you done?"
 kisa "You were supposed to fight, not <i>kill</i>!"
 Highlight(nicol -o true)
-nicol.Move(0.45 0 -spd 2)
+nicol.Move(0.35 0 -spd 2)
 nicol "Her aggression was unnecessary, but Alan even I hesitate to say yours was."
 nicol "Though we may find it difficult to accept, we must understand that this was one of the outcomes of this battle. Sophie could have easily done the same to us, could she not?"
 Highlight(kisa -o true)
@@ -32,7 +32,7 @@ SetSprite(kisa kisa)
 kisa.Move(0.75 0 -spd 1)
 kisa "Why... why did I falter? I could have shielded her and spared her from this fate!"
 Highlight(nicol -o true)
-nicol.Move(0.6 0 -spd 1.5)
+nicol.Move(0.55 0 -spd 1.5)
 nicol "Kisa, do not torment yourself with your future insight. I doubt even Sophie would have wanted you to get injured in her battle."
 SetSprite(nicol flipped)
 nicol "Alan, I believe it best if we end our association as promptly as possible. I do not fear your hand but... I question your judgement. Let us slay the Lich and be done with this."
