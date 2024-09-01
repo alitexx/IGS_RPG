@@ -13,7 +13,7 @@ sophie "Damn it all..."
 Show(alan)
 alan.SetPriority(1)
 Highlight(alan -o true)
-alan "We have won fairly Sophie. Will you let us help you know or would you prefer to go at it again and waste more time?"
+alan "We have won fairly Sophie. Will you let us help you now or would you prefer to go at it again and waste more time?"
 Highlight(sophie -o true)
 sophie.SetPriority(2)
 sophie "Do not add insult to injury with your words, you know well as I that I am honorable. If your wish is to join forces in wake of our duel, I will comply."

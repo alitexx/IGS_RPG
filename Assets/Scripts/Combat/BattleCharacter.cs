@@ -300,17 +300,17 @@ public class BattleCharacter : MonoBehaviour
         //Vector3 position = targetCharacter.GetPosition();
         //ParticleManager particle = Instantiate(particleManager, position, Quaternion.identity, targetCharacter.transform);
 
-
-        /*if (attacker.statSheet.name == "Tank Guy" || attacker.statSheet.name == "Wraith Guy" || attacker.statSheet.name == "Skeleton Guy" || attacker.statSheet.name == "Mage Guy")
-        {
-            am.playSFX(2);
-            particle.animator.SetBool("SlashFX", true);
-        }
-        else
-        {
-            am.playSFX(3);
-            particle.animator.SetBool("PunchFX", true);
-        }*/
+        //This was previously commented out, added it back in to play the sfx
+        //if (attacker.statSheet.name == "Tank Guy" || attacker.statSheet.name == "Wraith Guy" || attacker.statSheet.name == "Skeleton Guy" || attacker.statSheet.name == "Mage Guy")
+        //{
+        //    am.playSFX(2);
+        //    //particle.animator.SetBool("SlashFX", true);
+        //}
+        //else
+        //{
+        //    am.playSFX(3);
+        //    //particle.animator.SetBool("PunchFX", true);
+        //}
 
 
         targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
@@ -337,6 +337,7 @@ public class BattleCharacter : MonoBehaviour
 
     public void slashHit()
     {
+        am.playSFX(2);
         ParticleManager particle = Instantiate(particleManager, gPosition, Quaternion.identity, gTarget.transform);
         particle.animator.SetBool("SlashFX", true);
         //state = State.Busy;
@@ -345,6 +346,7 @@ public class BattleCharacter : MonoBehaviour
 
     public void punchHit()
     {
+        am.playSFX(3);
         ParticleManager particle = Instantiate(particleManager, gPosition, Quaternion.identity, gTarget.transform);
         particle.animator.SetBool("PunchFX", true);
         //state = State.Busy;

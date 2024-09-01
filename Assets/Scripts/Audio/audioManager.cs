@@ -98,6 +98,7 @@ public class audioManager : MonoBehaviour
     }
     public void stopHeartbeatSFX() // only used for heartbeat
     {
+        SFXAvailable[13].volume = 0f;
         SFXAvailable[13].Stop();
     }
 
