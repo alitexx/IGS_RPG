@@ -202,16 +202,35 @@ public class BattleController : MonoBehaviour
             firstEnemy = SpawnCharacter(false, lichStats, "Lich Guy", 0, 5, 4);
         }
 
-        if (partyBoss == false)
+
+        //
+
+        // AUDIO MANAGEMENT
+
+        //
+
+        //If we aren't fighting the lich, play the normal music.
+        if (!playerController.LichBoss)
         {
             am.playBGM("T3");
         }
-        else if (partyBoss == true)
+        else // If this is the lich, play Lich music
         {
-            //for right now im making it the normal music cause idk if i like this music w/ boss fights
-            //am.playBGM("T6");
-            am.playBGM("T3");
+            am.playBGM("T7");
         }
+
+
+        //Previous Code
+        //if (partyBoss == false)
+        //{
+        //    am.playBGM("T3");
+        //}
+        //else if (partyBoss == true)
+        //{
+        //    //for right now im making it the normal music cause idk if i like this music w/ boss fights
+        //    //am.playBGM("T6");
+        //    am.playBGM("T3");
+        //}
 
 
         if (playerController.Level >= 2 && partyBoss == false)
