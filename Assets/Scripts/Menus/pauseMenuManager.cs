@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
 public class pauseMenuManager : MonoBehaviour
 {
+
+
+    public GameObject onOpenButton, optionsenterbutton, optionsexitbutton;
+
     [SerializeField] private Transform[] partyMemberIcons;
     [SerializeField] private GameObject[] locations;
     [SerializeField] private GameObject[] buttonOn;
@@ -44,6 +48,8 @@ public class pauseMenuManager : MonoBehaviour
 
     private void OnEnable()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(onOpenButton);
         //place all sprites where they need to be
         //if the options menu is open, close it
         if (OptionsMenu.activeSelf)
@@ -86,6 +92,7 @@ public class pauseMenuManager : MonoBehaviour
 
     public void PartyMemberClicked(string whoWasIt)
     {
+        EventSystem.current.SetSelectedGameObject(null);
         switch (whoWasIt.ToUpper())
         {
             case "ALAN":
@@ -95,6 +102,7 @@ public class pauseMenuManager : MonoBehaviour
                 partyMemberIcons[3].DOMove(locations[2].transform.position, 1);
                 buttonOn[0].SetActive(false);
                 buttonOff[0].SetActive(true);
+                EventSystem.current.SetSelectedGameObject(buttonOff[0]);
                 p_ci.characterInspection(0);
                 break;
             case "KISA":
@@ -104,6 +112,7 @@ public class pauseMenuManager : MonoBehaviour
                 partyMemberIcons[3].DOMove(locations[2].transform.position, 1);
                 buttonOn[1].SetActive(false);
                 buttonOff[1].SetActive(true);
+                EventSystem.current.SetSelectedGameObject(buttonOff[1]);
                 p_ci.characterInspection(1);
                 break;
             case "NICOL":
@@ -113,6 +122,7 @@ public class pauseMenuManager : MonoBehaviour
                 partyMemberIcons[3].DOMove(locations[2].transform.position, 1);
                 buttonOn[2].SetActive(false);
                 buttonOff[2].SetActive(true);
+                EventSystem.current.SetSelectedGameObject(buttonOff[2]);
                 p_ci.characterInspection(2);
                 break;
             case "SOPHIE":
@@ -122,6 +132,7 @@ public class pauseMenuManager : MonoBehaviour
                 partyMemberIcons[3].DOMove(locations[6].transform.position, 0.75f);
                 buttonOn[3].SetActive(false);
                 buttonOff[3].SetActive(true);
+                EventSystem.current.SetSelectedGameObject(buttonOff[3]);
                 p_ci.characterInspection(3);
                 break;
         }
@@ -130,6 +141,7 @@ public class pauseMenuManager : MonoBehaviour
 
     public void closePartyMemberMenu(string whoWasIt)
     {
+        EventSystem.current.SetSelectedGameObject(null);
         partyMemberIcons[0].DOMove(locations[0].transform.position, 1);
         partyMemberIcons[1].DOMove(locations[0].transform.position, 1);
         partyMemberIcons[2].DOMove(locations[0].transform.position, 1);
@@ -141,18 +153,22 @@ public class pauseMenuManager : MonoBehaviour
             case "ALAN":
                 buttonOn[0].SetActive(true);
                 buttonOff[0].SetActive(false);
+                EventSystem.current.SetSelectedGameObject(buttonOn[0]);
                 break;
             case "KISA":
                 buttonOn[1].SetActive(true);
                 buttonOff[1].SetActive(false);
+                EventSystem.current.SetSelectedGameObject(buttonOn[1]);
                 break;
             case "NICOL":
                 buttonOn[2].SetActive(true);
                 buttonOff[2].SetActive(false);
+                EventSystem.current.SetSelectedGameObject(buttonOn[2]);
                 break;
             case "SOPHIE":
                 buttonOn[3].SetActive(true);
                 buttonOff[3].SetActive(false);
+                EventSystem.current.SetSelectedGameObject(buttonOn[3]);
                 break;
         }
 
@@ -160,6 +176,7 @@ public class pauseMenuManager : MonoBehaviour
 
     public void openOptionsMenu()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         partyMemberIcons[0].DOMove(locations[1].transform.position, 1);
         partyMemberIcons[1].DOMove(locations[1].transform.position, 1);
         partyMemberIcons[2].DOMove(locations[2].transform.position, 1);
@@ -171,10 +188,12 @@ public class pauseMenuManager : MonoBehaviour
         OptionsMenu.transform.DOMove(locations[0].transform.position, 1);
         Buttons.transform.DOMove(locations[9].transform.position, 1);
         //move buttons
+        EventSystem.current.SetSelectedGameObject(optionsenterbutton);
     }
 
     public void closeOptionsMenu()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         partyMemberIcons[0].DOMove(locations[0].transform.position, 1);
         partyMemberIcons[1].DOMove(locations[0].transform.position, 1);
         partyMemberIcons[2].DOMove(locations[0].transform.position, 1);
@@ -185,7 +204,7 @@ public class pauseMenuManager : MonoBehaviour
         PartyLevelTXT.transform.DOMove(locations[8].transform.position, 1);
 
         OptionsMenu.transform.DOMove(locations[10].transform.position, 1).OnComplete(() => { OptionsMenu.SetActive(false); });
-        
+        EventSystem.current.SetSelectedGameObject(optionsexitbutton);
     }
 
     public void confirmMainMenu()
@@ -269,6 +288,7 @@ public class pauseMenuManager : MonoBehaviour
         PauseMenu.canOpenPause = true;
         SaveMenu.SetActive(false);
         playerController.isfrozen = false;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void confirmSave()
@@ -276,16 +296,19 @@ public class pauseMenuManager : MonoBehaviour
         savepointScript.confirmedSave();
         SaveMenu.SetActive(false);
         playerController.isfrozen = false;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void returnDeleteMenu()
     {
         DeleteMenu.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void confirmSaveDelete()
     {
         playerController.DeleteSave();
         DeleteMenu.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

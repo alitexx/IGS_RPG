@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using DG.Tweening;
 using TMPro;
 
@@ -60,6 +61,7 @@ public class levelUpUI : MonoBehaviour
 
     private void OnEnable()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         darkbg.DOFade(1, 0.75f);
         getCurrentStats();
         setStatsGained();
@@ -68,7 +70,9 @@ public class levelUpUI : MonoBehaviour
         boxesToDisplay[3].SetActive(pc.hasSophie);
         lvlUpText.DOMove(locations[0].position, 0.35f).OnComplete(() => {
             lvlupboxes.DOMove(locations[1].position, 0.75f).OnComplete(() => {
-                exitlvlUpBTN.DOMove(locations[2].position, 1f);
+                exitlvlUpBTN.DOMove(locations[2].position, 1f).OnComplete(() => {
+                    EventSystem.current.SetSelectedGameObject(exitlvlUpBTN.gameObject);
+                });
             });
         });
     }

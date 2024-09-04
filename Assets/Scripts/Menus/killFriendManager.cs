@@ -4,11 +4,13 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.UI;
-using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 using DIALOGUE;
 
 public class killFriendManager : MonoBehaviour
 {
+    public GameObject tutorialbutton, killbutton, areyousurebutton, previousbutton;
+
     [SerializeField] private GameObject tutorialMenu;
     [SerializeField] private GameObject areYouSureMenu;
     [SerializeField] private TextMeshProUGUI areYouSureText;
@@ -38,6 +40,7 @@ public class killFriendManager : MonoBehaviour
     
     private void OnEnable()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         partymembersFadeOut.DOFade(1, 1.5f);
         killingMaybe = false;
         befriendingMaybe = false;
@@ -73,6 +76,7 @@ public class killFriendManager : MonoBehaviour
             tutorialBG.DOFade(1, 1);
             tutorialMenu.SetActive(true);
             tutorialMenu.GetComponent<RectTransform>().DOMove(locations[0].position, 1);
+            EventSystem.current.SetSelectedGameObject(tutorialbutton);
         }
         else
         {
@@ -83,6 +87,7 @@ public class killFriendManager : MonoBehaviour
                 tweenInObjects[1].GetComponent<RectTransform>().DOMove(locations[0].position, 1);
             });
             tutorialBG.DOFade(0, 1).OnComplete(() => { tutorialBG.gameObject.SetActive(false); truebgFade.SetActive(true); });
+            EventSystem.current.SetSelectedGameObject(killbutton);
         }
     }
 
@@ -101,12 +106,13 @@ public class killFriendManager : MonoBehaviour
 
     public void closeKillFriendTutorial()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         tutorialMenu.GetComponent<RectTransform>().DOMove(locations[1].position, 1).OnComplete(() => { tutorialMenu.SetActive(false); });
         tweenInObjects[2].GetComponent<RectTransform>().DOMove(locations[0].position, 1).OnComplete(() => {
             tweenInObjects[0].GetComponent<RectTransform>().DOMove(locations[0].position, 1);
             tweenInObjects[1].GetComponent<RectTransform>().DOMove(locations[0].position, 1);
         });
-        tutorialBG.DOFade(0, 1).OnComplete(() => { tutorialBG.gameObject.SetActive(false); truebgFade.SetActive(true); });
+        tutorialBG.DOFade(0, 1).OnComplete(() => { tutorialBG.gameObject.SetActive(false); truebgFade.SetActive(true); EventSystem.current.SetSelectedGameObject(killbutton); });
     }
 
     ///NOTE!!!! THIS IS DONE!!!! You just need to call the function and pass in the boss's name, you MUST pass in the boss name as either "Kisa", "Nicol", or "Sophie"!!! please lol
@@ -201,6 +207,7 @@ public class killFriendManager : MonoBehaviour
 
     public void openAreYouSure(bool isKilling)
     {
+        EventSystem.current.SetSelectedGameObject(null);
         tutorialBG.gameObject.SetActive(true);
         tutorialBG.DOFade(1, 1);
         if (isKilling)
@@ -215,12 +222,22 @@ public class killFriendManager : MonoBehaviour
         }
         areYouSureMenu.SetActive(true);
         areYouSureMenu.GetComponent<RectTransform>().DOMove(locations[0].position, 1);
+        EventSystem.current.SetSelectedGameObject(areyousurebutton);
     }
 
     public void closeAreYouSure()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         tutorialBG.DOFade(0, 1).OnComplete(() => { tutorialBG.gameObject.SetActive(false);});
         areYouSureMenu.GetComponent<RectTransform>().DOMove(locations[1].position, 1).OnComplete(() => { areYouSureMenu.SetActive(false); });
+
+        if(killingMaybe)
+        {
+            EventSystem.current.SetSelectedGameObject(killbutton);
+        } else
+        {
+            EventSystem.current.SetSelectedGameObject(previousbutton);
+        }
 
         killingMaybe = false;
         befriendingMaybe = false;

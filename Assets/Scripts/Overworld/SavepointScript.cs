@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SavepointScript : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class SavepointScript : MonoBehaviour
     float maxDistance = 1.5f;
     float DistanceBetweenObjects;
     public LevelManager levelManager;
+    public GameObject battleMenu;
+    public GameObject saveFirstButton;
     public audioManager audioManager;
     public PlayerController playerController;
     public GameObject SaveMenu;
@@ -21,7 +24,7 @@ public class SavepointScript : MonoBehaviour
 
         DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
 
-        if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.keycodeInterractButton) && !mainDialogueManager.dialogueRunning && SaveMenu.activeInHierarchy == false && !PauseMenu.GamePaused)
+        if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.keycodeInterractButton) && !mainDialogueManager.dialogueRunning && SaveMenu.activeInHierarchy == false && !PauseMenu.GamePaused && battleMenu.activeInHierarchy == false)
         {
             //call function to heal, and eventually save.
             levelManager.FullHeal();
@@ -29,6 +32,8 @@ public class SavepointScript : MonoBehaviour
             SaveMenu.SetActive(true);
             playerController.isfrozen = true;
             PauseMenu.canOpenPause = false;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(saveFirstButton);
         }
 
     }

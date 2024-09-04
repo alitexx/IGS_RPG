@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Apple;
+using UnityEngine.EventSystems;
 
 public class LevelTeleports : MonoBehaviour
 {
@@ -18,6 +18,8 @@ public class LevelTeleports : MonoBehaviour
     public Transform destination3;
     public Transform destination4;
 
+    public GameObject continueToNextLevelBTN;
+
     public GameObject ContinueUI;
     public PlayerController PlayerController;
 
@@ -26,18 +28,22 @@ public class LevelTeleports : MonoBehaviour
     public float distance = 0.2f;
     public int Level = 1;
 
-    public void Update()
-    {
-        Level = PlayerController.Level;
-    }
+    //We can add this back later, but atm i think this might be unneccessary
+    //public void Update()
+    //{
+    //    Level = PlayerController.Level;
+    //}
 
     public void OnTriggerEnter2D(Collider2D col)
     {
-
+        //Checks level when player goes to try a new level
+        Level = PlayerController.Level;
         if (Vector2.Distance(transform.position, col.transform.position) > distance)
         {
+            EventSystem.current.SetSelectedGameObject(null);
             PauseMenu.canOpenPause = false;
             ContinueUI.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(continueToNextLevelBTN);
             PlayerController.isfrozen = true;
         }
         
@@ -49,6 +55,7 @@ public class LevelTeleports : MonoBehaviour
 
     public void Next()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         audioManager.playSFX(23);
         PlayerController.isfrozen = false;
         PauseMenu.canOpenPause = true;
@@ -76,6 +83,7 @@ public class LevelTeleports : MonoBehaviour
 
     public void Stay()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         PauseMenu.canOpenPause = true;
         PlayerController.isfrozen = false;
         ContinueUI.SetActive(false);
