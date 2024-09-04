@@ -1,15 +1,11 @@
 using DG.Tweening;
-using DG.Tweening.Core.Easing;
-using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
-using UnityEngine.LowLevel;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -289,6 +285,10 @@ public class BattleController : MonoBehaviour
         sophieElectricMagicButton.SetActive(false);
         kisaWindMagicButton.SetActive(false);
         alanFireMagicButton.SetActive(false);
+
+        //Set the first button to be the fight button
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(attackButtonOBJ);
     }
 
     #region Variables
@@ -604,6 +604,8 @@ public class BattleController : MonoBehaviour
     public GameObject kisaWindMagicButton;
     public GameObject alanFireMagicButton;
 
+    public GameObject attackButtonOBJ, defendButtonOBJ, specialButtonOBJ, magicButtonOBJ;
+
     private bool nicolBuffed;
     private int amountBuffed;
 
@@ -808,6 +810,10 @@ public class BattleController : MonoBehaviour
         sophieElectricMagicButton.SetActive(false);
         kisaWindMagicButton.SetActive(false);
         alanFireMagicButton.SetActive(false);
+
+        //Set the first button to be the fight button
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(attackButtonOBJ);
     }
 
     public void attackButton()
@@ -875,6 +881,9 @@ public class BattleController : MonoBehaviour
             {
                 kisaWindMagicButton.SetActive(true);
             }
+            //Set the first button to be the fire button if this is alan button
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(alanFireMagicButton);
         }
 
         else
