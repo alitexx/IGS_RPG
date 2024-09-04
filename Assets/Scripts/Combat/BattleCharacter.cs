@@ -291,6 +291,8 @@ public class BattleCharacter : MonoBehaviour
 
     private IEnumerator WaitUntilAttackOver(BattleCharacter targetCharacter, BattleCharacter attacker, Vector3 startingPosition, Action onAttackComplete)
     {
+        int critOrMiss = 5;
+
         while (attacker.state == State.Attacking)
         {
             yield return null;
@@ -312,8 +314,36 @@ public class BattleCharacter : MonoBehaviour
         //    //particle.animator.SetBool("PunchFX", true);
         //}
 
+        critOrMiss = Random.Range(0, 21);
 
-        targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
+        //critOrMiss = 20;
+
+        if (critOrMiss == 0) //Miss
+        {
+            Transform damagePopupTransform = Instantiate(damagePopup, targetCharacter.transform.position, Quaternion.identity);
+            DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
+            damPopScript.SetupString("MISS");
+        }
+        else if (critOrMiss > 0 && critOrMiss < 20) //Regular Hit
+        {
+            targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
+        }
+        else if (critOrMiss == 20) //Critical Hit
+        {
+            int critDamage = attacker.statSheet.stats["Strength"] - targetCharacter.statSheet.stats["Defense"];
+
+            critDamage = critDamage * 2;
+
+            Vector3 critPosition = targetCharacter.transform.position;
+
+            critPosition.y += 0.5f;
+
+            Transform damagePopupTransform = Instantiate(damagePopup, critPosition, Quaternion.identity);
+            DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
+            damPopScript.SetupString("CRITICAL HIT!");
+
+            targetCharacter.GotDamaged(critDamage, 0 /*No defense becausse defense has already been deducted*/);
+        }
 
         attacker.animator.SetBool("Attacking", false);
 
@@ -535,7 +565,7 @@ public class BattleCharacter : MonoBehaviour
     {
         int damageMinusDefense = damageSource - defenseStat;
 
-        int critOrMiss = 5;
+        
 
         //Debug.Log("Attacker Strength: " + damageSource);
         //Debug.Log("Defender Defense: " + defenseStat);
@@ -545,20 +575,6 @@ public class BattleCharacter : MonoBehaviour
             damageMinusDefense = 0;
         }
 
-        critOrMiss = Random.Range(0, 21);
-
-        if (critOrMiss == 0) //Miss
-        {
-
-        }
-        else if (critOrMiss > 0 && critOrMiss < 20) //Regular Hit
-        {
-
-        }
-        else if (critOrMiss == 20) //Critical Hit
-        {
-
-        }
 
 
         animator.SetBool("Hurt", true);
