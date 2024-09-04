@@ -13,6 +13,11 @@ public class BattleController : MonoBehaviour
 {
     private bool hasContemplatedKilling = false;
 
+    public void TestButton()
+    {
+        Debug.Log("Beans");
+    }
+
     //for displaying the you win menu
     [SerializeField] private GameObject youWin;
     public static BattleController GetInstance()
@@ -913,7 +918,10 @@ public class BattleController : MonoBehaviour
         nicolIceMagicButton.SetActive(false);
         kisaWindMagicButton.SetActive(false);
         sophieElectricMagicButton.SetActive(false);
-        
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(magicButtonOBJ);
+
         StartCoroutine(MagicTargeting());
     }
 
@@ -925,6 +933,9 @@ public class BattleController : MonoBehaviour
         nicolIceMagicButton.SetActive(false);
         kisaWindMagicButton.SetActive(false);
         sophieElectricMagicButton.SetActive(false);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(magicButtonOBJ);
 
         StartCoroutine(MagicTargeting());
     }
@@ -938,6 +949,9 @@ public class BattleController : MonoBehaviour
         kisaWindMagicButton.SetActive(false);
         sophieElectricMagicButton.SetActive(false);
 
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(magicButtonOBJ);
+
         StartCoroutine(MagicTargeting());
     }
 
@@ -949,6 +963,9 @@ public class BattleController : MonoBehaviour
         nicolIceMagicButton.SetActive(false);
         kisaWindMagicButton.SetActive(false);
         sophieElectricMagicButton.SetActive(false);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(magicButtonOBJ);
 
         StartCoroutine(MagicTargeting());
     }

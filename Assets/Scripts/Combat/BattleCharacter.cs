@@ -535,6 +535,8 @@ public class BattleCharacter : MonoBehaviour
     {
         int damageMinusDefense = damageSource - defenseStat;
 
+        int critOrMiss = 5;
+
         //Debug.Log("Attacker Strength: " + damageSource);
         //Debug.Log("Defender Defense: " + defenseStat);
 
@@ -543,10 +545,23 @@ public class BattleCharacter : MonoBehaviour
             damageMinusDefense = 0;
         }
 
+        critOrMiss = Random.Range(0, 21);
+
+        if (critOrMiss == 0) //Miss
+        {
+
+        }
+        else if (critOrMiss > 0 && critOrMiss < 20) //Regular Hit
+        {
+
+        }
+        else if (critOrMiss == 20) //Critical Hit
+        {
+
+        }
+
 
         animator.SetBool("Hurt", true);
-
-
 
         if (isBlocking)
         {
@@ -557,7 +572,7 @@ public class BattleCharacter : MonoBehaviour
 
             Transform damagePopupTransform = Instantiate(damagePopup, transform.position, Quaternion.identity);
             DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
-            damPopScript.Setup(damageMinusDefense / 2);
+            damPopScript.SetupInt(damageMinusDefense / 2);
 
             healthSystem.Damage(damageMinusDefense / 2);
             //Debug.Log("Defender Health: " + healthSystem.GetHealth());
@@ -569,9 +584,10 @@ public class BattleCharacter : MonoBehaviour
                 am.playSFX(11);
             }
 
+            //Damage PopUp
             Transform damagePopupTransform = Instantiate(damagePopup, transform.position, Quaternion.identity);
             DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
-            damPopScript.Setup(damageMinusDefense);
+            damPopScript.SetupInt(damageMinusDefense);
 
             healthSystem.Damage(damageMinusDefense);
             //Debug.Log("Defender Health: " + healthSystem.GetHealth());

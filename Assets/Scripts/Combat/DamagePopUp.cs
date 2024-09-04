@@ -16,9 +16,16 @@ public class DamagePopUp : MonoBehaviour
         textMesh = transform.GetComponent<TextMeshPro>();
     }
 
-    public void Setup(int damageAmount)
+    public void SetupInt(int damageAmount)
     {
         textMesh.text = (damageAmount.ToString());
+        textColor = textMesh.color;
+        disappearTimer = 0.7f;
+    }
+
+    public void SetupString(string Words)
+    {
+        textMesh.text = Words;
         textColor = textMesh.color;
         disappearTimer = 0.7f;
     }
