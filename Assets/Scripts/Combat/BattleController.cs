@@ -718,11 +718,13 @@ public class BattleController : MonoBehaviour
             {
                 specialSprite.sprite = specReady;
                 specialSpriteState.highlightedSprite = specReady2;
+                specialSpriteState.selectedSprite = specReady2;
             }
             else
             {
                 specialSprite.sprite = specNotReady;
                 specialSpriteState.highlightedSprite = specNotReady;
+                specialSpriteState.selectedSprite = specNotReady;
             }
             specialObject.spriteState = specialSpriteState;
         }
