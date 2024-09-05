@@ -45,6 +45,8 @@ public class MainMenu : MonoBehaviour
             MainMenuUI.GetComponent<CanvasGroup>().DOFade(0, 1.5f).OnComplete(() => { MainMenuUI.SetActive(false); });
             openingCutscene.dialogueSTART();
             skipBTN.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(skipBTN);
         }
         else
         {

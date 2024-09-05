@@ -3,9 +3,11 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class youWinMenu : MonoBehaviour
 {
+
     [SerializeField] private RectTransform[] locations;
     [SerializeField] private RectTransform youWinText;
     [SerializeField] private CanvasGroup expBar;
@@ -137,7 +139,9 @@ public class youWinMenu : MonoBehaviour
         hasUpdatedGained = false;
         endBattleButton.gameObject.SetActive(true);
         endBattleButton.DOMove(locations[6].position, 0.35f);
-        
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(endBattleButton.gameObject);
+
     }
 
     // USE THIS TO SET HOW MUCH EXP HAS BEEN GAINED!!
