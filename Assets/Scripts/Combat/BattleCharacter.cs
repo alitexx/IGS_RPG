@@ -314,17 +314,17 @@ public class BattleCharacter : MonoBehaviour
         //    //particle.animator.SetBool("PunchFX", true);
         //}
 
-        critOrMiss = Random.Range(0, 21);
+        critOrMiss = Random.Range(1, 21);
 
         //critOrMiss = 20;
 
-        if (critOrMiss == 0) //Miss
+        if (critOrMiss == 1) //Miss
         {
             Transform damagePopupTransform = Instantiate(damagePopup, targetCharacter.transform.position, Quaternion.identity);
             DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
             damPopScript.SetupString("MISS");
         }
-        else if (critOrMiss > 0 && critOrMiss < 20) //Regular Hit
+        else if (critOrMiss > 1 && critOrMiss < 20) //Regular Hit
         {
             targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
         }
@@ -447,6 +447,8 @@ public class BattleCharacter : MonoBehaviour
             yield return null;
         }
 
+        int critOrMiss = 5;
+
         animator.SetBool("MagAttacking", false);
 
         Vector3 position = targetCharacter.GetPosition();
@@ -477,16 +479,30 @@ public class BattleCharacter : MonoBehaviour
             yield return new WaitForSeconds(.6f);
         }
 
-        if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)
+        critOrMiss = Random.Range(1, 21);
+
+        //critOrMiss = 4;
+
+        if (critOrMiss <= 5) //Miss
         {
-            targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"] * 2, 0 /*Placeholder because magic ignores defense*/);
-            Vector3 weaknessPosition = targetCharacter.GetPosition();
-            weaknessPosition.x -= 1.5f;
-            Transform weakPopUpTransform = Instantiate(weakPopup, weaknessPosition, Quaternion.identity);
+            Transform damagePopupTransform = Instantiate(damagePopup, targetCharacter.transform.position, Quaternion.identity);
+            DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
+            damPopScript.SetupString("MISS");
         }
-        else
+        else if (critOrMiss >= 6)
         {
-            targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"], 0 /*Placeholder because magic ignores defense*/ );
+
+            if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)
+            {
+                targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"] * 2, 0 /*Placeholder because magic ignores defense*/);
+                Vector3 weaknessPosition = targetCharacter.GetPosition();
+                weaknessPosition.x -= 1.5f;
+                Transform weakPopUpTransform = Instantiate(weakPopup, weaknessPosition, Quaternion.identity);
+            }
+            else
+            {
+                targetCharacter.GotDamaged(attacker.statSheet.stats["Magic Attack"], 0 /*Placeholder because magic ignores defense*/ );
+            }
         }
 
         yield return new WaitForSeconds(.5f);
