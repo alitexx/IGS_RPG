@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 public class pause_characterInspection : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI characterInfo;
@@ -12,6 +13,7 @@ public class pause_characterInspection : MonoBehaviour
     [SerializeField] private TextMeshProUGUI elementInfo;
     [SerializeField] private Image elementIcon;
     [SerializeField] private LevelManager levelManager;
+    [SerializeField] private specialPauseMenu spm;
     [SerializeField] private Slider[] HPMPSliders;
 
     [SerializeField] private PlayerController playerControl;
@@ -33,6 +35,7 @@ public class pause_characterInspection : MonoBehaviour
         switch(character)
         {
             case 0: // alan
+                spm.WhoAreWeViewing = "alan";
                 selectedCharacterStats = levelManager.SetTankStats();
                 characterInfo.text = "A knight sworn to protect Isen. He is searching for a way to bring back his fallen mentor.";
                 specialInfo.text = "Special Move: <color=#ffee83>Taunt</color>\r\nIncrease Alan's health points by half of his maximum health, but become the target of enemy attacks for 1 turn.";
@@ -77,6 +80,7 @@ public class pause_characterInspection : MonoBehaviour
                 }
                 break;
             case 1: // kisa
+                spm.WhoAreWeViewing = "kisa";
                 selectedCharacterStats = levelManager.SetBardStats();
                 characterInfo.text = "An elven bard. Her family doubts her adventuring capabilities due to her pampered upbringing and pompous demeanor, but she wishes to prove them wrong.";
                 specialInfo.text = "Special Move: <color=#ffee83>Sing</color>\r\nHeal the entire party by half of their maxiumum health points.";
@@ -84,6 +88,7 @@ public class pause_characterInspection : MonoBehaviour
                 elementIcon.sprite = elementsIcons[1];
                 break;
             case 2: // nicol
+                spm.WhoAreWeViewing = "nicol";
                 selectedCharacterStats = levelManager.SetMageStats();
                 characterInfo.text = "A cat-like red magician. Raised by magicians, he now wanders the globe for the sake of exploration, calling himself an \"aristocat\".";
                 specialInfo.text = "Special Move: <color=#ffee83>Declare Victory</color>\r\nProclaim your victory! Decrease all enemies' defense and temporarily increase Nicol's Strength.";
@@ -91,6 +96,7 @@ public class pause_characterInspection : MonoBehaviour
                 elementIcon.sprite = elementsIcons[2];
                 break;
             case 3: // sophie
+                spm.WhoAreWeViewing = "sophie";
                 selectedCharacterStats = levelManager.SetMonkStats();
                 characterInfo.text = "A monk from a far-off land. She owns a renowned dojo in the heart of Isen and set out on this journey to find her missing students.";
                 specialInfo.text = "Special Move: <color=#ffee83>Thunderstorm</color>\r\nCombine magic with physical strength to deal physical damage to all enemies.";
