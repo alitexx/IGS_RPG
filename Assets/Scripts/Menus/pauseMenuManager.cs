@@ -17,7 +17,7 @@ public class pauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject[] buttonOn;
     [SerializeField] private GameObject[] buttonOff;
     [SerializeField] private pause_characterInspection p_ci;
-    [SerializeField] private GameObject characterinspector;
+    [SerializeField] private GameObject characterinspector, specialInspector;
     //main menu confirmation
     [SerializeField] private GameObject darkenBG;
     [SerializeField] private GameObject ConfirmMainMenu;
@@ -72,6 +72,7 @@ public class pauseMenuManager : MonoBehaviour
             buttonOff[i].SetActive(false);
         }
         characterinspector.SetActive(false);
+        specialInspector.SetActive(false);
         //change exp bar to be correct value
         try
         {
@@ -147,6 +148,7 @@ public class pauseMenuManager : MonoBehaviour
         partyMemberIcons[2].DOMove(locations[0].transform.position, 1);
         partyMemberIcons[3].DOMove(locations[0].transform.position, 1);
         characterinspector.SetActive(false);
+        specialInspector.SetActive(false);
         //leaving just in case i need to return to this
         switch (whoWasIt.ToUpper())
         {
