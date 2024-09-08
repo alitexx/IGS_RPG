@@ -834,6 +834,8 @@ public class BattleController : MonoBehaviour
 
         backButton.SetActive(true);
 
+        
+
         StartCoroutine(AttackTargeting()); 
     }
 
@@ -1016,6 +1018,8 @@ public class BattleController : MonoBehaviour
 
         enemyList[enemyNum].ShowTargetCircle();
 
+        yield return new WaitForSeconds(0.5f);
+
         while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
@@ -1066,6 +1070,8 @@ public class BattleController : MonoBehaviour
 
         backButton.SetActive(true);
 
+        yield return new WaitForSeconds(0.5f);
+
         while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
         {
             yield return null;
@@ -1087,6 +1093,8 @@ public class BattleController : MonoBehaviour
         int enemyNum = 0;
 
         enemyList[enemyNum].ShowTargetCircle();
+
+        yield return new WaitForSeconds(0.5f);
 
         while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
         {
@@ -1142,10 +1150,14 @@ public class BattleController : MonoBehaviour
 
         int enemyNum = 0;
 
+        backButton.SetActive(true);
+
+        yield return new WaitForSeconds(0.5f);
+
         //Tank
         if (activeChar.statSheet.specialMove == 1)
         {
-            backButton.SetActive(true);
+            
 
             while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
             {
@@ -1182,7 +1194,7 @@ public class BattleController : MonoBehaviour
         {
             //Debuff to enemies and self-buff
 
-            backButton.SetActive(true);
+            
 
             //enemyList[enemyNum].ShowTargetCircle();
 
@@ -1282,7 +1294,7 @@ public class BattleController : MonoBehaviour
         //Bard
         else if (activeChar.statSheet.specialMove == 3)
         {
-            backButton.SetActive(true);
+           
 
             while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
             {
@@ -1320,7 +1332,7 @@ public class BattleController : MonoBehaviour
         //Monk
         else if (activeChar.statSheet.specialMove == 4)
         {
-            backButton.SetActive(true);
+            
 
             while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
             {
