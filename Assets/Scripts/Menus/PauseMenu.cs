@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -17,6 +18,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private mainDialogueManager mainDialogueManager;
     [SerializeField] private TextMeshProUGUI PartyLevelTXT;
     public static bool canOpenPause = true;
+
+    [SerializeField] private GameObject quickPauseBtn, previouslySelectedBtn;
 
     private void Start()
     {
@@ -37,6 +40,7 @@ public class PauseMenu : MonoBehaviour
                 }
                 else
                 {
+                    previouslySelectedBtn = EventSystem.current.currentSelectedGameObject;
                     pause_quickpause();
                 }
             } else
@@ -56,14 +60,19 @@ public class PauseMenu : MonoBehaviour
 
     private void resume_quickpause()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(previouslySelectedBtn);
         am.playSFX(28);
         quickPauseUI.SetActive(false);
         Time.timeScale = 1.0f;
         GamePaused = false; // change bool
+        previouslySelectedBtn = null;
     }
 
     private void pause_quickpause()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(quickPauseBtn);
         am.playSFX(27);
         quickPauseUI.SetActive(true);
         Time.timeScale = 0f;
@@ -95,6 +104,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         SceneManager.LoadScene("TitleScreen"); // loads menu
     }
 
