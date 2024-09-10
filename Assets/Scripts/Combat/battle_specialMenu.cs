@@ -12,11 +12,28 @@ public class battle_specialMenu : MonoBehaviour
     {
         //I have to conform to the naming convention but we know who is who
         specialDescriptions = new Dictionary<string, string[]> {
-        { "tank guy", alanSpecialDescriptions },
-        { "bard guy", kisaSpecialDescriptions },
-        { "mage guy", nicolSpecialDescriptions },
-        { "monk guy", sophieSpecialDescriptions }
+        { "alan", alanSpecialDescriptions },
+        { "kisa", kisaSpecialDescriptions },
+        { "nicol", nicolSpecialDescriptions },
+        { "sophie", sophieSpecialDescriptions }
     };
+    }
+
+    public string reorganizeName(string name)
+    {
+        switch (name)
+        {
+            case "tank guy":
+                return "alan";
+            case "bard guy":
+                return "kisa";
+            case "monk guy":
+                return "sophie";
+            case "mage guy":
+                return "nicol";
+            default:
+                return name;
+        }
     }
 
     //different arrays of text for different character's specials
@@ -37,7 +54,7 @@ public class battle_specialMenu : MonoBehaviour
 
     public void setWhoAreWeViewing(string whoAreWeViewing)
     {
-        WhoAreWeViewing = whoAreWeViewing;
+        WhoAreWeViewing = reorganizeName(whoAreWeViewing);
     }
 
     private void OnEnable()

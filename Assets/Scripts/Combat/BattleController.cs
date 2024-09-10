@@ -990,7 +990,7 @@ public class BattleController : MonoBehaviour
         if (activeChar.specialAvailable == true)
         {
             // ADDED CODE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CHANGE AS NEEDED 
-            battle_specialmenu.WhoAreWeViewing = activeChar.statSheet.name.ToLower();
+            battle_specialmenu.setWhoAreWeViewing(activeChar.statSheet.name.ToLower());
             battle_specialmenu.gameObject.SetActive(true);
 
 
