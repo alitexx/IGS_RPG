@@ -81,7 +81,7 @@ public class battle_specialMenu : MonoBehaviour
                 //Might break, have no idea
                 for (counter = howMany; counter < 3; counter++)
                 {
-                    specialNameText[counter].text = "???";
+                    specialNameText[counter].text = " ???";
                     specialTXT_Desc[counter].text = "Locked until level "+(counter)*5;
                 }
             }

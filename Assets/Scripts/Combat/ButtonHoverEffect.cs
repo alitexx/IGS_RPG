@@ -16,7 +16,7 @@ public class ButtonHoverEffect : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         //original name, no space
         skillNameText = skillName.text;
-        skillName.text = "  " + skillNameText;
+        skillName.text = " " + skillNameText;
         if (!isSelected)
         {
             isSelected = true;
