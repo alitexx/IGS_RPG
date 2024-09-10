@@ -644,6 +644,8 @@ public class BattleController : MonoBehaviour
 
     [SerializeField] private GameObject turnOffForKillBefriend;
 
+    [SerializeField] private battle_specialMenu battle_specialmenu;
+
     //Keys
 
     public KeyCode attackKey = KeyCode.W;
@@ -798,6 +800,7 @@ public class BattleController : MonoBehaviour
         coroutineRunning = false;
 
         manaObject.SetActive(false);
+        battle_specialmenu.gameObject.SetActive(false);
 
         for (int i = 0; i < enemyList.Count; i++)
         {
@@ -986,6 +989,14 @@ public class BattleController : MonoBehaviour
 
         if (activeChar.specialAvailable == true)
         {
+            // ADDED CODE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CHANGE AS NEEDED 
+            battle_specialmenu.WhoAreWeViewing = activeChar.statSheet.name.ToLower();
+            battle_specialmenu.gameObject.SetActive(true);
+
+
+
+
+            //// End of added code
             backButton.SetActive(true);
             state = State.Busy;
 
