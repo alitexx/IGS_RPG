@@ -646,6 +646,8 @@ public class BattleController : MonoBehaviour
 
     [SerializeField] private battle_specialMenu battle_specialmenu;
 
+    public float timeBetweenSelectAndConfirm;
+
     //Keys
 
     public KeyCode attackKey = KeyCode.W;
@@ -1029,7 +1031,7 @@ public class BattleController : MonoBehaviour
 
         enemyList[enemyNum].ShowTargetCircle();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(timeBetweenSelectAndConfirm);
 
         while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
         {
@@ -1081,7 +1083,7 @@ public class BattleController : MonoBehaviour
 
         backButton.SetActive(true);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(timeBetweenSelectAndConfirm);
 
         while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
         {
@@ -1105,7 +1107,7 @@ public class BattleController : MonoBehaviour
 
         enemyList[enemyNum].ShowTargetCircle();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(timeBetweenSelectAndConfirm);
 
         while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
         {
@@ -1163,7 +1165,7 @@ public class BattleController : MonoBehaviour
 
         backButton.SetActive(true);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(timeBetweenSelectAndConfirm);
 
         //Tank
         if (activeChar.statSheet.specialMove == 1)

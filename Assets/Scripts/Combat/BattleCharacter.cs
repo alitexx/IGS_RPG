@@ -269,10 +269,8 @@ public class BattleCharacter : MonoBehaviour
         Vector3 slideCloseToTargetPosition = targetCharacter.GetPosition() + (GetPosition() - targetCharacter.GetPosition()).normalized * 3f;
         Vector3 startingPosition = GetPosition();
 
-        //Slide to target
-        SlideToPosition(slideCloseToTargetPosition, () =>
+        if (attacker.GIsPlayerTeam == true)
         {
-            //Arrived at target and face them
             state = State.Busy;
             Vector3 attackDir = (targetCharacter.GetPosition() - GetPosition()).normalized;
 
@@ -286,7 +284,28 @@ public class BattleCharacter : MonoBehaviour
             gTarget = targetCharacter;
 
             StartCoroutine(WaitUntilAttackOver(targetCharacter, attacker, startingPosition, onAttackComplete));
-        });
+        }
+        else
+        {
+            //Slide to target
+            SlideToPosition(slideCloseToTargetPosition, () =>
+            {
+                //Arrived at target and face them
+                state = State.Busy;
+                Vector3 attackDir = (targetCharacter.GetPosition() - GetPosition()).normalized;
+
+                attacker.animator.SetBool("Attacking", true);
+                state = State.Attacking;
+
+                Vector3 position = targetCharacter.GetPosition();
+
+                gPosition = position;
+                gAttacker = attacker;
+                gTarget = targetCharacter;
+
+                StartCoroutine(WaitUntilAttackOver(targetCharacter, attacker, startingPosition, onAttackComplete));
+            });
+        }
     }
 
     private IEnumerator WaitUntilAttackOver(BattleCharacter targetCharacter, BattleCharacter attacker, Vector3 startingPosition, Action onAttackComplete)
