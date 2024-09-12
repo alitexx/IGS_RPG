@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 public class ButtonHoverEffect : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
@@ -9,26 +10,41 @@ public class ButtonHoverEffect : MonoBehaviour, ISelectHandler, IDeselectHandler
     private bool isSelected = false;
     private Coroutine hoverCoroutine;
     [SerializeField] private TextMeshProUGUI skillName;
+    [SerializeField] private Image sprite;
     public string skillNameText;
+    [SerializeField] private float speedToAppear = 3.0f;
 
     // Trigger when the button is selected (via WASD/keyboard navigation)
     public void OnSelect(BaseEventData eventData)
     {
-        //original name, no space
-        skillNameText = skillName.text;
-        skillName.text = " " + skillNameText;
+        if (skillName)
+        {
+            //original name, no space
+            skillNameText = skillName.text;
+            skillName.text = " " + skillNameText;
+        } else if (sprite)
+        {
+            sprite.color = new Color(255, 255, 255, 255);
+        }
         if (!isSelected)
         {
             isSelected = true;
-            hoverCoroutine = StartCoroutine(ShowWindowAfterDelay(5.0f));  // 5 seconds delay
+            hoverCoroutine = StartCoroutine(ShowWindowAfterDelay(speedToAppear));
         }
     }
 
     // Trigger when the button is deselected (user moves away from the button)
     public void OnDeselect(BaseEventData eventData)
     {
-        //remove the space from the name
-        skillName.text = skillNameText;
+        if (skillName)
+        {
+            //remove the space from the name
+            skillName.text = skillNameText;
+        }
+        else if (sprite)
+        {
+            sprite.color = new Color(255, 255, 255, 0);
+        }
         isSelected = false;
         if (hoverCoroutine != null)
         {

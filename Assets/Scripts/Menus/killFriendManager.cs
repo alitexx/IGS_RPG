@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
+using System.Collections;
 using TMPro;
-using UnityEngine.UI;
+using UnityEngine;
 using UnityEngine.EventSystems;
-using DIALOGUE;
+using UnityEngine.UI;
 
 public class killFriendManager : MonoBehaviour
 {
@@ -30,6 +28,9 @@ public class killFriendManager : MonoBehaviour
     [SerializeField] private Sprite[] elementsSprites;
     [SerializeField] private CanvasGroup partymembersFadeOut;
     [SerializeField] private partyFinalWords finalWordsScript;
+    [SerializeField] private TextMeshProUGUI[] SpecialDesc;
+
+    public int partyLevel;
 
     private string charInQuestion;
 
@@ -118,6 +119,7 @@ public class killFriendManager : MonoBehaviour
     ///NOTE!!!! THIS IS DONE!!!! You just need to call the function and pass in the boss's name, you MUST pass in the boss name as either "Kisa", "Nicol", or "Sophie"!!! please lol
     public void EditTextInformation(string bossName)
     {
+        partyLevel = LevelManager.level;
         switch (bossName.ToUpper())
         {
             //placeholders right now because my computer is stupid
@@ -130,7 +132,29 @@ public class killFriendManager : MonoBehaviour
                     "Alan gains bonuses to these stats for all future level-ups.";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nWind";
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Kisa</color>";
-                befriendText[1].text = "\r\nSpecial Move: <color=#cf752b>Sing</color>\r\nHeals the party by 50% of their maximum Health.";
+                SpecialDesc[0].text = "Using your voice, heal all allies by 25% of their maximum health.";
+                SpecialDesc[1].text = "Distract the target, confusing them and skipping their next turn.";
+                SpecialDesc[2].text = "Choose one ally that isn't Alan. That ally returns to life at 50% of their maximum health.";
+                elementIcon[2].sprite = elementsSprites[3];
+                elementIcon[3].sprite = elementsSprites[4];
+                elementIcon[4].sprite = elementsSprites[5];
+                if (partyLevel < 5)
+                {
+                    befriendText[1].text = " Sing\r\n\r\n ???\r\n\r\n ???";
+                    SpecialDesc[1].text = "Locked until LVL 5";
+                    SpecialDesc[2].text = "Locked until LVL 1O";
+                    elementIcon[3].sprite = elementsSprites[12];
+                    elementIcon[4].sprite = elementsSprites[12];
+                } else if (partyLevel < 10)
+                {
+                    befriendText[1].text = " Sing\r\n\r\n Confuse\r\n\r\n ???";
+                    SpecialDesc[2].text = "Locked until LVL 1O";
+                    elementIcon[4].sprite = elementsSprites[12];
+                } else
+                {
+                    befriendText[1].text = " Sing\r\n\r\n Confuse\r\n\r\n Revive";
+                }
+                
                 befriendText[2].text = "Kisa's Magic Element:\r\n\r\n\r\n\r\nWind";
                 break;
             case "NICOL":
@@ -143,7 +167,31 @@ public class killFriendManager : MonoBehaviour
                     "Alan gains bonuses to these stats for all future level-ups.";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nIce";
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Nicol</color>";
-                befriendText[1].text = "\r\nSpecial Move: <color=#cf752b>Declare Victory</color>\r\nDecrease enemy defense, Increase your strength.";
+                SpecialDesc[0].text = "Increase your attack by 30%, decrease the enemy’s defense by 30%.";
+                SpecialDesc[1].text = "Imbue your weapon with magic. Deal additional damage for the next 3 turns.";
+                SpecialDesc[2].text = "Cheer your allies on! Choose one ally, heal that ally to their maximum HP.";
+                elementIcon[2].sprite = elementsSprites[6];
+                elementIcon[3].sprite = elementsSprites[7];
+                elementIcon[4].sprite = elementsSprites[8];
+
+                if (partyLevel < 5)
+                {
+                    befriendText[1].text = " Preeminence\r\n\r\n ???\r\n\r\n ???";
+                    elementIcon[3].sprite = elementsSprites[12];
+                    elementIcon[4].sprite = elementsSprites[12];
+                    SpecialDesc[1].text = "Locked until LVL 5";
+                    SpecialDesc[2].text = "Locked until LVL 1O";
+                } else if (partyLevel < 10)
+                {
+                    befriendText[1].text = " Preeminence\r\n\r\n Enchant\r\n\r\n ???";
+                    SpecialDesc[2].text = "Locked until LVL 1O";
+                    elementIcon[4].sprite = elementsSprites[12];
+                }
+                else
+                {
+                    befriendText[1].text = " Preeminence\r\n\r\n Enchant\r\n\r\n Encourage";
+                }
+
                 befriendText[2].text = "Nicol's Magic Element:\r\n\r\n\r\n\r\nIce";
                 break;
             case "SOPHIE":
@@ -155,7 +203,30 @@ public class killFriendManager : MonoBehaviour
                     "Alan gains bonuses to these stats for all future level-ups.";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nElectric";
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Sophie</color>";
-                befriendText[1].text = "\r\nSpecial Move: <color=#cf752b>Thunderstorm</color>\r\nHit all enemies with a physical attack.";
+                SpecialDesc[0].text = "A physical attack that targets all enemies. Has a high chance of missing.";
+                SpecialDesc[1].text = "Your attacks always hit, and your critical hit chance is higher for the next 3 turns.";
+                SpecialDesc[2].text = "Call upon the power of the stars. Deal 30 damage to all enemies. Has a high chance of missing.";
+                elementIcon[2].sprite = elementsSprites[9];
+                elementIcon[3].sprite = elementsSprites[10];
+                elementIcon[4].sprite = elementsSprites[11];
+                if (partyLevel < 5)
+                {
+                    befriendText[1].text = " Earthquake\r\n\r\n ???\r\n\r\n ???";
+                    SpecialDesc[1].text = "Locked until LVL 5";
+                    SpecialDesc[2].text = "Locked until LVL 1O";
+                    elementIcon[3].sprite = elementsSprites[12];
+                    elementIcon[4].sprite = elementsSprites[12];
+                } else if (partyLevel < 10)
+                {
+                    befriendText[1].text = " Earthquake\r\n\r\n Focus\r\n\r\n ???";
+                    SpecialDesc[2].text = "Locked until LVL 1O";
+                    elementIcon[4].sprite = elementsSprites[12];
+                }
+                else
+                {
+                    befriendText[1].text = " Earthquake\r\n\r\n Focus\r\n\r\n Starstorm";
+                }
+
                 befriendText[2].text = "Sophie's Magic Element:\r\n\r\n\r\n\r\nElectric";
                 break;
         }
