@@ -21,6 +21,7 @@ public class pauseMenuManager : MonoBehaviour
     //main menu confirmation
     [SerializeField] private GameObject darkenBG;
     [SerializeField] private GameObject ConfirmMainMenu;
+    [SerializeField] private GameObject openmainmenu, mainmenuconfirm;
     //options
     [SerializeField] private GameObject OptionsTXT;
     [SerializeField] private GameObject PartyLevelTXT;
@@ -212,12 +213,16 @@ public class pauseMenuManager : MonoBehaviour
     public void confirmMainMenu()
     {
         //DOFade for the bg
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(mainmenuconfirm);
         darkenBG.SetActive(true);
         ConfirmMainMenu.SetActive(true);
     }
     public void exitConfirmMenu()
     {
         //DOFade for the bg
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(openmainmenu);
         darkenBG.SetActive(false);
         ConfirmMainMenu.SetActive(false);
     }

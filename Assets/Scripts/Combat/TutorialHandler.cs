@@ -84,7 +84,7 @@ public class TutorialHandler : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(audioStatics.interractButton) && battleController.state == BattleController.State.Busy && battleController.alanFireMagicButton.activeInHierarchy == false && battleController.backButton.activeInHierarchy) 
+        if (Input.GetKeyDown(audioStatics.keycodeInterractButton) && battleController.state == BattleController.State.Busy && battleController.alanFireMagicButton.activeInHierarchy == false && battleController.backButton.activeInHierarchy) 
         {
             continueTutorial();
         }

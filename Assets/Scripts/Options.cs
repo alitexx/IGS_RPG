@@ -54,6 +54,14 @@ public class Options : MonoBehaviour
                     {
                         audioStatics.interractButton = "L Click";
                     }
+                    else if(keyCode == KeyCode.JoystickButton0)
+                    {
+                        audioStatics.interractButton = "A";
+                    }
+                    else if (keyCode == KeyCode.JoystickButton7)
+                    {
+                        audioStatics.interractButton = "Start";
+                    }
                     waitingForKeyPress = false;
                     am.playSFX(25);
                     break;
