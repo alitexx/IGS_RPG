@@ -1090,6 +1090,13 @@ public class BattleController : MonoBehaviour
             yield return null;
         }
 
+        activeChar.healthSystem.Heal(5);
+        activeChar.ChangeHealthText();
+
+        Vector3 position = activeChar.GetPosition();
+        ParticleManager healParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
+        healParticle.animator.SetBool("HealFX", true);
+
         activeChar.isBlocking = true;
         activeChar.animator.SetBool("Blocking", true);
         ChooseNextActiveChar();
