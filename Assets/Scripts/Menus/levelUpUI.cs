@@ -9,6 +9,7 @@ public class levelUpUI : MonoBehaviour
 {
     [SerializeField] private RectTransform[] locations;
     [SerializeField] private RectTransform lvlUpText;
+    [SerializeField] private GameObject specialUnlockedText;
     [SerializeField] private RectTransform lvlupboxes;
     [SerializeField] private RectTransform exitlvlUpBTN;
     [SerializeField] private GameObject[] boxesToDisplay;
@@ -70,9 +71,21 @@ public class levelUpUI : MonoBehaviour
         boxesToDisplay[3].SetActive(pc.hasSophie);
         lvlUpText.DOMove(locations[0].position, 0.35f).OnComplete(() => {
             lvlupboxes.DOMove(locations[1].position, 0.75f).OnComplete(() => {
-                exitlvlUpBTN.DOMove(locations[2].position, 1f).OnComplete(() => {
-                    EventSystem.current.SetSelectedGameObject(exitlvlUpBTN.gameObject);
-                });
+                //Check if we are at level 5 or 10. if we are, enable the additional lvl up ui
+                if(LevelManager.level == 5 || LevelManager.level == 10)
+                {
+                    specialUnlockedText.SetActive(true);
+                    exitlvlUpBTN.DOMove(locations[4].position, 2f).OnComplete(() => {
+                        exitlvlUpBTN.DOMove(locations[2].position, 1f).OnComplete(() => {
+                            EventSystem.current.SetSelectedGameObject(exitlvlUpBTN.gameObject);
+                        });
+                    });
+                } else
+                {
+                    exitlvlUpBTN.DOMove(locations[2].position, 1f).OnComplete(() => {
+                        EventSystem.current.SetSelectedGameObject(exitlvlUpBTN.gameObject);
+                    });
+                }
             });
         });
     }
@@ -138,6 +151,7 @@ public class levelUpUI : MonoBehaviour
         lvlupboxes.DOMove(locations[4].position, 0.75f);
         lvlUpText.DOMove(locations[3].position, 1f).OnComplete(() => {
             ywm.ContinueLevelGaining();
+            specialUnlockedText.SetActive(false);
             this.gameObject.SetActive(false);
         });
     }

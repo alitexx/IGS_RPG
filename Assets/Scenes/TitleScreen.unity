@@ -791,7 +791,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -801,9 +801,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 86ff101a4afea2e41946f22723d6af07, type: 3}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 86ff101a4afea2e41946f22723d6af07, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1659,7 +1659,6 @@ GameObject:
   - component: {fileID: 49441524}
   - component: {fileID: 49441523}
   - component: {fileID: 49441522}
-  - component: {fileID: 49441526}
   m_Layer: 5
   m_Name: ScrollRect
   m_TagString: Untagged
@@ -1769,20 +1768,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &49441526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49441520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffd9f9bca7179f4408b18410d0ab2bbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollRect: {fileID: 49441525}
-  scrollSpeed: 10
 --- !u!1 &65366940
 GameObject:
   m_ObjectHideFlags: 0
@@ -4331,12 +4316,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 1404912661}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4349,7 +4334,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 21300000, guid: 86ff101a4afea2e41946f22723d6af07, type: 3}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 86ff101a4afea2e41946f22723d6af07, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -7216,6 +7201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 510945387}
   - component: {fileID: 510945388}
+  - component: {fileID: 510945389}
   m_Layer: 5
   m_Name: Master_Slider
   m_TagString: Untagged
@@ -7309,6 +7295,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &510945389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510945386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edab16689e90f1e4c9ec032ef7828f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScrollbar: {fileID: 1423816228}
+  buttonCount: 7
+  thisButtonNum: 1
 --- !u!1 &523075921
 GameObject:
   m_ObjectHideFlags: 0
@@ -9599,6 +9600,7 @@ GameObject:
   - component: {fileID: 680780469}
   - component: {fileID: 680780468}
   - component: {fileID: 680780467}
+  - component: {fileID: 680780470}
   m_Layer: 5
   m_Name: beginRebind
   m_TagString: Untagged
@@ -9733,6 +9735,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680780465}
   m_CullTransparentMesh: 1
+--- !u!114 &680780470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680780465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edab16689e90f1e4c9ec032ef7828f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScrollbar: {fileID: 1423816228}
+  buttonCount: 7
+  thisButtonNum: 6
 --- !u!1 &689242322
 GameObject:
   m_ObjectHideFlags: 0
@@ -11695,6 +11712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 873462790}
   - component: {fileID: 873462791}
+  - component: {fileID: 873462792}
   m_Layer: 5
   m_Name: Music_Slider
   m_TagString: Untagged
@@ -11788,6 +11806,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &873462792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873462789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edab16689e90f1e4c9ec032ef7828f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScrollbar: {fileID: 1423816228}
+  buttonCount: 7
+  thisButtonNum: 2
 --- !u!1 &889262945
 GameObject:
   m_ObjectHideFlags: 0
@@ -13317,6 +13350,7 @@ MonoBehaviour:
   elementInfo: {fileID: 1397179231}
   elementIcon: {fileID: 1201820963}
   levelManager: {fileID: 0}
+  spm: {fileID: 0}
   HPMPSliders: []
   playerControl: {fileID: 0}
   elementsIcons:
@@ -13336,6 +13370,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97309584289e65c4fb773233df477fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onOpenButton: {fileID: 0}
+  optionsenterbutton: {fileID: 0}
+  optionsexitbutton: {fileID: 0}
+  backButton: {fileID: 20292620}
   partyMemberIcons:
   - {fileID: 1326102902}
   - {fileID: 412465645}
@@ -13365,8 +13403,11 @@ MonoBehaviour:
   - {fileID: 406802737}
   p_ci: {fileID: 966004267}
   characterinspector: {fileID: 316820763}
+  specialInspector: {fileID: 316820763}
   darkenBG: {fileID: 1742851437}
   ConfirmMainMenu: {fileID: 1801131720}
+  openmainmenu: {fileID: 0}
+  mainmenuconfirm: {fileID: 0}
   OptionsTXT: {fileID: 1804708395}
   PartyLevelTXT: {fileID: 1923747609}
   OptionsMenu: {fileID: 394741788}
@@ -16478,6 +16519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1262625132}
   - component: {fileID: 1262625133}
+  - component: {fileID: 1262625134}
   m_Layer: 5
   m_Name: sfx_Slider
   m_TagString: Untagged
@@ -16571,6 +16613,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1262625134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262625131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edab16689e90f1e4c9ec032ef7828f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScrollbar: {fileID: 1423816228}
+  buttonCount: 7
+  thisButtonNum: 3
 --- !u!1 &1280234337
 GameObject:
   m_ObjectHideFlags: 0
@@ -17493,6 +17550,7 @@ GameObject:
   - component: {fileID: 1329825032}
   - component: {fileID: 1329825031}
   - component: {fileID: 1329825030}
+  - component: {fileID: 1329825034}
   m_Layer: 5
   m_Name: DeleteSaveMenu
   m_TagString: Untagged
@@ -17583,6 +17641,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1329825034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329825029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2603726c874f4b2428e021d16121cc5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doNotSave: {fileID: 1404912659}
+  deleteSaveEntry: {fileID: 20292620}
 --- !u!1 &1346806152
 GameObject:
   m_ObjectHideFlags: 0
@@ -18399,11 +18471,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 255780074}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
   m_Colors:
@@ -18417,7 +18489,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 21300000, guid: 86ff101a4afea2e41946f22723d6af07, type: 3}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 86ff101a4afea2e41946f22723d6af07, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -23110,6 +23182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1811531183}
   - component: {fileID: 1811531184}
+  - component: {fileID: 1811531185}
   m_Layer: 5
   m_Name: textSpeedSlider
   m_TagString: Untagged
@@ -23203,6 +23276,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1811531185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811531182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edab16689e90f1e4c9ec032ef7828f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScrollbar: {fileID: 1423816228}
+  buttonCount: 7
+  thisButtonNum: 5
 --- !u!1 &1823645540
 GameObject:
   m_ObjectHideFlags: 0
@@ -23595,6 +23683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1842608115}
   - component: {fileID: 1842608116}
+  - component: {fileID: 1842608117}
   m_Layer: 5
   m_Name: voice_Slider
   m_TagString: Untagged
@@ -23688,6 +23777,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1842608117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842608114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edab16689e90f1e4c9ec032ef7828f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScrollbar: {fileID: 1423816228}
+  buttonCount: 7
+  thisButtonNum: 4
 --- !u!1 &1845236707
 GameObject:
   m_ObjectHideFlags: 0
@@ -24756,6 +24860,7 @@ GameObject:
   - component: {fileID: 1911128377}
   - component: {fileID: 1911128376}
   - component: {fileID: 1911128375}
+  - component: {fileID: 1911128378}
   m_Layer: 5
   m_Name: deleteSaveButton
   m_TagString: Untagged
@@ -24853,7 +24958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.29622638, b: 0.29622638, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -24878,6 +24983,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911128373}
   m_CullTransparentMesh: 1
+--- !u!114 &1911128378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911128373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edab16689e90f1e4c9ec032ef7828f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScrollbar: {fileID: 1423816228}
+  buttonCount: 7
+  thisButtonNum: 7
 --- !u!1 &1916719100
 GameObject:
   m_ObjectHideFlags: 0
