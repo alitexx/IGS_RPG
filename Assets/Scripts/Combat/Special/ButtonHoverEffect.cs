@@ -1,0 +1,65 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using TMPro;
+using UnityEngine.UI;
+
+public class ButtonHoverEffect : MonoBehaviour, ISelectHandler, IDeselectHandler
+{
+    public GameObject otherUIWindow;  // Assign the other UI window here
+    private bool isSelected = false;
+    private Coroutine hoverCoroutine;
+    [SerializeField] private TextMeshProUGUI skillName;
+    [SerializeField] private Image sprite;
+    public string skillNameText;
+    [SerializeField] private float speedToAppear = 3.0f;
+
+    // Trigger when the button is selected (via WASD/keyboard navigation)
+    public void OnSelect(BaseEventData eventData)
+    {
+        if (skillName)
+        {
+            //original name, no space
+            skillNameText = skillName.text;
+            skillName.text = " " + skillNameText;
+        } else if (sprite)
+        {
+            sprite.color = new Color(255, 255, 255, 255);
+        }
+        if (!isSelected)
+        {
+            isSelected = true;
+            hoverCoroutine = StartCoroutine(ShowWindowAfterDelay(speedToAppear));
+        }
+    }
+
+    // Trigger when the button is deselected (user moves away from the button)
+    public void OnDeselect(BaseEventData eventData)
+    {
+        if (skillName)
+        {
+            //remove the space from the name
+            skillName.text = skillNameText;
+        }
+        else if (sprite)
+        {
+            sprite.color = new Color(255, 255, 255, 0);
+        }
+        isSelected = false;
+        if (hoverCoroutine != null)
+        {
+            StopCoroutine(hoverCoroutine);  // Stop the coroutine if the button is deselected
+        }
+        otherUIWindow.SetActive(false);  // Optionally hide the window again when deselected
+    }
+
+    // Coroutine to show the other UI window after a delay
+    IEnumerator ShowWindowAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (isSelected)  // Only show the window if the button is still selected
+        {
+            otherUIWindow.SetActive(true);
+        }
+    }
+}
