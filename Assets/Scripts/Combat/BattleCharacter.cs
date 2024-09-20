@@ -524,7 +524,7 @@ public class BattleCharacter : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.9f);
 
         state = State.Busy;
 
