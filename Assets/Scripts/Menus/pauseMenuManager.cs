@@ -10,7 +10,7 @@ public class pauseMenuManager : MonoBehaviour
 {
 
 
-    public GameObject onOpenButton, optionsenterbutton, optionsexitbutton;
+    public GameObject onOpenButton, optionsenterbutton, optionsexitbutton, backButton;
 
     [SerializeField] private Transform[] partyMemberIcons;
     [SerializeField] private GameObject[] locations;
@@ -309,7 +309,6 @@ public class pauseMenuManager : MonoBehaviour
     public void returnDeleteMenu()
     {
         DeleteMenu.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void confirmSaveDelete()

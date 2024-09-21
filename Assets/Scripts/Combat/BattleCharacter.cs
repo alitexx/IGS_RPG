@@ -524,7 +524,7 @@ public class BattleCharacter : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.9f);
 
         state = State.Busy;
 
@@ -621,11 +621,13 @@ public class BattleCharacter : MonoBehaviour
                 am.playSFX(13);
             }
 
+            damageMinusDefense -= damageMinusDefense / 4;
+
             Transform damagePopupTransform = Instantiate(damagePopup, transform.position, Quaternion.identity);
             DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
-            damPopScript.SetupInt(damageMinusDefense / 2);
+            damPopScript.SetupInt(damageMinusDefense);
 
-            healthSystem.Damage(damageMinusDefense / 2);
+            healthSystem.Damage(damageMinusDefense);
             //Debug.Log("Defender Health: " + healthSystem.GetHealth());
         }
         else
