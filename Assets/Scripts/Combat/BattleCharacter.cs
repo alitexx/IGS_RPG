@@ -63,6 +63,11 @@ public class BattleCharacter : MonoBehaviour
 
     public bool specialAvailable;
 
+    //TempBuffs
+    public bool tempBuffed = false;
+    public int tempIncrease = 0;
+    public string statIncreased = "";
+
     // for when the player uses hp as mana
     [SerializeField] private CanvasGroup redBG;
 
@@ -95,6 +100,24 @@ public class BattleCharacter : MonoBehaviour
     private void Start()
     {
         //Debug.Log(GIsPlayerTeam + ": Strength:" + statSheet.stats["Strength"]);
+    }
+
+    public void TempIncreaseStats(string stat, int amount)
+    {
+        tempIncrease = amount;
+
+        statIncreased = stat;
+
+        this.statSheet.stats[statIncreased] += tempIncrease;
+
+        tempBuffed = true;
+    }
+
+    public void UndoTempBuff()
+    {
+        this.statSheet.stats[statIncreased] -= tempIncrease;
+
+        tempBuffed = false;
     }
 
     //Sprite 

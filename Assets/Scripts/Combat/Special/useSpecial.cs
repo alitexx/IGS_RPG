@@ -8,6 +8,9 @@ public class useSpecial : MonoBehaviour
     public string WhoAreWeViewing;
     public battle_specialMenu b_sm;
 
+    public BattleController battControl;
+    private BattleCharacter currentChar;
+
     //When special button is clicked
     //Currently, this does no targetting. Organize this code as you see fit!
     public void useSpecialBtn(int whichLevel)
@@ -39,6 +42,9 @@ public class useSpecial : MonoBehaviour
         {
             case 1:
                 //use Alan's first special, Guard
+                battControl.AlanGuardStatIncrease();
+
+                StartCoroutine(battControl.WaitBeforeChoosingNext());
                 break;
             case 2:
                 //use Alan's second special, Taunt
@@ -47,6 +53,9 @@ public class useSpecial : MonoBehaviour
                 //use Alan's third special, Tenacity
                 break;
         }
+
+        battControl.backButton.SetActive(false);
+        b_sm.gameObject.SetActive(false);
     }
 
     public void kisaSpecial(int whichLevel)

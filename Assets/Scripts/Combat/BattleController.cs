@@ -1002,7 +1002,7 @@ public class BattleController : MonoBehaviour
             backButton.SetActive(true);
             state = State.Busy;
 
-            StartCoroutine(SpecialTargeting());
+            //StartCoroutine(SpecialTargeting());
             am.playSFX(26);
         } else
         {
@@ -1016,6 +1016,17 @@ public class BattleController : MonoBehaviour
     }
 
     #endregion
+
+    public IEnumerator WaitBeforeChoosingNext()
+    {
+        coroutineRunning = true;
+
+        yield return new WaitForSeconds(1.5f);
+
+        ChooseNextActiveChar();
+
+        coroutineRunning = false;
+    }
 
     #region Targeting Coroutines
 
@@ -1549,7 +1560,7 @@ public class BattleController : MonoBehaviour
     }
 
     //changes turns
-    private void ChooseNextActiveChar()
+    public void ChooseNextActiveChar()
     {
         for (int i = 0; i < playerList.Count; i++)
         {
@@ -1814,6 +1825,19 @@ public class BattleController : MonoBehaviour
         //Debug.Log("Enemycount: " + enemyList.Count);
     }
 
+    public void AlanGuardStatIncrease()
+    {
+        Vector3 guardPosition = tankChar.GetPosition();
+
+        guardPosition.x += 0.2f;
+        guardPosition.y += 1f;
+
+        ParticleManager guardParticle = Instantiate(tankChar.particleManager, guardPosition, Quaternion.identity, tankChar.transform);
+        guardParticle.animator.SetBool("GuardFX", true);
+
+        tankChar.TempIncreaseStats("Defense", tankChar.statSheet.stats["Defense"] / 5);
+    }
+
 
     private IEnumerator AlanDied()
     {
@@ -1907,9 +1931,15 @@ public class BattleController : MonoBehaviour
 
             for (int i = 0; i < partyMembers.Count; i++)
             {
-                if (partyMembers[i].statSheet.name == "Mage Guy")
+                /*if (partyMembers[i].statSheet.name == "Mage Guy")
                 {
                     partyMembers[i].statSheet.stats["Strength"] -= amountBuffed;
+                }*/
+
+                //Undos any temporary buffs
+                if (partyMembers[i].tempBuffed)
+                {
+                    partyMembers[i].UndoTempBuff();
                 }
             }
 
