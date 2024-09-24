@@ -37,6 +37,9 @@ public class specialPauseMenu : MonoBehaviour
     //Locked images
     [SerializeField] private GameObject[] LockedImages;
 
+    //SpecialCharges
+    [SerializeField] private GameObject[] SpecialCharges;
+
     //Stuff for checking party level, who we're viewing, etc.
     private int level;
     //This is sent to us via the pause_characterInspection script
@@ -78,6 +81,7 @@ public class specialPauseMenu : MonoBehaviour
                 specialIcons[counter].sprite = specialSprites[counter + int.Parse(descriptions[6])];  // Set sprite
                 specialIcons[counter].color = new Color(255, 255, 255, 255);
                 LockedImages[counter].SetActive(false);
+                SpecialCharges[counter].SetActive(true);
             }
             if (counter < 3) // If we have still not displayed enough, that means that there are some skills that have not been unlocked. Make sure they are locked
             {
@@ -90,6 +94,7 @@ public class specialPauseMenu : MonoBehaviour
                     //do something with this sprite
                     specialIcons[counter].color = new Color(255, 255, 255, 0);
                     LockedImages[counter].SetActive(true);
+                    SpecialCharges[counter].SetActive(false);
                 }
             }
         }
