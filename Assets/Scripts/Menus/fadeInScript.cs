@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class fadeInScript : MonoBehaviour
 {
     [SerializeField] private CanvasGroup fadeIn;
+    [SerializeField] private mapManager mapManager;
 
 
     // Start is called before the first frame update
@@ -33,6 +34,35 @@ public class fadeInScript : MonoBehaviour
             fadeIn.DOKill();
             PauseMenu.GamePaused = false;
             SceneManager.LoadScene("TitleScreen");
+        });
+    }
+
+    public void fadeToMap()
+    {
+        //Fade to black. Wait.
+        //Fade back in once menu was open
+        fadeIn.blocksRaycasts = true;
+        fadeIn.DOFade(1, 1f).OnComplete(() =>
+        {
+            fadeIn.DOFade(1, 0.5f).OnComplete(() =>
+            {
+                mapManager.OpenMap();
+                fadeIn.DOFade(0, 1f);
+            });
+        });
+    }
+    public void fadeOutOfmap()
+    {
+        //Fade to black. Wait.
+        //Fade back in once menu was closed
+        fadeIn.blocksRaycasts = true;
+        fadeIn.DOFade(1, 1f).OnComplete(() =>
+        {
+            fadeIn.DOFade(1, 0.5f).OnComplete(() =>
+            {
+                mapManager.CloseMap();
+                fadeIn.DOFade(0, 1f);
+            });
         });
     }
 }
