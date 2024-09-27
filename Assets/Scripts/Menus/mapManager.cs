@@ -15,7 +15,7 @@ public class mapManager : MonoBehaviour
     private int floor1RoomsDiscovered, floor2RoomsDiscovered, floor3RoomsDiscovered, floor4RoomsDiscovered;
     //The maps per floor
     [SerializeField] private GameObject floor1Map, floor2Map, floor3Map, floor4Map, mapParent, pauseMenu;
-    [SerializeField] private GameObject[] floor1Rooms, floor2Rooms, floor3Rooms, floor4Rooms;
+    [SerializeField] private GameObject[] floor1Rooms, alanFloor1, floor2Rooms, alanFloor2, floor3Rooms, alanFloor3, floor4Rooms, alanFloor4;
     //How will I keep track of which rooms have exclamation points? A switch statement when walking into that room?
     [SerializeField] private GameObject[] exclamationPoints;
     //TEMP VARIABLES (until I figure out what is where)
