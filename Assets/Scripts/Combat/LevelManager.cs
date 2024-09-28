@@ -195,6 +195,15 @@ public class LevelManager : MonoBehaviour
         FullHeal();
     }
 
+    private void Update()
+    {
+        //Increasing level by 5
+        if (Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.E) && Input.GetKeyDown(KeyCode.V))
+        {
+            level += 5;
+        }
+    }
+
     public void LoadStats(int loadedLevel)
     {
         level = loadedLevel;

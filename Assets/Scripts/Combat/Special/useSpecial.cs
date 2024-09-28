@@ -44,14 +44,14 @@ public class useSpecial : MonoBehaviour
                 //use Alan's first special, Guard
                 battControl.AlanGuardStatIncrease();
 
-                StartCoroutine(battControl.WaitBeforeChoosingNext());
+                StartCoroutine(battControl.WaitBeforeChoosingNext(1.5f));
                 break;
             case 2:
                 //use Alan's second special, Taunt
 
                 battControl.AlanTaunt();
 
-                StartCoroutine(battControl.WaitBeforeChoosingNext());
+                StartCoroutine(battControl.WaitBeforeChoosingNext(1f));
 
                 break;
             case 3:

@@ -1020,11 +1020,11 @@ public class BattleController : MonoBehaviour
 
     #endregion
 
-    public IEnumerator WaitBeforeChoosingNext()
+    public IEnumerator WaitBeforeChoosingNext(float timeToWait)
     {
         coroutineRunning = true;
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(timeToWait);
 
         ChooseNextActiveChar();
 
