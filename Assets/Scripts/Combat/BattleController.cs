@@ -746,13 +746,16 @@ public class BattleController : MonoBehaviour
             attackButtonBlocker.SetActive(true);
         }
 
-        /* Testing how to instantiate the particle effects
-         * if (Input.GetKeyDown(KeyCode.G))
+         //Testing how to instantiate the particle effects
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            Vector3 transform = activeChar.GetPosition();
-
-            GameObject particle = Instantiate(particleManager, transform, Quaternion.identity, activeChar.transform);
-        }*/
+            for (int i = 0; i < enemyList.Count; i++)
+            {
+                Vector3 tauntedPosition = enemyList[i].GetPosition();
+                ParticleManager tauntedParticle = Instantiate(enemyList[i].particleManager, tauntedPosition, Quaternion.identity, enemyList[i].transform);
+                tauntedParticle.animator.SetBool("EnemyTauntedFX", true);
+            }
+        }
 
         
         //Keybinds
@@ -1794,7 +1797,7 @@ public class BattleController : MonoBehaviour
         else
         {
             //Debug.Log("ally " + characterQueue.Peek().statSheet.name);
-            if (characterQueue.Peek().statSheet.specialMove == 1)
+            if (characterQueue.Peek() == tankChar)
             {
                 isTaunting = false;
             }
@@ -1825,6 +1828,8 @@ public class BattleController : MonoBehaviour
         //Debug.Log("Enemycount: " + enemyList.Count);
     }
 
+    #region Special Functions
+
     public void AlanGuardStatIncrease()
     {
         Vector3 guardPosition = tankChar.GetPosition();
@@ -1838,6 +1843,27 @@ public class BattleController : MonoBehaviour
         tankChar.TempIncreaseStats("Defense", tankChar.statSheet.stats["Defense"] / 5);
     }
 
+    public void AlanTaunt()
+    {
+        isTaunting = true;
+
+        Vector3 tauntPosition = tankChar.GetPosition();
+
+        tauntPosition.x += 0.2f;
+        tauntPosition.y += 1f;
+
+        ParticleManager tauntParticle = Instantiate(tankChar.particleManager, tauntPosition, Quaternion.identity, tankChar.transform);
+        tauntParticle.animator.SetBool("TauntFX", true);
+
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            Vector3 tauntedPosition = enemyList[i].GetPosition();
+            ParticleManager tauntedParticle = Instantiate(enemyList[i].particleManager, tauntedPosition, Quaternion.identity, enemyList[i].transform);
+            tauntedParticle.animator.SetBool("EnemyTauntedFX", true);
+        }
+    }
+
+    #endregion
 
     private IEnumerator AlanDied()
     {
