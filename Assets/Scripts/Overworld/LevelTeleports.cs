@@ -31,7 +31,11 @@ public class LevelTeleports : MonoBehaviour
 
     private void Start()
     {
-        mapManager.newLevelMapUpdate(Level);
+        //Only one of them has a map manager attached
+        if(mapManager != null)
+        {
+            mapManager.newLevelMapUpdate(Level);
+        }
     }
 
     //We can add this back later, but atm i think this might be unneccessary

@@ -12,6 +12,9 @@ public class SwitchScript : MonoBehaviour
     public GameObject Switch;
     public PlayerController playerController;
 
+    [SerializeField] private mapManager mapManager;
+    [SerializeField] private GameObject associatedExclamation;
+
 
     private void Start()
     {
@@ -54,6 +57,7 @@ public class SwitchScript : MonoBehaviour
             isOnSwitch = true;
             audioManager.playSFX(22);
             Destroy(Door);
+            mapManager.ForceOpenMap(associatedExclamation);
         }
     }
 }

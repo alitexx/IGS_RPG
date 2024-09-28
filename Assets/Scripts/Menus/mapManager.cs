@@ -31,7 +31,6 @@ public class mapManager : MonoBehaviour
     [SerializeField] private GameObject floor1Map, floor2Map, floor3Map, floor4Map, mapParent, pauseMenu;
     [SerializeField] private GameObject[] floor1Rooms, alanFloor1, floor2Rooms, alanFloor2, floor3Rooms, alanFloor3, floor4Rooms, alanFloor4;
     //How will I keep track of which rooms have exclamation points? A switch statement when walking into that room?
-    [SerializeField] private GameObject[] exclamationPoints;
     private int floorNumber;
     //Keeps track of where Alan is. This needs to be passed in on a reloaded save.
     private int currentRoomNumber = 0;
@@ -301,12 +300,12 @@ public class mapManager : MonoBehaviour
     //Used when something is unlocked. Open map, show an exclamation point where there has been a change, and closes it.
     //Maybe do some sparkly sfx to show that a new thing has happened and that its good!
     //Keep this exclamation point up until they walk to that room, then it disappears
-    public void ForceOpenMap(int whichExclamation)
+    public void ForceOpenMap(GameObject whichExclamation)
     {
         playerController.isfrozen = true;
         fadeInScript.fadeToMap();
         // Find and display the right exclamation point
-        exclamationPoints[whichExclamation].SetActive(true);
+        whichExclamation.SetActive(true);
 
         // Start a coroutine to wait for 3 seconds before closing the menu
         StartCoroutine(WaitAndCloseMap());

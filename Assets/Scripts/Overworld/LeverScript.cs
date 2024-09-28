@@ -14,6 +14,8 @@ public class LeverScript : MonoBehaviour
     public audioManager audioManager;
     public PlayerController playerController;
     private bool flipped;
+    [SerializeField] private mapManager mapManager;
+    [SerializeField] private GameObject associatedExclamation;
 
     private void Update()
     {
@@ -29,6 +31,7 @@ public class LeverScript : MonoBehaviour
                 spriteRenderer.sprite = newSprite;
                 flipped = true;
                 audioManager.playSFX(20);
+                mapManager.ForceOpenMap(associatedExclamation);
             }
             
         }
@@ -41,12 +44,13 @@ public class LeverScript : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player" && Input.GetKeyDown(audioStatics.keycodeInterractButton))
             {
-                Debug.Log(":D");
+                Debug.Log("I AM THE CORRECT ONE");
                 Destroy(Door);
                 spriteRenderer.sprite = newSprite;
                 flipped = true;
                 playerController.DoorsOpened += 1;
                 audioManager.playSFX(20);
+                mapManager.ForceOpenMap(associatedExclamation);
             }
             
         }

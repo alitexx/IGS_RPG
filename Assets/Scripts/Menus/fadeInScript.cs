@@ -42,7 +42,7 @@ public class fadeInScript : MonoBehaviour
         //Fade to black. Wait.
         //Fade back in once menu was open
         fadeIn.blocksRaycasts = true;
-        fadeIn.DOFade(1, 1f).OnComplete(() =>
+        fadeIn.DOFade(1, 0.4f).OnComplete(() =>
         {
             fadeIn.DOFade(1, 0.5f).OnComplete(() =>
             {
@@ -56,7 +56,7 @@ public class fadeInScript : MonoBehaviour
         //Fade to black. Wait.
         //Fade back in once menu was closed
         fadeIn.blocksRaycasts = true;
-        fadeIn.DOFade(1, 1f).OnComplete(() =>
+        fadeIn.DOFade(1, 0.4f).OnComplete(() =>
         {
             fadeIn.DOFade(1, 0.5f).OnComplete(() =>
             {
