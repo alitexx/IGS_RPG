@@ -12,6 +12,19 @@ public class mapManager : MonoBehaviour
     public fadeInScript fadeInScript;
     [SerializeField] public PlayerController playerController;
     [SerializeField] private mainDialogueManager mainDialogueManager;
+
+    //Floor1 has 11 rooms, meaning it should be 11 numbers long. The default should be:
+    //floor1RoomsDiscovered = 00000000000
+
+    //Floor2 has 13 rooms, meaning it should be 13 numbers long. The default should be:
+    //floor2RoomsDiscovered = 0000000000000
+
+    //Floor3 has 15 rooms, meaning it should be 15 numbers long. The default should be:
+    //floor3RoomsDiscovered = 000000000000000
+
+    //Floor4 has 13 rooms, meaning it should be 13 numbers long. The default should be:
+    //floor3RoomsDiscovered = 0000000000000
+
     private int floor1RoomsDiscovered, floor2RoomsDiscovered, floor3RoomsDiscovered, floor4RoomsDiscovered;
     //The maps per floor
     [SerializeField] private GameObject floor1Map, floor2Map, floor3Map, floor4Map, mapParent, pauseMenu;
