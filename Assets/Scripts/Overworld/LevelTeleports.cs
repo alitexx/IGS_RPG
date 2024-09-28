@@ -27,6 +27,12 @@ public class LevelTeleports : MonoBehaviour
 
     public float distance = 0.2f;
     public int Level = 1;
+    [SerializeField] private mapManager mapManager;
+
+    private void Start()
+    {
+        mapManager.newLevelMapUpdate(Level);
+    }
 
     //We can add this back later, but atm i think this might be unneccessary
     //public void Update()
@@ -79,6 +85,7 @@ public class LevelTeleports : MonoBehaviour
             Player.transform.position = new Vector3(destination4.position.x, destination4.position.y);
             Destroy(portalParent4);
         }
+        mapManager.newLevelMapUpdate(Level);
     }
 
     public void Stay()
