@@ -89,7 +89,7 @@ public class LevelTeleports : MonoBehaviour
             Player.transform.position = new Vector3(destination4.position.x, destination4.position.y);
             Destroy(portalParent4);
         }
-        mapManager.newLevelMapUpdate(Level);
+        mapManager.newLevelMapUpdate(PlayerController.Level);
     }
 
     public void Stay()

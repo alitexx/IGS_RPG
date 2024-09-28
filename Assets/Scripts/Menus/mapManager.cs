@@ -39,6 +39,7 @@ public class mapManager : MonoBehaviour
     public void newLevelMapUpdate(int whatLevel)
     {
         floorNumber = whatLevel;
+        Debug.Log(floorNumber);
         switch (floorNumber)
         {
             case 1:
@@ -230,7 +231,7 @@ public class mapManager : MonoBehaviour
     void Update()
     {
         //CHANGE JOYSTICK BUTTON TO X
-        if ((Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.JoystickButton2)) && (!mainDialogueManager.dialogueRunning || battleUI.activeInHierarchy == false))
+        if ((Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.JoystickButton2)) && (!mainDialogueManager.dialogueRunning || battleUI.activeInHierarchy == false || PauseMenu.canOpenPause == true))
         {
             if (!mapParent.activeInHierarchy)
             {
@@ -248,7 +249,7 @@ public class mapManager : MonoBehaviour
     public void OpenMap()
     {
         mapParent.SetActive(true);
-
+        
 
         //Locate where Alan is
         switch(floorNumber)
