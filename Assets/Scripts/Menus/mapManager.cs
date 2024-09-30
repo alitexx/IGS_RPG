@@ -108,7 +108,7 @@ public class mapManager : MonoBehaviour
     //Each time the user walks into a room, check if that room has been traversed before. If it has, do nothing. If it hasn't, add it to the map.
     //Before doing all of this, check if there's an active exclamation point in the room. If there is, then disable it.
     //This event fires EACH TIME ALAN WALKS INTO A ROOM. MAKE SURE IT FIRES EACH TIME YOU WALK INTO A ROOM!
-    private void discoverNewRoom(int whatRoom, GameObject associatedExclamation = null)
+    public void discoverNewRoom(int whatRoom, GameObject associatedExclamation = null)
     {
         // Disable the exclamation point if it's active.
         if(associatedExclamation != null)
