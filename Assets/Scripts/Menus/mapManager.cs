@@ -26,7 +26,7 @@ public class mapManager : MonoBehaviour
     //Floor4 has 12 rooms, meaning it should be 12 numbers long. The default should be:
     //floor4RoomsDiscovered = 000000000000
 
-    private int floor1RoomsDiscovered, floor2RoomsDiscovered, floor3RoomsDiscovered, floor4RoomsDiscovered;
+    private int floor1RoomsDiscovered, floor2RoomsDiscovered, floor3RoomsDiscovered, floor4RoomsDiscovered = 000000000000000000000;
     //The maps per floor
     [SerializeField] private GameObject floor1Map, floor2Map, floor3Map, floor4Map, mapParent, pauseMenu;
     [SerializeField] private GameObject[] floor1Rooms, alanFloor1, floor2Rooms, alanFloor2, floor3Rooms, alanFloor3, floor4Rooms, alanFloor4;
@@ -108,15 +108,19 @@ public class mapManager : MonoBehaviour
     //Each time the user walks into a room, check if that room has been traversed before. If it has, do nothing. If it hasn't, add it to the map.
     //Before doing all of this, check if there's an active exclamation point in the room. If there is, then disable it.
     //This event fires EACH TIME ALAN WALKS INTO A ROOM. MAKE SURE IT FIRES EACH TIME YOU WALK INTO A ROOM!
-    public void discoverNewRoom(int whatRoom, GameObject associatedExclamation = null)
+    public void discoverNewRoom(int floor, int whatRoom, GameObject associatedExclamation = null)
     {
+        if(floor != floorNumber)
+        {
+            newLevelMapUpdate(floor);
+        }
         // Disable the exclamation point if it's active.
         if(associatedExclamation != null)
         {
             associatedExclamation.SetActive(false);
         }
         //Set current room
-        currentRoomNumber = whatRoom;
+        currentRoomNumber = whatRoom-1;
 
         // Get the current discovered rooms based on the floor.
         int currentRoomsDiscovered = GetCurrentDiscoveredRooms();
@@ -156,16 +160,16 @@ public class mapManager : MonoBehaviour
         switch (floorNumber)
         {
             case 1:
-                floor1Rooms[whatRoom].SetActive(true);
+                floor1Rooms[currentRoomNumber].SetActive(true);
                 break;
             case 2:
-                floor2Rooms[whatRoom].SetActive(true);
+                floor2Rooms[currentRoomNumber].SetActive(true);
                 break;
             case 3:
-                floor3Rooms[whatRoom].SetActive(true);
+                floor3Rooms[currentRoomNumber].SetActive(true);
                 break;
             case 4:
-                floor4Rooms[whatRoom].SetActive(true);
+                floor4Rooms[currentRoomNumber].SetActive(true);
                 break;
             default:
                 throw new ArgumentOutOfRangeException("Invalid floor number");
