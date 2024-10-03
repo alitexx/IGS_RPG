@@ -26,7 +26,7 @@ public class mapManager : MonoBehaviour
     //Floor4 has 12 rooms, meaning it should be 12 numbers long. The default should be:
     //floor4RoomsDiscovered = 000000000000
 
-    public int floor1RoomsDiscovered, floor2RoomsDiscovered, floor3RoomsDiscovered, floor4RoomsDiscovered = 000000000000000000000;
+    private int floor1RoomsDiscovered, floor2RoomsDiscovered, floor3RoomsDiscovered, floor4RoomsDiscovered = 000000000000000000000;
     //The maps per floor
     [SerializeField] private GameObject floor1Map, floor2Map, floor3Map, floor4Map, mapParent, pauseMenu;
     [SerializeField] private GameObject[] floor1Rooms, alanFloor1, floor2Rooms, alanFloor2, floor3Rooms, alanFloor3, floor4Rooms, alanFloor4;
@@ -34,6 +34,37 @@ public class mapManager : MonoBehaviour
     private int floorNumber;
     //Keeps track of where Alan is. This needs to be passed in on a reloaded save.
     private int currentRoomNumber = 0;
+
+    public int getRoomsDiscovered(int whichRoom)
+    {
+        switch (whichRoom)
+        {
+            case 1: return floor1RoomsDiscovered;
+            case 2: return floor2RoomsDiscovered;
+            case 3: return floor3RoomsDiscovered;
+            case 4: return floor4RoomsDiscovered;
+            default: return 0;
+        }
+    }
+
+    public void setRoomsDiscovered(int whichRoom, int whatValue)
+    {
+        switch (whichRoom)
+        {
+            case 1: 
+                floor1RoomsDiscovered = whatValue;
+                break;
+            case 2:
+                floor2RoomsDiscovered = whatValue;
+                break;
+            case 3:
+                floor3RoomsDiscovered = whatValue;
+                break;
+            case 4:
+                floor4RoomsDiscovered = whatValue;
+                break;
+        }
+    }
 
     //Updates the map when we get to a new level
     public void newLevelMapUpdate(int whatLevel)
@@ -183,6 +214,7 @@ public class mapManager : MonoBehaviour
 
         // Save the updated integer.
         SaveDiscoveredRooms(updatedRoomsDiscovered);
+        Debug.Log(updatedBinaryString);
     }
 
     // Function to get the current discovered rooms based on the floor.
