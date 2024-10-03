@@ -26,7 +26,7 @@ public class mapManager : MonoBehaviour
     //Floor4 has 12 rooms, meaning it should be 12 numbers long. The default should be:
     //floor4RoomsDiscovered = 000000000000
 
-    private int floor1RoomsDiscovered, floor2RoomsDiscovered, floor3RoomsDiscovered, floor4RoomsDiscovered = 000000000000000000000;
+    public int floor1RoomsDiscovered, floor2RoomsDiscovered, floor3RoomsDiscovered, floor4RoomsDiscovered = 000000000000000000000;
     //The maps per floor
     [SerializeField] private GameObject floor1Map, floor2Map, floor3Map, floor4Map, mapParent, pauseMenu;
     [SerializeField] private GameObject[] floor1Rooms, alanFloor1, floor2Rooms, alanFloor2, floor3Rooms, alanFloor3, floor4Rooms, alanFloor4;

@@ -58,6 +58,8 @@ public class PlayerController : MonoBehaviour
     public GameObject[] Doors;
     public GameObject slime;
 
+    public mapManager MapManager;
+
     //Camera Movement Detecter
     public CamMovementDetect cameraMovementDetecter;
 
@@ -461,6 +463,12 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(PlayerPrefs.GetInt("FloorLevel"));
         //Debug.Log(PlayerPrefs.GetInt("PartyLevel"));
         Debug.Log(PlayerPrefs.GetInt("hasKisa"));
+
+        PlayerPrefs.SetInt("Floor1Explored", MapManager.floor1RoomsDiscovered);
+        PlayerPrefs.SetInt("Floor2Explored", MapManager.floor2RoomsDiscovered);
+        PlayerPrefs.SetInt("Floor3Explored", MapManager.floor3RoomsDiscovered);
+        PlayerPrefs.SetInt("Floor4Explored", MapManager.floor4RoomsDiscovered);
+
     }
 
     public void DeleteSave() 
@@ -599,8 +607,13 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
-        
-        
+
+        //Map saves
+        MapManager.floor1RoomsDiscovered = PlayerPrefs.GetInt("Floor1Explored");
+        MapManager.floor2RoomsDiscovered = PlayerPrefs.GetInt("Floor2Explored");
+        MapManager.floor3RoomsDiscovered = PlayerPrefs.GetInt("Floor3Explored");
+        MapManager.floor4RoomsDiscovered = PlayerPrefs.GetInt("Floor4Explored");
+
     }
 
 }
