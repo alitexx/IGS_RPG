@@ -59,6 +59,10 @@ public class PlayerController : MonoBehaviour
     public GameObject slime;
 
     public mapManager MapManager;
+    public int floor1RoomsDiscovered;
+    public int floor2RoomsDiscovered;
+    public int floor3RoomsDiscovered;
+    public int floor4RoomsDiscovered;
 
     //Camera Movement Detecter
     public CamMovementDetect cameraMovementDetecter;
@@ -464,10 +468,15 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(PlayerPrefs.GetInt("PartyLevel"));
         Debug.Log(PlayerPrefs.GetInt("hasKisa"));
 
-        PlayerPrefs.SetInt("Floor1Explored", MapManager.floor1RoomsDiscovered);
-        PlayerPrefs.SetInt("Floor2Explored", MapManager.floor2RoomsDiscovered);
-        PlayerPrefs.SetInt("Floor3Explored", MapManager.floor3RoomsDiscovered);
-        PlayerPrefs.SetInt("Floor4Explored", MapManager.floor4RoomsDiscovered);
+
+        floor1RoomsDiscovered = MapManager.getRoomsDiscovered(1);
+        floor2RoomsDiscovered = MapManager.getRoomsDiscovered(2);
+        floor3RoomsDiscovered = MapManager.getRoomsDiscovered(3);
+        floor4RoomsDiscovered = MapManager.getRoomsDiscovered(4);
+        PlayerPrefs.SetInt("Floor1Explored", floor1RoomsDiscovered);
+        PlayerPrefs.SetInt("Floor2Explored", floor2RoomsDiscovered);
+        PlayerPrefs.SetInt("Floor3Explored", floor3RoomsDiscovered);
+        PlayerPrefs.SetInt("Floor4Explored", floor4RoomsDiscovered);
 
     }
 
@@ -609,10 +618,10 @@ public class PlayerController : MonoBehaviour
         }
 
         //Map saves
-        MapManager.floor1RoomsDiscovered = PlayerPrefs.GetInt("Floor1Explored");
-        MapManager.floor2RoomsDiscovered = PlayerPrefs.GetInt("Floor2Explored");
-        MapManager.floor3RoomsDiscovered = PlayerPrefs.GetInt("Floor3Explored");
-        MapManager.floor4RoomsDiscovered = PlayerPrefs.GetInt("Floor4Explored");
+        MapManager.setRoomsDiscovered(1, PlayerPrefs.GetInt("Floor1Explored"));
+        MapManager.setRoomsDiscovered(2, PlayerPrefs.GetInt("Floor2Explored"));
+        MapManager.setRoomsDiscovered(3, PlayerPrefs.GetInt("Floor3Explored"));
+        MapManager.setRoomsDiscovered(4, PlayerPrefs.GetInt("Floor4Explored"));
 
     }
 
