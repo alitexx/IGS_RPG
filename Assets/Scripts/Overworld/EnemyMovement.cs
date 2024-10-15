@@ -39,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
         {
             if ((DistanceBetweenObjects <= maxDistance) /*&& (PlayerController.isfrozen == false)*/)
             {
-                if (PlayerController.partyLevel >3*PlayerController.Level)
+                if (PlayerController.partyLevel >4*PlayerController.Level)
                 {
                     Vector3 moveDirection = (transform.position - TargetRB.transform.position).normalized;
                     // Player is high level, so flee from the player

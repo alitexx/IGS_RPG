@@ -47,7 +47,10 @@ public class fadeInScript : MonoBehaviour
             fadeIn.DOFade(1, 0.5f).OnComplete(() =>
             {
                 mapManager.OpenMap();
-                fadeIn.DOFade(0, 1f);
+                fadeIn.DOFade(0, 0.5f).OnComplete(() =>
+                {
+                    mapManager.setOpeningClosingMenu(false);
+                });
             });
         });
     }
@@ -61,7 +64,10 @@ public class fadeInScript : MonoBehaviour
             fadeIn.DOFade(1, 0.5f).OnComplete(() =>
             {
                 mapManager.CloseMap();
-                fadeIn.DOFade(0, 1f);
+                fadeIn.DOFade(0, 0.5f).OnComplete(() =>
+                {
+                    mapManager.setOpeningClosingMenu(false);
+                });
             });
         });
     }

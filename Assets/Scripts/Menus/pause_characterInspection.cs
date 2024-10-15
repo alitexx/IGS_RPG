@@ -9,7 +9,6 @@ public class pause_characterInspection : MonoBehaviour
     [SerializeField] private TextMeshProUGUI characterInfo;
     [SerializeField] private TextMeshProUGUI stats_1;
     [SerializeField] private TextMeshProUGUI stats_2;
-    [SerializeField] private TextMeshProUGUI specialInfo;
     [SerializeField] private TextMeshProUGUI elementInfo;
     [SerializeField] private Image elementIcon;
     [SerializeField] private LevelManager levelManager;
@@ -38,7 +37,6 @@ public class pause_characterInspection : MonoBehaviour
                 spm.WhoAreWeViewing = "alan";
                 selectedCharacterStats = levelManager.SetTankStats();
                 characterInfo.text = "A knight sworn to protect Isen. He is searching for a way to bring back his fallen mentor.";
-                specialInfo.text = "Special Move: <color=#ffee83>Taunt</color>\r\nIncrease Alan's health points by half of his maximum health, but become the target of enemy attacks for 1 turn.";
                 
                 if (playerControl.KisaAbsorbed == 1)
                 {
@@ -83,7 +81,6 @@ public class pause_characterInspection : MonoBehaviour
                 spm.WhoAreWeViewing = "kisa";
                 selectedCharacterStats = levelManager.SetBardStats();
                 characterInfo.text = "An elven bard. Her family doubts her adventuring capabilities due to her pampered upbringing and pompous demeanor, but she wishes to prove them wrong.";
-                specialInfo.text = "Special Move: <color=#ffee83>Sing</color>\r\nHeal the entire party by half of their maxiumum health points.";
                 elementInfo.text = "Magical Element\r\n\r\n\r\n\r\n\r\nWind";
                 elementIcon.sprite = elementsIcons[1];
                 break;
@@ -91,7 +88,6 @@ public class pause_characterInspection : MonoBehaviour
                 spm.WhoAreWeViewing = "nicol";
                 selectedCharacterStats = levelManager.SetMageStats();
                 characterInfo.text = "A cat-like red magician. Raised by magicians, he now wanders the globe for the sake of exploration, calling himself an \"aristocat\".";
-                specialInfo.text = "Special Move: <color=#ffee83>Declare Victory</color>\r\nProclaim your victory! Decrease all enemies' defense and temporarily increase Nicol's Strength.";
                 elementInfo.text = "Magical Element\r\n\r\n\r\n\r\n\r\nIce";
                 elementIcon.sprite = elementsIcons[2];
                 break;
@@ -99,7 +95,6 @@ public class pause_characterInspection : MonoBehaviour
                 spm.WhoAreWeViewing = "sophie";
                 selectedCharacterStats = levelManager.SetMonkStats();
                 characterInfo.text = "A monk from a far-off land. She owns a renowned dojo in the heart of Isen and set out on this journey to find her missing students.";
-                specialInfo.text = "Special Move: <color=#ffee83>Thunderstorm</color>\r\nCombine magic with physical strength to deal physical damage to all enemies.";
                 elementInfo.text = "Magical Element\r\n\r\n\r\n\r\n\r\nElectric";
                 elementIcon.sprite = elementsIcons[3];
                 break;
