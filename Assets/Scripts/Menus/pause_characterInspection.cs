@@ -20,6 +20,7 @@ public class pause_characterInspection : MonoBehaviour
     private int[] selectedCharacterStats;
 
     [SerializeField] private Sprite[] elementsIcons;
+    [SerializeField] private displaySupport displaySupport;
 
     /*0 Strength*/
     /*1 Magic Attack*/
@@ -31,7 +32,8 @@ public class pause_characterInspection : MonoBehaviour
     /*7 MaxMana*/
     public void characterInspection(int character)
     {
-        switch(character)
+        displaySupport.updateSupportIcons(character);
+        switch (character)
         {
             case 0: // alan
                 spm.WhoAreWeViewing = "alan";

@@ -625,4 +625,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public int getDeadCharacters()
+    {
+        return ((KisaAbsorbed * 100) + (NicolAbsorbed*10) + (SophieAbsorbed));
+    }
+
 }
