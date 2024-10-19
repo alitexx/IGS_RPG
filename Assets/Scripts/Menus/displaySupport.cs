@@ -91,7 +91,7 @@ public class displaySupport : MonoBehaviour
 
     private void showCharSupport(int position, int charName, int binarySupport)
     {
-        charIcons[position].sprite = charSprites[charName];
+        charIcons[position].sprite = charSprites[charName + 4*CheckDeadCharacter(charName)];
 
         int supportType = getSupportType(charName);
         heartIcons[position].sprite = heartSprites[Convert.ToInt32(binarySupport)+supportType];
@@ -126,6 +126,23 @@ public class displaySupport : MonoBehaviour
         }
 
         return false; // No event to unlock
+    }
+
+
+    int CheckDeadCharacter(int value)
+    {
+        // If the value is 0, return 0 since no action should be taken
+        if (value == 0)
+            return 0;
+
+        // Adjust value to check the corresponding bit in deadCharacters
+        int bitPosition = value - 1; // Since 1 corresponds to the 0th bit, 2 to the 1st, etc.
+
+        // Use bitwise AND to check if the bit at the bitPosition is set
+        int bitMask = 1 << bitPosition;
+
+        // If the bit is set, return 1; otherwise, return 0
+        return (deadCharacters & bitMask) != 0 ? 1 : 0;
     }
 
 }
