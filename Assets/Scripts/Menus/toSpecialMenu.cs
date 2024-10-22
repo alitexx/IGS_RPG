@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.EventSystems;
@@ -7,6 +5,7 @@ using UnityEngine.EventSystems;
 public class toSpecialMenu : MonoBehaviour
 {
     [SerializeField] private RectTransform[] locations;
+    [SerializeField] private GameObject enterSpecial, enterCharSelect;
     [SerializeField] private RectTransform specialMenu, characterInspectionMenu;
 
     public void specialMenuButtonClick()
@@ -14,15 +13,15 @@ public class toSpecialMenu : MonoBehaviour
         if (specialMenu.gameObject.activeInHierarchy)
         {
             //Open Character Inspection
-            ChangeMenu(characterInspectionMenu, specialMenu);
+            ChangeMenu(characterInspectionMenu, specialMenu, enterSpecial);
         } else
         {
             //Open Special Menu
-            ChangeMenu(specialMenu, characterInspectionMenu);
+            ChangeMenu(specialMenu, characterInspectionMenu, enterCharSelect);
         }
     }
 
-    public void ChangeMenu(RectTransform enteringMenu, RectTransform exitingMenu)
+    public void ChangeMenu(RectTransform enteringMenu, RectTransform exitingMenu, GameObject button)
     {
         //Tween exiting menu out
         exitingMenu.DOMove(locations[1].position, 0.2f).OnComplete(() => {
@@ -34,6 +33,8 @@ public class toSpecialMenu : MonoBehaviour
             enteringMenu.gameObject.SetActive(true);
             //tween back to middle
             enteringMenu.DOMove(locations[0].position, 0.35f);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(button);
         });
     }
 }

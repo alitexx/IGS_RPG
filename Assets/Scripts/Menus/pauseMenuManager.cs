@@ -9,7 +9,7 @@ using TMPro;
 public class pauseMenuManager : MonoBehaviour
 {
 
-
+    [SerializeField] private displaySupport displaySupport;
     public GameObject onOpenButton, optionsenterbutton, optionsexitbutton, backButton;
 
     [SerializeField] private Transform[] partyMemberIcons;
@@ -84,6 +84,7 @@ public class pauseMenuManager : MonoBehaviour
         {
             Debug.Log("This is here because the assignment is due in 20 minutes");
         }
+        displaySupport.closeMenu();
     }
 
     //this is already done somewhere else, just leaving the code in case it breaks anything
@@ -174,7 +175,7 @@ public class pauseMenuManager : MonoBehaviour
                 EventSystem.current.SetSelectedGameObject(buttonOn[3]);
                 break;
         }
-
+        displaySupport.closeMenu();
     }
 
     public void openOptionsMenu()
@@ -317,4 +318,6 @@ public class pauseMenuManager : MonoBehaviour
         DeleteMenu.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
     }
+
+    
 }

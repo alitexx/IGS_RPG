@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 //using UnityEditor.UIElements;
@@ -629,5 +630,14 @@ public class PlayerController : MonoBehaviour
     {
         return ((KisaAbsorbed * 100) + (NicolAbsorbed*10) + (SophieAbsorbed));
     }
-
+    public int getUnobtainedCharacters()
+    {
+        //Passes back the characters you DONT have
+        return ((Convert.ToInt32(!hasKisa) * 100) + (Convert.ToInt32(!hasNicol) * 10) + (Convert.ToInt32(!hasSophie)));
+    }
+    public int getObtainedCharacters()
+    {
+        //Passes back the characters you have
+        return ((Convert.ToInt32(hasKisa) * 100) + (Convert.ToInt32(hasNicol) * 10) + (Convert.ToInt32(hasSophie)));
+    }
 }
