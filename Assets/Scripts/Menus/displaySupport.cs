@@ -25,6 +25,7 @@ public class displaySupport : MonoBehaviour
 
     public void updateSupportIcons(int character)
     {
+        Debug.Log(deadCharacters);
         deadCharacters = playerControl.getDeadCharacters();
         switch (character) // passed in from character inspection script
         {
@@ -127,16 +128,14 @@ public class displaySupport : MonoBehaviour
 
         return false; // No event to unlock
     }
-
-
     int CheckDeadCharacter(int value)
     {
         // If the value is 0, return 0 since no action should be taken
         if (value == 0)
             return 0;
 
-        // Adjust value to check the corresponding bit in deadCharacters
-        int bitPosition = value - 1; // Since 1 corresponds to the 0th bit, 2 to the 1st, etc.
+        // Reverse the bit position: value 1 checks the most significant bit in a 3-bit number.
+        int bitPosition = 3 - value; // 1 -> 2nd bit, 2 -> 1st bit, 3 -> 0th bit
 
         // Use bitwise AND to check if the bit at the bitPosition is set
         int bitMask = 1 << bitPosition;
@@ -144,5 +143,4 @@ public class displaySupport : MonoBehaviour
         // If the bit is set, return 1; otherwise, return 0
         return (deadCharacters & bitMask) != 0 ? 1 : 0;
     }
-
 }
