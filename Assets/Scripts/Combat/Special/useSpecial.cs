@@ -56,6 +56,10 @@ public class useSpecial : MonoBehaviour
                 break;
             case 3:
                 //use Alan's third special, Tenacity
+
+                battControl.AlanTenacity();
+
+                StartCoroutine(battControl.WaitBeforeChoosingNext(2f));
                 break;
         }
 

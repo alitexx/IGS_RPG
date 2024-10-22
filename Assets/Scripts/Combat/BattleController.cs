@@ -648,6 +648,8 @@ public class BattleController : MonoBehaviour
 
     public float timeBetweenSelectAndConfirm;
 
+    [SerializeField] private GameObject tenacityPosition;
+
     //Keys
 
     public KeyCode attackKey = KeyCode.W;
@@ -1104,6 +1106,7 @@ public class BattleController : MonoBehaviour
             yield return null;
         }
 
+        activeChar.isBlocking = true;
         activeChar.healthSystem.Heal(5);
         activeChar.ChangeHealthText();
 
@@ -1111,7 +1114,6 @@ public class BattleController : MonoBehaviour
         ParticleManager healParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
         healParticle.animator.SetBool("HealFX", true);
 
-        activeChar.isBlocking = true;
         activeChar.animator.SetBool("Blocking", true);
         ChooseNextActiveChar();
 
@@ -1860,6 +1862,30 @@ public class BattleController : MonoBehaviour
             Vector3 tauntedPosition = enemyList[i].GetPosition();
             ParticleManager tauntedParticle = Instantiate(enemyList[i].particleManager, tauntedPosition, Quaternion.identity, enemyList[i].transform);
             tauntedParticle.animator.SetBool("EnemyTauntedFX", true);
+        }
+    }
+
+    public void AlanTenacity()
+    {
+        StartCoroutine(TenacityParticle());
+
+        activeChar.AttAnim();
+    }
+
+    public IEnumerator TenacityParticle()
+    {
+        yield return new WaitForSeconds(1.2f);
+
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            ParticleManager tenacityParticle;
+
+            Vector3 position = tenacityPosition.transform.position;
+
+            tenacityParticle = Instantiate(enemyList[i].particleManager, position, Quaternion.identity, enemyList[i].transform);
+            tenacityParticle.animator.SetBool("TenacityFX", true);
+
+            enemyList[i].GotDamaged(activeChar.statSheet.stats["Strength"], 0);//enemyList[i].statSheet.stats["Defense"]);
         }
     }
 

@@ -23,6 +23,8 @@ public class BattleCharacter : MonoBehaviour
 
     public CharacterData statSheet;
     public bool isBlocking;
+    public bool AlanGuarding;
+
 
     public GameObject weaknessObject;
     public SpriteRenderer weaknessImage;
@@ -90,6 +92,7 @@ public class BattleCharacter : MonoBehaviour
         selectionCircleObject = transform.Find("Outline").gameObject;
         targetingCircleObject = transform.Find("TargetCircle").gameObject;
         weaknessObject = transform.Find("Weakness").gameObject;
+        AlanGuarding = false;
         
         HideWeaknessObject();
 
@@ -329,6 +332,13 @@ public class BattleCharacter : MonoBehaviour
                 StartCoroutine(WaitUntilAttackOver(targetCharacter, attacker, startingPosition, onAttackComplete));
             });
         }
+    }
+
+    public void AttAnim()
+    {
+        animator.SetBool("Attacking", true);
+
+        state = State.Attacking;
     }
 
     private IEnumerator WaitUntilAttackOver(BattleCharacter targetCharacter, BattleCharacter attacker, Vector3 startingPosition, Action onAttackComplete)
@@ -644,13 +654,13 @@ public class BattleCharacter : MonoBehaviour
                 am.playSFX(13);
             }
 
-            damageMinusDefense -= damageMinusDefense / 4;
+            damageMinusDefense -= damageMinusDefense / 2;
 
+            //Damage PopUp
             Transform damagePopupTransform = Instantiate(damagePopup, transform.position, Quaternion.identity);
             DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
             damPopScript.SetupInt(damageMinusDefense);
 
-            healthSystem.Damage(damageMinusDefense);
             //Debug.Log("Defender Health: " + healthSystem.GetHealth());
         }
         else
@@ -665,9 +675,18 @@ public class BattleCharacter : MonoBehaviour
             DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
             damPopScript.SetupInt(damageMinusDefense);
 
-            healthSystem.Damage(damageMinusDefense);
             //Debug.Log("Defender Health: " + healthSystem.GetHealth());
         }
+
+        if (AlanGuarding)
+        {
+            damageMinusDefense -= damageMinusDefense / 4;
+        }
+
+
+        
+
+        healthSystem.Damage(damageMinusDefense);
 
         statSheet.stats["Health"] = healthSystem.GetHealth();
 
