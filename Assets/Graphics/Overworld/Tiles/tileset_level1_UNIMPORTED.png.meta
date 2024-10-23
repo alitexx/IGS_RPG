@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -2823,9 +2823,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tileset_level1_UNIMPORTED_108: 212084550
-      tileset_level1_UNIMPORTED_98: 385476895
       tileset_level1_UNIMPORTED_109: 394386897
+      tileset_level1_UNIMPORTED_98: 385476895
       tileset_level1_UNIMPORTED_101: 474055269
       tileset_level1_UNIMPORTED_97: 1881340848
       tileset_level1_UNIMPORTED_50: 730237049
@@ -2852,22 +2851,22 @@ TextureImporter:
       tileset_level1_UNIMPORTED_65: 297366826
       tileset_level1_UNIMPORTED_120: 1798773898
       tileset_level1_UNIMPORTED_40: 1119448854
-      tileset_level1_UNIMPORTED_54: 1244082046
-      tileset_level1_UNIMPORTED_58: -84454923
+      tileset_level1_UNIMPORTED_117: -48719221
+      tileset_level1_UNIMPORTED_99: 38109552
       tileset_level1_UNIMPORTED_123: 1318620986
+      tileset_level1_UNIMPORTED_54: 1244082046
       tileset_level1_UNIMPORTED_3: -1652978783
       tileset_level1_UNIMPORTED_45: 1802646176
-      tileset_level1_UNIMPORTED_63: -606731307
+      tileset_level1_UNIMPORTED_58: -84454923
       tileset_level1_UNIMPORTED_81: -799751187
       tileset_level1_UNIMPORTED_94: -332345734
       tileset_level1_UNIMPORTED_116: -1767207736
-      tileset_level1_UNIMPORTED_99: 38109552
       tileset_level1_UNIMPORTED_33: 1817405671
       tileset_level1_UNIMPORTED_74: -1386077074
       tileset_level1_UNIMPORTED_103: -1548012225
       tileset_level1_UNIMPORTED_9: 1958576567
       tileset_level1_UNIMPORTED_121: 616423483
-      tileset_level1_UNIMPORTED_117: -48719221
+      tileset_level1_UNIMPORTED_63: -606731307
       tileset_level1_UNIMPORTED_127: -1719171678
       tileset_level1_UNIMPORTED_114: -1970202125
       tileset_level1_UNIMPORTED_125: 9015772
@@ -2890,12 +2889,12 @@ TextureImporter:
       tileset_level1_UNIMPORTED_49: -1209927558
       tileset_level1_UNIMPORTED_76: -706429588
       tileset_level1_UNIMPORTED_88: 1358937308
+      tileset_level1_UNIMPORTED_104: -1016983173
       tileset_level1_UNIMPORTED_51: -485791547
       tileset_level1_UNIMPORTED_90: 1523258841
       tileset_level1_UNIMPORTED_26: -387147748
       tileset_level1_UNIMPORTED_71: -1203894894
       tileset_level1_UNIMPORTED_21: -489858056
-      tileset_level1_UNIMPORTED_104: -1016983173
       tileset_level1_UNIMPORTED_57: 2123570028
       tileset_level1_UNIMPORTED_13: -595132792
       tileset_level1_UNIMPORTED_42: 1500950275
@@ -2941,6 +2940,7 @@ TextureImporter:
       tileset_level1_UNIMPORTED_18: 1613597026
       tileset_level1_UNIMPORTED_32: 1284175224
       tileset_level1_UNIMPORTED_107: 2084971626
+      tileset_level1_UNIMPORTED_108: 212084550
       tileset_level1_UNIMPORTED_0: 761448970
       tileset_level1_UNIMPORTED_24: 1331449123
       tileset_level1_UNIMPORTED_96: -491360276

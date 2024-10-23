@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -2835,7 +2835,6 @@ TextureImporter:
       tileset_level4_UNIMPORTED_53: 721343365
       tileset_level4_UNIMPORTED_121: 2064485023
       tileset_level4_UNIMPORTED_70: -1266065117
-      tileset_level4_UNIMPORTED_128: -2029772667
       tileset_level4_UNIMPORTED_37: 1795363436
       tileset_level4_UNIMPORTED_6: -2028804547
       tileset_level4_UNIMPORTED_41: -849193837
@@ -2945,11 +2944,12 @@ TextureImporter:
       tileset_level4_UNIMPORTED_39: 781654694
       tileset_level4_UNIMPORTED_78: -477256134
       tileset_level4_UNIMPORTED_42: -1809436476
+      tileset_level4_UNIMPORTED_128: -2029772667
       tileset_level4_UNIMPORTED_122: 2055809281
       tileset_level4_UNIMPORTED_82: 384641174
       tileset_level4_UNIMPORTED_9: 144211399
-      tileset_level4_UNIMPORTED_61: 2004561752
       tileset_level4_UNIMPORTED_97: -29961083
+      tileset_level4_UNIMPORTED_61: 2004561752
       tileset_level4_UNIMPORTED_27: -1300800746
       tileset_level4_UNIMPORTED_118: -365330026
   spritePackingTag: 

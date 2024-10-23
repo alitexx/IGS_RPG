@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -2823,8 +2823,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tileset_level3_UNIMPORTED_124: 1903193415
-      tileset_level3_UNIMPORTED_92: -704783856
+      tileset_level3_UNIMPORTED_23: 2061540461
       tileset_level3_UNIMPORTED_71: -2084222226
       tileset_level3_UNIMPORTED_109: -711652474
       tileset_level3_UNIMPORTED_90: -2085068276
@@ -2835,7 +2834,6 @@ TextureImporter:
       tileset_level3_UNIMPORTED_26: 1611199010
       tileset_level3_UNIMPORTED_110: 1075994317
       tileset_level3_UNIMPORTED_46: -1251260911
-      tileset_level3_UNIMPORTED_119: 805965739
       tileset_level3_UNIMPORTED_22: 1385313928
       tileset_level3_UNIMPORTED_112: 1148010176
       tileset_level3_UNIMPORTED_126: -1156346783
@@ -2881,9 +2879,9 @@ TextureImporter:
       tileset_level3_UNIMPORTED_123: -878078397
       tileset_level3_UNIMPORTED_17: 1778597015
       tileset_level3_UNIMPORTED_75: -949997049
+      tileset_level3_UNIMPORTED_47: -1354831560
       tileset_level3_UNIMPORTED_65: -2031500787
       tileset_level3_UNIMPORTED_42: 1133224221
-      tileset_level3_UNIMPORTED_47: -1354831560
       tileset_level3_UNIMPORTED_76: 1235005411
       tileset_level3_UNIMPORTED_3: -1550922456
       tileset_level3_UNIMPORTED_37: 624074209
@@ -2900,9 +2898,9 @@ TextureImporter:
       tileset_level3_UNIMPORTED_56: 35348457
       tileset_level3_UNIMPORTED_62: 2074572036
       tileset_level3_UNIMPORTED_30: -686439923
-      tileset_level3_UNIMPORTED_115: -939093170
-      tileset_level3_UNIMPORTED_28: -1124901251
       tileset_level3_UNIMPORTED_117: -2081626206
+      tileset_level3_UNIMPORTED_28: -1124901251
+      tileset_level3_UNIMPORTED_115: -939093170
       tileset_level3_UNIMPORTED_5: 705818940
       tileset_level3_UNIMPORTED_13: 1020262688
       tileset_level3_UNIMPORTED_121: -606378978
@@ -2942,16 +2940,18 @@ TextureImporter:
       tileset_level3_UNIMPORTED_87: 1161533434
       tileset_level3_UNIMPORTED_1: -1692298448
       tileset_level3_UNIMPORTED_45: 903374157
+      tileset_level3_UNIMPORTED_119: 805965739
       tileset_level3_UNIMPORTED_6: -1791454034
       tileset_level3_UNIMPORTED_53: -724275851
+      tileset_level3_UNIMPORTED_124: 1903193415
       tileset_level3_UNIMPORTED_10: 617942675
       tileset_level3_UNIMPORTED_84: 2038824324
       tileset_level3_UNIMPORTED_59: 1457233503
       tileset_level3_UNIMPORTED_50: 1717782199
+      tileset_level3_UNIMPORTED_92: -704783856
       tileset_level3_UNIMPORTED_8: -1419295661
-      tileset_level3_UNIMPORTED_23: 2061540461
-      tileset_level3_UNIMPORTED_40: 276076025
       tileset_level3_UNIMPORTED_7: 68112814
+      tileset_level3_UNIMPORTED_40: 276076025
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
