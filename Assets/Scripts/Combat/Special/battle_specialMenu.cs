@@ -49,6 +49,8 @@ public class battle_specialMenu : MonoBehaviour
     [SerializeField] private GameObject firstspecialButton;
     [SerializeField] private GameObject openSpecialMenu;
 
+    [SerializeField] private GameObject[] buttonUI;
+
     //Stuff for checking party level, who we're viewing, etc.
     private int level;
 
@@ -88,6 +90,33 @@ public class battle_specialMenu : MonoBehaviour
         int counter = 0;
         if (specialDescriptions.TryGetValue(WhoAreWeViewing.ToLower(), out string[] descriptions))
         {
+            switch (WhoAreWeViewing)
+            {
+                case "alan":
+                    buttonUI[0].SetActive(true);
+                    buttonUI[1].SetActive(false);
+                    buttonUI[2].SetActive(false);
+                    buttonUI[3].SetActive(false);
+                    break;
+                case "kisa":
+                    buttonUI[0].SetActive(false);
+                    buttonUI[1].SetActive(true);
+                    buttonUI[2].SetActive(false);
+                    buttonUI[3].SetActive(false);
+                    break;
+                case "sophie":
+                    buttonUI[0].SetActive(false);
+                    buttonUI[1].SetActive(false);
+                    buttonUI[2].SetActive(true);
+                    buttonUI[3].SetActive(false);
+                    break;
+                case "nicol":
+                    buttonUI[0].SetActive(false);
+                    buttonUI[1].SetActive(false);
+                    buttonUI[2].SetActive(false);
+                    buttonUI[3].SetActive(true);
+                    break;
+            }
             for (counter = 0; counter < howMany; counter++)
             {
                 specialNameText[counter].text = descriptions[counter];  // Set the title
