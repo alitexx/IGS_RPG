@@ -67,8 +67,9 @@ public class displaySupport : MonoBehaviour
         int supportNum = isSupportActive();
         if (supportNum != -1)
         {
-            //There is a support button on the screen. Find this button and set that as the character's right button
+            //There is a support button on the screen. Find this button and set that as the character's right button and vice versa
             updateButtonRight(partyMemberButtons[character], supportBtn[supportNum]);
+            updateButton(supportBtn[supportNum], partyMemberButtons[character]);
         }
         else
         {
@@ -232,7 +233,7 @@ public class displaySupport : MonoBehaviour
             supportBtn[position].gameObject.SetActive(true);
 
             //button fun time
-
+            Debug.Log("i should be updating the button but i am not");
             updateButton(supportBtn[position], partyMemberButtons[charName]);
         }
     }
@@ -240,6 +241,7 @@ public class displaySupport : MonoBehaviour
 
     private void updateButton(Button buttonUpdated, Button left)
     {
+        
         if (buttonUpdated != null)
         {
             // Get the current navigation settings of the target button
@@ -250,7 +252,7 @@ public class displaySupport : MonoBehaviour
             {
                 navigation.selectOnLeft = left;
             }
-
+            Debug.Log("DONE :)");
             // Apply the modified navigation back to the button
             buttonUpdated.navigation = navigation;
         }
