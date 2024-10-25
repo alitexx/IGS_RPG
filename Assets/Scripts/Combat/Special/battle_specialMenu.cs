@@ -46,7 +46,7 @@ public class battle_specialMenu : MonoBehaviour
     public string WhoAreWeViewing;
     [SerializeField] private TextMeshProUGUI[] specialNameText;
     [SerializeField] private TextMeshProUGUI[] specialTXT_Desc;
-    [SerializeField] private GameObject firstspecialButton;
+    [SerializeField] private GameObject[] firstspecialButton;
     [SerializeField] private GameObject openSpecialMenu;
 
     [SerializeField] private GameObject[] buttonUI;
@@ -61,9 +61,6 @@ public class battle_specialMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        //So we aren't wasting processing time grabbing the same variable over and over again
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(firstspecialButton);
 
         level = LevelManager.level;
         //check party level
@@ -97,24 +94,41 @@ public class battle_specialMenu : MonoBehaviour
                     buttonUI[1].SetActive(false);
                     buttonUI[2].SetActive(false);
                     buttonUI[3].SetActive(false);
+                    //So we aren't wasting processing time grabbing the same variable over and over again
+                    EventSystem.current.SetSelectedGameObject(null);
+                    EventSystem.current.SetSelectedGameObject(firstspecialButton[0]);
+                    // Manually trigger the OnSelect event for the first selected object
+                    ExecuteEvents.Execute(firstspecialButton[0], new BaseEventData(EventSystem.current), ExecuteEvents.selectHandler);
                     break;
                 case "kisa":
                     buttonUI[0].SetActive(false);
                     buttonUI[1].SetActive(true);
                     buttonUI[2].SetActive(false);
-                    buttonUI[3].SetActive(false);
+                    buttonUI[3].SetActive(false);//So we aren't wasting processing time grabbing the same variable over and over again
+                    EventSystem.current.SetSelectedGameObject(null);
+                    EventSystem.current.SetSelectedGameObject(firstspecialButton[1]);
+                    // Manually trigger the OnSelect event for the first selected object
+                    ExecuteEvents.Execute(firstspecialButton[1], new BaseEventData(EventSystem.current), ExecuteEvents.selectHandler);
                     break;
                 case "sophie":
                     buttonUI[0].SetActive(false);
                     buttonUI[1].SetActive(false);
                     buttonUI[2].SetActive(true);
-                    buttonUI[3].SetActive(false);
+                    buttonUI[3].SetActive(false);//So we aren't wasting processing time grabbing the same variable over and over again
+                    EventSystem.current.SetSelectedGameObject(null);
+                    EventSystem.current.SetSelectedGameObject(firstspecialButton[2]);
+                    // Manually trigger the OnSelect event for the first selected object
+                    ExecuteEvents.Execute(firstspecialButton[2], new BaseEventData(EventSystem.current), ExecuteEvents.selectHandler);
                     break;
                 case "nicol":
                     buttonUI[0].SetActive(false);
                     buttonUI[1].SetActive(false);
                     buttonUI[2].SetActive(false);
-                    buttonUI[3].SetActive(true);
+                    buttonUI[3].SetActive(true);//So we aren't wasting processing time grabbing the same variable over and over again
+                    EventSystem.current.SetSelectedGameObject(null);
+                    EventSystem.current.SetSelectedGameObject(firstspecialButton[3]);
+                    // Manually trigger the OnSelect event for the first selected object
+                    ExecuteEvents.Execute(firstspecialButton[3], new BaseEventData(EventSystem.current), ExecuteEvents.selectHandler);
                     break;
             }
             for (counter = 0; counter < howMany; counter++)
@@ -138,7 +152,7 @@ public class battle_specialMenu : MonoBehaviour
         }
 
         // Manually trigger the OnSelect event for the first selected object
-        ExecuteEvents.Execute(firstspecialButton, new BaseEventData(EventSystem.current), ExecuteEvents.selectHandler);
+        //ExecuteEvents.Execute(firstspecialButton, new BaseEventData(EventSystem.current), ExecuteEvents.selectHandler);
 
     }
 
