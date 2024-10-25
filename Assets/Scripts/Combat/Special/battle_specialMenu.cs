@@ -12,27 +12,27 @@ public class battle_specialMenu : MonoBehaviour
     {
         //I have to conform to the naming convention but we know who is who
         specialDescriptions = new Dictionary<string, string[]> {
-        { "alan", alanSpecialDescriptions },
-        { "kisa", kisaSpecialDescriptions },
-        { "nicol", nicolSpecialDescriptions },
-        { "sophie", sophieSpecialDescriptions }
+        { "0", alanSpecialDescriptions },
+        { "1", kisaSpecialDescriptions },
+        { "2", nicolSpecialDescriptions },
+        { "3", sophieSpecialDescriptions }
     };
     }
 
-    public string reorganizeName(string name)
+    public int reorganizeName(string name)
     {
         switch (name)
         {
             case "tank guy":
-                return "alan";
+                return 0;
             case "bard guy":
-                return "kisa";
+                return 1;
             case "monk guy":
-                return "sophie";
+                return 3;
             case "mage guy":
-                return "nicol";
+                return 2;
             default:
-                return name;
+                return -1;
         }
     }
 
@@ -43,13 +43,18 @@ public class battle_specialMenu : MonoBehaviour
     [SerializeField] private string[] sophieSpecialDescriptions;
 
     //You need to pass this in
-    public string WhoAreWeViewing;
+    public int WhoAreWeViewing;
     [SerializeField] private TextMeshProUGUI[] specialNameText;
     [SerializeField] private TextMeshProUGUI[] specialTXT_Desc;
-    [SerializeField] private GameObject[] firstspecialButton;
     [SerializeField] private GameObject openSpecialMenu;
 
     [SerializeField] private GameObject[] buttonUI;
+    [SerializeField] private GameObject[] allButtons;
+    [SerializeField] private GameObject[] syncStrike;
+
+    [SerializeField] private PlayerController playerController;
+
+    //change back button to allow it to move down to special menu
 
     //Stuff for checking party level, who we're viewing, etc.
     private int level;
@@ -79,60 +84,53 @@ public class battle_specialMenu : MonoBehaviour
             //else, party is >=10. display all specials
             DisplaySpecial(3);
         }
+
+        switch (WhoAreWeViewing)
+        {
+            case 0://ALAN
+                buttonUI[0].SetActive(true);
+                buttonUI[1].SetActive(false);
+                buttonUI[2].SetActive(false);
+                buttonUI[3].SetActive(false);
+                break;
+            case 1: //KISA
+                buttonUI[0].SetActive(false);
+                buttonUI[1].SetActive(true);
+                buttonUI[2].SetActive(false);
+                buttonUI[3].SetActive(false);
+                break;
+            case 2: //NICOL
+                buttonUI[0].SetActive(false);
+                buttonUI[1].SetActive(false);
+                buttonUI[2].SetActive(true);
+                buttonUI[3].SetActive(false);
+                break;
+            case 3://SOPHIE
+                buttonUI[0].SetActive(false);
+                buttonUI[1].SetActive(false);
+                buttonUI[2].SetActive(false);
+                buttonUI[3].SetActive(true);
+                break;
+        }
+
+        if(playerController.getObtainedCharacters()>= 1)
+        {
+            syncStrike[WhoAreWeViewing].SetActive(true);
+        } else
+        {
+            syncStrike[WhoAreWeViewing].SetActive(false);
+        }
     }
 
     private void DisplaySpecial(int howMany)
     {
         //How many will never be higher than 3
         int counter = 0;
-        if (specialDescriptions.TryGetValue(WhoAreWeViewing.ToLower(), out string[] descriptions))
+        if (specialDescriptions.TryGetValue(WhoAreWeViewing.ToString(), out string[] descriptions))
         {
-            switch (WhoAreWeViewing)
-            {
-                case "alan":
-                    buttonUI[0].SetActive(true);
-                    buttonUI[1].SetActive(false);
-                    buttonUI[2].SetActive(false);
-                    buttonUI[3].SetActive(false);
-                    //So we aren't wasting processing time grabbing the same variable over and over again
-                    EventSystem.current.SetSelectedGameObject(null);
-                    EventSystem.current.SetSelectedGameObject(firstspecialButton[0]);
-                    // Manually trigger the OnSelect event for the first selected object
-                    ExecuteEvents.Execute(firstspecialButton[0], new BaseEventData(EventSystem.current), ExecuteEvents.selectHandler);
-                    break;
-                case "kisa":
-                    buttonUI[0].SetActive(false);
-                    buttonUI[1].SetActive(true);
-                    buttonUI[2].SetActive(false);
-                    buttonUI[3].SetActive(false);//So we aren't wasting processing time grabbing the same variable over and over again
-                    EventSystem.current.SetSelectedGameObject(null);
-                    EventSystem.current.SetSelectedGameObject(firstspecialButton[1]);
-                    // Manually trigger the OnSelect event for the first selected object
-                    ExecuteEvents.Execute(firstspecialButton[1], new BaseEventData(EventSystem.current), ExecuteEvents.selectHandler);
-                    break;
-                case "sophie":
-                    buttonUI[0].SetActive(false);
-                    buttonUI[1].SetActive(false);
-                    buttonUI[2].SetActive(true);
-                    buttonUI[3].SetActive(false);//So we aren't wasting processing time grabbing the same variable over and over again
-                    EventSystem.current.SetSelectedGameObject(null);
-                    EventSystem.current.SetSelectedGameObject(firstspecialButton[2]);
-                    // Manually trigger the OnSelect event for the first selected object
-                    ExecuteEvents.Execute(firstspecialButton[2], new BaseEventData(EventSystem.current), ExecuteEvents.selectHandler);
-                    break;
-                case "nicol":
-                    buttonUI[0].SetActive(false);
-                    buttonUI[1].SetActive(false);
-                    buttonUI[2].SetActive(false);
-                    buttonUI[3].SetActive(true);//So we aren't wasting processing time grabbing the same variable over and over again
-                    EventSystem.current.SetSelectedGameObject(null);
-                    EventSystem.current.SetSelectedGameObject(firstspecialButton[3]);
-                    // Manually trigger the OnSelect event for the first selected object
-                    ExecuteEvents.Execute(firstspecialButton[3], new BaseEventData(EventSystem.current), ExecuteEvents.selectHandler);
-                    break;
-            }
             for (counter = 0; counter < howMany; counter++)
             {
+                allButtons[counter + (3 * WhoAreWeViewing)].SetActive(true);
                 specialNameText[counter].text = descriptions[counter];  // Set the title
                 specialTXT_Desc[counter].text = descriptions[counter + 3];   // Set the description
             }
@@ -141,18 +139,21 @@ public class battle_specialMenu : MonoBehaviour
                 //Might break, have no idea
                 for (counter = howMany; counter < 3; counter++)
                 {
+                    allButtons[counter+(3*WhoAreWeViewing)].SetActive(false);
                     specialNameText[counter].text = " ???";
                     specialTXT_Desc[counter].text = "Locked until level "+(counter)*5;
                 }
             }
+            
         }
         else
         {
             Debug.LogError("Character not found: " + WhoAreWeViewing);
         }
-
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(allButtons[WhoAreWeViewing * 3]);
         // Manually trigger the OnSelect event for the first selected object
-        //ExecuteEvents.Execute(firstspecialButton, new BaseEventData(EventSystem.current), ExecuteEvents.selectHandler);
+        ExecuteEvents.Execute(allButtons[WhoAreWeViewing*3], new BaseEventData(EventSystem.current), ExecuteEvents.selectHandler);
 
     }
 

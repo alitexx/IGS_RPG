@@ -268,7 +268,7 @@ public class mapManager : MonoBehaviour
     void Update()
     {
         //CHANGE JOYSTICK BUTTON TO X
-        if ((Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.JoystickButton2)) && (mainDialogueManager.dialogueRunning == false || battleUI.activeInHierarchy == false || PauseMenu.canOpenPause == true) && openingClosingMenu == false)
+        if ((Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.JoystickButton2)) && (mainDialogueManager.dialogueRunning == false && battleUI.activeInHierarchy == false && PauseMenu.canOpenPause == true) && openingClosingMenu == false)
         {
             openingClosingMenu = true;
             if (!mapParent.activeInHierarchy)

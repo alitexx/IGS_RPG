@@ -5,7 +5,7 @@ using UnityEngine;
 public class useSpecial : MonoBehaviour
 {
     //Get who we are viewing
-    public string WhoAreWeViewing;
+    public int WhoAreWeViewing;
     public battle_specialMenu b_sm;
 
     public BattleController battControl;
@@ -18,20 +18,20 @@ public class useSpecial : MonoBehaviour
         WhoAreWeViewing = b_sm.WhoAreWeViewing;
         switch(WhoAreWeViewing)
         {
-            case "alan":
+            case 0: //ALAN
                 alanSpecial(whichLevel);
                 break;
-            case "kisa":
+            case 1: //KISA
                 kisaSpecial(whichLevel);
                 break;
-            case "nicol":
+            case 2: //NICOL
                 nicolSpecial(whichLevel);
                 break;
-            case "sophie":
+            case 3:// SOPHIE
                 sophieSpecial(whichLevel);
                 break;
             default:
-                Debug.LogError("Cannot find character: " + WhoAreWeViewing);
+                Debug.LogError("Cannot find character with ID: " + WhoAreWeViewing);
                 return;
         }
     }
