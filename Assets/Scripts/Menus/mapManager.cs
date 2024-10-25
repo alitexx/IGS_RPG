@@ -178,7 +178,7 @@ public class mapManager : MonoBehaviour
         }
 
         // Check if the player has already discovered the room.
-        if (binaryString[whatRoom] == '1')
+        if (binaryString[whatRoom-1] == '1')
         {
             // Room already discovered, do nothing.
             return;
@@ -186,7 +186,7 @@ public class mapManager : MonoBehaviour
 
         // If the room hasn't been discovered, change the corresponding '0' to '1'.
         char[] binaryArray = binaryString.ToCharArray();
-        binaryArray[whatRoom] = '1';
+        binaryArray[whatRoom-1] = '1';
 
         //Enable the room on the map found there (another switch statement i know)
         switch (floorNumber)

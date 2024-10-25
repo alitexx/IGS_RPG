@@ -554,7 +554,7 @@ Transform:
   m_GameObject: {fileID: 9174328412771305065}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9999999, y: 1.9999999, z: 1.9999999}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1473065057041270022}
@@ -587,6 +587,7 @@ MonoBehaviour:
     weakness: 
     specialMove: 0
   isBlocking: 0
+  AlanGuarding: 0
   weaknessObject: {fileID: 0}
   weaknessImage: {fileID: 3714340667494519407}
   GIsPlayerTeam: 0
@@ -600,6 +601,10 @@ MonoBehaviour:
   weakPopup: {fileID: 1280113776276120735, guid: 233daff3f43193c4787f80a2e3ddd3d8, type: 3}
   healthText: {fileID: 0}
   specialAvailable: 0
+  tempBuffed: 0
+  tempIncrease: 0
+  statIncreased: 
+  redBG: {fileID: 0}
 --- !u!95 &7197455562530669128
 Animator:
   serializedVersion: 4
@@ -666,7 +671,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 6, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
