@@ -70,6 +70,9 @@ public class BattleCharacter : MonoBehaviour
     public int tempIncrease = 0;
     public string statIncreased = "";
 
+    //TempDebuffs
+    public bool Confused;
+
     // for when the player uses hp as mana
     [SerializeField] private CanvasGroup redBG;
 
@@ -83,7 +86,7 @@ public class BattleCharacter : MonoBehaviour
 
     private void Awake()
     {
-        
+        Confused = false;
         amGameObject = GameObject.Find("/-- AUDIO --");
         am = amGameObject.GetComponent<audioManager>();
 

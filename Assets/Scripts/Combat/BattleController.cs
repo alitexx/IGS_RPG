@@ -1039,6 +1039,9 @@ public class BattleController : MonoBehaviour
     //When these coroutines are called, the while loop while loop indefinitely until the enter or "return" key is pressed
     private IEnumerator AttackTargeting()
     {
+
+        #region Targeting
+
         int enemyNum = 0;
 
         coroutineRunning = true;
@@ -1080,6 +1083,9 @@ public class BattleController : MonoBehaviour
 
             yield return null;
         }
+
+        #endregion
+
 
         activeChar.Attack(enemyList[enemyNum], activeChar, () =>
         {
@@ -1701,99 +1707,108 @@ public class BattleController : MonoBehaviour
         //If the next character in the queue is on the enemy team
         if (characterQueue.Peek().GIsPlayerTeam == false)
         {
-            //Debug.Log("enemy " + characterQueue.Peek().statSheet.name);
-            SetActiveCharBattle(characterQueue.Peek());
-            alreadyWent.Enqueue(characterQueue.Dequeue());
 
-            state = State.Busy;
-
-            int enemyTarget;
-
-            if (isTaunting == false)
+            if (characterQueue.Peek().Confused == true)
             {
-                //Debug.Log("Not taunted");
-                enemyTarget = Random.Range(0, playerList.Count);
+                characterQueue.Peek().Confused = false;
+                
+                ChooseNextActiveChar();
+            }
+            else
+            {
+                //Debug.Log("enemy " + characterQueue.Peek().statSheet.name);
+                SetActiveCharBattle(characterQueue.Peek());
+                alreadyWent.Enqueue(characterQueue.Dequeue());
 
-                if (activeChar.statSheet.magicElement == "No Magic")
-                {
-                    activeChar.Attack(playerList[enemyTarget], activeChar, () =>
-                    {
-                        ChooseNextActiveChar();
-                    });
-                }
-                else if (activeChar.statSheet.magicElement == "Bone")
-                {
-                    activeChar.magAttack(playerList[enemyTarget], activeChar, () =>
-                    {
-                        ChooseNextActiveChar();
-                    });
-                }
-                else
-                {
-                    int whichAttack = Random.Range(1, 3);
+                state = State.Busy;
 
-                    if (whichAttack == 1)
+                int enemyTarget;
+
+                if (isTaunting == false)
+                {
+                    //Debug.Log("Not taunted");
+                    enemyTarget = Random.Range(0, playerList.Count);
+
+                    if (activeChar.statSheet.magicElement == "No Magic")
                     {
                         activeChar.Attack(playerList[enemyTarget], activeChar, () =>
                         {
                             ChooseNextActiveChar();
                         });
                     }
-                    else if (whichAttack == 2)
+                    else if (activeChar.statSheet.magicElement == "Bone")
                     {
                         activeChar.magAttack(playerList[enemyTarget], activeChar, () =>
                         {
                             ChooseNextActiveChar();
                         });
                     }
-                }
-            }
-            else
-            {
-                //Debug.Log("Taunted");
+                    else
+                    {
+                        int whichAttack = Random.Range(1, 3);
 
-                if (activeChar.statSheet.magicElement == "No Magic")
-                {
-                    activeChar.Attack(tankChar, activeChar, () =>
-                    {
-                        ChooseNextActiveChar();
-                    });
-                }
-                else if (activeChar.statSheet.magicElement == "Bone")
-                {
-                    activeChar.magAttack(tankChar, activeChar, () =>
-                    {
-                        ChooseNextActiveChar();
-                    });
+                        if (whichAttack == 1)
+                        {
+                            activeChar.Attack(playerList[enemyTarget], activeChar, () =>
+                            {
+                                ChooseNextActiveChar();
+                            });
+                        }
+                        else if (whichAttack == 2)
+                        {
+                            activeChar.magAttack(playerList[enemyTarget], activeChar, () =>
+                            {
+                                ChooseNextActiveChar();
+                            });
+                        }
+                    }
                 }
                 else
                 {
-                    int whichAttack = Random.Range(1, 3);
+                    //Debug.Log("Taunted");
 
-                    if (whichAttack == 1)
+                    if (activeChar.statSheet.magicElement == "No Magic")
                     {
                         activeChar.Attack(tankChar, activeChar, () =>
                         {
                             ChooseNextActiveChar();
                         });
                     }
-                    else if (whichAttack == 2)
+                    else if (activeChar.statSheet.magicElement == "Bone")
                     {
                         activeChar.magAttack(tankChar, activeChar, () =>
                         {
                             ChooseNextActiveChar();
                         });
                     }
+                    else
+                    {
+                        int whichAttack = Random.Range(1, 3);
+
+                        if (whichAttack == 1)
+                        {
+                            activeChar.Attack(tankChar, activeChar, () =>
+                            {
+                                ChooseNextActiveChar();
+                            });
+                        }
+                        else if (whichAttack == 2)
+                        {
+                            activeChar.magAttack(tankChar, activeChar, () =>
+                            {
+                                ChooseNextActiveChar();
+                            });
+                        }
+                    }
                 }
+
+                //Debug.Log("Target: " +  enemyTarget);
+
+                //Make enemy focus one target
+                //enemyTarget = 1;
+
+
             }
-
-            //Debug.Log("Target: " +  enemyTarget);
-
-            //Make enemy focus one target
-            //enemyTarget = 1;
-
-
-
         }
         //If the next character in the queue is on the player team
         else
@@ -1832,6 +1847,7 @@ public class BattleController : MonoBehaviour
 
     #region Special Functions
 
+    #region Alan
     public void AlanGuardStatIncrease()
     {
         Vector3 guardPosition = tankChar.GetPosition();
@@ -1888,6 +1904,106 @@ public class BattleController : MonoBehaviour
             enemyList[i].GotDamaged(activeChar.statSheet.stats["Strength"], 0);//enemyList[i].statSheet.stats["Defense"]);
         }
     }
+
+    #endregion
+
+    #region Kisa
+
+    public void KisaSing()
+    {
+        activeChar.animator.SetBool("MagAttacking", true);
+
+        Vector3 singPosition = activeChar.GetPosition();
+        ParticleManager singParticle = Instantiate(activeChar.particleManager, singPosition, Quaternion.identity, activeChar.transform);
+        singParticle.animator.SetBool("KisaSingFX", true);
+        am.playSFX(10);
+
+        backButton.SetActive(false);
+
+        for (int i = 0; i < playerList.Count; i++)
+        {
+            ParticleManager healParticle;
+
+            Vector3 position = playerList[i].GetPosition();
+
+            healParticle = Instantiate(playerList[i].particleManager, position, Quaternion.identity, playerList[i].transform);
+            healParticle.animator.SetBool("HealFX", true);
+
+            playerList[i].healthSystem.Heal(playerList[i].statSheet.stats["MaxHealth"] / 4);
+
+            playerList[i].ChangeHealthText();
+
+            am.playSFX(12);
+
+        }
+    }
+
+    public void KisaConfused()
+    {
+        //StartCoroutine()
+    }
+
+    public IEnumerator ConfusedTargeting()
+    {
+        int enemyNum = 0;
+
+        coroutineRunning = true;
+
+        backButton.SetActive(true);
+
+        enemyList[enemyNum].ShowTargetCircle();
+
+        yield return new WaitForSeconds(timeBetweenSelectAndConfirm);
+
+        while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            {
+                enemyList[enemyNum].HideTargetCircle();
+                if (enemyNum == enemyList.Count - 1)
+                {
+                    enemyNum = 0;
+                }
+                else
+                {
+                    enemyNum++;
+                }
+                enemyList[enemyNum].ShowTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            {
+                enemyList[enemyNum].HideTargetCircle();
+                if (enemyNum == 0)
+                {
+                    enemyNum = (enemyList.Count - 1);
+                }
+                else
+                {
+                    enemyNum--;
+                }
+                enemyList[enemyNum].ShowTargetCircle();
+            }
+
+            yield return null;
+        }
+
+        enemyList[enemyNum].HideTargetCircle();
+
+        enemyList[enemyNum].Confused = true;
+        enemyList[enemyNum].animator.SetBool("ConfusedFX", true);
+        ParticleManager confuseParticle;
+
+        Vector3 position = enemyList[enemyNum].GetPosition();
+
+        confuseParticle = Instantiate(enemyList[enemyNum].particleManager, position, Quaternion.identity, enemyList[enemyNum].transform);
+        confuseParticle.animator.SetBool("ConfuseFX", true);
+
+        StartCoroutine(WaitBeforeChoosingNext(1.5f));
+    }
+
+
+
+    #endregion
 
     #endregion
 

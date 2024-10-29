@@ -73,14 +73,22 @@ public class useSpecial : MonoBehaviour
         {
             case 1:
                 //use Kisa's first special, Sing
+                battControl.KisaSing();
+
+                StartCoroutine(battControl.WaitBeforeChoosingNext(1.5f));
                 break;
             case 2:
                 //use Kisa's second special, Distract
+                battControl.backButton.SetActive(true);
+                StartCoroutine(battControl.ConfusedTargeting());
                 break;
             case 3:
                 //use Kisa's third special, Revive. If we can't revive, change this to Performance.
                 break;
         }
+
+        battControl.backButton.SetActive(false);
+        b_sm.gameObject.SetActive(false);
     }
 
     public void nicolSpecial(int whichLevel)
@@ -97,6 +105,9 @@ public class useSpecial : MonoBehaviour
                 //use Nicol's third special, Encourage
                 break;
         }
+
+        battControl.backButton.SetActive(false);
+        b_sm.gameObject.SetActive(false);
     }
 
     public void sophieSpecial(int whichLevel)
@@ -113,5 +124,8 @@ public class useSpecial : MonoBehaviour
                 //use Sophie's third special, Starstorm
                 break;
         }
+
+        battControl.backButton.SetActive(false);
+        b_sm.gameObject.SetActive(false);
     }
 }
