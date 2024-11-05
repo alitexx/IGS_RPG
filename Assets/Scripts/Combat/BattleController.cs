@@ -618,7 +618,7 @@ public class BattleController : MonoBehaviour
     [SerializeField] TutorialHandler tutH;
     public bool coroutineRunning;
 
-    [SerializeField] private GameObject attackButtonBlocker;
+    //[SerializeField] private GameObject attackButtonBlocker;
 
     private bool partyBoss;
 
@@ -739,14 +739,14 @@ public class BattleController : MonoBehaviour
             fightingButtons.SetActive(false);
         }  
 
-        if (alanFireMagicButton.activeInHierarchy)
-        {
-            attackButtonBlocker.SetActive(false);
-        }
-        else
-        {
-            attackButtonBlocker.SetActive(true);
-        }
+        //if (alanFireMagicButton.activeInHierarchy)
+        //{
+        //    attackButtonBlocker.SetActive(false);
+        //}
+        //else
+        //{
+        //    attackButtonBlocker.SetActive(true);
+        //}
 
          //Testing how to instantiate the particle effects
         if (Input.GetKeyDown(KeyCode.G))

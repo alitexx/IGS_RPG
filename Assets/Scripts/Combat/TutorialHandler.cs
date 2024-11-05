@@ -23,6 +23,8 @@ public class TutorialHandler : MonoBehaviour
     public int tutorialCounter;
     private GameObject previousHole; // for turning on/off the holes in the tutorial
 
+    private bool firstTime4, firstTime5 = false;
+
     private void Start()
     {
         tutorialCounter = 0;
@@ -36,7 +38,24 @@ public class TutorialHandler : MonoBehaviour
 
     public void continueTutorial()
     {
+        Debug.Log("CONTINUED TUTORIAL FROM "+tutorialCounter.ToString() + " TO " +(tutorialCounter+1).ToString());
         tutorialCounter++;
+        if(tutorialCounter == 4 && firstTime4 == false)
+        {
+            tutorialCounter--;
+            firstTime4 = true;
+            return;
+        } else if (tutorialCounter == 5 && firstTime5 == false)
+        {
+            Debug.Log("Womp womp next tutorial skipped");
+            targetTutorial.SetActive(false);
+            tutorialCounter--;
+            firstTime5 = true;
+            return;
+        } else if (tutorialCounter > tutorialMenus.Length)
+        {
+            return;
+        }
         tutorialMenus[tutorialCounter - 1].SetActive(false);
         tutorialMenus[tutorialCounter].SetActive(true);
         if (previousHole)
@@ -57,15 +76,16 @@ public class TutorialHandler : MonoBehaviour
                 targetTutorial.SetActive(true);
                 //tutorialMenus[tutorialCounter].SetActive(false);
                 break;
+            case 4:
+                targetTutorial.SetActive(false);
+                tutorialHoles[3].SetActive(true);
+                previousHole = tutorialHoles[3];
+                break;
             case 5:
                 tutorialHoles[2].SetActive(true);
                 previousHole = tutorialHoles[2];
                 break;
             case 7:
-                tutorialHoles[3].SetActive(true);
-                previousHole = tutorialHoles[3];
-                break;
-            case 8:
                 tutorialHoles[4].SetActive(true);
                 previousHole = tutorialHoles[4];
                 break;
@@ -85,6 +105,9 @@ public class TutorialHandler : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(audioStatics.keycodeInterractButton) && battleController.state == BattleController.State.Busy && battleController.alanFireMagicButton.activeInHierarchy == false && battleController.backButton.activeInHierarchy) 
+        {
+            continueTutorial();
+        } else if (Input.GetKeyDown(audioStatics.keycodeInterractButton) && (tutorialCounter == 6 || tutorialCounter == 7))
         {
             continueTutorial();
         }
@@ -107,7 +130,7 @@ public class TutorialHandler : MonoBehaviour
             fadeInBG();
         }
 
-        if (tutorialCounter == 4)
+        if (tutorialCounter == 3 || tutorialCounter == 4 || tutorialCounter == 7)
         {
             if (battleController.state == BattleController.State.WaitingForPlayer)
             {
@@ -118,113 +141,5 @@ public class TutorialHandler : MonoBehaviour
                 tutorialMenus[tutorialCounter].SetActive(false);
             }
         }
-
-        if (tutorialCounter == 6)
-        {
-            if (battleController.state == BattleController.State.WaitingForPlayer)
-            {
-                tutorialMenus[tutorialCounter].SetActive(true);
-            }
-            else
-            {
-                tutorialMenus[tutorialCounter].SetActive(false);
-            }
-        }
-        //if (tutorialCounter == 0)
-        //{
-        //    if (battleController.backButton.activeInHierarchy)
-        //    {
-        //        targetTutorial.SetActive(true);
-        //    }
-        //    else
-        //    {
-        //        targetTutorial.SetActive(false);   
-        //    }
-
-        //    if (battleController.fightingButtons.activeInHierarchy)
-        //    {
-        //        attackTutorial.SetActive(true);
-        //        defendTutorial.SetActive(false);
-        //        specialTutorial.SetActive(false);
-        //        magicTutorial.SetActive(false);
-        //    }
-        //    else
-        //    {
-        //        attackTutorial.SetActive(false);
-        //        defendTutorial.SetActive(false);
-        //        specialTutorial.SetActive(false);
-        //        magicTutorial.SetActive(false);
-        //    }
-        //}
-        //else if (tutorialCounter == 1)
-        //{
-        //    targetTutorial.SetActive(false);
-
-        //    if (battleController.fightingButtons.activeInHierarchy)
-        //    {
-        //        attackTutorial.SetActive(false);
-        //        defendTutorial.SetActive(true);
-        //        specialTutorial.SetActive(false);
-        //        magicTutorial.SetActive(false);
-        //    }
-        //    else
-        //    {
-        //        attackTutorial.SetActive(false);
-        //        defendTutorial.SetActive(false);
-        //        specialTutorial.SetActive(false);
-        //        magicTutorial.SetActive(false);
-        //    }
-        //}
-        //else if (tutorialCounter == 2)
-        //{
-        //    if (battleController.fightingButtons.activeInHierarchy)
-        //    {
-        //        attackTutorial.SetActive(false);
-        //        defendTutorial.SetActive(false);
-        //        specialTutorial.SetActive(true);
-        //        magicTutorial.SetActive(false);
-        //    }
-        //    else
-        //    {
-        //        attackTutorial.SetActive(false);
-        //        defendTutorial.SetActive(false);
-        //        specialTutorial.SetActive(false);
-        //        magicTutorial.SetActive(false);
-        //    }
-        //}
-        //else if (tutorialCounter == 3)
-        //{
-        //    if (battleController.backButton.activeInHierarchy && battleController.alanFireMagicButton.activeInHierarchy == false)
-        //    {
-        //        targetTutorial.SetActive(true);
-        //    }
-        //    else
-        //    {
-        //        targetTutorial.SetActive(false);
-        //    }
-
-        //    if (battleController.fightingButtons.activeInHierarchy)
-        //    {
-        //        attackTutorial.SetActive(false);
-        //        defendTutorial.SetActive(false);
-        //        specialTutorial.SetActive(false);
-        //        magicTutorial.SetActive(true);
-        //    }
-        //    else
-        //    {
-        //        attackTutorial.SetActive(false);
-        //        defendTutorial.SetActive(false);
-        //        specialTutorial.SetActive(false);
-        //        magicTutorial.SetActive(false);
-        //    }
-        //}
-        //else
-        //{
-        //    targetTutorial.SetActive(false);
-        //    attackTutorial.SetActive(false);
-        //    defendTutorial.SetActive(false);
-        //    specialTutorial.SetActive(false);
-        //    magicTutorial.SetActive(false);
-        //}
     }
 }
