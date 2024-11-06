@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using System.Linq;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+using Unity.VisualScripting;
 
 public class specialPauseMenu : MonoBehaviour
 {
@@ -40,6 +44,12 @@ public class specialPauseMenu : MonoBehaviour
     //SpecialCharges
     [SerializeField] private GameObject[] SpecialCharges;
 
+    //SpecialCharges
+    [SerializeField] private GameObject[] SpecialCharges3Individual;
+
+    [SerializeField] private PlayerController playerController;
+    private int deadCharacters = 0;
+
     //Stuff for checking party level, who we're viewing, etc.
     private int level;
     //This is sent to us via the pause_characterInspection script
@@ -66,6 +76,34 @@ public class specialPauseMenu : MonoBehaviour
             DisplaySpecial(3);
         }
 
+        deadCharacters = playerController.getDeadCharacters();
+        // For Alan Only
+        if (WhoAreWeViewing.ToLower() == "alan" && deadCharacters != 0)
+        {
+            // Treat the number as a string to iterate over each character
+            string deadCharacterString = deadCharacters.ToString();
+
+            // Debug log to see the value as a string
+            Debug.Log("Dead Characters String: " + deadCharacterString);
+
+            // Ensure the string is always 3 characters long (padded with leading zero if necessary)
+            deadCharacterString = deadCharacterString.PadLeft(3, '0');
+
+            // Loop through each character in the string
+            for (int i = 0; i < deadCharacterString.Length; i++)
+            {
+                // If the character is '1', disable the corresponding special charge
+                if (deadCharacterString[i] == '1')
+                {
+                    Debug.Log("Disabling Special Charge at index " + i);
+                    SpecialCharges3Individual[i].SetActive(false); // Note that the index is directly used here
+                }
+            }
+            if (deadCharacters == 111)
+            {
+                SpecialCharges3Individual[0].SetActive(false);
+            }
+        }
     }
 
     private void DisplaySpecial(int howMany)

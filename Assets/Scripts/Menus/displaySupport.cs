@@ -252,7 +252,6 @@ public class displaySupport : MonoBehaviour
             {
                 navigation.selectOnLeft = left;
             }
-            Debug.Log("DONE :)");
             // Apply the modified navigation back to the button
             buttonUpdated.navigation = navigation;
         }
