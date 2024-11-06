@@ -134,7 +134,7 @@ public class killFriendManager : MonoBehaviour
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Kisa</color>";
                 SpecialDesc[0].text = "Using your voice, heal all allies by 25% of their maximum health.";
                 SpecialDesc[1].text = "Distract the target, confusing them and skipping their next turn.";
-                SpecialDesc[2].text = "Choose one ally that isn't Alan. That ally returns to life at 50% of their maximum health.";
+                SpecialDesc[2].text = "Using your voice, heal all allies to their maximum health.";
                 elementIcon[2].sprite = elementsSprites[3];
                 elementIcon[3].sprite = elementsSprites[4];
                 elementIcon[4].sprite = elementsSprites[5];
@@ -152,7 +152,7 @@ public class killFriendManager : MonoBehaviour
                     elementIcon[4].sprite = elementsSprites[12];
                 } else
                 {
-                    befriendText[1].text = " Sing\r\n\r\n Confuse\r\n\r\n Revive";
+                    befriendText[1].text = " Sing\r\n\r\n Confuse\r\n\r\n Performance";
                 }
                 
                 befriendText[2].text = "Kisa's Magic Element:\r\n\r\n\r\n\r\nWind";
@@ -167,29 +167,29 @@ public class killFriendManager : MonoBehaviour
                     "Alan gains bonuses to these stats for all future level-ups.";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nIce";
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Nicol</color>";
-                SpecialDesc[0].text = "Increase your attack by 30%, decrease the enemy’s defense by 30%.";
-                SpecialDesc[1].text = "Imbue your weapon with magic. Deal additional damage for the next 3 turns.";
-                SpecialDesc[2].text = "Cheer your allies on! Choose one ally, heal that ally to their maximum HP.";
+                SpecialDesc[0].text = "Decrease the enemy's attack and defense.";
+                SpecialDesc[1].text = "Something... happens.";
+                SpecialDesc[2].text = "Cheer your allies on! All allies regain health for the next 3-5 turns.";
                 elementIcon[2].sprite = elementsSprites[6];
                 elementIcon[3].sprite = elementsSprites[7];
                 elementIcon[4].sprite = elementsSprites[8];
 
                 if (partyLevel < 5)
                 {
-                    befriendText[1].text = " Preeminence\r\n\r\n ???\r\n\r\n ???";
+                    befriendText[1].text = " Mockery\r\n\r\n ???\r\n\r\n ???";
                     elementIcon[3].sprite = elementsSprites[12];
                     elementIcon[4].sprite = elementsSprites[12];
                     SpecialDesc[1].text = "Locked until LVL 5";
                     SpecialDesc[2].text = "Locked until LVL 1O";
                 } else if (partyLevel < 10)
                 {
-                    befriendText[1].text = " Preeminence\r\n\r\n Enchant\r\n\r\n ???";
+                    befriendText[1].text = " Mockery\r\n\r\n Trial and Error\r\n\r\n ???";
                     SpecialDesc[2].text = "Locked until LVL 1O";
                     elementIcon[4].sprite = elementsSprites[12];
                 }
                 else
                 {
-                    befriendText[1].text = " Preeminence\r\n\r\n Enchant\r\n\r\n Encourage";
+                    befriendText[1].text = " Mockery\r\n\r\n Trial and Error\r\n\r\n Motivate";
                 }
 
                 befriendText[2].text = "Nicol's Magic Element:\r\n\r\n\r\n\r\nIce";
@@ -205,7 +205,7 @@ public class killFriendManager : MonoBehaviour
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Sophie</color>";
                 SpecialDesc[0].text = "A physical attack that targets all enemies. Has a high chance of missing.";
                 SpecialDesc[1].text = "Your attacks always hit, and your critical hit chance is higher for the next 3 turns.";
-                SpecialDesc[2].text = "Call upon the power of the stars. Deal 30 damage to all enemies. Has a high chance of missing.";
+                SpecialDesc[2].text = "Strike all enemies, dealing 30 damage to each hit. Has a high chance of missing.";
                 elementIcon[2].sprite = elementsSprites[9];
                 elementIcon[3].sprite = elementsSprites[10];
                 elementIcon[4].sprite = elementsSprites[11];
@@ -224,7 +224,7 @@ public class killFriendManager : MonoBehaviour
                 }
                 else
                 {
-                    befriendText[1].text = " Earthquake\r\n\r\n Focus\r\n\r\n Starstorm";
+                    befriendText[1].text = " Earthquake\r\n\r\n Focus\r\n\r\n Thunderstorm";
                 }
 
                 befriendText[2].text = "Sophie's Magic Element:\r\n\r\n\r\n\r\nElectric";
