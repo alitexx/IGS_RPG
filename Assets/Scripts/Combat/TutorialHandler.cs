@@ -14,6 +14,9 @@ public class TutorialHandler : MonoBehaviour
     public GameObject magicTutorial;
     public GameObject targetTutorial;
 
+    //0= attack, 1=defend, 2 = special, 3= magic
+    [SerializeField] private GameObject[] buttons;
+
     [SerializeField] private GameObject[] tutorialMenus;
     public GameObject[] tutorialHoles; // used to put holes in the dark bg so players can see things
     [SerializeField] private TextMeshProUGUI targetTutorialText;
@@ -34,6 +37,10 @@ public class TutorialHandler : MonoBehaviour
         specialTutorial.SetActive(false);
         magicTutorial.SetActive(false);
         targetTutorial.SetActive(false);
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].SetActive(false);
+        }
     }
 
     public void continueTutorial()
@@ -52,8 +59,15 @@ public class TutorialHandler : MonoBehaviour
             tutorialCounter--;
             firstTime5 = true;
             return;
-        } else if (tutorialCounter > tutorialMenus.Length)
+        } else if (tutorialCounter >= 9)
         {
+            if(tutorialCounter == 10)
+            {
+                for (int i = 0; i < buttons.Length; i++)
+                {
+                    buttons[i].SetActive(false);
+                }
+            }
             return;
         }
         tutorialMenus[tutorialCounter - 1].SetActive(false);
@@ -70,6 +84,7 @@ public class TutorialHandler : MonoBehaviour
                 previousHole = tutorialHoles[0];
                 break;
             case 3: // activate target tutorial
+                buttons[0].SetActive(true);
                 tutorialHoles[1].SetActive(true);
                 previousHole = tutorialHoles[1];
                 targetTutorialText.text = "Use the A and D keys to select a target, then press <color=#ad2f45>" + audioStatics.interractButton.ToString().ToUpper() + "</color> to confirm!";
@@ -80,14 +95,20 @@ public class TutorialHandler : MonoBehaviour
                 targetTutorial.SetActive(false);
                 tutorialHoles[3].SetActive(true);
                 previousHole = tutorialHoles[3];
+                buttons[0].SetActive(false);
+                buttons[1].SetActive(true);
                 break;
             case 5:
                 tutorialHoles[2].SetActive(true);
                 previousHole = tutorialHoles[2];
+                buttons[1].SetActive(false);
+                buttons[2].SetActive(true);
                 break;
             case 7:
                 tutorialHoles[4].SetActive(true);
                 previousHole = tutorialHoles[4];
+                buttons[2].SetActive(false);
+                buttons[3].SetActive(true);
                 break;
         }
     }

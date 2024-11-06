@@ -292,8 +292,11 @@ public class BattleController : MonoBehaviour
         alanFireMagicButton.SetActive(false);
 
         //Set the first button to be the fight button
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(attackButtonOBJ);
+        if(tutorialHandler.activeInHierarchy == false)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(attackButtonOBJ);
+        }
     }
 
     #region Variables
