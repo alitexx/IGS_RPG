@@ -302,8 +302,8 @@ public class pauseMenuManager : MonoBehaviour
     public void confirmSave()
     {
         savepointScript.confirmedSave();
-        SaveMenu.SetActive(false);
-        playerController.isfrozen = false;
+        //SaveMenu.SetActive(false);
+        //playerController.isfrozen = false;
         EventSystem.current.SetSelectedGameObject(null);
     }
 
