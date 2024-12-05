@@ -122,6 +122,7 @@ public class mapManager : MonoBehaviour
 
     public void setUpMapOnReload(int discovered, GameObject[] arrayToCheck)
     {
+
         // Convert the integer into a binary string representation.
         string binaryString = Convert.ToString(discovered, 2);
 
