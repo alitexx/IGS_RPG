@@ -14,6 +14,7 @@ public class SwitchScript : MonoBehaviour
 
     [SerializeField] private mapManager mapManager;
     [SerializeField] private GameObject associatedExclamation;
+    [SerializeField] private bool inSameRoomAsDoor;
 
 
     private void Start()
@@ -57,7 +58,10 @@ public class SwitchScript : MonoBehaviour
             isOnSwitch = true;
             audioManager.playSFX(22);
             Destroy(Door);
-            mapManager.ForceOpenMap(associatedExclamation);
+            if(!inSameRoomAsDoor)
+            {
+                mapManager.ForceOpenMap(associatedExclamation);
+            }
         }
     }
 }

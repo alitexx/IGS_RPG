@@ -16,6 +16,7 @@ public class LeverScript : MonoBehaviour
     private bool flipped;
     [SerializeField] private mapManager mapManager;
     [SerializeField] private GameObject associatedExclamation;
+    [SerializeField] private bool inSameRoomAsDoor;
 
     private void Update()
     {
@@ -31,7 +32,10 @@ public class LeverScript : MonoBehaviour
                 spriteRenderer.sprite = newSprite;
                 flipped = true;
                 audioManager.playSFX(20);
-                mapManager.ForceOpenMap(associatedExclamation);
+                if (!inSameRoomAsDoor)
+                {
+                    mapManager.ForceOpenMap(associatedExclamation);
+                }
             }
             
         }
