@@ -1059,6 +1059,8 @@ public class BattleController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
+                //They do not want to select the back button. Unselect it.
+                EventSystem.current.SetSelectedGameObject(null);
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
                 {
@@ -1072,6 +1074,8 @@ public class BattleController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
+                //They do not want to select the back button. Unselect it.
+                EventSystem.current.SetSelectedGameObject(null);
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
                 {
@@ -1081,6 +1085,18 @@ public class BattleController : MonoBehaviour
                 {
                     enemyNum--;
                 }
+                enemyList[enemyNum].ShowTargetCircle();
+            } else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            {
+                //They want to select the back button.
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(backButton);
+                enemyList[enemyNum].HideTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
+                //They want to go back to selecting an enemy. Show Target Circle again.
+                EventSystem.current.SetSelectedGameObject(null);
                 enemyList[enemyNum].ShowTargetCircle();
             }
 
@@ -1145,6 +1161,8 @@ public class BattleController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
+                //They do not want to select the back button. Unselect it.
+                EventSystem.current.SetSelectedGameObject(null);
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
                 {
@@ -1158,6 +1176,8 @@ public class BattleController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
+                //They do not want to select the back button. Unselect it.
+                EventSystem.current.SetSelectedGameObject(null);
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
                 {
@@ -1167,6 +1187,19 @@ public class BattleController : MonoBehaviour
                 {
                     enemyNum--;
                 }
+                enemyList[enemyNum].ShowTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            {
+                //They want to select the back button.
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(backButton);
+                enemyList[enemyNum].HideTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
+                //They want to go back to selecting an enemy. Show Target Circle again.
+                EventSystem.current.SetSelectedGameObject(null);
                 enemyList[enemyNum].ShowTargetCircle();
             }
 
@@ -1417,6 +1450,8 @@ public class BattleController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
                 {
+                    //They do not want to select the back button.
+                    EventSystem.current.SetSelectedGameObject(null);
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == enemyList.Count - 1)
                     {
@@ -1430,6 +1465,8 @@ public class BattleController : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
                 {
+                    //They do not want to select the back button.
+                    EventSystem.current.SetSelectedGameObject(null);
                     enemyList[enemyNum].HideTargetCircle();
                     if (enemyNum == 0)
                     {
@@ -1439,6 +1476,19 @@ public class BattleController : MonoBehaviour
                     {
                         enemyNum--;
                     }
+                    enemyList[enemyNum].ShowTargetCircle();
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+                {
+                    //They want to select the back button.
+                    EventSystem.current.SetSelectedGameObject(null);
+                    EventSystem.current.SetSelectedGameObject(backButton);
+                    enemyList[enemyNum].HideTargetCircle();
+                }
+                else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+                {
+                    //They want to go back to selecting an enemy. Show Target Circle again.
+                    EventSystem.current.SetSelectedGameObject(null);
                     enemyList[enemyNum].ShowTargetCircle();
                 }
 
@@ -1962,6 +2012,8 @@ public class BattleController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
+                //They do not want to select the back button.
+                EventSystem.current.SetSelectedGameObject(null);
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
                 {
@@ -1975,6 +2027,8 @@ public class BattleController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
+                //They do not want to select the back button.
+                EventSystem.current.SetSelectedGameObject(null);
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
                 {
@@ -1984,6 +2038,19 @@ public class BattleController : MonoBehaviour
                 {
                     enemyNum--;
                 }
+                enemyList[enemyNum].ShowTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            {
+                //They want to select the back button.
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(backButton);
+                enemyList[enemyNum].HideTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
+                //They want to go back to selecting an enemy. Show Target Circle again.
+                EventSystem.current.SetSelectedGameObject(null);
                 enemyList[enemyNum].ShowTargetCircle();
             }
 
