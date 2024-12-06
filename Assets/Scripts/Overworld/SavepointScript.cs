@@ -18,20 +18,23 @@ public class SavepointScript : MonoBehaviour
     public GameObject SaveMenu;
     [SerializeField] private mainDialogueManager mainDialogueManager;
     [SerializeField] private TextMeshProUGUI partyLevel;
+    public static bool canOpenSave = true;
     //public GameObject SaveConfirm;
 
     // Start is called before the first frame update
     private void Update()
     {
+        Debug.Log(canOpenSave);
 
         DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
 
-        if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.keycodeInterractButton) && !mainDialogueManager.dialogueRunning && SaveMenu.activeInHierarchy == false && !PauseMenu.GamePaused && battleMenu.activeInHierarchy == false)
+        if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.keycodeInterractButton) && !mainDialogueManager.dialogueRunning && SaveMenu.activeInHierarchy == false && !PauseMenu.GamePaused && battleMenu.activeInHierarchy == false && canOpenSave)
         {
             //call function to heal, and eventually save.
             levelManager.FullHeal();
             audioManager.playSFX(19);
             SaveMenu.SetActive(true);
+            canOpenSave = false;
             playerController.isfrozen = true;
             PauseMenu.canOpenPause = false;
             EventSystem.current.SetSelectedGameObject(null);
@@ -47,5 +50,16 @@ public class SavepointScript : MonoBehaviour
         //confirm save/heal as a menu or something (name.setactive(true)
         Debug.Log("YIPEEEE");
         PauseMenu.canOpenPause = true;
+    }
+
+    public void saveCooldown()
+    {
+        StartCoroutine(EnableSavepointAfterDelay());
+    }
+
+    private IEnumerator EnableSavepointAfterDelay()
+    {
+        yield return new WaitForSeconds(0.25f);
+        canOpenSave = true;
     }
 }

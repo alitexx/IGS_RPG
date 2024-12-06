@@ -49,6 +49,7 @@ public class pauseMenuManager : MonoBehaviour
 
     private void OnEnable()
     {
+        
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(onOpenButton);
         //place all sprites where they need to be
@@ -299,7 +300,11 @@ public class pauseMenuManager : MonoBehaviour
         playerController.isfrozen = false;
         EventSystem.current.SetSelectedGameObject(null);
         Debug.Log("menu closed (supposedly)");
+        savepointScript.saveCooldown();
     }
+
+    // Coroutine that waits for 0.25 seconds before setting canOpenSave to true
+    
 
     public void confirmSave()
     {
