@@ -1056,7 +1056,7 @@ public class BattleController : MonoBehaviour
 
         yield return new WaitForSeconds(timeBetweenSelectAndConfirm);
 
-        while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
+        while (!(Input.GetKeyDown(audioStatics.keycodeInterractButton) || Input.GetKeyDown(KeyCode.Return)))
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
@@ -1127,7 +1127,7 @@ public class BattleController : MonoBehaviour
 
         yield return new WaitForSeconds(timeBetweenSelectAndConfirm);
 
-        while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
+        while (!(Input.GetKeyDown(audioStatics.keycodeInterractButton) || Input.GetKeyDown(KeyCode.Return)))
         {
             yield return null;
         }
@@ -1158,7 +1158,7 @@ public class BattleController : MonoBehaviour
 
         yield return new WaitForSeconds(timeBetweenSelectAndConfirm);
 
-        while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
+        while (!(Input.GetKeyDown(audioStatics.keycodeInterractButton) || Input.GetKeyDown(KeyCode.Return)))
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
@@ -1238,7 +1238,7 @@ public class BattleController : MonoBehaviour
         {
             
 
-            while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
+            while (!(Input.GetKeyDown(audioStatics.keycodeInterractButton) || Input.GetKeyDown(KeyCode.Return)))
             {
                 yield return null;
             }
@@ -1277,7 +1277,7 @@ public class BattleController : MonoBehaviour
 
             //enemyList[enemyNum].ShowTargetCircle();
 
-            while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
+            while (!(Input.GetKeyDown(audioStatics.keycodeInterractButton) || Input.GetKeyDown(KeyCode.Return)))
             {
                 /*if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
                 {
@@ -1375,7 +1375,7 @@ public class BattleController : MonoBehaviour
         {
            
 
-            while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
+            while (!(Input.GetKeyDown(audioStatics.keycodeInterractButton) || Input.GetKeyDown(KeyCode.Return)))
             {
                 yield return null;
             }
@@ -1413,7 +1413,7 @@ public class BattleController : MonoBehaviour
         {
             
 
-            while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
+            while (!(Input.GetKeyDown(audioStatics.keycodeInterractButton) || Input.GetKeyDown(KeyCode.Return)))
             {
                 yield return null;
             }
@@ -1447,7 +1447,7 @@ public class BattleController : MonoBehaviour
 
             enemyList[enemyNum].ShowTargetCircle();
 
-            while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
+            while (!(Input.GetKeyDown(audioStatics.keycodeInterractButton) || Input.GetKeyDown(KeyCode.Return))) 
             {
                 if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
                 {
@@ -2012,7 +2012,7 @@ public class BattleController : MonoBehaviour
 
         yield return new WaitForSeconds(timeBetweenSelectAndConfirm);
 
-        while (!Input.GetKeyDown(audioStatics.keycodeInterractButton))
+        while (!(Input.GetKeyDown(audioStatics.keycodeInterractButton) || Input.GetKeyDown(KeyCode.Return)))
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {

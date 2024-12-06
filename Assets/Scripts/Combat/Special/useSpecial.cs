@@ -10,6 +10,7 @@ public class useSpecial : MonoBehaviour
 
     public BattleController battControl;
     private BattleCharacter currentChar;
+    [SerializeField] private updateSPOnScreen updateSP;
 
     //When special button is clicked
     //Currently, this does no targetting. Organize this code as you see fit!
@@ -20,15 +21,19 @@ public class useSpecial : MonoBehaviour
         {
             case 0: //ALAN
                 alanSpecial(whichLevel);
+                updateSP.removeSpecial("tank guy", whichLevel-1);
                 break;
             case 1: //KISA
                 kisaSpecial(whichLevel);
+                updateSP.removeSpecial("bard guy", whichLevel-1);
                 break;
             case 2: //NICOL
                 nicolSpecial(whichLevel);
+                updateSP.removeSpecial("mage guy", whichLevel-1);
                 break;
             case 3:// SOPHIE
                 sophieSpecial(whichLevel);
+                updateSP.removeSpecial("monk guy", whichLevel-1);
                 break;
             default:
                 Debug.LogError("Cannot find character with ID: " + WhoAreWeViewing);

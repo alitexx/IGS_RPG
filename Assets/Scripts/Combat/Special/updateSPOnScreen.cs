@@ -57,15 +57,19 @@ public class updateSPOnScreen : MonoBehaviour
                 break;
         }
 
-        if (howManySpecials > 0 && howManySpecials <= 4)
+        if (howManySpecials >= 0 && howManySpecials <= 4)
         {
-            imagesToUpdate[associatedCharacter + currentSpecials[associatedCharacter / 4]].sprite = nospecialicon;
             currentSpecials[associatedCharacter / 4]--;
+            imagesToUpdate[associatedCharacter + currentSpecials[associatedCharacter / 4]].sprite = nospecialicon;
             while (currentSpecials[associatedCharacter / 4] > howManySpecials)
             {
-                imagesToUpdate[associatedCharacter + currentSpecials[associatedCharacter / 4]].sprite = nospecialicon;
                 currentSpecials[associatedCharacter / 4]--;
+                imagesToUpdate[associatedCharacter + currentSpecials[associatedCharacter / 4]].sprite = nospecialicon;
             }
+        }
+        else
+        {
+            Debug.Log("The special isnt the right number IDIOT. ITS " + howManySpecials);
         }
     }
 }
