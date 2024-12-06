@@ -14,24 +14,24 @@ public class updateSPOnScreen : MonoBehaviour
     {
         switch (who.ToLower())
         {
-            case "alan":
+            case "tank guy":
                 associatedCharacter = 0;
                 break;
-            case "kisa":
+            case "bard guy":
                 associatedCharacter = 4;
                 break;
-            case "nicol":
+            case "mage guy":
                 associatedCharacter = 8;
                 break;
-            case "sophie":
+            case "monk guy":
                 associatedCharacter = 12;
                 break;
         }
 
         if(howManySpecials > 0 && howManySpecials <= 4)
         {
-            currentSpecials[associatedCharacter / 4]++;
             imagesToUpdate[associatedCharacter+ currentSpecials[associatedCharacter / 4]].sprite = specialicon;
+            currentSpecials[associatedCharacter / 4]++;
             while (currentSpecials[associatedCharacter / 4] < howManySpecials)
             {
                 imagesToUpdate[associatedCharacter + currentSpecials[associatedCharacter / 4]].sprite = specialicon;
@@ -43,24 +43,24 @@ public class updateSPOnScreen : MonoBehaviour
     {
         switch (who.ToLower())
         {
-            case "alan":
+            case "tank guy":
                 associatedCharacter = 0;
                 break;
-            case "kisa":
+            case "bard guy":
                 associatedCharacter = 4;
                 break;
-            case "nicol":
+            case "mage guy":
                 associatedCharacter = 8;
                 break;
-            case "sophie":
+            case "monk guy":
                 associatedCharacter = 12;
                 break;
         }
 
         if (howManySpecials > 0 && howManySpecials <= 4)
         {
-            currentSpecials[associatedCharacter / 4]--;
             imagesToUpdate[associatedCharacter + currentSpecials[associatedCharacter / 4]].sprite = nospecialicon;
+            currentSpecials[associatedCharacter / 4]--;
             while (currentSpecials[associatedCharacter / 4] > howManySpecials)
             {
                 imagesToUpdate[associatedCharacter + currentSpecials[associatedCharacter / 4]].sprite = nospecialicon;

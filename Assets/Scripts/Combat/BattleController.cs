@@ -323,6 +323,7 @@ public class BattleController : MonoBehaviour
 
     private Queue<BattleCharacter> characterQueue = new Queue<BattleCharacter>();
     private Queue<BattleCharacter> alreadyWent = new Queue<BattleCharacter>();
+    [SerializeField] private updateSPOnScreen updateSP;
 
     #region Stats
 
@@ -1867,6 +1868,9 @@ public class BattleController : MonoBehaviour
         else
         {
             //Debug.Log("ally " + characterQueue.Peek().statSheet.name);
+            //EDIT THIS!!! COME BACK TO THIS!!!!!!!!!!
+            // NOTE: CHANGE 1 TO WHATEVER THE ALLY'S SPECIAL METER IS (should probably make a variable for this)
+            updateSP.addSpecial(characterQueue.Peek().statSheet.name, 1);
             if (characterQueue.Peek() == tankChar)
             {
                 isTaunting = false;
