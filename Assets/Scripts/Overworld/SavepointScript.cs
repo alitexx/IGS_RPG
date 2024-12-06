@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,6 +17,7 @@ public class SavepointScript : MonoBehaviour
     public PlayerController playerController;
     public GameObject SaveMenu;
     [SerializeField] private mainDialogueManager mainDialogueManager;
+    [SerializeField] private TextMeshProUGUI partyLevel;
     //public GameObject SaveConfirm;
 
     // Start is called before the first frame update
@@ -34,6 +36,7 @@ public class SavepointScript : MonoBehaviour
             PauseMenu.canOpenPause = false;
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(saveFirstButton);
+            partyLevel.text = ("Party Level: " + LevelManager.level);
         }
 
     }
