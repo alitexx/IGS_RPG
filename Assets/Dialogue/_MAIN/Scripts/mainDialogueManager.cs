@@ -86,6 +86,7 @@ public class mainDialogueManager : MonoBehaviour
                 pauseMenuManager.partyMemberAbsent("SOPHIE");
                 firstSlime.SetActive(false);
             }
+            //If we need to do something special with the new dialogue, do it here. check the name of the dialogue file
             switch (dialogueFile)
             {
                 case "kisaPostFight_k":
@@ -218,7 +219,7 @@ public class mainDialogueManager : MonoBehaviour
         //do a switch statement here for if the cutscene is one that requires changing based on current party members
         switch (whichImage)
         {
-            case 0:
+            case 13:
                 if (!playerController.hasKisa)
                 {
                     cutsceneVariations[0].SetActive(false);

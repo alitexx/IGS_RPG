@@ -18,7 +18,7 @@ kisa.Move(0.5 0 -spd 2)
 kisa "How could you say that to me? I have just watched as someone I trusted killed our friends! What have you done! Dear Gods, what have you done..."
 Highlight(alan -o true)
 alan.Move(0.15 0 -spd 2)
-alan "Your friends, Kisa, yours. But nevermind that, it has been done, there is no point in questioning it now. We will kill the lich and be done with it."
+alan "Your friends, Kisa, yours. But nevermind that, it has been done, there is no point in questioning it now. We will kill Morsophus and be done with it."
 alan "I have spared you, so at the very least you could summon the will to be helpful."
 Highlight(kisa -o true)
 kisa "..."

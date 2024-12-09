@@ -16,7 +16,7 @@ nicol "Fair point, my companion! No matter, I shall continue to hone my skills a
 Highlight(alan -o true)
 alan "We shall see when the time comes. Are we ready to continue?"
 Highlight(kisa -o true)
-kisa "Yes, please. The sooner we defeat this lich, the sooner we can leave this dreadful place."
+kisa "Yes, please. The sooner we defeat Morsophus, the sooner we can leave this dreadful place."
 Highlight(nicol -o true)
 nicol "Of course! I, Nicol, the greatest aristocat, have already solved all mysteries on this floor. Let us continue!"
 Hide(nicol)

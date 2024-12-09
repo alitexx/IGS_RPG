@@ -32,7 +32,7 @@ Highlight(nicol -o true)
 SetSprite(nicol nicol)
 nicol "Temporarily! This calls for a celebration!"
 Highlight(sophie -o true)
-sophie "No it does not. My honor binds me until our original quest to slay the lich is completed. That will be the last you see of me, I will make sure of it."
+sophie "No it does not. My honor binds me until our original quest to slay Morsophus is completed. That will be the last you see of me, I will make sure of it."
 Highlight(kisa -o true)
 kisa "..."
 Highlight(alan -o true)

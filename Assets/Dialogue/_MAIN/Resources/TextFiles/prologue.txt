@@ -13,7 +13,7 @@ Highlight(nicol -o true)
 nicol "At last, we have arrived! Let us defeat this wretched lich and become heroes of legend!"
 Show(sophie)
 Highlight(sophie -o true)
-sophie "Do not be so brash. My students mirror your ambition, craving glory, yet their fate remains a mystery. I am not here to become a hero, I am here to locate them."
+sophie "Do not be so brash. My students mirror your ambition, craving glory, yet their fate remains a mystery. I am here to search for them, not to become a hero."
 Show(nicol)
 Highlight(nicol -o true)
 nicol "Bah! A world without heroes is not worth living! Evil must meet its match!"
@@ -35,14 +35,14 @@ wait(2)
 sophie.SetPriority(2)
 Highlight(sophie -o true)
 sophie "Alan, may I ask you a question? Have you noticed anything amiss about Kisa?"
-sophie "On any other occasion, she is cheerful and glued to my side. Yet today, she seems rather withdrawn."
+sophie "On any other occasion, she is cheerful and glued to my side. Yet today, she seems rather withdrawn. I worry I have misspoke about something minute."
 alan.Move(0.05 0 -spd 1)
 alan.SetPriority(3)
 Highlight(alan -o true)
 alan "I cannot say for certain... perhaps she is stressed? She has only slain minor threats prior, unlike the rest of us."
 Highlight(sophie -o true)
 sophie.SetPriority(3)
-sophie "That is a possibility. We should catch up with those two before they get themselves killed."
+sophie "That is a possibility. At any rate, we should catch up with those two before they get themselves killed."
 Hide(kisa)
 Hide(alan)
 Hide(sophie)

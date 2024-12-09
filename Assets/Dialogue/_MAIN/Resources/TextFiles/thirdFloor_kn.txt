@@ -14,7 +14,7 @@ kisa "Truly?"
 Highlight(nicol -o true)
 nicol "Yes! Probably! Maybe!"
 SetSprite(nicol flipped)
-nicol "Regardless, I sense the presence of a powerful magic user! The lich is most definitely near!"
+nicol "Regardless, I sense the presence of a powerful magic user! Morsophus is most definitely near!"
 Highlight(alan -o true)
 alan "How does one sense the presence of magic users?"
 Highlight(nicol -o true)

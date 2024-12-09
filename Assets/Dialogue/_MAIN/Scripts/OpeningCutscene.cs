@@ -68,7 +68,7 @@ public class OpeningCutscene : MonoBehaviour
         yield return new WaitForSeconds(6.5f);
         //image 5 fades in
         cutsceneassets[4].SetActive(true);
-        alan.Say("However, once again, I am being tempted. By happenstance, I have gathered a group of three on my way to defeat a Lich tormenting a town on the outskirts of Isen.");
+        alan.Say("However, once again, I am being tempted. By happenstance, I have gathered a group of three on my way to defeat a lich, Morsophus, who was tormenting a town on the outskirts of Isen.");
         yield return new WaitForSeconds(10f);
         //image 6 fades in
         cutsceneassets[5].SetActive(true);

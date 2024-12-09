@@ -5,14 +5,21 @@ Hide(alan)
 Hide(kisa)
 wait(1)
 addCutscene(0)
-alan "Lich! Prepare to meet your doom, justice will be served!"
-lich "Oh? It appears more glory-seeking rats have crawled into my domain."
-lich "Why must you mortals be so keen on disrupting my work? You come in droves but are so fragile. No matter, your souls shall sate my hunger tonight."
-sophie "...So this is the fate that befell my students. They met their demise at your hands."
-lich "If you speak of the last band of 'heroes' who wandered here, indeed. Feeble and disarrayed, they were snuffed out with a mere flick of my finger."
-nicol "I have vanquished my fair share of liches, yet I had forgotten the oppressive aura they emit; their destruction for selfish gain sickens me."
+alan "Morsophus."
 addCutscene(1)
-lich "Are we not all driven by self-interest? You adventurers use the term justice when you deem your actions 'right', but you enforce justice for your own benefit. We are but two sides of the same coin."
-lich "I can sense your hesitation, you know I speak the truth. You have witnessed such acts of 'righteousness'. You have a fellow soul reaper in your midst. Why do you stand by him if he is my equal?"
-lich "Regardless, the more souls I collect, the stronger I become. Your group will make a fine addition to my collection."
+lich "Away with you. I tire of these adventurers storming my tower day after day. All I seek is solitude."
+nicol "Surrender, Lich, and we will be on our way. The less bloodshed the better, but your life must come to an end today."
+addCutscene(12)
+lich "End me? Please. You all sound the same. I have lost count of how many times this dialogue has been had. Soon, you will declare I've met my match and charge, only to be swept aside with a mere flick of my wrist. Frankly, I have grow weary of all the flicking."
+sophie "...So this is the fate that befell my students. They met their demise at your hands."
+lich "Yes. They were as inconsequential as the rest."
+lich "Is this conversation complete? Your death could be swift, but it is far more entertaining to watch mice scurry away than slaughter them outright."
+addCutscene(12)
+lich "...Halt. I see we have a fellow soul collector in our midst. Intriguing."
+lich "And you willingly travel together? Are you blissfully unaware? I have never seen a group of mortals so... passive about one's misdeeds."
+nicol "My faith in Alan as a man is waning, but I trust him enough to lead us in this final moment."
+sophie "We still remain united to take down a threat: you. I am not happy with the arrangement, but it is for the greater good."
+lich "Ha! Those awkward lies you tell yourself are more humorous than anything I have heard in decades. It almost makes me not want to kill you and sit and watch the show, however I prefer power over entertainment."
+addCutscene(13)
+lich "You believe you can defeat me? Try. Swing your weapons at me with abandon until you realize it is too late. The victor has already been determined."
 endDialogue(true)

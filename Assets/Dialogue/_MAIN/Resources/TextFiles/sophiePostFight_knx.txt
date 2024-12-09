@@ -35,7 +35,7 @@ Highlight(nicol -o true)
 nicol.Move(0.55 0 -spd 1.5)
 nicol "Kisa, do not torment yourself with your future insight. I doubt even Sophie would have wanted you to get injured in her battle."
 SetSprite(nicol flipped)
-nicol "Alan, I believe it best if we end our association as promptly as possible. I do not fear your hand but... I question your judgement. Let us slay the Lich and be done with this."
+nicol "Alan, I believe it best if we end our association as promptly as possible. I do not fear your hand but... I question your judgement. Let us slay Morsophus and be done with this."
 Highlight(alan -o true)
 alan "...Understood."
 alan.SetPriority(0)

@@ -27,7 +27,7 @@ alan "Yes... perhaps you two are similar. It makes sense in a way, to trade a li
 Highlight(sophie -o true)
 sophie "... Is that a threat? Are you that foolish?"
 sophie "I have not the faintest as to what has gotten into you and I do not care."
-sophie "Stand there and speak in riddles if that is your wish– I will kill the lich myself as I said I would. Some of us have a duty to others."
+sophie "Stand there and speak in riddles if that is your wish– I will kill Morsophus myself as I said I would. Some of us have a duty to others."
 Highlight(alan -o true)
 alan "Believe me, I do as well."
 Hide(sophie)
