@@ -101,10 +101,10 @@ public class useSpecial : MonoBehaviour
         switch (whichLevel)
         {
             case 1:
-                //use Nicol's first special, Preeminence
+                //use Nicol's first special, Mockery
                 break;
             case 2:
-                //use Nicol's second special, Enchant
+                //use Nicol's second special, Trial and Error
                 break;
             case 3:
                 //use Nicol's third special, Encourage
@@ -126,7 +126,7 @@ public class useSpecial : MonoBehaviour
                 //use Sophie's second special, Focus
                 break;
             case 3:
-                //use Sophie's third special, Starstorm
+                //use Sophie's third special, Thunderstorm
                 break;
         }
 
