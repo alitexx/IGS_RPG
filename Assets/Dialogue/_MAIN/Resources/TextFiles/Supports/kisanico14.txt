@@ -1,0 +1,16 @@
+nicol.Move(0.8 0 -spd 3)
+kisa.Move(0.15 0 -spd 3)
+Hide(kisa)
+Hide(nicol)
+SetSprite(nicol flipped)
+wait(0.75)
+Show(kisa)
+Highlight(kisa -o true)
+kisa "haha this is a placeholder you didn't edit this"
+Show(nicol)
+SetSprite(nicol flipped)
+Highlight(nicol -o true)
+nicol "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+Hide(nicol)
+Hide(kisa)
+endDialogue(false)

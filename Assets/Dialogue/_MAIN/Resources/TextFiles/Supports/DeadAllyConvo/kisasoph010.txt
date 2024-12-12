@@ -1,0 +1,16 @@
+sophie.Move(0.8 0 -spd 3)
+kisa.Move(0.15 0 -spd 3)
+Hide(kisa)
+Hide(sophie)
+SetSprite(sophie flipped)
+wait(0.75)
+Show(kisa)
+Highlight(kisa -o true)
+kisa "haha this is a placeholder you didn't edit this"
+Show(sophie)
+SetSprite(sophie flipped)
+Highlight(sophie -o true)
+sophie "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+Hide(sophie)
+Hide(kisa)
+endDialogue(false)

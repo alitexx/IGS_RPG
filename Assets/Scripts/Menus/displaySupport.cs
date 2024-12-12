@@ -216,8 +216,22 @@ public class displaySupport : MonoBehaviour
     {
         supportBtn[supportIcon].gameObject.SetActive(false);
         //run support. Pass in support name + local support 
+        Debug.Log(supportNames[supportIcon] + localSupportData[supportIcon].ToString());
         mainDialogueManager.dialogueSTART("Supports/" + supportNames[supportIcon] + localSupportData[supportIcon].ToString());
         //for example, if this was alan and kisa's first support, the file name would be alankisa3
+        //What if someone is dead?
+        if (deadCharacters == 0)// if someone is dead
+        {
+            mainDialogueManager.dialogueSTART("Supports/" + supportNames[supportIcon] + localSupportData[supportIcon].ToString());
+        }
+        else
+        {
+            //Kisa dead = 100
+            //Nicol dead = 010
+            //Sophie dead = 001
+            //These can be mixed and matched
+            mainDialogueManager.dialogueSTART("Supports/DeadAllyConvo/" + supportNames[supportIcon] + deadCharacters.ToString());
+        }
     }
 
     private void showCharSupport(int position, int charName, int binarySupport)

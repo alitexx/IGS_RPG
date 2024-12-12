@@ -1,0 +1,16 @@
+kisa.Move(0.8 0 -spd 3)
+alan.Move(0.15 0 -spd 3)
+Hide(alan)
+Hide(kisa)
+SetSprite(kisa flipped)
+wait(0.75)
+Show(alan)
+Highlight(alan -o true)
+alan "haha this is a placeholder you didn't edit this"
+Show(kisa)
+SetSprite(kisa flipped)
+Highlight(kisa -o true)
+kisa "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+Hide(kisa)
+Hide(alan)
+endDialogue(false)
