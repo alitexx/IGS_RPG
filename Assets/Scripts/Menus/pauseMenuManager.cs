@@ -5,6 +5,7 @@ using DG.Tweening;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class pauseMenuManager : MonoBehaviour
 {
@@ -47,8 +48,20 @@ public class pauseMenuManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI expbartext;
     [SerializeField] private Image expslider;
 
+    //who are we viewing
+    private int whoAreWeViewing;
+    //For dialogue
+    [SerializeField] private CanvasGroup pinkbg;
+
     private void OnEnable()
     {
+        if(whoAreWeViewing == 5) // Determined by the open script for dialogue. This tells us to override the rest of the code and do the close dialogue instead
+        {
+            closeDialogueSupport();
+            return;
+        }
+
+
         
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(onOpenButton);
@@ -100,6 +113,7 @@ public class pauseMenuManager : MonoBehaviour
         switch (whoWasIt.ToUpper())
         {
             case "ALAN":
+                whoAreWeViewing = 0;
                 partyMemberIcons[0].DOMove(locations[3].transform.position, 0.75f);
                 partyMemberIcons[1].DOMove(locations[2].transform.position, 1);
                 partyMemberIcons[2].DOMove(locations[2].transform.position, 1);
@@ -110,6 +124,7 @@ public class pauseMenuManager : MonoBehaviour
                 p_ci.characterInspection(0);
                 break;
             case "KISA":
+                whoAreWeViewing = 1;
                 partyMemberIcons[0].DOMove(locations[1].transform.position, 1);
                 partyMemberIcons[1].DOMove(locations[4].transform.position, 0.75f);
                 partyMemberIcons[2].DOMove(locations[2].transform.position, 1);
@@ -120,6 +135,7 @@ public class pauseMenuManager : MonoBehaviour
                 p_ci.characterInspection(1);
                 break;
             case "NICOL":
+                whoAreWeViewing = 2;
                 partyMemberIcons[0].DOMove(locations[1].transform.position, 1);
                 partyMemberIcons[1].DOMove(locations[1].transform.position, 1);
                 partyMemberIcons[2].DOMove(locations[5].transform.position, 0.75f);
@@ -130,6 +146,7 @@ public class pauseMenuManager : MonoBehaviour
                 p_ci.characterInspection(2);
                 break;
             case "SOPHIE":
+                whoAreWeViewing = 3;
                 partyMemberIcons[0].DOMove(locations[1].transform.position, 1);
                 partyMemberIcons[1].DOMove(locations[1].transform.position, 1);
                 partyMemberIcons[2].DOMove(locations[1].transform.position, 1);
@@ -182,11 +199,13 @@ public class pauseMenuManager : MonoBehaviour
     public void openOptionsMenu()
     {
         EventSystem.current.SetSelectedGameObject(null);
+
         partyMemberIcons[0].DOMove(locations[1].transform.position, 1);
         partyMemberIcons[1].DOMove(locations[1].transform.position, 1);
         partyMemberIcons[2].DOMove(locations[2].transform.position, 1);
         partyMemberIcons[3].DOMove(locations[2].transform.position, 1);
         //make locations for each of these
+        characterinspector.SetActive(false);
         OptionsTXT.transform.DOMove(locations[8].transform.position, 1);
         PartyLevelTXT.transform.DOMove(locations[7].transform.position, 1);
         OptionsMenu.SetActive(true);
@@ -194,6 +213,41 @@ public class pauseMenuManager : MonoBehaviour
         Buttons.transform.DOMove(locations[9].transform.position, 1);
         //move buttons
         EventSystem.current.SetSelectedGameObject(optionsenterbutton);
+    }
+
+
+    public void openDialogueSupport()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        //turn off pink background, have it fade out
+        pinkbg.DOFade(0, 2f).OnComplete(() =>
+        {
+            pinkbg.DOKill();
+            //turn off pause UI
+            PauseMenu.GamePaused = false;
+            this.gameObject.SetActive(false);
+        });
+        //We need to find who is selected and get them OUT OF THERE
+        partyMemberIcons[whoAreWeViewing].DOMove(locations[1].transform.position, 1.5f);
+        characterinspector.SetActive(false);
+        //make locations for each of these
+        PartyLevelTXT.transform.DOMove(locations[7].transform.position, 1.5f);
+        Buttons.transform.DOMove(locations[9].transform.position, 1.5f);
+        whoAreWeViewing = 5;
+        //This tells the ui when it's opening to run close dialogue instead of the typical open stuff
+    }
+    public void closeDialogueSupport()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        pinkbg.DOFade(1, 2f);
+        partyMemberIcons[0].DOMove(locations[0].transform.position, 1.5f);
+        partyMemberIcons[1].DOMove(locations[0].transform.position, 1.5f);
+        partyMemberIcons[2].DOMove(locations[0].transform.position, 1.5f);
+        partyMemberIcons[3].DOMove(locations[0].transform.position, 1.5f);
+        Buttons.transform.DOMove(locations[0].transform.position, 1.5f);
+        PartyLevelTXT.transform.DOMove(locations[8].transform.position, 1.5f);
+        PauseMenu.GamePaused = true;
+        EventSystem.current.SetSelectedGameObject(onOpenButton);
     }
 
     public void closeOptionsMenu()

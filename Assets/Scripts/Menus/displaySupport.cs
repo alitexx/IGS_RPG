@@ -230,6 +230,7 @@ public class displaySupport : MonoBehaviour
             //Nicol dead = 010
             //Sophie dead = 001
             //These can be mixed and matched
+            //THIS NEEDS PADDING!! EDIT!!!! HELLO!!! HELLLOOOOOOOOO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 HEY YOU!!!!!!!!!!!1 ADD PADDING TO THE DEAD CHARACTERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             mainDialogueManager.dialogueSTART("Supports/DeadAllyConvo/" + supportNames[supportIcon] + deadCharacters.ToString());
         }
     }
