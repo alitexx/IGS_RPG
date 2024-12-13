@@ -14,6 +14,7 @@ namespace COMMANDS
         {
             database.AddCommand("wait", new Func<string, IEnumerator>(Wait));
             database.AddCommand("endDialogue", new Action<string> (endDialogue));
+            database.AddCommand("endMenuDialogue", new Action<string>(endMenuDialogue));
             database.AddCommand("addCutscene", new Action<string>(addCutscene));
             database.AddCommand("playSFX", new Action<string>(playSFX));
             database.AddCommand("playBGM", new Action<string>(playBGM));
@@ -32,17 +33,35 @@ namespace COMMANDS
         {
             MainDiaManager = GameObject.FindGameObjectWithTag("MainDialogueManager").GetComponent<mainDialogueManager>();
 
-            if (isBoss == "true")
+            if (isBoss.ToLower() == "true")
             {
                 MainDiaManager.dialogueEND(true);
             }
-            else if (isBoss == "false")
+            else if (isBoss.ToLower() == "false")
             {
                 MainDiaManager.dialogueEND(false);
             }
             else
             {
                 Debug.Log(isBoss + " needs to be a true or a false.");
+            }
+        }
+
+        private static void endMenuDialogue(string isSupport)
+        {
+            MainDiaManager = GameObject.FindGameObjectWithTag("MainDialogueManager").GetComponent<mainDialogueManager>();
+
+            if (isSupport.ToLower() == "true")
+            {
+                MainDiaManager.menuDialogueEND(true);
+            }
+            else if (isSupport.ToLower() == "false")
+            {
+                MainDiaManager.menuDialogueEND(false);
+            }
+            else
+            {
+                Debug.Log(isSupport + " needs to be a true or a false.");
             }
         }
         private static void addCutscene(string whichCutscene)

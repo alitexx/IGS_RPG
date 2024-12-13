@@ -228,7 +228,8 @@ public class pauseMenuManager : MonoBehaviour
             this.gameObject.SetActive(false);
         });
         //We need to find who is selected and get them OUT OF THERE
-        partyMemberIcons[whoAreWeViewing].DOMove(locations[1].transform.position, 1.5f);
+        partyMemberIcons[whoAreWeViewing].DOMove(locations[1].transform.position, 2.5f);
+        
         characterinspector.SetActive(false);
         //make locations for each of these
         PartyLevelTXT.transform.DOMove(locations[7].transform.position, 1.5f);
@@ -238,14 +239,20 @@ public class pauseMenuManager : MonoBehaviour
     }
     public void closeDialogueSupport()
     {
+        partyMemberIcons[0].position = locations[1].transform.position;
+        partyMemberIcons[1].position = locations[1].transform.position;
+        partyMemberIcons[2].position = locations[2].transform.position;
+        partyMemberIcons[3].position = locations[2].transform.position;
+        for (int i = 0; i < 4; i++) // for each party member, make sure they're in the correct position and the menu isnt open
+        {
+            partyMemberIcons[i].DOMove(locations[0].transform.position, 1f);
+            buttonOn[i].SetActive(true);
+            buttonOff[i].SetActive(false);
+        }
         EventSystem.current.SetSelectedGameObject(null);
         pinkbg.DOFade(1, 2f);
-        partyMemberIcons[0].DOMove(locations[0].transform.position, 1.5f);
-        partyMemberIcons[1].DOMove(locations[0].transform.position, 1.5f);
-        partyMemberIcons[2].DOMove(locations[0].transform.position, 1.5f);
-        partyMemberIcons[3].DOMove(locations[0].transform.position, 1.5f);
-        Buttons.transform.DOMove(locations[0].transform.position, 1.5f);
-        PartyLevelTXT.transform.DOMove(locations[8].transform.position, 1.5f);
+        Buttons.transform.DOMove(locations[0].transform.position, 1f);
+        PartyLevelTXT.transform.DOMove(locations[8].transform.position, 1f);
         PauseMenu.GamePaused = true;
         EventSystem.current.SetSelectedGameObject(onOpenButton);
     }

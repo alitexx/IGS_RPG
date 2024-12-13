@@ -214,6 +214,52 @@ public class mainDialogueManager : MonoBehaviour
         }
     }
 
+
+    public void menuDialogueEND(bool isSupport = false)
+    {
+        // Stop the dialogue coroutine if it's running
+        if (dialogueRunning)
+        {
+            StopCoroutine(completeDialogue(currentlyRunningText));
+            dialogueRunning = false; // Set the flag to false when stopping the coroutine
+            //for determining endings
+
+            
+
+
+            //switch (currentlyRunningText) // if this is the end of a route
+            //{
+            //    case "end_genocide":// 0 = everyone dead
+            //        creditsManager.endingID = 0;
+            //        fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
+            //        return;
+            //}
+            currentlyRunningText = "";
+            continueTextPrompt.SetActive(false);
+            top.DOMove(tweenOutPositions[0].transform.position, 2);
+            bottom.DOMove(tweenOutPositions[1].transform.position, 2);
+            dialogueBox.DOMove(tweenOutPositions[2].transform.position, 2);
+            if (isSupport)
+            {
+                //send currentlyRunningText to display support, if needed.
+                //EDIT: Should be fine without calling displaysupport, but please double check!
+                //This is the stupidest work around but i'm hoping it works
+                pauseMenuManager.gameObject.SetActive(true);
+            }
+            else
+            {
+                //if this is NOT support, this must be the save menu. open save menu again.
+
+            }
+
+            am.playBGM("T2");
+            playerController.isfrozen = false;
+        }
+    }
+
+
+
+
     public void addCutscene(int whichImage)
     {
         //do a switch statement here for if the cutscene is one that requires changing based on current party members
