@@ -1,5 +1,6 @@
 using System;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -155,21 +156,22 @@ public class displaySupport : MonoBehaviour
 
     private void showCharSupport(int position, int charName, int binarySupport, string supportName)
     {
-        charIcons[position].sprite = charSprites[charName + 4*CheckUnobtainedCharacter(charName)];
+        charIcons[position].sprite = charSprites[charName + 4 * CheckUnobtainedCharacter(charName)];
 
         int supportType = getSupportType(charName);
-        heartIcons[position].sprite = heartSprites[Convert.ToInt32(binarySupport)+supportType];
+            heartIcons[position].sprite = heartSprites[Convert.ToInt32(binarySupport) + supportType];
 
-        //Check if there's a cutscene they should be able to watch
-        if (checkIfSupportUnlocked(binarySupport))
-        {
-            supportBtn[position].gameObject.SetActive(true);
-            localSupportData[position] = binarySupport & 0b1111;
-            //DO BUTTON BUSINESS HERE
-        } else
-        {
-            supportBtn[position].gameObject.SetActive(false);
-        }
+            //Check if there's a cutscene they should be able to watch
+            if (checkIfSupportUnlocked(binarySupport))
+            {
+                supportBtn[position].gameObject.SetActive(true);
+                localSupportData[position] = binarySupport & 0b1111;
+                //DO BUTTON BUSINESS HERE
+            }
+            else
+            {
+                supportBtn[position].gameObject.SetActive(false);
+            }
         supportNames[position] = supportName;
     }
 
@@ -185,7 +187,7 @@ public class displaySupport : MonoBehaviour
         {
             return true; // Event for support level 3 not seen yet
         }
-        else if (supportPoints == 7 && (seenEvents & 0b010) == 0)
+        else if (supportPoints == 8 && (seenEvents & 0b010) == 0)
         {
             return true; // Event for support level 7 not seen yet
         }

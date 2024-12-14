@@ -255,7 +255,7 @@ public class mainDialogueManager : MonoBehaviour
                 int mappedValue = finalNumber switch
                 {
                     3 => 1,
-                    7 => 2,
+                    8 => 2,
                     14 => 3,
                     _ => 0 // Default case for unexpected numbers
                 };

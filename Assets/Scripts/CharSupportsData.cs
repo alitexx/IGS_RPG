@@ -16,6 +16,14 @@ public class CharSupportsData : MonoBehaviour
         // Isolate the last 4 bits (the support level) using a bitmask
         int supportLevel = supportValue & 0b1111; // Extract the last 4 bits
 
+        //check if this number is 3, 8, or 16.
+        switch (supportLevel)
+        {
+            case 3:
+            case 8:
+            case 14:
+                return;
+        }
         // Increase support level
         supportLevel += howMuch;
 
