@@ -55,14 +55,6 @@ public class pauseMenuManager : MonoBehaviour
 
     private void OnEnable()
     {
-        if(whoAreWeViewing == 5) // Determined by the open script for dialogue. This tells us to override the rest of the code and do the close dialogue instead
-        {
-            closeDialogueSupport();
-            return;
-        }
-
-
-        
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(onOpenButton);
         //place all sprites where they need to be
@@ -80,11 +72,18 @@ public class pauseMenuManager : MonoBehaviour
             darkenBG.SetActive(false);
             ConfirmMainMenu.SetActive(false);
         }
-        for (int i = 0; i < 4; i++) // for each party member, make sure they're in the correct position and the menu isnt open
+
+        if (whoAreWeViewing == 5) // Determined by the open script for dialogue. This tells us to override the rest of the code and do the close dialogue instead
         {
-            partyMemberIcons[i].position = locations[0].transform.position;
-            buttonOn[i].SetActive(true);
-            buttonOff[i].SetActive(false);
+            closeDialogueSupport();
+        } else
+        {
+            for (int i = 0; i < 4; i++) // for each party member, make sure they're in the correct position and the menu isnt open
+            {
+                partyMemberIcons[i].position = locations[0].transform.position;
+                buttonOn[i].SetActive(true);
+                buttonOff[i].SetActive(false);
+            }
         }
         characterinspector.SetActive(false);
         specialInspector.SetActive(false);

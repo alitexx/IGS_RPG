@@ -13,4 +13,4 @@ Highlight(sophie -o true)
 sophie "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
 Hide(sophie)
 Hide(alan)
-endDialogue(false)
+endMenuDialogue(true)

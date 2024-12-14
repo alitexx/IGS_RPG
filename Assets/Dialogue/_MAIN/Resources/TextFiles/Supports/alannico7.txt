@@ -13,4 +13,4 @@ Highlight(nicol -o true)
 nicol "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
 Hide(nicol)
 Hide(alan)
-endDialogue(false)
+endMenuDialogue(true)

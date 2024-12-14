@@ -5,6 +5,7 @@ using CHARACTERS;
 using DIALOGUE;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.Windows;
 
 public class mainDialogueManager : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class mainDialogueManager : MonoBehaviour
     [SerializeField] private GameObject firstSlime;
 
     [SerializeField] private pauseMenuManager pauseMenuManager;
+    [SerializeField] private CharSupportsData charSupportData;
 
     public Animator battleFade;
 
@@ -85,8 +87,13 @@ public class mainDialogueManager : MonoBehaviour
                 pauseMenuManager.partyMemberAbsent("NICOL");
                 pauseMenuManager.partyMemberAbsent("SOPHIE");
                 firstSlime.SetActive(false);
+            } 
+            else if (dialogueFile.StartsWith("Support"))
+            {
+                return; // Don't change the audio for any support dialogue
             }
             //If we need to do something special with the new dialogue, do it here. check the name of the dialogue file
+
             switch (dialogueFile)
             {
                 case "kisaPostFight_k":
@@ -222,29 +229,39 @@ public class mainDialogueManager : MonoBehaviour
         {
             StopCoroutine(completeDialogue(currentlyRunningText));
             dialogueRunning = false; // Set the flag to false when stopping the coroutine
-            //for determining endings
-
-            
-
-
-            //switch (currentlyRunningText) // if this is the end of a route
-            //{
-            //    case "end_genocide":// 0 = everyone dead
-            //        creditsManager.endingID = 0;
-            //        fadeOut.DOFade(1, 3).OnComplete(() => { SceneManager.LoadScene("Credits"); });
-            //        return;
-            //}
-            currentlyRunningText = "";
-            continueTextPrompt.SetActive(false);
-            top.DOMove(tweenOutPositions[0].transform.position, 2);
-            bottom.DOMove(tweenOutPositions[1].transform.position, 2);
-            dialogueBox.DOMove(tweenOutPositions[2].transform.position, 2);
             if (isSupport)
             {
-                //send currentlyRunningText to display support, if needed.
-                //EDIT: Should be fine without calling displaysupport, but please double check!
-                //This is the stupidest work around but i'm hoping it works
                 pauseMenuManager.gameObject.SetActive(true);
+                // Step 1: Remove "Supports/" if it exists
+                if (currentlyRunningText.StartsWith("Supports/DeadAllyConvo/"))
+                {
+                    currentlyRunningText = currentlyRunningText.Substring(23); // Remove the first 22 characters
+                    //Do more fancy stuff, just mark all scenes as seen idk
+                }
+                else if (currentlyRunningText.StartsWith("Supports/"))
+                {
+                    currentlyRunningText = currentlyRunningText.Substring(9); // Remove the first 9 characters
+
+                }
+
+                // Step 2: Extract the first 4 letters
+                string firstPart = currentlyRunningText.Substring(0, 4); // "alan"
+
+                // Step 3: Extract the next 4 letters
+                string secondPart = currentlyRunningText.Substring(4, 4); // "kisa"
+
+                // Step 4: Parse the final number and map it to 1, 2, or 3
+                int finalNumber = int.Parse(currentlyRunningText.Substring(8)); // "3" in this case
+                int mappedValue = finalNumber switch
+                {
+                    3 => 1,
+                    7 => 2,
+                    14 => 3,
+                    _ => 0 // Default case for unexpected numbers
+                };
+                Debug.Log(mappedValue);
+                // Call your other function with these values
+                charSupportData.seenEvent(firstPart, secondPart, mappedValue);
             }
             else
             {
@@ -252,8 +269,11 @@ public class mainDialogueManager : MonoBehaviour
 
             }
 
-            am.playBGM("T2");
-            playerController.isfrozen = false;
+            currentlyRunningText = "";
+            continueTextPrompt.SetActive(false);
+            top.DOMove(tweenOutPositions[0].transform.position, 2);
+            bottom.DOMove(tweenOutPositions[1].transform.position, 2);
+            dialogueBox.DOMove(tweenOutPositions[2].transform.position, 2);
         }
     }
 
