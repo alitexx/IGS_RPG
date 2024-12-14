@@ -11,6 +11,7 @@ public class useSpecial : MonoBehaviour
     public BattleController battControl;
     private BattleCharacter currentChar;
     [SerializeField] private updateSPOnScreen updateSP;
+    [SerializeField] private CharSupportsData charSupportsData;
 
     //When special button is clicked
     //Currently, this does no targetting. Organize this code as you see fit!
@@ -45,6 +46,9 @@ public class useSpecial : MonoBehaviour
     {
         switch(whichLevel)
         {
+            case 0:
+                syncStrike("alan");
+                break;
             case 1:
                 //use Alan's first special, Guard
                 battControl.AlanGuardStatIncrease();
@@ -76,6 +80,9 @@ public class useSpecial : MonoBehaviour
     {
         switch (whichLevel)
         {
+            case 0:
+                syncStrike("kisa");
+                break;
             case 1:
                 //use Kisa's first special, Sing
                 battControl.KisaSing();
@@ -100,6 +107,9 @@ public class useSpecial : MonoBehaviour
     {
         switch (whichLevel)
         {
+            case 0:
+                syncStrike("nicol");
+                break;
             case 1:
                 //use Nicol's first special, Mockery
                 break;
@@ -119,6 +129,9 @@ public class useSpecial : MonoBehaviour
     {
         switch (whichLevel)
         {
+            case 0:
+                syncStrike("sophie");
+                break;
             case 1:
                 //use Sophie's first special, Earthquake
                 break;
@@ -132,5 +145,21 @@ public class useSpecial : MonoBehaviour
 
         battControl.backButton.SetActive(false);
         b_sm.gameObject.SetActive(false);
+    }
+
+    private void syncStrike(string whoIsInitiating)
+    {
+        //Do similar targetting to Nicol's final special, where you have to select an ally and that is the ally you attack with
+        //Have both allies attack
+        //      - specifically, whoIsInitiating's animation plays first, then 0.75 seconds later the other ally's attack goes. these are physical attacks
+        //      - use this function to find the damage multiplier:
+
+        //      charSupportsData.getSyncStrikeMultiplier(whoIsInitiating, otherAlly);
+
+        //      - ^ this returns a value to be multiplied to damage. it always increases damage dealt by 4 (or another set value), and that value is multipied by the number returned from this function
+        // REMEMBER TO PLAY HEART ANIMATIONS ABOVE BOTH ALLIES WHO USE THIS SPECIAL!
+        // REMEMBER TO RUN THIS FUNCTION TO ADD TO THEIR FRIENDSHIP BONUS/SUPPORT LEVEL/WHATEVER YOU WANT TO CALL IT
+
+        //      charSupportData.increaseSupport((whoIsInitiating, otherAlly);
     }
 }

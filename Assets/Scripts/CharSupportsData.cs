@@ -127,4 +127,28 @@ public class CharSupportsData : MonoBehaviour
         SetSupportValue(character1.ToLower(), character2.ToLower(), supportValue);
     }
 
+    //this returns a multiplier to damage
+    //BRANDON!!! CALL THIS FUNCTION!!!!!!11 THIS ONE!!!!!!
+    public int getSyncStrikeMultiplier(string character1, string character2)
+    {
+        int supportValue = GetSupportValue(character1.ToLower(), character2.ToLower());
+
+        // Extract the first 3 bits by shifting right 4 times
+        int eventBits = supportValue >> 4;
+
+        // Mask out any extra bits beyond the first 3
+        eventBits &= 0b111; // Keep only the last 3 bits (00000111)
+
+        // Count the number of 1s in the 3 bits
+        int seenEventCount = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            if ((eventBits & (1 << i)) != 0) // Check if each bit is 1
+            {
+                seenEventCount++;
+            }
+        }
+
+        return seenEventCount+1; // Must always be above 1
+    }
 }
