@@ -95,26 +95,36 @@ public class CharSupportsData : MonoBehaviour
             nicosoph_support = value;
     }
 
-    // Helper function to mark an event as seen
     public void seenEvent(string character1, string character2, int eventNumber)
     {
         // Ensure the event number is within a valid range (1 to 3)
-        if (eventNumber < 1 || eventNumber > 3)
+        if (eventNumber < 1 || eventNumber > 4)
         {
-            Debug.LogError("Invalid event number! Must be between 1 and 3.");
+            Debug.LogError("Invalid event number! Must be between 1 and 4.");
             return;
+        } else if (eventNumber == 4)
+        {
+            SetSupportValue(character1.ToLower(), character2.ToLower(), 0101110);
         }
 
         // Get the current support value for the character pair
-        int supportValue = GetSupportValue(character1, character2);
+        int supportValue = GetSupportValue(character1.ToLower(), character2.ToLower());
 
-        //// Shift 1 by (eventNumber - 1) to set the correct bit (1st, 2nd, or 3rd)
-        //int eventBit = 1 << (3 - eventNumber); // (3 - eventNumber) because the first event is the leftmost bit
+        // Calculate the event bit to modify (1st, 2nd, or 3rd event)
+        int eventBit = 1 << (3 - eventNumber); // e.g., for event 1: bit at position 3, event 2: bit at position 2, etc.
 
-        //// Mark the event as seen (set the corresponding bit to 1)
-        //supportValue |= eventBit; // OR the current value with the event bit to set it
+        // Mark the event as seen (set the corresponding bit to 1 in the first 3 bits)
+        supportValue |= eventBit; // Use bitwise OR to set the specific event bit to 1
 
-        // Update the support value for the correct character pair
-        SetSupportValue(character1.ToLower(), character2.ToLower(), supportValue + 1);
+        // Extract the last 4 bits (special points) and increment them by 1
+        int specialPoints = supportValue & 0b1111; // Mask out only the last 4 bits
+        specialPoints = Mathf.Min(specialPoints + 1, 15); // Increment, ensuring it doesn't exceed 15
+
+        // Combine the updated first 3 bits and the new special points back into a single int
+        supportValue = (supportValue & ~0b1111) | specialPoints; // Clear the last 4 bits, then OR with updated points
+
+        // Update the support value for the character pair
+        SetSupportValue(character1.ToLower(), character2.ToLower(), supportValue);
     }
+
 }

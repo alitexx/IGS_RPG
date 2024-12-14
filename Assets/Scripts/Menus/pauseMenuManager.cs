@@ -253,6 +253,7 @@ public class pauseMenuManager : MonoBehaviour
         Buttons.transform.DOMove(locations[0].transform.position, 1f);
         PartyLevelTXT.transform.DOMove(locations[8].transform.position, 1f);
         PauseMenu.GamePaused = true;
+        whoAreWeViewing = -1;
         EventSystem.current.SetSelectedGameObject(onOpenButton);
     }
 

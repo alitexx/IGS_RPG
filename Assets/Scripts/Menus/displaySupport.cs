@@ -159,8 +159,17 @@ public class displaySupport : MonoBehaviour
         charIcons[position].sprite = charSprites[charName + 4 * CheckUnobtainedCharacter(charName)];
 
         int supportType = getSupportType(charName);
-            heartIcons[position].sprite = heartSprites[Convert.ToInt32(binarySupport) + supportType];
 
+        Debug.Log(binarySupport);
+        
+        if(binarySupport == 0101110) //If they have only seen the second event and they're on supportType14, this is an affected character. send them back to 7, don't let them view another event.
+        {
+            heartIcons[position].sprite = heartSprites[Convert.ToInt32(binarySupport & 0b1111) + 7];
+            supportBtn[position].gameObject.SetActive(false);
+        }
+        else
+        {
+            heartIcons[position].sprite = heartSprites[Convert.ToInt32(binarySupport & 0b1111) + supportType];
             //Check if there's a cutscene they should be able to watch
             if (checkIfSupportUnlocked(binarySupport))
             {
@@ -172,6 +181,7 @@ public class displaySupport : MonoBehaviour
             {
                 supportBtn[position].gameObject.SetActive(false);
             }
+        }
         supportNames[position] = supportName;
     }
 
@@ -182,6 +192,16 @@ public class displaySupport : MonoBehaviour
                                                    // Extract the first 3 bits to check if the player has seen the scenes
         int seenEvents = (supportLevel >> 4) & 0b111; // Shift right by 4 and mask the first 3 bits
 
+        if(deadCharacters != 0) // It doesn't matter who's dead, but it only checks for supports at lvl 7 here.
+        {
+            if (supportPoints == 7 && (seenEvents & 0b010) == 0)
+            {
+                return true; // Event for support level 7 not seen yet
+            } else
+            {
+                return false;
+            }
+        }
         // Check for support level 3, 7, or 14 and corresponding event not seen
         if (supportPoints == 3 && (seenEvents & 0b001) == 0)
         {
@@ -219,11 +239,11 @@ public class displaySupport : MonoBehaviour
         supportBtn[supportIcon].gameObject.SetActive(false);
         //run support. Pass in support name + local support 
         Debug.Log(supportNames[supportIcon] + localSupportData[supportIcon].ToString());
-        mainDialogueManager.dialogueSTART("Supports/" + supportNames[supportIcon] + localSupportData[supportIcon].ToString());
-        //for example, if this was alan and kisa's first support, the file name would be alankisa3
+        
         //What if someone is dead?
-        if (deadCharacters == 0)// if someone is dead
+        if (deadCharacters == 0)// if someone is not dead
         {
+            //for example, if this was alan and kisa's first support, the file name would be alankisa3
             mainDialogueManager.dialogueSTART("Supports/" + supportNames[supportIcon] + localSupportData[supportIcon].ToString());
         }
         else
@@ -233,7 +253,7 @@ public class displaySupport : MonoBehaviour
             //Sophie dead = 001
             //These can be mixed and matched
             //THIS NEEDS PADDING!! EDIT!!!! HELLO!!! HELLLOOOOOOOOO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 HEY YOU!!!!!!!!!!!1 ADD PADDING TO THE DEAD CHARACTERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            mainDialogueManager.dialogueSTART("Supports/DeadAllyConvo/" + supportNames[supportIcon] + deadCharacters.ToString());
+            mainDialogueManager.dialogueSTART("Supports/DeadAllyConvo/" + supportNames[supportIcon] + deadCharacters.ToString("D3"));
         }
     }
 

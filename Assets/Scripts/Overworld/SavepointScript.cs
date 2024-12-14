@@ -24,8 +24,6 @@ public class SavepointScript : MonoBehaviour
     // Start is called before the first frame update
     private void Update()
     {
-        Debug.Log(canOpenSave);
-
         DistanceBetweenObjects = Vector3.Distance(transform.position, Target.transform.position);
 
         if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.keycodeInterractButton) && !mainDialogueManager.dialogueRunning && SaveMenu.activeInHierarchy == false && !PauseMenu.GamePaused && battleMenu.activeInHierarchy == false && canOpenSave)

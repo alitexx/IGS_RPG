@@ -257,7 +257,7 @@ public class mainDialogueManager : MonoBehaviour
                     3 => 1,
                     8 => 2,
                     14 => 3,
-                    _ => 0 // Default case for unexpected numbers
+                    _ => 4 // Default case for unexpected numbers; this would be our dead ally conversations
                 };
                 Debug.Log(mappedValue);
                 // Call your other function with these values

@@ -10,7 +10,7 @@ alan "haha this is a placeholder you didn't edit this"
 Show(sophie)
 SetSprite(sophie flipped)
 Highlight(sophie -o true)
-sophie "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+sophie "i hate you."
 Hide(sophie)
 Hide(alan)
 endMenuDialogue(true)
