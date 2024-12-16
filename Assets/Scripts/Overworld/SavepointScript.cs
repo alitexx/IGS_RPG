@@ -16,6 +16,8 @@ public class SavepointScript : MonoBehaviour
     public audioManager audioManager;
     public PlayerController playerController;
     public GameObject SaveMenu;
+    public string savePointName;
+    [SerializeField] private miguelConversation miguelConvo;
     [SerializeField] private mainDialogueManager mainDialogueManager;
     [SerializeField] private TextMeshProUGUI partyLevel;
     public static bool canOpenSave = true;
@@ -38,6 +40,7 @@ public class SavepointScript : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(saveFirstButton);
             partyLevel.text = ("Party Level: " + LevelManager.level);
+            miguelConvo.savePointName = savePointName;
         }
 
     }
