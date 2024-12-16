@@ -41,32 +41,32 @@ public class miguelConversation : MonoBehaviour
      * 
      */
 
+    //Uncomment out when we're ready to activate this. Could be annoying during testing
 
-
-    private void OnEnable()
-    {
-        //If you have not been greeted, play the greeting. Depends on the floor we're on
-        if (!hasBeenGreeted)
-        {
-            hasBeenGreeted = true;
-            switch (LevelManager.level)
-            {
-                //A cutscene should play, but I haven't finished this part yet. 
-                case 1:
-                    mainDialogueManager.dialogueSTART("SaveConvo/firstSaveInteract_f1");
-                    break;
-                case 2:
-                case 3:
-                    mainDialogueManager.dialogueSTART("SaveConvo/firstSaveInteract_midFloor");
-                    break;
-                case 4:
-                    mainDialogueManager.dialogueSTART("SaveConvo/firstSaveInteract_f4");
-                    break;
-            }
-            PauseMenu.GamePaused = false;
-            this.gameObject.SetActive(false);
-        }
-    }
+    //private void OnEnable()
+    //{
+    //    //If you have not been greeted, play the greeting. Depends on the floor we're on
+    //    if (!hasBeenGreeted)
+    //    {
+    //        hasBeenGreeted = true;
+    //        switch (playerControl.Level)
+    //        {
+    //            //A cutscene should play, but I haven't finished this part yet. 
+    //            case 1:
+    //                mainDialogueManager.dialogueSTART("SaveConvo/firstSaveInteract_f1");
+    //                break;
+    //            case 2:
+    //            case 3:
+    //                mainDialogueManager.dialogueSTART("SaveConvo/firstSaveInteract_midFloor");
+    //                break;
+    //            case 4:
+    //                mainDialogueManager.dialogueSTART("SaveConvo/firstSaveInteract_f4");
+    //                break;
+    //        }
+    //        PauseMenu.GamePaused = false;
+    //        this.gameObject.SetActive(false);
+    //    }
+    //}
 
 
     public void startConversation()
@@ -123,14 +123,22 @@ public class miguelConversation : MonoBehaviour
     //I call this the kns naming system!!!!! x = they're dead, k = kisa alive, n = nicol alive, s = sophie alive!!
     private string binaryToKNS(int binary)
     {
+        
+
         // Start with the preexisting string
         string returnedString = "_";
 
         // Convert the integer to a binary string
         string binaryString = Convert.ToString(binary, 2).PadLeft(3, '0'); // Ensure it's 3 bits long
 
+        int floorNumber = playerControl.Level;
+        if (floorNumber > binaryString.Length)
+        {
+            floorNumber = binaryString.Length;
+        }
+
         // Loop through each character in the binary string
-        for (int i = 0; i < binaryString.Length; i++)
+        for (int i = 0; i < floorNumber; i++)
         {
             if (binaryString[i] == '0')
             {

@@ -37,6 +37,8 @@ public class mainDialogueManager : MonoBehaviour
     [SerializeField] private pauseMenuManager pauseMenuManager;
     [SerializeField] private CharSupportsData charSupportData;
 
+    [SerializeField] private miguelConversation miguelConvo;
+
     public Animator battleFade;
 
     [SerializeField] private PlayerController playerController;
@@ -266,7 +268,8 @@ public class mainDialogueManager : MonoBehaviour
             else
             {
                 //if this is NOT support, this must be the save menu. open save menu again.
-
+                miguelConvo.gameObject.SetActive(true);
+                miguelConvo.endConversation();
             }
 
             currentlyRunningText = "";
