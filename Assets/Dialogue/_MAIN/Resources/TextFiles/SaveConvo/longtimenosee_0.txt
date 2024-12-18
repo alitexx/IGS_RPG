@@ -1,0 +1,12 @@
+CreateCharacter(miguel -enabled false)
+alan.Move(0.15 0 -spd 3)
+miguel.Move(0.7 0 -spd 3)
+Hide(alan)
+wait(1)
+Highlight(miguel -o true)
+miguel "Alan! It has been a moment since we last spoke, but I am glad to be hearing from you. You've been keeping up on your end of the offer, yes? How is your soul collecting going, how many do you have?"
+Highlight(alan -o true)
+alan "..."
+Highlight(miguel -o true)
+miguel "None? A pity... your mentor is counting on you to revive her, son. You made this pact with me to revive her, yes? Perhaps it is time to get your priorities in order."
+endMenuDialogue(false)

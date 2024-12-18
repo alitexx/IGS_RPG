@@ -39,6 +39,8 @@ public class miguelConversation : MonoBehaviour
      * 
      * update kns system because rn it probably doesnt print right
      * 
+     * Horrible fix to kns system: keep names as kns for everything. if they dont have someone, just pretend that they do. idk.
+     * 
      */
 
     //Uncomment out when we're ready to activate this. Could be annoying during testing
