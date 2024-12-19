@@ -1,0 +1,17 @@
+CreateCharacter(miguel -enabled false)
+alan.Move(0.15 0 -spd 3)
+miguel.Move(0.7 0 -spd 3)
+Hide(alan)
+Hide(miguel)
+wait(1)
+Show(alan)
+Show(miguel)
+Highlight(miguel -o true)
+miguel "I see you have finally begun your quest for souls. Good work, although I wish you had begun this earlier. You could kill the elf, but now that she is on guard, it will be a bigger inconvenience to do it now. Perhaps another time."
+Highlight(alan -o true)
+alan "Do not tell me how I should or should not act. I do as I please."
+Highlight(miguel -o true)
+miguel "Feisty today, are we? I like it. Keep up the good work."
+Hide(alan)
+Hide(miguel)
+endMenuDialogue(false)

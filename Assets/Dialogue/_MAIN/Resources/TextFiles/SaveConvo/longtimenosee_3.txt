@@ -3,10 +3,14 @@ alan.Move(0.15 0 -spd 3)
 miguel.Move(0.7 0 -spd 3)
 Hide(alan)
 wait(1)
+Show(alan)
+Show(miguel)
 Highlight(miguel -o true)
 miguel "Alan! It has been a moment since we last spoke, but I am glad to be hearing from you. You've been keeping up on your end of the offer, yes? How is your soul collecting going, how many do you have?"
 Highlight(alan -o true)
 alan "..."
 Highlight(miguel -o true)
 miguel "You already have all three souls?! Hells, Alan, that is impressive. I never doubted you for a second. I’ll let you be, you obviously know what you’re doing."
+Hide(alan)
+Hide(miguel)
 endMenuDialogue(false)

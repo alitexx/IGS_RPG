@@ -1,0 +1,22 @@
+CreateCharacter(miguel -enabled false)
+alan.Move(0.15 0 -spd 3)
+miguel.Move(0.7 0 -spd 3)
+Hide(alan)
+Hide(miguel)
+wait(1)
+Show(alan)
+Show(miguel)
+Highlight(miguel -o true)
+miguel "Alan!"
+Highlight(alan -o true)
+alan "Miguel."
+Highlight(miguel -o true)
+miguel "Sir Alan, why do you evade me so? Or did you forget that I would help you with this adventure?"
+miguel "Do you not like healing or saving your progress? Or are you trying to impress everyone by doing this without help?"
+Highlight(alan -o true)
+alan "There was... a situation among the party. It has been dealt with."
+Highlight(miguel -o true)
+miguel "Ah. Well, as per our agreement, I am happy to assist you with your physical ailments. I’ll even log your adventure, although given your reluctance to speak to me until now, I doubt you’ll need my help."
+Hide(alan)
+Hide(miguel)
+endMenuDialogue(false)

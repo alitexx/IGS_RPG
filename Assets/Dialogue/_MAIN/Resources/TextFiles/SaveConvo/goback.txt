@@ -1,0 +1,9 @@
+alan.Move(0.15 0 -spd 3)
+Hide(alan)
+wait(1)
+Show(alan)
+Highlight(alan -o true)
+alan "(...Strange. I called upon Miguel again, and although I feel rejuvenated, Miguel has not appeared.)"
+alan "(Perhaps I will be able to speak with him at a later date.)"
+Hide(alan)
+endMenuDialogue(false)

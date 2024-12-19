@@ -1,0 +1,27 @@
+CreateCharacter(miguel -enabled false)
+alan.Move(0.15 0 -spd 3)
+miguel.Move(0.7 0 -spd 3)
+Hide(alan)
+wait(1)
+Show(alan)
+Show(miguel)
+Highlight(miguel -o true)
+miguel "You called?"
+Highlight(alan -o true)
+alan "Miguel."
+Highlight(miguel -o true)
+miguel "Ah! Alan! How goes it? Is the lich defeated? Have you saved the day?"
+Highlight(alan -o true)
+alan "No. My party has gone their separate ways, despite arriving moments ago."
+Highlight(miguel -o true)
+miguel "Unfortunate. Well, as per our agreement, I am happy to assist you with your physical ailments. I’ll even log your adventure, so none forget the tales of Sir Alan."
+Highlight(alan -o true)
+alan "Please do not call me Sir Alan. After what I might do in this tower, I do not believe I hold such an honor."
+Highlight(miguel -o true)
+miguel "But you are a knight, you deserve that title! And it is not what you might do, it is what you should do."
+miguel "Think about it– You go through the trouble of lugging your party here, and they all scurry away like rats!"
+miguel "Rats are pests. They must be controlled, shown their place. You have the power to do so, if you wish."
+miguel "But I digress. I will heal your injuries and save your progress, simply call on me again if you need further assistance."
+Hide(alan)
+Hide(miguel)
+endMenuDialogue(false)

@@ -1,0 +1,17 @@
+CreateCharacter(miguel -enabled false)
+alan.Move(0.15 0 -spd 3)
+miguel.Move(0.7 0 -spd 3)
+Hide(alan)
+Hide(miguel)
+wait(1)
+Show(alan)
+Show(miguel)
+Highlight(miguel -o true)
+miguel "Good work, Alan! Now, if only you hadn't kept the elf alive..."
+Highlight(alan -o true)
+alan "Do not question my choices. Heal me and let me be on my way."
+Highlight(miguel -o true)
+miguel "This attitude of yours! You must have been a handful for your mother. Regardless, I suppose I must comply. Keep going, Sir Alan, slay the lich, and complete your adventure."
+Hide(alan)
+Hide(miguel)
+endMenuDialogue(false)

@@ -1,0 +1,21 @@
+CreateCharacter(miguel -enabled false)
+alan.Move(0.15 0 -spd 3)
+miguel.Move(0.7 0 -spd 3)
+Hide(alan)
+Hide(miguel)
+wait(1)
+Show(alan)
+Show(miguel)
+Highlight(miguel -o true)
+miguel "Ah, had a change of heart, Alan?"
+Highlight(alan -o true)
+alan "No! Not in the slightest. I did what had to be done, that is all. I protected us."
+Highlight(miguel -o true)
+miguel "If that thought helps you sleep at night, continue to think that way. You and I both know you killed her for her strength. Does it not feel good, the raw power running through your veins? This and so much more could be yours if you were to defeat your remaining party."
+Highlight(alan -o true)
+alan "You have mistaken me for a fool, Miguel. I did not wish to kill Sophie, and I will not kill Kisa or Nicol. They are my allies, and they will remain my allies to the end. Sophie... was a mistake."
+Highlight(miguel -o true)
+miguel "Certainly."
+Hide(alan)
+Hide(miguel)
+endMenuDialogue(false)

@@ -1,0 +1,17 @@
+CreateCharacter(miguel -enabled false)
+alan.Move(0.15 0 -spd 3)
+miguel.Move(0.7 0 -spd 3)
+Hide(alan)
+Hide(miguel)
+wait(1)
+Show(alan)
+Show(miguel)
+Highlight(miguel -o true)
+miguel "Alan! How are you? Ready to defeat a lich, I presume?"
+Highlight(alan -o true)
+alan "Heal me and be done with it, devil."
+Highlight(miguel -o true)
+miguel "Demanding as always, I see. No matter, I will reward you for your efforts. Defeat the lich, then we can discuss the last soul you need."
+Hide(alan)
+Hide(miguel)
+endMenuDialogue(false)

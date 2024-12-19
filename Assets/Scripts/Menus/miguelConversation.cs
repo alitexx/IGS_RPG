@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using System;
+using UnityEngine.UI;
 
 public class miguelConversation : MonoBehaviour
 {
@@ -24,10 +25,11 @@ public class miguelConversation : MonoBehaviour
     private bool hasBeenGreeted;
 
     //saving previous save point
-    int previousSave;
+    int previousSave = 0;
 
+    //For the button/event nonsense
     //miguel btn
-    [SerializeField] private GameObject miguelBtn;
+    [SerializeField] private GameObject miguelBtn, saveButton, returnButton;
 
     /* New problem: What if they go back and try to talk to Miguel after obtaining a character? This is only an issue on few dialogues:
      * Before Kisa
@@ -45,30 +47,36 @@ public class miguelConversation : MonoBehaviour
 
     //Uncomment out when we're ready to activate this. Could be annoying during testing
 
-    //private void OnEnable()
-    //{
-    //    //If you have not been greeted, play the greeting. Depends on the floor we're on
-    //    if (!hasBeenGreeted)
-    //    {
-    //        hasBeenGreeted = true;
-    //        switch (playerControl.Level)
-    //        {
-    //            //A cutscene should play, but I haven't finished this part yet. 
-    //            case 1:
-    //                mainDialogueManager.dialogueSTART("SaveConvo/firstSaveInteract_f1");
-    //                break;
-    //            case 2:
-    //            case 3:
-    //                mainDialogueManager.dialogueSTART("SaveConvo/firstSaveInteract_midFloor");
-    //                break;
-    //            case 4:
-    //                mainDialogueManager.dialogueSTART("SaveConvo/firstSaveInteract_f4");
-    //                break;
-    //        }
-    //        PauseMenu.GamePaused = false;
-    //        this.gameObject.SetActive(false);
-    //    }
-    //}
+    private void OnEnable()
+    {
+        //If you have not been greeted, play the greeting. Depends on the floor we're on
+        if (!hasBeenGreeted)
+        {
+            hasBeenGreeted = true;
+            switch (playerControl.Level)
+            {
+                //A cutscene should play, but I haven't finished this part yet. 
+                case 1:
+                    mainDialogueManager.dialogueSTART("SaveConvo/firstSaveInteract_f1");
+                    break;
+                case 2:
+                case 3:
+                    mainDialogueManager.dialogueSTART("SaveConvo/firstSaveInteract_midFloor");
+                    break;
+                case 4:
+                    mainDialogueManager.dialogueSTART("SaveConvo/firstSaveInteract_f4");
+                    break;
+            }
+            PauseMenu.GamePaused = false;
+            this.gameObject.SetActive(false);
+        }
+        Debug.Log(ExtractFloorNumber(savePointName));
+        Debug.Log(previousSave);
+        if (ExtractFloorNumber(savePointName) > previousSave)
+        {
+            miguelBtn.SetActive(true);
+        }
+    }
 
 
     public void startConversation()
@@ -114,19 +122,18 @@ public class miguelConversation : MonoBehaviour
     {
         this.gameObject.SetActive(true);
         miguelBtn.SetActive(false);
+        //sets button to nothing, waits 1 sec, then makes it the resume button
+        assignButtonAfterSave();
         saveMenu.DOFade(1, 1f).OnComplete(() =>
         {
             saveMenu.DOKill();
         });
-        PauseMenu.GamePaused = true;
 
     }
 
     //I call this the kns naming system!!!!! x = they're dead, k = kisa alive, n = nicol alive, s = sophie alive!!
     private string binaryToKNS(int binary)
     {
-        
-
         // Start with the preexisting string
         string returnedString = "_";
 
@@ -256,4 +263,20 @@ public class miguelConversation : MonoBehaviour
         return false;
     }
 
+    public void assignButtonAfterSave()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        StartCoroutine(SetReturnButtonAfterDelay(returnButton));
+    }
+
+    // The coroutine to wait for 1 second and set the return button
+    private IEnumerator SetReturnButtonAfterDelay(GameObject button)
+    {
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        if (button != null)
+        {
+            EventSystem.current.SetSelectedGameObject(button);
+            StopAllCoroutines(); // Stop the coroutine if hovering ends
+        }
+    }
 }

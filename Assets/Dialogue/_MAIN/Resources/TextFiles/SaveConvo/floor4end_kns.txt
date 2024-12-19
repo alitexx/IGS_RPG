@@ -1,0 +1,12 @@
+alan.Move(0.15 0 -spd 3)
+Hide(alan)
+wait(1)
+Show(alan)
+Highlight(alan -o true)
+alan "Miguel?"
+alan "..."
+alan "(Strange. I still feel rejuvenated, but Miguel is not here to speak with me.)"
+alan "(That is... worrying, to say the least. What danger could lie ahead that even Miguel stays away?)"
+alan "(His silence could be due to my defiance, we did have a deal. I have made up my mind: I will not take the souls of my friends. Perhaps he knows this. But what comes next..?)"
+Hide(alan)
+endMenuDialogue(false)

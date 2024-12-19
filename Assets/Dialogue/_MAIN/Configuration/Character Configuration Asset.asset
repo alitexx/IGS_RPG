@@ -45,7 +45,7 @@ MonoBehaviour:
     charVoice: {fileID: 8300000, guid: 831d1b3a82516f34b956a49dc0b60820, type: 3}
   - name: miguel
     alias: Devil
-    characterType: 0
+    characterType: 1
     charNameHolder: {fileID: 21300000, guid: 83ec3482aed89e043a6b19d635582830, type: 3}
     charVoice: {fileID: 8300000, guid: e035f0ccf3188ae4c83436c9784f9924, type: 3}
   - name: Kisa_killed

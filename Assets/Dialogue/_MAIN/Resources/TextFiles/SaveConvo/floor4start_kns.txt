@@ -1,0 +1,34 @@
+kisa.Move(0.2 0 -spd 3)
+nicol.Move(0.35 0 -spd 3)
+alan.Move(0.75 0 -spd 3)
+sophie.Move(0 0 -spd 3)
+Hide(nicol)
+Show(alan)
+Hide(kisa)
+Hide(sophie)
+SetSprite(nicol nicol)
+wait(0.75)
+Show(sophie)
+Highlight(sophie -o true)
+sophie "Alan? I must ask, why do you run to specific tomes each time you see them?"
+Show(kisa)
+SetSprite(kisa flipped)
+Highlight(kisa -o true)
+kisa "I was wondering that as well. You seem to be in a trance whenever you touch them, is all well? It is merely a book."
+Show(nicol)
+Highlight(nicol -o true)
+nicol "..."
+Highlight(alan -o true)
+alan "Oh, no reason. I simply feel… drawn to them. Perhaps they could offer some guidance for us on this adventure."
+nicol.Move(0.4 0 -spd 2)
+Highlight(nicol -o true)
+nicol "Have they helped you any?"
+Highlight(alan -o true)
+alan "...That is up for debate."
+Highlight(sophie -o true)
+sophie "A shame, but we have almost reached our goal. Now is not the time for dawdling. Morsophus awaits."
+Hide(sophie)
+Hide(kisa)
+Hide(alan)
+Hide(nicol)
+endDialogue(false)

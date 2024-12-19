@@ -355,12 +355,10 @@ public class pauseMenuManager : MonoBehaviour
     }
     public void returnSaveMenu()
     {
-        Debug.Log("Alright no more save menu");
         PauseMenu.canOpenPause = true;
         SaveMenu.SetActive(false);
         playerController.isfrozen = false;
         EventSystem.current.SetSelectedGameObject(null);
-        Debug.Log("menu closed (supposedly)");
         savepointScript.saveCooldown();
     }
 

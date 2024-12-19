@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CHARACTERS;
 using DIALOGUE;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
-using UnityEngine.Windows;
 
 public class mainDialogueManager : MonoBehaviour
 {
@@ -90,7 +88,7 @@ public class mainDialogueManager : MonoBehaviour
                 pauseMenuManager.partyMemberAbsent("SOPHIE");
                 firstSlime.SetActive(false);
             } 
-            else if (dialogueFile.StartsWith("Support"))
+            else if (dialogueFile.StartsWith("Support") || dialogueFile.StartsWith("SaveConvo"))
             {
                 return; // Don't change the audio for any support dialogue
             }

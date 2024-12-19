@@ -1,0 +1,18 @@
+CreateCharacter(miguel -enabled false)
+alan.Move(0.15 0 -spd 3)
+miguel.Move(0.7 0 -spd 3)
+Hide(alan)
+Hide(miguel)
+wait(1)
+Show(alan)
+Show(miguel)
+Highlight(miguel -o true)
+miguel "Alan! Feel any better?"
+Highlight(alan -o true)
+alan "No. I did what had to be done, but..."
+Highlight(miguel -o true)
+miguel "Hear yourself, you did what had to be done. Think of it as nothing more than chores: It has to be done by someone, and that someone is you."
+miguel "You will meet someone again soon, and you will do it again. This is a <i>good</i> thing, keep going. I believe in you."
+Hide(alan)
+Hide(miguel)
+endMenuDialogue(false)
