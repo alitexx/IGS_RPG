@@ -203,15 +203,15 @@ public class displaySupport : MonoBehaviour
             }
         }
         // Check for support level 3, 7, or 14 and corresponding event not seen
-        if (supportPoints == 3 && (seenEvents & 0b001) == 0)
+        if (supportPoints == 3 && playerControl.Level >= 1 && (seenEvents & 0b001) == 0)
         {
             return true; // Event for support level 3 not seen yet
         }
-        else if (supportPoints == 8 && (seenEvents & 0b010) == 0)
+        else if (supportPoints == 8 && playerControl.Level >= 2 && (seenEvents & 0b010) == 0)
         {
             return true; // Event for support level 7 not seen yet
         }
-        else if (supportPoints == 14 && (seenEvents & 0b100) == 0)
+        else if (supportPoints == 14 && playerControl.Level >= 3 && playerControl.hasSophie && (seenEvents & 0b100) == 0) // 14 heart requires all party members to be living
         {
             return true; // Event for support level 14 not seen yet
         }

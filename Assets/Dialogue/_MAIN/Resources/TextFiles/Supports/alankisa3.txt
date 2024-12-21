@@ -5,12 +5,38 @@ Hide(kisa)
 SetSprite(kisa flipped)
 wait(0.75)
 Show(alan)
-Highlight(alan -o true)
-alan "haha this is a placeholder you didn't edit this"
 Show(kisa)
-SetSprite(kisa flipped)
+Highlight(alan -o true)
+alan "Kisa, I cannot believe you fight without a proper weapon. It is... bizarre, to say the least."
+alan.Move(0.2 0 -spd 2)
+alan "Would you prefer to use a temporary weapon? You could loot a pitchfork from a skeleton, that would be more effective than a lute."
 Highlight(kisa -o true)
-kisa "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+kisa "Excuse me? A pitchfork? No!"
+SetSprite(kisa kisa)
+kisa.Move(0.85 0 -spd 3)
+kisa "I do not use weapons claimed from dusty old skeletons! My weapons are finely tailored to suit my needs-"
+Highlight(alan -o true)
+alan "That is great, however a <i>real</i> weapon could be the difference between life and death. We no longer have the luxury of choice."
+SetSprite(kisa flipped)
+kisa.Move(0.75 0 -spd 3)
+Highlight(kisa -o true)
+kisa "I know that, <i>Alan</i>. But I have already told you. I wield weapons with finesse, I cannot use something as common and unsightly as a pitchfork. What, will I pitch them to death? Will I collect enough hay to throw into my enemies' eyes?"
+Highlight(alan -o true)
+alan "I am only offering ideas, Kisa. I see now that you are vehemently against pitchforks. Perhaps there is something else you may use..."
+alan.Move(0.3 0 -spd 2)
+alan "In fact, would you prefer my sword? You must promise not to lose it as carelessly as you did your former weapon, but if it gets something in your hands other than that lute, I do not mind. Unlike you, I am not grossly against pitchforks."
+Highlight(kisa -o true)
+kisa.Move(0.65 0 -spd 3)
+kisa "Your sword? I am willing to try. A greatsword may not be as elegant as my rapier, but perhaps it shall suffice."
+kisa "This is a note to self to look into playing sfx while the dialogue is running! LOOK INTO IT TACKETT."
+kisa "... It appears your sword is faulty. The metal is too thick, so the whole blade is weighed down much more than it should be. See? I will have to accommodate for this extra weight by using both hands. Behold."
+kisa "This is a note to self to look into playing sfx while the dialogue is running! LOOK INTO IT TACKETT."
+Highlight(alan -o true)
+alan "On second thought, perhaps you should wield a more... elegant weapon, as you say. You may stop now, do not strain yourself further. I do not want you to harm yourself."
+Highlight(kisa -o true)
+kisa "W-what?! But I was only using a fraction of my strength, I could have lifted it above my knees if given the time to!"
+Highlight(alan -o true)
+alan "... Sure, Kisa."
 Hide(kisa)
 Hide(alan)
 endMenuDialogue(true)

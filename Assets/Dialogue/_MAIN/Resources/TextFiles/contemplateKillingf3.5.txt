@@ -1,0 +1,9 @@
+alan.Move(0.15 0 -spd 3)
+wait(0.75)
+Show(alan)
+Highlight(alan -o true)
+alan "Even with my strength, these monsters manage to wound me. I must focus, I should not waste time on these insignificant pests."
+alan.Move(0.175 0 -spd 1)
+alan "Nothing can stop me. The more souls I collect, the stronger I become. For Leora."
+Hide(alan)
+endDialogue(false)

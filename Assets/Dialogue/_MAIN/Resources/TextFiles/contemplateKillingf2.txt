@@ -1,0 +1,9 @@
+alan.Move(0.15 0 -spd 3)
+wait(0.75)
+Show(alan)
+Highlight(alan -o true)
+alan "(Gods, these undead are far more dangerous than I anticipated. Perhaps if Kisa was here...)"
+alan "..."
+alan "(No, Alan. Do not linger on the thought. You must do this yourself, as you always have. If my party could traverse this tower, so can I.)"
+Hide(alan)
+endDialogue(false)

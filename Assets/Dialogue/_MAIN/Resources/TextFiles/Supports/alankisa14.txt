@@ -1,16 +1,65 @@
-kisa.Move(0.8 0 -spd 3)
-alan.Move(0.15 0 -spd 3)
+kisa.Move(0.825 0 -spd 3)
+alan.Move(0.0 0 -spd 3)
 Hide(alan)
 Hide(kisa)
 SetSprite(kisa flipped)
 wait(0.75)
-Show(alan)
-Highlight(alan -o true)
-alan "haha this is a placeholder you didn't edit this"
 Show(kisa)
-SetSprite(kisa flipped)
 Highlight(kisa -o true)
-kisa "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+kisa "Another enemy vanquished! We are doing splendidly. This lich shall be but a trifle!"
+Show(alan)
+alan.Move(0.15 0 -spd 1.5)
+Highlight(alan -o true)
+alan "I would not speak prematurely of our victory. Liches are notorious for being difficult to defeat, we must proceed with caution."
+Highlight(kisa -o true)
+kisa.Move(0.8 0.05 -spd 4)
+wait(0.2)
+kisa.Move(0.8 0 -spd 2)
+kisa "Ugh, yes yes caution! Of course, Sir Alan. I will make sure not to die a miserable death at the hands of a lich and live to tell the tale of my glory, or whatever else you will lecture me on next."
+Highlight(alan -o true)
+alan "Well, you do wish to live through this encounter, yes? It does not harm to err on the side of caution. What was that before about making your parents proud? You cannot do that-or anything else you dream of accomplishing-if we fail."
+Highlight(kisa -o true)
+kisa.Move(0.75 0 -spd 2)
+kisa "Fine, let me rephrase. When we <i>hopefully</i> defeat Morsophus and <i>hopefully</i> do not die, I will return home to tell Mother and Father. Then, once I have earned their respect, I can continue my life freely and happily. So yes, I do wish to live through this encounter."
+Highlight(alan -o true)
+alan.Move(0.2 0 -spd 2)
+alan "Please tell me if I am overstepping my boundaries, but have they always been this way?"
+Highlight(kisa -o true)
+kisa "Perhaps not when I was a child, but from what I can remember, this has always been the case. They shower me with affection when I do something ''good'', and ignore me when I do not. The only time they cared was when I first took up the lute."
+Highlight(alan -o true)
+alan "I see. And they pay you no mind even after you have done all that they have asked?"
+Highlight(kisa -o true)
+SetSprite(kisa kisa)
+kisa.Move(0.8 0 -spd 2)
+kisa "They require some grand quest to be impressed. I have done good. I have organized festivals, participated in government, and even stopped werewolves from rampaging through our town. Not once had they shown any interest."
+kisa "This is different. This is a larger-scale threat. It may not be as flashy as a dragon, but defeating a lich would be a huge accomplishment. They will be forced to accept my worth."
+Highlight(alan -o true)
+alan "Is this truly the way it must be? It does not feel right to earn a parent's love in such a fashion..."
+Highlight(kisa -o true)
+SetSprite(kisa flipped)
+kisa "They seek perfection, so I shall give them perfection. If I must earn their love, so be it."
+kisa.Move(0.75 0 -spd 4)
+kisa "And what shall you do once Morsophus falls, Alan?"
+Highlight(alan -o true)
+alan "What shall I do? I will complete any other tasks laid out for me, I suppose. I do not quite know."
+Highlight(kisa -o true)
+kisa.Move(0.7 0.0 -spd 2)
+kisa "And that is it? No celebration, no contacting your mother to let her know all is well?"
+Highlight(alan -o true)
+alan "That is it. I am not one to celebrate, Kisa, and I doubt my mother wishes to hear from me. I will go back to how I was prior, and... that is all."
+Highlight(kisa -o true)
+kisa "Oh, come now! You were always such a stick in the mud, but I did not know the severity until now. You deserve time off! You can take one night off of your sacred knight duties to celebrate. I do not know your mother, but I would at least let her know you are alive."
+Highlight(alan -o true)
+alan "It does not work like that. I cannot simply take a night off, I would have to-"
+Highlight(kisa -o true)
+kisa "I am sure that you could take one night off to celebrate your victory over a lich. If you have any issues, you can tell your superiors that a beautiful elven maiden has swept you off your feet and insisted on buying you a drink. Or that you are writing a letter to your mother, who is worried sick about your well-being."
+Highlight(alan -o true)
+alan "... Fine. I will consider it."
+Highlight(kisa -o true)
+kisa.Move(0.7 0.05 -spd 4)
+wait(0.2)
+kisa.Move(0.7 0 -spd 4)
+kisa "Hurray! Now we must defeat this lich, yes? Let us make haste!"
 Hide(kisa)
 Hide(alan)
 endMenuDialogue(true)
