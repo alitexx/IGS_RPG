@@ -1,16 +1,35 @@
-nicol.Move(0.8 0 -spd 3)
+nicol.Move(0.825 0 -spd 3)
 kisa.Move(0.15 0 -spd 3)
 Hide(kisa)
 Hide(nicol)
+SetSprite(kisa flipped)
 SetSprite(nicol flipped)
 wait(0.75)
+Show(nicol)
+Highlight(nicol -o true)
+nicol "My, my! It appears you have grown stronger since the last time I have fought alongside you, Kisa!"
 Show(kisa)
 Highlight(kisa -o true)
-kisa "haha this is a placeholder you didn't edit this"
-Show(nicol)
-SetSprite(nicol flipped)
+kisa "Oh, you flatter me, Nicol. I am but a novice in comparison to you."
 Highlight(nicol -o true)
-nicol "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+nicol "It is the truth! If you have improved in such a short period, I only wonder what proper training would do to your strength."
+Highlight(kisa -o true)
+kisa "Proper training..? Such as <i>physical</i> training? No thank you! I would rather avoid the persistent aches and sweat. I favor the art of vocal practice."
+Highlight(nicol -o true)
+nicol "I speak of schooling, not of physical training. However, any form of training is good training! Have you ever considered studying to enhance your magical prowess?"
+Highlight(kisa -o true)
+kisa "Enhancing my magical prowess through study? To be honest, such a method might overwhelm me. When I cast my spells, it is more a matter of intense concentration than anything scholarly. I simply think and it happens."
+Highlight(nicol -o true)
+nicol "...Ah. I see. So it is like you are in a darkened chamber, and instead of knowing how to locate the exit, you stumble upon it by chance each time. That is..."
+nicol "MARVELOUS! Kisa, you must entertain the notion! I could offer guidance, but I am by no means certified, especially with the powers of the wind. I dabble in it, but I can only create a short gust."
+Highlight(kisa -o true)
+kisa "You dabble in it? You wield more than one type of magic?!"
+Highlight(nicol -o true)
+nicol "Yes! Although I have the capability to use them all, my true affinity is with ice magic. When I attempt to use other types... it does not always go as planned. Regardless, with the right instruction, you too could master such arts!"
+Highlight(kisa -o true)
+kisa "I am not certain I am as diligent as you, but I may give it a try. Remind me when we depart this lair, and I shall consider it."
+Highlight(nicol -o true)
+nicol "Huzzah! I assure you, you will find it worthwhile!"
 Hide(nicol)
 Hide(kisa)
 endMenuDialogue(true)

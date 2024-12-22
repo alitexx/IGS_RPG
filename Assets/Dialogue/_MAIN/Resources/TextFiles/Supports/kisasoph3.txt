@@ -2,15 +2,41 @@ sophie.Move(0.8 0 -spd 3)
 kisa.Move(0.15 0 -spd 3)
 Hide(kisa)
 Hide(sophie)
-SetSprite(sophie flipped)
+SetSprite(kisa kisa)
 wait(0.75)
 Show(kisa)
 Highlight(kisa -o true)
-kisa "haha this is a placeholder you didn't edit this"
+kisa "Gods..."
 Show(sophie)
-SetSprite(sophie flipped)
 Highlight(sophie -o true)
-sophie "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+sophie "Kisa? Is all well?"
+Highlight(kisa -o true)
+kisa "Sophie! Aha... Hello. Yes, all is well. Is all well with you?"
+Highlight(sophie -o true)
+sophie "Kisa... please. Tell me."
+Highlight(kisa -o true)
+kisa "Fine. If you must know, I encountered some... difficulties on the first floor. I managed to get out, but not without a sprained ankle."
+Highlight(sophie -o true)
+sophie "I noticed earlier when we fought. You were not as mobile as you usually are. Here, let me assist you."
+Highlight(kisa -o true)
+kisa "I am quite alright, Sophie. A sprained ankle is a mere inconvenience."
+Highlight(sophie -o true)
+sophie "Do not lie. If it affects your ability to move, it requires treatment. Sit."
+Highlight(kisa -o true)
+kisa "... If you insist. You may examine it, but no more."
+Highlight(sophie -o true)
+sophie "..."
+sophie "Although I would recommend resting and cooling your ankle, this is no time to rest. I will wrap it to ease the discomfort."
+sophie "It would have been best to inform me of this sooner, Kisa. Even Alan or Nicol could have assisted you. Why did you not speak up?"
+Highlight(kisa -o true)
+kisa "Because we are fighting for our lives, and you expect me to whine about a little ankle twist? I am an adventurer, Sophie, not some helpless damsel. A sprain will not slow me down."
+Highlight(sophie -o true)
+sophie "A minor injury can become a major one if it affects your movement. I am no mind reader, Kisa. If you are hurt, you have to tell me. There's no shame in asking for help."
+sophie "Even our argument could have been avoided if we spoke this morning. I am not asking you to open your heart to me, but... I cannot help you if I am not aware of a problem. Can we work on being more open?"
+Highlight(kisa -o true)
+kisa "You act like it is so easy. Yes, I will be more open."
+Highlight(sophie -o true)
+sophie "Kisa... I feel as if there is a rift between us. We used to be able to talk, fight side by side without this tension. What changed?"
 Hide(sophie)
 Hide(kisa)
 endMenuDialogue(true)

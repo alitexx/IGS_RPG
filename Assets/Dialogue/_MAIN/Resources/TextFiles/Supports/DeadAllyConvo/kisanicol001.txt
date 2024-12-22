@@ -6,11 +6,20 @@ SetSprite(nicol flipped)
 wait(0.75)
 Show(kisa)
 Highlight(kisa -o true)
-kisa "haha this is a placeholder you didn't edit this"
+kisa "..."
 Show(nicol)
-SetSprite(nicol flipped)
 Highlight(nicol -o true)
-nicol "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+nicol "Kisa, I understand that Alan's actions are still fresh in your mind. I am not here to justify them, rather I wish to tell you that it is alright to grieve."
+Highlight(nicol -o true)
+nicol "Although I cannot imagine the thoughts running through your head, I know that you are hurting, we both are. Yet you and Sophie... were close."
+Highlight(kisa -o true)
+kisa "...Not anymore."
+kisa "Why must this happen, Nicol? I told Alan, I told him that Sophie and I had a misunderstanding last night, and that is why she was so agitated today. He knew of my true feelings for her... could that have altered him? Could that have altered his view of Sophie?"
+Highlight(nicol -o true)
+nicol "I understand what you are feeling, but you are not the one to blame for what happened. No one is. Even Alan believed he was protecting us, though my trust in him has wavered. I can promise you, your actions did not cause this."
+nicol "We still have a task awaiting us: defeating Morsophus. We must complete this task for Sophie's sake, regardless of our thoughts on Alan. It will be over soon, we have almost reached this adventure's conclusion."
+Highlight(kisa -o true)
+kisa "..."
 Hide(nicol)
 Hide(kisa)
 endMenuDialogue(true)

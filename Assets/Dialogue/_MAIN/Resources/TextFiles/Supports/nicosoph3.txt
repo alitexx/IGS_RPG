@@ -1,16 +1,44 @@
-sophie.Move(0.8 0 -spd 3)
+sophie.Move(0.825 0 -spd 3)
 nicol.Move(0.15 0 -spd 3)
 Hide(nicol)
 Hide(sophie)
-SetSprite(sophie flipped)
+SetSprite(nicol nicol)
 wait(0.75)
 Show(nicol)
 Highlight(nicol -o true)
-nicol "haha this is a placeholder you didn't edit this"
+nicol "Oh lovely Sophia!"
 Show(sophie)
-SetSprite(sophie flipped)
 Highlight(sophie -o true)
-sophie "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+sophie "Hello Nicol."
+Highlight(nicol -o true)
+nicol "You sound so detached! Are you disturbed by my presence? What have I done to upset you?"
+Highlight(sophie -o true)
+sophie "Nothing as of now, yet you have a habit of rambling on to the point that I become aggravated. What did you need? <i>Quickly</i>."
+Highlight(nicol -o true)
+nicol "Do not be so sour! Forget what I was originally going to tell you: I think it is high time that we sort out our issues. Talk about our feelings."
+Highlight(sophie -o true)
+sophie "That is the <i>opposite</i> of what I would like to do with you. Was I not clear enough? Perhaps later, but we are in a lich's lair, not gossiping over tea."
+Highlight(nicol -o true)
+nicol "Oh, come now! Why must we squabble? Please, tell me what it will take to get on your good side! I promise I will live up to your expectations!"
+Highlight(sophie -o true)
+sophie "Can you not accept my answer? We are allies, but we do not need to be brethren. Why are you so insistent?"
+Highlight(nicol -o true)
+nicol "Because! Now answer me-What would it take to win your favor?"
+Highlight(sophie -o true)
+sophie "Ugh, alright. I did not know I would be investigated so vigorously when I rejoined your party."
+sophie "If you truly wish to know, you do not think through your actions. You rush into danger for the thrill of it, dragging your allies with you and putting us all at risk. You get so excited that you block out what displeases you, such as earlier when I very clearly told you that your rambling gets me aggravated."
+sophie "There is no ''winning'' my favor. It is earned. You may have accomplished much, but you will never earn my favor if you continue to pester me. I have been very clear: I am here to find my students. Time is of the essence."
+Highlight(nicol -o true)
+nicol "Harsh. Alas, I asked, therefore I received. But do you not feel the rush of adventure, do you not get excited when met with a new challenge? Is it not exhilarating to rush into circumstances and figure out what comes next in the moment?"
+Highlight(sophie -o true)
+sophie "No, in fact. I do not."
+Highlight(nicol -o true)
+nicol "Ah. Well, perhaps you have yet to experience the feeling! It will come to you soon, grasshopper."
+Highlight(sophie -o true)
+sophie "Do not compare me to a beginner, <i>cat</i>. We may be different, but we are both experienced in our respective fields. As I have said, I respect your achievements but you frustrate me to no end. Let us continue and stop this waste of conversation."
+Highlight(nicol -o true)
 Hide(sophie)
+nicol "It was simply a metaphor-"
+nicol "Hrmp! Why is she so bitter? What could I have possibly done to warrant this response?"
 Hide(nicol)
 endMenuDialogue(true)

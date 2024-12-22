@@ -2,15 +2,25 @@ sophie.Move(0.8 0 -spd 3)
 nicol.Move(0.15 0 -spd 3)
 Hide(nicol)
 Hide(sophie)
-SetSprite(sophie flipped)
+SetSprite(nicol nicol)
 wait(0.75)
+Show(sophie)
+Highlight(sophie -o true)
+sophie "This is not right."
 Show(nicol)
 Highlight(nicol -o true)
-nicol "haha this is a placeholder you didn't edit this"
-Show(sophie)
-SetSprite(sophie flipped)
+nicol "I cannot say what is right or wrong, but... I sympathize with you."
 Highlight(sophie -o true)
-sophie "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+sophie "I <i>can</i>. Kisa's death was wrong."
+Highlight(nicol -o true)
+nicol "Kisa's death was... unfortunate. Alan appears genuine in his remorse. We do not know the circumstances of their fight, and although I doubt Alan's judgment, I do not wish to provoke him as Kisa may have done. We have had too much conflict today."
+Highlight(sophie -o true)
+sophie "Kisa would <i>never</i> have provoked Alan to the point that he needed to <i>kill her</i>. Kisa was kind, Kisa was friendly, Kisa was not a threat."
+sophie "...The gods wish to torment me. I could not pinpoint my feelings towards Kisa last evening, but now I can. I realize now how much she meant to me in her death, and I am cursed to never tell her."
+Highlight(nicol -o true)
+nicol "Although I do not know the extent of your relationship, I know that losing one that you treasured makes you realize how important they were. I am sure that Kisa knows the depth of your affection, even if you did not know it yourself until moments ago."
+Highlight(sophie -o true)
+sophie "I hope you are right. I... I truly do."
 Hide(sophie)
 Hide(nicol)
 endMenuDialogue(true)

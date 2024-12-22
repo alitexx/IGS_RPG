@@ -2,15 +2,41 @@ sophie.Move(0.8 0 -spd 3)
 kisa.Move(0.15 0 -spd 3)
 Hide(kisa)
 Hide(sophie)
-SetSprite(sophie flipped)
+SetSprite(kisa flipped)
 wait(0.75)
+Show(sophie)
+Highlight(sophie -o true)
+sophie "Kisa, although this is untimely, I have a question about... us. If you have a moment."
 Show(kisa)
 Highlight(kisa -o true)
-kisa "haha this is a placeholder you didn't edit this"
-Show(sophie)
-SetSprite(sophie flipped)
+kisa "''Us''? Yes, go ahead."
 Highlight(sophie -o true)
-sophie "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+sophie "Last evening, your confession. Was that a spur-of-the-moment confession, or...?"
+Highlight(kisa -o true)
+kisa "Oh. Last evening."
+kisa "It was not something done in the spur of the moment. I had thought of confessing to you for quite some time, and what better time than when we were alone beneath the stars? Regardless, I probably should have considered how you would react rather than if the moment felt right."
+kisa "I apologize. It was not impulsive, but it was sudden."
+Highlight(sophie -o true)
+sophie "Do not apologize, Kisa. I just needed to know. If you do not mind... when was the first time you saw me as something more?"
+Highlight(kisa -o true)
+kisa "...Frankly? It was when the werewolves invaded my village. You were there to assist, and we all played our parts to have as few casualties as possible. But at the celebration..."
+Highlight(sophie -o true)
+sophie "They did not credit you, I remember this. Your father took the credit for your job well done."
+Highlight(kisa -o true)
+kisa "Yes! And no one made a fuss about it! It still ruffles my feathers, thinking about that day. Luckily you were there, and you corrected them in a very... Sophie fashion. It may not have meant much to you, but it meant the world to me."
+Highlight(sophie -o true)
+sophie "I see. I am glad I made you feel the way you deserve to feel- accepted and appreciated. You have done great work, Kisa, and you deserve to be praised for it."
+Highlight(kisa -o true)
+kisa "Oh, please Sophie. Do not flatter me."
+Highlight(sophie -o true)
+sophie "I speak the truth, Kisa. You always strive for perfection, you are weighed down by so much but do not let it affect you. I admire you."
+Highlight(kisa -o true)
+kisa "Y-you?! Admire <i>me</i>? No, you must have it wrong."
+Highlight(sophie -o true)
+sophie "I do. And I wish I could give you an answer immediately to your question. But I cannot, not with my world being torn at the seams. With each floor I grow more concerned for my students... I worry they are among the hordes of undead we fight."
+sophie "I want to give you my full attention and tell you my feelings with an unclouded heart, but I unfortunately cannot. Not now. Once Morsophus falls, I can give you my undivided attention, as you deserve. Is that alright?"
+Highlight(kisa -o true)
+kisa "Yes, of course. I would much prefer that over rushing this. If anything, it makes me more eager to defeat Morsophus. Let us continue, together- as we always have."
 Hide(sophie)
 Hide(kisa)
 endMenuDialogue(true)
