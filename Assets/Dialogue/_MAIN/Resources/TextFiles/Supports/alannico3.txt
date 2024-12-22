@@ -1,16 +1,37 @@
-nicol.Move(0.8 0 -spd 3)
+nicol.Move(0.825 0 -spd 3)
 alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(nicol)
 SetSprite(nicol flipped)
 wait(0.75)
+Show(nicol)
+Highlight(nicol -o true)
+nicol "Ah, Alan! My rival! What a good battle that was, you truly slayed those slimes! Bravo! You remind me of my companion of old, she could slice through hoards of enemies in seconds!"
 Show(alan)
 Highlight(alan -o true)
-alan "haha this is a placeholder you didn't edit this"
-Show(nicol)
-SetSprite(nicol flipped)
+alan "Thank you, Nicol. I hope I live up to your expectations. You seem to have traveled with many."
 Highlight(nicol -o true)
-nicol "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+nicol "You already surpass my expectations, my dear friend! And I have done my fair share of traveling, tis what I do best! If you ever wish to know about any subject, I am your man. Or if you would rather hear an epic tale of my ventures, I have been told that I am one of the best storytellers in the realm."
+Highlight(alan -o true)
+alan "Perhaps you could indulge me in a summary of your favorite adventure as we walk? How long have you been living this lifestyle?"
+Highlight(nicol -o true)
+nicol "Why, as long as I have been able to walk on two feet! But I will tell you an epic tale, one fit for the history books!"
+nicol "It all starts in Eastbourne, it was such a small settlement that I could count the number of buildings on my two hands. I found myself at the bar in their meager tavern, absorbed in my evening's drink when all of a sudden..."
+nicol "I hear roaring outside! Roaring? At noon? There was no reason such a noise should be heard at this hour. Those around me were unperturbed, so I went to investigate. You would not believe what I found outside."
+nicol "Dinosaurs! Running down the street as if they were competing! They did not even bat an eye in my direction. But their presence explained the strange markings I had found in the ground earlier. So I went inside to question the barkeep..."
+Highlight(alan -o true)
+alan "(Oh dear... Perhaps the story is coming to a close.)"
+Highlight(nicol -o true)
+nicol "Can you believe it?! A war between the unicorns and the dinosaurs? That was unheard of! And why were the humans of this settlement unfazed when dinosaurs trampled through their town? This left a fishy taste in my mouth, and it was not just the tuna casserole I had for supper."
+nicol "I see myself to bed, hoping to solve this case in the morning. But alas, I would not have that chance. I am awoken to the cool metal of a blade to my neck, and lizard people glaring me down. Lizards! The townsfolk were lizards!"
+Highlight(alan -o true)
+alan "(It is not coming to a close.)"
+alan "Nicol, this is an intriguing story, however-"
+Highlight(nicol -o true)
+nicol "And so I was whisked away to a secret chamber below the town. Their town was truly underground, not the few phony buildings I had seen before. Below Eastbourne was a whole colony of lizardfolk, and you guessed it, dinosaurs! But that was not all..."
+nicol "They had captured the prince of the unicorns and were using him as ransom! I was their latest captive, as I had learned too much of their settlement. They believed they had taken all of my belongings from me, but a true aristocat does not leave home without his lock-picking tools!"
+Highlight(alan -o true)
+alan "(I may have to tune him out, or at least usher us along as he speaks. I forgot Nicol's tendency to overshare.)"
 Hide(nicol)
 Hide(alan)
 endMenuDialogue(true)

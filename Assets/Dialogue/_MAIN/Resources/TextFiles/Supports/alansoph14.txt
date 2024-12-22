@@ -1,16 +1,38 @@
-sophie.Move(0.8 0 -spd 3)
+sophie.Move(0.825 0 -spd 3)
 alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(sophie)
-SetSprite(sophie flipped)
 wait(0.75)
 Show(alan)
 Highlight(alan -o true)
-alan "haha this is a placeholder you didn't edit this"
+alan "Sophie, I must ask, why were you so adamant about not leading our party? Out of all of us, you are the most equipped for such a task."
 Show(sophie)
-SetSprite(sophie flipped)
 Highlight(sophie -o true)
-sophie "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+sophie "You ask this now? Alan, this was decided weeks ago. We are a few short rooms from Morsophus's chamber."
+Highlight(alan -o true)
+alan "I understand it is an untimely question, but it has been on my mind for quite some time. You are welcome to silence me if you do not wish to reply."
+Highlight(sophie -o true)
+sophie "It is not that I did not want to lead, it was that I would feel burdened if anyone were to be harmed under my leadership. I work better alone, and my reclusive tendencies may have harmed the party."
+sophie "On top of this, your superiors assigned you this task, and we all joined for our own reasons. It made the most sense for you to lead. "
+Highlight(alan -o true)
+alan "Ah. That too."
+alan "You would have been a fine leader, if you wished for the role. I am not the greatest as it is, hells, I let us all split instead of taking control of the situation at this tower's entrance as I should have."
+Highlight(sophie -o true)
+sophie "Do not criticize yourself for our dispute, that was out of your control. If you would have truly stopped me from leaving, you may have ended up with a broken nose. I admit that stress was a key factor in my outburst, but I have calmed myself since then."
+Highlight(alan -o true)
+alan "I understand, but I should have done more than stand and watch. Or better yet, I should have picked up on our party's tension beforehand. But alas, I did not. I suppose I should have learned better from my mentor."
+Highlight(sophie -o true)
+sophie "Your mentor? I suppose we all have a mentor figure, but I have not heard you speak of yours."
+Highlight(alan -o true)
+alan "Yes, well... her passing is recent. It still wounds me to reminisce about her."
+Highlight(sophie -o true)
+sophie "Ah. I apologize. Losing someone close to you is difficult, especially if it is your mentor. I lost my mentor almost a decade ago, but that pain still lingers in my heart."
+sophie "Would you prefer if I dropped this subject? It must be difficult, especially if her passing was recent."
+Highlight(alan -o true)
+alan "All is well. I do want to share her legacy, but... not when the threat of a lich looms over us. I fear my emotions would get the better of me, I want to be in my best shape when we reach our journey's end."
+Highlight(sophie -o true)
+sophie "Understandable. Defeat the lich first, speak later. I like this plan."
+sophie "Thank you for sharing this with me, Alan. We will speak more after Morsophus falls, but I am honored you trust me enough to speak of your past."
 Hide(sophie)
 Hide(alan)
 endMenuDialogue(true)

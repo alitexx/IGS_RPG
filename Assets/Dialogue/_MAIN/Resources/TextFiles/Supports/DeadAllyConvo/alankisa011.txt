@@ -1,16 +1,39 @@
-kisa.Move(0.8 0 -spd 3)
+kisa.Move(0.825 0 -spd 3)
 alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(kisa)
-SetSprite(kisa flipped)
+SetSprite(kisa kisa)
 wait(0.75)
+Show(kisa)
+Highlight(kisa -o true)
+kisa "..."
 Show(alan)
 Highlight(alan -o true)
-alan "haha this is a placeholder you didn't edit this"
-Show(kisa)
-SetSprite(kisa flipped)
+alan.Move(0.25 0 -spd 3)
+alan "What? Is there something you wish to tell me, Kisa?"
 Highlight(kisa -o true)
-kisa "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+SetSprite(kisa flipped)
+kisa "No, nothing at all. March on."
+Highlight(alan -o true)
+SetSprite(kisa kisa)
+alan.Move(0.35 0 -spd 3)
+alan "You are hiding something. Spit it out."
+Highlight(kisa -o true)
+kisa "I am not. You said it yourself, I must summon the will to be helpful. So I am being helpful by not getting in the way and staying silent. Is that not satisfactory?"
+Highlight(alan -o true)
+alan "Do not use my words against me."
+Highlight(kisa -o true)
+kisa "Understood."
+kisa "..."
+SetSprite(kisa flipped)
+kisa "Do you truly feel nothing after what has happened? Do you remember them?"
+Highlight(alan -o true)
+alan "Remember who? Why are you speaking so much for someone who wishes to stay silent?"
+Highlight(alan -o true)
+SetSprite(kisa kisa)
+alan "... My apologies."
+Highlight(kisa -o true)
+kisa "Good."
 Hide(kisa)
 Hide(alan)
 endMenuDialogue(true)

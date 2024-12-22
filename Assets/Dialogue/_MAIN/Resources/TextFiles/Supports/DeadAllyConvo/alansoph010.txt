@@ -2,15 +2,21 @@ sophie.Move(0.8 0 -spd 3)
 alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(sophie)
-SetSprite(sophie flipped)
 wait(0.75)
+Show(sophie)
+Highlight(sophie -o true)
+sophie "Alan, as much as I distrust you, I must know. You have slain Nicol, that is a fact. Was Kisa's indifference to his death also your doing?"
 Show(alan)
 Highlight(alan -o true)
-alan "haha this is a placeholder you didn't edit this"
-Show(sophie)
-SetSprite(sophie flipped)
+alan "I have kept Kisa safe. If Kisa is acting abnormally, it was not my doing."
+alan "You have said it yourself, I was only after the aristocat. I will still protect you and Kisa."
 Highlight(sophie -o true)
-sophie "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+sophie "Your ability to turn on allies so quickly is sickening. Are all knights this foul? If you truly wanted Nicol dead, why go through the trouble to bring him to this damned tower?"
+Highlight(alan -o true)
+alan "You speak as if this was premeditated. I saw an opportunity and I took it. Would you not have done the same against your rival?"
+Highlight(sophie -o true)
+sophie "Gods, no! Alan, what has become of you? You had a friendly rivalry with Nicol, not a burning hatred for each other. If Kisa were not here with me, you would already be crumpled at my feet. Nicol was your ally. Any respect I had for you has been lost."
+sophie "I will defeat this lich with or without you, and I do not want to see your face after this is done with. Stay out of my way."
 Hide(sophie)
 Hide(alan)
 endMenuDialogue(true)

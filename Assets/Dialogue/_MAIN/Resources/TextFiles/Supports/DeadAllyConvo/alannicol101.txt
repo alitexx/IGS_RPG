@@ -4,13 +4,21 @@ Hide(alan)
 Hide(nicol)
 SetSprite(nicol flipped)
 wait(0.75)
-Show(alan)
-Highlight(alan -o true)
-alan "haha this is a placeholder you didn't edit this"
 Show(nicol)
-SetSprite(nicol flipped)
 Highlight(nicol -o true)
-nicol "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+nicol "I am disgusted to stand at your side."
+Show(alan)
+nicol "You do not just defeat- you revel in slaughter. How can you call yourself a knight with your hands drenched in the blood of your allies?"
+Highlight(alan -o true)
+alan "They were not my allies."
+Highlight(nicol -o true)
+nicol "You are right- they were victims. Does that not disturb you? Or are you too far gone?"
+Highlight(alan -o true)
+alan "..."
+Highlight(nicol -o true)
+nicol "Of course, you are beyond comprehension. You only know violence. Silly of me to try and speak sense into the senseless."
+Highlight(alan -o true)
+alan "Do not make me regret my choice of sparing you."
 Hide(nicol)
 Hide(alan)
 endMenuDialogue(true)

@@ -1,16 +1,32 @@
-kisa.Move(0.8 0 -spd 3)
+kisa.Move(0.825 0 -spd 3)
 alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(kisa)
-SetSprite(kisa flipped)
+SetSprite(kisa kisa)
 wait(0.75)
+Show(kisa)
+Highlight(kisa -o true)
+kisa "..."
 Show(alan)
 Highlight(alan -o true)
-alan "haha this is a placeholder you didn't edit this"
-Show(kisa)
-SetSprite(kisa flipped)
+alan "..."
+alan.Move(0.2 0 -spd 2)
+alan "Kisa, I am sorry. I know I have caused you more pain than I can ever make right, and I cannot imagine how you must feel. I only wished to protect us-"
 Highlight(kisa -o true)
-kisa "HAHA YOU FORGOT TO EDIT THIS. LOSER. STUPID. HAHA."
+kisa "You protected <i>us</i>, but what about Sophie?"
+Highlight(alan -o true)
+alan "... I never meant for any of this to happen. Sophie's death... it's a weight I will carry for the rest of my life. I am sorry-I know those words mean little, but they are all I have."
+Highlight(kisa -o true)
+SetSprite(kisa flipped)
+kisa "Alan, I told you of my feelings for her. I had not even told Nicol, I trusted <i>you</i> with that information. I do not accept your apology."
+Highlight(alan -o true)
+alan.Move(0.25 0 -spd 2)
+alan "I understand. I implore you to listen, if only for a moment. I still care for you, Kisa. I know my actions are wrong, but I cannot turn back the hands of time."
+Highlight(kisa -o true)
+SetSprite(kisa kisa)
+kisa "I do not wish to speak to you after you... you killed her, Alan. I understand that you regret your actions, but I can no longer call you my friend. Please... let me grieve."
+Highlight(alan -o true)
+alan "... I respect your wishes."
 Hide(kisa)
 Hide(alan)
 endMenuDialogue(true)
