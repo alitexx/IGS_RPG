@@ -5,9 +5,9 @@ Hide(kisa)
 SetSprite(kisa kisa)
 wait(0.75)
 Show(kisa)
+Show(alan)
 Highlight(kisa -o true)
 kisa "..."
-Show(alan)
 Highlight(alan -o true)
 alan.Move(0.25 0 -spd 3)
 alan "What? Is there something you wish to tell me, Kisa?"
@@ -29,11 +29,11 @@ SetSprite(kisa flipped)
 kisa "Do you truly feel nothing after what has happened? Do you remember them?"
 Highlight(alan -o true)
 alan "Remember who? Why are you speaking so much for someone who wishes to stay silent?"
-Highlight(alan -o true)
-SetSprite(kisa kisa)
-alan "... My apologies."
 Highlight(kisa -o true)
-kisa "Good."
+SetSprite(kisa kisa)
+kisa "... My apologies."
+Highlight(alan -o true)
+alan "Good."
 Hide(kisa)
 Hide(alan)
 endMenuDialogue(true)

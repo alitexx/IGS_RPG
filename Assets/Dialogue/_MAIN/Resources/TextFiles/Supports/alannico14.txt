@@ -1,4 +1,4 @@
-nicol.Move(0.8 0 -spd 3)
+nicol.Move(0.825 0 -spd 3)
 alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(nicol)
@@ -11,34 +11,51 @@ Show(alan)
 Highlight(alan -o true)
 alan "You say this as if you have had multiple rivals."
 Highlight(nicol -o true)
+nicol.Move(0.8 0 -spd 2)
 nicol "I do have multiple rivals! They are scattered across the globe, almost like a secret guild. Many of them I have not seen for decades, but when I reunite with them, it is like meeting an old friend."
 Highlight(alan -o true)
-alan "A secret guild? I suppose that does sound like something you would be involved in. But what makes me special enough to be a part of your esteemed collection of rivals?"
+alan "That does sound like something you would be involved in. But what makes me special enough to be a part of your esteemed collection of rivals?"
 Highlight(nicol -o true)
-nicol "Oh, you are <i>very</i> special! You see, Alan, our rivalry began in such a memorable fashion. Do you remember that tournament in Aelor's Vale? I had entered for the thrill of it, but my first opponent was a frost giant! A frost giant would have thought my ice magic was a mere tickle, so I resorted to fire magic."
+nicol.Move(0.7 0 -spd 2)
+nicol "Oh, you are <i>very</i> special! You see, Alan, our rivalry began in such a memorable fashion. Do you remember that tournament in Aelor's Vale? I had entered for the thrill of it, but my first opponent was a frost giant!"
+nicol.Move(0.8 0 -spd 2)
+SetSprite(nicol nicol)
+nicol "A frost giant would have thought my ice magic was a mere tickle, so I resorted to fire magic."
 Highlight(alan -o true)
-alan "Yes. I <i>do</i> remember. I remember that instead of fighting, I had to evacuate the stadium because a certain mage's fireball went awry. And somebody had to watch your cell instead of participate, as you almost killed half of the spectators instead of fighting with your sword or... anything but a fireball."
+alan.Move(0.2 0 -spd 2)
+alan "Yes. I <i>do</i> remember. I remember that I had to evacuate the stadium because a certain mage's fireball went awry. And somebody had to watch your cell, as you scorched half of the spectators. You could have used <i>anything</i> but a fireball."
 Highlight(nicol -o true)
+SetSprite(nicol flipped)
 nicol "And that is why I choose not to use fire magic! I am capable, but it... does not always end as I intended. Logically, a fireball was the only way I would win that fight. You saw that frost giant!"
 Highlight(alan -o true)
+alan.Move(0.25 0 -spd 2)
 alan "You could have backed out, you know. There is no shame in admitting defeat."
 Highlight(nicol -o true)
+nicol.Move(0.75 0 -spd 2)
 nicol "That is exactly what you told me back then, too! And I still stand by my response, I do not back down from a duel! It is disrespectful to your opponent, they wish for a good fight as much as you."
 Highlight(alan -o true)
+alan.Move(0.2 0 -spd 2)
 alan "You have not changed one bit. There is nothing wrong with that, I still don't quite understand all of your quirks, but I suppose I've come to appreciate you. Your irrational nature certainly makes our encounters more... entertaining."
 Highlight(nicol -o true)
+nicol.Move(0.7 0 -spd 2)
 nicol "Entertaining? Is that a hint of a smile on your features?"
 Highlight(alan -o true)
 alan "Perhaps. Your aura is contagious, Nicol. Soon you will have me wishing for adventure and traveling across the globe with you."
 Highlight(nicol -o true)
+nicol.Move(0.675 0 -spd 2)
 nicol "Ohoho! I am glad, my friend! If you truly wish to, I would not mind traveling with a companion."
 Highlight(alan -o true)
 alan "I will have to decline, I am still bound to the knight's code. I must protect Isen, although I am certain our paths will cross again. If they have once, they will again."
 Highlight(nicol -o true)
+SetSprite(nicol nicol)
+nicol.Move(0.75 0 -spd 2)
 nicol "Ah, that is too bad. The offer will always remain open if you ever change your mind. Regardless, I am grateful for this bond with you."
 Highlight(alan -o true)
+alan.Move(0.25 0 -spd 2)
 alan "I am too. Perhaps we could treat Morsophus as a form of duel, yes? The person who deals the fatal blow wins?"
 Highlight(nicol -o true)
+SetSprite(nicol flipped)
+nicol.Move(0.65 0 -spd 2)
 nicol "Aha! Now that is the type of talk I wish to hear! Onwards, my rival!"
 Hide(nicol)
 Hide(alan)

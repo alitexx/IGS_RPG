@@ -2,16 +2,15 @@ kisa.Move(0.825 0 -spd 3)
 alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(kisa)
-SetSprite(kisa kisa)
+SetSprite(kisa flipped)
 wait(0.75)
-Show(alan)
 Show(kisa)
 Highlight(kisa -o true)
 kisa "Lovely, now I have slime guts all over my breeches. Remind me to never engage with those things again, will you?"
+Show(alan)
 Highlight(alan -o true)
 alan "I know the feeling. At least metal's easy to clean, but when I was an apprentice, I had leather armor. It kept me safe, but cleaning it? A real nightmare."
 Highlight(kisa -o true)
-SetSprite(kisa kisa)
 kisa "Leather armor, hmm? For some reason, I cannot picture you in anything but... well, this. If that makes any sense."
 kisa.Move(0.8 0 -spd 2)
 kisa "Before becoming a knight, what did you do? Knighthood requires you to be at the ready at all times, but who were you prior?"
@@ -24,26 +23,29 @@ kisa "Oh, come now, Alan! My question may have been broad, but you must have don
 Highlight(alan -o true)
 alan "... No, I did not have any of those. I fooled around, I was young. Not very noble or exciting of me, but tis the truth."
 Highlight(kisa -o true)
+SetSprite(kisa flipped)
 kisa "Ah, unfortunate. For a knight, that must be ideal; with your steely focus and all. Still, it is a shame you do not have any other aspirations. Nothing to taunt you."
 Highlight(alan -o true)
 alan.Move(0.2 0 -spd 3)
 alan "I may not have any aspirations, but it sounds as if you do. Would you care to share?"
 Highlight(kisa -o true)
+SetSprite(kisa kisa)
 kisa "That is partially true. I enjoy singing, truly, however..."
 Highlight(alan -o true)
 alan "However?"
 Highlight(kisa -o true)
-SetSprite(kisa flipped)
+SetSprite(kisa kisa)
 kisa.Move(0.8 0 -spd 2)
 kisa "I would much rather spend my days carving than performing. But as Father would say, there is no glory in whittling. They wished for a warrior, something I am not."
 kisa "So, the bard's life chose me. My father was a traveling bard, always seeking adventure. I longed for his freedom, so I followed in his footsteps-for better or worse."
-SetSprite(kisa kisa)
+SetSprite(kisa flipped)
 kisa.Move(0.75 0 -spd 2)
 kisa "...I apologize. You did not need such a... detailed answer."
 Highlight(alan -o true)
 alan "No need to apologize, family matters can be tough to tackle. If getting it off your chest helps, I am always ready and willing to listen."
 Highlight(kisa -o true)
-kisa.Move(0.4 0 -spd 3)
+kisa.SetPriority(1)
+kisa.Move(0.45 0 -spd 3)
 kisa "Truly? Oh, thank you, Alan! That is surprisingly kind of you. No wonder you are a knight!"
 Highlight(alan -o true)
 alan "<i>Surprisingly</i> kind of me? I did not think you thought so lowly of me, Kisa, this is what anyone should do."
@@ -52,4 +54,5 @@ kisa.Move(0.6 0 -spd 2)
 kisa "I do not like your sarcasm, sir. Come now, let us continue our journey, yes? Family matters can be dealt with at a later time."
 Hide(kisa)
 Hide(alan)
+kisa.SetPriority(0)
 endMenuDialogue(true)

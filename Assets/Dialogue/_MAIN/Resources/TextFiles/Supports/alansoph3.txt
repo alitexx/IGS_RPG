@@ -1,27 +1,32 @@
-sophie.Move(0.825 0 -spd 3)
+sophie.Move(0.75 0 -spd 3)
 alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(sophie)
 wait(0.75)
 Show(sophie)
-Highlight(sophie -o true)
-sophie "It appears you and I will be allies for longer than I had thought. It is only wise to know more about my allies—better teamwork on the battlefield."
 Show(alan)
+Highlight(sophie -o true)
+sophie "It appears you and I will be allies for longer than I had thought. It is only wise to know more about my allies-better teamwork on the battlefield."
 Highlight(alan -o true)
 alan "...Fair enough. Is there something specific you want to know?"
 Highlight(sophie -o true)
+sophie.Move(0.725 0 -spd 1)
 sophie "Not particularly. Although, I am curious about a knight's training routine."
 Highlight(alan -o true)
+alan.Move(0.175 0 -spd 1)
 alan "It is rigorous but routine. Mornings are for physical conditioning, with afternoon practices varying based on the day. Combat practice was where I excelled, but mounted combat... not so much. Weapon drills were always fun, though."
 alan "There is little time in between, spare a few meals, but they ensured we stay at our best. Most days end with sparring until we are too exhausted to lift our swords."
 Highlight(sophie -o true)
 sophie "That is quite a disciplined and demanding regimen."
 Highlight(alan -o true)
+alan.Move(0.15 0 -spd 1)
 alan "Demanding? Perhaps, but I have grown accustomed to it. How does your routine compare?"
 Highlight(sophie -o true)
+sophie.Move(0.75 0 -spd 1)
 sophie "It is similar in intensity, but different in focus. As a monk, my training blends meditation, prayer, and physical conditioning. Spiritual energy holds more value than brute strength, so balance is key."
 sophie "My students and I would regularly undergo intensive training retreats to focus on advanced techniques or meditation without interruption. I tend to be... easily aggravated when I have not meditated in some time."
 Highlight(alan -o true)
+alan.Move(0.175 0 -spd 1)
 alan "Understandable. Even when I am not on duty, I still train. It has become a hard habit to break. Perhaps we both require some time to relax."
 Highlight(sophie -o true)
 sophie "Quite the ironic thought in the lair of a lich. But you are right. Perhaps we will find peace once this lich is dealt with."

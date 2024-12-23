@@ -1,4 +1,4 @@
-sophie.Move(0.825 0 -spd 3)
+sophie.Move(0.75 0 -spd 3)
 alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(sophie)
@@ -8,11 +8,13 @@ Show(sophie)
 Highlight(alan -o true)
 alan "Sophie-"
 Highlight(sophie -o true)
+sophie.Move(0.725 0 -spd 2)
 sophie "Alan. Respectfully, I do not wish to speak to you."
 sophie "I do not know the reasons behind your actions, and truthfully, I fear I would be sickened if I knew. For now, please do not speak to me. We are united for one reason, and that reason alone."
 Highlight(alan -o true)
 alan "Understood."
 Highlight(sophie -o true)
+sophie.Move(0.8 0 -spd 2)
 sophie "Good. Let us continue."
 Hide(sophie)
 Hide(alan)

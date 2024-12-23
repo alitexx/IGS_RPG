@@ -1,4 +1,4 @@
-sophie.Move(0.825 0 -spd 3)
+sophie.Move(0.75 0 -spd 3)
 alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(sophie)
@@ -14,17 +14,24 @@ sophie "They are nothing but a mockery-stripped of their identity, peace, even t
 Highlight(alan -o true)
 alan "Horrible. It is hard to fathom that one would be so cruel, simply because they wish to live forever."
 Highlight(sophie -o true)
-sophie "It is far more than living forever: it is power, greed... selfishness in the purest form. This is not right. We live until our time is up, and we must accept that we are not gods. We cannot decide how long we live, and we cannot decide when our demise shall be."
+sophie.Move(0.7 0 -spd 1)
+sophie "It is far more than living forever: it is power, control... selfishness in the purest form. This is not right. We live until our time is up. We cannot decide how long we live, and we cannot decide when our demise shall be."
 Highlight(alan -o true)
+alan.Move(0.2 0 -spd 1)
 alan "I worry of becoming one, if I am being truthful."
 Highlight(sophie -o true)
-sophie "''Becoming one''? Becoming a lich? You must kid, Alan. You would need an immense amount of power, as well as mastery in the Dark Arts. You would have to wipe out an entire city and more for that level of power. Your fear is unfounded, I can assure you that you will not become one anytime soon."
+sophie.Move(0.65 0 -spd 1)
+sophie "''Becoming one''? Becoming a lich? You must kid, Alan. You would have to wipe out an entire city and more for that level of power. Your fear is unfounded, I can assure you that you will not become one anytime soon."
 Highlight(alan -o true)
+alan.Move(0.15 0 -spd 1)
 alan "... I must have misspoke. I meant joining a lich's ranks, not becoming a lich myself."
 Highlight(sophie -o true)
+sophie.Move(0.7 0 -spd 1)
 sophie "Ah, understandable. I would fear such a demise as well, yet I am determined to walk out of here with Morsophus's head. I will ensure that you are not harmed in the process."
 Hide(sophie)
+wait(1)
 Highlight(alan -o true)
+alan.Move(0.2 0 -spd 1)
 alan "(That was a surprisingly good save... Sophie was adamant that I would not become a lich. I do not want to raise suspicion that I was considering collecting souls not long ago.)"
 alan "(I fear how collecting souls could cloud my consciousness. I have not collected any souls today, and I will not harm my party, but... should I truly collect souls to revive Leora? I am starting to doubt myself.)"
 Hide(alan)

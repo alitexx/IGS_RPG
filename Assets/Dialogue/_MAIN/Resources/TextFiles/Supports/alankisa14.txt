@@ -12,23 +12,18 @@ alan.Move(0.15 0 -spd 1.5)
 Highlight(alan -o true)
 alan "I would not speak prematurely of our victory. Liches are notorious for being difficult to defeat, we must proceed with caution."
 Highlight(kisa -o true)
-kisa.Move(0.8 0.05 -spd 4)
-wait(0.2)
 kisa.Move(0.8 0 -spd 2)
 kisa "Ugh, yes yes caution! Of course, Sir Alan. I will make sure not to die a miserable death at the hands of a lich and live to tell the tale of my glory, or whatever else you will lecture me on next."
 Highlight(alan -o true)
 alan "Well, you do wish to live through this encounter, yes? It does not harm to err on the side of caution. What was that before about making your parents proud? You cannot do that-or anything else you dream of accomplishing-if we fail."
 Highlight(kisa -o true)
 kisa.Move(0.75 0 -spd 2)
-kisa "Fine, let me rephrase. When we <i>hopefully</i> defeat Morsophus and <i>hopefully</i> do not die, I will return home to tell Mother and Father. Then, once I have earned their respect, I can continue my life freely and happily. So yes, I do wish to live through this encounter."
+kisa "Fine, let me rephrase. When we <i>hopefully</i> defeat Morsophus and <i>hopefully</i> do not die, I will return home to tell my family. Once I have earned their respect, I can continue my life freely and happily. So yes, I do wish to live through this encounter."
 Highlight(alan -o true)
 alan.Move(0.2 0 -spd 2)
 alan "Please tell me if I am overstepping my boundaries, but have they always been this way?"
 Highlight(kisa -o true)
-kisa "Perhaps not when I was a child, but from what I can remember, this has always been the case. They shower me with affection when I do something ''good'', and ignore me when I do not. The only time they cared was when I first took up the lute."
-Highlight(alan -o true)
-alan "I see. And they pay you no mind even after you have done all that they have asked?"
-Highlight(kisa -o true)
+kisa "This has always been the case, at least as far as I can recall. They shower me with affection when I do something ''good'', and ignore me when I do not. The only time they cared was when I first took up the lute."
 SetSprite(kisa kisa)
 kisa.Move(0.8 0 -spd 2)
 kisa "They require some grand quest to be impressed. I have done good. I have organized festivals, participated in government, and even stopped werewolves from rampaging through our town. Not once had they shown any interest."
@@ -48,11 +43,12 @@ kisa "And that is it? No celebration, no contacting your mother to let her know 
 Highlight(alan -o true)
 alan "That is it. I am not one to celebrate, Kisa, and I doubt my mother wishes to hear from me. I will go back to how I was prior, and... that is all."
 Highlight(kisa -o true)
-kisa "Oh, come now! You were always such a stick in the mud, but I did not know the severity until now. You deserve time off! You can take one night off of your sacred knight duties to celebrate. I do not know your mother, but I would at least let her know you are alive."
+kisa "Oh, come now! You are always such a stick in the mud. You deserve time off! You can take one night off of your sacred knight duties to celebrate. I do not know your mother, but I would at least let her know you are alive."
 Highlight(alan -o true)
 alan "It does not work like that. I cannot simply take a night off, I would have to-"
 Highlight(kisa -o true)
-kisa "I am sure that you could take one night off to celebrate your victory over a lich. If you have any issues, you can tell your superiors that a beautiful elven maiden has swept you off your feet and insisted on buying you a drink. Or that you are writing a letter to your mother, who is worried sick about your well-being."
+kisa "I am sure that you could take <i>one night</i> off to celebrate your victory over a <i>lich</i>. If you have any issues, you can tell your superiors that a beautiful elven maiden has swept you off your feet and insisted on buying you a drink."
+kisa "Or that you needed the evening to write a letter to your mother, who is worried sick about your well-being. Merely a suggestion."
 Highlight(alan -o true)
 alan "... Fine. I will consider it."
 Highlight(kisa -o true)

@@ -1,4 +1,4 @@
-sophie.Move(0.825 0 -spd 3)
+sophie.Move(0.75 0 -spd 3)
 alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(sophie)
@@ -13,24 +13,33 @@ Highlight(alan -o true)
 alan "I understand it is an untimely question, but it has been on my mind for quite some time. You are welcome to silence me if you do not wish to reply."
 Highlight(sophie -o true)
 sophie "It is not that I did not want to lead, it was that I would feel burdened if anyone were to be harmed under my leadership. I work better alone, and my reclusive tendencies may have harmed the party."
+sophie.Move(0.7 0 -spd 1)
 sophie "On top of this, your superiors assigned you this task, and we all joined for our own reasons. It made the most sense for you to lead. "
 Highlight(alan -o true)
+alan.Move(0.1 0 -spd 1)
 alan "Ah. That too."
+alan.Move(0.15 0 -spd 1)
 alan "You would have been a fine leader, if you wished for the role. I am not the greatest as it is, hells, I let us all split instead of taking control of the situation at this tower's entrance as I should have."
 Highlight(sophie -o true)
-sophie "Do not criticize yourself for our dispute, that was out of your control. If you would have truly stopped me from leaving, you may have ended up with a broken nose. I admit that stress was a key factor in my outburst, but I have calmed myself since then."
+sophie.Move(0.65 0 -spd 1)
+sophie "Do not criticize yourself for our dispute, that was out of your control. If you would have tried stopping me, you may have ended up with a broken nose. I admit that stress was a key factor in my outburst, but I have calmed myself since then."
 Highlight(alan -o true)
+alan.Move(0.175 0 -spd 1)
 alan "I understand, but I should have done more than stand and watch. Or better yet, I should have picked up on our party's tension beforehand. But alas, I did not. I suppose I should have learned better from my mentor."
 Highlight(sophie -o true)
 sophie "Your mentor? I suppose we all have a mentor figure, but I have not heard you speak of yours."
 Highlight(alan -o true)
+alan.Move(0.15 0 -spd 1)
 alan "Yes, well... her passing is recent. It still wounds me to reminisce about her."
 Highlight(sophie -o true)
+sophie.Move(0.675 0 -spd 1)
 sophie "Ah. I apologize. Losing someone close to you is difficult, especially if it is your mentor. I lost my mentor almost a decade ago, but that pain still lingers in my heart."
 sophie "Would you prefer if I dropped this subject? It must be difficult, especially if her passing was recent."
 Highlight(alan -o true)
+alan.Move(0.175 0 -spd 1)
 alan "All is well. I do want to share her legacy, but... not when the threat of a lich looms over us. I fear my emotions would get the better of me, I want to be in my best shape when we reach our journey's end."
 Highlight(sophie -o true)
+sophie.Move(0.65 0 -spd 1)
 sophie "Understandable. Defeat the lich first, speak later. I like this plan."
 sophie "Thank you for sharing this with me, Alan. We will speak more after Morsophus falls, but I am honored you trust me enough to speak of your past."
 Hide(sophie)

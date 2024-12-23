@@ -1,4 +1,4 @@
-nicol.Move(0.8 0 -spd 3)
+nicol.Move(0.825 0 -spd 3)
 alan.Move(0.15 0 -spd 3)
 Hide(alan)
 Hide(nicol)
@@ -8,39 +8,58 @@ Show(alan)
 Highlight(alan -o true)
 alan "Nicol, earlier you mentioned that if I needed to know any subject, I could rely on you. If you have a moment, there is something I need information on."
 Show(nicol)
-SetSprite(nicol flipped)
 Highlight(nicol -o true)
 nicol "An interrogation, I see! Go ahead, my rival, and ask your burning question. I am certain that I will have the perfect response."
 Highlight(alan -o true)
+alan.Move(0.175 0 -spd 1)
 alan "It concerns the nature of pacts made with... unholy entities. Do you have any information on them?"
 Highlight(nicol -o true)
+SetSprite(nicol nicol)
 nicol "Oh. That is oddly specific, especially since our current task does not pertain to such entities."
+SetSprite(nicol flipped)
 nicol "However I will keep to my word and give you the information you seek. Hopefully, you do not plan on making a deal with one of these beings, but if you must know..."
 nicol "They often offer mortals an item they desire in exchange for a soul or specific task. They use tricky language and will twist the terms of agreements to their advantage. Signing their contract is equivalent to signing your soul away."
 Highlight(alan -o true)
+alan.Move(0.125 0 -spd 1)
 alan "(Nicol sounds as if he is reading from a textbook. He is oddly... somber? I suppose it comes with the territory.)"
 Highlight(nicol -o true)
-nicol "There are ways to break a contract that do not involve fulfilling it, such as negotiating, bargaining, divine intervention, outsmarting or even defeating the unholy being. Was there anything more specific you wanted to know?"
+SetSprite(nicol nicol)
+nicol "There are ways to break a contract that do not involve fulfilling it, such as negotiating, bargaining, divine intervention, outsmarting or even defeating the unholy being."
+SetSprite(nicol flipped)
+nicol "Was there anything more specific you wanted to know?"
 Highlight(alan -o true)
+alan.Move(0.15 0 -spd 1)
 alan "Ah... I think you have told me all that I need to know. Thank you, Nicol."
 Highlight(nicol -o true)
-nicol "Of course, my friend! Just promise me that whatever you do with this information, do not attempt to make one of these deals. They will offer you wealth, power, whatever it takes to catch your eye. One of my former allies fell under their curse, I do not wish to see you do the same."
+nicol.Move(0.75 0 -spd 2)
+nicol "Of course, my friend! it is good to stay informed, but do not engage with these beings. They will offer your heart's desires for a signature. I lost an ally to their curse, I do not wish to see you do the same."
 Highlight(alan -o true)
+alan.Move(0.2 0 -spd 1)
 alan "Actually, would you mind telling me of the ally you speak of? The one who made one of these deals?"
 Highlight(nicol -o true)
-nicol "He claimed to have a gift from the gods, the ability to heal any wound. I had joined forces with him to vanquish a group of kobolds storming their village, but during our epic battle, many men were gravely injured. I watched in awe and horror as he revived the men instantaneously, a task that would have taken the greatest of clerics hours."
-nicol "I just <i>had</i> to know more, so once we retired for the night, I went to inquire about his mystical ability. There, I saw it: a devil in the flesh, speaking to my comrade so casually as if this was a normal occurrence. Eavesdropping is not noble, but I learned all that I needed to."
-nicol "This man's healing ability was a curse. He had gained the ability from the devil, but each time he ''healed'' a person, that illness or wound was sent to another. He may have saved one man from death, but he sentenced another to theirs. Needless to say, I quickly cut ties with the party."
-nicol "He was so desensitized to his actions... using his ''gift'' to become renowned around the realm. I do not know the whole story, but I believe his soul was claimed for breaking the contract. I do not know what it took, but he must have attempted to break the contract."
+SetSprite(nicol nicol)
+nicol.Move(0.775 0 -spd 2)
+nicol "I do not mind, however, it is not a tale for the lighthearted."
+nicol "He claimed to possess a gift from the gods-the power to heal any wound. I joined him to vanquish kobolds attacking a village, but many were gravely injured in the battle."
+nicol "I watched in awe and horror as he revived them instantly, a feat that would take even the greatest clerics hours. Curious, I approached him that night to learn more. That is when I saw it: a devil, speaking to him casually, as if this were routine."
+nicol.Move(0.8 0 -spd 2)
+nicol "Eavesdropping is not noble, but I learned enough-his ''gift'' was a curse. The devil granted him healing powers, but every wound he healed was inflicted on another. Saving one man meant sentencing another to death."
+SetSprite(nicol flipped)
+nicol "He was so desensitized to his actions... using his ''gift'' to become renowned around the realm. but I believe he broke the contract in the end and lost his soul for it. I would not know, as I quickly broke ties with him after that night."
 Highlight(alan -o true)
+alan.Move(0.1 0 -spd 1)
 alan "That is... horrific. To think that one could grow so out of touch with their reality..."
 Highlight(nicol -o true)
 nicol "I did not know him well enough to feel morally responsible for his actions, but the thought of a man with that type of power... terrifying. More terrifying than any beast I have slain."
-nicol "Regardless, the only way a devil can harm you is if you sign their dotted line. ... I suppose they could also kill you, but they enjoy the game more than the outcome. Always a game of cat and mouse with them, toying with their prey for their twisted sense of amusement."
+nicol.Move(0.75 0 -spd 2)
+nicol "Regardless, A devil can only harm you if you sign their dotted line. They are powerful, but from my experience, they prefer the game to the outcome. It's always cat and mouse with them, toying with their prey for twisted amusement."
+nicol.Move(0.7 0 -spd 2)
 nicol "...Alan?"
 Highlight(alan -o true)
+alan.Move(0.2 0 -spd 2)
 alan "Oh- Yes, Nicol?"
 Highlight(nicol -o true)
+nicol.Move(0.75 0 -spd 2)
 nicol "It is nothing, you merely seemed... lost in thought. We should press on, yes? We cannot rest until Morsophus breathes his last!"
 Highlight(alan -o true)
 alan "Yes, yes... Apologies. Let us continue."

@@ -13,21 +13,30 @@ alan "My condition?"
 Highlight(nicol -o true)
 nicol "Yes. You are not here to protect Isen, you are here on a devil's command. Is that correct? You may tell me, I will not tattle."
 Highlight(alan -o true)
+alan.Move(0.2 0 -spd 1.5)
 alan "No, I assure you, I wish to protect Isen. I was sent by the knights, not some devil."
 Highlight(nicol -o true)
+SetSprite(nicol nicol)
 nicol "You lie, Alan. Both to yourself and to me. A knight does not kill his allies. And to think that I called you my rival..."
 Highlight(alan -o true)
+alan.Move(0.15 0 -spd 1.5)
 alan "That was... an accident. I did not mean to harm her. It is my duty to protect others as well as myself, I did what was right in the moment."
 Highlight(nicol -o true)
+SetSprite(nicol flipped)
+nicol.Move(0.75 0 -spd 2)
 nicol "Excuses. If it was an accident, why can you wield her magic? Why have you gotten significantly stronger since her death?"
 Highlight(alan -o true)
 alan "..."
 Highlight(nicol -o true)
+SetSprite(nicol nicol)
+nicol.Move(0.775 0 -spd 2)
 nicol "Tis what I thought. I wish this were not the case, but we must permanently part ways once this adventure is over. You are not the man you once were."
 Highlight(alan -o true)
+alan.Move(0.2 0 -spd 1.5)
 alan "No, Nicol, I am still-"
 Highlight(nicol -o true)
-nicol "The devil may not have sunk its claws in yet, but it is sharpening them. You are one bad decision away from becoming a pawn. Let us complete our quest and be done here, yes? I can aid you no more, you have made your decision. You side with devils, not mortals."
+SetSprite(nicol flipped)
+nicol "You are one bad decision away from becoming a pawn. Let us complete our quest and be done here, yes? I can aid you no more, you have made your decision. You side with devils, not mortals."
 Hide(nicol)
 Hide(alan)
 endMenuDialogue(true)

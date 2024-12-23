@@ -48,6 +48,9 @@ public class mainDialogueManager : MonoBehaviour
 
     private string currentlyRunningText = "";
 
+    //Used for testing.
+    private bool testingDialogueRan = false;
+
     private void Start()
     {
         //dialogueSTART(fileName); // only here for testing
@@ -58,6 +61,16 @@ public class mainDialogueManager : MonoBehaviour
         else // if they have not cleared the tutorial
         {
             dialogueSTART(fileName);
+        }
+    }
+
+    //Used for testing. Comment out for the actual game.
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C) && testingDialogueRan == false)
+        {
+            testingDialogueRan = true;
+            dialogueSTART("Supports/DeadAllyConvo/kisanicol001");
         }
     }
 
