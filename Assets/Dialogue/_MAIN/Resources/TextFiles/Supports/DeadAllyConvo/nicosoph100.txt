@@ -1,4 +1,4 @@
-sophie.Move(0.8 0 -spd 3)
+sophie.Move(0.75 0 -spd 3)
 nicol.Move(0.15 0 -spd 3)
 Hide(nicol)
 Hide(sophie)
@@ -11,14 +11,20 @@ Show(nicol)
 Highlight(nicol -o true)
 nicol "I cannot say what is right or wrong, but... I sympathize with you."
 Highlight(sophie -o true)
+sophie.Move(0.65 0 -spd 2)
 sophie "I <i>can</i>. Kisa's death was wrong."
 Highlight(nicol -o true)
-nicol "Kisa's death was... unfortunate. Alan appears genuine in his remorse. We do not know the circumstances of their fight, and although I doubt Alan's judgment, I do not wish to provoke him as Kisa may have done. We have had too much conflict today."
+SetSprite(nicol flipped)
+nicol "Yet... Alan appears genuine in his remorse. We do not know the circumstances of their fight, and although I doubt Alan's judgment, I do not wish to provoke him as Kisa may have done. We have had too much conflict today."
 Highlight(sophie -o true)
+sophie.Move(0.6 0 -spd 2)
 sophie "Kisa would <i>never</i> have provoked Alan to the point that he needed to <i>kill her</i>. Kisa was kind, Kisa was friendly, Kisa was not a threat."
+sophie.Move(0.7 0 -spd 1)
 sophie "...The gods wish to torment me. I could not pinpoint my feelings towards Kisa last evening, but now I can. I realize now how much she meant to me in her death, and I am cursed to never tell her."
 Highlight(nicol -o true)
-nicol "Although I do not know the extent of your relationship, I know that losing one that you treasured makes you realize how important they were. I am sure that Kisa knows the depth of your affection, even if you did not know it yourself until moments ago."
+SetSprite(nicol nicol)
+nicol.Move(0.2 0 -spd 1)
+nicol "Although I do not know the extent of your relationship, I know that losing one that you treasured makes you realize how important they were. I am sure that Kisa knows the depth of your affection, even if you did not know it yourself."
 Highlight(sophie -o true)
 sophie "I hope you are right. I... I truly do."
 Hide(sophie)

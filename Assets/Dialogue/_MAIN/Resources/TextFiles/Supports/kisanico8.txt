@@ -2,41 +2,55 @@ nicol.Move(0.8 0 -spd 3)
 kisa.Move(0.15 0 -spd 3)
 Hide(kisa)
 Hide(nicol)
-SetSprite(kisa flipped)
+SetSprite(kisa kisa)
 SetSprite(nicol flipped)
 wait(0.75)
 Show(nicol)
+Show(kisa)
 Highlight(nicol -o true)
 nicol "So, Kisa. A little birdie has told me that you and Sophie are having a scandalous relationship. Is that true?"
-Show(kisa)
 Highlight(kisa -o true)
+kisa.Move(0.3 0 -spd 3)
 kisa "S-Scandalous?! I beg your pardon? NO! Nothing of that sort! Gods... Who told you that?!"
 Highlight(nicol -o true)
+nicol.Move(0.75 0 -spd 1.5)
 nicol "Wahaha! It appears my suspicions were true! You two <i>are</i> in a relationship!"
 Highlight(kisa -o true)
+kisa.Move(0.35 0 -spd 3)
 kisa "Would you... No! We are not! We are merely friends at the moment, and we will stay that way. Unless Sophie says otherwise, that is."
 Highlight(nicol -o true)
 nicol "Ah, I understand. You wish to advance yet Sophie does not. Very common. Happened to me and my wife, in fact!"
 Highlight(kisa -o true)
+kisa.Move(0.2 0 -spd 2)
 kisa "You have a wife?! You've never mentioned this!"
 Highlight(nicol -o true)
+SetSprite(nicol nicol)
 nicol "Yes, well, her profession makes it difficult to speak of her. She always tells me ''Nicol, my love, my <i>dashing</i> aristocat! Assassins work in the dark, do not tell others I exist you handsome, handsome feline''. These are her words, not mine!"
 Highlight(kisa -o true)
 kisa "... There is always so much to unpack with you. She is an assassin? How does someone like you meet someone like her?"
 Highlight(nicol -o true)
+SetSprite(nicol flipped)
+nicol.Move(0.7 0 -spd 1.5)
 nicol "Ah, I suppose I have already told you, so I <i>must</i> speak more about her. Yes! The greatest in the realm! We first met at a grand ball in Auplith... she was stunning! We danced, drank and got to know each other better in my quarters. What a woman!"
 Highlight(kisa -o true)
+kisa.Move(0.25 0 -spd 2)
 kisa "And..? Please do not tell me she planned on taking your life."
 Highlight(nicol -o true)
+SetSprite(nicol nicol)
 nicol "She did not <i>plan</i> on it! But she was paid to. She did slip something into my drink, but I woke up the next morning alive and not-so-well! She could have killed me, but she did not. I suppose my charms worked their magic."
 Highlight(kisa -o true)
 kisa "Ah. And how does this relate to me and Sophie?"
 Highlight(nicol -o true)
-nicol "Yes! You and Sophie! You see, I met her again a few days later, but she wanted nothing to do with me! I very clearly told her of my feelings for her, but she snapped at me and told me that we could not be together. She was dogfolk, so I suppose she was offput by my feline appearance."
+SetSprite(nicol flipped)
+nicol.Move(0.65 0 -spd 2)
+nicol "Yes! You and Sophie! You see, I met her again days later, but she wanted nothing to do with me! I told her of my feelings for her, but she snapped at me. She was dogfolk, so I suppose she was offput by my feline appearance."
+SetSprite(nicol nicol)
 nicol "She needed space, so I took a step back and gave her time. It took a while, but she eventually gave me her answer. Sophie must be the same way!"
 Highlight(kisa -o true)
+kisa.Move(0.2 0 -spd 1)
 kisa "Although your situation is... different, I believe I understand the purpose of your story. My confession disoriented Sophie and she needs time to discern the nature of her feelings for me. I know my feelings, but she does not know hers."
 Highlight(nicol -o true)
+SetSprite(nicol flipped)
 nicol "Exactly! Sophie requires your patience. In the meantime, we should progress, yes? I doubt she will come to her decision today. She is rather stressed, I am sure her mind will be less clouded with Morsophus defeated."
 Highlight(kisa -o true)
 kisa "I agree. I simply have to push it from my mind and focus on the task at hand. Thank you, Nicol."

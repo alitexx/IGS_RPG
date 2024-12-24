@@ -1,30 +1,42 @@
-sophie.Move(0.825 0 -spd 3)
+sophie.Move(0.75 0 -spd 3)
 kisa.Move(0.15 0 -spd 3)
 Hide(kisa)
 Hide(sophie)
-SetSprite(kisa flipped)
+SetSprite(kisa kisa)
 wait(0.75)
 Show(sophie)
+Show(kisa)
 Highlight(sophie -o true)
 sophie "Kisa, I must know. We have known each other for a long time, and you have never seemed so interested in this form of adventuring. Why now? And why a lich, of all damned creatures?"
-Show(kisa)
 Highlight(kisa -o true)
+kisa.Move(0.1 0 -spd 2)
+SetSprite(kisa flipped)
 kisa "It is more simple than you think. Going to neighboring towns and assisting was not enough to garner my parent's recognition. Although it is gratifying, I must break the mold."
+kisa.Move(0.15 0 -spd 2)
+SetSprite(kisa kisa)
 kisa "And... I am more than willing to quest with you in particular. For reasons you are already well aware of."
 Highlight(sophie -o true)
+sophie.Move(0.8 0 -spd 2)
 sophie "So it is for recognition rather than to vanquish evil. ...That is a familiar feeling. Do not do anything foolish for their affection, Kisa. I know all too well that seeking the praise of others can lead to one's downfall."
 Highlight(kisa -o true)
-kisa "Familiar? You, Sophie of Zaro, protector of the people, once sought recognition rather than justice?"
+kisa.Move(0.2 0 -spd 2)
+kisa "Familiar? You, Sophia of Zaro, protector of the people, once sought recognition rather than justice?"
 Highlight(sophie -o true)
+sophie.Move(0.75 0 -spd 2)
 sophie "Yes, yes... I was foolish. Foolish enough to believe my brother's lies, foolish enough to fight a criminal organization alone. I was a child, and I will not make the same mistake again."
 Highlight(kisa -o true)
+SetSprite(kisa flipped)
 kisa "I... remember that, now that you mention it. The Gilded Fang, yes? We subdued them, did we not?"
 Highlight(sophie -o true)
+sophie.Move(0.7 0 -spd 2)
 sophie "Yes, the Fang's days of terrorizing Zaro are over. But I cannot erase my past, as much as I wish to. Live and learn, I suppose. Do not make the same mistakes I did, Kisa."
 Highlight(kisa -o true)
+SetSprite(kisa kisa)
 kisa "Sophie, although I have not experienced having siblings, I know you trusted your brother. If he gave you this absurd idea of defeating the Gilded Fang alone when you were a child, what came after is not your fault."
+kisa.Move(0.3 0 -spd 2)
 kisa "And besides, we are together now, yes? We stood together against the Gilded Fang, and we will stand together against Morsophus."
 Highlight(sophie -o true)
+sophie.Move(0.6 0 -spd 2)
 sophie "Yes, we are together. I... am used to fighting alone, I know my individual limits, but... we are stronger as one. Thank you for remaining at my side, Kisa, despite my past failures."
 Hide(sophie)
 Hide(kisa)

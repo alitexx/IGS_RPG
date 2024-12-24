@@ -2,6 +2,7 @@ nicol.Move(0.8 0 -spd 3)
 kisa.Move(0.15 0 -spd 3)
 Hide(kisa)
 Hide(nicol)
+SetSprite(kisa kisa)
 SetSprite(nicol flipped)
 wait(0.75)
 Show(kisa)
@@ -13,40 +14,58 @@ nicol "It <i>feels</i> like it was yesterday! I have lost track of the days. Tis
 Highlight(kisa -o true)
 kisa "Alright... but do you have a rough estimate?"
 Highlight(nicol -o true)
+nicol.Move(0.75 0 -spd 2)
 nicol "Ah! I know how we can tell! Behold!"
 Highlight(kisa -o true)
+kisa.Move(0.2 0 -spd 2)
 kisa "A book? Oh, have you been documenting your adventures?"
 Highlight(nicol -o true)
-nicol "In a way, yes! I have had this since I was able to walk on my two legs. I do not wish to rid myself of it, so I have had to get creative when logging my adventures. Now I have separate journals for different subjects! Such as my birding journal, my insect journal, my sea creature journal..."
+nicol "In a way, yes! I have had this since I was able to walk on my two legs. I do not wish to rid myself of it, so I have had to get creative when logging my adventures. Now I have separate journals for different subjects!"
 Highlight(kisa -o true)
 kisa "Gods... you do enjoy documenting your journey. How are you able to hold so much?"
 Highlight(nicol -o true)
 nicol "Hidden pockets! Regardless, let us see when I first wrote in this journal..."
 Highlight(kisa -o true)
+kisa.Move(0.25 0 -spd 2)
 kisa "It should be the first page, correct? Hurry Nicol, do not lead me on!"
 Highlight(nicol -o true)
+SetSprite(nicol nicol)
 nicol "That is the logical place, however, I was not always so... civilized. The first sections of this journal are not of the greatest quality."
 Highlight(kisa -o true)
-kisa "Come now, Nicol! It must not be so—"
+kisa.Move(0.3 0 -spd 2)
+kisa "Come now, Nicol! It must not be so-"
+kisa.Move(0.2 0 -spd 2)
 kisa "... I take my words back. Nicol, this looks like the work of a newborn. Why are these pages torn to shreds?"
 Highlight(nicol -o true)
-nicol "Do not ridicule me, but I was not always the great aristocat I am today. I struggled for the longest time to learn common. Learning to write was even more frustrating, especially with claws. They would get caught in the pages and tear. My gloves make life with claws much easier."
-nicol "But let us not dwell on the past, yes? We were looking for when I started this journey..."
-nicol "Aha! Here we are, 7th of Kythorn, 1489 DR. “I left home to explore. The flowers are beautiful.” So succinct!"
+SetSprite(nicol flipped)
+nicol "Do not ridicule me, but I was not always the great aristocat I am today. Learning to read and write was frustrating, especially with claws. They would get caught in the pages and tear. My gloves make life with claws much easier."
+SetSprite(nicol nicol)
+nicol "But let us not dwell on the past, yes? We were looking for when I started this journey..." 
+nicol.Move(0.8 0 -spd 2)
+nicol "Aha! Here we are, 7th of Kythorn, 1489 DR. ''I left home to explore. The flowers are beautiful.'' So succinct!"
 Highlight(kisa -o true)
+kisa.Move(0.3 0 -spd 2)
 kisa "1489, so almost 50 years ago? Do you have an end goal? Finding treasure, slaying a beast?"
 Highlight(nicol -o true)
+SetSprite(nicol flipped)
+nicol.Move(0.7 0 -spd 2)
 nicol "None at all! I simply wish to explore it all. To say I have been to every location on this globe would be an achievement!"
 Highlight(kisa -o true)
 kisa "That is quite a goal, yet... knowing you, I believe it is accomplishable."
+SetSprite(kisa flipped)
+kisa.Move(0.2 0 -spd 2)
 kisa "I envy you in that way, Nicol. Your path is so clear-cut. Mine... do I even have a path? I simply live in the moment, but if I continue living in the moment, will I ever accomplish anything?"
 Highlight(nicol -o true)
+nicol.Move(0.65 0 -spd 2)
 nicol "Oh Kisa, accomplishments are subjective! Walking is an accomplishment for an infant but not for a man. Your path is determined by you, no one else. My calling is to adventure! You simply must find yours."
 Highlight(kisa -o true)
 kisa "I wish it was as easy as you make it, but there is some truth to your words. Once I make my parents proud, I may be able to find my ''calling'', as you say."
 Highlight(nicol -o true)
+nicol.Move(0.6 0 -spd 2)
 nicol "What is stopping you from completing this now? Seize the moment, my dear Kisa! Go on a grand exploration! Find yourself! Find your calling!"
 Highlight(kisa -o true)
+SetSprite(kisa kisa)
+kisa.Move(0.3 0 -spd 2)
 kisa "That sounds... freeing. There is no time like the present, yes? I will consider it. After we defeat Morsophus, of course."
 Hide(nicol)
 Hide(kisa)

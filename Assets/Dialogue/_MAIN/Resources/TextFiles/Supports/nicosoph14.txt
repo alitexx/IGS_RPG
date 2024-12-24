@@ -1,4 +1,4 @@
-sophie.Move(0.825 0 -spd 3)
+sophie.Move(0.75 0 -spd 3)
 nicol.Move(0.15 0 -spd 3)
 Hide(nicol)
 Hide(sophie)
@@ -11,29 +11,39 @@ Show(nicol)
 Highlight(nicol -o true)
 nicol "Sophia! Apologize? What for, my dear?"
 Highlight(sophie -o true)
-sophie "I realize now that I have been cold towards you when you have shown me nothing but kindness. I am simply... stressed. And when stressed, I have been told that I am impatient. "
-sophie "There are too many sources of my stress to count: the looming threat of a lich, my students' disappearance, Kisa... and yes, even you. Your ability to vex me may have been partially your doing, but I have been critical of you from the start."
+sophie.Move(0.775 0 -spd 2)
+sophie "I realize now that I have been cold towards you when you have shown me nothing but kindness. I am simply... stressed. And when stressed, I have been told that I am impatient."
+sophie "There are too many sources of my stress to count: the looming threat of a lich, my students' disappearance, Kisa... and yes, even you. You vex me, and although that is partially your own doing, I have been critical of you from the start."
 Highlight(nicol -o true)
+nicol.Move(0.2 0 -spd 2)
 nicol "Bah, do not mention it! I completely understand. We are only freshly acquainted, I did not expect your companionship from the get-go. I do appreciate you coming to me, though."
 Highlight(sophie -o true)
 sophie "No, you do not understand. I have been critical because... you remind me of someone. My brother."
-sophie "Your personalities, your love for magic, it all... reminds me of him. Yet he was the one who coerced me into confronting the Gilded Fang when I was a mere child. That foolish act cost his life and the life of my father... although I am equally at fault for believing his lies."
+sophie.Move(0.725 0 -spd 1)
+sophie "Your personalities, your love for magic, it all... reminds me of him. Yet he was the one who coerced me into confronting the Gilded Fang when I was a mere child."
+sophie.Move(0.75 0 -spd 1)
+sophie "That foolish act cost his life and the life of my father... although I am equally at fault for believing his lies."
 Highlight(nicol -o true)
+nicol.Move(0.15 0 -spd 2)
 nicol "The Gilded Fang, as in the thieves' guild in Zaro? Oh, Sophia... I cannot imagine. I am sorry."
 Highlight(sophie -o true)
 sophie "It is alright, Nicol, it is merely my past. I was able to restore order to Zaro at a later date, but that memory still haunts me. My brother's corpse was never found, but we were able to have a funeral regardless."
 Highlight(nicol -o true)
+nicol.Move(0.225 0 -spd 2)
 nicol "His body never found, you say? And he was the one who wished for you to confront the Gilded Fang? Sophia, it is not my place to say this, but... have you considered this being a setup? Perhaps he is still living!"
 Highlight(sophie -o true)
+sophie.Move(0.7 0 -spd 2)
 sophie "No. He is dead. He caused so much damage. He is gone, and should stay gone."
 sophie "And that is why I was so harsh on you. Again, I apologize. You and him are not the same, I see that now."
 Highlight(nicol -o true)
+nicol.Move(0.275 0 -spd 2)
 nicol "We are <i>not</i> the same! I would never do something so deplorable. I apologize again for your loss, Sophia. Is there anything I can do for you? I know I have not caused your pain, but I can try to alleviate it. It is the least I can do."
 Highlight(sophie -o true)
 sophie "Thank you, Nicol, but it is quite alright. I have cried my tears and moved forward. Your concern is appreciated, but I would much rather push forward that discuss my past."
 Highlight(nicol -o true)
 nicol "The ever-patient Sophia has returned! I understand, but perhaps we could speak more once we locate your students? I would love to hear your story, if it is not an intrusive request."
 Highlight(sophie -o true)
+sophie.Move(0.65 0 -spd 2)
 sophie "I would not mind. In fact, I look forward to it. Let us press on."
 Hide(sophie)
 Hide(nicol)

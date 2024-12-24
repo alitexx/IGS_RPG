@@ -1,4 +1,4 @@
-sophie.Move(0.825 0 -spd 3)
+sophie.Move(0.75 0 -spd 3)
 nicol.Move(0.15 0 -spd 3)
 Hide(nicol)
 Hide(sophie)
@@ -11,25 +11,35 @@ Show(nicol)
 Highlight(nicol -o true)
 nicol "Ah, Sophia! I see that you are ready to speak to me again. What do you need?"
 Highlight(sophie -o true)
+sophie.Move(0.7 0 -spd 2)
 sophie "Do not patronize me. Regardless..."
 sophie "I have come to the realization that I have not seen a... person of your variety. Where do you hail from, if you do not mind the intrusion? An aristocat such as yourself must have a place to call home."
 Highlight(nicol -o true)
+nicol.Move(0.2 0 -spd 2)
 nicol "This is no inconvenience to me, Sophia, especially since it is a common question. My origin is... uncommon. Do you know the wizards of Calister?"
 Highlight(sophie -o true)
+sophie.Move(0.65 0 -spd 1)
 sophie "Indeed, my brother dreamed of joining their order. You hail from their guild?"
 Highlight(nicol -o true)
-nicol "One could say that. You see, one day I was living my life peacefully, resting on a window sill and basking in the rays of the sun. The next, I was startled by my master's fireball gone awry. I fell backward, and the next thing I knew, I was walking on two feet!"
+nicol.Move(0.15 0 -spd 2)
+SetSprite(nicol flipped)
+nicol "One could say that. You see, one day I was living my life peacefully, resting on a window sill and basking in the rays of the sun. The next, I was startled by an awry fireball. I fell, and the next thing I knew, I was walking on two feet!"
 Highlight(sophie -o true)
-sophie "... You expect me to believe that you are some freak accident caused by a cat getting mixed into a wizard's spell and becoming humanoid?"
+sophie "You expect me to believe that you are some freak accident caused by a cat getting mixed into a wizard's spell and becoming humanoid?"
 Highlight(nicol -o true)
-nicol "It is the truth. The wizards were happy to take me in, especially with my innate magical prowess. It would make sense, especially given my magical transformation! I am glad that I did not die or become a living pile of slime that day, however I do miss my tail."
+SetSprite(nicol nicol)
+nicol "It is the truth. The wizards were happy to take me in, given my magical transformation and especially with my innate magical prowess! I am glad that I did not become a pile of slime that day, however I do miss my tail."
 Highlight(sophie -o true)
+sophie.Move(0.75 0 -spd 2)
 sophie "Although your story does not sound feasible, I am not proficient in the world of wizardry and you have no reason to lie to me. It is surprising, to say the least."
 Highlight(nicol -o true)
 nicol "Very surprising, indeed! The only downside is that now I stand out amidst a crowd, as there is only one of me in existence. I embrace it instead of shying away!"
 Highlight(sophie -o true)
+sophie.Move(0.725 0 -spd 2)
 sophie "Is that where the overly animated persona comes from? "
 Highlight(nicol -o true)
+SetSprite(nicol flipped)
+nicol.Move(0.1 0 -spd 2)
 nicol "Persona? Bah! No, it is who I am! I am Lord Nicol, a humble yet noble aristocat!"
 Highlight(sophie -o true)
 sophie "...Certainly."

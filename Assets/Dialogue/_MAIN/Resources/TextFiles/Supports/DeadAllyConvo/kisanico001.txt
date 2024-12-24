@@ -1,5 +1,5 @@
 nicol.Move(0.8 0 -spd 3)
-kisa.Move(0.15 0 -spd 3)
+kisa.Move(0.1 0 -spd 3)
 Hide(kisa)
 Hide(nicol)
 SetSprite(nicol flipped)
@@ -11,14 +11,23 @@ Show(nicol)
 Highlight(nicol -o true)
 nicol "Kisa, I understand that Alan's actions are still fresh in your mind. I am not here to justify them, rather I wish to tell you that it is alright to grieve."
 Highlight(nicol -o true)
+SetSprite(nicol nicol)
 nicol "Although I cannot imagine the thoughts running through your head, I know that you are hurting, we both are. Yet you and Sophie... were close."
 Highlight(kisa -o true)
+SetSprite(kisa flipped)
 kisa "...Not anymore."
-kisa "Why must this happen, Nicol? I told Alan, I told him that Sophie and I had a misunderstanding last night, and that is why she was so agitated today. He knew of my true feelings for her... could that have altered him? Could that have altered his view of Sophie?"
+SetSprite(kisa kisa)
+kisa.Move(0.2 0 -spd 1.5)
+kisa "Why must this happen, Nicol? I told Alan, I told him that Sophie and I had a misunderstanding last night, and that is why she was so agitated today."
+kisa.Move(0.25 0 -spd 1.5)
+kisa "He knew of my true feelings for her... could that have altered him? Could that have altered his view of Sophie?"
 Highlight(nicol -o true)
+SetSprite(nicol flipped)
+nicol.Move(0.7 0 -spd 1.5)
 nicol "I understand what you are feeling, but you are not the one to blame for what happened. No one is. Even Alan believed he was protecting us, though my trust in him has wavered. I can promise you, your actions did not cause this."
 nicol "We still have a task awaiting us: defeating Morsophus. We must complete this task for Sophie's sake, regardless of our thoughts on Alan. It will be over soon, we have almost reached this adventure's conclusion."
 Highlight(kisa -o true)
+SetSprite(kisa flipped)
 kisa "..."
 Hide(nicol)
 Hide(kisa)

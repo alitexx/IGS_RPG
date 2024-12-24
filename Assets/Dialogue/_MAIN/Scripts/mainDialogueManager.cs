@@ -70,7 +70,7 @@ public class mainDialogueManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C) && testingDialogueRan == false)
         {
             testingDialogueRan = true;
-            dialogueSTART("Supports/DeadAllyConvo/kisanicol001");
+            dialogueSTART("Supports/nicosoph14");
         }
     }
 

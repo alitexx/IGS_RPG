@@ -1,8 +1,8 @@
-sophie.Move(0.8 0 -spd 3)
+sophie.Move(0.75 0 -spd 3)
 kisa.Move(0.15 0 -spd 3)
 Hide(kisa)
 Hide(sophie)
-SetSprite(kisa flipped)
+SetSprite(kisa kisa)
 wait(0.75)
 Show(sophie)
 Highlight(sophie -o true)
@@ -11,20 +11,26 @@ Show(kisa)
 Highlight(kisa -o true)
 kisa "Yes. It is strange, is it not?"
 Highlight(sophie -o true)
+sophie.Move(0.65 0 -spd 1.5)
 sophie "Kisa... I must ask to clarify, you say that Alan killed a specter version of Nicol? This is what you saw yourself?"
 Highlight(kisa -o true)
+kisa.Move(0.2 0 -spd 1.5)
 kisa "That is what happened. It could not have been the real Nicol, for Alan defeated the impostor. It was a very convincing specter, to give the ghoul credit."
 Highlight(sophie -o true)
 sophie "Yes, but... Nicol and Alan did have a rivalry..."
 Highlight(kisa -o true)
+kisa.Move(0.3 0 -spd 1.5)
 kisa "Exactly, they <i>do</i> have a rivalry! Perhaps that was Nicol's latest attempt to fool Alan. You are reading into this too much."
 Highlight(sophie -o true)
+sophie.Move(0.55 0 -spd 1)
 sophie "Oh, Kisa... I do not know how best to help you. I wish I could take your pain away, but I cannot."
 Highlight(kisa -o true)
+SetSprite(kisa flipped)
 kisa "Your tone worries me. I am not in pain, what are you on about?"
 Highlight(sophie -o true)
 sophie "We will leave the second Morsophus is defeated, just you and I. Stay away from Alan if possible. I vow to keep you safe."
 Highlight(kisa -o true)
+SetSprite(kisa kisa)
 kisa "What has you so solemn? Nicol... Nicol is fine, correct?"
 Hide(sophie)
 Hide(kisa)
