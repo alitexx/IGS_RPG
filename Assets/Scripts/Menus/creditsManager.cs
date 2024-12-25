@@ -87,9 +87,11 @@ private void OnEnable()
                     "cherishes her memory through the lute she left behind.\r\n\r\nNicol's demeanor seemed to remain as carefree as ever, but he was deeply affected by the " +
                     "deaths of his comrades. His eyes darkened, his tone gentler and more longing than times prior. Nicol bestowed his fallen comrades with a solemn farewell, " +
                     "granting them a dignified burial. As he resumed his nomadic existence, he made regular pilgrimages to Isen, paying homage to their memory at their final " +
-                    "resting place.\r\n\r\nSophie was absent when it came time to avenge her students.Her strength was undeniable, and many found it difficult to believe that " +
-                    "the lich had claimed her. Meanwhile, her dojo faced closure and was undergoing transformation into a florist's shop. Sophie's family, unaware of her fate, " +
-                    "assumed she was thriving in Isen, oblivious to her untimely demise.";
+                    "resting place.\r\n\r\nSophie was absent when it came time to avenge her students. Her strength was undeniable, and many found it difficult to believe that " +
+                    "the lich had claimed her. Meanwhile, her dojo faced closure and was undergoing transformation into a florist's shop. In death, the whispers of her name grew " +
+                    "louder, carried by those who had turned away from her in life. Her mother, who had cast her aside long ago, now draped her memory in false reverence, as if " +
+                    "mourning could undo the years of silence. The flowers that adorned her grave were plentiful, but they came from hands that had abandoned her long before her " +
+                    "heart stopped beating.";
                 break;
             case 2:// 2 = nicol and sophie alive
                 charactersOnTitle[1].SetActive(false);
@@ -114,7 +116,9 @@ private void OnEnable()
                     "ties, his absence went unnoticed by most except for the party he journeyed with. Although he left a lasting impression on those he encountered, his " +
                     "transient lifestyle caused him to gradually fade into obscurity.\r\n\r\nSophie was absent when it came time to avenge her students. Her strength was " +
                     "undeniable, and many found it difficult to believe that the lich had claimed her. Meanwhile, her dojo faced closure and was undergoing transformation " +
-                    "into a florist's shop. Sophie's family, unaware of her fate, assumed she was thriving in Isen, oblivious to her untimely demise.";
+                    "into a florist's shop. In death, the whispers of her name grew louder, carried by those who had turned away from her in life. Her mother, who had cast " +
+                    "her aside long ago, now draped her memory in false reverence, as if mourning could undo the years of silence. The flowers that adorned her grave were " +
+                    "plentiful, but they came from hands that had abandoned her long before her heart stopped beating.";
                 break;
             case 4:// 4 = kisa and sophie alive
                 charactersOnTitle[1].SetActive(false);
@@ -138,21 +142,23 @@ private void OnEnable()
                     "the wake of Sophie's passing, Nicol extended his hand in companionship. Welcoming Kisa's presence on their travels, he found comfort in their shared " +
                     "mourning, grateful for the camaraderie amid their grief.\r\n\r\nSophie was absent when it came time to avenge her students. Her strength was undeniable, " +
                     "and many found it difficult to believe that the lich had claimed her. Meanwhile, her dojo faced closure and was undergoing transformation into a florist's " +
-                    "shop. Sophie's family, unaware of her fate, assumed she was thriving in Isen, oblivious to her untimely demise.";
+                    "shop. In death, the whispers of her name grew louder, carried by those who had turned away from her in life. Her mother, who had cast her aside long ago, " +
+                    "now draped her memory in false reverence, as if mourning could undo the years of silence. The flowers that adorned her grave were plentiful, but they came " +
+                    "from hands that had abandoned her long before her heart stopped beating.";
                 break;
             case 6:// 6 = everyone alive!!
-                endingText.text = "After the events at the lich’s tower, Alan takes a much-needed break from his duties to prioritize his mental well-being. " +
+                endingText.text = "After the events at the lich's tower, Alan takes a much-needed break from his duties to prioritize his mental well-being. " +
                     "This time is short-lived, as Alan tends to find himself in the middle of conflict, fighting for the side of justice. He would go on many adventures, " +
                     "but unlike this quest, the temptation to revive his mentor had vanished. He would sometimes get wistful reminiscing about Leora, but he accepted the " +
                     "past was the past and it was time to move on.\r\n\r\nOnce their celebration concluded, Kisa ran home to tell her family of her journey. They were " +
                     "dismissive of her accomplishments and critical of her desire to continue the dangerous life of an adventurer. Kisa was furious, especially since she " +
                     "went through this ordeal to impress them. She ran away days later, choosing a life of excitement over a life of normalcy.\r\n\r\nNicol disappeared soon " +
-                    "after the party’s celebration, continuing his carefree exploration of this world. He still treasures the bond he has with his companions, somehow winding " +
+                    "after the party's celebration, continuing his carefree exploration of this world. He still treasures the bond he has with his companions, somehow winding " +
                     "up back in Isen for holidays to reunite with them. Despite all of his journey and experiences, Nicol never lost his childlike wonder for uncovering the " +
-                    "secrets of the world\r\n\r\nSophie held a small funeral for her fallen students on her arrival home, still feeling a twinge of guilt; if only she knew " +
-                    "of the danger awaiting them, she could have prevented their deaths. Twas a fleeting thought, as she knew she could not change the past. Sophie reopened " +
-                    "her dojo and expected this to become a distant memory, yet she found herself reminiscing on the fond times with her companions. It was then that she knew " +
-                    "how to respond to Kisa's proposal.";
+                    "secrets of the world.\r\n\r\nSophie held a small funeral for her fallen students on her arrival home, still feeling a twinge of guilt; if only she knew " +
+                    "of the danger awaiting them, she could have prevented their deaths. Twas a fleeting thought, as she accepted the past and moved on. Sophie reopened " +
+                    "her dojo and expected this to become a distant memory, yet she found herself reminiscing on the fond times with her companions... Kisa specifically. " +
+                    "It was then that she knew how to respond to Kisa's proposal.";
                 break;
         }
         audioManager.playBGM("T10");

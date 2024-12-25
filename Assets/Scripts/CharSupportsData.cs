@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Reflection;
 
 public class CharSupportsData : MonoBehaviour
 {
@@ -127,6 +128,60 @@ public class CharSupportsData : MonoBehaviour
         SetSupportValue(character1.ToLower(), character2.ToLower(), supportValue);
     }
 
+    //What if you already have hearts and a character becomes affected? fun.
+    //I have no idea if this works pretend that it does
+    public void becomeAffected()
+    {
+        // Get all fields of the current class
+        FieldInfo[] fields = this.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
+
+        foreach (FieldInfo field in fields)
+        {
+            // Check if the field is one of the integer values we care about
+            if (field.FieldType == typeof(int) && field.Name.EndsWith("_support"))
+            {
+                // Get the current value of the field
+                int value = (int)field.GetValue(this);
+
+                // If the integer is 0, skip processing
+                if (value == 0)
+                {
+                    return;
+                }
+
+                // Extract the seen events
+                int firstThreeBits = (value >> 4) & 0b00000111; // Shift right to isolate the three bits
+                if(firstThreeBits == 000)
+                {
+                    return;
+                }
+
+                // Determine the new value based on the first three bits
+                int newValue = 0;
+                switch (firstThreeBits)
+                {
+                    case 1: // Only the first bit is 1
+                        newValue = 0b00000001; // Binary for 1
+                        break;
+                    case 2:
+                        //This is if they are already affected. Just skip processing for them
+                        return;
+                    case 3: // First and second bits are 1 (binary 11)
+                        newValue = 0b00000010; // Binary for 2
+                        break;
+                    case 7: // All three bits are 1 (binary 111)
+                        newValue = 0b00000011; // Binary for 3
+                        break;
+                    default:
+                        // No change for other patterns
+                        break;
+                }
+
+                // Update the field with the new value
+                field.SetValue(this, newValue);
+            }
+        }
+    }
     //this returns a multiplier to damage
     //BRANDON!!! CALL THIS FUNCTION!!!!!!11 THIS ONE!!!!!!
     public int getSyncStrikeMultiplier(string character1, string character2)

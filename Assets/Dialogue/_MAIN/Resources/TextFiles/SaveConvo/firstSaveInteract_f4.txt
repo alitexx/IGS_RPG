@@ -16,7 +16,7 @@ miguel "Do you not like healing or saving your progress? Or are you trying to im
 Highlight(alan -o true)
 alan "There was... a situation among the party. It has been dealt with."
 Highlight(miguel -o true)
-miguel "Ah. Well, as per our agreement, I am happy to assist you with your physical ailments. I’ll even log your adventure, although given your reluctance to speak to me until now, I doubt you’ll need my help."
+miguel "Ah. Well, as per our agreement, I am happy to assist you with your physical ailments. I'll even log your adventure, although given your reluctance to speak to me until now, I doubt you'll need my help."
 Hide(alan)
 Hide(miguel)
 endMenuDialogue(false)

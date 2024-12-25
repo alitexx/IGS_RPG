@@ -71,6 +71,8 @@ public class partyFinalWords : MonoBehaviour
     //next thing to do: figure out how to make speech progress on click. its done somewhere in this code, but idk where honestly
     IEnumerator completeDialogue(int partyMember)
     {
+        //If someone dies, the music is affected
+        audioManager.changePitch(1, 0.95f, 1);
         switch (partyMember)
         {
             case 0: // kisa death

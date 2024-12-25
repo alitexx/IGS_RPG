@@ -11,7 +11,7 @@ miguel "Alan. I am disappointed in you."
 Highlight(alan -o true)
 alan "Miguel-! Kisa can hear us, do not speak of our agreement-"
 Highlight(miguel -o true)
-miguel "Kisa? Ah, well, she has no name now. She is merely a soul. And you have collected one of the three you need. You're getting there."
+miguel "Calm yourself, Alan. The elf cannot hear us. I am contacting you, not her. To her, you are mindlessly flipping through this tome."
 miguel "Regardless, what were you thinking? You could have easily brought your sword down upon her. It would have been <i>easy</i>."
 Highlight(alan -o true)
 alan "Kisa is my ally, it is not as simple as you make it out to be. I did not want to kill her, and I will continue to protect her as I have done before."

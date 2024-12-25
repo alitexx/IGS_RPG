@@ -13,7 +13,7 @@ Highlight(alan -o true)
 alan "I remember her."
 Highlight(miguel -o true)
 miguel "Yes, and you, who wishes to bring peace to this world, know what she can accomplish. Will three people aid this world more than she?"
-miguel "She made such a difference in more lives than yours. Imagine if she were to return. Her life is worth more than your “friends”. Hells, they forgot about you. Are they truly your comrades?"
+miguel "She made such a difference in more lives than yours. Imagine if she were to return. Her life is worth more than your ''friends''. Hells, they forgot about you. Are they truly your comrades?"
 Highlight(alan -o true)
 alan "Are you done? I am in need of healing, Miguel."
 Highlight(miguel -o true)

@@ -30,6 +30,7 @@ public class SavepointScript : MonoBehaviour
 
         if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.keycodeInterractButton) && !mainDialogueManager.dialogueRunning && SaveMenu.activeInHierarchy == false && !PauseMenu.GamePaused && battleMenu.activeInHierarchy == false && canOpenSave)
         {
+            miguelConvo.savePointName = savePointName;
             //call function to heal, and eventually save.
             levelManager.FullHeal();
             audioManager.playSFX(19);
@@ -40,7 +41,6 @@ public class SavepointScript : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(saveFirstButton);
             partyLevel.text = ("Party Level: " + LevelManager.level);
-            miguelConvo.savePointName = savePointName;
         }
 
     }

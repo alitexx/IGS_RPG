@@ -25,7 +25,7 @@ public class miguelConversation : MonoBehaviour
     private bool hasBeenGreeted;
 
     //saving previous save point
-    int previousSave = 0;
+    float previousSave = -1;
 
     //For the button/event nonsense
     //miguel btn
@@ -118,13 +118,13 @@ public class miguelConversation : MonoBehaviour
 
         PauseMenu.GamePaused = false;
     }
-    public void endConversation()
+    public void endConversation(bool shouldButtonBeActive = false)
     {
         this.gameObject.SetActive(true);
-        miguelBtn.SetActive(false);
+        miguelBtn.SetActive(shouldButtonBeActive);
         //sets button to nothing, waits 1 sec, then makes it the resume button
         assignButtonAfterSave();
-        saveMenu.DOFade(1, 1f).OnComplete(() =>
+        saveMenu.DOFade(1, 0.5f).OnComplete(() =>
         {
             saveMenu.DOKill();
         });
@@ -178,20 +178,35 @@ public class miguelConversation : MonoBehaviour
 
     private int ExtractFloorNumber(string floorString)
     {
-        // Use regex to extract digits from the string
-        System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(floorString, @"\d+");
-        if (match.Success)
+        // Define a mapping of save point names to numbers
+        var savePointMapping = new Dictionary<string, int>
+            {
+                { "floor1start", 0 },
+                { "floor1end", 1 },
+                { "floor2start", 2 },
+                { "floor2end", 3 },
+                { "floor3start", 4 },
+                { "floor3midpoint", 5 },
+                { "floor3end", 6 },
+                { "floor4start", 7 },
+                { "floor4end", 8 }
+            };
+
+        // Check if the input string exists in the dictionary
+        if (savePointMapping.TryGetValue(floorString, out int floorNumber))
         {
-            // Convert the extracted number to an integer
-            return int.Parse(match.Value);
+            return floorNumber;
         }
-        return -1; // Return -1 if no number is found (error case)
+
+        // Return -1 if the save point name is not recognized
+        return -1;
     }
+
 
     private bool GetSpecialDialogue(string lastFloor)
     {
         // Extract the numbers from the floor strings
-        int lastNumber = ExtractFloorNumber(lastFloor);
+        float lastNumber = ExtractFloorNumber(lastFloor);
 
         // Check if the current floor is 2 or more levels ahead of the last floor
         if (previousSave >= lastNumber + 2)

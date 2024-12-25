@@ -15,7 +15,7 @@ miguel "Ah! Alan! How goes it? Is the lich defeated? Have you saved the day?"
 Highlight(alan -o true)
 alan "No. My party has gone their separate ways, and I am left to salvage the situation."
 Highlight(miguel -o true)
-miguel "Unfortunate. Well, as per our agreement, I am happy to assist you with your physical ailments. I’ll even log your adventure, so none forget the tales of Sir Alan."
+miguel "Unfortunate. Well, as per our agreement, I am happy to assist you with your physical ailments. I'll even log your adventure, so none forget the tales of Sir Alan."
 Highlight(alan -o true)
 alan "Please do not call me Sir Alan. I do not believe I hold such an honor."
 Highlight(miguel -o true)

@@ -303,5 +303,6 @@ public class audioManager : MonoBehaviour
     public void changePitch(int id, float toValue = 0.8f, float speed = 5f)
     {
         BGMAvailable[id].DOPitch(toValue, speed);
+        Debug.Log("Pitch change done");
     }
 }

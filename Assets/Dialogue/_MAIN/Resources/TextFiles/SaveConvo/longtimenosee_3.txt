@@ -10,7 +10,7 @@ miguel "Alan! It has been a moment since we last spoke, but I am glad to be hear
 Highlight(alan -o true)
 alan "..."
 Highlight(miguel -o true)
-miguel "You already have all three souls?! Hells, Alan, that is impressive. I never doubted you for a second. I’ll let you be, you obviously know what you’re doing."
+miguel "You already have all three souls?! Hells, Alan, that is impressive. I never doubted you for a second. I'll let you be, you obviously know what you're doing."
 Hide(alan)
 Hide(miguel)
 endMenuDialogue(false)

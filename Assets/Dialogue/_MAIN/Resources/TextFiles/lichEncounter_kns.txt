@@ -17,6 +17,6 @@ lich "Is this conversation complete? Your death could be swift, but it is far mo
 nicol "Wahaha! Run? You think Lord Nicol would flee from danger? Never! We stand here to vanquish evil, and we will do the same to you. You showed no mercy to the people of Isen, and you will find none here."
 lich "You speak of the common folk as if they hold value. They are <i>meaningless</i>! This is the harsh reality of our world—power reigns supreme and knowledge is the ultimate power."
 addCutscene(13)
-lich "Society, your world, it’s all worthless. The only thing of value you possess is your soul, something I can put to far better use—fuel for my magic. The more souls I collect, the stronger I become."
+lich "Society, your world, it's all worthless. The only thing of value you possess is your soul, something I can put to far better use—fuel for my magic. The more souls I collect, the stronger I become."
 alan "Enough of this hubris. Let us end this, as a team."
 endDialogue(true)

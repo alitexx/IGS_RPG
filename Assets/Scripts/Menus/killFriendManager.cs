@@ -30,6 +30,9 @@ public class killFriendManager : MonoBehaviour
     [SerializeField] private partyFinalWords finalWordsScript;
     [SerializeField] private TextMeshProUGUI[] SpecialDesc;
 
+    //For supports after killing
+    [SerializeField] private CharSupportsData supportsData;
+
     public int partyLevel;
 
     private string charInQuestion;
@@ -237,7 +240,10 @@ public class killFriendManager : MonoBehaviour
         //a choice has been made
         if (killingMaybe)
         {
+            //For audio
             youWinMenu.killedPartyMember = true;
+            //Change supports, if applicable
+            supportsData.becomeAffected();
             StartCoroutine(alanKillPartyAnim(killSpeed));
             }
         else if (befriendingMaybe)

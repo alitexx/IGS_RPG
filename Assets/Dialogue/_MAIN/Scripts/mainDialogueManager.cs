@@ -70,7 +70,7 @@ public class mainDialogueManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C) && testingDialogueRan == false)
         {
             testingDialogueRan = true;
-            dialogueSTART("Supports/nicosoph14");
+            dialogueSTART("SaveConvo/floor2end_kn");
         }
     }
 
@@ -101,7 +101,7 @@ public class mainDialogueManager : MonoBehaviour
                 pauseMenuManager.partyMemberAbsent("SOPHIE");
                 firstSlime.SetActive(false);
             } 
-            else if (dialogueFile.StartsWith("Support") || dialogueFile.StartsWith("SaveConvo"))
+            else if (dialogueFile.StartsWith("Supports") || dialogueFile.StartsWith("SaveConvo"))
             {
                 return; // Don't change the audio for any support dialogue
             }
@@ -135,6 +135,10 @@ public class mainDialogueManager : MonoBehaviour
                 case "load_floor2":
                 case "load_floor3":
                 case "load_floor4":
+                    if(playerController.getDeadCharacters() != 0)
+                    {
+                        am.changePitch(1, 0.95f, 0.01f);
+                    }
                     am.playBGM("T2");
                     break;
                 case "load_genocide":
@@ -280,7 +284,14 @@ public class mainDialogueManager : MonoBehaviour
             {
                 //if this is NOT support, this must be the save menu. open save menu again.
                 miguelConvo.gameObject.SetActive(true);
-                miguelConvo.endConversation();
+                //Miguel Convo button was not appearing after the first interact. This makes it so if this is the player's first time interacting with the save data, the button still appears.
+                if (currentlyRunningText.StartsWith("SaveConvo/firstSaveInteract"))
+                {
+                    miguelConvo.endConversation(true);
+                } else
+                {
+                    miguelConvo.endConversation(false);
+                }
             }
 
             currentlyRunningText = "";
