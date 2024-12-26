@@ -13,7 +13,7 @@ alan.Move(0.25 0 -spd 3)
 alan "What? Is there something you wish to tell me, Kisa?"
 Highlight(kisa -o true)
 SetSprite(kisa flipped)
-kisa "No, nothing at all. March on."
+kisa "No, nothing at all. Let us continue."
 Highlight(alan -o true)
 SetSprite(kisa kisa)
 alan.Move(0.35 0 -spd 3)
@@ -23,12 +23,12 @@ kisa "I am not. You said it yourself, I must summon the will to be helpful. So I
 Highlight(alan -o true)
 alan "Do not use my words against me."
 Highlight(kisa -o true)
-kisa "Understood."
+kisa "... Understood."
 kisa "..."
 SetSprite(kisa flipped)
-kisa "Do you truly feel nothing after what has happened? Do you remember them?"
+kisa "Do you truly feel nothing after what has happened?"
 Highlight(alan -o true)
-alan "Remember who? Why are you speaking so much for someone who wishes to stay silent?"
+alan "Why are you speaking so much for someone who wishes to stay silent?"
 Highlight(kisa -o true)
 SetSprite(kisa kisa)
 kisa "... My apologies."

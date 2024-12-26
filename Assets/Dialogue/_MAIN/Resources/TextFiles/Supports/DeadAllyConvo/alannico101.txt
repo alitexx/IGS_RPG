@@ -19,7 +19,7 @@ Highlight(alan -o true)
 alan "..."
 Highlight(nicol -o true)
 SetSprite(nicol nicol)
-nicol "Of course, you are beyond comprehension. You only know violence. Silly of me to try and speak sense into the senseless."
+nicol "Of course, you are beyond comprehension. You only know violence. Foolish of me to try and speak sense into the senseless."
 Highlight(alan -o true)
 alan.Move(0.25 0 -spd 1.5)
 alan "Do not make me regret my choice of sparing you."

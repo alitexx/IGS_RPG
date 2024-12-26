@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 
 public class BattleController : MonoBehaviour
 {
-    private bool hasContemplatedKilling = false;
+    public bool hasContemplatedKilling = false;
 
     public void TestButton()
     {
@@ -2147,7 +2147,7 @@ public class BattleController : MonoBehaviour
                 am.playSFX(14);
                 am.playBGM("T6");
 
-                hasContemplatedKilling = true; // can no longer contemplate killing
+                hasContemplatedKilling = true; // can no longer contemplate killing for this floor
                 turnOffForKillBefriend.SetActive(false);
                 befriendOrAbsorbButton.SetActive(true);
                 playerController.gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -2155,10 +2155,17 @@ public class BattleController : MonoBehaviour
             else
             {
                 //NOTE!! ASK BRANDON ABT PLAYER LIST!!!
-                if (LevelManager.level == 1 && playerList[0].statSheet.stats["Health"] <= 6 && !hasContemplatedKilling)
+                if (playerList[0].statSheet.stats["Health"] <= playerList[0].statSheet.stats["MaxHealth"]/4 && !hasContemplatedKilling && playerController.getObtainedCharacters() == 0)
                 {
-                    hasContemplatedKilling = true;
-                    youWinMenu.loadedDialogue = "contemplateKilling";
+                    hasContemplatedKilling = true; // can no longer contemplate killing for this floor
+                    if(playerController.getDeadCharacters() == 111 && playerController.Level == 3)
+                    {
+                        //trigger special dialogue if u get this with everyone dead on floor 3
+                        youWinMenu.loadedDialogue = "contemplateKillingf3.5";
+                    } else
+                    {
+                        youWinMenu.loadedDialogue = "contemplateKillingf" + playerController.Level.ToString();
+                    }
                 }
                 youWin.SetActive(true);
                 //playerController.isfrozen = false;

@@ -23,16 +23,15 @@ Highlight(alan -o true)
 alan.Move(0.2 0 -spd 2)
 alan "Please tell me if I am overstepping my boundaries, but have they always been this way?"
 Highlight(kisa -o true)
-kisa "This has always been the case, at least as far as I can recall. They shower me with affection when I do something ''good'', and ignore me when I do not. The only time they cared was when I first took up the lute."
+kisa "Well, yes. They have standards, we all do. Theirs are just... higher."
 SetSprite(kisa kisa)
 kisa.Move(0.8 0 -spd 2)
-kisa "They require some grand quest to be impressed. I have done good. I have organized festivals, participated in government, and even stopped werewolves from rampaging through our town. Not once had they shown any interest."
-kisa "This is different. This is a larger-scale threat. It may not be as flashy as a dragon, but defeating a lich would be a huge accomplishment. They will be forced to accept my worth."
+kisa "They do not want a failure of a daughter, so it is a feat to earn their praise. Defeating Morsophus will be enough, I am certain."
 Highlight(alan -o true)
 alan "Is this truly the way it must be? It does not feel right to earn a parent's love in such a fashion..."
 Highlight(kisa -o true)
 SetSprite(kisa flipped)
-kisa "They seek perfection, so I shall give them perfection. If I must earn their love, so be it."
+kisa "They seek perfection, so I shall give them perfection. What else can I do?"
 kisa.Move(0.75 0 -spd 4)
 kisa "And what shall you do once Morsophus falls, Alan?"
 Highlight(alan -o true)
@@ -55,7 +54,7 @@ Highlight(kisa -o true)
 kisa.Move(0.7 0.05 -spd 4)
 wait(0.2)
 kisa.Move(0.7 0 -spd 4)
-kisa "Hurray! Now we must defeat this lich, yes? Let us make haste!"
+kisa "Wonderful! Now we must defeat this lich, yes? Let us make haste!"
 Hide(kisa)
 Hide(alan)
 endMenuDialogue(true)

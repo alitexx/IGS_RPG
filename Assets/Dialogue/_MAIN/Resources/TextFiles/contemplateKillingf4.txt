@@ -2,10 +2,11 @@ alan.Move(0.15 0 -spd 3)
 wait(0.75)
 Show(alan)
 Highlight(alan -o true)
-alan "This is pitiful. I allowed you monsters the chance to defeat me, and this is the best you can do? This is a mere <i>scratch</i>."
+alan "The constant pestering of all these undead is tiresome."
 alan.Move(0.175 0 -spd 1)
-alan "If you are the strongest of Morsophus's army, I feel sorry for this poor Lich. My pity only goes so far, though, as he is evil and I am righteous."
-alan "Yet the undead's constant pestering has become... tiresome. I had considered extending this trivial game, but it is time to end it."
-alan "I do this all in Leora's name."
+alan "Still, if this is the strongest of the Lich's army then he will be laughable. I'd pity him if he weren't so foul."
+alan "Animating these bones... I doubt he looks any better. It could be argued I'm doing them all a favor, sending them back to the Hells."
+alan.Move(0.225 0 -spd 1)
+alan "I will show this overdue dead what it truly means to bring someone back to life. Someone worthwhile."
 Hide(alan)
 endDialogue(false)

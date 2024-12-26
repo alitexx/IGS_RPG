@@ -45,7 +45,7 @@ Highlight(nicol -o true)
 nicol.Move(0.675 0 -spd 2)
 nicol "Ohoho! I am glad, my friend! If you truly wish to, I would not mind traveling with a companion."
 Highlight(alan -o true)
-alan "I will have to decline, I am still bound to the knight's code. I must protect Isen, although I am certain our paths will cross again. If they have once, they will again."
+alan "I will have to decline, I am still bound to the knight's code. I must protect Isen, although I am certain our paths will cross again."
 Highlight(nicol -o true)
 SetSprite(nicol nicol)
 nicol.Move(0.75 0 -spd 2)
