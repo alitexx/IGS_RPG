@@ -7,7 +7,7 @@ wait(1)
 Show(alan)
 Show(miguel)
 Highlight(miguel -o true)
-miguel "this is placeholder"
+miguel "Well? The lich will not defeat himself."
 Hide(alan)
 Hide(miguel)
 endMenuDialogue(false)
