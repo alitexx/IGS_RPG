@@ -13,6 +13,9 @@ public class useSpecial : MonoBehaviour
     [SerializeField] private updateSPOnScreen updateSP;
     [SerializeField] private CharSupportsData charSupportsData;
 
+    //For Trial and Error
+    [SerializeField] private NicolFunTime nicolFunTime;
+
     //When special button is clicked
     //Currently, this does no targetting. Organize this code as you see fit!
     public void useSpecialBtn(int whichLevel)
@@ -115,6 +118,16 @@ public class useSpecial : MonoBehaviour
                 break;
             case 2:
                 //use Nicol's second special, Trial and Error
+
+                //How good/bad the effect is
+                int roll = Random.Range(0, 20); // 0-19
+                //What the effect is
+                int genre = Random.Range(0, 4); // 0-3
+
+                //This is the text box aspect of trial and error. Look in the script for more info!
+                //Currently does not process any of the actual effects, just tells players what they are.
+                nicolFunTime.manageTextBubbles(genre, roll);
+
                 break;
             case 3:
                 //use Nicol's third special, Encourage
@@ -134,6 +147,8 @@ public class useSpecial : MonoBehaviour
                 break;
             case 1:
                 //use Sophie's first special, Earthquake
+                //Can we make the screen shake here? I don't have an animation for this, thinking more rock tomb in pokemon for the effects
+
                 break;
             case 2:
                 //use Sophie's second special, Focus

@@ -136,7 +136,7 @@ public class killFriendManager : MonoBehaviour
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nWind";
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Kisa</color>";
                 SpecialDesc[0].text = "Using your voice, heal all allies by 25% of their maximum health.";
-                SpecialDesc[1].text = "Distract the target, confusing them and skipping their next turn.";
+                SpecialDesc[1].text = "Confuse the target, distracting them and skipping their next turn.";
                 SpecialDesc[2].text = "Using your voice, heal all allies to their maximum health.";
                 elementIcon[2].sprite = elementsSprites[3];
                 elementIcon[3].sprite = elementsSprites[4];

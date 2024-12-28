@@ -124,9 +124,10 @@ public class miguelConversation : MonoBehaviour
         this.gameObject.SetActive(true);
         miguelBtn.SetActive(shouldButtonBeActive);
         //sets button to nothing, waits 1 sec, then makes it the resume button
-        assignButtonAfterSave();
+        EventSystem.current.SetSelectedGameObject(null);
         saveMenu.DOFade(1, 0.5f).OnComplete(() =>
         {
+            EventSystem.current.SetSelectedGameObject(returnButton);
             saveMenu.DOKill();
         });
 
@@ -218,7 +219,7 @@ public class miguelConversation : MonoBehaviour
         float lastNumber = ExtractFloorNumber(lastFloor);
 
         // Check if the current floor is 2 or more levels ahead of the last floor
-        if (previousSave >= lastNumber + 2)
+        if (previousSave <= lastNumber + 2)
         {
             // Trigger special dialogue
             previousSave = lastNumber;
