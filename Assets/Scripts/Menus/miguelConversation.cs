@@ -5,12 +5,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using System;
-using UnityEngine.UI;
-using System.Linq;
 
 public class miguelConversation : MonoBehaviour
 {
     [SerializeField] private CanvasGroup saveMenu;
+    //side a = left? side b = right. this makes more sense to left/right impaired people like me. DEAL WITH IT
+    [SerializeField] private CanvasGroup sidea,sideb;
     [SerializeField] private mainDialogueManager mainDialogueManager;
 
     //This is passed in
@@ -296,11 +296,30 @@ public class miguelConversation : MonoBehaviour
     // The coroutine to wait for 1 second and set the return button
     private IEnumerator SetReturnButtonAfterDelay(GameObject button)
     {
-        yield return new WaitForSeconds(1f); // Wait for 1 second
+        sideb.DOFade(0, 0.2f).OnComplete(() =>
+        {
+            sideb.DOKill();
+        });
+        yield return new WaitForSeconds(0.2f); // Wait for 1 second
+        sidea.DOFade(0, 0.2f).OnComplete(() =>
+        {
+            sidea.DOKill();
+        });
+        yield return new WaitForSeconds(0.45f); // Wait for 1 second
         if (button != null)
         {
-            EventSystem.current.SetSelectedGameObject(button);
-            StopAllCoroutines(); // Stop the coroutine if hovering ends
+            sideb.DOFade(1, 0.2f).OnComplete(() =>
+            {
+                sidea.DOKill();
+            });
+            yield return new WaitForSeconds(0.25f); // Wait for 1 second
+            sidea.DOFade(1, 0.2f).OnComplete(() =>
+            {
+                sidea.DOKill();
+                EventSystem.current.SetSelectedGameObject(button);
+                StopAllCoroutines(); // Stop the coroutine if hovering ends
+            });
+
         }
     }
 }
