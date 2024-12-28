@@ -18,15 +18,15 @@ Highlight(alan -o true)
 alan "... I never meant for any of this to happen. Sophie's death... it's a weight I will carry for the rest of my life. I am sorry-I know those words mean little, but they are all I have."
 Highlight(kisa -o true)
 SetSprite(kisa flipped)
-kisa "Alan, I told you of my feelings for her. I had not even told Nicol, I trusted <i>you</i> with that information. I do not accept your apology."
+kisa "Alan, I told you of my feelings for her. I had not even told Nicol, I trusted <i>you</i> with that information. And you dare ask me to accept your apology?"
 Highlight(alan -o true)
 alan.Move(0.25 0 -spd 2)
-alan "I understand. I implore you to listen, if only for a moment. I still care for you, Kisa. I know my actions are wrong, but I cannot turn back the hands of time."
+alan "I... I understand. I just wish you to know I regret it and-"
 Highlight(kisa -o true)
 SetSprite(kisa kisa)
 kisa "I do not wish to speak to you after you... you killed her, Alan. I understand that you regret your actions, but I can no longer call you my friend. Please... let me grieve."
 Highlight(alan -o true)
-alan "... I respect your wishes."
+alan "... As you wish."
 Hide(kisa)
 Hide(alan)
 endMenuDialogue(true)

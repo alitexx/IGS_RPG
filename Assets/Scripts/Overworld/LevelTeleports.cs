@@ -28,6 +28,7 @@ public class LevelTeleports : MonoBehaviour
     public float distance = 0.2f;
     public int Level = 1;
     [SerializeField] private mapManager mapManager;
+    [SerializeField] private BattleController battleController;
 
     private void Start()
     {
@@ -89,6 +90,7 @@ public class LevelTeleports : MonoBehaviour
             Player.transform.position = new Vector3(destination4.position.x, destination4.position.y);
             Destroy(portalParent4);
         }
+        battleController.hasContemplatedKilling = false; //reset for supports
         mapManager.newLevelMapUpdate(PlayerController.Level);
     }
 

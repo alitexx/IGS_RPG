@@ -6,7 +6,7 @@ SetSprite(nicol flipped)
 wait(0.75)
 Show(alan)
 Highlight(alan -o true)
-alan "Nicol, earlier you mentioned that if I needed to know any subject, I could rely on you. If you have a moment, there is something I need information on."
+alan "Nicol, earlier you mentioned that if I needed to know any subject, I could rely on you. If you have a moment, there is something I wished to ask you about."
 Show(nicol)
 Highlight(nicol -o true)
 nicol "An interrogation, I see! Go ahead, my rival, and ask your burning question. I am certain that I will have the perfect response."
@@ -52,7 +52,7 @@ alan "That is... horrific. To think that one could grow so out of touch with the
 Highlight(nicol -o true)
 nicol "I did not know him well enough to feel morally responsible for his actions, but the thought of a man with that type of power... terrifying. More terrifying than any beast I have slain."
 nicol.Move(0.75 0 -spd 2)
-nicol "Regardless, A devil can only harm you if you sign their dotted line. They are powerful, but from my experience, they prefer the game to the outcome. It's always cat and mouse with them, toying with their prey for twisted amusement."
+nicol "Regardless, A devil can only harm you if you sign their dotted line. They are powerful, but from my experience, they prefer the game to the outcome. Always cat and mouse with them, toying with their prey for twisted amusement."
 nicol.Move(0.7 0 -spd 2)
 nicol "...Alan?"
 Highlight(alan -o true)

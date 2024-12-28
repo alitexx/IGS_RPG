@@ -1,0 +1,13 @@
+alan.Move(0.15 0 -spd 3)
+wait(0.75)
+Show(alan)
+Highlight(alan -o true)
+alan "(Curses... My injuries are not severe, yet the enemies of this tower are more difficult than I had expected.)"
+alan.Move(0.175 0 -spd 1)
+alan "(I... I know how to make this easier. Not just easier but, Leora...)"
+alan.Move(0.15 0 -spd 1)
+alan "..."
+alan "(If things only get harder from here it might be wise, yet to kill them like that...)"
+alan "(No, slaying them would be a sin. Knights find strength in trying times, Leora taught me that. I must press on.)"
+Hide(alan)
+endDialogue(false)

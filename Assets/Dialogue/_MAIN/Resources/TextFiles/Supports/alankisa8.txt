@@ -13,15 +13,15 @@ alan "I know the feeling. At least metal's easy to clean, but when I was an appr
 Highlight(kisa -o true)
 kisa "Leather armor, hmm? For some reason, I cannot picture you in anything but... well, this. If that makes any sense."
 kisa.Move(0.8 0 -spd 2)
-kisa "Before becoming a knight, what did you do? Knighthood requires you to be at the ready at all times, but who were you prior?"
+kisa "At what age did you begin your apprenticeship? You seem the boring type to have always yearned for knighthood."
 Highlight(alan -o true)
 alan "Well..."
 alan "..."
 Highlight(kisa -o true)
 kisa.Move(0.75 0 -spd 2)
-kisa "Oh, come now, Alan! My question may have been broad, but you must have done <i>something</i>. Did you have a hobby? A profession you enjoyed? A friendship with a peer?"
+kisa "Oh ho ho! You must have done something embarrassing beforehand. What were you, a stablehand? A cobbler? A cheesemaker?"
 Highlight(alan -o true)
-alan "... No, I did not have any of those. I fooled around, I was young. Not very noble or exciting of me, but tis the truth."
+alan "... No, I did not do any of those. I fooled around, I was young. Not very noble or exciting of me, but tis the truth."
 Highlight(kisa -o true)
 SetSprite(kisa flipped)
 kisa "Ah, unfortunate. For a knight, that must be ideal; with your steely focus and all. Still, it is a shame you do not have any other aspirations. Nothing to taunt you."
@@ -42,17 +42,12 @@ SetSprite(kisa flipped)
 kisa.Move(0.75 0 -spd 2)
 kisa "...I apologize. You did not need such a... detailed answer."
 Highlight(alan -o true)
-alan "No need to apologize, family matters can be tough to tackle. If getting it off your chest helps, I am always ready and willing to listen."
+alan "There is no need. Difficult matters have a way of creeping up on us. I... understand firsthand."
 Highlight(kisa -o true)
-kisa.SetPriority(1)
-kisa.Move(0.45 0 -spd 3)
-kisa "Truly? Oh, thank you, Alan! That is surprisingly kind of you. No wonder you are a knight!"
+kisa.Move(0.6 0 -spd 3)
+kisa "Oh? Perhaps you should consider a change in profession, Alan. With such insight, you could make an excellent counselor. Or maybe a hairdresser?"
 Highlight(alan -o true)
-alan "<i>Surprisingly</i> kind of me? I did not think you thought so lowly of me, Kisa, this is what anyone should do."
-Highlight(kisa -o true)
-kisa.Move(0.6 0 -spd 2)
-kisa "I do not like your sarcasm, sir. Come now, let us continue our journey, yes? Family matters can be dealt with at a later time."
+alan "A <i>hairdresser</i>? ...Surely."
 Hide(kisa)
 Hide(alan)
-kisa.SetPriority(0)
 endMenuDialogue(true)

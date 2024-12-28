@@ -6,12 +6,12 @@ Hide(miguel)
 wait(1)
 Show(alan)
 Show(miguel)
-Highlight(miguel -o true)
-miguel "You are certain I am nearing the end of my journey, devil?"
 Highlight(alan -o true)
-alan "I am certain. You are strong enough to defeat these monsters, make quick work of them. I will ensure Leora awaits you at the top."
+alan "You are certain I am nearing the end of my journey, devil?"
 Highlight(miguel -o true)
-miguel "...Finally. Reunited at last."
+miguel "I am certain. You are strong enough to defeat these monsters, make quick work of them. I will ensure Leora awaits you at the top."
+Highlight(alan -o true)
+alan "...Finally. Reunited at last."
 Hide(alan)
 Hide(miguel)
 endMenuDialogue(false)
