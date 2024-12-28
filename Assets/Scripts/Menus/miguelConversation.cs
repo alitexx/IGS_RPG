@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 using System;
 using UnityEngine.UI;
+using System.Linq;
 
 public class miguelConversation : MonoBehaviour
 {
@@ -134,11 +135,17 @@ public class miguelConversation : MonoBehaviour
     //I call this the kns naming system!!!!! x = they're dead, k = kisa alive, n = nicol alive, s = sophie alive!!
     private string binaryToKNS(int binary)
     {
+        Debug.Log("Binary number input:" + binary.ToString());
         // Start with the preexisting string
         string returnedString = "_";
 
-        // Convert the integer to a binary string
-        string binaryString = Convert.ToString(binary, 2).PadLeft(3, '0'); // Ensure it's 3 bits long
+        // Convert the integer to a binary string, left-padded to 3 bits
+        string binaryString = Convert.ToString(binary, 10);
+
+        // Pad the binary string to ensure it's 3 bits
+        binaryString = binaryString.PadLeft(3, '0');
+
+        Debug.Log(binaryString);
 
         int floorNumber = playerControl.Level;
         if (floorNumber > binaryString.Length)
@@ -149,19 +156,20 @@ public class miguelConversation : MonoBehaviour
         // Loop through each character in the binary string
         for (int i = 0; i < floorNumber; i++)
         {
+            Debug.Log(binaryString[i]);
             if (binaryString[i] == '0')
             {
                 // Add 'k', 'n', or 's' depending on the position of the 0
                 switch (i)
                 {
                     case 0:
-                        returnedString += "k";
+                        returnedString += "k"; // Leftmost bit -> k
                         break;
                     case 1:
-                        returnedString += "n";
+                        returnedString += "n"; // Middle bit -> n
                         break;
                     case 2:
-                        returnedString += "s";
+                        returnedString += "s"; // Rightmost bit -> s
                         break;
                 }
             }
@@ -171,9 +179,10 @@ public class miguelConversation : MonoBehaviour
                 returnedString += "x";
             }
         }
-
+        Debug.Log("KNS value made:" + returnedString);
         return returnedString;
     }
+
 
 
     private int ExtractFloorNumber(string floorString)
