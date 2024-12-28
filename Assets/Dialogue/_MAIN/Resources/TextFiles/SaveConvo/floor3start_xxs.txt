@@ -11,7 +11,7 @@ miguel "See? It gets easier."
 Highlight(alan -o true)
 alan "..."
 Highlight(miguel -o true)
-miguel "There's only one more you need to defeat, you know this, yes? You have already done so well. Perhaps you were an executioner in your past life?"
+miguel "There's only one more you need to defeat. You have already done so well. Perhaps you were an executioner in your past life?"
 miguel "Regardless, I will uphold my end of the bargain. Defeat the last one, and Leora will return."
 Hide(alan)
 Hide(miguel)

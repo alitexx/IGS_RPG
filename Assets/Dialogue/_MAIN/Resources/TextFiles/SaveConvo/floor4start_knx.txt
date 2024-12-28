@@ -9,8 +9,8 @@ Show(miguel)
 Highlight(miguel -o true)
 miguel "It is rather boring, now that there is no good time for you to collect more souls. You have a party of adventurers, why speak to me over them?"
 Highlight(alan -o true)
-alan "Your assistance rejuvenates them as well, yes? The party is tense, the least I can do is heal their physical wounds. I am sorry that my adventure bores you, devil, but I have come here to defeat a lich and I will succeed with or without your attention."
-alan "Now, heal us and let us be on our way, yes? Each time I gaze upon you, I remember the life I took. Please... let me have a moment of rest."
+alan "You rejuvenate them as well, yes? The party is tense, the least I can do is heal their physical wounds. I am sorry that my adventure bores you, devil, but I am here to defeat a lich and I will succeed with or without your recognition."
+alan "Now, heal us and let us be on our way. Each time I gaze upon you, I remember the life I took. Please... let me have a moment of rest."
 Hide(alan)
 Hide(miguel)
 endMenuDialogue(false)

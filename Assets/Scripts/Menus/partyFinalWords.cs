@@ -72,7 +72,7 @@ public class partyFinalWords : MonoBehaviour
     IEnumerator completeDialogue(int partyMember)
     {
         //If someone dies, the music is affected
-        audioManager.changePitch(1, 0.95f, 1);
+        audioManager.changePitch(1, 0.9f, 1);
         switch (partyMember)
         {
             case 0: // kisa death

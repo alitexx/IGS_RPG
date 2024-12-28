@@ -137,7 +137,7 @@ public class mainDialogueManager : MonoBehaviour
                 case "load_floor4":
                     if(playerController.getDeadCharacters() != 0)
                     {
-                        am.changePitch(1, 0.95f, 0.01f);
+                        am.changePitch(1, 0.9f, 0.01f);
                     }
                     am.playBGM("T2");
                     break;
