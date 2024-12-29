@@ -30,6 +30,8 @@ public class killFriendManager : MonoBehaviour
     [SerializeField] private partyFinalWords finalWordsScript;
     [SerializeField] private TextMeshProUGUI[] SpecialDesc;
 
+    [SerializeField] private GameObject syncStrikeInfo;
+
     //For supports after killing
     [SerializeField] private CharSupportsData supportsData;
 
@@ -92,6 +94,15 @@ public class killFriendManager : MonoBehaviour
             });
             tutorialBG.DOFade(0, 1).OnComplete(() => { tutorialBG.gameObject.SetActive(false); truebgFade.SetActive(true); });
             EventSystem.current.SetSelectedGameObject(killbutton);
+        }
+
+        // If Alan has not taken another party member, show text for gaining sync strike.
+        if (playerController.getObtainedCharacters() == 0)
+        {
+            syncStrikeInfo.SetActive(true);
+        } else // They have someone. Don't show sync strike
+        {
+            syncStrikeInfo.SetActive(false);
         }
     }
 
