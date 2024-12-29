@@ -1003,7 +1003,8 @@ public class BattleController : MonoBehaviour
             // ADDED CODE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CHANGE AS NEEDED 
             battle_specialmenu.setWhoAreWeViewing(activeChar.statSheet.name.ToLower());
             battle_specialmenu.gameObject.SetActive(true);
-
+            //Set the slider and text of the special menu
+            updateSP.setSliderVal(activeChar.statSheet.name.ToLower());
 
 
 

@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class updateSPOnScreen : MonoBehaviour
 {
+    [SerializeField] private GameObject spObject;
+    [SerializeField] private Slider spSlider;
+    [SerializeField] private Image spGlowSlider;
+    [SerializeField] private TextMeshProUGUI spText;
+
+
     [SerializeField] private Sprite nospecialicon, specialicon;
     [SerializeField] private Image[] imagesToUpdate;
     private int associatedCharacter;
@@ -71,5 +78,33 @@ public class updateSPOnScreen : MonoBehaviour
         {
             Debug.Log("The special isnt the right number IDIOT. ITS " + howManySpecials);
         }
+    }
+
+
+    //slider nonsense
+    public void setSliderVal(string who)
+    {
+        int localAssociatedCharacter = 0;
+        switch (who.ToLower())
+        {
+            //if Alan, do nothing, as he is 0
+            case "bard guy":
+                localAssociatedCharacter = 1;
+                break;
+            case "mage guy":
+                localAssociatedCharacter = 2;
+                break;
+            case "monk guy":
+                localAssociatedCharacter = 3;
+                break;
+        }
+        spSlider.value = (float)((float)currentSpecials[localAssociatedCharacter] / 4);
+        spText.text = (currentSpecials[localAssociatedCharacter].ToString()) + "/4";
+        Debug.Log(spText);
+    }
+
+    public void setSliderGlow(int skillCost)
+    {
+        spGlowSlider.fillAmount = (float)((float)skillCost / 4);
     }
 }

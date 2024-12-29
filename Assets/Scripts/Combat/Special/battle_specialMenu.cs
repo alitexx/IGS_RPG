@@ -54,6 +54,8 @@ public class battle_specialMenu : MonoBehaviour
 
     [SerializeField] private PlayerController playerController;
 
+    [SerializeField] private updateSPOnScreen updateSP;
+
     //change back button to allow it to move down to special menu
 
     //Stuff for checking party level, who we're viewing, etc.
@@ -66,7 +68,8 @@ public class battle_specialMenu : MonoBehaviour
 
     private void OnEnable()
     {
-
+        //because it defaults to their first special = always is 1
+        updateSP.setSliderGlow(1);
         level = LevelManager.level;
         //check party level
         if (level < 5)
