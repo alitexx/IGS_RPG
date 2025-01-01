@@ -102,6 +102,7 @@ public class audioManager : MonoBehaviour
         SFXAvailable[13].Stop();
     }
 
+    //I didn't update this function with the 2.0 options but we seem to like the int playSFX better
     public void playSFX(string sfx)
     {
         switch (sfx.ToUpper())

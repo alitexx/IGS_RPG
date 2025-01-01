@@ -14,6 +14,7 @@ public class updateSPOnScreen : MonoBehaviour
 
     [SerializeField] private Sprite nospecialicon, specialicon;
     [SerializeField] private Image[] imagesToUpdate;
+    [SerializeField] private audioManager am;
     private int associatedCharacter;
     private int[] currentSpecials = new int[4];
 
@@ -39,6 +40,7 @@ public class updateSPOnScreen : MonoBehaviour
         {
             imagesToUpdate[associatedCharacter+ currentSpecials[associatedCharacter / 4]].sprite = specialicon;
             currentSpecials[associatedCharacter / 4]++;
+            am.playSFX(40);
             while (currentSpecials[associatedCharacter / 4] < howManySpecials)
             {
                 imagesToUpdate[associatedCharacter + currentSpecials[associatedCharacter / 4]].sprite = specialicon;
