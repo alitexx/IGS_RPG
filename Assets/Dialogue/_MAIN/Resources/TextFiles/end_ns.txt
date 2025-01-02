@@ -2,6 +2,7 @@ Hide(sophie)
 Hide(nicol)
 Hide(alan)
 wait(1)
+addCutscene(15)
 nicol "And so our journey comes to an end. We live to fight another day!"
 sophie "..."
 nicol "Sophia, what has captured your tongue from rejoice? The lich is dead and you have honored you students efforts."

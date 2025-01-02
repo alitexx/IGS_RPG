@@ -3,6 +3,7 @@ Hide(nicol)
 Hide(alan)
 Hide(kisa)
 wait(1)
+addCutscene(15)
 kisa "The lich was correct."
 alan "Excuse me?"
 kisa "You heard me. The lich was correct in his assessment."

@@ -302,9 +302,6 @@ public class mainDialogueManager : MonoBehaviour
         }
     }
 
-
-
-
     public void addCutscene(int whichImage)
     {
         //do a switch statement here for if the cutscene is one that requires changing based on current party members
@@ -352,6 +349,25 @@ public class mainDialogueManager : MonoBehaviour
                 cutsceneScenes[6].SetActive(false);
                 cutsceneScenes[7].SetActive(false);
                 cutsceneScenes[8].SetActive(false);
+                break;
+            case 15: //Ending with everyone there staring @ lich
+                if (!playerController.hasKisa)
+                {
+                    cutsceneVariations[7].SetActive(false);
+                }
+                if (!playerController.hasNicol)
+                {
+                    cutsceneVariations[8].SetActive(false);
+                }
+                if (!playerController.hasSophie)
+                {
+                    cutsceneVariations[9].SetActive(false);
+                    if (playerController.hasNicol) // If Nicol is here and Sophie is not, change his sprite
+                    {
+                        cutsceneVariations[8].SetActive(false);
+                        cutsceneVariations[10].SetActive(true);
+                    }
+                }
                 break;
         }
         if (whichImage >= 0 && whichImage <= cutsceneScenes.Length)

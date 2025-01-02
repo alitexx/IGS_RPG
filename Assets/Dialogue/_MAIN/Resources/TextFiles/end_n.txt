@@ -1,6 +1,7 @@
 Hide(nicol)
 Hide(alan)
 wait(1)
+addCutscene(15)
 nicol "And at last, the lich falls."
 nicol "Perhaps one day, a caravan will set out for you. A lovely day that would be."
 addCutscene(2)

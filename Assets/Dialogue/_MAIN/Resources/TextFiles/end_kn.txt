@@ -2,6 +2,7 @@ Hide(nicol)
 Hide(kisa)
 Hide(alan)
 wait(1)
+addCutscene(15)
 nicol "And so our journey comes to an end. We live to fight another day!"
 kisa "...We did it. Hooray."
 addCutscene(2)

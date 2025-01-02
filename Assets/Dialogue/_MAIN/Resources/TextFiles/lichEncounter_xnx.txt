@@ -13,7 +13,7 @@ addCutscene(12)
 lich "End me? Please. You all sound the same. I have lost count of how many times this dialogue has been had. Soon, you will declare I've met my match and charge, only to be swept aside with a mere flick of my wrist. Frankly, I have grow weary of all the flicking."
 alan "..."
 lich "Is this conversation complete? Your death could be swift, but it is far more entertaining to watch mice scurry away than slaughter them outright."
-addCutscene(12)
+addCutscene(14)
 lich "...Halt. I see we have a fellow soul collector in our midst. Intriguing."
 lich "And you willingly travel together? Are you blissfully unaware? I have never seen a group of mortals so... passive about one's misdeeds."
 nicol "My faith in Alan as a man is waning, but I trust him enough to lead us in this final moment."

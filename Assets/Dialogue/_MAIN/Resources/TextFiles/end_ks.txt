@@ -2,6 +2,7 @@ Hide(sophie)
 Hide(kisa)
 Hide(alan)
 wait(1)
+addCutscene(15)
 sophie "And so our journey comes to an end."
 kisa "Without Nicol, as well... Tell me, Sophie, what you believe to have happened?"
 sophie "Kisa..."

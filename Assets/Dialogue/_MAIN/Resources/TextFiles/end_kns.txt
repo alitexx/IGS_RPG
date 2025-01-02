@@ -1,9 +1,10 @@
 wait(0.75)
+addCutscene(15)
 nicol "And so our journey comes to an end."
 sophie "It appears so. I have learned what has become of my students. I hope they find peace in the knowledge they have been avenged by a friend."
 alan "I am sorry for your loss, Sophie. I wish we could have done more to help..."
-addCutscene(2)
 sophie "They died valiantly. Let us not take that away from them in this moment."
+addCutscene(2)
 nicol "I sympathize with your loss, friend, and also your outlook. We have defeated a great evil today for the sake many. I believe this is no greater cause for a celebration."
 kisa "I would not object to such a thing. That is what adventurers do, yes?"
 nicol "Yes! Tis written in ''Adventuring 101'', penned by yours truly!"
