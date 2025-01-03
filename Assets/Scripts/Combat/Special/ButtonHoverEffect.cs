@@ -14,16 +14,18 @@ public class ButtonHoverEffect : MonoBehaviour, ISelectHandler, IDeselectHandler
     public string skillNameText;
     [SerializeField] private float speedToAppear = 3.0f;
     [SerializeField] private updateSPOnScreen updateSP;
+    [SerializeField] private PlayerController playerController;
 
     // Trigger when the button is selected (via WASD/keyboard navigation)
     public void OnSelect(BaseEventData eventData)
     {
-        if (skillName)
-        {
-            //original name, no space
-            skillNameText = skillName.text;
-            skillName.text = " " + skillNameText;
-        } else if (sprite)
+        //if (skillName)
+        //{
+        //    //original name, no space
+        //    skillNameText = skillName.text;
+        //    skillName.text = " " + skillNameText;
+        //} else
+        if (sprite)
         {
             sprite.color = new Color(255, 255, 255, 255);
         }
@@ -32,6 +34,32 @@ public class ButtonHoverEffect : MonoBehaviour, ISelectHandler, IDeselectHandler
             isSelected = true;
             hoverCoroutine = StartCoroutine(ShowWindowAfterDelay(speedToAppear));
         }
+
+        Debug.Log(skillNameText);
+        //If this skill is Tenacity, updateSP based on how many people are dead
+        if(skillNameText.ToLower() == "tenacity")
+        {
+            //Find how many people are dead and act accordingly
+            switch (SumDigits(playerController.getDeadCharacters()))
+            {
+                case 0: // None dead
+                    //Costs 3 
+                    updateSP.setSliderGlow(3);
+                    break;
+                case 1:
+                case 2: // 1 or 2 people dead
+                    //Costs 2
+                    updateSP.setSliderGlow(2);
+                    break;
+                case 3: // everyone (minus Alan) dead
+                    //Costs 1
+                    updateSP.setSliderGlow(1);
+                    break;
+            }
+            //Don't run other code to set SP
+            return;
+        }
+
         switch (otherUIWindow.name)
         {
             case "Description1":
@@ -81,5 +109,19 @@ public class ButtonHoverEffect : MonoBehaviour, ISelectHandler, IDeselectHandler
         {
             otherUIWindow.SetActive(true);
         }
+    }
+
+    // Function to calculate the sum of digits of a three-digit number
+    public int SumDigits(int number)
+    {
+        // Ensure the number is positive
+        number = Mathf.Abs(number);
+
+        // Extract each digit and calculate the sum
+        int hundreds = number / 100;        // Get the hundreds place
+        int tens = (number / 10) % 10;     // Get the tens place
+        int ones = number % 10;            // Get the ones place
+
+        return hundreds + tens + ones;
     }
 }
