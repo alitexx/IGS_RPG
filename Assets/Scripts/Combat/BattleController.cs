@@ -374,14 +374,14 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 5};
 
     static public int[] evilMonkStats = {
-        /*Strength*/ 19,
-        /*Magic Attack*/ 13,
-        /*Defense*/ 8, 
+        /*Strength*/ 30,
+        /*Magic Attack*/ 15,
+        /*Defense*/ 10, 
         /*Speed*/ 3, 
-        /*Health*/ 120, 
-        /*MaxHealth*/ 120,
-        /*Mana*/ 5,
-        /*MaxMana*/ 5};
+        /*Health*/ 200, 
+        /*MaxHealth*/ 200,
+        /*Mana*/ 6,
+        /*MaxMana*/ 6};
 
     //Bard Stats
     static public int[] bardStats = {
@@ -439,22 +439,24 @@ public class BattleController : MonoBehaviour
     static public int[] ghostStats = {
         /*Strength*/ 11,
         /*Magic Attack*/ 1,
-        /*Defense*/ 99, 
+        /*Defense*/ 30, 
         /*Speed*/ 4, 
         /*Health*/ 7, 
         /*MaxHealth*/ 7,
         /*Mana*/ 6,
         /*MaxMana*/ 7};
 
+    //Katie note: I jacked the lich up like crazy! Have fun!
+
     static public int[] lichStats = {
         /*Strength*/ 12,
-        /*Magic Attack*/ 13,
-        /*Defense*/ 7, 
+        /*Magic Attack*/ 15,
+        /*Defense*/ 10, 
         /*Speed*/ 4, 
-        /*Health*/ 200, 
-        /*MaxHealth*/ 200,
-        /*Mana*/ 6,
-        /*MaxMana*/ 7};
+        /*Health*/ 400, 
+        /*MaxHealth*/ 400,
+        /*Mana*/ 30,
+        /*MaxMana*/ 30};
 
     void ResetStats(bool resetEnemy, bool resetPlayer)
     {
@@ -1917,6 +1919,7 @@ public class BattleController : MonoBehaviour
         guardParticle.animator.SetBool("GuardFX", true);
 
         tankChar.TempIncreaseStats("Defense", tankChar.statSheet.stats["Defense"] / 5);
+        am.playSFX(36);
     }
 
     public void AlanTaunt()
@@ -1944,6 +1947,7 @@ public class BattleController : MonoBehaviour
         StartCoroutine(TenacityParticle());
 
         activeChar.AttAnim();
+        //am.playSFX(37);
     }
 
     public IEnumerator TenacityParticle()

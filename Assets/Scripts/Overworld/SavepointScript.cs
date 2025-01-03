@@ -48,8 +48,10 @@ public class SavepointScript : MonoBehaviour
     public void confirmedSave()
     {
         playerController.saveGame();
-        //confirm save/heal as a menu or something (name.setactive(true)
-        Debug.Log("YIPEEEE");
+        //Play flipping page sfx
+        audioManager.playSFX(50);
+        //confirm save/heal as a menu or something (name.setactive(true))
+        //Debug.Log("YIPEEEE");
         PauseMenu.canOpenPause = true;
     }
 

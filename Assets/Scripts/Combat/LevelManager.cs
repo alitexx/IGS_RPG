@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ public class LevelManager : MonoBehaviour
     public int gainedEXP = 0;
     public int currentEXP = 0;
     public static int level = 1;
+
+    //Used for level up of enemies, determines how difficult they should be.
+    private float enemyDifficultyScale = 1.2f;
 
     public bool kisaAbsorb;
     public bool nicolAbsorb;
@@ -687,68 +691,104 @@ public class LevelManager : MonoBehaviour
         return bardStoredStats;
     }
 
+    //For Katie reference
+
+    /*0 Strength*/
+    /*1 Magic Attack*/
+    /*2 Defense*/
+    /*3 Speed*/
+    /*4 Health*/
+    /*5 MaxHealth*/
+    /*6 Mana*/
+    /*7 MaxMana*/
+
+    //If we need to update defense (would be nice so magic makes more sense at later levels)
+    //lSlimeStats[2] += 1 * (playerController.Level - 1);
+
     public int[] SetSlimeStats(int[] lSlimeStats)
     {
         for (int i = 0; i < lSlimeStats.Length; i++)
         {
-            if (i != 3)
+            if (i != 3) // Exclude speed from the main scaling
             {
-                lSlimeStats[i] += 4 * (playerController.Level - 1);
+                // Exponential scaling for levels 3 and above
+                lSlimeStats[i] += (int)(4 * Math.Pow(playerController.Level, enemyDifficultyScale) - 4);
             }
         }
 
-        lSlimeStats[0] += 1 * (playerController.Level - 1);
-        lSlimeStats[4] += 2 * (playerController.Level - 1);
-        lSlimeStats[5] += 2 * (playerController.Level - 1);
+        // Adjust Strength with slightly higher scaling
+        lSlimeStats[0] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale) - 1));
+
+        // Adjust Defense linearly
+        lSlimeStats[2] += 1 * (playerController.Level - 1);
+
+        // Adjust Health and MaxHealth with increased scaling
+        lSlimeStats[4] += (int)(2.5 * (Math.Pow(playerController.Level, enemyDifficultyScale) - 1));
+        lSlimeStats[5] += (int)(2.5 * (Math.Pow(playerController.Level, enemyDifficultyScale) - 1));
 
         return lSlimeStats;
     }
+
 
     public int[] SetSkeletonStats(int[] lSkeletonStats)
     {
         for (int i = 0; i < lSkeletonStats.Length; i++)
         {
-            if (i != 3)
+            if (i != 3) // Exclude Speed
             {
-                lSkeletonStats[i] += 4 * (playerController.Level - 1);
+                // Exponential scaling for levels 3 and above
+                lSkeletonStats[i] += (int)(4 * Math.Pow(playerController.Level, enemyDifficultyScale) - 4);
             }
         }
-        lSkeletonStats[0] += 2 * (playerController.Level - 1);
+
+        // Adjust Strength with slightly higher scaling
+        lSkeletonStats[0] += (int)(2 * (Math.Pow(playerController.Level, enemyDifficultyScale) - 1));
 
         return lSkeletonStats;
     }
+
 
     public int[] SetGhostStats(int[] lGhostStats)
     {
         for (int i = 0; i < lGhostStats.Length; i++)
         {
-            if (i != 3)
+            if (i != 3) // Exclude Speed
             {
-                lGhostStats[i] += 4 * (playerController.Level - 1);
+                // General stats scaling
+                lGhostStats[i] += (int)(4 * Math.Pow(playerController.Level, enemyDifficultyScale) - 4);
             }
         }
-        lGhostStats[2] += 2 * (playerController.Level - 1);
-        lGhostStats[0] += 1 * (playerController.Level - 1);
+
+        // Defense-specific scaling
+        lGhostStats[2] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale) - 1));
+
+        // Strength-specific scaling
+        lGhostStats[0] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale) - 1));
 
         return lGhostStats;
     }
 
     public int[] SetWraithStats(int[] lWraithStats)
     {
-
         for (int i = 0; i < lWraithStats.Length; i++)
         {
-            if (i != 3)
+            if (i != 3) // Exclude Speed
             {
-                lWraithStats[i] += 4 * (playerController.Level - 1);
+                // General stats scaling
+                lWraithStats[i] += (int)(4 * Math.Pow(playerController.Level, 1.2) - 4);
             }
         }
-        lWraithStats[0] += 1 * (playerController.Level - 1);
-        lWraithStats[4] += 1 * (playerController.Level - 1);
-        lWraithStats[5] += 1 * (playerController.Level - 1);
+
+        // Strength-specific scaling
+        lWraithStats[0] += (int)(1.5 * (Math.Pow(playerController.Level, 1.2) - 1));
+
+        // Health and MaxHealth scaling
+        lWraithStats[4] += (int)(1.5 * (Math.Pow(playerController.Level, 1.2) - 1));
+        lWraithStats[5] += (int)(1.5 * (Math.Pow(playerController.Level, 1.2) - 1));
 
         return lWraithStats;
     }
+
 
     public int GetCharHealth(string charName)
     {

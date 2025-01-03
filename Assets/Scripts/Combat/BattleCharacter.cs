@@ -378,6 +378,7 @@ public class BattleCharacter : MonoBehaviour
             Transform damagePopupTransform = Instantiate(damagePopup, targetCharacter.transform.position, Quaternion.identity);
             DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
             damPopScript.SetupString("MISS");
+            am.playSFX(35);
         }
         else if (critOrMiss > 1 && critOrMiss < 20) //Regular Hit
         {
@@ -396,6 +397,7 @@ public class BattleCharacter : MonoBehaviour
             Transform damagePopupTransform = Instantiate(damagePopup, critPosition, Quaternion.identity);
             DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
             damPopScript.SetupString("CRITICAL HIT!");
+            am.playSFX(34);
 
             targetCharacter.GotDamaged(critDamage, 0 /*No defense becausse defense has already been deducted*/);
         }
