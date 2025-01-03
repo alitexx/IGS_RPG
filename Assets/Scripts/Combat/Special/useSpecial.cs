@@ -16,10 +16,51 @@ public class useSpecial : MonoBehaviour
     //For Trial and Error
     [SerializeField] private NicolFunTime nicolFunTime;
 
+    //For alan whichLevel
+    [SerializeField] private PlayerController playerController;
+
     //When special button is clicked
     //Currently, this does no targetting. Organize this code as you see fit!
     public void useSpecialBtn(int whichLevel)
     {
+        if(WhoAreWeViewing == 0 && whichLevel == 3) // If they're trying to use Tenacity, re-calculate whichLevel
+        {
+            int tempwhichLevel = SumDigits(playerController.getDeadCharacters());
+            switch (tempwhichLevel)
+            {
+                case 0: // No one dead
+                    tempwhichLevel = 3; // This really doesn't change anything but leaving it blank could be confusing
+                    break;
+                case 1:
+                case 2: //  1-2 people dead
+                    tempwhichLevel = 2;
+                    break;
+                case 3: // everyone (minus Alan) dead
+                    tempwhichLevel = 1;
+                    break;
+            }
+            if (updateSP.canUseSpecial(WhoAreWeViewing, tempwhichLevel) == false)
+            {
+                Debug.Log("WOMP WOMP YOU DON'T HAVE ENOUGH SPECIAL POINTS (Tenacity)");
+                return;
+            }
+
+            WhoAreWeViewing = b_sm.WhoAreWeViewing;
+            alanSpecial(whichLevel);
+            updateSP.removeSpecial("tank guy", tempwhichLevel - 1);
+            return;
+        }
+
+
+
+
+
+        if (updateSP.canUseSpecial(WhoAreWeViewing, whichLevel) == false)
+        {
+            Debug.Log("WOMP WOMP YOU DON'T HAVE ENOUGH SPECIAL POINTS");
+            return;
+        }
+
         WhoAreWeViewing = b_sm.WhoAreWeViewing;
         switch(WhoAreWeViewing)
         {
@@ -176,5 +217,20 @@ public class useSpecial : MonoBehaviour
         // REMEMBER TO RUN THIS FUNCTION TO ADD TO THEIR FRIENDSHIP BONUS/SUPPORT LEVEL/WHATEVER YOU WANT TO CALL IT
 
         //      charSupportData.increaseSupport((whoIsInitiating, otherAlly);
+    }
+
+    //This is for one function and thats it
+    // Function to calculate the sum of digits of a three-digit number
+    public int SumDigits(int number)
+    {
+        // Ensure the number is positive
+        number = Mathf.Abs(number);
+
+        // Extract each digit and calculate the sum
+        int hundreds = number / 100;        // Get the hundreds place
+        int tens = (number / 10) % 10;     // Get the tens place
+        int ones = number % 10;            // Get the ones place
+
+        return hundreds + tens + ones;
     }
 }

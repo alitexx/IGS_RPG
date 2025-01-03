@@ -109,4 +109,18 @@ public class updateSPOnScreen : MonoBehaviour
     {
         spGlowSlider.fillAmount = (float)((float)skillCost / 4);
     }
+
+    //Checks if the character using the special has enough special points to use the special
+    public bool canUseSpecial(int who, int specialLevel)
+    {
+        //If their current special points are greater than the number of points they want to use, let them.
+        if ((float)currentSpecials[who] >= specialLevel)
+        {
+            return true;
+        } else // else, tell them NO. play the music here because i dont want to bring audioManager to useSpecial
+        {
+            am.playSFX(29);
+            return false;
+        }
+    }
 }
