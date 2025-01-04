@@ -28,6 +28,8 @@ public class miguelConversation : MonoBehaviour
     //saving previous save point
     float previousSave = -1;
 
+
+    [SerializeField] private audioManager am;
     //For the button/event nonsense
     //miguel btn
     [SerializeField] private GameObject miguelBtn, saveButton, returnButton;
@@ -53,6 +55,7 @@ public class miguelConversation : MonoBehaviour
         //If you have not been greeted, play the greeting. Depends on the floor we're on
         if (!hasBeenGreeted)
         {
+            //am.playSFX(4);
             hasBeenGreeted = true;
             switch (playerControl.Level)
             {
@@ -71,8 +74,6 @@ public class miguelConversation : MonoBehaviour
             PauseMenu.GamePaused = false;
             this.gameObject.SetActive(false);
         }
-        Debug.Log(ExtractFloorNumber(savePointName));
-        Debug.Log(previousSave);
         if (ExtractFloorNumber(savePointName) > previousSave)
         {
             miguelBtn.SetActive(true);
@@ -82,6 +83,7 @@ public class miguelConversation : MonoBehaviour
 
     public void startConversation()
     {
+        am.playSFX(25);
         EventSystem.current.SetSelectedGameObject(null);
         //used to determine if someone is dead
         deadCharacters = playerControl.getDeadCharacters();
@@ -112,6 +114,7 @@ public class miguelConversation : MonoBehaviour
         //turn off menu background, have it fade out
         saveMenu.DOFade(0, 1f).OnComplete(() =>
         {
+            //am.playSFX(4);
             saveMenu.DOKill();
             //turn off pause UI
             this.gameObject.SetActive(false);
@@ -218,8 +221,10 @@ public class miguelConversation : MonoBehaviour
         // Extract the numbers from the floor strings
         float lastNumber = ExtractFloorNumber(lastFloor);
 
-        // Check if the current floor is 2 or more levels ahead of the last floor
-        if (previousSave <= lastNumber + 2)
+        // Check if the current floor is 2 or more levels ahead of the last documented floor
+        Debug.Log("Previous Save = " + previousSave);
+        Debug.Log("Current Save = " + lastNumber);
+        if (previousSave >= lastNumber + 2)
         {
             // Trigger special dialogue
             previousSave = lastNumber;

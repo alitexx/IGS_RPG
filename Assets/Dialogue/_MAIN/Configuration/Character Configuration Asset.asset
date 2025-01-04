@@ -36,7 +36,7 @@ MonoBehaviour:
   - name: Lich
     alias: lich
     characterType: 0
-    charNameHolder: {fileID: 21300000, guid: 83ec3482aed89e043a6b19d635582830, type: 3}
+    charNameHolder: {fileID: 21300000, guid: 79dd6ed14a041cb4cbf9c8b8de68b947, type: 3}
     charVoice: {fileID: 8300000, guid: 2a75c35081709094d9e4c13120cc65e6, type: 3}
   - name: Leora
     alias: leora
@@ -46,7 +46,7 @@ MonoBehaviour:
   - name: miguel
     alias: Devil
     characterType: 1
-    charNameHolder: {fileID: 21300000, guid: 83ec3482aed89e043a6b19d635582830, type: 3}
+    charNameHolder: {fileID: 21300000, guid: bff8e73cdf0bbf248850455aa95bf264, type: 3}
     charVoice: {fileID: 8300000, guid: 782f30f98b7ecad40b8cd81a2aa4b624, type: 3}
   - name: Kisa_killed
     alias: '     '
