@@ -92,12 +92,13 @@ public class pauseMenuManager : MonoBehaviour
         {
             expbartext.text = (100 - levelManager.currentEXP).ToString() + " EXP to next level";
             expslider.fillAmount = ((float)levelManager.currentEXP / 100);
+            displaySupport.closeMenu();
         }
         catch
         {
             Debug.Log("This is here because the assignment is due in 20 minutes");
         }
-        displaySupport.closeMenu();
+        
     }
 
     //this is already done somewhere else, just leaving the code in case it breaks anything

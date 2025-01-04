@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class TutorialHandler : MonoBehaviour
 {
+    [SerializeField] private GraphicRaycaster graphicRaycaster;
+    [SerializeField] private EventSystem eventSystem;
+
     public BattleController battleController;
 
     public GameObject attackTutorial;
@@ -47,19 +52,20 @@ public class TutorialHandler : MonoBehaviour
     {
         Debug.Log("CONTINUED TUTORIAL FROM "+tutorialCounter.ToString() + " TO " +(tutorialCounter+1).ToString());
         tutorialCounter++;
-        if(tutorialCounter == 4 && firstTime4 == false)
-        {
-            tutorialCounter--;
-            firstTime4 = true;
-            return;
-        } else if (tutorialCounter == 5 && firstTime5 == false)
-        {
-            Debug.Log("Womp womp next tutorial skipped");
-            targetTutorial.SetActive(false);
-            tutorialCounter--;
-            firstTime5 = true;
-            return;
-        } else if (tutorialCounter >= 9)
+        //if(tutorialCounter == 4 && firstTime4 == false)
+        //{
+        //    tutorialCounter--;
+        //    firstTime4 = true;
+        //    return;
+        //} else if (tutorialCounter == 5 && firstTime5 == false)
+        //{
+        //    Debug.Log("Womp womp next tutorial skipped");
+        //    targetTutorial.SetActive(false);
+        //    tutorialCounter--;
+        //    firstTime5 = true;
+        //    return;
+        //} else 
+        if (tutorialCounter >= 9)
         {
             if(tutorialCounter == 10)
             {
@@ -125,13 +131,24 @@ public class TutorialHandler : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(audioStatics.keycodeInterractButton) && battleController.state == BattleController.State.Busy && battleController.alanFireMagicButton.activeInHierarchy == false && battleController.backButton.activeInHierarchy) 
-        {
-            continueTutorial();
-        } else if (Input.GetKeyDown(audioStatics.keycodeInterractButton) && (tutorialCounter == 6 || tutorialCounter == 7))
-        {
-            continueTutorial();
-        }
+        //if (Input.GetKeyDown(audioStatics.keycodeInterractButton) && battleController.state == BattleController.State.Busy && battleController.alanFireMagicButton.activeInHierarchy == false && battleController.backButton.activeInHierarchy) 
+        //{
+        //    continueTutorial();
+        //} else if (Input.GetKeyDown(audioStatics.keycodeInterractButton) && (tutorialCounter == 6 || tutorialCounter == 7))
+        //{
+        //    continueTutorial();
+        //} // Check for a mouse click and ensure it's a button
+        //else if (Input.GetMouseButtonDown(0)) // 0 for left mouse button
+        //{
+        //    if (IsPointerOverUIButton() && battleController.state == BattleController.State.Busy && battleController.alanFireMagicButton.activeInHierarchy == false && battleController.backButton.activeInHierarchy)
+        //    {
+        //        continueTutorial();
+        //    }
+        //    else if (IsPointerOverUIButton() && (tutorialCounter == 6 || tutorialCounter == 7))
+        //    {
+        //        continueTutorial();
+        //    }
+        //}
 
         if (battleController.coroutineRunning == true)
         {
@@ -162,5 +179,28 @@ public class TutorialHandler : MonoBehaviour
                 tutorialMenus[tutorialCounter].SetActive(false);
             }
         }
+    }
+
+
+    // Helper method to check if the pointer is over a UI Button
+    private bool IsPointerOverUIButton()
+    {
+        PointerEventData pointerEventData = new PointerEventData(eventSystem)
+        {
+            position = Input.mousePosition
+        };
+
+        // Raycast to check UI elements
+        List<RaycastResult> results = new List<RaycastResult>();
+        graphicRaycaster.Raycast(pointerEventData, results);
+
+        foreach (RaycastResult result in results)
+        {
+            if (result.gameObject.GetComponent<Button>() != null)
+            {
+                return true; // It's a button
+            }
+        }
+        return false; // Not a button
     }
 }
