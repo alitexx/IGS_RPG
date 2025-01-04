@@ -82,6 +82,18 @@ public class updateSPOnScreen : MonoBehaviour
         }
     }
 
+    //Runs once battle is over. can also set all specials to 0 in a pinch (Trial and Error)
+    public void resetSpecial()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            currentSpecials[i] = 0;
+        }
+        for (int i = 0; i < imagesToUpdate.Length; i++)
+        {
+            imagesToUpdate[i].sprite = nospecialicon;
+        }
+    }
 
     //slider nonsense
     public void setSliderVal(string who)

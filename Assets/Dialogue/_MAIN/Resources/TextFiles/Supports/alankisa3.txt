@@ -28,9 +28,9 @@ alan "In fact, would you prefer my sword? You must promise not to lose it as car
 Highlight(kisa -o true)
 kisa.Move(0.65 0 -spd 2)
 kisa "Your sword? I am willing to try. A greatsword may not be as elegant as my rapier, but perhaps it shall suffice."
-kisa "This is a note to self to look into playing sfx while the dialogue is running! LOOK INTO IT TACKETT."
+playSFX(51)
 kisa "... It appears your sword is faulty. The metal is too thick, so the whole blade is weighed down much more than it should be. See? I will have to accommodate for this extra weight by using both hands. Behold."
-kisa "This is a note to self to look into playing sfx while the dialogue is running! LOOK INTO IT TACKETT."
+playSFX(52)
 Highlight(alan -o true)
 alan.Move(0.15 0 -spd 1)
 alan "On second thought, perhaps you should wield a more... elegant weapon, as you say. You may stop now, do not strain yourself further. I do not want you to harm yourself."
