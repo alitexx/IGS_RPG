@@ -23,8 +23,13 @@ public class useSpecial : MonoBehaviour
     //Currently, this does no targetting. Organize this code as you see fit!
     public void useSpecialBtn(int whichLevel)
     {
+
+        WhoAreWeViewing = b_sm.WhoAreWeViewing;
+        //Temporarily commented out to test specials
+        
         if(WhoAreWeViewing == 0 && whichLevel == 3) // If they're trying to use Tenacity, re-calculate whichLevel
         {
+            
             int tempwhichLevel = SumDigits(playerController.getDeadCharacters());
             switch (tempwhichLevel)
             {
@@ -44,22 +49,21 @@ public class useSpecial : MonoBehaviour
                 Debug.Log("WOMP WOMP YOU DON'T HAVE ENOUGH SPECIAL POINTS (Tenacity)");
                 return;
             }
-
-            WhoAreWeViewing = b_sm.WhoAreWeViewing;
             alanSpecial(whichLevel);
             updateSP.removeSpecial("tank guy", tempwhichLevel - 1);
             return;
         }
+        
 
 
 
 
 
-        if (updateSP.canUseSpecial(WhoAreWeViewing, whichLevel) == false)
+        /*if (updateSP.canUseSpecial(WhoAreWeViewing, whichLevel) == false)
         {
             Debug.Log("WOMP WOMP YOU DON'T HAVE ENOUGH SPECIAL POINTS");
             return;
-        }
+        }*/
 
         WhoAreWeViewing = b_sm.WhoAreWeViewing;
         switch(WhoAreWeViewing)
@@ -132,6 +136,8 @@ public class useSpecial : MonoBehaviour
                 battControl.KisaSing();
 
                 StartCoroutine(battControl.WaitBeforeChoosingNext(1.5f));
+
+                battControl.backButton.SetActive(false);
                 break;
             case 2:
                 //use Kisa's second special, Distract
@@ -140,10 +146,13 @@ public class useSpecial : MonoBehaviour
                 break;
             case 3:
                 //use Kisa's third special, Revive. If we can't revive, change this to Performance.
+                battControl.KisaPerform();
+
+                StartCoroutine(battControl.WaitBeforeChoosingNext(1.5f));
+
+                battControl.backButton.SetActive(false);
                 break;
         }
-
-        battControl.backButton.SetActive(false);
         b_sm.gameObject.SetActive(false);
     }
 
@@ -156,6 +165,11 @@ public class useSpecial : MonoBehaviour
                 break;
             case 1:
                 //use Nicol's first special, Mockery
+                battControl.NicolMockery();
+
+                battControl.backButton.SetActive(false);
+
+                StartCoroutine(battControl.WaitBeforeChoosingNext(1f));
                 break;
             case 2:
                 //use Nicol's second special, Trial and Error
@@ -172,10 +186,16 @@ public class useSpecial : MonoBehaviour
                 break;
             case 3:
                 //use Nicol's third special, Encourage
+                Debug.Log("beans");
+                battControl.NicolMotivate();
+
+                battControl.backButton.SetActive(false);
+
+                StartCoroutine(battControl.WaitBeforeChoosingNext(1.5f));
+
                 break;
         }
 
-        battControl.backButton.SetActive(false);
         b_sm.gameObject.SetActive(false);
     }
 

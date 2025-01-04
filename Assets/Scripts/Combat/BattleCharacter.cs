@@ -70,6 +70,8 @@ public class BattleCharacter : MonoBehaviour
     public int tempIncrease = 0;
     public string statIncreased = "";
 
+    public int OvertimeHealTurnsLeft = 0;
+
     //TempDebuffs
     public bool Confused;
 
@@ -117,6 +119,11 @@ public class BattleCharacter : MonoBehaviour
         this.statSheet.stats[statIncreased] += tempIncrease;
 
         tempBuffed = true;
+    }
+
+    public void TempDecraseStats(string stat, int amount)
+    {
+        this.statSheet.stats[stat] -= amount;
     }
 
     public void UndoTempBuff()

@@ -1765,13 +1765,7 @@ public class BattleController : MonoBehaviour
         if (characterQueue.Peek().GIsPlayerTeam == false)
         {
 
-            if (characterQueue.Peek().Confused == true)
-            {
-                characterQueue.Peek().Confused = false;
-                
-                ChooseNextActiveChar();
-            }
-            else
+            if (characterQueue.Peek().Confused == false)
             {
                 //Debug.Log("enemy " + characterQueue.Peek().statSheet.name);
                 SetActiveCharBattle(characterQueue.Peek());
@@ -1866,6 +1860,14 @@ public class BattleController : MonoBehaviour
 
 
             }
+            else
+            {
+                characterQueue.Peek().Confused = false;
+
+                alreadyWent.Enqueue(characterQueue.Dequeue());
+
+                ChooseNextActiveChar();
+            }
         }
         //If the next character in the queue is on the player team
         else
@@ -1884,6 +1886,25 @@ public class BattleController : MonoBehaviour
             activeChar.isBlocking = false;
             activeChar.animator.SetBool("Blocking", false);
             state = State.WaitingForPlayer;
+
+            if (activeChar.OvertimeHealTurnsLeft > 0 )
+            {
+                activeChar.OvertimeHealTurnsLeft--;
+
+                ParticleManager healParticle;
+
+                Vector3 position = activeChar.GetPosition();
+
+                healParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
+                healParticle.animator.SetBool("HealFX", true);
+
+                activeChar.healthSystem.Heal(activeChar.statSheet.stats["MaxHealth"] / 6 );
+                Debug.Log(activeChar.statSheet.stats["MaxHealth"] / 6);
+
+                activeChar.ChangeHealthText();
+
+                am.playSFX(12);
+            }
         }
 
         for (int i = 0; i < playerList.Count; i++)
@@ -2021,7 +2042,7 @@ public class BattleController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
-                //They do not want to select the back button.
+                //They do not want to select the back button. Unselect it.
                 EventSystem.current.SetSelectedGameObject(null);
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == enemyList.Count - 1)
@@ -2036,7 +2057,7 @@ public class BattleController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
-                //They do not want to select the back button.
+                //They do not want to select the back button. Unselect it.
                 EventSystem.current.SetSelectedGameObject(null);
                 enemyList[enemyNum].HideTargetCircle();
                 if (enemyNum == 0)
@@ -2062,25 +2083,92 @@ public class BattleController : MonoBehaviour
                 EventSystem.current.SetSelectedGameObject(null);
                 enemyList[enemyNum].ShowTargetCircle();
             }
-
             yield return null;
         }
 
-        enemyList[enemyNum].HideTargetCircle();
+        if (coroutineRunning == true)
+        {
+            backButton.SetActive(false);
 
-        enemyList[enemyNum].Confused = true;
-        enemyList[enemyNum].animator.SetBool("ConfusedFX", true);
-        ParticleManager confuseParticle;
+            enemyList[enemyNum].HideTargetCircle();
 
-        Vector3 position = enemyList[enemyNum].GetPosition();
+            enemyList[enemyNum].Confused = true;
+            enemyList[enemyNum].animator.SetBool("ConfusedFX", true);
+            ParticleManager confuseParticle;
 
-        confuseParticle = Instantiate(enemyList[enemyNum].particleManager, position, Quaternion.identity, enemyList[enemyNum].transform);
-        confuseParticle.animator.SetBool("ConfuseFX", true);
+            Vector3 position = enemyList[enemyNum].GetPosition();
 
-        StartCoroutine(WaitBeforeChoosingNext(1.5f));
+            am.playSFX(42);
+
+            confuseParticle = Instantiate(enemyList[enemyNum].particleManager, position, Quaternion.identity, enemyList[enemyNum].transform);
+            confuseParticle.animator.SetBool("ConfuseFX", true);
+
+
+            StartCoroutine(WaitBeforeChoosingNext(1.8f));
+        }
     }
 
+    public void KisaPerform()
+    {
+        activeChar.animator.SetBool("MagAttacking", true);
 
+        Vector3 singPosition = activeChar.GetPosition();
+        ParticleManager singParticle = Instantiate(activeChar.particleManager, singPosition, Quaternion.identity, activeChar.transform);
+        singParticle.animator.SetBool("KisaSingFX", true);
+        am.playSFX(10);
+
+        backButton.SetActive(false);
+
+        for (int i = 0; i < playerList.Count; i++)
+        {
+            ParticleManager healParticle;
+
+            Vector3 position = playerList[i].GetPosition();
+
+            healParticle = Instantiate(playerList[i].particleManager, position, Quaternion.identity, playerList[i].transform);
+            healParticle.animator.SetBool("HealFX", true);
+
+            playerList[i].healthSystem.Heal(playerList[i].statSheet.stats["MaxHealth"]);
+
+            playerList[i].ChangeHealthText();
+
+            am.playSFX(12);
+
+        }
+    }
+    #endregion
+
+    #region Nicol
+
+    public void NicolMockery()
+    {
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            ParticleManager debuffParticle;
+            Vector3 position = enemyList[i].GetPosition();
+
+            debuffParticle = Instantiate(enemyList[i].particleManager, position, Quaternion.identity, enemyList[i].transform);
+            debuffParticle.animator.SetBool("DebuffFX", true);
+
+            enemyList[i].TempDecraseStats("Strength", enemyList[i].statSheet.stats["Strength"] / 4);
+            enemyList[i].TempDecraseStats("Defense", enemyList[i].statSheet.stats["Defense"] / 4);
+        }
+    }
+
+    public void NicolMotivate()
+    {
+        for (int i = 0; i < playerList.Count; i++)
+        {
+            ParticleManager motivateParticle;
+
+            Vector3 position = activeChar.GetPosition();
+
+            motivateParticle = Instantiate(playerList[i].particleManager, position, Quaternion.identity, playerList[i].transform);
+            motivateParticle.animator.SetBool("TauntFX", true);
+
+            playerList[i].OvertimeHealTurnsLeft = 3;
+        }
+    }
 
     #endregion
 
