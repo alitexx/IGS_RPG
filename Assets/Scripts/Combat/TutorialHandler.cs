@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class TutorialHandler : MonoBehaviour
 {
-    [SerializeField] private GraphicRaycaster graphicRaycaster;
-    [SerializeField] private EventSystem eventSystem;
 
     public BattleController battleController;
 
@@ -137,17 +133,6 @@ public class TutorialHandler : MonoBehaviour
         //} else if (Input.GetKeyDown(audioStatics.keycodeInterractButton) && (tutorialCounter == 6 || tutorialCounter == 7))
         //{
         //    continueTutorial();
-        //} // Check for a mouse click and ensure it's a button
-        //else if (Input.GetMouseButtonDown(0)) // 0 for left mouse button
-        //{
-        //    if (IsPointerOverUIButton() && battleController.state == BattleController.State.Busy && battleController.alanFireMagicButton.activeInHierarchy == false && battleController.backButton.activeInHierarchy)
-        //    {
-        //        continueTutorial();
-        //    }
-        //    else if (IsPointerOverUIButton() && (tutorialCounter == 6 || tutorialCounter == 7))
-        //    {
-        //        continueTutorial();
-        //    }
         //}
 
         if (battleController.coroutineRunning == true)
@@ -179,28 +164,5 @@ public class TutorialHandler : MonoBehaviour
                 tutorialMenus[tutorialCounter].SetActive(false);
             }
         }
-    }
-
-
-    // Helper method to check if the pointer is over a UI Button
-    private bool IsPointerOverUIButton()
-    {
-        PointerEventData pointerEventData = new PointerEventData(eventSystem)
-        {
-            position = Input.mousePosition
-        };
-
-        // Raycast to check UI elements
-        List<RaycastResult> results = new List<RaycastResult>();
-        graphicRaycaster.Raycast(pointerEventData, results);
-
-        foreach (RaycastResult result in results)
-        {
-            if (result.gameObject.GetComponent<Button>() != null)
-            {
-                return true; // It's a button
-            }
-        }
-        return false; // Not a button
     }
 }
