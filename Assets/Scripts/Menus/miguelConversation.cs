@@ -224,7 +224,7 @@ public class miguelConversation : MonoBehaviour
         // Check if the current floor is 2 or more levels ahead of the last documented floor
         Debug.Log("Previous Save = " + previousSave);
         Debug.Log("Current Save = " + lastNumber);
-        if (previousSave >= lastNumber + 2)
+        if (previousSave < lastNumber + 2)
         {
             // Trigger special dialogue
             previousSave = lastNumber;

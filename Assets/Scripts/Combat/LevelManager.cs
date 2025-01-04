@@ -712,19 +712,19 @@ public class LevelManager : MonoBehaviour
             if (i != 3) // Exclude speed from the main scaling
             {
                 // Exponential scaling for levels 3 and above
-                lSlimeStats[i] += (int)(4 * Math.Pow(playerController.Level, enemyDifficultyScale) - 4);
+                lSlimeStats[i] += (int)(3 * Math.Pow(playerController.Level, enemyDifficultyScale) - 3);
             }
         }
 
         // Adjust Strength with slightly higher scaling
-        lSlimeStats[0] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale) - 1));
+        lSlimeStats[0] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
 
         // Adjust Defense linearly
         lSlimeStats[2] += 1 * (playerController.Level - 1);
 
         // Adjust Health and MaxHealth with increased scaling
-        lSlimeStats[4] += (int)(2.5 * (Math.Pow(playerController.Level, enemyDifficultyScale) - 1));
-        lSlimeStats[5] += (int)(2.5 * (Math.Pow(playerController.Level, enemyDifficultyScale) - 1));
+        lSlimeStats[4] += (int)(2.5 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
+        lSlimeStats[5] += (int)(2.5 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
 
         return lSlimeStats;
     }
@@ -737,12 +737,12 @@ public class LevelManager : MonoBehaviour
             if (i != 3) // Exclude Speed
             {
                 // Exponential scaling for levels 3 and above
-                lSkeletonStats[i] += (int)(4 * Math.Pow(playerController.Level, enemyDifficultyScale) - 4);
+                lSkeletonStats[i] += (int)(3 * Math.Pow(playerController.Level, enemyDifficultyScale) - 3);
             }
         }
 
         // Adjust Strength with slightly higher scaling
-        lSkeletonStats[0] += (int)(2 * (Math.Pow(playerController.Level, enemyDifficultyScale) - 1));
+        lSkeletonStats[0] += (int)(2 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
 
         return lSkeletonStats;
     }
@@ -755,15 +755,15 @@ public class LevelManager : MonoBehaviour
             if (i != 3) // Exclude Speed
             {
                 // General stats scaling
-                lGhostStats[i] += (int)(4 * Math.Pow(playerController.Level, enemyDifficultyScale) - 4);
+                lGhostStats[i] += (int)(3 * Math.Pow(playerController.Level, enemyDifficultyScale) - 3);
             }
         }
 
         // Defense-specific scaling
-        lGhostStats[2] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale) - 1));
+        lGhostStats[2] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
 
         // Strength-specific scaling
-        lGhostStats[0] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale) - 1));
+        lGhostStats[0] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
 
         return lGhostStats;
     }
@@ -775,16 +775,16 @@ public class LevelManager : MonoBehaviour
             if (i != 3) // Exclude Speed
             {
                 // General stats scaling
-                lWraithStats[i] += (int)(4 * Math.Pow(playerController.Level, 1.2) - 4);
+                lWraithStats[i] += (int)(3 * Math.Pow(playerController.Level, enemyDifficultyScale) - 3);
             }
         }
 
         // Strength-specific scaling
-        lWraithStats[0] += (int)(1.5 * (Math.Pow(playerController.Level, 1.2) - 1));
+        lWraithStats[0] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
 
         // Health and MaxHealth scaling
-        lWraithStats[4] += (int)(1.5 * (Math.Pow(playerController.Level, 1.2) - 1));
-        lWraithStats[5] += (int)(1.5 * (Math.Pow(playerController.Level, 1.2) - 1));
+        lWraithStats[4] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
+        lWraithStats[5] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
 
         return lWraithStats;
     }

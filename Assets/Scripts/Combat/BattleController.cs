@@ -374,12 +374,12 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 5};
 
     static public int[] evilMonkStats = {
-        /*Strength*/ 30,
-        /*Magic Attack*/ 15,
-        /*Defense*/ 10, 
+        /*Strength*/ 25,
+        /*Magic Attack*/ 8,
+        /*Defense*/ 3, 
         /*Speed*/ 3, 
-        /*Health*/ 200, 
-        /*MaxHealth*/ 200,
+        /*Health*/ 150, 
+        /*MaxHealth*/ 150,
         /*Mana*/ 6,
         /*MaxMana*/ 6};
 
