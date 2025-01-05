@@ -353,12 +353,12 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 9};
 
     static public int[] evilMageStats = {
-        /*Strength*/ 20,
-        /*Magic Attack*/ 12,
-        /*Defense*/ 4, 
+        /*Strength*/ 30,
+        /*Magic Attack*/ 15,
+        /*Defense*/ 8, 
         /*Speed*/ 3, 
-        /*Health*/ 80, 
-        /*MaxHealth*/ 80,
+        /*Health*/ 150, 
+        /*MaxHealth*/ 150,
         /*Mana*/ 9,
         /*MaxMana*/ 9};
 
@@ -374,12 +374,12 @@ public class BattleController : MonoBehaviour
         /*MaxMana*/ 5};
 
     static public int[] evilMonkStats = {
-        /*Strength*/ 25,
-        /*Magic Attack*/ 8,
-        /*Defense*/ 3, 
+        /*Strength*/ 35,
+        /*Magic Attack*/ 18,
+        /*Defense*/ 10, 
         /*Speed*/ 3, 
-        /*Health*/ 150, 
-        /*MaxHealth*/ 150,
+        /*Health*/ 300, 
+        /*MaxHealth*/ 300,
         /*Mana*/ 6,
         /*MaxMana*/ 6};
 
@@ -399,25 +399,25 @@ public class BattleController : MonoBehaviour
         /*Magic Attack*/ 7,
         /*Defense*/ 5, 
         /*Speed*/ 2, 
-        /*Health*/ 35, 
-        /*MaxHealth*/ 35,
+        /*Health*/ 45, 
+        /*MaxHealth*/ 45,
         /*Mana*/ 7,
         /*MaxMana*/ 7};
 
     //Slime Stats
     static public int[] slimeStats = {
-        /*Strength*/ 7,
+        /*Strength*/ 14,
         /*Magic Attack*/ 1,
         /*Defense*/ 3, 
         /*Speed*/ 2, 
-        /*Health*/ 17, 
-        /*MaxHealth*/ 17,
+        /*Health*/ 15, 
+        /*MaxHealth*/ 15,
         /*Mana*/ 6,
         /*MaxMana*/ 7};
 
     //Skeleton Stats
     static public int[] skeletonStats = {
-        /*Strength*/ 7,
+        /*Strength*/ 10,
         /*Magic Attack*/ 1,
         /*Defense*/ 4, 
         /*Speed*/ 3, 
@@ -449,12 +449,12 @@ public class BattleController : MonoBehaviour
     //Katie note: I jacked the lich up like crazy! Have fun!
 
     static public int[] lichStats = {
-        /*Strength*/ 12,
-        /*Magic Attack*/ 15,
+        /*Strength*/ 55,
+        /*Magic Attack*/ 20,
         /*Defense*/ 10, 
         /*Speed*/ 4, 
-        /*Health*/ 400, 
-        /*MaxHealth*/ 400,
+        /*Health*/ 500, 
+        /*MaxHealth*/ 500,
         /*Mana*/ 30,
         /*MaxMana*/ 30};
 

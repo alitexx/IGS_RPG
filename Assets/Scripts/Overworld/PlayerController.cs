@@ -323,6 +323,7 @@ public class PlayerController : MonoBehaviour
             {
                 mainDialogueManager.dialogueSTART("thirdFloor_kn");
             }
+            levelManager.enemyDifficultyScale = 1.5f;
             //Do anything else if needed
             Destroy(collision.gameObject);
         }
@@ -334,6 +335,7 @@ public class PlayerController : MonoBehaviour
             {
                 mainDialogueManager.dialogueSTART("fourthFloor_kns");
             }
+            levelManager.enemyDifficultyScale = 2f;
             //Do anything else if needed
             Destroy(collision.gameObject);
         }
@@ -594,6 +596,7 @@ public class PlayerController : MonoBehaviour
                     cutscenes[5].SetActive(false);
                     cutscenes[9].SetActive(false);
                 }
+                levelManager.enemyDifficultyScale = 1.25f;
                 break;
             case 2:
                 cutscenes[1].SetActive(false);
@@ -602,6 +605,7 @@ public class PlayerController : MonoBehaviour
                     cutscenes[6].SetActive(false);
                     cutscenes[10].SetActive(false);
                 }
+                levelManager.enemyDifficultyScale = 1.25f;
                 break;
             case 3:
                 cutscenes[2].SetActive(false);
@@ -610,9 +614,11 @@ public class PlayerController : MonoBehaviour
                     cutscenes[7].SetActive(false);
                     cutscenes[11].SetActive(false);
                 }
+                levelManager.enemyDifficultyScale = 1.5f;
                 break;
             case 4:
                 cutscenes[3].SetActive(false);
+                levelManager.enemyDifficultyScale = 1.5f;
                 break;
             default:
                 break;
@@ -623,7 +629,7 @@ public class PlayerController : MonoBehaviour
         MapManager.setRoomsDiscovered(2, PlayerPrefs.GetInt("Floor2Explored"));
         MapManager.setRoomsDiscovered(3, PlayerPrefs.GetInt("Floor3Explored"));
         MapManager.setRoomsDiscovered(4, PlayerPrefs.GetInt("Floor4Explored"));
-
+        MapManager.setMap();
     }
 
     public int getDeadCharacters()

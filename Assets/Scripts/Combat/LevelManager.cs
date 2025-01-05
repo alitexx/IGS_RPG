@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     public static int level = 1;
 
     //Used for level up of enemies, determines how difficult they should be.
-    private float enemyDifficultyScale = 1.2f;
+    public float enemyDifficultyScale = 1.25f;
 
     public bool kisaAbsorb;
     public bool nicolAbsorb;
@@ -26,6 +26,50 @@ public class LevelManager : MonoBehaviour
     public audioManager am;
 
     public BattleController battleController;
+
+    #region Stat Increase Per level
+    //This is so I can manage how much they gain per level/modify stats easily
+    private int[] alanIncreasedStats = new int[8] {
+        /*Strength*/ 4,
+        /*Magic Attack*/ 1,
+        /*Defense*/ 2, 
+        /*Speed*/ 0, 
+        /*Health*/ 2, 
+        /*MaxHealth*/ 2,
+        /*Mana*/ 1,
+        /*MaxMana*/ 1
+};
+    private int[] kisaIncreasedStats = new int[8] {
+        /*Strength*/ 2,
+        /*Magic Attack*/ 4,
+        /*Defense*/ 1, 
+        /*Speed*/ 1, 
+        /*Health*/ 5, 
+        /*MaxHealth*/ 5,
+        /*Mana*/ 2,
+        /*MaxMana*/ 2
+};
+    private int[] nicolIncreasedStats = new int[8] {
+        /*Strength*/ 3,
+        /*Magic Attack*/ 3,
+        /*Defense*/ 1, 
+        /*Speed*/ 1, 
+        /*Health*/ 4, 
+        /*MaxHealth*/ 4,
+        /*Mana*/ 2,
+        /*MaxMana*/ 2
+};
+    private int[] sophieIncreasedStats = new int[8] {
+        /*Strength*/ 5,
+        /*Magic Attack*/ 3,
+        /*Defense*/ 2, 
+        /*Speed*/ 1, 
+        /*Health*/ 1, 
+        /*MaxHealth*/ 1,
+        /*Mana*/ 2,
+        /*MaxMana*/ 2
+};
+    #endregion
 
     #region Stats to Store
 
@@ -91,7 +135,7 @@ public class LevelManager : MonoBehaviour
     static private int[] mageStartStats = new int[8] {
         /*0 Strength*/ 7,
         /*1 Magic Attack*/ 8,
-        /*2 Defense*/ 8, 
+        /*2 Defense*/ 6, 
         /*3 Speed*/ 5, 
         /*4 Health*/ 11, 
         /*5 MaxHealth*/ 11,
@@ -102,7 +146,7 @@ public class LevelManager : MonoBehaviour
     static private int[] monkStartStats = new int[8] {
         /*0 Strength*/ 13,
         /*1 Magic Attack*/ 7,
-        /*2 Defense*/ 4, 
+        /*2 Defense*/ 2, 
         /*3 Speed*/ 8, 
         /*4 Health*/ 13, 
         /*5 MaxHealth*/ 13,
@@ -268,18 +312,18 @@ public class LevelManager : MonoBehaviour
             {
                 if (i != 3)
                 {
-                    tankStoredStats[i] = tankStartStats[i] + (1 * (level - 1));
-                    mageStoredStats[i] = mageStartStats[i] + (1 * (level - 1));
-                    bardStoredStats[i] = bardStartStats[i] + (1 * (level - 1));
-                    monkStoredStats[i] = monkStartStats[i] + (1 * (level - 1));
+                    tankStoredStats[i] = tankStartStats[i] + (alanIncreasedStats[i] * (level - 1));
+                    mageStoredStats[i] = mageStartStats[i] + (nicolIncreasedStats[i] * (level - 1));
+                    bardStoredStats[i] = bardStartStats[i] + (kisaIncreasedStats[i] * (level - 1));
+                    monkStoredStats[i] = monkStartStats[i] + (sophieIncreasedStats[i] * (level - 1));
                 }
             }
 
             //Tank
-            tankStoredStats[0] += (1 * (level - 1));
-            //tankStoredStats[2] += (1 * (level - 1));
-            tankStoredStats[4] += (1 * (level - 1));
-            tankStoredStats[5] += (1 * (level - 1));
+            //tankStoredStats[0] += (1 * (level - 1));
+            ////tankStoredStats[2] += (1 * (level - 1));
+            //tankStoredStats[4] += (1 * (level - 1));
+            //tankStoredStats[5] += (1 * (level - 1));
 
             if (kisaAbsorb)
             {
@@ -307,24 +351,25 @@ public class LevelManager : MonoBehaviour
             }
 
 
-            //Mage
-            mageStoredStats[0] += (1 * (level - 1));
-            mageStoredStats[1] += (1 * (level - 1));
-            //mageStoredStats[3] += (1 * (level - 1));
-            //mageStoredStats[6] += (1 * (level - 1));
-            //mageStoredStats[7] += (1 * (level - 1));
+            ////Mage
+            //mageStoredStats[0] += (1 * (level - 1));
+            //mageStoredStats[1] += (1 * (level - 1));
+            ////mageStoredStats[3] += (1 * (level - 1));
+            ////mageStoredStats[6] += (1 * (level - 1));
+            ////mageStoredStats[7] += (1 * (level - 1));
 
-            //Bard
-            bardStoredStats[1] += (1 * (level - 1));
-            bardStoredStats[4] += (2 * (level - 1));
-            //bardStoredStats[5] += (2 * (level - 1));
-            //bardStoredStats[6] += (1 * (level - 1));
-            //bardStoredStats[7] += (1 * (level - 1));
+            ////Bard
+            //bardStoredStats[1] += (1 * (level - 1));
+            //bardStoredStats[4] += (2 * (level - 1));
+            ////bardStoredStats[5] += (2 * (level - 1));
+            ////bardStoredStats[6] += (1 * (level - 1));
+            ////bardStoredStats[7] += (1 * (level - 1));
 
-            //Monk
-            monkStoredStats[0] += (2 * (level - 1));
-            monkStoredStats[1] += (1 * (level - 1));
-            //monkStoredStats[3] += (1 * (level - 1));
+            ////Monk
+            //monkStoredStats[0] += (2 * (level - 1));
+            //monkStoredStats[1] += (1 * (level - 1));
+            ////monkStoredStats[3] += (1 * (level - 1));
+            ///
         }
 
         //Debug.Log(tankStoredStats[5]);
@@ -383,14 +428,14 @@ public class LevelManager : MonoBehaviour
         {
             if (battleController.partyMembers[i].statSheet.name == "Tank Guy")
             {
-                battleController.partyMembers[i].statSheet.stats["Strength"] += 2;
-                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
-                battleController.partyMembers[i].statSheet.stats["Defense"] += 1;
-                //battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
-                battleController.partyMembers[i].statSheet.stats["Health"] += 2;
-                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 2;
-                battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
-                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Strength"] += alanIncreasedStats[0];
+                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += alanIncreasedStats[1];
+                battleController.partyMembers[i].statSheet.stats["Defense"] += alanIncreasedStats[2];
+                //battleController.partyMembers[i].statSheet.stats["Speed"] += alanIncreasedStats[3];
+                battleController.partyMembers[i].statSheet.stats["Health"] += alanIncreasedStats[4];
+                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += alanIncreasedStats[5];
+                battleController.partyMembers[i].statSheet.stats["Mana"] += alanIncreasedStats[6];
+                battleController.partyMembers[i].statSheet.stats["MaxMana"] += alanIncreasedStats[7];
 
                 if (kisaAbsorb)
                 {
@@ -400,7 +445,6 @@ public class LevelManager : MonoBehaviour
                     //battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
                     //battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
                 }
-
                 if (nicolAbsorb)
                 {
                     battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
@@ -409,63 +453,59 @@ public class LevelManager : MonoBehaviour
                     battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
                     battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
                 }
-
-
                 if (sophieAbsorb)
                 {
                     battleController.partyMembers[i].statSheet.stats["Strength"] += 2;
                     battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
                     //battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
                 }
-           
-
             }
             //Nicol
             if (battleController.partyMembers[i].statSheet.name == "Mage Guy")
             {
-                battleController.partyMembers[i].statSheet.stats["Strength"] += 2;
-                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 2;
-                battleController.partyMembers[i].statSheet.stats["Defense"] += 1;
-                //battleController.partyMembers[i].statSheet.stats["Speed"] += 2;
-                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 1;
-                battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
-                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Strength"] += nicolIncreasedStats[0];
+                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += nicolIncreasedStats[1];
+                battleController.partyMembers[i].statSheet.stats["Defense"] += nicolIncreasedStats[2];
+                //battleController.partyMembers[i].statSheet.stats["Speed"] += nicolIncreasedStats[3];
+                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += nicolIncreasedStats[5];
+                battleController.partyMembers[i].statSheet.stats["Mana"] += nicolIncreasedStats[6];
+                battleController.partyMembers[i].statSheet.stats["MaxMana"] += nicolIncreasedStats[7];
 
                 if (battleController.partyMembers[i].IsDead() == false)
                 {
-                    battleController.partyMembers[i].statSheet.stats["Health"] += 1;
+                    battleController.partyMembers[i].statSheet.stats["Health"] += nicolIncreasedStats[4];
                 }
             }
             //Kisa
             if (battleController.partyMembers[i].statSheet.name == "Bard Guy")
             {
-                battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
-                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 2;
-                battleController.partyMembers[i].statSheet.stats["Defense"] += 1;
-                //battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
-                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 3;
-                battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
-                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Strength"] += kisaIncreasedStats[0];
+                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += kisaIncreasedStats[1];
+                battleController.partyMembers[i].statSheet.stats["Defense"] += kisaIncreasedStats[2];
+                //battleController.partyMembers[i].statSheet.stats["Speed"] += kisaIncreasedStats[3];
+                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += kisaIncreasedStats[5];
+                battleController.partyMembers[i].statSheet.stats["Mana"] += kisaIncreasedStats[6];
+                battleController.partyMembers[i].statSheet.stats["MaxMana"] += kisaIncreasedStats[7];
 
                 if (battleController.partyMembers[i].IsDead() == false)
                 {
-                    battleController.partyMembers[i].statSheet.stats["Health"] += 3;
+                    battleController.partyMembers[i].statSheet.stats["Health"] += kisaIncreasedStats[4];
                 }
             }
             //Sophie
             if (battleController.partyMembers[i].statSheet.name == "Monk Guy")
             {
-                battleController.partyMembers[i].statSheet.stats["Strength"] += 3;
-                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 2;
-                battleController.partyMembers[i].statSheet.stats["Defense"] += 1;
-                //battleController.partyMembers[i].statSheet.stats["Speed"] += 2;
-                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 1;
-                battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
-                battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
+                battleController.partyMembers[i].statSheet.stats["Strength"] += sophieIncreasedStats[0];
+                battleController.partyMembers[i].statSheet.stats["Magic Attack"] += sophieIncreasedStats[1];
+                battleController.partyMembers[i].statSheet.stats["Defense"] += sophieIncreasedStats[2];
+                //battleController.partyMembers[i].statSheet.stats["Speed"] += sophieIncreasedStats[3];
+                battleController.partyMembers[i].statSheet.stats["MaxHealth"] += sophieIncreasedStats[5];
+                battleController.partyMembers[i].statSheet.stats["Mana"] += sophieIncreasedStats[6];
+                battleController.partyMembers[i].statSheet.stats["MaxMana"] += sophieIncreasedStats[7];
 
                 if (battleController.partyMembers[i].IsDead() == false)
                 {
-                    battleController.partyMembers[i].statSheet.stats["Health"] += 1;
+                    battleController.partyMembers[i].statSheet.stats["Health"] += sophieIncreasedStats[4];
                 }
             }
         }
@@ -529,14 +569,14 @@ public class LevelManager : MonoBehaviour
     {
         if (memberName == "Kisa")
         {
-            bardStoredStats[0] = bardStartStats[0] + (1 * (level - 1));
-            bardStoredStats[1] = bardStartStats[1] + (2 * (level - 1));
-            bardStoredStats[2] = bardStartStats[2] + (1 * (level - 1));
-            //bardStoredStats[3] = bardStartStats[3] + (1 * (level - 1));
-            bardStoredStats[4] = bardStartStats[4] + (2 * (level - 1));
-            bardStoredStats[5] = bardStartStats[5] + (2 * (level - 1));
-            bardStoredStats[6] = bardStartStats[6] + (1 * (level - 1));
-            bardStoredStats[7] = bardStartStats[7] + (1 * (level - 1));
+            bardStoredStats[0] = bardStartStats[0] + (kisaIncreasedStats[0] * (level - 1));
+            bardStoredStats[1] = bardStartStats[1] + (kisaIncreasedStats[1] * (level - 1));
+            bardStoredStats[2] = bardStartStats[2] + (kisaIncreasedStats[2] * (level - 1));
+            //bardStoredStats[3] = bardStartStats[3] + (kisaIncreasedStats[3] * (level - 1));
+            bardStoredStats[4] = bardStartStats[4] + (kisaIncreasedStats[4] * (level - 1));
+            bardStoredStats[5] = bardStartStats[5] + (kisaIncreasedStats[5] * (level - 1));
+            bardStoredStats[6] = bardStartStats[6] + (kisaIncreasedStats[6] * (level - 1));
+            bardStoredStats[7] = bardStartStats[7] + (kisaIncreasedStats[7] * (level - 1));
 
             //the only time you gain a new party member will be after a boss fight, so I can put these here
             youWinMenu.loadedDialogue = "kisaPostFight_k";
@@ -545,14 +585,14 @@ public class LevelManager : MonoBehaviour
         }
         else if (memberName == "Nicol")
         {
-            mageStoredStats[0] = mageStartStats[0] + (1 * (level - 1));
-            mageStoredStats[1] = mageStartStats[1] + (2 * (level - 1));
-            mageStoredStats[2] = mageStartStats[2] + (1 * (level - 1));
-            //mageStoredStats[3] = mageStartStats[3] + (1 * (level - 1));
-            mageStoredStats[4] = mageStartStats[4] + (1 * (level - 1));
-            mageStoredStats[5] = mageStartStats[5] + (1 * (level - 1));
-            mageStoredStats[6] = mageStartStats[6] + (2 * (level - 1));
-            mageStoredStats[7] = mageStartStats[7] + (2 * (level - 1));
+            mageStoredStats[0] = mageStartStats[0] + (nicolIncreasedStats[0] * (level - 1));
+            mageStoredStats[1] = mageStartStats[1] + (nicolIncreasedStats[1] * (level - 1));
+            mageStoredStats[2] = mageStartStats[2] + (nicolIncreasedStats[2] * (level - 1));
+            //mageStoredStats[3] = mageStartStats[3] + (nicolIncreasedStats[3] * (level - 1));
+            mageStoredStats[4] = mageStartStats[4] + (nicolIncreasedStats[4] * (level - 1));
+            mageStoredStats[5] = mageStartStats[5] + (nicolIncreasedStats[5] * (level - 1));
+            mageStoredStats[6] = mageStartStats[6] + (nicolIncreasedStats[6] * (level - 1));
+            mageStoredStats[7] = mageStartStats[7] + (nicolIncreasedStats[7] * (level - 1));
 
             if (kisaAbsorb)
             {
@@ -567,14 +607,14 @@ public class LevelManager : MonoBehaviour
         }
         else if (memberName == "Sophie")
         {
-            monkStoredStats[0] = monkStartStats[0] + (2 * (level - 1));
-            monkStoredStats[1] = monkStartStats[1] + (1 * (level - 1));
-            monkStoredStats[2] = monkStartStats[2] + (2 * (level - 1));
-            //monkStoredStats[3] = monkStartStats[3] + (1 * (level - 1));
-            monkStoredStats[4] = monkStartStats[4] + (1 * (level - 1));
-            monkStoredStats[5] = monkStartStats[5] + (1 * (level - 1));
-            monkStoredStats[6] = monkStartStats[6] + (1 * (level - 1));
-            monkStoredStats[7] = monkStartStats[7] + (1 * (level - 1));
+            monkStoredStats[0] = monkStartStats[0] + (sophieIncreasedStats[0] * (level - 1));
+            monkStoredStats[1] = monkStartStats[1] + (sophieIncreasedStats[1] * (level - 1));
+            monkStoredStats[2] = monkStartStats[2] + (sophieIncreasedStats[2] * (level - 1));
+            //monkStoredStats[3] = monkStartStats[3] + (sophieIncreasedStats[3] * (level - 1));
+            monkStoredStats[4] = monkStartStats[4] + (sophieIncreasedStats[4] * (level - 1));
+            monkStoredStats[5] = monkStartStats[5] + (sophieIncreasedStats[5] * (level - 1));
+            monkStoredStats[6] = monkStartStats[6] + (sophieIncreasedStats[6] * (level - 1));
+            monkStoredStats[7] = monkStartStats[7] + (sophieIncreasedStats[7] * (level - 1));
 
             if (kisaAbsorb)
             {
@@ -712,15 +752,12 @@ public class LevelManager : MonoBehaviour
             if (i != 3) // Exclude speed from the main scaling
             {
                 // Exponential scaling for levels 3 and above
-                lSlimeStats[i] += (int)(3 * Math.Pow(playerController.Level, enemyDifficultyScale) - 3);
+                lSlimeStats[i] += (int)(4 * Math.Pow(playerController.Level, enemyDifficultyScale) - 4);
             }
         }
 
-        // Adjust Strength with slightly higher scaling
-        lSlimeStats[0] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
-
-        // Adjust Defense linearly
-        lSlimeStats[2] += 1 * (playerController.Level - 1);
+        // Adjust Strength with increased scaling
+        lSlimeStats[0] += (int)(2 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
 
         // Adjust Health and MaxHealth with increased scaling
         lSlimeStats[4] += (int)(2.5 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
@@ -737,7 +774,7 @@ public class LevelManager : MonoBehaviour
             if (i != 3) // Exclude Speed
             {
                 // Exponential scaling for levels 3 and above
-                lSkeletonStats[i] += (int)(3 * Math.Pow(playerController.Level, enemyDifficultyScale) - 3);
+                lSkeletonStats[i] += (int)(4 * Math.Pow(playerController.Level, enemyDifficultyScale) - 4);
             }
         }
 
@@ -755,7 +792,7 @@ public class LevelManager : MonoBehaviour
             if (i != 3) // Exclude Speed
             {
                 // General stats scaling
-                lGhostStats[i] += (int)(3 * Math.Pow(playerController.Level, enemyDifficultyScale) - 3);
+                lGhostStats[i] += (int)(4 * Math.Pow(playerController.Level, enemyDifficultyScale) - 4);
             }
         }
 
@@ -775,7 +812,7 @@ public class LevelManager : MonoBehaviour
             if (i != 3) // Exclude Speed
             {
                 // General stats scaling
-                lWraithStats[i] += (int)(3 * Math.Pow(playerController.Level, enemyDifficultyScale) - 3);
+                lWraithStats[i] += (int)(4 * Math.Pow(playerController.Level, enemyDifficultyScale) - 4);
             }
         }
 

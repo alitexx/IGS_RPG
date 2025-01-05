@@ -27,7 +27,6 @@ public class TutorialHandler : MonoBehaviour
     public int tutorialCounter;
     private GameObject previousHole; // for turning on/off the holes in the tutorial
 
-    private bool firstTime4, firstTime5 = false;
 
     private void Start()
     {

@@ -222,10 +222,9 @@ public class miguelConversation : MonoBehaviour
         float lastNumber = ExtractFloorNumber(lastFloor);
 
         // Check if the current floor is 2 or more levels ahead of the last documented floor
-        Debug.Log("Previous Save = " + previousSave);
-        Debug.Log("Current Save = " + lastNumber);
-        if (previousSave < lastNumber + 2)
+        if (previousSave + 2 < lastNumber)
         {
+            //Debug.Log(previousSave + "is less than " + lastNumber + " plus two, which is " + (lastNumber + 2));
             // Trigger special dialogue
             previousSave = lastNumber;
             return true;
