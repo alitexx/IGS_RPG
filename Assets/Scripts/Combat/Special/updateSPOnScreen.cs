@@ -36,7 +36,7 @@ public class updateSPOnScreen : MonoBehaviour
                 break;
         }
 
-        if(howManySpecials > 0 && howManySpecials <= 4)
+        if(currentSpecials[associatedCharacter / 4] > 0 && currentSpecials[associatedCharacter / 4] <= 4)
         {
             imagesToUpdate[associatedCharacter+ currentSpecials[associatedCharacter / 4]].sprite = specialicon;
             currentSpecials[associatedCharacter / 4]++;

@@ -657,6 +657,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Map saves
+        MapManager.newLevelMapUpdate(Level);
         MapManager.setRoomsDiscovered(1, PlayerPrefs.GetInt("Floor1Explored"));
         MapManager.setRoomsDiscovered(2, PlayerPrefs.GetInt("Floor2Explored"));
         MapManager.setRoomsDiscovered(3, PlayerPrefs.GetInt("Floor3Explored"));

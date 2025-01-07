@@ -96,6 +96,7 @@ public class mapManager : MonoBehaviour
 
     public void setMap()
     {
+        Debug.Log("Floor we're on:" + floorNumber);
         //Check what floor we're on
         switch (floorNumber)
         {
@@ -122,6 +123,7 @@ public class mapManager : MonoBehaviour
 
     public void setUpMapOnReload(int discovered, GameObject[] arrayToCheck)
     {
+        Debug.Log("Input Number: " + discovered);
 
         // Convert the integer into a binary string representation.
         string binaryString = Convert.ToString(discovered, 2);
@@ -129,9 +131,12 @@ public class mapManager : MonoBehaviour
         // Reverse the string if needed to match your game object's array (optional).
         char[] binaryArray = binaryString.PadLeft(arrayToCheck.Length, '0').ToCharArray();
 
+        Debug.Log("Has now been converted to a binary array: " + binaryString);
+
         // Loop through each character in the binary array.
-        for (int i = 0; i < arrayToCheck.Length; i++)
+        for (int i = 0; i < binaryArray.Length; i++)
         {
+            //Debug.Log("Item at space " + i + ": " + binaryArray[i]);
             // Set the room active if the corresponding binary character is '1'.
             arrayToCheck[i].SetActive(binaryArray[i] == '1');
         }

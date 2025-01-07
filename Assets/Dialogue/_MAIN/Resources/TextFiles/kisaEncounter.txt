@@ -1,7 +1,8 @@
 Hide(alan)
 kisa.Move(0.75 0 1 false true)
 Hide(kisa)
-wait(3)
+SetSprite(kisa kisa)
+wait(2)
 Show(kisa)
 Highlight(kisa -o true)
 kisa "Gods! Why must it be so difficult to free one's foot from such a simple trap?"
