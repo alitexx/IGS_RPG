@@ -66,6 +66,7 @@ public class useSpecial : MonoBehaviour
         }*/
 
         WhoAreWeViewing = b_sm.WhoAreWeViewing;
+        Debug.Log(whichLevel);
         switch(WhoAreWeViewing)
         {
             case 0: //ALAN

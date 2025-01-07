@@ -138,10 +138,8 @@ public class youWinMenu : MonoBehaviour
         currentEXP.text = Mathf.RoundToInt(currentExperience).ToString() + "/100";
         hasUpdatedGained = false;
         endBattleButton.gameObject.SetActive(true);
-        endBattleButton.DOMove(locations[6].position, 0.35f);
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(endBattleButton.gameObject);
-
+        endBattleButton.DOMove(locations[6].position, 0.35f).OnComplete(() => { EventSystem.current.SetSelectedGameObject(endBattleButton.gameObject); });
     }
 
     // USE THIS TO SET HOW MUCH EXP HAS BEEN GAINED!!

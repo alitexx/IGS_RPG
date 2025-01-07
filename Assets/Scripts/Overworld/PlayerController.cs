@@ -303,11 +303,13 @@ public class PlayerController : MonoBehaviour
             hasKisa = false;
             hasNicol = false;
             hasSophie = false;
+            levelManager.enemyDifficultyScale = 1.15f;
         }
         
         if (collision.gameObject.name == "level2" && Level != 2)
         {
             Level = 2;
+            levelManager.enemyDifficultyScale = 1.05f;
             if (hasKisa)
             {
                 mainDialogueManager.dialogueSTART("secondFloor_k");

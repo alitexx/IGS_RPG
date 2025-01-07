@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     public static int level = 1;
 
     //Used for level up of enemies, determines how difficult they should be.
-    public float enemyDifficultyScale = 1.25f;
+    public float enemyDifficultyScale = 1.15f;
 
     public bool kisaAbsorb;
     public bool nicolAbsorb;

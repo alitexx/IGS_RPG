@@ -65,20 +65,13 @@ public class updateSPOnScreen : MonoBehaviour
                 associatedCharacter = 12;
                 break;
         }
-
-        if (howManySpecials >= 0 && howManySpecials <= 4)
+        int removedSpecials = 0;
+        while (removedSpecials <= howManySpecials) //If we haven't removed enough, keep going
         {
+            Debug.Log("down by 1");
             currentSpecials[associatedCharacter / 4]--;
+            removedSpecials++;
             imagesToUpdate[associatedCharacter + currentSpecials[associatedCharacter / 4]].sprite = nospecialicon;
-            while (currentSpecials[associatedCharacter / 4] > howManySpecials)
-            {
-                currentSpecials[associatedCharacter / 4]--;
-                imagesToUpdate[associatedCharacter + currentSpecials[associatedCharacter / 4]].sprite = nospecialicon;
-            }
-        }
-        else
-        {
-            Debug.Log("The special isnt the right number IDIOT. ITS " + howManySpecials);
         }
     }
 

@@ -62,11 +62,17 @@ public class TutorialHandler : MonoBehaviour
         //} else 
         if (tutorialCounter >= 9)
         {
-            if(tutorialCounter == 10)
+            if (tutorialCounter == 10)
             {
                 for (int i = 0; i < buttons.Length; i++)
                 {
                     buttons[i].SetActive(false);
+                }
+            } else
+            {
+                for (int i = 0; i < buttons.Length; i++)
+                {
+                    buttons[i].SetActive(true);
                 }
             }
             return;
@@ -110,6 +116,12 @@ public class TutorialHandler : MonoBehaviour
                 previousHole = tutorialHoles[4];
                 buttons[2].SetActive(false);
                 buttons[3].SetActive(true);
+                break;
+            case 8:
+                for (int i = 0; i < buttons.Length; i++)
+                {
+                    buttons[i].SetActive(true);
+                }
                 break;
         }
     }
