@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using System.Linq;
 
 public class BattleController : MonoBehaviour
 {
@@ -188,12 +189,22 @@ public class BattleController : MonoBehaviour
         }
         else if (playerController.NicolBoss)
         {
+            //Scale down Nicol
+            if (playerController.KisaAbsorbed == 1)
+            {
+                evilMageStats = evilMageStats.Select(x => (int)(x * 0.8f)).ToArray();
+            }
             firstEnemy = SpawnCharacter(false, evilMageStats, "Mage Guy", 2, 1, 2);
             partyBoss = true;
             //howManyToSpawn = 0;
         }
         else if (playerController.SophieBoss)
         {
+            //Scale down Sophie
+            if (playerController.KisaAbsorbed == 1 && playerController.NicolAbsorbed == 1)
+            {
+                evilMonkStats = evilMonkStats.Select(x => (int)(x * 0.8f)).ToArray();
+            }
             firstEnemy = SpawnCharacter(false, evilMonkStats, "Monk Guy", 4, 2, 3);
             partyBoss = true;
             //howManyToSpawn = 0;

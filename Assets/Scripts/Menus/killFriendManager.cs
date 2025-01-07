@@ -127,7 +127,11 @@ public class killFriendManager : MonoBehaviour
             tweenInObjects[0].GetComponent<RectTransform>().DOMove(locations[0].position, 1);
             tweenInObjects[1].GetComponent<RectTransform>().DOMove(locations[0].position, 1);
         });
-        tutorialBG.DOFade(0, 1).OnComplete(() => { tutorialBG.gameObject.SetActive(false); truebgFade.SetActive(true); EventSystem.current.SetSelectedGameObject(killbutton); });
+        tutorialBG.DOFade(0, 1).OnComplete(() => { 
+            tutorialBG.gameObject.SetActive(false); 
+            truebgFade.SetActive(true); 
+            EventSystem.current.SetSelectedGameObject(killbutton); 
+        });
     }
 
     ///NOTE!!!! THIS IS DONE!!!! You just need to call the function and pass in the boss's name, you MUST pass in the boss name as either "Kisa", "Nicol", or "Sophie"!!! please lol
@@ -141,8 +145,8 @@ public class killFriendManager : MonoBehaviour
                 elementIcon[0].sprite = elementsSprites[0];
                 elementIcon[1].sprite = elementsSprites[0];
                 killText[0].text = "Alan gains a bonus:\r\n" +
-                    "Magic Attack: <color=#3B7D4F>+"+ (LevelManager.level) +"</color>\r\n" +
-                    "Max Health: <color=#3B7D4F>+"+ (2*(LevelManager.level-1)) +"</color>\r\n" +
+                    "Magic Attack: <color=#3B7D4F>+"+ ((LevelManager.level-1)) +"</color>\r\n" +
+                    "Max Health: <color=#3B7D4F>+"+ (4*(LevelManager.level-1)) +"</color>\r\n" +
                     "Alan gains bonuses to these stats for all future level-ups.";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nWind";
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Kisa</color>";
@@ -175,9 +179,9 @@ public class killFriendManager : MonoBehaviour
                 elementIcon[0].sprite = elementsSprites[1];
                 elementIcon[1].sprite = elementsSprites[1];
                 killText[0].text = "Alan gains a bonus:\r\n" +
-                    "Strength: <color=#3B7D4F>+" + (LevelManager.level) + "</color>\r\n" +
+                    "Strength: <color=#3B7D4F>+" + (LevelManager.level - 1) + "</color>\r\n" +
                     "Magic Attack: <color=#3B7D4F>+" + ((LevelManager.level - 1)) + "</color>\r\n" +
-                    "Max Mana: <color=#3B7D4F>+" + (LevelManager.level) + "</color>\r\n" +
+                    "Max Mana: <color=#3B7D4F>+" + (2 * (LevelManager.level - 1)) + "</color>\r\n" +
                     "Alan gains bonuses to these stats for all future level-ups.";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nIce";
                 befriendText[0].text = "New ally!\r\n<color=#3B7D4F>Nicol</color>";
@@ -212,7 +216,7 @@ public class killFriendManager : MonoBehaviour
                 elementIcon[0].sprite = elementsSprites[2];
                 elementIcon[1].sprite = elementsSprites[2];
                 killText[0].text = "Alan gains a bonus:\r\n" +
-                    "Strength: <color=#3B7D4F>+" + (2 * (LevelManager.level - 1)) + "</color>\r\n" +
+                    "Strength: <color=#3B7D4F>+" + (3 * (LevelManager.level - 1)) + "</color>\r\n" +
                     "Magic Attack: <color=#3B7D4F>+" + (LevelManager.level) + "</color>\r\n" +
                     "Alan gains bonuses to these stats for all future level-ups.";
                 killText[1].text = "New Magic Element!\r\n\r\n\r\n\r\nElectric";
@@ -249,6 +253,7 @@ public class killFriendManager : MonoBehaviour
     public void exitKillFriendMenu(float killSpeed = 0.25f)
     {
         //a choice has been made
+        EventSystem.current.SetSelectedGameObject(null);
         if (killingMaybe)
         {
             //For audio

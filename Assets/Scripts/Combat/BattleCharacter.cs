@@ -547,13 +547,13 @@ public class BattleCharacter : MonoBehaviour
 
         //critOrMiss = 4;
 
-        if (critOrMiss <= 5) //Miss
+        if (critOrMiss <= 3) //Miss
         {
             Transform damagePopupTransform = Instantiate(damagePopup, targetCharacter.transform.position, Quaternion.identity);
             DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
             damPopScript.SetupString("MISS");
         }
-        else if (critOrMiss >= 6)
+        else if (critOrMiss > 3)
         {
 
             if (targetCharacter.statSheet.weakness == attacker.statSheet.magicElement)

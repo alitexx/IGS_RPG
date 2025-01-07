@@ -95,13 +95,13 @@ public class specialPauseMenu : MonoBehaviour
                 // If the character is '1', disable the corresponding special charge
                 if (deadCharacterString[i] == '1')
                 {
-                    Debug.Log("Disabling Special Charge at index " + i);
+                    //Debug.Log("Disabling Special Charge at index " + i);
                     SpecialCharges3Individual[i].SetActive(false); // Note that the index is directly used here
                 }
             }
-            if (deadCharacters == 111)
+            if (deadCharacters == 111) // If everyone is dead, turn one of them back on.
             {
-                SpecialCharges3Individual[0].SetActive(false);
+                SpecialCharges3Individual[0].SetActive(true);
             }
         }
     }

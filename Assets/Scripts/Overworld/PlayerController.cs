@@ -313,6 +313,10 @@ public class PlayerController : MonoBehaviour
             if (hasKisa)
             {
                 mainDialogueManager.dialogueSTART("secondFloor_k");
+                levelManager.enemyDifficultyScale = 1.15f;
+            } else
+            {
+                levelManager.enemyDifficultyScale = 1.05f;
             }
             //Do anything else if needed
             Destroy(collision.gameObject);
@@ -323,9 +327,12 @@ public class PlayerController : MonoBehaviour
             Level = 3;
             if (hasKisa && hasNicol)
             {
+                levelManager.enemyDifficultyScale = 1.5f;
                 mainDialogueManager.dialogueSTART("thirdFloor_kn");
+            } else
+            {
+                levelManager.enemyDifficultyScale = 1.5f;
             }
-            levelManager.enemyDifficultyScale = 1.5f;
             //Do anything else if needed
             Destroy(collision.gameObject);
         }
@@ -336,6 +343,9 @@ public class PlayerController : MonoBehaviour
             if (hasKisa && hasNicol && hasSophie)
             {
                 mainDialogueManager.dialogueSTART("fourthFloor_kns");
+            } else
+            {
+                levelManager.enemyDifficultyScale = 1.5f;
             }
             levelManager.enemyDifficultyScale = 2f;
             //Do anything else if needed
@@ -607,7 +617,13 @@ public class PlayerController : MonoBehaviour
                     cutscenes[6].SetActive(false);
                     cutscenes[10].SetActive(false);
                 }
-                levelManager.enemyDifficultyScale = 1.25f;
+                if (KisaAbsorbed == 1)
+                {
+                    levelManager.enemyDifficultyScale = 1.15f;
+                } else
+                {
+                    levelManager.enemyDifficultyScale = 1.25f;
+                }
                 break;
             case 3:
                 cutscenes[2].SetActive(false);
@@ -616,11 +632,25 @@ public class PlayerController : MonoBehaviour
                     cutscenes[7].SetActive(false);
                     cutscenes[11].SetActive(false);
                 }
-                levelManager.enemyDifficultyScale = 1.5f;
+                if (KisaAbsorbed == 1 && NicolAbsorbed == 1)
+                {
+                    levelManager.enemyDifficultyScale = 1.35f;
+                }
+                else
+                {
+                    levelManager.enemyDifficultyScale = 1.5f;
+                }
                 break;
             case 4:
                 cutscenes[3].SetActive(false);
-                levelManager.enemyDifficultyScale = 1.5f;
+                if (KisaAbsorbed + NicolAbsorbed + SophieAbsorbed >= 2)
+                {
+                    levelManager.enemyDifficultyScale = 1f;
+                }
+                else
+                {
+                    levelManager.enemyDifficultyScale = 1.15f;
+                }
                 break;
             default:
                 break;

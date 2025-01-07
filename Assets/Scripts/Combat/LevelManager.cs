@@ -328,8 +328,8 @@ public class LevelManager : MonoBehaviour
             if (kisaAbsorb)
             {
                 tankStoredStats[1] += (1 * (level - 1));
-                tankStoredStats[4] += (2 * (level - 1));
-                tankStoredStats[5] += (2 * (level - 1));
+                tankStoredStats[4] += (4 * (level - 1));
+                tankStoredStats[5] += (4 * (level - 1));
                 //tankStoredStats[6] += (1 * (level - 1));
                 //tankStoredStats[7] += (1 * (level - 1));
             }
@@ -339,13 +339,13 @@ public class LevelManager : MonoBehaviour
                 tankStoredStats[0] += (1 * (level - 1));
                 tankStoredStats[1] += (1 * (level - 1));
                 //tankStoredStats[3] += (1 * (level - 1));
-                tankStoredStats[6] += (1 * (level - 1));
-                tankStoredStats[7] += (1 * (level - 1));
+                tankStoredStats[6] += (2 * (level - 1));
+                tankStoredStats[7] += (2 * (level - 1));
             }
 
             if (sophieAbsorb)
             {
-                tankStoredStats[0] += (2 * (level - 1));
+                tankStoredStats[0] += (3 * (level - 1));
                 tankStoredStats[1] += (1 * (level - 1));
                 //tankStoredStats[3] += (1 * (level - 1));
             }
@@ -439,8 +439,8 @@ public class LevelManager : MonoBehaviour
 
                 if (kisaAbsorb)
                 {
-                    battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 2;
-                    battleController.partyMembers[i].statSheet.stats["Health"] += 2;
+                    battleController.partyMembers[i].statSheet.stats["MaxHealth"] += 4;
+                    battleController.partyMembers[i].statSheet.stats["Health"] += 4;
                     battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
                     //battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
                     //battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
@@ -450,12 +450,12 @@ public class LevelManager : MonoBehaviour
                     battleController.partyMembers[i].statSheet.stats["Strength"] += 1;
                     battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
                     //battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
-                    battleController.partyMembers[i].statSheet.stats["MaxMana"] += 1;
-                    battleController.partyMembers[i].statSheet.stats["Mana"] += 1;
+                    battleController.partyMembers[i].statSheet.stats["MaxMana"] += 2;
+                    battleController.partyMembers[i].statSheet.stats["Mana"] += 2;
                 }
                 if (sophieAbsorb)
                 {
-                    battleController.partyMembers[i].statSheet.stats["Strength"] += 2;
+                    battleController.partyMembers[i].statSheet.stats["Strength"] += 3;
                     battleController.partyMembers[i].statSheet.stats["Magic Attack"] += 1;
                     //battleController.partyMembers[i].statSheet.stats["Speed"] += 1;
                 }
