@@ -2116,6 +2116,8 @@ public class BattleController : MonoBehaviour
             confuseParticle = Instantiate(enemyList[enemyNum].particleManager, position, Quaternion.identity, enemyList[enemyNum].transform);
             confuseParticle.animator.SetBool("ConfuseFX", true);
 
+            //Remove special points since it has been used
+            updateSP.removeSpecial("bard guy", 2);
 
             StartCoroutine(WaitBeforeChoosingNext(1.8f));
         }

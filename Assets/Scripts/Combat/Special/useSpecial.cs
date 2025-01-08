@@ -75,7 +75,7 @@ public class useSpecial : MonoBehaviour
                 break;
             case 1: //KISA
                 kisaSpecial(whichLevel);
-                updateSP.removeSpecial("bard guy", whichLevel-1);
+                //Kisa is the only one with a special that requires targetting, had to move the removeSpecial elsewhere
                 break;
             case 2: //NICOL
                 nicolSpecial(whichLevel);
@@ -139,6 +139,7 @@ public class useSpecial : MonoBehaviour
                 StartCoroutine(battControl.WaitBeforeChoosingNext(1.5f));
 
                 battControl.backButton.SetActive(false);
+                updateSP.removeSpecial("bard guy", whichLevel - 1);
                 break;
             case 2:
                 //use Kisa's second special, Distract
@@ -152,6 +153,7 @@ public class useSpecial : MonoBehaviour
                 StartCoroutine(battControl.WaitBeforeChoosingNext(1.5f));
 
                 battControl.backButton.SetActive(false);
+                updateSP.removeSpecial("bard guy", whichLevel - 1);
                 break;
         }
         b_sm.gameObject.SetActive(false);
