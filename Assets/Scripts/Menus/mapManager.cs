@@ -71,7 +71,7 @@ public class mapManager : MonoBehaviour
     public void newLevelMapUpdate(int whatLevel)
     {
         floorNumber = whatLevel;
-        Debug.Log(floorNumber);
+        //Debug.Log(floorNumber);
         switch (floorNumber)
         {
             case 1:
@@ -96,7 +96,7 @@ public class mapManager : MonoBehaviour
 
     public void setMap()
     {
-        Debug.Log("Floor we're on:" + floorNumber);
+        //Debug.Log("Floor we're on:" + floorNumber);
         //Check what floor we're on
         switch (floorNumber)
         {
@@ -123,7 +123,7 @@ public class mapManager : MonoBehaviour
 
     public void setUpMapOnReload(int discovered, GameObject[] arrayToCheck)
     {
-        Debug.Log("Input Number: " + discovered);
+        //Debug.Log("Input Number: " + discovered);
 
         // Convert the integer into a binary string representation.
         string binaryString = Convert.ToString(discovered, 2);
@@ -131,7 +131,7 @@ public class mapManager : MonoBehaviour
         // Reverse the string if needed to match your game object's array (optional).
         char[] binaryArray = binaryString.PadLeft(arrayToCheck.Length, '0').ToCharArray();
 
-        Debug.Log("Has now been converted to a binary array: " + binaryString);
+        //Debug.Log("Has now been converted to a binary array: " + binaryString);
 
         // Loop through each character in the binary array.
         for (int i = 0; i < binaryArray.Length; i++)

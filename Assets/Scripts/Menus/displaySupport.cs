@@ -119,7 +119,7 @@ public class displaySupport : MonoBehaviour
 
     private int getSupportType(int character)
     {
-        if (deadCharacters == 0)
+        if (deadCharacters == 0) // Only runs if no one is dead
         {
             // Check the first two bits of deadCharacters to see which events they have watched.
             int firstBit = (deadCharacters & 0b001); // Extract the first bit.
@@ -134,6 +134,9 @@ public class displaySupport : MonoBehaviour
                 return 1; // If only the first bit is set, return 1 (means they've seen the first event).
             }
             return 0; // No events watched.
+        } else if (deadCharacters == 111) //This is if everyone's dead, put in as a failsafe for a nicol issue I was having
+        {
+            return heartSprites.Length - 1; // Return the broken heart sprite.
         }
 
         // Convert the integer into a binary string representation.
@@ -144,11 +147,13 @@ public class displaySupport : MonoBehaviour
         {
             if (binaryString[i] == '1' && character == i) // If the character is dead
             {
+                Debug.Log(binaryString[i] + " is dead.");
                 return heartSprites.Length - 1; // Return the broken heart sprite.
             }
         }
 
         // If neither condition is true, they are affected.
+        Debug.Log("The character is not dead. They are affected.");
         return heartSprites.Length - 9; // Return default affected state.
     }
 
@@ -160,7 +165,7 @@ public class displaySupport : MonoBehaviour
 
         int supportType = getSupportType(charName);
 
-        Debug.Log(binarySupport);
+        //Debug.Log(binarySupport);
         
         if(binarySupport == 0101110) //If they have only seen the second event and they're on supportType14, this is an affected character. send them back to 7, don't let them view another event.
         {
@@ -257,23 +262,23 @@ public class displaySupport : MonoBehaviour
         }
     }
 
-    private void showCharSupport(int position, int charName, int binarySupport)
-    {
-        charIcons[position].sprite = charSprites[charName + 4 * CheckUnobtainedCharacter(charName)];
+    //private void showCharSupport(int position, int charName, int binarySupport)
+    //{
+    //    charIcons[position].sprite = charSprites[charName + 4 * CheckUnobtainedCharacter(charName)];
 
-        int supportType = getSupportType(charName);
-        heartIcons[position].sprite = heartSprites[Convert.ToInt32(binarySupport) + supportType];
+    //    int supportType = getSupportType(charName);
+    //    heartIcons[position].sprite = heartSprites[Convert.ToInt32(binarySupport) + supportType];
 
-        //Check if there's a cutscene they should be able to watch
-        if (checkIfSupportUnlocked(binarySupport))
-        {
-            supportBtn[position].gameObject.SetActive(true);
+    //    //Check if there's a cutscene they should be able to watch
+    //    if (checkIfSupportUnlocked(binarySupport))
+    //    {
+    //        supportBtn[position].gameObject.SetActive(true);
 
-            //button fun time
-            Debug.Log("i should be updating the button but i am not");
-            updateButton(supportBtn[position], partyMemberButtons[charName]);
-        }
-    }
+    //        //button fun time
+    //        Debug.Log("i should be updating the button but i am not");
+    //        updateButton(supportBtn[position], partyMemberButtons[charName]);
+    //    }
+    //}
 
 
     private void updateButton(Button buttonUpdated, Button left)

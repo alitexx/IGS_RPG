@@ -1233,6 +1233,8 @@ public class BattleController : MonoBehaviour
         });
 
         coroutineRunning = false;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(magicButtonOBJ);
     }
 
     private bool isTaunting = false;

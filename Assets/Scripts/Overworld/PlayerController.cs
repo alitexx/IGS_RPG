@@ -503,7 +503,7 @@ public class PlayerController : MonoBehaviour
 
     public void loadGame() 
     {
-        Debug.Log("loading...");
+        //Debug.Log("loading...");
         //LevelManager.level = PlayerPrefs.GetInt("PartyLevel");
         levelManager.currentEXP = PlayerPrefs.GetInt("CurrentEXP");
         playerPosition[0] = PlayerPrefs.GetFloat("PlayerPositionX");
@@ -511,7 +511,7 @@ public class PlayerController : MonoBehaviour
         transform.position = new Vector2(playerPosition[0], playerPosition[1]);
         KisainParty = PlayerPrefs.GetInt("hasKisa");
 
-        Debug.Log("HasKisa: " + KisainParty);
+        //Debug.Log("HasKisa: " + KisainParty);
 
         if (KisainParty == 1)
         {
@@ -572,10 +572,10 @@ public class PlayerController : MonoBehaviour
             slime.gameObject.SetActive(false);
         }
         BattleTutorialCleared = PlayerPrefs.GetInt("BattleTutorialCleared");
-        Debug.Log("Loaded save?");
+        Debug.Log("Loaded save!");
 
 
-        Debug.Log(Level);
+        //Debug.Log(Level);
         if (SophieAbsorbed == 1 && NicolAbsorbed == 1 && KisaAbsorbed == 1)// if they've killed everyone
         {
             mainDialogueManager.dialogueSTART("load_genocide"); // play dialogue when player loads in
