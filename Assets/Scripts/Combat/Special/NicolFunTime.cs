@@ -70,12 +70,12 @@ public class NicolFunTime : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
 
         // YOU'RE TELLING ME I COULD HAVE BEEN DOING IT LIKE THIS THE **WHOLE TIME**?!?!??!?!?!??!?!? BRO
-        sequence.Append(sidea.DOMove(locations[1].position, 1.5f))
+        sequence.Append(sidea.DOMove(locations[1].position, 0.5f))
                 .AppendInterval(1f) // Wait 1 second
-                .Append(sideb.DOMove(locations[4].position, 1.5f))
+                .Append(sideb.DOMove(locations[4].position, 0.5f))
                 .AppendInterval(1f) // Wait 1 second
-                .Append(sidea.DOMove(locations[2].position, 1.5f))
-                .Join(sideb.DOMove(locations[5].position, 1.5f)) // Move both simultaneously
+                .Append(sidea.DOMove(locations[2].position, 0.5f))
+                .Join(sideb.DOMove(locations[5].position, 0.5f)) // Move both simultaneously
                 .OnComplete(() => {
                     //reset positions and turn off game objects
                     sidea.gameObject.SetActive(false);
