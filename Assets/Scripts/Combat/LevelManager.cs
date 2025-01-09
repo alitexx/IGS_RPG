@@ -757,7 +757,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // Adjust Strength with increased scaling
-        lSlimeStats[0] += (int)(2 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
+        lSlimeStats[0] += (int)(1.75 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
 
         // Adjust Health and MaxHealth with increased scaling
         lSlimeStats[4] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
@@ -779,7 +779,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // Adjust Strength + Def with slightly higher scaling
-        lSkeletonStats[0] += (int)(2 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
+        lSkeletonStats[0] += (int)(2.25 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
         lSkeletonStats[2] += (int)(1.25 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
 
         return lSkeletonStats;

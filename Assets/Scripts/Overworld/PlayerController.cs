@@ -331,7 +331,7 @@ public class PlayerController : MonoBehaviour
                 mainDialogueManager.dialogueSTART("thirdFloor_kn");
             } else
             {
-                levelManager.enemyDifficultyScale = 1.5f;
+                levelManager.enemyDifficultyScale = 1.3f;
             }
             //Do anything else if needed
             Destroy(collision.gameObject);
