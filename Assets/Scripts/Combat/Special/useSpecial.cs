@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class useSpecial : MonoBehaviour
 {
+    //For Sophie Earthquake
+    public ScreenShake screenShake; // Reference to the ScreenShake script
+
     //Get who we are viewing
     public int WhoAreWeViewing;
     public battle_specialMenu b_sm;
@@ -214,7 +217,7 @@ public class useSpecial : MonoBehaviour
                 //Can we make the screen shake here? I don't have an animation for this, thinking more rock tomb in pokemon for the effects
 
                 StartCoroutine(battControl.SophieQuake());
-
+                StartCoroutine(screenShake.Shake(1.5f, 0.35f));
                 break;
             case 2:
                 //use Sophie's second special, Focus
