@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using System.Linq;
+using UnityEditor;
 
 public class BattleController : MonoBehaviour
 {
@@ -1918,6 +1919,12 @@ public class BattleController : MonoBehaviour
 
                 am.playSFX(12);
             }
+
+            if (activeChar.focusedTurnsLeft > 0)
+            {
+                //Debug.Log("Is focused rn");
+                activeChar.focusedTurnsLeft--;
+            }
         }
 
         for (int i = 0; i < playerList.Count; i++)
@@ -1994,10 +2001,14 @@ public class BattleController : MonoBehaviour
 
             Vector3 position = tenacityPosition.transform.position;
 
+            activeChar.SetGPosition(enemyList[i].GetPosition());
+            activeChar.SetGTarget(enemyList[i]);
+
             tenacityParticle = Instantiate(enemyList[i].particleManager, position, Quaternion.identity, enemyList[i].transform);
             tenacityParticle.animator.SetBool("TenacityFX", true);
 
             enemyList[i].GotDamaged(activeChar.statSheet.stats["Strength"], 0);//enemyList[i].statSheet.stats["Defense"]);
+            activeChar.slashHit();
         }
     }
 
@@ -2183,6 +2194,71 @@ public class BattleController : MonoBehaviour
 
             playerList[i].OvertimeHealTurnsLeft = 3;
         }
+    }
+
+    #endregion
+
+    #region Sophie
+
+    public IEnumerator SophieQuake()
+    {
+        activeChar.animator.SetBool("Attacking", true);
+
+        int damageToDeal = 0;
+
+        //Debug.Log("Strength: " + activeChar.statSheet.stats["Strength"]);
+
+        damageToDeal = activeChar.statSheet.stats["Strength"] / enemyList.Count();
+
+        //Debug.Log("Damage: " +  damageToDeal);
+
+        yield return new WaitForSeconds(1);
+
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            activeChar.SetGPosition(enemyList[i].GetPosition());
+            activeChar.SetGTarget(enemyList[i]);
+
+            enemyList[i].GotDamaged(damageToDeal, enemyList[i].statSheet.stats["Defense"]);
+            activeChar.punchHit();
+        }
+
+        ChooseNextActiveChar();
+    }
+
+    public void SophieFocus()
+    {
+        Vector3 position = activeChar.GetPosition();
+
+        ParticleManager focusParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
+
+        focusParticle.animator.SetBool("FocusFX", true);
+
+        activeChar.focusedTurnsLeft = 4;
+    }
+
+    public IEnumerator SophieStorm()
+    {
+        activeChar.animator.SetBool("MagAttacking", true);
+
+        yield return new WaitForSeconds(1.5f);
+
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            Vector3 position = enemyList[i].GetPosition();
+
+            ParticleManager thunderParticle = Instantiate(enemyList[i].particleManager, position, Quaternion.identity, enemyList[i].transform);
+            thunderParticle.animator.SetBool("ElectricFX", true);
+        }
+
+        yield return new WaitForSeconds(0.7f);
+
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            enemyList[i].GotDamaged(30, 0);
+        }
+
+        ChooseNextActiveChar();
     }
 
     #endregion

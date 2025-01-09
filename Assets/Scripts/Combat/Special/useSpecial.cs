@@ -189,7 +189,7 @@ public class useSpecial : MonoBehaviour
                 break;
             case 3:
                 //use Nicol's third special, Encourage
-                Debug.Log("beans");
+                //Debug.Log("beans");
                 battControl.NicolMotivate();
 
                 battControl.backButton.SetActive(false);
@@ -213,12 +213,19 @@ public class useSpecial : MonoBehaviour
                 //use Sophie's first special, Earthquake
                 //Can we make the screen shake here? I don't have an animation for this, thinking more rock tomb in pokemon for the effects
 
+                StartCoroutine(battControl.SophieQuake());
+
                 break;
             case 2:
                 //use Sophie's second special, Focus
+
+                battControl.SophieFocus();
+
+                StartCoroutine(battControl.WaitBeforeChoosingNext(1.5f));
                 break;
             case 3:
                 //use Sophie's third special, Thunderstorm
+                StartCoroutine(battControl.SophieStorm());
                 break;
         }
 

@@ -72,6 +72,8 @@ public class BattleCharacter : MonoBehaviour
 
     public int OvertimeHealTurnsLeft = 0;
 
+    public int focusedTurnsLeft = 0;
+
     //TempDebuffs
     public bool Confused;
 
@@ -380,33 +382,60 @@ public class BattleCharacter : MonoBehaviour
 
         //critOrMiss = 20;
 
-        if (critOrMiss == 1) //Miss
+        if (focusedTurnsLeft <= 0)
         {
-            Transform damagePopupTransform = Instantiate(damagePopup, targetCharacter.transform.position, Quaternion.identity);
-            DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
-            damPopScript.SetupString("MISS");
-            am.playSFX(35);
+            if (critOrMiss == 1) //Miss
+            {
+                Transform damagePopupTransform = Instantiate(damagePopup, targetCharacter.transform.position, Quaternion.identity);
+                DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
+                damPopScript.SetupString("MISS");
+                am.playSFX(35);
+            }
+            else if (critOrMiss > 1 && critOrMiss < 20) //Regular Hit
+            {
+                targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
+            }
+            else if (critOrMiss == 20) //Critical Hit
+            {
+                int critDamage = attacker.statSheet.stats["Strength"] - targetCharacter.statSheet.stats["Defense"];
+
+                critDamage = critDamage * 2;
+
+                Vector3 critPosition = targetCharacter.transform.position;
+
+                critPosition.y += 0.5f;
+
+                Transform damagePopupTransform = Instantiate(damagePopup, critPosition, Quaternion.identity);
+                DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
+                damPopScript.SetupString("CRITICAL HIT!");
+                am.playSFX(34);
+
+                targetCharacter.GotDamaged(critDamage, 0 /*No defense becausse defense has already been deducted*/);
+            }
         }
-        else if (critOrMiss > 1 && critOrMiss < 20) //Regular Hit
+        else //focusing
         {
-            targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
-        }
-        else if (critOrMiss == 20) //Critical Hit
-        {
-            int critDamage = attacker.statSheet.stats["Strength"] - targetCharacter.statSheet.stats["Defense"];
+            if (critOrMiss < 18)
+            {
+                targetCharacter.GotDamaged(attacker.statSheet.stats["Strength"], targetCharacter.statSheet.stats["Defense"]);
+            }
+            else
+            {
+                int critDamage = attacker.statSheet.stats["Strength"] - targetCharacter.statSheet.stats["Defense"];
 
-            critDamage = critDamage * 2;
+                critDamage = critDamage * 2;
 
-            Vector3 critPosition = targetCharacter.transform.position;
+                Vector3 critPosition = targetCharacter.transform.position;
 
-            critPosition.y += 0.5f;
+                critPosition.y += 0.5f;
 
-            Transform damagePopupTransform = Instantiate(damagePopup, critPosition, Quaternion.identity);
-            DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
-            damPopScript.SetupString("CRITICAL HIT!");
-            am.playSFX(34);
+                Transform damagePopupTransform = Instantiate(damagePopup, critPosition, Quaternion.identity);
+                DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
+                damPopScript.SetupString("CRITICAL HIT!");
+                am.playSFX(34);
 
-            targetCharacter.GotDamaged(critDamage, 0 /*No defense becausse defense has already been deducted*/);
+                targetCharacter.GotDamaged(critDamage, 0 /*No defense becausse defense has already been deducted*/);
+            }
         }
 
         attacker.animator.SetBool("Attacking", false);
@@ -428,6 +457,15 @@ public class BattleCharacter : MonoBehaviour
     }
 
     // FOR ATTACKING ANIMATIONS!!
+    public void SetGPosition(Vector3 inputPos)
+    {
+        gPosition = inputPos;
+    }
+
+    public void SetGTarget(BattleCharacter inputChar)
+    {
+        gTarget = inputChar;
+    }
 
     public void slashHit()
     {
@@ -440,6 +478,7 @@ public class BattleCharacter : MonoBehaviour
 
     public void punchHit()
     {
+
         am.playSFX(3);
         ParticleManager particle = Instantiate(particleManager, gPosition, Quaternion.identity, gTarget.transform);
         particle.animator.SetBool("PunchFX", true);
