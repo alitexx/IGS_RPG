@@ -201,7 +201,7 @@ public class BattleController : MonoBehaviour
         else if (playerController.SophieBoss)
         {
             //Scale down Sophie
-            if (playerController.KisaAbsorbed == 1 && playerController.NicolAbsorbed == 1)
+            if (playerController.KisaAbsorbed == 1) //Makes it easier if u dont have Kisa, either in genocide or because you only have Nicol
             {
                 evilMonkStats = evilMonkStats.Select(x => (int)(x * 0.8f)).ToArray();
             }
