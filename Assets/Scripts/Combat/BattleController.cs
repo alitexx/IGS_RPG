@@ -668,6 +668,8 @@ public class BattleController : MonoBehaviour
 
     [SerializeField] private GameObject tenacityPosition;
 
+    [SerializeField] private updateSPOnScreen specialPointTracker;
+
     //Keys
 
     public KeyCode attackKey = KeyCode.W;
@@ -2181,6 +2183,211 @@ public class BattleController : MonoBehaviour
         }
     }
 
+    //Values that are changeable in the editor
+    //[SerializeField] private int GambleRollTest = 0;
+    //[SerializeField] private int GambleGenreTest = 0;
+
+    public IEnumerator NicolGambling(int lGenre, int lRoll) //I LOVE GAMBLING LETS GO GAMBLING
+    {
+        yield return new WaitForSeconds(3.5f);
+
+        /*Genre Rolls:
+        0 = Fireball
+        1 = Healing
+        2 = MP Restore
+        3 = Rally
+        */
+
+        //Testing
+        //lRoll = GambleRollTest;
+        //lGenre = GambleGenreTest;
+
+        if (lRoll == 0) //Strong Negative
+        {
+           if (lGenre == 0)
+           {
+                for (int i = 0; i < playerList.Count; i++)
+                {
+                    playerList[i].TrueDamage(playerList[i].statSheet.stats["Health"] - 1);
+                }
+           }
+           else if (lGenre == 1)
+           {
+                for (int i = 0; i < enemyList.Count; i++)
+                {
+                    enemyList[i].healthSystem.Heal(enemyList[i].statSheet.stats["MaxHealth"]);
+                }
+           }
+           else if (lGenre == 2)
+           {
+                for (int i = 0; i < playerList.Count; i++)
+                {
+                    playerList[i].statSheet.stats["Mana"] = 0;
+
+                    playerList[i].ChangeManaBar(0);
+                }
+            }
+           else if (lGenre == 3)
+           {
+                for (int i = 0; i < playerList.Count; i++)
+                {
+                    specialPointTracker.resetSpecial();
+                }
+            }
+           else
+           {
+                Debug.Log("Does a kickflip so awesome not even gods could do it");
+           }
+        }
+        else if (lRoll >= 1 && lRoll <= 5)//Weak Negative
+        {
+            if (lGenre == 0)
+            {
+                for (int i = 0; i < playerList.Count; i++)
+                {
+                    playerList[i].TrueDamage(Random.Range(5, 11));
+                }
+            }
+            else if (lGenre == 1)
+            {
+                for (int i = 0; i < enemyList.Count; i++)
+                {
+                    enemyList[i].healthSystem.Heal(enemyList[i].statSheet.stats["MaxHealth"] / 4);
+                }
+            }
+            else if (lGenre == 2)
+            {
+                for (int i = 0; i < playerList.Count; i++)
+                {
+                    playerList[i].statSheet.stats["Mana"] = playerList[i].statSheet.stats["Mana"] - 2;
+
+                    if (playerList[i].statSheet.stats["Mana"] < 0)
+                    {
+                        playerList[i].statSheet.stats["Mana"] = 0;
+                    }
+
+                    playerList[i].ChangeManaBar((float)playerList[i].statSheet.stats["Mana"] / playerList[i].statSheet.stats["MaxMana"]);
+                }
+            }
+            else if (lGenre == 3)
+            {
+                //Still need to add
+            }
+            else
+            {
+                Debug.Log("Does a kickflip so awesome not even gods could do it");
+            }
+        }
+        else if (lRoll >= 6 && lRoll <= 10)//Nothing
+        {
+            /*
+            if (lGenre == 0)
+            {
+
+            }
+            else if (lGenre == 1)
+            {
+
+            }
+            else if (lGenre == 2)
+            {
+
+            }
+            else if (lGenre == 3)
+            {
+
+            }
+            else
+            {
+                Debug.Log("Does a kickflip so awesome not even gods could do it");
+            }
+            */
+        }
+        else if (lRoll >= 11 && lRoll <= 17)//Weak positive
+        {
+            if (lGenre == 0)
+            {
+                for (int i = 0; i < enemyList.Count; i++)
+                {
+                    enemyList[i].TrueDamage(enemyList[i].statSheet.stats["MaxHealth"] / 4 );
+                }
+            }
+            else if (lGenre == 1)
+            {
+                for (int i = 0; i < playerList.Count; i++)
+                {
+                    playerList[i].healthSystem.Heal(enemyList[i].statSheet.stats["MaxHealth"] / 2);
+                }
+            }
+            else if (lGenre == 2)
+            {
+                for (int i = 0; i < playerList.Count; i++)
+                {
+                    playerList[i].statSheet.stats["Mana"] += playerList[i].statSheet.stats["MaxMana"] / 2;
+
+                    if (playerList[i].statSheet.stats["Mana"] > playerList[i].statSheet.stats["MaxMana"])
+                    {
+                        playerList[i].statSheet.stats["Mana"] = playerList[i].statSheet.stats["MaxMana"];
+                    }
+
+                    playerList[i].ChangeManaBar((float)playerList[i].statSheet.stats["Mana"] / playerList[i].statSheet.stats["MaxMana"]);
+                }
+            }
+            else if (lGenre == 3)
+            {
+                //Need katies help with this one
+            }
+            else
+            {
+                Debug.Log("Does a kickflip so awesome not even gods could do it");
+            }
+        }
+        else if (lRoll >= 18 && lRoll <= 19)//Strong Positive
+        {
+            if (lGenre == 0)
+            {
+                for (int i = 0; i < enemyList.Count; i++)
+                {
+                    enemyList[i].TrueDamage(enemyList[i].statSheet.stats["Health"] - 1);
+                }
+            }
+            else if (lGenre == 1)
+            {
+                for (int i = 0; i < playerList.Count; i++)
+                {
+                    playerList[i].healthSystem.Heal(playerList[i].statSheet.stats["MaxHealth"]);
+                }
+            }
+            else if (lGenre == 2)
+            {
+                for (int i = 0; i < playerList.Count; i++)
+                {
+                    playerList[i].statSheet.stats["Mana"] = playerList[i].statSheet.stats["MaxMana"];
+
+                    if (playerList[i].statSheet.stats["Mana"] > playerList[i].statSheet.stats["MaxMana"])
+                    {
+                        playerList[i].statSheet.stats["Mana"] = playerList[i].statSheet.stats["MaxMana"];
+                    }
+
+                    playerList[i].ChangeManaBar((float)playerList[i].statSheet.stats["Mana"] / playerList[i].statSheet.stats["MaxMana"]);
+                }
+            }
+            else if (lGenre == 3)
+            {
+                //Need katie's help
+            }
+            else
+            {
+                Debug.Log("Does a kickflip so awesome not even gods could do it");
+            }
+        }
+        else // Shouldn't be possible to get here
+        {
+            Debug.Log("...and does a cool kickflip instead.");
+        }
+        ChooseNextActiveChar();
+    }
+
     public void NicolMotivate()
     {
         for (int i = 0; i < playerList.Count; i++)
@@ -2208,7 +2415,22 @@ public class BattleController : MonoBehaviour
 
         //Debug.Log("Strength: " + activeChar.statSheet.stats["Strength"]);
 
-        damageToDeal = activeChar.statSheet.stats["Strength"] / enemyList.Count();
+        if (enemyList.Count == 1)
+        {
+            damageToDeal = activeChar.statSheet.stats["Strength"];
+        }
+        else if (enemyList.Count == 2)
+        {
+            damageToDeal = activeChar.statSheet.stats["Strength"] - (activeChar.statSheet.stats["Strength"] / 4);
+        }
+        else if (enemyList.Count == 3)
+        {
+            damageToDeal = activeChar.statSheet.stats["Strength"] - (activeChar.statSheet.stats["Strength"] / 3);
+        }
+        else if (enemyList.Count == 4)
+        {
+            damageToDeal = activeChar.statSheet.stats["Strength"] / 2;
+        }
 
         //Debug.Log("Damage: " +  damageToDeal);
 

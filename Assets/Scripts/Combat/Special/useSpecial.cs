@@ -189,6 +189,10 @@ public class useSpecial : MonoBehaviour
                 //Currently does not process any of the actual effects, just tells players what they are.
                 nicolFunTime.manageTextBubbles(genre, roll);
 
+                battControl.backButton.SetActive(false);
+
+                StartCoroutine(battControl.NicolGambling(genre, roll));
+
                 break;
             case 3:
                 //use Nicol's third special, Encourage

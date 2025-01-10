@@ -543,6 +543,11 @@ public class BattleCharacter : MonoBehaviour
         StartCoroutine(WaitUntilMagAttackOver(targetCharacter, attacker, onAttackComplete));
     }
 
+    public void ChangeManaBar(float fillPercent)
+    {
+        manaBar.SetSize(fillPercent);
+    }
+
     private IEnumerator WaitUntilMagAttackOver(BattleCharacter targetCharacter, BattleCharacter attacker, Action onAttackComplete)
     {
         while (attacker.state == State.Attacking)
@@ -734,10 +739,20 @@ public class BattleCharacter : MonoBehaviour
             damageMinusDefense -= damageMinusDefense / 4;
         }
 
+        TrueDamage(damageMinusDefense);
 
-        
+        StartCoroutine(WaitUntilHurtOver(damageMinusDefense));
 
-        healthSystem.Damage(damageMinusDefense);
+        //Debug.Log("Final Damage: " + damageMinusDefense);
+    }
+
+    public void TrueDamage(int damage) //Damage function
+    {
+        Transform damagePopupTransform = Instantiate(damagePopup, transform.position, Quaternion.identity);
+        DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
+        damPopScript.SetupInt(damage);
+
+        healthSystem.Damage(damage);
 
         statSheet.stats["Health"] = healthSystem.GetHealth();
 
@@ -745,10 +760,6 @@ public class BattleCharacter : MonoBehaviour
         {
             ChangeHealthText();
         }
-
-        StartCoroutine(WaitUntilHurtOver(damageMinusDefense));
-
-        //Debug.Log("Final Damage: " + damageMinusDefense);
     }
 
     private IEnumerator WaitUntilHurtOver(int damageMinusDefense)
