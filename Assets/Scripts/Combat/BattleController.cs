@@ -873,9 +873,24 @@ public class BattleController : MonoBehaviour
     {
         state = State.Busy;
 
-        backButton.SetActive(true);
 
-        StartCoroutine(BlockConfirm());
+        //Temporarily removed to make block happen once the player presses the key. Uncomment to return to how it normally is
+        //backButton.SetActive(true);
+
+        //StartCoroutine(BlockConfirm());
+
+        //New code (I just copied from the BlockConfirm()
+
+        activeChar.isBlocking = true;
+        activeChar.healthSystem.Heal(5);
+        activeChar.ChangeHealthText();
+
+        Vector3 position = activeChar.GetPosition();
+        ParticleManager healParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
+        healParticle.animator.SetBool("HealFX", true);
+
+        activeChar.animator.SetBool("Blocking", true);
+        ChooseNextActiveChar();
     }
 
     public void magicButton()
