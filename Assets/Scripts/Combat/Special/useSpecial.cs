@@ -28,7 +28,6 @@ public class useSpecial : MonoBehaviour
     {
 
         WhoAreWeViewing = b_sm.WhoAreWeViewing;
-        //Temporarily commented out to test specials
         
         if(WhoAreWeViewing == 0 && whichLevel == 3) // If they're trying to use Tenacity, re-calculate whichLevel
         {
@@ -57,16 +56,12 @@ public class useSpecial : MonoBehaviour
             return;
         }
         
-
-
-
-
-
-        /*if (updateSP.canUseSpecial(WhoAreWeViewing, whichLevel) == false)
+        //Can we use this special? Do we have enough points?
+        if (updateSP.canUseSpecial(WhoAreWeViewing, whichLevel) == false)
         {
             Debug.Log("WOMP WOMP YOU DON'T HAVE ENOUGH SPECIAL POINTS");
             return;
-        }*/
+        }
 
         WhoAreWeViewing = b_sm.WhoAreWeViewing;
         Debug.Log(whichLevel);

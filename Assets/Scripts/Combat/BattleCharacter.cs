@@ -79,6 +79,7 @@ public class BattleCharacter : MonoBehaviour
 
     // for when the player uses hp as mana
     [SerializeField] private CanvasGroup redBG;
+    private bool isTutorial;
 
     private enum State
     {
@@ -105,6 +106,7 @@ public class BattleCharacter : MonoBehaviour
 
         HideSelectionCircle();
         HideTargetCircle();
+        isTutorial = GameObject.FindGameObjectWithTag("Tutorial").activeInHierarchy;
     }
 
     private void Start()
@@ -378,10 +380,17 @@ public class BattleCharacter : MonoBehaviour
         //    //particle.animator.SetBool("PunchFX", true);
         //}
 
+        
+
         critOrMiss = Random.Range(1, 21);
 
-        //critOrMiss = 20;
+        //If this is the tutorial, overwrite whatever the critOrMiss is
+        if (isTutorial)
+        {
+            critOrMiss = 10;
+        }
 
+        //critOrMiss = 20;
         if (focusedTurnsLeft <= 0)
         {
             if (critOrMiss == 1) //Miss

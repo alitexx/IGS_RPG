@@ -20,6 +20,7 @@ TagManager:
   - CharVoice
   - Audio
   - RedBG
+  - Tutorial
   layers:
   - Default
   - TransparentFX
