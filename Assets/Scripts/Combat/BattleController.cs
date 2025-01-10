@@ -2184,8 +2184,8 @@ public class BattleController : MonoBehaviour
     }
 
     //Values that are changeable in the editor
-    //[SerializeField] private int GambleRollTest = 0;
-    //[SerializeField] private int GambleGenreTest = 0;
+    [SerializeField] private int GambleRollTest = 0;
+    [SerializeField] private int GambleGenreTest = 0;
 
     public IEnumerator NicolGambling(int lGenre, int lRoll) //I LOVE GAMBLING LETS GO GAMBLING
     {
@@ -2199,8 +2199,8 @@ public class BattleController : MonoBehaviour
         */
 
         //Testing
-        //lRoll = GambleRollTest;
-        //lGenre = GambleGenreTest;
+        lRoll = GambleRollTest;
+        lGenre = GambleGenreTest;
 
         if (lRoll == 0) //Strong Negative
         {
@@ -2271,7 +2271,25 @@ public class BattleController : MonoBehaviour
             }
             else if (lGenre == 3)
             {
-                //Still need to add
+                for (int i = 0; i < playerList.Count; i++)
+                {
+                    if (playerList[i].statSheet.name == "Tank Guy")
+                    {
+                        specialPointTracker.removeSpecial("Tank Guy", 0);
+                    }
+                    else if (playerList[i].statSheet.name == "Mage Guy")
+                    {
+                        specialPointTracker.removeSpecial("Mage Guy", 0);
+                    }
+                    else if (playerList[i].statSheet.name == "Bard Guy")
+                    {
+                        specialPointTracker.removeSpecial("Bard Guy", 0);
+                    }
+                    else if (playerList[i].statSheet.name == "Monk Guy")
+                    {
+                        specialPointTracker.removeSpecial("Monk Guy", 0);
+                    }
+                }
             }
             else
             {
@@ -2335,7 +2353,25 @@ public class BattleController : MonoBehaviour
             }
             else if (lGenre == 3)
             {
-                //Need katies help with this one
+                for (int i = 0; i < playerList.Count; i++)
+                {
+                    if (playerList[i].statSheet.name == "Tank Guy")
+                    {
+                        specialPointTracker.addSpecial("Tank Guy", 1);
+                    }
+                    else if (playerList[i].statSheet.name == "Mage Guy")
+                    {
+                        specialPointTracker.addSpecial("Mage Guy", 1);
+                    }
+                    else if (playerList[i].statSheet.name == "Bard Guy")
+                    {
+                        specialPointTracker.addSpecial("Bard Guy", 1);
+                    }
+                    else if (playerList[i].statSheet.name == "Monk Guy")
+                    {
+                        specialPointTracker.addSpecial("Monk Guy", 1);
+                    }
+                }
             }
             else
             {
@@ -2374,7 +2410,25 @@ public class BattleController : MonoBehaviour
             }
             else if (lGenre == 3)
             {
-                //Need katie's help
+                for (int i = 0; i < playerList.Count; i++)
+                {
+                    if (playerList[i].statSheet.name == "Tank Guy")
+                    {
+                        specialPointTracker.addSpecial("Tank Guy", 4);
+                    }
+                    else if (playerList[i].statSheet.name == "Mage Guy")
+                    {
+                        specialPointTracker.addSpecial("Mage Guy", 4);
+                    }
+                    else if (playerList[i].statSheet.name == "Bard Guy")
+                    {
+                        specialPointTracker.addSpecial("Bard Guy", 4);
+                    }
+                    else if (playerList[i].statSheet.name == "Monk Guy")
+                    {
+                        specialPointTracker.addSpecial("Monk Guy", 4);
+                    }
+                }
             }
             else
             {
