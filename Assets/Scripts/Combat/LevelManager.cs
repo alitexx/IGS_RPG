@@ -818,7 +818,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // Strength-specific scaling
-        lWraithStats[0] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
+        lWraithStats[0] += (int)(2 * (Math.Pow(playerController.Level, enemyDifficultyScale)));
 
         // Health and MaxHealth scaling
         lWraithStats[4] += (int)(1.5 * (Math.Pow(playerController.Level, enemyDifficultyScale)));

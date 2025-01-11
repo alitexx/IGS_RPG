@@ -303,7 +303,7 @@ public class PlayerController : MonoBehaviour
             hasKisa = false;
             hasNicol = false;
             hasSophie = false;
-            levelManager.enemyDifficultyScale = 1.15f;
+            levelManager.enemyDifficultyScale = 1.25f;
         }
         
         if (collision.gameObject.name == "level2" && Level != 2)
@@ -313,10 +313,10 @@ public class PlayerController : MonoBehaviour
             if (hasKisa)
             {
                 mainDialogueManager.dialogueSTART("secondFloor_k");
-                levelManager.enemyDifficultyScale = 1.15f;
+                levelManager.enemyDifficultyScale = 1.25f;
             } else
             {
-                levelManager.enemyDifficultyScale = 1.05f;
+                levelManager.enemyDifficultyScale = 1.15f;
             }
             //Do anything else if needed
             Destroy(collision.gameObject);
@@ -340,14 +340,28 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.name == "level4" && Level != 4)
         {
             Level = 4;
-            if (hasKisa && hasNicol && hasSophie)
+
+            if (KisaAbsorbed + NicolAbsorbed + SophieAbsorbed >= 2) // If more that two people are dead
             {
-                mainDialogueManager.dialogueSTART("fourthFloor_kns");
-            } else
+                levelManager.enemyDifficultyScale = 1f;
+            }
+            else if (KisaAbsorbed + NicolAbsorbed + SophieAbsorbed >= 1) // If one person is absorbed
+            {
+                levelManager.enemyDifficultyScale = 1.25f;
+            }
+            else //Normal
             {
                 levelManager.enemyDifficultyScale = 1.5f;
             }
-            levelManager.enemyDifficultyScale = 2f;
+
+
+            if (hasKisa && hasNicol && hasSophie)
+            {
+                mainDialogueManager.dialogueSTART("fourthFloor_kns");
+            } else if (!hasKisa && !hasNicol && !hasSophie)
+            {
+                mainDialogueManager.dialogueSTART("fourthFloor_xxx");
+            }
             //Do anything else if needed
             Destroy(collision.gameObject);
         }
@@ -634,7 +648,7 @@ public class PlayerController : MonoBehaviour
                 }
                 if (KisaAbsorbed == 1 && NicolAbsorbed == 1)
                 {
-                    levelManager.enemyDifficultyScale = 1.35f;
+                    levelManager.enemyDifficultyScale = 1.3f;
                 }
                 else
                 {
@@ -643,13 +657,17 @@ public class PlayerController : MonoBehaviour
                 break;
             case 4:
                 cutscenes[3].SetActive(false);
-                if (KisaAbsorbed + NicolAbsorbed + SophieAbsorbed >= 2)
+                if (KisaAbsorbed + NicolAbsorbed + SophieAbsorbed >= 2) // If more that two people are dead
                 {
                     levelManager.enemyDifficultyScale = 1f;
                 }
-                else
+                else if (KisaAbsorbed + NicolAbsorbed + SophieAbsorbed >= 1) // If one person is absorbed
                 {
-                    levelManager.enemyDifficultyScale = 1.15f;
+                    levelManager.enemyDifficultyScale = 1.25f;
+                }
+                else //Normal
+                {
+                    levelManager.enemyDifficultyScale = 1.5f;
                 }
                 break;
             default:
