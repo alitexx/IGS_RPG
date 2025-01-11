@@ -2199,8 +2199,8 @@ public class BattleController : MonoBehaviour
     }
 
     //Values that are changeable in the editor
-    [SerializeField] private int GambleRollTest = 0;
-    [SerializeField] private int GambleGenreTest = 0;
+    //[SerializeField] private int GambleRollTest = 0;
+    //[SerializeField] private int GambleGenreTest = 0;
 
     public IEnumerator NicolGambling(int lGenre, int lRoll) //I LOVE GAMBLING LETS GO GAMBLING
     {
@@ -2214,8 +2214,8 @@ public class BattleController : MonoBehaviour
         */
 
         //Testing
-        lRoll = GambleRollTest;
-        lGenre = GambleGenreTest;
+        //lRoll = GambleRollTest;
+        //lGenre = GambleGenreTest;
 
         if (lRoll == 0) //Strong Negative
         {
@@ -2553,6 +2553,76 @@ public class BattleController : MonoBehaviour
     }
 
     #endregion
+
+    public IEnumerator syncStrikeAllyTargeting()
+    {
+        int playerNum = 0;
+
+        coroutineRunning = true;
+
+        backButton.SetActive(true);
+
+        playerList[playerNum].ShowTargetCircle();
+
+        yield return new WaitForSeconds(timeBetweenSelectAndConfirm);
+
+        while (!(Input.GetKeyDown(audioStatics.keycodeInterractButton) || Input.GetKeyDown(KeyCode.Return)))
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            {
+                //They do not want to select the back button. Unselect it.
+                EventSystem.current.SetSelectedGameObject(null);
+                playerList[playerNum].HideTargetCircle();
+                if (playerNum == playerList.Count - 1)
+                {
+                    playerNum = 0;
+                }
+                else
+                {
+                    playerNum++;
+                }
+                playerList[playerNum].ShowTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            {
+                //They do not want to select the back button. Unselect it.
+                EventSystem.current.SetSelectedGameObject(null);
+                playerList[playerNum].HideTargetCircle();
+                if (playerNum == 0)
+                {
+                    playerNum = (playerList.Count - 1);
+                }
+                else
+                {
+                    playerNum--;
+                }
+                playerList[playerNum].ShowTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            {
+                //They want to select the back button.
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(backButton);
+                playerList[playerNum].HideTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
+                //They want to go back to selecting an enemy. Show Target Circle again.
+                EventSystem.current.SetSelectedGameObject(null);
+                playerList[playerNum].ShowTargetCircle();
+            }
+            yield return null;
+        }
+
+        if (coroutineRunning == true)
+        {
+            backButton.SetActive(false);
+
+            playerList[playerNum].HideTargetCircle();
+
+            StartCoroutine(WaitBeforeChoosingNext(1.8f));
+        }
+    }
 
     #endregion
 

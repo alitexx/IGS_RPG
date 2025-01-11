@@ -249,6 +249,9 @@ public class useSpecial : MonoBehaviour
         // REMEMBER TO RUN THIS FUNCTION TO ADD TO THEIR FRIENDSHIP BONUS/SUPPORT LEVEL/WHATEVER YOU WANT TO CALL IT
 
         //      charSupportData.increaseSupport((whoIsInitiating, otherAlly);
+
+        StartCoroutine(battControl.syncStrikeAllyTargeting());
+
     }
 
     //This is for one function and thats it
