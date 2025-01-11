@@ -33,7 +33,7 @@ MonoBehaviour:
     characterType: 1
     charNameHolder: {fileID: 21300000, guid: 6840b7a0b62cc96409ec187a8fd7cc26, type: 3}
     charVoice: {fileID: 8300000, guid: 512e89c02f969e248834de5abd873d40, type: 3}
-  - name: Lich
+  - name: Morsophus
     alias: lich
     characterType: 0
     charNameHolder: {fileID: 21300000, guid: 79dd6ed14a041cb4cbf9c8b8de68b947, type: 3}
