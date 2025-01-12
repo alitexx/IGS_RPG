@@ -939,18 +939,108 @@ public class BattleController : MonoBehaviour
             //Set the first button to be the fire button if this is alan button
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(alanFireMagicButton);
+
+            //Update nav for back button just in case
+            // Update navigation for the Back button
+
+            Button AlanButton = alanFireMagicButton.GetComponent<Button>();
+            Button backBtn = backButton.GetComponent<Button>();
+
+            Navigation otherNav = backBtn.navigation;
+            otherNav.mode = Navigation.Mode.Explicit; // Set explicit navigation mode
+            otherNav.selectOnDown = AlanButton; // Go to this button when pressing down
+            backBtn.navigation = otherNav;
         }
 
-        else
+        else if (activeChar.statSheet.name == "Mage Guy")
         {
             state = State.Busy;
 
             backButton.SetActive(true);
 
-            StartCoroutine(MagicTargeting());
-        }
-        
+            nicolIceMagicButton.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(nicolIceMagicButton);
 
+            //Update UI Nav
+
+            Button NicolButton = nicolIceMagicButton.GetComponent<Button>();
+            Button backBtn = backButton.GetComponent<Button>();
+
+            // Update navigation for this button
+            Navigation thisNav = NicolButton.navigation;
+            thisNav.mode = Navigation.Mode.Explicit; // Set explicit navigation mode
+            thisNav.selectOnUp = backBtn; // Go to other button when pressing up
+            NicolButton.navigation = thisNav;
+
+            // Update navigation for the Back button
+            Navigation otherNav = backBtn.navigation;
+            otherNav.mode = Navigation.Mode.Explicit; // Set explicit navigation mode
+            otherNav.selectOnDown = NicolButton; // Go to this button when pressing down
+            backBtn.navigation = otherNav;
+        }
+        else if (activeChar.statSheet.name == "Monk Guy")
+        {
+            state = State.Busy;
+
+            backButton.SetActive(true);
+
+            sophieElectricMagicButton.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(sophieElectricMagicButton);
+
+            //Update UI Nav
+
+            Button SophieButton = sophieElectricMagicButton.GetComponent<Button>();
+            Button backBtn = backButton.GetComponent<Button>();
+
+            // Update navigation for this button
+            Navigation thisNav = SophieButton.navigation;
+            thisNav.mode = Navigation.Mode.Explicit; // Set explicit navigation mode
+            thisNav.selectOnUp = backBtn; // Go to other button when pressing up
+            SophieButton.navigation = thisNav;
+
+            // Update navigation for the Back button
+            Navigation otherNav = backBtn.navigation;
+            otherNav.mode = Navigation.Mode.Explicit; // Set explicit navigation mode
+            otherNav.selectOnDown = SophieButton; // Go to this button when pressing down
+            backBtn.navigation = otherNav;
+        }
+        else if (activeChar.statSheet.name == "Bard Guy")
+        {
+            state = State.Busy;
+
+            backButton.SetActive(true);
+
+            kisaWindMagicButton.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(kisaWindMagicButton);
+
+            //Update UI Nav
+
+            Button KisaButton = kisaWindMagicButton.GetComponent<Button>();
+            Button backBtn = backButton.GetComponent<Button>();
+
+            // Update navigation for this button
+            Navigation thisNav = KisaButton.navigation;
+            thisNav.mode = Navigation.Mode.Explicit; // Set explicit navigation mode
+            thisNav.selectOnUp = backBtn; // Go to other button when pressing up
+            KisaButton.navigation = thisNav;
+
+            // Update navigation for the Back button
+            Navigation otherNav = backBtn.navigation;
+            otherNav.mode = Navigation.Mode.Explicit; // Set explicit navigation mode
+            otherNav.selectOnDown = KisaButton; // Go to this button when pressing down
+            backBtn.navigation = otherNav;
+        }
+        //else
+        //{
+        //    state = State.Busy;
+
+        //    backButton.SetActive(true);
+
+        //    //StartCoroutine(MagicTargeting());
+        //}
     }
 
     #region Magic Buttons
@@ -1907,8 +1997,15 @@ public class BattleController : MonoBehaviour
         else
         {
             //Debug.Log("ally " + characterQueue.Peek().statSheet.name);
-            //EDIT THIS!!! COME BACK TO THIS!!!!!!!!!!
-            // NOTE: CHANGE 1 TO WHATEVER THE ALLY'S SPECIAL METER IS (should probably make a variable for this)
+
+            // Check if the EventSystem has a currently selected GameObject.
+            if ((EventSystem.current != null && EventSystem.current.currentSelectedGameObject == null) || EventSystem.current.currentSelectedGameObject == backButton)
+            {
+                // If nothing is selected, set the default button as the attack button
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(attackButtonOBJ);
+            }
+
             updateSP.addSpecial(characterQueue.Peek().statSheet.name, 1);
             if (characterQueue.Peek() == tankChar)
             {
