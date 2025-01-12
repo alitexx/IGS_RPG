@@ -94,7 +94,7 @@ public class BattleController : MonoBehaviour
 
     private void OnEnable()
     {
-        nicolBuffed = false;
+        //nicolBuffed = false;
         amountBuffed = 0;
 
         manaObject.SetActive(false);
@@ -629,7 +629,8 @@ public class BattleController : MonoBehaviour
 
     public GameObject attackButtonOBJ, defendButtonOBJ, specialButtonOBJ, magicButtonOBJ;
 
-    private bool nicolBuffed;
+    //Kept getting a message that this is never used so I removed it. it's easy to find the code I commented, just uncomment it if this is used somewhere - Katie
+    //private bool nicolBuffed;
     private int amountBuffed;
 
     public GameObject tutorialHandler;
@@ -1388,7 +1389,7 @@ public class BattleController : MonoBehaviour
             buffParticle.animator.SetBool("TauntFX", true);
             am.playSFX(8);
 
-            nicolBuffed = true;
+            //nicolBuffed = true;
             amountBuffed = (int)(activeChar.statSheet.stats["Strength"] * 0.35);
 
             activeChar.statSheet.stats["Strength"] += amountBuffed;

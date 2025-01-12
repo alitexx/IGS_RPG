@@ -23,10 +23,10 @@ public class miguelConversation : MonoBehaviour
 
     //Determines if this menu has been opened before
     //Add to save data
-    private bool hasBeenGreeted;
+    public bool hasBeenGreeted;
 
     //saving previous save point
-    float previousSave = -1;
+    public float previousSave = -1;
 
 
     [SerializeField] private audioManager am;

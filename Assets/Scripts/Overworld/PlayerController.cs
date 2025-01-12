@@ -65,6 +65,9 @@ public class PlayerController : MonoBehaviour
     public int floor3RoomsDiscovered;
     public int floor4RoomsDiscovered;
 
+    //For save data
+    [SerializeField] private miguelConversation miguelConversation;
+
     //Camera Movement Detecter
     public CamMovementDetect cameraMovementDetecter;
 
@@ -518,6 +521,9 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("Floor3Explored", floor3RoomsDiscovered);
         PlayerPrefs.SetInt("Floor4Explored", floor4RoomsDiscovered);
 
+        //I have no idea if this works but I'm trying it - Katie
+        PlayerPrefs.SetFloat("PreviousSave", miguelConversation.previousSave);
+
     }
 
     public void DeleteSave() 
@@ -707,6 +713,10 @@ public class PlayerController : MonoBehaviour
         MapManager.setRoomsDiscovered(3, PlayerPrefs.GetInt("Floor3Explored"));
         MapManager.setRoomsDiscovered(4, PlayerPrefs.GetInt("Floor4Explored"));
         MapManager.setMap();
+
+        //I have no idea if this works but I'm trying it - Katie
+        miguelConversation.hasBeenGreeted = true; // Obviously they've been greeted, as they've saved their game before.
+        miguelConversation.previousSave = PlayerPrefs.GetFloat("PreviousSave");
     }
 
     public int getDeadCharacters()
