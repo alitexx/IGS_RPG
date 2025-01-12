@@ -461,12 +461,12 @@ public class BattleController : MonoBehaviour
     //Katie note: I jacked the lich up like crazy! Have fun!
 
     static public int[] lichStats = {
-        /*Strength*/ 55,
+        /*Strength*/ 50,
         /*Magic Attack*/ 20,
         /*Defense*/ 10, 
         /*Speed*/ 4, 
-        /*Health*/ 500, 
-        /*MaxHealth*/ 500,
+        /*Health*/ 650, 
+        /*MaxHealth*/ 650,
         /*Mana*/ 30,
         /*MaxMana*/ 30};
 
@@ -1149,6 +1149,8 @@ public class BattleController : MonoBehaviour
         backButton.SetActive(false);
 
         coroutineRunning = false;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(attackButtonOBJ);
     }
 
     private IEnumerator BlockConfirm()
@@ -2145,7 +2147,7 @@ public class BattleController : MonoBehaviour
             confuseParticle.animator.SetBool("ConfuseFX", true);
 
             //Remove special points since it has been used
-            updateSP.removeSpecial("bard guy", 2);
+            updateSP.removeSpecial("bard guy", 1);
 
             StartCoroutine(WaitBeforeChoosingNext(1.8f));
         }

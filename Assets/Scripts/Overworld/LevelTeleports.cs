@@ -70,6 +70,8 @@ public class LevelTeleports : MonoBehaviour
         audioManager.playSFX(23);
         PlayerController.isfrozen = false;
         PauseMenu.canOpenPause = true;
+        //Assign it again in case that's the issue
+        Level = PlayerController.Level;
         if (Level == 1)
         {
             Player.transform.position = new Vector3(destination1.position.x, destination1.position.y);

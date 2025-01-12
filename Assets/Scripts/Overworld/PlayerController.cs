@@ -73,14 +73,16 @@ public class PlayerController : MonoBehaviour
     public GameObject Nicol;
     public GameObject Sophie;
 
-    public SpriteRenderer KisaRenderer;
-    public Sprite absorbKisa;
+    [SerializeField] GameObject kisa_postBoss_dead, nicol_postBoss_dead, sophie_postBoss_dead;
 
-    public SpriteRenderer NicolRenderer;
-    public Sprite absorbNicol;
+    //public SpriteRenderer KisaRenderer;
+    //public Sprite absorbKisa;
 
-    public SpriteRenderer SophieRenderer;
-    public Sprite absorbSophie;
+    //public SpriteRenderer NicolRenderer;
+    //public Sprite absorbNicol;
+
+    //public SpriteRenderer SophieRenderer;
+    //public Sprite absorbSophie;
 
     // for starting dialogue
     [SerializeField] private mainDialogueManager mainDialogueManager;
@@ -433,6 +435,9 @@ public class PlayerController : MonoBehaviour
         if (KisaBoss == true)
         {
             Destroy(Kisa);
+            //Put in new sprite
+            kisa_postBoss_dead.SetActive(true);
+
             //KisaRenderer.sprite = absorbKisa;
             KisaAbsorbed = 1;
             HasBeenThruTutorial = 1;
@@ -440,12 +445,18 @@ public class PlayerController : MonoBehaviour
         else if (NicolBoss == true)
         {
             Destroy(Nicol);
+            //Put in new sprite
+            nicol_postBoss_dead.SetActive(true);
+
             //NicolRenderer.sprite = absorbNicol;
             NicolAbsorbed = 1;
         }
         else if (SophieBoss == true)
         {
             Destroy(Sophie);
+            //Put in new sprite
+            sophie_postBoss_dead.SetActive(true);
+
             //SophieRenderer.sprite = absorbSophie;
             SophieAbsorbed = 1;
         }
@@ -622,6 +633,11 @@ public class PlayerController : MonoBehaviour
                     cutscenes[5].SetActive(false);
                     cutscenes[9].SetActive(false);
                 }
+                //Also set it so her dead body is active. Fun!
+                if (KisaAbsorbed == 1)
+                {
+                    kisa_postBoss_dead.SetActive(true);
+                }
                 levelManager.enemyDifficultyScale = 1.25f;
                 break;
             case 2:
@@ -638,6 +654,11 @@ public class PlayerController : MonoBehaviour
                 {
                     levelManager.enemyDifficultyScale = 1.25f;
                 }
+                //Also set it so her dead body is active. Fun!
+                if (NicolAbsorbed == 1)
+                {
+                    nicol_postBoss_dead.SetActive(true);
+                }
                 break;
             case 3:
                 cutscenes[2].SetActive(false);
@@ -653,6 +674,11 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     levelManager.enemyDifficultyScale = 1.5f;
+                }
+                //Also set it so her dead body is active. Fun!
+                if (SophieAbsorbed == 1)
+                {
+                    sophie_postBoss_dead.SetActive(true);
                 }
                 break;
             case 4:

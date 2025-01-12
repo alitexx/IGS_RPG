@@ -237,7 +237,6 @@ public class useSpecial : MonoBehaviour
 
     private void syncStrike(string whoIsInitiating)
     {
-        //Do similar targetting to Nicol's final special, where you have to select an ally and that is the ally you attack with
         //Have both allies attack
         //      - specifically, whoIsInitiating's animation plays first, then 0.75 seconds later the other ally's attack goes. these are physical attacks
         //      - use this function to find the damage multiplier:
