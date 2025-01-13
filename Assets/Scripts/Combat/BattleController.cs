@@ -2105,7 +2105,6 @@ public class BattleController : MonoBehaviour
         StartCoroutine(TenacityParticle());
 
         activeChar.AttAnim();
-        //am.playSFX(37);
     }
 
     public IEnumerator TenacityParticle()
@@ -2123,6 +2122,8 @@ public class BattleController : MonoBehaviour
 
             tenacityParticle = Instantiate(enemyList[i].particleManager, position, Quaternion.identity, enemyList[i].transform);
             tenacityParticle.animator.SetBool("TenacityFX", true);
+
+            am.playSFX(37);
 
             enemyList[i].GotDamaged(activeChar.statSheet.stats["Strength"], 0);//enemyList[i].statSheet.stats["Defense"]);
             activeChar.slashHit();
@@ -2229,6 +2230,7 @@ public class BattleController : MonoBehaviour
 
         if (coroutineRunning == true)
         {
+            activeChar.animator.SetBool("MagAttacking", true);
             backButton.SetActive(false);
 
             enemyList[enemyNum].HideTargetCircle();
@@ -2285,6 +2287,7 @@ public class BattleController : MonoBehaviour
 
     public void NicolMockery()
     {
+        am.playSFX(38);
         for (int i = 0; i < enemyList.Count; i++)
         {
             ParticleManager debuffParticle;
@@ -2304,6 +2307,7 @@ public class BattleController : MonoBehaviour
 
     public IEnumerator NicolGambling(int lGenre, int lRoll) //I LOVE GAMBLING LETS GO GAMBLING
     {
+        am.playSFX(46);
         yield return new WaitForSeconds(3.5f);
 
         /*Genre Rolls:
@@ -2321,6 +2325,7 @@ public class BattleController : MonoBehaviour
         {
            if (lGenre == 0)
            {
+                am.playSFX(4);
                 for (int i = 0; i < playerList.Count; i++)
                 {
                     playerList[i].TrueDamage(playerList[i].statSheet.stats["Health"] - 1);
@@ -2328,6 +2333,7 @@ public class BattleController : MonoBehaviour
            }
            else if (lGenre == 1)
            {
+                am.playSFX(12);
                 for (int i = 0; i < enemyList.Count; i++)
                 {
                     enemyList[i].healthSystem.Heal(enemyList[i].statSheet.stats["MaxHealth"]);
@@ -2335,6 +2341,7 @@ public class BattleController : MonoBehaviour
            }
            else if (lGenre == 2)
            {
+                am.playSFX(43);
                 for (int i = 0; i < playerList.Count; i++)
                 {
                     playerList[i].statSheet.stats["Mana"] = 0;
@@ -2346,6 +2353,7 @@ public class BattleController : MonoBehaviour
            {
                 for (int i = 0; i < playerList.Count; i++)
                 {
+                    am.playSFX(44);
                     specialPointTracker.resetSpecial();
                 }
             }
@@ -2358,6 +2366,7 @@ public class BattleController : MonoBehaviour
         {
             if (lGenre == 0)
             {
+                am.playSFX(4);
                 for (int i = 0; i < playerList.Count; i++)
                 {
                     playerList[i].TrueDamage(Random.Range(5, 11));
@@ -2365,6 +2374,7 @@ public class BattleController : MonoBehaviour
             }
             else if (lGenre == 1)
             {
+                am.playSFX(12);
                 for (int i = 0; i < enemyList.Count; i++)
                 {
                     enemyList[i].healthSystem.Heal(enemyList[i].statSheet.stats["MaxHealth"] / 4);
@@ -2372,6 +2382,7 @@ public class BattleController : MonoBehaviour
             }
             else if (lGenre == 2)
             {
+                am.playSFX(43);
                 for (int i = 0; i < playerList.Count; i++)
                 {
                     playerList[i].statSheet.stats["Mana"] = playerList[i].statSheet.stats["Mana"] - 2;
@@ -2388,6 +2399,7 @@ public class BattleController : MonoBehaviour
             {
                 for (int i = 0; i < playerList.Count; i++)
                 {
+                    am.playSFX(44);
                     if (playerList[i].statSheet.name == "Tank Guy")
                     {
                         specialPointTracker.removeSpecial("Tank Guy", 0);
@@ -2440,6 +2452,7 @@ public class BattleController : MonoBehaviour
         {
             if (lGenre == 0)
             {
+                am.playSFX(4);
                 for (int i = 0; i < enemyList.Count; i++)
                 {
                     enemyList[i].TrueDamage(enemyList[i].statSheet.stats["MaxHealth"] / 4 );
@@ -2447,6 +2460,7 @@ public class BattleController : MonoBehaviour
             }
             else if (lGenre == 1)
             {
+                am.playSFX(12);
                 for (int i = 0; i < playerList.Count; i++)
                 {
                     playerList[i].healthSystem.Heal(enemyList[i].statSheet.stats["MaxHealth"] / 2);
@@ -2454,6 +2468,7 @@ public class BattleController : MonoBehaviour
             }
             else if (lGenre == 2)
             {
+                am.playSFX(39);
                 for (int i = 0; i < playerList.Count; i++)
                 {
                     playerList[i].statSheet.stats["Mana"] += playerList[i].statSheet.stats["MaxMana"] / 2;
@@ -2468,6 +2483,7 @@ public class BattleController : MonoBehaviour
             }
             else if (lGenre == 3)
             {
+                am.playSFX(40);
                 for (int i = 0; i < playerList.Count; i++)
                 {
                     if (playerList[i].statSheet.name == "Tank Guy")
@@ -2497,6 +2513,7 @@ public class BattleController : MonoBehaviour
         {
             if (lGenre == 0)
             {
+                am.playSFX(4);
                 for (int i = 0; i < enemyList.Count; i++)
                 {
                     enemyList[i].TrueDamage(enemyList[i].statSheet.stats["Health"] - 1);
@@ -2504,6 +2521,7 @@ public class BattleController : MonoBehaviour
             }
             else if (lGenre == 1)
             {
+                am.playSFX(12);
                 for (int i = 0; i < playerList.Count; i++)
                 {
                     playerList[i].healthSystem.Heal(playerList[i].statSheet.stats["MaxHealth"]);
@@ -2511,6 +2529,7 @@ public class BattleController : MonoBehaviour
             }
             else if (lGenre == 2)
             {
+                am.playSFX(39);
                 for (int i = 0; i < playerList.Count; i++)
                 {
                     playerList[i].statSheet.stats["Mana"] = playerList[i].statSheet.stats["MaxMana"];
@@ -2525,6 +2544,7 @@ public class BattleController : MonoBehaviour
             }
             else if (lGenre == 3)
             {
+                am.playSFX(45);
                 for (int i = 0; i < playerList.Count; i++)
                 {
                     if (playerList[i].statSheet.name == "Tank Guy")
@@ -2559,6 +2579,7 @@ public class BattleController : MonoBehaviour
 
     public void NicolMotivate()
     {
+        am.playSFX(41);
         for (int i = 0; i < playerList.Count; i++)
         {
             ParticleManager motivateParticle;
@@ -2578,6 +2599,7 @@ public class BattleController : MonoBehaviour
 
     public IEnumerator SophieQuake()
     {
+        am.playSFX(47);
         activeChar.animator.SetBool("Attacking", true);
 
         int damageToDeal = 0;
@@ -2619,6 +2641,7 @@ public class BattleController : MonoBehaviour
 
     public void SophieFocus()
     {
+        am.playSFX(48);
         Vector3 position = activeChar.GetPosition();
 
         ParticleManager focusParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
@@ -2630,6 +2653,7 @@ public class BattleController : MonoBehaviour
 
     public IEnumerator SophieStorm()
     {
+        am.playSFX(49);
         activeChar.animator.SetBool("MagAttacking", true);
 
         yield return new WaitForSeconds(1.5f);
