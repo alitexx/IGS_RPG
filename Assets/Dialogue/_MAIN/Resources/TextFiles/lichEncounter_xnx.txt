@@ -10,14 +10,12 @@ addCutscene(1)
 lich "Away with you. I tire of these adventurers storming my tower day after day. All I seek is solitude."
 nicol "Surrender, Lich, and we will be on our way. The less bloodshed the better, but your life must come to an end today."
 addCutscene(12)
-lich "End me? Please. You all sound the same. I have lost count of how many times this dialogue has been had. Soon, you will declare I've met my match and charge, only to be swept aside with a mere flick of my wrist. Frankly, I have grow weary of all the flicking."
+lich "You all sound the same. I have lost count of how many times this dialogue has been had. You declare I've met my match and charge, only to be swept aside with a mere flick of my wrist. Frankly, I have grow weary of all the flicking."
 alan "..."
 lich "Is this conversation complete? Your death could be swift, but it is far more entertaining to watch mice scurry away than slaughter them outright."
 addCutscene(14)
 lich "...Halt. I see we have a fellow soul collector in our midst. Intriguing."
-lich "And you willingly travel together? Are you blissfully unaware? I have never seen a group of mortals so... passive about one's misdeeds."
-nicol "My faith in Alan as a man is waning, but I trust him enough to lead us in this final moment."
-lich "Ha! Those awkward lies you tell yourself are more humorous than anything I have heard in decades. It almost makes me not want to kill you and sit and watch the show, however I prefer power over entertainment."
+lich "And yet, your companion remains at your side. Curious. Mortals never cease to puzzle me with their tolerance."
 addCutscene(13)
 lich "You believe you can defeat me? Try. Swing your weapons at me with abandon until you realize it is too late. The victor has already been determined."
 endDialogue(true)

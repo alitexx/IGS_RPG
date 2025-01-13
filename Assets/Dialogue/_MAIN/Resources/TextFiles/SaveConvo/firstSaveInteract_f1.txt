@@ -18,10 +18,9 @@ miguel "Unfortunate. Well, as per our agreement, I am happy to assist you with y
 Highlight(alan -o true)
 alan "Please do not call me Sir Alan. After what I might do in this tower, I do not believe I hold such an honor."
 Highlight(miguel -o true)
-miguel "But you are a knight, you deserve that title! And it is not what you might do, it is what you should do."
-miguel "Think about it– You go through the trouble of lugging your party here, and they all scurry away like rats!"
-miguel "Rats are pests. They must be controlled, shown their place. You have the power to do so, if you wish."
-miguel "But I digress. I will heal your injuries and save your progress, simply call on me again if you need further assistance."
+miguel "You are a knight, you are worthy of that title! Your party... not so much."
+miguel "They scurried like rats. They are pests to be controlled, to be shown their place. You have the power to do so, if you wish."
+miguel "But I digress. I will heal your wounds and save your progress. Call on me again if you need further assistance."
 Hide(alan)
 Hide(miguel)
 endMenuDialogue(false)

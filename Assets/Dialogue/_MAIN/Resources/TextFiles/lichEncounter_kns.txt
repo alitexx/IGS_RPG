@@ -10,11 +10,11 @@ addCutscene(1)
 lich "Away with you. I tire of these adventurers storming my tower day after day. All I seek is solitude."
 kisa "What? No! We must put an end to you, lich!"
 addCutscene(12)
-lich "End me? Please. You all sound the same. I have lost count of how many times this dialogue has been had. Soon, you will declare I've met my match and charge, only to be swept aside with a mere flick of my wrist. Frankly, I have grow weary of all the flicking."
+lich "You all sound the same. I have lost count of how many times this dialogue has been had. You declare I've met my match and charge, only to be swept aside with a mere flick of my wrist. Frankly, I have grow weary of all the flicking."
 sophie "...So this is the fate that befell my students. They met their demise at your hands."
 lich "Yes. They were as inconsequential as the rest."
 addCutscene(14)
-lich "Is this conversation complete? Your death could be swift, but it is far more entertaining to watch mice scurry away than slaughter them outright."
+lich "Is this conversation complete? Your death could be swift, but it is far more entertaining to watch rats scurry than slaughter them outright."
 nicol "Wahaha! Run? You think Lord Nicol would flee from danger? Never! We stand here to vanquish evil, and we will do the same to you. You showed no mercy to the people of Isen, and you will find none here."
 addCutscene(13)
 lich "You speak of the common folk as if they hold value. They are <i>meaningless</i>! This is the harsh reality of our world—power reigns supreme and knowledge is the ultimate power."

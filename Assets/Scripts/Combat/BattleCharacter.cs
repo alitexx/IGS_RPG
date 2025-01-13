@@ -479,6 +479,7 @@ public class BattleCharacter : MonoBehaviour
     public void slashHit()
     {
         am.playSFX(2);
+        //Errors out here
         ParticleManager particle = Instantiate(particleManager, gPosition, Quaternion.identity, gTarget.transform);
         particle.animator.SetBool("SlashFX", true);
         //state = State.Busy;

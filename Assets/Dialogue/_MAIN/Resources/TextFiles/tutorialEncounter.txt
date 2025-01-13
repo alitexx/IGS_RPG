@@ -1,7 +1,3 @@
-CreateCharacter(kisa -enabled false)
-CreateCharacter(alan -enabled false)
-CreateCharacter(sophie -enabled false)
-CreateCharacter(nicol -enabled false)
 alan.Move(0 0 -spd 3)
 kisa.Move(0.5 0 -spd 3)
 sophie.Move(0.2 0 -spd 3)

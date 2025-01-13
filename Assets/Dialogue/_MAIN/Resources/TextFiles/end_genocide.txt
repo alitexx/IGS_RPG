@@ -5,14 +5,14 @@ Hide(alan)
 wait(1)
 addCutscene(0)
 alan "You are in my way. Move."
-lich "Oh? It appears another glory-seeking rat has crawled into my domain."
-lich "Why must you mortals be so keen on disrupting my work? You come in droves but are so fragile. No matter, your soul shall-"
+lich "Away with you. I tire of these adventurers storming my tower day after day. All I seek is solitude."
+lich "You all sound the same. I have lost count of how many times this dialogue has been had. You declare I've met my match and charge, only to be swept aside with a mere flick of my-"
 playSFX(2)
 stopBGM(0.11)
 addCutscene(4)
 wait(0.35)
 addCutscene(5)
-wait(2)
+wait(4)
 playSFX(16)
 addCutscene(6)
 wait(2)
@@ -22,29 +22,29 @@ alan "Leora! It is truly you!"
 playBGM(T6)
 leora "Do not come near. I do not wish to embrace you."
 addCutscene(7)
-alan "What? Leora, what could you mean?"
+alan "What? Leora...?"
 leora "Open your eyes, behold the consequences of your actions. You betrayed all that the knight's code stands for."
 alan "The knight's code is not the code of land, nor the code of the heart. It was not the knight in me that grieved you, it was the person. My mantle held no place in my actions."
 leora "... I see I truly have failed as your mentor and friend. Do not hide behind my memory to conceal your greed. Three you have slain and absorbed into that tainted vessel you call a body, tell me– How powerful have you become? Was it worth it?"
 alan "That is not... I did not do it for the power!"
 leora "You have let the words of a devil twist your perception. What you have done is wrong, in the eyes of the knight's code, as well those of the land and heart as you so eagerly put it."
 leora "It is an immutable fact now: Three innocents have been slain by your hand for your own selfish desires. My only glimmer of hope is that you may spend the rest of your life working toward redemption."
-alan "You speak as if they were important. Perhaps they were not the criminals we sent to the gallows by truly Leora, not all that is innocent is worthwhile."
+alan "You speak as if they were important. Perhaps they were not the criminals we sent to the gallows but truly Leora, not all that is innocent is worthwhile."
 leora "Dear Gods, you disgust me. Have you no concept of mercy? It was an option you had all along, yet your obsession blinded you."
 addCutscene(8)
-miguel "Ta-dah! Leora has returned, Alan! Is this not splendid?"
+miguel "It is as we agreed upon, Leora is living once more. This is splendid, is it not?"
 alan "No, it is not splendid. I wanted everything to return to the way it was... why? Why can I do nothing right?"
-miguel "Cheer up, friend! I am sure you would feel better if you collected a few more souls for me..."
+miguel "All is well, Sir Alan. Perhaps after collecting another soul or two she will come around."
 alan "That is the last thing I would like to do. Is our contract not complete? Why must you appear at the most inconvenient of times?"
-miguel "What is with the surprise? Have you not read the fine print?"
+miguel "I wanted to congratulate you on your accomplishment, as a friend! As for our contract, I believe you are forgetting the fine print."
 alan "Fine print? What do you mean?"
 miguel "Oh, it seems you did not read the contract in its entirety."
 addCutscene(9)
-miguel "''Section D23: Upon the collection of three souls, both contracting parties are bound by the following terms until either A: The revived party deceases or B: Either signatory meets demise.''"
+miguel "Here it is... ''Upon collecting three souls, the First Party''-you-''receives their boon, bound to gather more souls for the Sustaining Entity''-me-''to maintain it.''"
 alan "What?! How could I have missed– Are you serious?"
 miguel "Trust me, my friend, I do not make mistakes. If you'd like to void the contract, that could be permitted, however..."
 addCutscene(10)
-miguel "I would be required to subject her to a gradual incineration and send her to the deepest layer of Hell. That is what happens to those involved in an infernal contract, I'm afraid."
+miguel "She dies, but not a quick death. A slow, grueling death, her very essence drained from her like a unsealable wound. And it would be <i>your</i> fault. <i>You</i> were the one who brought her back."
 miguel "So? What will it be?"
 leora "Alan... end the contract. I do not care what becomes of me, you cannot keep collecting innocent souls for this devil. I have died once, I am not afraid to die again. End it."
 addCutscene(11)
