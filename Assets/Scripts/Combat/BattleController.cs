@@ -2068,6 +2068,10 @@ public class BattleController : MonoBehaviour
     #region Alan
     public void AlanGuardStatIncrease()
     {
+        //I think this should work? We'd need a way to turn off the blocking animation once the guard effect finishes playing
+        //Idk how best to do that with this code, so if u could double check for me that would be SLAY
+        activeChar.animator.SetBool("Blocking", true);
+
         Vector3 guardPosition = tankChar.GetPosition();
 
         guardPosition.x += 0.2f;
@@ -2075,13 +2079,31 @@ public class BattleController : MonoBehaviour
 
         ParticleManager guardParticle = Instantiate(tankChar.particleManager, guardPosition, Quaternion.identity, tankChar.transform);
         guardParticle.animator.SetBool("GuardFX", true);
-
+        
         tankChar.TempIncreaseStats("Defense", tankChar.statSheet.stats["Defense"] / 5);
         am.playSFX(36);
+
+        StartCoroutine(WaitForAnimation(guardParticle.animator, "special_guard", () =>
+        {
+            activeChar.animator.SetBool("Blocking", false);
+        }));
+    }
+
+    //Only used for Guard, brandon lmk if this isn't ideal I can change it
+    IEnumerator WaitForAnimation(Animator animator, string animationName, System.Action onComplete)
+    {
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        while (stateInfo.IsName(animationName) && stateInfo.normalizedTime < 1f)
+        {
+            yield return null; // Wait until the animation is finished
+            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        }
+        onComplete?.Invoke();
     }
 
     public void AlanTaunt()
     {
+        activeChar.animator.SetBool("MagAttacking", true);
         isTaunting = true;
 
         Vector3 tauntPosition = tankChar.GetPosition();
