@@ -2744,6 +2744,83 @@ public class BattleController : MonoBehaviour
 
             playerList[playerNum].HideTargetCircle();
 
+            //put important code here
+
+            StartCoroutine(syncStrikeEnemyTargeting());
+        }
+    }
+
+    public IEnumerator syncStrikeEnemyTargeting()
+    {
+        int enemyNum = 0;
+
+        coroutineRunning = true;
+
+        backButton.SetActive(true);
+
+        enemyList[enemyNum].ShowTargetCircle();
+
+        yield return new WaitForSeconds(timeBetweenSelectAndConfirm);
+
+        while (!(Input.GetKeyDown(audioStatics.keycodeInterractButton) || Input.GetKeyDown(KeyCode.Return)))
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            {
+                //They do not want to select the back button. Unselect it.
+                EventSystem.current.SetSelectedGameObject(null);
+                enemyList[enemyNum].HideTargetCircle();
+                if (enemyNum == enemyList.Count - 1)
+                {
+                    enemyNum = 0;
+                }
+                else
+                {
+                    enemyNum++;
+                }
+                enemyList[enemyNum].ShowTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            {
+                //They do not want to select the back button. Unselect it.
+                EventSystem.current.SetSelectedGameObject(null);
+                enemyList[enemyNum].HideTargetCircle();
+                if (enemyNum == 0)
+                {
+                    enemyNum = (enemyList.Count - 1);
+                }
+                else
+                {
+                    enemyNum--;
+                }
+                enemyList[enemyNum].ShowTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            {
+                //They want to select the back button.
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(backButton);
+                enemyList[enemyNum].HideTargetCircle();
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
+                //They want to go back to selecting an enemy. Show Target Circle again.
+                EventSystem.current.SetSelectedGameObject(null);
+                enemyList[enemyNum].ShowTargetCircle();
+            }
+            yield return null;
+        }
+
+        if (coroutineRunning == true)
+        {
+            backButton.SetActive(false);
+
+            enemyList[enemyNum].HideTargetCircle();
+
+            //put important code here
+
+            //Remove special points since it has been used
+            updateSP.removeSpecial(activeChar.statSheet.name, 1);
+
             StartCoroutine(WaitBeforeChoosingNext(1.8f));
         }
     }
