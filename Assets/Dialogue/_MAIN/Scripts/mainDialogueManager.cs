@@ -130,6 +130,11 @@ public class mainDialogueManager : MonoBehaviour
                 case "level1_slime":
                 case "level1_skeleton":
                 case "tutorialEncounter":
+                case "contemplateKillingf1":
+                case "contemplateKillingf2":
+                case "contemplateKillingf3":
+                case "contemplateKillingf3.5":
+                case "contemplateKillingf4":
                     break;
                 case "load_floor1":
                 case "load_floor2":

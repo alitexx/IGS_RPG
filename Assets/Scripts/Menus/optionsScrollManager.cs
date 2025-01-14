@@ -17,7 +17,7 @@ public class optionsScrollManager : MonoBehaviour, ISelectHandler
 
     private void MoveSliderByScriptCount()
     {
-        Debug.Log(targetScrollbar.value);
+        //Debug.Log(targetScrollbar.value);
         // Example: Move the target slider by a value relative to the number of scripts
         targetScrollbar.value = 1.15f - (1/buttonCount)*thisButtonNum;
         Debug.Log(1.15f - (1 / buttonCount) * thisButtonNum);
