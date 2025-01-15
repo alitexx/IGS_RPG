@@ -214,10 +214,11 @@ public class displaySupport : MonoBehaviour
         {
             return true; // Event for support level 7 not seen yet
         }
-        else if (supportPoints == 14 && playerControl.Level >= 3 && playerControl.hasSophie && (seenEvents & 0b100) == 0) // 14 heart requires all party members to be living
+        else if (supportPoints == 14 && playerControl.Level >= 3 && playerControl.hasSophie) // 14 heart requires all party members to be living // Removed needing to see support events, but if I need to add it back:  && (seenEvents & 0b100) == 0
         {
             return true; // Event for support level 14 not seen yet
         }
+        Debug.Log("Seen Events: " + (seenEvents & 0b100));
 
         return false; // No event to unlock
     }

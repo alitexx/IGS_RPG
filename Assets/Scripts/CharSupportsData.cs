@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
+using System;
 
 public class CharSupportsData : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class CharSupportsData : MonoBehaviour
     public int alankisa_support, alannico_support, alansoph_support, kisanico_support, kisasoph_support, nicosoph_support;
 
     // Method to increase support
-    public void increaseSupport(string character1, string character2, int howMuch = 1)
+    public bool increaseSupport(string character1, string character2, int howMuch = 1) //Bool is meant to tell us if the support went through 
     {
         character1 = character1.ToLower();
         character2 = character2.ToLower();
@@ -26,7 +27,7 @@ public class CharSupportsData : MonoBehaviour
             case 3:
             case 8:
             case 14:
-                return;
+                return false;
         }
         // Increase support level
         supportLevel += howMuch;
@@ -39,6 +40,8 @@ public class CharSupportsData : MonoBehaviour
 
         // Update the support value for the correct character pair
         SetSupportValue(character1.Substring(0, 4).ToLower(), character2.Substring(0, 4).ToLower(), supportValue);
+
+        return true;
     }
 
     // Method to decrease support
@@ -102,37 +105,43 @@ public class CharSupportsData : MonoBehaviour
             nicosoph_support = value;
     }
 
-    public void seenEvent(string character1, string character2, int eventNumber)
+    public void seenEvent(string character1, string character2, int seenEvent)
     {
+        // Direct mapping based on the seenEvent binary number
+        int supportValue;
         // Ensure the event number is within a valid range (1 to 3)
-        if (eventNumber < 1 || eventNumber > 4)
+        if (seenEvent < 1 || seenEvent > 4)
         {
             Debug.LogError("Invalid event number! Must be between 1 and 4.");
             return;
-        } else if (eventNumber == 4)
+        }
+        else if (seenEvent == 4)
         {
             SetSupportValue(character1.ToLower(), character2.ToLower(), 0101110);
         }
 
-        // Get the current support value for the character pair
-        int supportValue = GetSupportValue(character1.ToLower(), character2.ToLower());
+        switch (seenEvent)
+        {
+            case 1: // First Event Seen
+                supportValue = 0b1000100; // Binary 1000100
+                break;
+            case 2: // Second Event Seen
+                supportValue = 0b1101001; // Binary 1101001
+                break;
+            case 3: // Third Event Seen
+                supportValue = 0b1111111; // Binary 1111111
+                break;
+            default:
+                // Handle invalid or unrecognized values
+                supportValue = seenEvent; // Or some default value
+                break;
+        }
 
-        // Calculate the event bit to modify (1st, 2nd, or 3rd event)
-        int eventBit = 1 << (3 - eventNumber); // e.g., for event 1: bit at position 3, event 2: bit at position 2, etc.
-
-        // Mark the event as seen (set the corresponding bit to 1 in the first 3 bits)
-        supportValue |= eventBit; // Use bitwise OR to set the specific event bit to 1
-
-        // Extract the last 4 bits (special points) and increment them by 1
-        int specialPoints = supportValue & 0b1111; // Mask out only the last 4 bits
-        specialPoints = Mathf.Min(specialPoints + 1, 15); // Increment, ensuring it doesn't exceed 15
-
-        // Combine the updated first 3 bits and the new special points back into a single int
-        supportValue = (supportValue & ~0b1111) | specialPoints; // Clear the last 4 bits, then OR with updated points
-
-        // Update the support value for the character pair
+        // Set the value for the character pair
         SetSupportValue(character1.ToLower(), character2.ToLower(), supportValue);
     }
+
+
 
     //What if you already have hearts and a character becomes affected? fun.
     //I have no idea if this works pretend that it does
@@ -200,6 +209,8 @@ public class CharSupportsData : MonoBehaviour
         // Mask out any extra bits beyond the first 3
         eventBits &= 0b111; // Keep only the last 3 bits (00000111)
 
+        Debug.Log("Event bits: " + eventBits);
+
         // Count the number of 1s in the 3 bits
         int seenEventCount = 0;
         for (int i = 0; i < 3; i++)
@@ -209,7 +220,59 @@ public class CharSupportsData : MonoBehaviour
                 seenEventCount++;
             }
         }
-
+        Debug.Log("Here are the number of events you've seen: " + seenEventCount);
         return seenEventCount+1; // Must always be above 1
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+#region Old Code
+
+//public void seenEvent(string character1, string character2, int eventNumber)
+//{
+//    // Ensure the event number is within a valid range (1 to 3)
+//    if (eventNumber < 1 || eventNumber > 4)
+//    {
+//        Debug.LogError("Invalid event number! Must be between 1 and 4.");
+//        return;
+//    } else if (eventNumber == 4)
+//    {
+//        SetSupportValue(character1.ToLower(), character2.ToLower(), 0101110);
+//    }
+
+//    // Get the current support value for the character pair
+//    int supportValue = GetSupportValue(character1.ToLower(), character2.ToLower());
+
+//    // Calculate the event bit to modify (1st, 2nd, or 3rd event)
+//    int eventBit = 1 << (3 - eventNumber); // e.g., for event 1: bit at position 3, event 2: bit at position 2, etc.
+
+//    // Mark the event as seen (set the corresponding bit to 1 in the first 3 bits)
+//    supportValue |= eventBit; // Use bitwise OR to set the specific event bit to 1
+
+//    // Extract the last 4 bits (special points) and increment them by 1
+//    int specialPoints = supportValue & 0b1111; // Mask out only the last 4 bits
+//    specialPoints = Mathf.Min(specialPoints + 1, 15); // Increment, ensuring it doesn't exceed 15
+
+//    // Combine the updated first 3 bits and the new special points back into a single int
+//    supportValue = (supportValue & ~0b1111) | specialPoints; // Clear the last 4 bits, then OR with updated points
+
+//    // Update the support value for the character pair
+//    SetSupportValue(character1.ToLower(), character2.ToLower(), supportValue);
+
+//    // Debugging binary values
+//    string binaryValue = Convert.ToString(supportValue, 2).PadLeft(7, '0'); // Converts to binary
+//    Debug.Log($"Support Value (binary): {binaryValue}");
+
+//}
+
+#endregion

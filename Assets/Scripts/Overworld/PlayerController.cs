@@ -76,6 +76,8 @@ public class PlayerController : MonoBehaviour
     public GameObject Nicol;
     public GameObject Sophie;
 
+    [SerializeField] private CharSupportsData characterSupportsData;
+
     [SerializeField] GameObject kisa_postBoss_dead, nicol_postBoss_dead, sophie_postBoss_dead;
 
     //public SpriteRenderer KisaRenderer;
@@ -524,6 +526,13 @@ public class PlayerController : MonoBehaviour
         //I have no idea if this works but I'm trying it - Katie
         PlayerPrefs.SetFloat("PreviousSave", miguelConversation.previousSave);
 
+        PlayerPrefs.SetInt("AlanKisa_Support", characterSupportsData.alankisa_support);
+        PlayerPrefs.SetInt("AlanNico_Support", characterSupportsData.alannico_support);
+        PlayerPrefs.SetInt("AlanSoph_Support", characterSupportsData.alansoph_support);
+        PlayerPrefs.SetInt("KisaNico_Support", characterSupportsData.kisanico_support);
+        PlayerPrefs.SetInt("KisaSoph_Support", characterSupportsData.kisasoph_support);
+        PlayerPrefs.SetInt("NicoSoph_Support", characterSupportsData.nicosoph_support);
+
     }
 
     public void DeleteSave() 
@@ -717,6 +726,14 @@ public class PlayerController : MonoBehaviour
         //I have no idea if this works but I'm trying it - Katie
         miguelConversation.hasBeenGreeted = true; // Obviously they've been greeted, as they've saved their game before.
         miguelConversation.previousSave = PlayerPrefs.GetFloat("PreviousSave");
+
+        characterSupportsData.alankisa_support = PlayerPrefs.GetInt("AlanKisa_Support");
+        characterSupportsData.alannico_support = PlayerPrefs.GetInt("AlanNico_Support");
+        characterSupportsData.alansoph_support = PlayerPrefs.GetInt("AlanSoph_Support");
+        characterSupportsData.kisanico_support = PlayerPrefs.GetInt("KisaNico_Support");
+        characterSupportsData.kisasoph_support = PlayerPrefs.GetInt("KisaSoph_Support");
+        characterSupportsData.nicosoph_support = PlayerPrefs.GetInt("NicoSoph_Support");
+
     }
 
     public int getDeadCharacters()

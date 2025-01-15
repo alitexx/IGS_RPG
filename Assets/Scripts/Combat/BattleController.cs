@@ -2919,12 +2919,16 @@ public class BattleController : MonoBehaviour
 
             activeChar.animator.SetBool("Attacking", true);
 
-            yield return new WaitForSeconds(0.3f);
+            //I changed this to be a bigger gap so the animations don't overlap too bad
+            yield return new WaitForSeconds(0.55f);
 
             targetAlly.animator.SetBool("Attacking", true);
 
-            charSuppData.increaseSupport(activeName, targetName);
+            if (charSuppData.increaseSupport(activeName, targetName))
+            {
+                //Play the heart particle effect for both allies here
 
+            }
             yield return new WaitForSeconds(1.8f);
 
             Debug.Log("Sync multiplier between " + activeName + " and " + targetName + " is " + charSuppData.getSyncStrikeMultiplier(activeName, targetName));
