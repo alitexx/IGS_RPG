@@ -2108,6 +2108,10 @@ public class BattleController : MonoBehaviour
 
         Vector3 tauntPosition = tankChar.GetPosition();
 
+        am.playSFX(12);
+
+        am.playSFX(8);
+
         tauntPosition.x += 0.2f;
         tauntPosition.y += 1f;
 
@@ -2665,6 +2669,8 @@ public class BattleController : MonoBehaviour
     {
         am.playSFX(48);
         Vector3 position = activeChar.GetPosition();
+        //Just a little too low rn
+        position.y += 1f;
 
         ParticleManager focusParticle = Instantiate(activeChar.particleManager, position, Quaternion.identity, activeChar.transform);
 
