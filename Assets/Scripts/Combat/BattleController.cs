@@ -2929,13 +2929,20 @@ public class BattleController : MonoBehaviour
                 //Play the heart particle effect for both allies here
 
             }
-            yield return new WaitForSeconds(1.8f);
 
-            Debug.Log("Sync multiplier between " + activeName + " and " + targetName + " is " + charSuppData.getSyncStrikeMultiplier(activeName, targetName));
+            
+
+            yield return new WaitForSeconds(0.9f);
+
+            enemyList[enemyNum].GotDamaged(activeChar.statSheet.stats["Strength"], enemyList[enemyNum].statSheet.stats["Defense"]);
+
+            yield return new WaitForSeconds(0.5f);
+
+            //Debug.Log("Sync multiplier between " + activeName + " and " + targetName + " is " + charSuppData.getSyncStrikeMultiplier(activeName, targetName));
             //Debug.Log("enemy defense is " + enemyList[enemyNum].statSheet.stats["Defense"]);
             //Debug.Log("Party level is " + playerController.partyLevel);
 
-            enemyList[enemyNum].GotDamaged((charSuppData.getSyncStrikeMultiplier(activeName, targetName) * playerController.partyLevel), enemyList[enemyNum].statSheet.stats["Defense"]);
+            enemyList[enemyNum].GotDamaged((charSuppData.getSyncStrikeMultiplier(activeName, targetName) * playerController.partyLevel) / 2, enemyList[enemyNum].statSheet.stats["Defense"]);
 
             //Remove special points since it has been used
             updateSP.removeSpecial(activeChar.statSheet.name, 0);
