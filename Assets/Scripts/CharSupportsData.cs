@@ -11,6 +11,9 @@ public class CharSupportsData : MonoBehaviour
     // Method to increase support
     public void increaseSupport(string character1, string character2, int howMuch = 1)
     {
+        character1 = character1.ToLower();
+        character2 = character2.ToLower();
+
         // Get the current support value based on character combination
         int supportValue = GetSupportValue(character1.Substring(0, 4).ToLower(), character2.Substring(0, 4).ToLower());
 
@@ -63,7 +66,7 @@ public class CharSupportsData : MonoBehaviour
     // Helper method to get the current support value for a given character pair
     private int GetSupportValue(string character1, string character2)
     {
-             if ((character1 == "alan" && character2 == "kisa") || (character1 == "kisa" && character2 == "alan"))
+        if ((character1 == "alan" && character2 == "kisa") || (character1 == "kisa" && character2 == "alan"))
             return alankisa_support;
         else if ((character1 == "alan" && character2 == "nico") || (character1 == "nico" && character2 == "alan"))
             return alannico_support;
@@ -76,7 +79,10 @@ public class CharSupportsData : MonoBehaviour
         else if ((character1 == "nico" && character2 == "soph") || (character1 == "soph" && character2 == "nico"))
             return nicosoph_support;
         else
+        {
+            Debug.Log("No pair with that name found");
             return 0; // Default if no match found
+        }
     }
 
     // Helper method to set the support value for a given character pair

@@ -671,6 +671,8 @@ public class BattleController : MonoBehaviour
 
     [SerializeField] private updateSPOnScreen specialPointTracker;
 
+    [SerializeField] private CharSupportsData charSuppData;
+
     //Keys
 
     public KeyCode attackKey = KeyCode.W;
@@ -2710,11 +2712,40 @@ public class BattleController : MonoBehaviour
     {
         int playerNum = 0;
 
+        BattleCharacter targetAlly = null;
+
+        List<BattleCharacter> allyList = new List<BattleCharacter>();
+
+        allyList.Clear();
+
+        for (int i = 0; i < playerList.Count; i++)
+        {
+            if (playerList[i] != activeChar)
+            {
+                allyList.Add(playerList[i]);
+            }
+        }
+
+        
+        for (int passNum = allyList.Count - 1; passNum >= 0; passNum--)
+        {
+            for (int i = 0; i < passNum; i++)
+            {
+                if (allyList[i].GetPosition().x > allyList[i + 1].GetPosition().x) 
+                { 
+                    BattleCharacter tempChar = allyList[i];
+                    allyList[i] = allyList[i + 1];
+                    allyList[i + 1] = tempChar;
+                }
+            }
+        }
+
+
         coroutineRunning = true;
 
         backButton.SetActive(true);
 
-        playerList[playerNum].ShowTargetCircle();
+        allyList[playerNum].ShowTargetCircle();
 
         yield return new WaitForSeconds(timeBetweenSelectAndConfirm);
 
@@ -2724,8 +2755,8 @@ public class BattleController : MonoBehaviour
             {
                 //They do not want to select the back button. Unselect it.
                 EventSystem.current.SetSelectedGameObject(null);
-                playerList[playerNum].HideTargetCircle();
-                if (playerNum == playerList.Count - 1)
+                allyList[playerNum].HideTargetCircle();
+                if (playerNum == allyList.Count - 1)
                 {
                     playerNum = 0;
                 }
@@ -2733,35 +2764,35 @@ public class BattleController : MonoBehaviour
                 {
                     playerNum++;
                 }
-                playerList[playerNum].ShowTargetCircle();
+                allyList[playerNum].ShowTargetCircle();
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
                 //They do not want to select the back button. Unselect it.
                 EventSystem.current.SetSelectedGameObject(null);
-                playerList[playerNum].HideTargetCircle();
+                allyList[playerNum].HideTargetCircle();
                 if (playerNum == 0)
                 {
-                    playerNum = (playerList.Count - 1);
+                    playerNum = (allyList.Count - 1);
                 }
                 else
                 {
                     playerNum--;
                 }
-                playerList[playerNum].ShowTargetCircle();
+                allyList[playerNum].ShowTargetCircle();
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             {
                 //They want to select the back button.
                 EventSystem.current.SetSelectedGameObject(null);
                 EventSystem.current.SetSelectedGameObject(backButton);
-                playerList[playerNum].HideTargetCircle();
+                allyList[playerNum].HideTargetCircle();
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
                 //They want to go back to selecting an enemy. Show Target Circle again.
                 EventSystem.current.SetSelectedGameObject(null);
-                playerList[playerNum].ShowTargetCircle();
+                allyList[playerNum].ShowTargetCircle();
             }
             yield return null;
         }
@@ -2770,15 +2801,39 @@ public class BattleController : MonoBehaviour
         {
             backButton.SetActive(false);
 
-            playerList[playerNum].HideTargetCircle();
+            allyList[playerNum].HideTargetCircle();
 
             //put important code here
 
-            StartCoroutine(syncStrikeEnemyTargeting());
+            targetAlly = allyList[playerNum];
+
+            StartCoroutine(syncStrikeEnemyTargeting(targetAlly));
         }
     }
 
-    public IEnumerator syncStrikeEnemyTargeting()
+    private string syncNameFinder(string name)
+    {
+        if (name == "Tank Guy")
+        {
+            name = "alan";
+        }
+        else if (name == "Monk Guy")
+        {
+            name = "soph";
+        }
+        else if (name == "Mage Guy")
+        {
+            name = "nico";
+        }
+        else if (name == "Bard Guy")
+        {
+            name = "kisa";
+        }
+
+        return name;
+    }
+
+    public IEnumerator syncStrikeEnemyTargeting(BattleCharacter targetAlly)
     {
         int enemyNum = 0;
 
@@ -2842,14 +2897,46 @@ public class BattleController : MonoBehaviour
         {
             backButton.SetActive(false);
 
+            targetAlly.isBlocking = false;
+            targetAlly.animator.SetBool("Blocking", false);
+
             enemyList[enemyNum].HideTargetCircle();
 
             //put important code here
 
-            //Remove special points since it has been used
-            updateSP.removeSpecial(activeChar.statSheet.name, 1);
+            //Getting the correct name
+            string activeName = " ";
+            string targetName = " ";
 
-            StartCoroutine(WaitBeforeChoosingNext(1.8f));
+            activeName = syncNameFinder(activeChar.statSheet.name);
+            targetName = syncNameFinder(targetAlly.statSheet.name);
+
+            activeChar.SetGPosition(enemyList[enemyNum].GetPosition());
+            activeChar.SetGTarget(enemyList[enemyNum]);
+
+            targetAlly.SetGPosition(enemyList[enemyNum].GetPosition());
+            targetAlly.SetGTarget(enemyList[enemyNum]);
+
+            activeChar.animator.SetBool("Attacking", true);
+
+            yield return new WaitForSeconds(0.3f);
+
+            targetAlly.animator.SetBool("Attacking", true);
+
+            charSuppData.increaseSupport(activeName, targetName);
+
+            yield return new WaitForSeconds(1.8f);
+
+            Debug.Log("Sync multiplier between " + activeName + " and " + targetName + " is " + charSuppData.getSyncStrikeMultiplier(activeName, targetName));
+            //Debug.Log("enemy defense is " + enemyList[enemyNum].statSheet.stats["Defense"]);
+            //Debug.Log("Party level is " + playerController.partyLevel);
+
+            enemyList[enemyNum].GotDamaged((charSuppData.getSyncStrikeMultiplier(activeName, targetName) * playerController.partyLevel), enemyList[enemyNum].statSheet.stats["Defense"]);
+
+            //Remove special points since it has been used
+            updateSP.removeSpecial(activeChar.statSheet.name, 0);
+
+            StartCoroutine(WaitBeforeChoosingNext(0.8f));
         }
     }
 
