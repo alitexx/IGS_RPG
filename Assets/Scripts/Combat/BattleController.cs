@@ -2759,15 +2759,15 @@ public class BattleController : MonoBehaviour
     {
 
         am.playSFX(49);
-        activeChar.animator.SetBool("MagAttacking", true);
-
-        //yield return new WaitForSeconds(0.1f);
 
         Vector3 cloudPosition = TCloudPosition.transform.position;
 
         ParticleManager cloudParticle = Instantiate(activeChar.particleManager, cloudPosition, Quaternion.identity, activeChar.transform);
         cloudParticle.animator.SetBool("CloudFX", true);
 
+        yield return new WaitForSeconds(0.5f);
+
+        activeChar.animator.SetBool("MagAttacking", true);
 
         yield return new WaitForSeconds(1f);
 
