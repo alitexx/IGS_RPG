@@ -31,7 +31,7 @@ sophie.Move(0.6 0 -spd 2)
 sophie "Do not lie. If it affects your ability to move, it requires treatment. Sit."
 Highlight(kisa -o true)
 kisa.Move(0.3 0 -spd 1)
-kisa "... If you insist. You may examine it, but no more."
+kisa "If you... insist.  Do not strain yourself in the process."
 Highlight(sophie -o true)
 sophie.Move(0.5 0 -spd 2)
 sophie "..."
@@ -39,14 +39,15 @@ sophie "Although I would recommend resting and cooling your ankle, this is no ti
 sophie.Move(0.6 0 -spd 1.5)
 sophie "It would have been best to inform me of this sooner, Kisa. Even Alan or Nicol could have assisted you. Why did you not speak up?"
 Highlight(kisa -o true)
-kisa "Because we are fighting for our lives, and you expect me to whine about a little ankle twist? I am an adventurer, Sophie, not some helpless damsel. A sprain will not slow me down."
+kisa "Well, I..."
+kisa "I could handle it. You seem to be trekking along fine, so I... did not want to slow us down over a little ankle twist."
 Highlight(sophie -o true)
 sophie "A minor injury can become a major one if it affects your movement. I am no mind reader, Kisa. If you are hurt, you have to tell me. There's no shame in asking for help."
 sophie "Even our argument could have been avoided if we spoke this morning. I am not asking you to open your heart to me, but... I cannot help you if I am not aware of a problem. Can we work on being more open?"
 Highlight(kisa -o true)
 kisa.Move(0.25 0 -spd 2)
 SetSprite(kisa flipped)
-kisa "You act like it is so easy. Yes, I will be more open."
+kisa "Y-Yes... I will try."
 Hide(kisa)
 wait(1)
 Highlight(sophie -o true)
