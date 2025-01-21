@@ -68,7 +68,29 @@ public class BattleCharacter : MonoBehaviour
     //TempBuffs
     public bool tempBuffed = false;
     public int tempIncrease = 0;
-    public string statIncreased = "";
+    public Dictionary<string, bool> statsBuffed = new Dictionary<string, bool>() {
+        {"Strength", false},
+        {"Magic Attack", false},
+        {"Defense", false},
+        {"Speed", false},
+        {"Health", false},
+        {"MaxHealth", false},
+        {"Mana", false},
+        {"MaxMana", false},
+
+    }; //dictionary showing what stats are buffed
+
+    public Dictionary<string, int> valueOfBuff = new Dictionary<string, int>() {
+        {"Strength", 0},
+        {"Magic Attack", 0},
+        {"Defense", 0},
+        {"Speed", 0},
+        {"Health", 0},
+        {"MaxHealth", 0},
+        {"Mana", 0},
+        {"MaxMana", 0},
+
+    }; //dictionary showing the value of each stat buff
 
     public int OvertimeHealTurnsLeft = 0;
 
@@ -76,6 +98,29 @@ public class BattleCharacter : MonoBehaviour
 
     //TempDebuffs
     public bool Confused;
+    public Dictionary<string, bool> statsDebuffed = new Dictionary<string, bool>() {
+        {"Strength", false},
+        {"Magic Attack", false},
+        {"Defense", false},
+        {"Speed", false},
+        {"Health", false},
+        {"MaxHealth", false},
+        {"Mana", false},
+        {"MaxMana", false},
+
+    }; //dictionary showing what stats are debuffed
+
+    public Dictionary<string, int> valueOfDebuff = new Dictionary<string, int>() {
+        {"Strength", 0},
+        {"Magic Attack", 0},
+        {"Defense", 0},
+        {"Speed", 0},
+        {"Health", 0},
+        {"MaxHealth", 0},
+        {"Mana", 0},
+        {"MaxMana", 0},
+
+    }; //dictionary showing the value of each stat debuff
 
     // for when the player uses hp as mana
     [SerializeField] private CanvasGroup redBG;
@@ -116,23 +161,46 @@ public class BattleCharacter : MonoBehaviour
 
     public void TempIncreaseStats(string stat, int amount)
     {
-        tempIncrease = amount;
+        if (statsBuffed[stat] == false)
+        {
+            valueOfBuff[stat] = amount;
 
-        statIncreased = stat;
+            statsBuffed[stat] = true;
 
-        this.statSheet.stats[statIncreased] += tempIncrease;
+            this.statSheet.stats[stat] += valueOfBuff[stat];
 
-        tempBuffed = true;
+            tempBuffed = true;
+        }
     }
 
     public void TempDecraseStats(string stat, int amount)
     {
-        this.statSheet.stats[stat] -= amount;
+        if (statsDebuffed[stat] == false)
+        {
+            //Debug.Log("Debuffing " + stat + " by " + amount);
+
+            valueOfDebuff[stat] = amount;
+
+            statsDebuffed[stat] = true;
+
+            this.statSheet.stats[stat] -= amount;
+        }
     }
 
     public void UndoTempBuff()
     {
-        this.statSheet.stats[statIncreased] -= tempIncrease;
+        //this.statSheet.stats[statIncreased] -= tempIncrease;
+
+        foreach (KeyValuePair<string, bool> stat in statsBuffed)
+        {
+            //Debug.Log("Stat: " + stat.Key + " and isBuffed: " + stat.Value);
+
+            if (stat.Value == true)
+            {
+                //Debug.Log("Removing " + valueOfBuff[stat.Key] + " from " + stat.Key);
+                this.statSheet.stats[stat.Key] -= valueOfBuff[stat.Key];
+            }
+        }
 
         tempBuffed = false;
     }

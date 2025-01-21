@@ -672,6 +672,7 @@ public class BattleController : MonoBehaviour
     public float timeBetweenSelectAndConfirm;
 
     [SerializeField] private GameObject tenacityPosition;
+    [SerializeField] private GameObject TCloudPosition;
 
     [SerializeField] private updateSPOnScreen specialPointTracker;
 
@@ -2756,10 +2757,19 @@ public class BattleController : MonoBehaviour
 
     public IEnumerator SophieStorm()
     {
+
         am.playSFX(49);
         activeChar.animator.SetBool("MagAttacking", true);
 
-        yield return new WaitForSeconds(1.5f);
+        //yield return new WaitForSeconds(0.1f);
+
+        Vector3 cloudPosition = TCloudPosition.transform.position;
+
+        ParticleManager cloudParticle = Instantiate(activeChar.particleManager, cloudPosition, Quaternion.identity, activeChar.transform);
+        cloudParticle.animator.SetBool("CloudFX", true);
+
+
+        yield return new WaitForSeconds(1f);
 
         for (int i = 0; i < enemyList.Count; i++)
         {
@@ -2781,6 +2791,7 @@ public class BattleController : MonoBehaviour
 
     #endregion
 
+    #region SyncStrike
     public IEnumerator syncStrikeAllyTargeting()
     {
         int playerNum = 0;
@@ -3034,7 +3045,16 @@ public class BattleController : MonoBehaviour
             if (charSuppData.increaseSupport(activeName, targetName))
             {
                 //Play the heart particle effect for both allies here
+                Vector3 activePosition = activeChar.GetPosition();
+                Vector3 targetPosition = targetAlly.GetPosition();
 
+                ParticleManager activeParticle = Instantiate(activeChar.particleManager, activePosition, Quaternion.identity, activeChar.transform);
+                ParticleManager targetParticle = Instantiate(targetAlly.particleManager, targetPosition, Quaternion.identity, targetAlly.transform);
+
+                am.playSFX(53);
+
+                activeParticle.animator.SetBool("SupportFX", true);
+                targetParticle.animator.SetBool("SupportFX", true);
             }
 
             
@@ -3057,6 +3077,8 @@ public class BattleController : MonoBehaviour
             StartCoroutine(WaitBeforeChoosingNext(0.8f));
         }
     }
+
+    #endregion
 
     #endregion
 
