@@ -667,6 +667,11 @@ public class BattleCharacter : MonoBehaviour
 
         critOrMiss = Random.Range(1, 21);
 
+        if (isTutorial)
+        {
+            critOrMiss = 10;
+        }
+
         //critOrMiss = 4;
 
         if (critOrMiss <= 3) //Miss
