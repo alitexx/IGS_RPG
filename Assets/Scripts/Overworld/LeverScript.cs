@@ -54,7 +54,10 @@ public class LeverScript : MonoBehaviour
                 flipped = true;
                 playerController.DoorsOpened += 1;
                 audioManager.playSFX(20);
-                mapManager.ForceOpenMap(associatedExclamation);
+                if (!inSameRoomAsDoor)
+                {
+                    mapManager.ForceOpenMap(associatedExclamation);
+                }
             }
             
         }
