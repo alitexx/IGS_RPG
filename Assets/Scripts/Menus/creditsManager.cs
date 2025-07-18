@@ -56,9 +56,13 @@ public class creditsManager : MonoBehaviour
 
 private void OnEnable()
     {
-        switch (endingID)
+
+        SteamIntegrations steamInt = FindObjectOfType<SteamIntegrations>();
+                
+                switch (endingID)
         {
             case 0:// 0 = everyone dead
+                steamInt.UnlockAchievement("ACH_E_alone");
                 charactersOnTitle[0].SetActive(false);
                 charactersOnTitle[1].SetActive(false);
                 charactersOnTitle[2].SetActive(false);
@@ -76,6 +80,7 @@ private void OnEnable()
                     "the man she once knew in a battle for his very soul.";
                 break;
             case 1:// 1 = only nicol alive
+                steamInt.UnlockAchievement("ACH_E_n");
                 charactersOnTitle[0].SetActive(false);
                 charactersOnTitle[2].SetActive(false);
                 endingText.text = "After triumphing over the lich, Alan seized control of its tower, enticed by the dark powers within. With the lich's spellbook in hand, he " +
@@ -94,6 +99,7 @@ private void OnEnable()
                     "heart stopped beating.";
                 break;
             case 2:// 2 = nicol and sophie alive
+                steamInt.UnlockAchievement("ACH_E_n+s");
                 charactersOnTitle[1].SetActive(false);
                 charactersOnTitle[2].SetActive(false);
                 endingText.text = "Despite continuing his life as a knight, Alan was haunted by the weight of his actions. Witnessing the profound impact of Kisa's death on " +
@@ -108,6 +114,7 @@ private void OnEnable()
                     "drawing strength from the positive memories she had of Kisa.";
                 break;
             case 3:// 3 = kisa alive
+                steamInt.UnlockAchievement("ACH_E_k");
                 charactersOnTitle[1].SetActive(false);
                 charactersOnTitle[2].SetActive(false);
                 charactersOnTitle[3].SetActive(false);
@@ -121,6 +128,7 @@ private void OnEnable()
                     "plentiful, but they came from hands that had abandoned her long before her heart stopped beating.";
                 break;
             case 4:// 4 = kisa and sophie alive
+                steamInt.UnlockAchievement("ACH_E_k+s");
                 charactersOnTitle[1].SetActive(false);
                 endingText.text = "Despite continuing his life as a knight, Alan was haunted by the weight of his actions. Witnessing the profound impact of Nicol's death on " +
                     "the party, he swore never to harvest another soul. After his future epic adventures, the lich's tower gradually faded into distant memory.\r\n\r\n" +
@@ -134,6 +142,7 @@ private void OnEnable()
                     "Kisa's need for guidance, Sophie offered her support, fostering a bond that endured for the remainder of their days.";
                 break;
             case 5:// 5 = kisa and nicol alive
+                steamInt.UnlockAchievement("ACH_E_k+n");
                 charactersOnTitle[2].SetActive(false);
                 endingText.text = "Despite continuing his life as a knight, Alan was haunted by the weight of his actions. Witnessing the profound impact of Sophie's death on " +
                     "the party, he swore never to harvest another soul. After his future epic adventures, the lich's tower gradually faded into distant memory.\r\n\r\nConsumed " +
@@ -147,6 +156,7 @@ private void OnEnable()
                     "from hands that had abandoned her long before her heart stopped beating.";
                 break;
             case 6:// 6 = everyone alive!!
+                steamInt.UnlockAchievement("ACH_E_all");
                 endingText.text = "After the events at the lich's tower, Alan takes a much-needed break from his duties to prioritize his mental well-being. " +
                     "This time is short-lived, as Alan tends to find himself in the middle of conflict, fighting for the side of justice. He would go on many adventures, " +
                     "but unlike this quest, the temptation to revive his mentor had vanished. He would sometimes get wistful reminiscing about Leora, but he accepted the " +

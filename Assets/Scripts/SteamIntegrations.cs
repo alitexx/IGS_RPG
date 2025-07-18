@@ -17,9 +17,8 @@ public class SteamIntegrations : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject); // keep this alive across scenes
-
-
     }
+
     void Start()
     {
         try

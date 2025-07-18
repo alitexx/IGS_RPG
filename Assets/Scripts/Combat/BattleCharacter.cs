@@ -65,6 +65,8 @@ public class BattleCharacter : MonoBehaviour
 
     public bool specialAvailable;
 
+    public static int lastNumberRolled = 0;
+
     //TempBuffs
     public bool tempBuffed = false;
     public int tempIncrease = 0;
@@ -126,6 +128,9 @@ public class BattleCharacter : MonoBehaviour
     [SerializeField] private CanvasGroup redBG;
     private bool isTutorial;
 
+
+    private SteamIntegrations steamInt;
+
     private enum State
     {
         Idle, 
@@ -151,6 +156,7 @@ public class BattleCharacter : MonoBehaviour
 
         HideSelectionCircle();
         HideTargetCircle();
+        steamInt = FindObjectOfType<SteamIntegrations>();
         isTutorial = GameObject.FindGameObjectWithTag("Tutorial").activeInHierarchy;
     }
 
@@ -458,11 +464,18 @@ public class BattleCharacter : MonoBehaviour
             critOrMiss = 10;
         }
 
-        //critOrMiss = 20;
+        //critOrMiss = 1;
+        
+
         if (focusedTurnsLeft <= 0)
         {
             if (critOrMiss == 1) //Miss
             {
+                if (lastNumberRolled == 1)
+                {
+                    steamInt.UnlockAchievement("ACH_F_snake");
+                }
+                
                 Transform damagePopupTransform = Instantiate(damagePopup, targetCharacter.transform.position, Quaternion.identity);
                 DamagePopUp damPopScript = damagePopupTransform.GetComponent<DamagePopUp>();
                 damPopScript.SetupString("MISS");
@@ -514,6 +527,8 @@ public class BattleCharacter : MonoBehaviour
                 targetCharacter.GotDamaged(critDamage, 0 /*No defense becausse defense has already been deducted*/);
             }
         }
+
+        lastNumberRolled = critOrMiss;
 
         attacker.animator.SetBool("Attacking", false);
 
