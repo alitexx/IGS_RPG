@@ -261,9 +261,48 @@ public class killFriendManager : MonoBehaviour
             //Change supports, if applicable
             supportsData.becomeAffected();
             StartCoroutine(alanKillPartyAnim(killSpeed));
+            
+            SteamIntegrations steamInt = FindObjectOfType<SteamIntegrations>();
+
+            //Achievements
+            switch (charInQuestion)
+            {
+                case "Kisa":
+                    steamInt.UnlockAchievement("ACH_K_kisa");
+                    break;
+                case "Nicol":
+                    steamInt.UnlockAchievement("ACH_K_nicol");
+                    break;
+                case "Sophie":
+                    steamInt.UnlockAchievement("ACH_K_sophie");
+                    break;
+                default:
+                    Debug.Log("not supposed to be here");
+                    break;
+            }
+
             }
         else if (befriendingMaybe)
         {
+            SteamIntegrations steamInt = FindObjectOfType<SteamIntegrations>();
+
+            //Achievements
+            switch (charInQuestion)
+            {
+                case "Kisa":
+                    steamInt.UnlockAchievement("ACH_S_kisa");
+                    break;
+                case "Nicol":
+                    steamInt.UnlockAchievement("ACH_S_nicol");
+                    break;
+                case "Sophie":
+                    steamInt.UnlockAchievement("ACH_S_sophie");
+                    break;
+                default:
+                    Debug.Log("not supposed to be here");
+                    break;
+            }
+
             alanAnimator.SetTrigger("befriend");
             closeAreYouSure();
             tweenInObjects[0].GetComponent<RectTransform>().DOMove(locations[2].position, 1);

@@ -13346,7 +13346,6 @@ MonoBehaviour:
   characterInfo: {fileID: 929007270}
   stats_1: {fileID: 2129129590}
   stats_2: {fileID: 2071818386}
-  specialInfo: {fileID: 782449471}
   elementInfo: {fileID: 1397179231}
   elementIcon: {fileID: 1201820963}
   levelManager: {fileID: 0}
@@ -13358,6 +13357,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 22153721b62df874c830052847e9ad00, type: 3}
   - {fileID: 21300000, guid: d3e6a1464b50d0f4fa613eac97fb2da5, type: 3}
   - {fileID: 21300000, guid: 6c96b35c9b65d3046b469865608f5942, type: 3}
+  displaySupport: {fileID: 0}
 --- !u!114 &966004268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13370,6 +13370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97309584289e65c4fb773233df477fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displaySupport: {fileID: 0}
   onOpenButton: {fileID: 0}
   optionsenterbutton: {fileID: 0}
   optionsexitbutton: {fileID: 0}
@@ -13439,6 +13440,7 @@ MonoBehaviour:
   levelManager: {fileID: 0}
   expbartext: {fileID: 581024730}
   expslider: {fileID: 439917086}
+  pinkbg: {fileID: 0}
 --- !u!114 &966004269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17965,6 +17967,50 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &1352683938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1352683940}
+  - component: {fileID: 1352683939}
+  m_Layer: 0
+  m_Name: SteamIntegrations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1352683939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352683938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2d6ce0385979d48b6a84d0b91352fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1352683940
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352683938}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.8942404, y: -17.816265, z: -1.6843352}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1378588693
 GameObject:
   m_ObjectHideFlags: 0
@@ -24357,16 +24403,20 @@ MonoBehaviour:
   DoorsOpened: 0
   Doors: []
   slime: {fileID: 0}
+  MapManager: {fileID: 0}
+  floor1RoomsDiscovered: 0
+  floor2RoomsDiscovered: 0
+  floor3RoomsDiscovered: 0
+  floor4RoomsDiscovered: 0
+  miguelConversation: {fileID: 0}
   cameraMovementDetecter: {fileID: 0}
   Kisa: {fileID: 0}
   Nicol: {fileID: 0}
   Sophie: {fileID: 0}
-  KisaRenderer: {fileID: 0}
-  absorbKisa: {fileID: 0}
-  NicolRenderer: {fileID: 0}
-  absorbNicol: {fileID: 0}
-  SophieRenderer: {fileID: 0}
-  absorbSophie: {fileID: 0}
+  characterSupportsData: {fileID: 0}
+  kisa_postBoss_dead: {fileID: 0}
+  nicol_postBoss_dead: {fileID: 0}
+  sophie_postBoss_dead: {fileID: 0}
   mainDialogueManager: {fileID: 0}
   levelManager: {fileID: 0}
   pauseMenuManager: {fileID: 0}
