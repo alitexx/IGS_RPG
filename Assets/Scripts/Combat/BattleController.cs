@@ -9,7 +9,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using System.Linq;
-using UnityEditor;
 
 public class BattleController : MonoBehaviour
 {
