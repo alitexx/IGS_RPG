@@ -2209,8 +2209,8 @@ public class BattleController : MonoBehaviour
 
             am.playSFX(37);
 
-            enemyList[i].GotDamaged(activeChar.statSheet.stats["Strength"], 0);//enemyList[i].statSheet.stats["Defense"]);
-            activeChar.slashHit();
+            enemyList[i].GotDamaged(activeChar.statSheet.stats["Strength"], enemyList[i].statSheet.stats["Defense"]);
+            //activeChar.slashHit();
         }
     }
 
@@ -3198,6 +3198,8 @@ public class BattleController : MonoBehaviour
             }
 
             levelManager.StoreStats();
+
+            playerController.tutorialFight = false;
 
             #region Destroy Existing Char
 

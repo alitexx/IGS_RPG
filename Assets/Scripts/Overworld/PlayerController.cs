@@ -225,6 +225,7 @@ public class PlayerController : MonoBehaviour
                     //start tutorial fight
                     isSlime = true;
                     tutorialFight = true;
+                    
                     tutorialHandler.SetActive(true);
                     mainDialogueManager.dialogueSTART("tutorialEncounter");
                     youWinMenu.loadedDialogue = "partySplit";

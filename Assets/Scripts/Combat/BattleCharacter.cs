@@ -127,6 +127,7 @@ public class BattleCharacter : MonoBehaviour
     // for when the player uses hp as mana
     [SerializeField] private CanvasGroup redBG;
     private bool isTutorial;
+    private PlayerController playerController;
 
 
     private SteamIntegrations steamInt;
@@ -141,6 +142,7 @@ public class BattleCharacter : MonoBehaviour
 
     private void Awake()
     {
+        playerController = FindObjectOfType<PlayerController>();
         Confused = false;
         amGameObject = GameObject.Find("/-- AUDIO --");
         am = amGameObject.GetComponent<audioManager>();
@@ -157,7 +159,7 @@ public class BattleCharacter : MonoBehaviour
         HideSelectionCircle();
         HideTargetCircle();
         steamInt = FindObjectOfType<SteamIntegrations>();
-        isTutorial = GameObject.FindGameObjectWithTag("Tutorial").activeInHierarchy;
+        isTutorial = playerController.tutorialFight;//GameObject.FindGameObjectWithTag("Tutorial").activeInHierarchy;
     }
 
     private void Start()
