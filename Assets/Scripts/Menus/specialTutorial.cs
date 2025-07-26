@@ -24,15 +24,19 @@ public class specialTutorial : MonoBehaviour
 
     void OnEnable()
     {
+
         // This is triggered when the parent object or this object is activated
         if (targetGameObject != null && targetGameObject.activeSelf)
         {
             // Disable navigation if the target game object is active
             Navigation noNavigation = new Navigation { mode = Navigation.Mode.None };
+            Debug.Log("applied new nav");
             parentButton.navigation = noNavigation;
             navigationModified = true;
         } else
         {
+            Debug.Log("Ok putting it back now");
+            originalNavigation.mode = Navigation.Mode.Explicit;
             parentButton.navigation = originalNavigation;
             navigationModified = false;
             Destroy(this);
@@ -44,9 +48,11 @@ public class specialTutorial : MonoBehaviour
         // Restore navigation when the parent or this object is deactivated
         if (navigationModified)
         {
+            Debug.Log("restored nav");
+            originalNavigation.mode = Navigation.Mode.Explicit;
             parentButton.navigation = originalNavigation;
             navigationModified = false;
-            Destroy(this);
+            //Destroy(this);
         }
     }
 }

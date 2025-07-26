@@ -111,6 +111,10 @@ public class TutorialHandler : MonoBehaviour
                 buttons[1].SetActive(false);
                 buttons[2].SetActive(true);
                 break;
+            case 6:
+                buttons[4].SetActive(false);
+                buttons[5].SetActive(false);
+                break;
             case 7:
                 tutorialHoles[4].SetActive(true);
                 previousHole = tutorialHoles[4];
@@ -155,7 +159,7 @@ public class TutorialHandler : MonoBehaviour
             targetTutorial.SetActive(false);
         }
 
-        if (battleController.state == BattleController.State.Busy)
+        if (battleController.state == BattleController.State.Busy && tutorialCounter != 5 && tutorialCounter != 6)
         {
             fadeOutBG();
         }

@@ -54,7 +54,7 @@ public class youWinMenu : MonoBehaviour
         youWinText.DOMove(locations[0].position, 0.35f).OnComplete(() => {
             youWinText.DOMove(locations[1].position, 0.7f).OnComplete(() => {
                 expBar.gameObject.SetActive(true);
-                expBar.DOFade(1, .5f).OnComplete(() => {
+                expBar.DOFade(1, 1f).OnComplete(() => {
                     gainExperienceCoroutine = StartCoroutine(ShowGainedExperience());
                 });
             });
@@ -165,6 +165,7 @@ public class youWinMenu : MonoBehaviour
 
     public void closeYouWinMenu()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         killedPartyMember = false;
         expBar.DOFade(0, 0.5f).OnComplete(() => { expBar.gameObject.SetActive(false); });
         battleEnterAnimator.SetBool("BattleOver", true);
@@ -174,6 +175,7 @@ public class youWinMenu : MonoBehaviour
                 PauseMenu.canOpenPause = true;
                 battleEnterAnimator.SetBool("BattleOver", false);
                 youWinText.position = locations[4].position;
+                Debug.Log(loadedDialogue);
                 if (loadedDialogue == "Cutscene") // this is the end of the game. send to maindialoguemanager
                 {
                     //find id
