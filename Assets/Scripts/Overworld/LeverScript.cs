@@ -27,7 +27,9 @@ public class LeverScript : MonoBehaviour
 
             if (DistanceBetweenObjects <= maxDistance && Input.GetKeyDown(audioStatics.keycodeInterractButton))
             {
-                Debug.Log(":D");
+                flipSwitch();
+                
+                /*Debug.Log(":D");
                 Destroy(Door);
                 spriteRenderer.sprite = newSprite;
                 flipped = true;
@@ -35,7 +37,7 @@ public class LeverScript : MonoBehaviour
                 if (!inSameRoomAsDoor)
                 {
                     mapManager.ForceOpenMap(associatedExclamation);
-                }
+                }*/
             }
             
         }
@@ -48,18 +50,25 @@ public class LeverScript : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player" && Input.GetKeyDown(audioStatics.keycodeInterractButton))
             {
-                Debug.Log("I AM THE CORRECT ONE");
-                Destroy(Door);
-                spriteRenderer.sprite = newSprite;
-                flipped = true;
-                playerController.DoorsOpened += 1;
-                audioManager.playSFX(20);
-                if (!inSameRoomAsDoor)
-                {
-                    mapManager.ForceOpenMap(associatedExclamation);
-                }
+                flipSwitch();
             }
             
         }
+    }
+
+    public void flipSwitch()
+    {
+        Debug.Log("I AM THE CORRECT ONE");
+        spriteRenderer.sprite = newSprite;
+        playerController.DoorsOpened += 1;
+        Debug.Log("Doors:" + playerController.DoorsOpened);
+        audioManager.playSFX(20);
+        if (!inSameRoomAsDoor)
+        {
+            mapManager.ForceOpenMap(associatedExclamation);
+        }
+        flipped = true;
+        
+        Destroy(Door);
     }
 }

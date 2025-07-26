@@ -51,6 +51,7 @@ public class SwitchScript : MonoBehaviour
         {
             gameObject.transform.position = Switch.transform.position;
             playerController.DoorsOpened += 1;
+            Debug.Log("Doors:" + playerController.DoorsOpened);
             audioManager.playSFX(20);
             Debug.Log("Collided");
             RB.velocity = Vector3.zero;

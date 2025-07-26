@@ -492,6 +492,7 @@ public class PlayerController : MonoBehaviour
     {
         BattleTutorialCleared = 1;
         PlayerPrefs.SetInt("DoorsOpened", DoorsOpened);
+        Debug.Log("Doors: " + DoorsOpened);
         PlayerPrefs.SetInt("PartyLevel", partyLevel);
         PlayerPrefs.SetInt("CurrentEXP", levelManager.currentEXP);
         PlayerPrefs.SetFloat("PlayerPositionX", playerPosition[0]);
