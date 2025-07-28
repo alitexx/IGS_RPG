@@ -122,10 +122,7 @@ public class TutorialHandler : MonoBehaviour
                 buttons[3].SetActive(true);
                 break;
             case 8:
-                for (int i = 0; i < buttons.Length; i++)
-                {
-                    buttons[i].SetActive(true);
-                }
+                buttons[4].SetActive(false);
                 break;
         }
     }

@@ -368,8 +368,7 @@ public class mapManager : MonoBehaviour
         // Fade out of map
         fadeInScript.fadeOutOfmap();
 
-        // Unfreeze player after closing map
-        playerController.isfrozen = false;
+        
     }
 
 }

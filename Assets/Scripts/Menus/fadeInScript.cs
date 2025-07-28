@@ -8,6 +8,7 @@ public class fadeInScript : MonoBehaviour
 {
     [SerializeField] private CanvasGroup fadeIn;
     [SerializeField] private mapManager mapManager;
+    private PlayerController playerController;
 
 
     // Start is called before the first frame update
@@ -15,6 +16,7 @@ public class fadeInScript : MonoBehaviour
     {
         fadeIn.alpha = 1;
         fadeIn.DOFade(0, 1f);
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     public void fadeToRPGWorld()
@@ -41,6 +43,7 @@ public class fadeInScript : MonoBehaviour
     {
         //Fade to black. Wait.
         //Fade back in once menu was open
+        PauseMenu.canOpenPause = false;
         fadeIn.blocksRaycasts = true;
         fadeIn.DOFade(1, 0.4f).OnComplete(() =>
         {
@@ -67,6 +70,8 @@ public class fadeInScript : MonoBehaviour
                 fadeIn.DOFade(0, 0.5f).OnComplete(() =>
                 {
                     mapManager.setOpeningClosingMenu(false);
+                    playerController.isfrozen = false;
+                    PauseMenu.canOpenPause = true;
                 });
             });
         });

@@ -1,7 +1,3 @@
-CreateCharacter(kisa -enabled false)
-CreateCharacter(sophie -enabled false)
-CreateCharacter(nicol -enabled false)
-CreateCharacter(alan -enabled false)
 alan.SetPriority(2)
 alan.Move(0 0 -spd 3)
 kisa.Move(0.65 0 -spd 3)
