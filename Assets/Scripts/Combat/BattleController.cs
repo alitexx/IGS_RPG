@@ -3068,7 +3068,11 @@ public class BattleController : MonoBehaviour
             //Debug.Log("enemy defense is " + enemyList[enemyNum].statSheet.stats["Defense"]);
             //Debug.Log("Party level is " + playerController.partyLevel);
 
-            enemyList[enemyNum].GotDamaged((charSuppData.getSyncStrikeMultiplier(activeName, targetName) * playerController.partyLevel) / 2, enemyList[enemyNum].statSheet.stats["Defense"]);
+            //enemyList[enemyNum].GotDamaged((charSuppData.getSyncStrikeMultiplier(activeName, targetName) * playerController.partyLevel) / 2, enemyList[enemyNum].statSheet.stats["Defense"]);
+            int averagedStrength = (activeChar.statSheet.stats["Strength"] + targetAlly.statSheet.stats["Strength"]) / 2;
+            averagedStrength = averagedStrength - (averagedStrength / 4);
+
+            enemyList[enemyNum].GotDamaged(averagedStrength, enemyList[enemyNum].statSheet.stats["Defense"] - (2 * (charSuppData.getSyncStrikeMultiplier(activeName, targetName)) - 1));
 
             //Remove special points since it has been used
             updateSP.removeSpecial(activeChar.statSheet.name, 0);
