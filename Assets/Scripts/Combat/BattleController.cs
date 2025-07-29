@@ -2507,7 +2507,7 @@ public class BattleController : MonoBehaviour
                     }
                     else if (playerList[i].statSheet.name == "Mage Guy")
                     {
-                        specialPointTracker.removeSpecial("Mage Guy", 0);
+                        //specialPointTracker.removeSpecial("Mage Guy", 0);
                     }
                     else if (playerList[i].statSheet.name == "Bard Guy")
                     {
@@ -2564,7 +2564,7 @@ public class BattleController : MonoBehaviour
                 am.playSFX(12);
                 for (int i = 0; i < playerList.Count; i++)
                 {
-                    playerList[i].healthSystem.Heal(enemyList[i].statSheet.stats["MaxHealth"] / 2);
+                    playerList[i].healthSystem.Heal(playerList[i].statSheet.stats["MaxHealth"] / 2);
                 }
             }
             else if (lGenre == 2)
