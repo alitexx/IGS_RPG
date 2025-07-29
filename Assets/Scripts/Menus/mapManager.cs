@@ -31,6 +31,7 @@ public class mapManager : MonoBehaviour
     [SerializeField] private GameObject floor1Map, floor2Map, floor3Map, floor4Map, mapParent, pauseMenu;
     [SerializeField] private GameObject[] floor1Rooms, alanFloor1, floor2Rooms, alanFloor2, floor3Rooms, alanFloor3, floor4Rooms, alanFloor4;
     private bool openingClosingMenu = false;
+    [SerializeField] private GameObject saveMenu;
     //How will I keep track of which rooms have exclamation points? A switch statement when walking into that room?
     private int floorNumber;
     //Keeps track of where Alan is. This needs to be passed in on a reloaded save.
@@ -274,7 +275,7 @@ public class mapManager : MonoBehaviour
     void Update()
     {
         //CHANGE JOYSTICK BUTTON TO X
-        if ((Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.JoystickButton2)) && (mainDialogueManager.dialogueRunning == false && battleUI.activeInHierarchy == false && PauseMenu.canOpenPause == true) && openingClosingMenu == false)
+        if ((Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.JoystickButton2)) && (mainDialogueManager.dialogueRunning == false && battleUI.activeInHierarchy == false && saveMenu.activeInHierarchy == false) && openingClosingMenu == false)
         {
             openingClosingMenu = true;
             if (!mapParent.activeInHierarchy)
