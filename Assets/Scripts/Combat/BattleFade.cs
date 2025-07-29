@@ -22,6 +22,7 @@ public class BattleFade : MonoBehaviour
 
     public void BattleStarted()
     {
+        SavepointScript.canOpenSave = false;
         animator.SetBool("BattleStarting", false);
         PauseMenu.canOpenPause = false;
         battleUI.SetActive(true);
@@ -39,7 +40,7 @@ public class BattleFade : MonoBehaviour
         am.playSFX(1);
 
         // start battle text start anim
-
+        SavepointScript.canOpenSave = false;
         battleTXT.gameObject.SetActive(true);
         battleTXT.DOMove(battleTXTlocations[0].position, 0.35f).OnComplete(() => {
             battleTXT.DOMove(battleTXTlocations[1].position, 0.7f).OnComplete(() => {

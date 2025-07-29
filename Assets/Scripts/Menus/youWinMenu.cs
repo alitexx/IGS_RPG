@@ -175,7 +175,7 @@ public class youWinMenu : MonoBehaviour
                 PauseMenu.canOpenPause = true;
                 battleEnterAnimator.SetBool("BattleOver", false);
                 youWinText.position = locations[4].position;
-                Debug.Log(loadedDialogue);
+                SavepointScript.canOpenSave = true;
                 if (loadedDialogue == "Cutscene") // this is the end of the game. send to maindialoguemanager
                 {
                     //find id
