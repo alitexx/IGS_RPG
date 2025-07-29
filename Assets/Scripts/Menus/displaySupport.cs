@@ -58,8 +58,8 @@ public class displaySupport : MonoBehaviour
                 break;
             case 3: //SOPHIE
                 showCharSupport(0, 0, charSupportsData.alansoph_support, "alansoph");
-                showCharSupport(1, 1, charSupportsData.nicosoph_support, "nicosoph");
-                showCharSupport(2, 2, charSupportsData.kisasoph_support, "kisasoph");
+                showCharSupport(1, 1, charSupportsData.kisasoph_support, "kisasoph");
+                showCharSupport(2, 2, charSupportsData.nicosoph_support, "nicosoph");
                 break;
         }
 

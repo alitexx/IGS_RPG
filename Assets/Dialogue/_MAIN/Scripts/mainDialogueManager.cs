@@ -78,7 +78,7 @@ public class mainDialogueManager : MonoBehaviour
     public void dialogueSTART(string dialogueFile)
     {
         //change bgm depending on what got passed in
-
+        Debug.Log(dialogueFile);
         // Only start the coroutine if it's not already running
         if (!dialogueRunning)
         {

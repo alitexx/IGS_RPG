@@ -59,6 +59,7 @@ public class pauseMenuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(onOpenButton);
         //place all sprites where they need to be
         //if the options menu is open, close it
+        PartyLevelTXT.transform.position = locations[8].transform.position;
         if (OptionsMenu.activeSelf)
         {
             Buttons.transform.position = locations[0].transform.position;
