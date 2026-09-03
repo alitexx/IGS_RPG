@@ -1,6 +1,8 @@
 using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 using UnityEngine;
 
 public class SteamIntegrations : MonoBehaviour
@@ -15,8 +17,25 @@ public class SteamIntegrations : MonoBehaviour
             return;
         }
 
+        Screen.SetResolution(1920, 1080, FullScreenMode.FullScreenWindow);
+
+        EnforceInvariantCulture();
+
         Instance = this;
         DontDestroyOnLoad(gameObject); // keep this alive across scenes
+    }
+
+    public static void EnforceInvariantCulture()
+    {
+        // Force the main application thread to remain uniform globally
+        CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+        CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+
+
+        // Ensure the current active running thread matches
+        Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+        CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+        CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
     }
 
     void Start()
